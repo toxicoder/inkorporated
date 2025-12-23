@@ -1,0 +1,72 @@
+# k3s Installation Role
+# Tasks for installing and configuring k3s
+
+---
+- name: Install required packages for k3s
+  apt:
+    name:
+      - curl
+      - wget
+      - gnupg
+      - ca-certificates
+      - software-properties-common
+      - apt-transport-https
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Add k3s repository key
+  apt_key:
+    url: https://raw.githubusercontent.com/k3s-io/k3s/master/install.sh
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Install k3s
+  shell: |
+    curl -sfL {{ k3s_install_url }} | sh -s - {{ k3s_install_args }}
+  args:
+    executable: /bin/bash
+    creates: "{{ k3s_install_dir }}/k3s"
+  environment:
+    INSTALL_K3S_VERSION: "{{ k3s_version }}"
+    INSTALL_K3S_EXEC: "{{ k3s_install_args | default('') }}"
+
+- name: Create k3s configuration directory
+  file:
+    path: "{{ k3s_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Configure k3s service
+  template:
+    src: k3s.service.j2
+    dest: /etc/systemd/system/k3s.service
+    mode: '0644'
+
+- name: Reload systemd daemon
+  systemd:
+    daemon_reload: yes
+
+- name: Enable and start k3s service
+  systemd:
+    name: k3s
+    enabled: yes
+    state: started
+
+- name: Wait for k3s service to be active
+  systemd:
+    name: k3s
+    state: started
+    enabled: yes
+  retries: 10
+  delay: 5
+  register: k3s_service_result
+  until: k3s_service_result is succeeded
+
+- name: Check k3s service status
+  command: systemctl status k3s --no-pager
+  register: k3s_status
+  changed_when: false
+
+- name: Display k3s service status
+  debug:
+    msg: "k3s service status: {{ k3s_status.stdout }}"

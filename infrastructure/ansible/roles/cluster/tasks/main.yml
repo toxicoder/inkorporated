@@ -1,0 +1,74 @@
+# Cluster Management Role
+# Tasks for managing k3s cluster setup
+
+---
+- name: Get k3s server token
+  command: cat /var/lib/rancher/k3s/server/node-token
+  register: k3s_token_result
+  changed_when: false
+  failed_when: false
+  delegate_to: "{{ groups['control_plane'][0] }}"
+
+- name: Display k3s token
+  debug:
+    msg: "k3s server token: {{ k3s_token_result.stdout }}"
+
+- name: Wait for control plane to be ready
+  command: k3s kubectl get nodes -o json
+  register: k3s_nodes
+  changed_when: false
+  failed_when: false
+  retries: 10
+  delay: 10
+  until: "'Ready' in (k3s_nodes.stdout | from_json | json_query('items[*].status.conditions[?type==`Ready`].status') | flatten | join(','))"
+  delegate_to: "{{ groups['control_plane'][0] }}"
+
+- name: Configure k3s cluster
+  command: k3s kubectl apply -f /etc/rancher/k3s/cluster-config.yaml
+  args:
+    chdir: /etc/rancher/k3s
+  when: ansible_host is defined
+  delegate_to: "{{ groups['control_plane'][0] }}"
+
+- name: Get cluster information
+  command: k3s kubectl cluster-info
+  register: cluster_info
+  changed_when: false
+  failed_when: false
+  delegate_to: "{{ groups['control_plane'][0] }}"
+
+- name: Display cluster info
+  debug:
+    msg: "Cluster info: {{ cluster_info.stdout }}"
+
+- name: Join worker nodes to cluster
+  command: |
+    curl -sfL https://get.k3s.io | sh -s - agent \
+      --server https://{{ groups['control_plane'][0] }}:6443 \
+      --token {{ k3s_token_result.stdout }}
+  args:
+    executable: /bin/bash
+    creates: "/var/lib/rancher/k3s/agent/kubelet.sock"
+  when: groups['control_plane'] | length > 0 and inventory_hostname != groups['control_plane'][0]
+
+- name: Wait for worker node to be ready
+  command: k3s kubectl get nodes -o json
+  register: k3s_nodes
+  changed_when: false
+  failed_when: false
+  retries: 10
+  delay: 10
+  until: "'Ready' in (k3s_nodes.stdout | from_json | json_query('items[*].status.conditions[?type==`Ready`].status') | flatten | join(','))"
+  delegate_to: "{{ groups['control_plane'][0] }}"
+  when: inventory_hostname != groups['control_plane'][0] and groups['control_plane'] | length > 0
+
+- name: Verify cluster health
+  command: k3s kubectl get nodes -o wide
+  register: nodes_status
+  changed_when: false
+  failed_when: false
+  delegate_to: "{{ groups['control_plane'][0] }}"
+
+- name: Display cluster nodes
+  debug:
+    msg: "Cluster nodes: {{ nodes_status.stdout }}"

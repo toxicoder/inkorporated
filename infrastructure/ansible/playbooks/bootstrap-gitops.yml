@@ -1,0 +1,63 @@
+# GitOps Bootstrap Playbook
+# Bootstraps the complete GitOps environment including Gitea, ArgoCD, and runners
+
+---
+- name: Bootstrap GitOps environment
+  hosts: control_plane
+  become: yes
+  vars:
+    k3s_config_dir: "/etc/rancher/k3s"
+  
+  tasks:
+    - name: Install required packages
+      apt:
+        name:
+          - curl
+          - wget
+          - git
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install Docker and Docker Compose
+      apt:
+        name:
+          - docker.io
+          - docker-compose
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Run Gitea installation role
+      include_role:
+        name: gitea
+
+    - name: Run ArgoCD installation role
+      include_role:
+        name: argocd
+
+    - name: Run Gitea Runner installation role
+      include_role:
+        name: gitea-runner
+
+    - name: Configure GitOps workflow
+      command: k3s kubectl apply -f {{ k3s_config_dir }}/gitops/gitops-config.yaml
+      when: ansible_host is defined
+
+    - name: Verify GitOps components are running
+      command: k3s kubectl get pods -n argocd
+      register: argocd_pods
+      changed_when: false
+      failed_when: false
+
+    - name: Display ArgoCD pods
+      debug:
+        msg: "ArgoCD pods: {{ argocd_pods.stdout }}"
+
+    - name: Get Gitea service info
+      command: k3s kubectl get svc gitea -n default -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+      register: gitea_ip
+      changed_when: false
+      failed_when: false
+
+    - name: Display Gitea info
+      debug:
+        msg: "Gitea is available at: http://{{ gitea_ip.stdout }}:3000"

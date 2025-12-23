@@ -1,104 +1,88 @@
-# devset
+# inkorporated
 
-## Project Overview
+A GitOps/Infrastructure as Code repository template for homelab deployments.
 
-This repository serves as a comprehensive collection of development tools, templates, and best practices for initializing and maintaining code repositories. It provides a standardized foundation for projects to ensure consistency, quality, and maintainability.
+## Overview
 
-## Purpose
+This repository provides a comprehensive template for setting up a production-ready homelab infrastructure using GitOps principles. It combines Terraform, Ansible, and ArgoCD to automate the provisioning and deployment of a k3s-based Kubernetes cluster with all essential services.
 
-The main goal of this repository is to provide developers with:
-- A complete set of documentation templates and standards
-- Automated workflows for common development tasks
-- Standardized project structures and configurations
-- Cline memory bank and rule systems for AI-assisted development
-- Dev container configurations for consistent development environments
-- Post-fork setup automation for maintaining proper attribution
+The project is designed as a **template repository** that developers can clone, configure, and deploy to their homelabs. Once deployed, it provides a complete GitOps environment with version control, infrastructure automation, and application deployment capabilities.
 
-## Use Pattern
+## Key Features
 
-This repository is designed to be used as a template/reference:
-1. Developers start with their existing git repository
-2. They download/clone the files from this repository into their project
-3. The files are then maintained separately in each individual project
-4. Each project can customize and extend the templates as needed
+- **GitOps Deployment**: Full infrastructure and application management through Git
+- **Infrastructure as Code**: Terraform for VM provisioning, Ansible for k3s setup
+- **Zero-trust Access**: Cloudflare Tunnel for secure external access
+- **Centralized Authentication**: Authentik SSO/OIDC integration
+- **Observability**: Prometheus, Grafana, and Loki stack
+- **Storage Solutions**: Longhorn and NFS CSI driver
+- **Backup & Recovery**: Velero with MinIO
+- **Service Mesh**: Traefik with forward-auth middleware
+- **Version Control**: Gitea instance for GitOps workflow
+- **CI/CD**: Gitea runners for automated deployments
 
-## Key Components
+## Project Structure
 
-### Memory Bank System
-- `memory-bank/` - Core documentation files for project context
-- `clinerules-bank/` - Standard rules and guidelines
-- `clines-memory-bank-rule.md` - Documentation of the memory bank system
-
-### Workflow Collection
-- `workflows/` - Automation workflows for various development tasks
-- Includes initialization, maintenance, and operational workflows
-- Each workflow is documented with parameters and steps
-
-### Dev Container Configuration
-- `.devcontainer/` - VS Code dev container setup
-- Pre-configured with common development tools and extensions
-- Ensures consistent development environments
-
-### Technical Documentation
-- `docs/technical_design_doc.md` - Template for technical design documents
-- Standardized format for project documentation
-
-## How to Use
-
-1. Clone or fork this repository
-2. Copy the desired files into your existing project
-3. Customize the templates to match your specific project needs
-4. Maintain the files separately in your project repository
-5. Use the workflows for automated task execution
-
-## Benefits
-
-- **Consistency**: Standardized templates across projects
-- **Efficiency**: Pre-built workflows reduce setup time
-- **Quality**: Established rules and guidelines improve code quality
-- **Maintainability**: Clear documentation and structure
-- **Collaboration**: Shared standards facilitate team development
-
-## Citing This Project
-
-If you use this repository in your work, please consider citing it to give credit to the original authors and help others discover this resource. You can cite it as:
-
-**For academic or research use:**
 ```
-[Author Name], [Project Name], [Repository URL], [Year]. Available online at [URL]
+.
+├── apps/                     # Application deployments
+│   └── shared/               # Shared applications
+│       └── cloudflared/      # Cloudflare tunnel deployment
+├── infrastructure/           # Infrastructure provisioning
+│   ├── terraform/            # Terraform configurations
+│   └── ansible/              # Ansible playbooks
+├── kubernetes/               # Kubernetes manifests
+│   ├── base/                 # Base configurations
+│   ├── overlays/             # Environment-specific configurations
+│   └── argocd/               # ArgoCD configurations
+├── docs/                     # Documentation
+└── memory-bank/              # Project documentation and context
 ```
 
-**For software projects:**
-- Include a reference in your project's documentation
-- Add a note in your README.md mentioning this repository
-- Consider adding a badge to your project's README (if applicable)
+## How It Works
 
-**Example citation format:**
-```
-devset - A collection of development tools and templates
-https://github.com/toxicoder/devset
-```
+1. **Clone the Repository**: Developers clone this template repository
+2. **Configure Settings**: Edit configuration files to specify:
+   - Proxmox server details
+   - Deployment profile (min, medium, recommended)
+   - Services to deploy
+3. **Deploy Infrastructure**: Run Terraform/Ansible to provision VMs and install k3s
+4. **Bootstrap GitOps**: Deploy ArgoCD and Gitea for version control
+5. **Manage Everything**: Use GitOps workflows for all infrastructure and application management
 
-## Support This Project
+## Deployment Profiles
 
-If you find this repository helpful and would like to support its development, consider making a donation:
+### Min Profile
+- 1 VM for control plane
+- Minimal resource allocation
+- Suitable for small homelabs
+- Memory: 1024MB, Cores: 1, Disk: 10GB
 
-### Buy Me a Coffee
-<a href="https://www.buymeacoffee.com/toxicoder" target="_blank">
-    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174">
-</a>
+### Medium Profile
+- 1 VM for control plane
+- 1 VM for worker node
+- Balanced resource allocation
+- Memory: 2048MB, Cores: 2, Disk: 20GB
 
-### PayPal
-[![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BFJREUDZMPZDN)
+### Recommended Profile
+- 1 VM for control plane
+- 2 VMs for worker nodes
+- Production-ready resource allocation
+- Memory: 4096MB, Cores: 4, Disk: 40GB
 
-### GitHub Sponsors
-[![Sponsor](https://img.shields.io/badge/Sponsor-%23EA4AAA?style=for-the-badge&logo=github)](https://github.com/sponsors/toxicoder)
+## Getting Started
 
-### Ko-fi
-<a href="https://ko-fi.com/toxicoder" target="_blank">
-    <img src="https://storage.ko-fi.com/cdn/kofi3.png" alt="Ko-fi" height="41" width="174">
-</a>
+1. Clone this repository
+2. Configure your infrastructure settings in `infrastructure/terraform/terraform.tfvars`
+3. Select and customize a deployment profile
+4. Provision VMs with Terraform: `cd infrastructure/terraform && terraform apply`
+5. Install k3s with Ansible: `cd infrastructure/ansible && ansible-playbook playbooks/k3s-install.yml`
+6. Bootstrap ArgoCD and Gitea for GitOps workflow
+7. Deploy services through GitOps
 
-Your support helps maintain and improve this collection of development tools and templates. Thank you for contributing to open source!
+## Documentation
 
-This project is licensed under MIT - see the LICENSE file for details.
+- [Infrastructure Setup Guide](docs/infrastructure_setup_guide.md)
+- [Implementation Plan](docs/implementation_plan_updated.md)
+- [Project Status](docs/inkorporated_project_status.md)
+- [Technical Design](docs/technical_design_doc.md)

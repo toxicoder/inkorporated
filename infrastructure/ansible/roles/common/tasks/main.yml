@@ -1,0 +1,64 @@
+# Common Tasks Role
+# Common tasks to be run on all nodes
+
+---
+- name: Update system packages
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  when: ansible_os_family == "Debian"
+
+- name: Install common packages
+  apt:
+    name:
+      - curl
+      - wget
+      - gnupg
+      - ca-certificates
+      - software-properties-common
+      - apt-transport-https
+      - vim
+      - git
+      - htop
+      - tree
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Configure SSH settings
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#?PermitRootLogin'
+    line: 'PermitRootLogin no'
+    backup: yes
+  notify: restart ssh
+
+- name: Configure firewall
+  ufw:
+    state: enabled
+    default: deny
+    logging: on
+  when: ansible_os_family == "Debian"
+
+- name: Configure sysctl settings
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    sysctl_file: /etc/sysctl.conf
+    state: present
+  loop:
+    - { name: 'net.ipv4.ip_forward', value: '1' }
+    - { name: 'net.ipv4.conf.all.forwarding', value: '1' }
+    - { name: 'net.bridge.bridge-nf-call-iptables', value: '1' }
+    - { name: 'net.bridge.bridge-nf-call-ip6tables', value: '1' }
+
+- name: Disable swap
+  command: swapoff -a
+  args:
+    removes: /swapfile
+  when: ansible_swaptotal_mb > 0
+
+- name: Remove swap from fstab
+  lineinfile:
+    path: /etc/fstab
+    regexp: 'swap'
+    state: absent

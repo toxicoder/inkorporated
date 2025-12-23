@@ -5,7 +5,7 @@
 This document defines the fundamental scope, requirements, and goals of the project. It serves as the foundation for all other documentation in the memory bank.
 
 ## Project Scope
-- Implement the Inkorporated homelab infrastructure as described in the technical design document
+- Implement the inkorporated homelab infrastructure as described in the technical design document
 - Create a fully self-hosted, open-source internal work environment
 - Deploy all services in a k3s Kubernetes cluster with GitOps management via ArgoCD
 - Implement security through centralized authentication (Authentik SSO/OIDC) and network security (pfSense)

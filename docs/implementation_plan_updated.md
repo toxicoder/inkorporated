@@ -1,7 +1,15 @@
-# Inkorporated Implementation Plan
+# Inkorporated Implementation Plan - Updated Status
 
 ## Overview
-This document outlines the comprehensive implementation plan for the Inkorporated homelab infrastructure based on the technical design document. The plan follows the phased approach with clear milestones and deliverables.
+This document outlines the comprehensive implementation plan for the Inkorporated homelab infrastructure based on the technical design document. The plan follows the phased approach with clear milestones and deliverables, updated with current progress.
+
+## Current Status Overview
+- ✅ Project renamed from "devset" to "inkorporated" 
+- ✅ README updated with proper project context
+- ✅ Cloudflared tunnel service deployment files created
+- ✅ Implementation plan and task breakdown documented
+- 🔄 Cloudflared tunnel token integration pending
+- 🔄 Core infrastructure components deployment in progress
 
 ## Phase 1: Foundation & Preparation
 
@@ -12,7 +20,8 @@ This document outlines the comprehensive implementation plan for the Inkorporate
 **Steps**:
 1. Verify Proxmox: 4 nodes online, ≥64GB RAM total, ≥16 CPU cores, ≥500GB storage
 2. Synology: Enable NFSv4.1, create `/volume1/k8s-backups`, permissions for LAN subnet
-3. Cloudflare: Create account, add domain overeasy.io, generate tunnel token
+3. Cloudflare: Create account, add domain overeasy.io, generate tunnel token (via `cloudflared tunnel token` later)
+**Note**: This is the next logical step after infrastructure validation
 
 ### Task 1.02: Create Proxmox Cloud-Init Template
 **Objective**: Template for k3s nodes
@@ -44,11 +53,12 @@ This document outlines the comprehensive implementation plan for the Inkorporate
 
 ### Task 2.02: Create Apps Repository
 **Objective**: GitOps manifests, including cloudflared
-**Status**: Not Started
+**Status**: Completed
 **Dependencies**: None
 **Steps**:
 1. Create repo for GitOps manifests
 2. Add dirs for shared (including cloudflared subdir with Deployment.yaml, ConfigMap for tunnel config.yaml, secret for token)
+**Status**: ✅ Files already created in `apps/shared/cloudflared/`
 
 ## Phase 3: Bootstrap Infrastructure
 
@@ -214,12 +224,51 @@ This document outlines the comprehensive implementation plan for the Inkorporate
 1. docs/ with URLs, creds, backups
 2. Add to Homepage
 
-## Implementation Priority Order
-1. Phase 1: Foundation & Preparation (Infrastructure validation)
-2. Phase 2: Repository & Code Setup (Code organization)
-3. Phase 3: Bootstrap Infrastructure (Core cluster setup)
-4. Phase 4: Core Infrastructure Deployment (Services deployment)
-5. Phase 5: Post-Deployment (Configuration and testing)
+## Implementation Priority Order (Updated)
+1. **Phase 1**: Foundation & Preparation (Infrastructure validation) - Start here
+2. **Phase 2**: Repository & Code Setup (Code organization) - Already completed
+3. **Phase 3**: Bootstrap Infrastructure (Core cluster setup) - Next logical step
+4. **Phase 4**: Core Infrastructure Deployment (Services deployment) - Followed by cloudflared integration
+5. **Phase 5**: Post-Deployment (Configuration and testing) - Final phase
+
+## Next Immediate Actions
+
+### 1. Complete Cloudflared Integration
+- [ ] Obtain Cloudflare tunnel token from Cloudflare dashboard
+- [ ] Create proper Kubernetes secret with real tunnel token
+- [ ] Apply the secret to the cluster
+- [ ] Verify cloudflared pods start successfully
+
+### 2. Infrastructure Setup
+- [ ] Validate physical infrastructure readiness
+- [ ] Create Proxmox Cloud-Init template
+- [ ] Set up workstation tools
+- [ ] Create bootstrap repository with Terraform/Ansible
+
+### 3. Core Infrastructure Deployment
+- [ ] Provision VMs with Terraform
+- [ ] Install k3s with Ansible
+- [ ] Bootstrap ArgoCD
+- [ ] Deploy NFS CSI Driver
+- [ ] Deploy Longhorn Storage
+
+## Key Implementation Notes
+- The cloudflared deployment structure is complete and follows the technical design
+- The implementation plan is organized to follow the phased approach from the technical design document
+- All services will be deployed according to the ultra-detailed task breakdown
+- The project maintains the correct "inkorporated" naming throughout all documentation and manifests
+
+## Security Considerations
+- All sensitive data (tunnel tokens, database passwords) should be stored as Kubernetes secrets
+- Use sealed secrets or similar encryption for sensitive data in Git
+- Implement proper RBAC and network policies
+- Regular security audits and updates of container images
+
+## Monitoring and Observability
+- All services should be configured with proper monitoring and logging
+- Prometheus metrics and Grafana dashboards should be implemented
+- Loki for unified logging across all services
+- Alertmanager for critical system alerts
 
 # task_progress
 - [x] Analyze technical design document

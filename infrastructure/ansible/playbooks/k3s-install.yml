@@ -1,0 +1,62 @@
+# k3s Installation Playbook
+# Installs k3s on all nodes
+
+---
+- name: Install k3s on all nodes
+  hosts: all
+  become: yes
+  vars:
+    k3s_version: "v1.28.0+k3s1"
+    k3s_install_url: "https://get.k3s.io"
+    k3s_install_dir: "/usr/local/bin"
+    k3s_config_dir: "/etc/rancher/k3s"
+    k3s_data_dir: "/var/lib/rancher/k3s"
+  
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+
+    - name: Install required packages
+      apt:
+        name:
+          - curl
+          - wget
+          - gnupg
+          - ca-certificates
+          - software-properties-common
+          - apt-transport-https
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install k3s
+      shell: |
+        curl -sfL {{ k3s_install_url }} | sh -s - {{ k3s_install_args }}
+      args:
+        executable: /bin/bash
+        creates: "{{ k3s_install_dir }}/k3s"
+      environment:
+        INSTALL_K3S_VERSION: "{{ k3s_version }}"
+        INSTALL_K3S_EXEC: "{{ k3s_install_args | default('') }}"
+
+    - name: Wait for k3s service to be active
+      systemd:
+        name: k3s
+        state: started
+        enabled: yes
+      retries: 10
+      delay: 5
+      register: k3s_service_result
+      until: k3s_service_result is succeeded
+
+    - name: Check k3s node status
+      command: k3s kubectl get nodes -o json
+      register: k3s_nodes
+      changed_when: false
+      failed_when: false
+
+    - name: Display k3s node status
+      debug:
+        msg: "k3s nodes: {{ k3s_nodes.stdout | from_json if k3s_nodes.stdout else {} }}"

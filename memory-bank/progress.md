@@ -10,6 +10,7 @@ This document tracks what works, what's left to build, and the overall project p
 - Implementation roadmap has been defined
 - Task progress tracking system has been established
 - Cloudflared tunnel service deployment files created
+- Project successfully renamed from "devset" to "inkorporated"
 
 ## What's Left to Build
 - Core infrastructure components (storage, databases, networking)
@@ -17,13 +18,20 @@ This document tracks what works, what's left to build, and the overall project p
 - Authentik configuration for centralized authentication
 - Monitoring and observability stack deployment
 - Post-deployment configuration and testing
+- Physical infrastructure validation and setup
+- Bootstrap repository creation
+- VM provisioning and k3s installation
+- ArgoCD bootstrap
+- Cloudflared tunnel token integration
 
 ## Current Status
 - Project initialization phase complete
 - Documentation foundation established
 - Implementation planning in progress
 - Cloudflared tunnel service deployed (ready for tunnel token integration)
+- Project successfully renamed from "devset" to "inkorporated"
 - Ready to begin core infrastructure deployment
+- Next steps: infrastructure validation and setup
 
 ## Known Issues
 - No known issues at this time
@@ -35,11 +43,15 @@ This document tracks what works, what's left to build, and the overall project p
 - Zero-trust access via Cloudflare Tunnel confirmed
 - Centralized authentication via Authentik confirmed
 - Storage strategy with Longhorn and NFS CSI confirmed
+- Project renamed from "devset" to "inkorporated" confirmed
 
 ## Recent Changes
 - Created cloudflared deployment files in apps/shared/cloudflared/
 - Created namespace, deployment, configmap for cloudflared tunnel service
 - Files follow the technical design specification for cloudflared deployment
+- Project successfully renamed from "devset" to "inkorporated"
+- Updated documentation to reflect correct project name
+- Created comprehensive implementation status documents
 
 # task_progress
 - [x] Analyze technical design document

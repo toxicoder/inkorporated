@@ -1,0 +1,35 @@
+{
+    "name": "Generalized Developer Container",
+    "image": "mcr.microsoft.com/devcontainers/base:jammy",
+    "remoteUser": "vscode",
+    "features": {
+        "ghcr.io/devcontainers/features/terraform:1.4.2": {
+            "version": "latest",
+            "tflint": "latest",
+            "terragrunt": "latest"
+        },
+        "ghcr.io/devcontainers/features/kubectl-helm-minikube:1.2.2": {
+            "version": "latest",
+            "helm": "latest",
+            "minikube": "none"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "saoudrizwan.claude-dev"
+            ]
+        }
+    },
+    "postCreateCommand": [
+        "npm install -g cline || echo 'Cline may already be installed'",
+        "curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64 || echo 'Failed to download Argo CD'",
+        "chmod +x /usr/local/bin/argocd || echo 'Failed to make Argo CD executable'"
+    ],
+    "mounts": [],
+    "remoteEnv": {},
+    "overrideFeatureInstallOrder": [
+        "ghcr.io/devcontainers/features/terraform",
+        "ghcr.io/devcontainers/features/kubectl-helm-minikube"
+    ]
+}

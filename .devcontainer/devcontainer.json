@@ -3,12 +3,15 @@
     "image": "mcr.microsoft.com/devcontainers/base:jammy",
     "remoteUser": "vscode",
     "features": {
-        "ghcr.io/devcontainers/features/terraform:1.4.2": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts"
+        },
+        "ghcr.io/devcontainers/features/terraform:1": {
             "version": "latest",
             "tflint": "latest",
             "terragrunt": "latest"
         },
-        "ghcr.io/devcontainers/features/kubectl-helm-minikube:1.2.2": {
+        "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
             "version": "latest",
             "helm": "latest",
             "minikube": "none"
@@ -21,15 +24,16 @@
             ]
         }
     },
-    "postCreateCommand": [
-        "npm install -g cline || echo 'Cline may already be installed'",
-        "curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64 || echo 'Failed to download Argo CD'",
-        "chmod +x /usr/local/bin/argocd || echo 'Failed to make Argo CD executable'"
-    ],
+    "postCreateCommand": "npm install -g cline || echo 'Cline may already be installed' && echo 'Installing Argo CD...' && arch=$(uname -m) && if [ \"$arch\" = \"x86_64\" ]; then echo 'Downloading Argo CD for x86_64...' && curl -sSL -o /tmp/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64; elif [ \"$arch\" = \"aarch64\" ] || [ \"$arch\" = \"arm64\" ]; then echo 'Downloading Argo CD for ARM64...' && curl -sSL -o /tmp/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-arm64; else echo 'Unsupported architecture: $arch'; exit 1; fi && echo 'Moving Argo CD to /usr/local/bin...' && sudo mv /tmp/argocd /usr/local/bin/argocd && echo 'Setting execute permissions...' && sudo chmod +x /usr/local/bin/argocd && echo 'Argo CD installation complete.'",
     "mounts": [],
-    "remoteEnv": {},
+    "remoteEnv": {
+        "DOCKER_BUILDKIT": "1",
+        "COMPOSE_DOCKER_CLI_BUILD": "1"
+    },
     "overrideFeatureInstallOrder": [
+        "ghcr.io/devcontainers/features/node",
         "ghcr.io/devcontainers/features/terraform",
         "ghcr.io/devcontainers/features/kubectl-helm-minikube"
-    ]
+    ],
+    "runArgs": []
 }

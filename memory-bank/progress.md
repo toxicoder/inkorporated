@@ -12,7 +12,6 @@ This document tracks what works, what's left to build, and the overall project p
 - Cloudflared tunnel service deployment files created
 
 ## What's Left to Build
-- Comprehensive implementation plan based on technical design
 - Core infrastructure components (storage, databases, networking)
 - Implementation of services in phases according to task breakdown
 - Authentik configuration for centralized authentication
@@ -23,6 +22,7 @@ This document tracks what works, what's left to build, and the overall project p
 - Project initialization phase complete
 - Documentation foundation established
 - Implementation planning in progress
+- Cloudflared tunnel service deployed (ready for tunnel token integration)
 - Ready to begin core infrastructure deployment
 
 ## Known Issues

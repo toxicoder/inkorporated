@@ -18,6 +18,7 @@ These are fundamental rules that should be applied across all projects:
 - Monitor and optimize performance
 - Ensure accessibility compliance
 - Support internationalization from the start
-- **Leverage Model Context Protocol (MCP) tools and servers whenever possible for enhanced capabilities**
-- **Prefer MCP-based solutions for external integrations, research, and AI-assisted development tasks**
-- **Integrate MCP tools into development workflows to improve productivity and code quality**
+- **Leverage Model Context Protocol (MCP) tools and servers to enhance development capabilities and automate repetitive tasks**
+- **Prioritize MCP-based solutions for external integrations, research tasks, and AI-assisted development workflows**
+- **Integrate MCP tools systematically into development workflows to enhance productivity, code quality, and maintainability**
+- **Utilize context7 MCP server to retrieve documentation and code patterns for implementation assistance**

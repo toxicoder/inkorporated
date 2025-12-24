@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: perplexica-ingress
+  namespace: perplexica
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/middleware: "perplexica-forward-auth@kubernetescrd"
+spec:
+  rules:
+  - host: perplexica.{{ .Env.DOMAIN_BASE }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: perplexica-service
+            port:
+              number: 3000

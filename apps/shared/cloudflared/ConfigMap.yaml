@@ -8,9 +8,9 @@ data:
     tunnel: ink-homelab
     credentials-file: /etc/cred.json
     ingress:
-      - hostname: "*.overeazy.io"
+      - hostname: "*.{{ .Env.DOMAIN_BASE }}"
         service: http://traefik.traefik.svc:80
-      - hostname: "dashboard.overeazy.io"
+      - hostname: "dashboard.{{ .Env.DOMAIN_BASE }}"
         service: http://homepage.homepage.svc:80
     warp-routing:
       enabled: false

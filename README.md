@@ -1,12 +1,6 @@
-# inkorporated
+# Inkorporated Homelab
 
-A GitOps/Infrastructure as Code repository template for homelab deployments.
-
-## Overview
-
-This repository provides a comprehensive template for setting up a production-ready homelab infrastructure using GitOps principles. It combines Terraform, Ansible, and ArgoCD to automate the provisioning and deployment of a k3s-based Kubernetes cluster with all essential services.
-
-The project is designed as a **template repository** that developers can clone, configure, and deploy to their homelabs. Once deployed, it provides a complete GitOps environment with version control, infrastructure automation, and application deployment capabilities.
+A comprehensive, self-hosted, open-source internal work environment designed for homelab deployments. This project provides a complete, integrated solution that combines infrastructure automation, GitOps deployment, and a rich set of productivity and collaboration tools.
 
 ## Key Features
 
@@ -20,6 +14,7 @@ The project is designed as a **template repository** that developers can clone, 
 - **Service Mesh**: Traefik with forward-auth middleware
 - **Version Control**: Gitea instance for GitOps workflow
 - **CI/CD**: Gitea runners for automated deployments
+- **Environment Management**: Support for dev, staging, autopush, canary, and prod environments
 
 ## Project Structure
 
@@ -39,16 +34,36 @@ The project is designed as a **template repository** that developers can clone, 
 └── memory-bank/              # Project documentation and context
 ```
 
-## How It Works
+## Documentation
 
-1. **Clone the Repository**: Developers clone this template repository
-2. **Configure Settings**: Edit configuration files to specify:
-   - Proxmox server details
-   - Deployment profile (min, medium, recommended)
-   - Services to deploy
-3. **Deploy Infrastructure**: Run Terraform/Ansible to provision VMs and install k3s
-4. **Bootstrap GitOps**: Deploy ArgoCD and Gitea for version control
-5. **Manage Everything**: Use GitOps workflows for all infrastructure and application management
+The project includes comprehensive documentation in the `docs/` directory:
+
+- **[Project Overview](docs/guides/overview.md)** - Executive summary and key features
+- **[Architecture](docs/architecture/README.md)** - High-level architecture and system overview
+- **[Implementation Status](docs/implementation/status.md)** - Current implementation progress and task tracking
+- **[Documentation Index](docs/INDEX.md)** - Comprehensive documentation index
+
+## Getting Started
+
+1. Clone this repository
+2. Configure your infrastructure settings in `infrastructure/terraform/terraform.tfvars`
+3. Select and customize a deployment profile
+4. Provision VMs with Terraform: `cd infrastructure/terraform && terraform apply`
+5. Install k3s with Ansible: `cd infrastructure/ansible && ansible-playbook playbooks/k3s-install.yml`
+6. Bootstrap ArgoCD and Gitea for GitOps workflow
+7. Deploy services through GitOps
+
+## File Management and Deletion
+
+The development environment includes enhanced file management capabilities for working with infrastructure files. The devcontainer has been configured with:
+- Core utilities for file operations (coreutils, findutils)
+- Proper permissions for file deletion operations
+- Support for GitOps workflows where file changes are managed through version control
+
+When working with infrastructure files:
+- Use GitOps principles: make changes through version control and deploy via ArgoCD
+- For direct file operations, ensure proper permissions are set
+- All file deletion operations should be performed through the appropriate Ansible roles or GitOps workflows
 
 ## Deployment Profiles
 
@@ -70,19 +85,79 @@ The project is designed as a **template repository** that developers can clone, 
 - Production-ready resource allocation
 - Memory: 4096MB, Cores: 4, Disk: 40GB
 
-## Getting Started
+## Environment Support
 
-1. Clone this repository
-2. Configure your infrastructure settings in `infrastructure/terraform/terraform.tfvars`
-3. Select and customize a deployment profile
-4. Provision VMs with Terraform: `cd infrastructure/terraform && terraform apply`
-5. Install k3s with Ansible: `cd infrastructure/ansible && ansible-playbook playbooks/k3s-install.yml`
-6. Bootstrap ArgoCD and Gitea for GitOps workflow
-7. Deploy services through GitOps
+This project supports multiple deployment environments:
 
-## Documentation
+- **dev** - Development environment
+- **staging** - Staging environment  
+- **autopush** - Automated push environment
+- **canary** - Canary deployment environment
+- **prod** - Production environment
 
-- [Infrastructure Setup Guide](docs/infrastructure_setup_guide.md)
-- [Implementation Plan](docs/implementation_plan_updated.md)
-- [Project Status](docs/inkorporated_project_status.md)
-- [Technical Design](docs/technical_design_doc.md)
+Environment-specific configurations are managed through `config/environment-config.yaml` and can be selected via the `environment` Terraform variable.
+
+## Services Overview
+
+### Collaboration Services
+- **Rocket.Chat**: Team chat platform
+- **WorkAdventure**: 2D virtual office
+- **Jitsi Meet**: Video conferencing
+- **Coturn**: TURN/STUN server
+
+### Productivity Services
+- **AppFlowy**: Collaborative knowledge base
+- **LinkWarden**: Bookmark manager
+- **Homebox**: Inventory tracker
+- **Home Assistant**: Smart home hub
+
+### Remote Work Services
+- **Kasm Workspaces**: Browser-based workspaces
+- **Coder**: Cloud IDE workspaces
+
+### AI Services
+- **Ollama**: Local LLM runner
+- **Open WebUI**: Ollama web interface
+- **Langflow**: Visual LangChain builder
+- **Kokoro TTS**: Local TTS server
+- **Docling**: Document parsing server
+- **SearXNG**: Metasearch engine
+- **SurfSense**: AI research agent
+- **Perplexica**: AI search engine
+
+### Security Services
+- **Vaultwarden**: Bitwarden-compatible password manager
+- **HashiCorp Vault**: Secrets management
+
+### Infrastructure Services
+- **CloudNativePG**: PostgreSQL operator
+- **Longhorn**: Distributed block storage
+- **MinIO**: S3 object storage
+- **Velero**: Backup/restore
+- **ArgoCD**: GitOps engine
+- **cert-manager**: TLS automation
+- **MetalLB**: LoadBalancer provider
+
+## How It Works
+
+1. **Clone the Repository**: Developers clone this template repository
+2. **Configure Settings**: Edit configuration files to specify:
+   - Proxmox server details
+   - Deployment profile (min, medium, recommended)
+   - Services to deploy
+   - Environment (dev, staging, prod, etc.)
+3. **Deploy Infrastructure**: Run Terraform/Ansible to provision VMs and install k3s
+4. **Bootstrap GitOps**: Deploy ArgoCD and Gitea for version control
+5. **Manage Everything**: Use GitOps workflows for all infrastructure and application management
+
+## Contributing
+
+This project is open-source and welcomes contributions. Please see the contribution guidelines in the repository for more information.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+For support, please open an issue in the GitHub repository or contact the project maintainers.

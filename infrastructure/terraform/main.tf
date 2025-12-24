@@ -19,6 +19,13 @@ provider "proxmox" {
   pm_tls_insecure = var.proxmox_tls_insecure
 }
 
+# Environment variable for deployment
+variable "environment" {
+  description = "Deployment environment (dev, staging, autopush, canary, prod)"
+  type        = string
+  default     = "dev"
+}
+
 # Import existing configuration or create new one
 module "network_config" {
   source = "./modules/network"

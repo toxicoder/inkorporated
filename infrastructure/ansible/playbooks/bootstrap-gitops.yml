@@ -7,6 +7,7 @@
   become: yes
   vars:
     k3s_config_dir: "/etc/rancher/k3s"
+    environment: "{{ lookup('env', 'ENVIRONMENT') | default('dev') }}"
   
   tasks:
     - name: Install required packages
@@ -61,3 +62,7 @@
     - name: Display Gitea info
       debug:
         msg: "Gitea is available at: http://{{ gitea_ip.stdout }}:3000"
+
+    - name: Set environment variable for deployment
+      set_fact:
+        environment: "{{ environment }}"

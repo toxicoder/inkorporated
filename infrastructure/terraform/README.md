@@ -1,58 +1,112 @@
-# Terraform Infrastructure Provisioning
+# Infrastructure Terraform Configuration
 
-This directory contains all Terraform configurations for provisioning the homelab infrastructure.
+This directory contains the Terraform configuration for provisioning the Inkorporated homelab infrastructure.
 
 ## Overview
 
-The Terraform configurations are designed to provision VMs in a Proxmox environment for the k3s-based Kubernetes cluster. The configurations support different deployment profiles (min, medium, recommended) to accommodate various hardware capabilities.
+The infrastructure is provisioned using Terraform with the following components:
+- Proxmox VMs for k3s cluster nodes
+- Network configuration
+- VM sizing and resource allocation
 
-## Directory Structure
+## Configuration
 
+### Variables
+
+The following variables can be configured:
+
+- `proxmox_api_url` - URL of the Proxmox API
+- `proxmox_api_token_id` - API token ID for Proxmox
+- `proxmox_api_token_secret` - API token secret for Proxmox
+- `environment` - Deployment environment (dev, staging, autopush, canary, prod)
+- `deployment_profile` - VM sizing profile (min, medium, recommended)
+
+### Environment Configuration
+
+Environment-specific settings are defined in `config/environment-config.yaml`:
+
+```yaml
+environments:
+  dev:
+    domain:
+      base: "dev.example.com"
+      wildcard: "*.dev.example.com"
+    description: "Development environment"
+    priority: 1
+
+  staging:
+    domain:
+      base: "staging.example.com"
+      wildcard: "*.staging.example.com"
+    description: "Staging environment"
+    priority: 2
+
+  autopush:
+    domain:
+      base: "autopush.example.com"
+      wildcard: "*.autopush.example.com"
+    description: "Autopush environment"
+    priority: 3
+
+  canary:
+    domain:
+      base: "canary.example.com"
+      wildcard: "*.canary.example.com"
+    description: "Canary environment"
+    priority: 4
+
+  prod:
+    domain:
+      base: "example.com"
+      wildcard: "*.example.com"
+    description: "Production environment"
+    priority: 5
+
+# Default environment (used if none specified)
+default: "dev"
 ```
-infrastructure/terraform/
-├── main.tf              # Main configuration
-├── variables.tf         # Input variables
-├── outputs.tf           # Output values
-├── providers.tf         # Provider configurations
-├── modules/             # Reusable modules
-│   ├── vm/              # VM provisioning module
-│   └── network/         # Network configuration module
-├── profiles/            # Deployment profiles
-│   ├── min/
-│   ├── medium/
-│   └── recommended/
-└── README.md            # This file
+
+## Usage
+
+### Setting up Terraform
+
+1. Copy the example variables file:
+   ```bash
+   cp terraform.tfvars.example terraform.tfvars
+   ```
+
+2. Edit `terraform.tfvars` to set your specific values
+
+3. Initialize Terraform:
+   ```bash
+   terraform init
+   ```
+
+### Deploying Different Environments
+
+To deploy to different environments:
+
+```bash
+# Deploy to dev environment
+terraform apply -var="environment=dev"
+
+# Deploy to staging environment
+terraform apply -var="environment=staging"
+
+# Deploy to production environment
+terraform apply -var="environment=prod"
 ```
 
-## Deployment Profiles
+### Deployment Profiles
 
-### Min Profile
-- 1 VM for control plane
-- Minimal resource allocation
-- Suitable for small homelabs
+The deployment supports different VM sizing profiles:
+- `min`: 1 control plane, 0 workers
+- `medium`: 1 control plane, 1 worker  
+- `recommended`: 1 control plane, 2 workers
 
-### Medium Profile
-- 1 VM for control plane
-- 1 VM for worker node
-- Balanced resource allocation
+## Files
 
-### Recommended Profile
-- 1 VM for control plane
-- 2 VMs for worker nodes
-- Production-ready resource allocation
-
-## Getting Started
-
-1. Configure your Proxmox credentials
-2. Select and customize a deployment profile
-3. Run `terraform init`
-4. Run `terraform plan` to review changes
-5. Run `terraform apply` to provision infrastructure
-
-## Variables
-
-See `variables.tf` for all configurable options.
-
-## Outputs
-
-See `outputs.tf` for all output values.
+- `main.tf` - Main Terraform configuration
+- `variables.tf` - Variable definitions
+- `outputs.tf` - Output definitions
+- `terraform.tfvars.example` - Example variables file

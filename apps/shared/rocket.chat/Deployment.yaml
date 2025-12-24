@@ -24,7 +24,7 @@ spec:
             - name: PORT
               value: "3000"
             - name: ROOT_URL
-              value: "https://chat.overeazy.io"
+              value: "https://chat.$(DOMAIN_BASE)"
             - name: MONGO_URL
               value: "mongodb://rocketchat:rocketchatpassword@mongodb.mongodb.svc.cluster.local:27017/rocketchat"
             - name: MONGO_OPLOG_URL

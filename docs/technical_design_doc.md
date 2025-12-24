@@ -1,10 +1,7 @@
 # Inkorporated Homelab Technical Design Document – Final Version
 
 **Project Name:** Inkorporated  
-**Version:** 2.5 (Final)  
-**Date:** December 22, 2025  
-**Author:** Grok (xAI)  
-**Purpose:** This is the definitive technical design for **Inkorporated**, a fully self-hosted, open-source internal work environment. Every component is free and open source (FOSS), self-hosted on a single k3s cluster, and integrated to feel like one cohesive platform. All services are protected by centralized authentication (Authentik SSO/OIDC where supported, forward-auth fallback), routed through Traefik with unique subdomains (`service.overeazy.io` or env-specific), and backed by shared infrastructure (Longhorn storage, CloudNativePG PostgreSQL, MinIO backups).
+**Purpose:** This is the definitive technical design for **Inkorporated**, a fully self-hosted, open-source internal work environment. Every component is free and open source (FOSS), self-hosted on a single k3s cluster, and integrated to feel like one cohesive platform. All services are protected by centralized authentication (Authentik SSO/OIDC where supported, forward-auth fallback), routed through Traefik with unique subdomains (`service.example.com` or env-specific), and backed by shared infrastructure (Longhorn storage, CloudNativePG PostgreSQL, MinIO backups).
 
 The environment provides:
 - **Collaboration**: Chat (Rocket.Chat), virtual office (WorkAdventure), video (Jitsi), code (Gitea + Coder).
@@ -119,13 +116,13 @@ Organized by `infra/shared` (all listed services), `infra/cluster-scoped`, `envi
 
 ## 5. Integration & User Experience
 
-- **Single Pane Access**: `dashboard.overeazy.io` → Homepage app with customizable shortcuts to all hosted apps (e.g., buttons/links to Rocket.Chat, Open WebUI, AppFlowy, etc.), grouped by category (Collaboration, AI, Productivity). Grafana remains for sysadmin monitoring.
+- **Single Pane Access**: `dashboard.example.com` → Homepage app with customizable shortcuts to all hosted apps (e.g., buttons/links to Rocket.Chat, Open WebUI, AppFlowy, etc.), grouped by category (Collaboration, AI, Productivity). Grafana remains for sysadmin monitoring.
 - **SSO Flow**: Login once → seamless across Rocket.Chat, WorkAdventure, Open WebUI, Vaultwarden, etc.
 - **Collaboration Loop**: Chat in Rocket.Chat → jump to WorkAdventure room → share screens via Jitsi → code in Coder/Kasm → document in AppFlowy → search via SearXNG/Perplexica.
 - **AI Workflow**: Research (SurfSense) → build agents (Langflow) → chat (Open WebUI with voice/docs).
 - **Security Unified**: Authentik groups drive access (e.g., admins/full, developers limited AI models).
 - **Network Security**: pfSense handles WAN ingress, NAT, firewall rules, OpenVPN/WireGuard for remote access (alternative/complement to Tailscale).
-- **Subdomains**: Consistent `service.overeazy.io` pattern with env/priv suffixes.
+- **Subdomains**: Consistent `service.example.com` pattern with env/priv suffixes.
 
 ## 6. Security
 
@@ -134,6 +131,33 @@ Organized by `infra/shared` (all listed services), `infra/cluster-scoped`, `envi
 - **Network**: pfSense as primary firewall (block all except necessary ports), VPN termination, IDS/IPS via packages.
 - **Secrets**: Vault for apps; Vaultwarden for users; SealedSecrets in GitOps.
 - **Data**: All encrypted in-transit (Traefik TLS); at-rest via Longhorn.
+
+## 7. Network Topology
+
+The Inkorporated homelab implements a multi-zone network architecture to provide security segmentation and logical separation of services:
+
+| Department/Zone | Subnet | Example Gateway IP | Purpose/Notes |
+|----------------|--------|-------------------|---------------|
+| Headquarters | 10.0.1.0/24 | 10.0.1.1 | Executive offices and admin staff. |
+| Sales | 10.0.2.0/24 | 10.0.2.1 | Sales team workstations and CRM access. |
+| Engineering | 10.0.3.0/24 | 10.0.3.1 | Development and testing environments. |
+| Finance | 10.0.4.0/24 | 10.0.4.1 | Accounting and financial systems. |
+| Human Resources | 10.0.5.0/24 | 10.0.5.1 | HR personnel and sensitive data storage. |
+| IT | 10.0.6.0/24 | 10.0.6.1 | IT support and monitoring tools. |
+| Servers | 10.0.7.0/24 | 10.0.7.1 | Internal servers (e.g., file shares, databases)—restricted access. |
+| DMZ | 10.0.8.0/24 | 10.0.8.1 | Public-facing services (e.g., web/email servers)—behind firewall. |
+| Guest WiFi | 10.0.9.0/24 | 10.0.9.1 | Visitor network—isolated with captive portal. |
+| Remote Access | 10.0.10.0/24 | 10.0.10.1 | VPN pool for remote workers—authenticated access only. |
+| inkternal | 10.0.11.0/24 | 10.0.11.1 | Employee devices connect here; can include VLANs for departments. |
+| inklab | 10.0.12.0/24 | 10.0.12.1 | Internal-facing services (e.g., employee cloud computers)—no external access. |
+| publink | 10.0.13.0/24 | 10.0.13.1 | Production services for external public/internet access—firewall-protected. |
+
+This network topology provides:
+- Security segmentation between different departments and service types
+- Isolation of sensitive data and systems
+- Controlled access to public-facing services through DMZ
+- Dedicated network zones for remote access and guest connectivity
+- Proper VLAN structure for employee devices and internal services
 
 ## 7. Backup & DR
 

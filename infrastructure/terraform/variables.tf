@@ -114,3 +114,10 @@ variable "deployment_profile" {
   type        = string
   default     = "recommended"
 }
+
+# Environment Configuration
+variable "environment" {
+  description = "Deployment environment (dev, staging, autopush, canary, prod)"
+  type        = string
+  default     = "dev"
+}

@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: environment-config
+  namespace: {{ .Values.namespace }}
+data:
+  ENVIRONMENT: {{ .Values.environment }}
+  DOMAIN_BASE: {{ .Values.domain.base }}
+  DOMAIN_WILDCARD: {{ .Values.domain.wildcard }}
+  # Service-specific variables
+  SERVICE_LANGFLOW: {{ .Values.services.langflow.subdomain }}
+  SERVICE_KOKORO: {{ .Values.services.kokoro.subdomain }}
+  SERVICE_DOCLING: {{ .Values.services.docling.subdomain }}
+  SERVICE_SEARXNG: {{ .Values.services.searxng.subdomain }}
+  SERVICE_PERPLEXICA: {{ .Values.services.perplexica.subdomain }}
+  SERVICE_SURFSENSE: {{ .Values.services.surfsense.subdomain }}
+  SERVICE_APPFLOWY: {{ .Values.services.appflowy.subdomain }}
+  SERVICE_LINKWARDEN: {{ .Values.services.linkwarden.subdomain }}
+  SERVICE_HOMEBASE: {{ .Values.services.homebox.subdomain }}
+  SERVICE_HOMEASSISTANT: {{ .Values.services.homeassistant.subdomain }}
+  SERVICE_KASM: {{ .Values.services.kasm.subdomain }}
+  SERVICE_GITEA: {{ .Values.services.gitea.subdomain }}
+  SERVICE_CODER: {{ .Values.services.coder.subdomain }}
+  SERVICE_HOMEPAGE: {{ .Values.services.homepage.subdomain }}
+  SERVICE_TRAEFIK: {{ .Values.services.traefik.subdomain }}
+  SERVICE_AUTHENTIK: {{ .Values.services.authentik.subdomain }}
+  SERVICE_CLOUDNATIVEPG: {{ .Values.services.cloudnativepg.subdomain }}
+  SERVICE_MONGODB: {{ .Values.services.mongodb.subdomain }}
+  SERVICE_ROCKET_CHAT: {{ .Values.services["rocket.chat"].subdomain }}
+  SERVICE_WORKADVENTURE: {{ .Values.services.workadventure.subdomain }}
+  SERVICE_JITSI: {{ .Values.services.jitsi.subdomain }}
+  SERVICE_COTURN: {{ .Values.services.coturn.subdomain }}
+  SERVICE_VAULTWARDEN: {{ .Values.services.vaultwarden.subdomain }}
+  SERVICE_HASHICORP_VAULT: {{ .Values.services["hashicorp-vault"].subdomain }}
+  SERVICE_OLLAMA: {{ .Values.services.ollama.subdomain }}

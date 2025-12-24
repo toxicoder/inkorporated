@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: homebox-ingress
+  namespace: homebox
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/middleware: "homebox-forward-auth@kubernetescrd"
+spec:
+  rules:
+  - host: homebox.{{ .Env.DOMAIN_BASE }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: homebox-service
+            port:
+              number: 3000

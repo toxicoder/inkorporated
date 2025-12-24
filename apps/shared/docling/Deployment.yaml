@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docling
+  namespace: docling
+  labels:
+    app: docling
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docling
+  template:
+    metadata:
+      labels:
+        app: docling
+    spec:
+      containers:
+      - name: docling
+        image: ghcr.io/ai-forever/docling:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: PORT
+          value: "8000"
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        volumeMounts:
+        - name: docling-cache
+          mountPath: /app/cache
+      volumes:
+      - name: docling-cache
+        persistentVolumeClaim:
+          claimName: docling-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: docling-service
+  namespace: docling
+spec:
+  selector:
+    app: docling
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: ClusterIP
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: docling-pdb
+  namespace: docling
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: docling

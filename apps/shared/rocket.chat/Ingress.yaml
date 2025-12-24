@@ -10,7 +10,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.middlewares: "rocketchat-forward-auth@kubernetescrd"
 spec:
   rules:
-    - host: chat.overeazy.io
+    - host: chat.example.com
       http:
         paths:
           - path: /

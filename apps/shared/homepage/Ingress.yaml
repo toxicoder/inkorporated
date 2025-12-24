@@ -10,7 +10,7 @@ metadata:
     traefik.ingress.kubernetes.io/middleware: "homepage-forward-auth@kubernetescrd"
 spec:
   rules:
-    - host: dashboard.overeazy.io
+    - host: dashboard.{{ .Env.DOMAIN_BASE }}
       http:
         paths:
           - path: /

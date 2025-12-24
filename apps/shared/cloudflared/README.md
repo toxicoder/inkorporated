@@ -19,7 +19,7 @@ The tunnel configuration in `ConfigMap.yaml` includes:
 - Tunnel name: `ink-homelab`
 - Credentials file path: `/etc/cred.json`
 - Ingress rules for:
-  - `*.overeazy.io` → Traefik service
+  - `*.example.com` → Traefik service
   - `dashboard.overeazy.io` → Homepage service
 - Warp routing disabled (for homelab use)
 

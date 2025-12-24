@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: perplexica
+  namespace: perplexica
+  labels:
+    app: perplexica
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: perplexica
+  template:
+    metadata:
+      labels:
+        app: perplexica
+    spec:
+      containers:
+      - name: perplexica
+        image: ghcr.io/fofr/perplexica:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: PORT
+          value: "3000"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+      volumes:
+      - name: perplexica-data
+        persistentVolumeClaim:
+          claimName: perplexica-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: perplexica-service
+  namespace: perplexica
+spec:
+  selector:
+    app: perplexica
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: ClusterIP
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: perplexica-pdb
+  namespace: perplexica
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: perplexica

@@ -23,7 +23,7 @@ spec:
               name: http
           env:
             - name: OPEN_WEBUI_URL
-              value: "https://webui.overeazy.io"
+              value: "https://$(DOMAIN_BASE)"
             - name: OLLAMA_BASE_URL
               value: "http://ollama.ollama.svc.cluster.local:11434"
             - name: OPENAI_API_KEY
@@ -37,7 +37,7 @@ spec:
             - name: OIDC_ENABLED
               value: "true"
             - name: OIDC_ISSUER_URL
-              value: "https://authentik.overeazy.io/application/o/openwebui/"
+              value: "https://authentik.$(DOMAIN_BASE)/application/o/openwebui/"
             - name: OIDC_CLIENT_ID
               value: "openwebui"
             - name: OIDC_CLIENT_SECRET

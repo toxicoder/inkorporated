@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: linkwarden
+  namespace: linkwarden
+  labels:
+    app: linkwarden
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: linkwarden
+  template:
+    metadata:
+      labels:
+        app: linkwarden
+    spec:
+      containers:
+      - name: linkwarden
+        image: ghcr.io/linkwarden/linkwarden:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: PORT
+          value: "3000"
+        - name: DATABASE_URL
+          value: "postgresql://linkwarden:password@postgres-ha-rw.linkwarden.svc:5432/linkwarden"
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+      volumes:
+      - name: linkwarden-data
+        persistentVolumeClaim:
+          claimName: linkwarden-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: linkwarden-service
+  namespace: linkwarden
+spec:
+  selector:
+    app: linkwarden
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: ClusterIP
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: linkwarden-pdb
+  namespace: linkwarden
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: linkwarden

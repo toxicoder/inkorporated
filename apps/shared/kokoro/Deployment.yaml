@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.deployment.name }}
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.deployment.name }}
+    spec:
+      containers:
+      - name: {{ .Values.deployment.name }}
+        image: {{ .Values.deployment.image }}
+        ports:
+        - containerPort: {{ .Values.deployment.containerPort }}
+        env:
+        - name: PORT
+          value: "{{ .Values.deployment.containerPort }}"
+        resources:
+          requests:
+            memory: {{ .Values.deployment.resources.requests.memory }}
+            cpu: {{ .Values.deployment.resources.requests.cpu }}
+          limits:
+            memory: {{ .Values.deployment.resources.limits.memory }}
+            cpu: {{ .Values.deployment.resources.limits.cpu }}
+        volumeMounts:
+        - name: {{ .Values.deployment.volumeName }}
+          mountPath: {{ .Values.deployment.volumeMountPath }}
+      volumes:
+      - name: {{ .Values.deployment.volumeName }}
+        persistentVolumeClaim:
+          claimName: {{ .Values.deployment.pvcName }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.service.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: {{ .Values.deployment.name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.deployment.containerPort }}
+  type: {{ .Values.service.type }}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ .Values.pdb.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  minAvailable: {{ .Values.pdb.minAvailable }}
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment.name }}

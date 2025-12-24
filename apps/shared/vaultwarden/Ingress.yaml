@@ -10,7 +10,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.middlewares: "vaultwarden-forward-auth@kubernetescrd"
 spec:
   rules:
-    - host: vaultwarden.overeazy.io
+    - host: vaultwarden.example.com
       http:
         paths:
           - path: /

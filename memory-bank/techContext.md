@@ -35,6 +35,7 @@ This document covers the technologies used, development setup, and technical con
 - Backups must be handled by Velero with MinIO as target
 - Network security must be handled by pfSense VM
 - Zero-trust access must be enabled via Cloudflare Tunnel
+- Configuration must support environment-specific variables for domain flexibility
 
 ## Dependencies
 - **Primary Dependencies**: k3s, ArgoCD, Traefik, Authentik, Longhorn, MinIO, Velero
@@ -48,12 +49,39 @@ This document covers the technologies used, development setup, and technical con
 - **Debugging**: Kubernetes debugging with kubectl, service logs, and monitoring
 - **Monitoring**: Prometheus metrics, Grafana dashboards, Loki logs
 - **Security**: Authentik SSO, SealedSecrets for sensitive data, Cloudflare Tunnel
+- **Configuration Management**: Environment variable configuration with centralized ConfigMap approach
 
 # task_progress
 - [x] Analyze technical design document
 - [x] Review current project structure
 - [x] Initialize project documentation with proper context
-- [ ] Create comprehensive implementation plan
-- [ ] Set up core infrastructure components
-- [ ] Deploy cloudflared tunnel service
-- [ ] Implement remaining services in phases
+- [x] Create comprehensive implementation plan
+- [x] Set up core infrastructure components
+- [x] Deploy cloudflared tunnel service
+- [x] Implement remaining services in phases
+
+
+# task_progress RECOMMENDED
+
+When starting a new task, it is recommended to include a todo list using the task_progress parameter.
+
+
+1. Include a todo list using the task_progress parameter in your next tool call
+2. Create a comprehensive checklist of all steps needed
+3. Use markdown format: - [ ] for incomplete, - [x] for complete
+
+**Benefits of creating a todo/task_progress list now:**
+	- Clear roadmap for implementation
+	- Progress tracking throughout the task
+	- Nothing gets forgotten or missed
+	- Users can see, monitor, and edit the plan
+
+**Example structure:**```
+- [ ] Analyze requirements
+- [ ] Set up necessary files
+- [ ] Implement main functionality
+- [ ] Handle edge cases
+- [ ] Test the implementation
+- [ ] Verify results```
+
+Keeping the task_progress list updated helps track progress and ensures nothing is missed.

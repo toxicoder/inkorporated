@@ -29,6 +29,17 @@ The configuration system follows security best practices:
 3. **File Permissions**: Config files are secured with restrictive permissions
 4. **Environment Variables**: Configuration loaded at runtime
 
+## Testing Framework
+
+A comprehensive testing framework has been implemented to ensure the reliability and security of the configuration system:
+- Configuration validation tests
+- Security permission checks
+- Kubernetes manifest validation
+- Integration testing for services
+- Automated test suite with CI/CD integration
+
+For more details, see the [tests/README.md](tests/README.md) documentation.
+
 ## Setup Instructions
 
 ### 1. Create Configuration File

@@ -9,9 +9,17 @@ This project provides a secure configuration management system for Cline MCP ser
 - `cline_mcp_settings.json` - Main MCP server settings (contains no sensitive data)
 - `cline_mcp_config.example` - Example configuration with placeholder values
 - `cline_mcp_config.env` - Actual configuration file (not version controlled)
+- `.devcontainer/devcontainer-config.env` - Devcontainer-specific configuration for symlink setup
 
 ### Management Scripts
 - `validate_config.sh` - Script to validate configuration setup
+
+### Devcontainer Configuration
+The devcontainer is configured to automatically mount and symlink `cline_mcp_settings.json` to two required paths:
+1. `~/.config/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
+2. `~/.cline/data/settings/cline_mcp_settings.json`
+
+This is accomplished through the devcontainer configuration in `.devcontainer/` directory.
 
 ## Security Approach
 
@@ -73,6 +81,18 @@ REDIS_PWD=your_redis_password_here
 
 # Slack Token
 SLACK_MCP_XOXC_TOKEN=your_slack_token_here
+
+# Ollama Configuration
+OLLAMA_API_BASE_URL=http://localhost:11434
+OLLAMA_MODEL=llama3
+
+# Open WebUI Configuration
+OPEN_WEBUI_API_BASE_URL=http://localhost:3000
+OPEN_WEBUI_API_KEY=your_open_webui_api_key_here
+
+# Vector Search Configuration
+VECTOR_SEARCH_EMBEDDING_MODEL=text-embedding-3-small
+VECTOR_SEARCH_INDEX_PATH=/path/to/vector/index
 ```
 
 ## Environment-Specific Configurations

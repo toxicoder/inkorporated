@@ -1,55 +1,52 @@
-# Developer Container
+# Devcontainer Configuration
 
 This directory contains the configuration for the generalized developer container that provides a consistent development environment for this project.
 
-## Features
+## MCP Settings Configuration
 
-The dev container includes:
-- **Base Image**: Universal Linux container from Microsoft
-- **Development Tools**:
-  - Ansible
-  - Terraform with tflint and terragrunt
-  - Kubernetes, Helm, and Minikube tools
-- **IDE Extensions**:
-  - Claude Dev (Cline AI coding assistant)
-- **Post-creation Setup**:
-  - Installs Cline globally
-  - Installs Argo CD CLI
+The `.devcontainer/cline_mcp_settings.json` file is automatically mounted and made available at two locations within the dev container:
 
-## Architecture Support
+1. `~/.config/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
+2. `~/.cline/data/settings/cline_mcp_settings.json`
 
-This container is designed to work across multiple architectures:
-- **Apple Silicon (ARM64)**: Optimized for M1/M2/M3 chips
-- **Intel/AMD (x86_64)**: Compatible with traditional CPUs
-- **GPU Support**: Gracefully handles GPU configurations
+This is accomplished through symlinks created during container initialization.
 
-## GPU Configuration
+## Configuration Files
 
-The container no longer automatically requests GPU access to prevent startup failures on systems without GPU drivers. 
+### `devcontainer-config.env`
+Contains environment variables that control the devcontainer setup:
+- `SETTINGS_FILE_PATH`: Path to the source settings file
+- `TARGET_PATH_1` and `TARGET_PATH_2`: Target symlink locations
+- `CREATE_SYMLINKS`: Toggle for symlink creation (default: true)
+- Environment variables for MCP server configurations
 
-### For GPU-enabled environments:
-If you need GPU support, you can manually start the container with GPU access:
-```bash
-# Using Docker directly
-docker run --gpus=all -it <container-image>
+### `cline_mcp_settings.json`
+The main MCP server settings file containing configurations for various services.
 
-# Using Dev Containers with GPU support
-devcontainer up --workspace-folder . --run-args "--gpus=all"
-```
+## Environment Variable Management
 
-### For systems without GPUs:
-The container will work normally without any additional configuration.
+All environment variables used in the MCP settings can be overridden through:
+1. The `cline_mcp_config.env` file (for sensitive data)
+2. Environment variables set in the devcontainer
+3. Default values provided in `devcontainer-config.env`
+
+## Mounting and Symlinking
+
+The devcontainer is configured to:
+1. Mount the source settings file via bind mount
+2. Create symlinks during container initialization
+3. Make the settings available at both required paths
 
 ## Usage
 
-1. Open this project in VS Code with Dev Containers extension
-2. The container will automatically build and start
-3. All development tools are pre-installed and configured
-4. The Cline AI assistant is ready to help with coding tasks
+To use this configuration:
+1. Ensure `cline_mcp_config.env` exists with your actual values
+2. The devcontainer will automatically set up the symlinks
+3. Both target paths will point to the same source file
 
 ## Customization
 
-To customize this container for your specific project needs:
-1. Modify `devcontainer.json` to add/remove features
-2. Update `postCreateCommand` to install additional tools
-3. Adjust VS Code extensions as needed
+To customize the behavior:
+1. Modify `devcontainer-config.env` to change paths or disable symlinks
+2. Update `cline_mcp_settings.json` with your MCP server configurations
+3. Set appropriate environment variables in `cline_mcp_config.env`

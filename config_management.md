@@ -17,6 +17,11 @@ This document describes the configuration management approach for Cline MCP serv
 - **Security**: Contains all sensitive data (tokens, passwords, keys)
 - **Usage**: NOT version controlled, environment-specific
 
+### 3. Devcontainer Configuration File
+- **File**: `.devcontainer/devcontainer-config.env`
+- **Purpose**: Contains devcontainer-specific settings for mounting and symlinking
+- **Usage**: Used by devcontainer to set up symlinked MCP settings at required paths
+
 ## Configuration Structure
 
 The configuration file follows the standard `.env` format where each line contains a key-value pair:
@@ -66,6 +71,14 @@ Create different configuration files for different environments:
 - `cline_mcp_config.staging.env` - Staging environment  
 - `cline_mcp_config.prod.env` - Production environment
 
+## Devcontainer Setup
+
+The devcontainer is configured to automatically mount and symlink `cline_mcp_settings.json` to two required paths:
+1. `~/.config/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
+2. `~/.cline/data/settings/cline_mcp_settings.json`
+
+This is accomplished through the devcontainer configuration in `.devcontainer/` directory.
+
 ## Example Usage in Node.js
 
 ```javascript
@@ -92,7 +105,7 @@ if [ ! -f "cline_mcp_config.env" ]; then
 fi
 
 # Check for required environment variables
-REQUIRED_VARS=("GH_TOKEN" "PERPLEXITY_API_KEY" "TAVILY_API_KEY")
+REQUIRED_VARS=("GH_TOKEN" "PERPLEXITY_API_KEY" "TAVILY_API_KEY" "OLLAMA_API_BASE_URL" "OPEN_WEBUI_API_BASE_URL" "VECTOR_SEARCH_EMBEDDING_MODEL")
 for var in "${REQUIRED_VARS[@]}"; do
     if [ -z "$var" ]; then
         echo "Warning: Required variable $var not set"

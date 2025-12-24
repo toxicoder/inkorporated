@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-webui
+  namespace: webui
+  labels:
+    app: open-webui
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: open-webui
+  template:
+    metadata:
+      labels:
+        app: open-webui
+    spec:
+      containers:
+        - name: open-webui
+          image: ghcr.io/open-webui/open-webui:main
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: OPEN_WEBUI_URL
+              value: "https://webui.overeazy.io"
+            - name: OLLAMA_BASE_URL
+              value: "http://ollama.ollama.svc.cluster.local:11434"
+            - name: OPENAI_API_KEY
+              value: "sk-1234567890"
+            - name: OPENAI_API_BASE_URL
+              value: "http://ollama.ollama.svc.cluster.local:11434"
+            - name: DATABASE_URL
+              value: "postgresql://openwebui:openwebui@postgres-ha-rw.webui.svc.cluster.local:5432/openwebui"
+            - name: AUTH_ENABLED
+              value: "true"
+            - name: OIDC_ENABLED
+              value: "true"
+            - name: OIDC_ISSUER_URL
+              value: "https://authentik.overeazy.io/application/o/openwebui/"
+            - name: OIDC_CLIENT_ID
+              value: "openwebui"
+            - name: OIDC_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: openwebui-oidc
+                  key: client-secret
+            - name: WEBUI_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: openwebui-secret
+                  key: secret
+          resources:
+            requests:
+              cpu: 200m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+      terminationGracePeriodSeconds: 60
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: open-webui
+  namespace: webui
+spec:
+  selector:
+    app: open-webui
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: ClusterIP
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: open-webui-pdb
+  namespace: webui
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: open-webui

@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rocketchat
+  namespace: rocketchat
+  labels:
+    app: rocketchat
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rocketchat
+  template:
+    metadata:
+      labels:
+        app: rocketchat
+    spec:
+      containers:
+        - name: rocketchat
+          image: rocket.chat:7.10.0
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: "3000"
+            - name: ROOT_URL
+              value: "https://chat.overeazy.io"
+            - name: MONGO_URL
+              value: "mongodb://rocketchat:rocketchatpassword@mongodb.mongodb.svc.cluster.local:27017/rocketchat"
+            - name: MONGO_OPLOG_URL
+              value: "mongodb://rocketchat:rocketchatpassword@mongodb.mongodb.svc.cluster.local:27017/local"
+            - name: Accounts_UseServerURLForRedirect
+              value: "true"
+            - name: Accounts_AvatarStorePath
+              value: "/app/uploads"
+            - name: FileUpload_Storage_Type
+              value: "gridfs"
+            - name: FileUpload_GridFS_StorePath
+              value: "/app/uploads"
+          volumeMounts:
+            - name: rocketchat-data
+              mountPath: /app/uploads
+          resources:
+            requests:
+              cpu: 200m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+      volumes:
+        - name: rocketchat-data
+          persistentVolumeClaim:
+            claimName: rocketchat-pvc
+      terminationGracePeriodSeconds: 60
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rocketchat
+  namespace: rocketchat
+spec:
+  selector:
+    app: rocketchat
+  ports:
+    - port: 80
+      targetPort: 3000
+  type: ClusterIP
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rocketchat-pvc
+  namespace: rocketchat
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: rocketchat-pdb
+  namespace: rocketchat
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: rocketchat

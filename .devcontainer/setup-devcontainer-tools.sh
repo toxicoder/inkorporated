@@ -8,6 +8,22 @@ sudo apt-get install -y coreutils findutils
 echo "Adding vscode user to appropriate groups..."
 sudo usermod -aG vscode $(whoami)
 
+echo "Installing Node.js linting and formatting tools..."
+# Install common linting and formatting tools globally
+npm install -g eslint prettier
+
+echo "Installing Python linting and formatting tools..."
+# Install Python tools for linting and formatting
+pip install black flake8 yapf
+
+echo "Installing YAML linting tools..."
+# Install YAML linting tools
+sudo apt-get install -y yamllint
+
+echo "Installing other language formatting tools..."
+# Install clang-format for C/C++ (if needed)
+sudo apt-get install -y clang-format
+
 echo "Installing Argo CD..."
 arch=$(uname -m)
 if [ "$arch" = "x86_64" ]; then

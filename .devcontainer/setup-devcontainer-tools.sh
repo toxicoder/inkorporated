@@ -10,7 +10,7 @@ sudo usermod -aG vscode $(whoami)
 
 echo "Installing Node.js linting and formatting tools..."
 # Install common linting and formatting tools globally
-npm install -g eslint prettier
+npm install -g eslint prettier cline
 
 echo "Installing Python linting and formatting tools..."
 # Install Python tools for linting and formatting
@@ -44,3 +44,7 @@ echo "Setting execute permissions..."
 sudo chmod +x /usr/local/bin/argocd
 
 echo "Argo CD installation complete."
+
+echo "Copying Cline MCP settings file..."
+mkdir -p /home/vscode/.vscode-server/data/User/globalStorage/saoudrizwan.claude-dev/settings/
+cp -f /workspaces/inkorporated/.devcontainer/cline_mcp_settings.json /home/vscode/.vscode-server/data/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json

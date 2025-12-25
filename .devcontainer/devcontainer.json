@@ -36,7 +36,7 @@
             ]
         }
     },
-    "postCreateCommand": "echo \"Running as $(whoami)\" && echo 'Running devcontainer setup...' && bash /workspaces/inkorporated/.devcontainer/setup-devcontainer-tools.sh && cp -f /workspaces/inkorporated/.devcontainer/cline_mcp_settings.json /home/vscode/.vscode-server/data/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json && echo 'Devcontainer setup complete!'",
+    "postCreateCommand": "echo \"Running as $(whoami)\" && echo 'Running devcontainer setup...' && bash /workspaces/inkorporated/.devcontainer/setup-devcontainer-tools.sh && echo 'Devcontainer setup complete!'",
     "mounts": [],
     "remoteEnv": {
         "DOCKER_BUILDKIT": "1",

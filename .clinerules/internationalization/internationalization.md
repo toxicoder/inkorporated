@@ -19,5 +19,3 @@
 - Document i18n setup
 - Avoid cultural assumptions
 - Integrate with translation services
-- **Leverage MCP tools for automated translation and localization workflows**
-- **Use MCP-based services for translation quality checks and language detection**

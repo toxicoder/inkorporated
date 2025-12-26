@@ -135,6 +135,8 @@ A comprehensive testing framework has been implemented to ensure reliability and
 - Kubernetes manifest validation
 - Integration testing for services
 - Automated test suite with CI/CD integration
+- Infrastructure health monitoring tests
+- Backup and restore validation tests
 
 ## Development Workflow
 
@@ -145,6 +147,8 @@ The project follows these development workflow patterns:
 - Kubernetes manifest pattern for custom resources
 - Helm chart pattern for application deployment
 - Service-oriented architecture with proper namespace separation
+- MCP-based infrastructure automation workflows
+- Automated security and compliance validation
 
 ## Tooling Preferences
 
@@ -160,6 +164,8 @@ The project uses the following tooling preferences:
 - **Monitoring**: kube-prometheus-stack (Prometheus, Grafana, Loki)
 - **Infrastructure as Code**: Terraform, Ansible
 - **Development Tools**: kubectl, helm, terraform, ansible, cloudflared CLI
+- **MCP Integration**: context7 MCP server for documentation and patterns
+- **Security Tools**: Automated vulnerability scanning with MCP
 
 ## Performance Requirements
 
@@ -168,6 +174,7 @@ The project uses the following tooling preferences:
 - Efficient resource utilization for all services
 - Monitoring and alerting for performance metrics
 - Backup and restore testing for disaster recovery
+- Automated performance optimization with MCP tools
 
 ## Documentation Standards
 
@@ -178,6 +185,8 @@ All documentation follows these standards:
 - Configuration management guidelines
 - Security and best practices documentation
 - Troubleshooting and maintenance guides
+- MCP integration documentation
+- Infrastructure automation workflows documentation
 
 ## Accessibility Guidelines
 
@@ -205,11 +214,13 @@ The project supports internationalization through:
 - Centralized authentication with SSO
 - Zero-trust network architecture
 - Backup and disaster recovery procedures
+- Automated security scanning with MCP tools
+- Infrastructure hardening and compliance validation
 
 ## Integration Patterns
 
 ### Authentication Flow
-1. User accesses any service via subdomain (e.g., `https://chat.overeasy.io`)
+1. User accesses any service via subdomain (e.g., `https://chat.example.com`)
 2. Traefik forwards request to Authentik for authentication
 3. Authentik validates credentials and issues JWT
 4. User is redirected back to service with authenticated session
@@ -229,6 +240,8 @@ The project supports internationalization through:
 - Backup testing and verification
 - Performance optimization
 - Documentation updates
+- Automated infrastructure health checks
+- MCP-based operational workflows
 
 ## Future Enhancements
 
@@ -238,3 +251,8 @@ Planned features and improvements:
 - Additional security hardening
 - Performance optimization
 - Automated testing and CI/CD improvements
+- MCP-based infrastructure automation
+- Advanced backup and disaster recovery
+- Enhanced observability with AI insights
+- More comprehensive security scanning
+- Automated compliance validation

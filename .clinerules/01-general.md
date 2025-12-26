@@ -22,3 +22,8 @@ These are fundamental rules that should be applied across all projects:
 - **Prioritize MCP-based solutions for external integrations, research tasks, and AI-assisted development workflows**
 - **Integrate MCP tools systematically into development workflows to enhance productivity, code quality, and maintainability**
 - **Utilize context7 MCP server to retrieve documentation and code patterns for implementation assistance**
+- **Apply MCP principles to infrastructure automation and configuration management**
+- **Use MCP servers for GitOps deployment validation and monitoring**
+- **Implement MCP-based security scanning for infrastructure components**
+- **Leverage MCP for automated backup and restore procedures**
+- **Integrate MCP tools for service discovery and health monitoring**

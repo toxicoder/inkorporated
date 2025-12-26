@@ -19,5 +19,3 @@
 - Archive old branches after merges
 - Use git submodules for shared libraries if needed
 - Document branching strategy in docs
-- **Use MCP tools for automated commit message generation and validation**
-- **Integrate MCP-based code review assistance into workflows**

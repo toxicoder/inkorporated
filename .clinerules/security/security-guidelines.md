@@ -20,7 +20,3 @@
 - Follow OWASP top 10 guidelines
 - Use secure password hashing algorithms
 - Restrict access with role-based controls
-- **When using MCP tools, validate all data from external sources and implement proper input sanitization**
-- **Ensure MCP tool access is properly authenticated and authorized**
-- **Implement proper error handling for MCP tool failures to prevent information leakage**
-- **Monitor MCP tool usage for unusual patterns that might indicate security issues**

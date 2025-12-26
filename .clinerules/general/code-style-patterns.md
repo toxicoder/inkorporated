@@ -23,6 +23,3 @@
 - Use enums for constant values
 - Prefer arrow functions for callbacks
 - Organize code into feature folders
-- **Integrate MCP tools for external API integrations and data fetching**
-- **Use MCP-based solutions for code generation, documentation, and research tasks**
-- **Prefer MCP-powered development workflows over manual processes where possible**

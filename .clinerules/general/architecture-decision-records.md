@@ -21,8 +21,5 @@ Create ADRs in /docs/adr for:
 - Authentication mechanism changes
 - Error recovery patterns
 - Performance tuning decisions
-- **Integration of MCP tools and servers into architectural decisions**
-- **MCP tool selection and evaluation processes**
-- **MCP-based solution architecture patterns**
 
 Follow template in `docs/adr/template.md`.

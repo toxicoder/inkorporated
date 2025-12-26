@@ -19,5 +19,3 @@
 - Integrate with error tracking services
 - Monitor resource usage
 - Test logging in production-like env
-- **Use MCP tools for enhanced logging and monitoring capabilities**
-- **Integrate MCP-based analytics for better observability**

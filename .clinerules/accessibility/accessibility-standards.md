@@ -19,5 +19,3 @@
 - Ensure readable fonts
 - Include skip navigation links
 - Document accessibility features
-- **Consider MCP tools for accessibility testing and automation**
-- **Integrate accessibility checks with MCP-based analysis tools**

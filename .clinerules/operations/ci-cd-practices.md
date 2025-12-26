@@ -19,5 +19,3 @@
 - Use infrastructure as code
 - Automate versioning bumps
 - Include smoke tests post-deployment
-- **Leverage MCP tools for automated CI/CD enhancements and monitoring**
-- **Use MCP-based analytics for deployment performance insights**

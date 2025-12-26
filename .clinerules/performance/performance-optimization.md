@@ -20,5 +20,3 @@
 - Use throttling and debouncing for events
 - Optimize network requests
 - Implement server-side rendering where beneficial
-- **Consider MCP tools for performance profiling and optimization analysis**
-- **Use MCP-based monitoring and analytics for performance insights**

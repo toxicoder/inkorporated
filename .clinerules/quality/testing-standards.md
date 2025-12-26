@@ -20,6 +20,3 @@
 - Run mutation testing periodically
 - Include accessibility tests in E2E
 - Test for security vulnerabilities in code
-- **Test MCP tool integrations with proper mocking and stubbing**
-- **Include tests for MCP tool error handling and fallback scenarios**
-- **Validate MCP tool outputs and ensure data integrity**

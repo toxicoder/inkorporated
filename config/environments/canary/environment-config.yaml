@@ -1,0 +1,43 @@
+# Environment Configuration for Canary
+# This file contains environment-specific settings for the canary environment
+
+environment: "canary"
+description: "Canary environment for feature testing"
+priority: 5
+
+# Domain configuration
+domain:
+  base: "canary.example.com"
+  wildcard: "*.canary.example.com"
+
+# Resource limits and requests
+resources:
+  cpu:
+    request: "500m"
+    limit: "2000m"
+  memory:
+    request: "512Mi"
+    limit: "2Gi"
+
+# Replicas
+replicas: 2
+
+# Storage configuration
+storage:
+  size: "50Gi"
+  class: "longhorn"
+
+# Security settings
+security:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 2000
+
+# Monitoring
+monitoring:
+  enabled: true
+  prometheus:
+    scrape: true
+    interval: "30s"

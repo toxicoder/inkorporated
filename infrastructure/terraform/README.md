@@ -18,7 +18,7 @@ The following variables can be configured:
 - `proxmox_api_url` - URL of the Proxmox API
 - `proxmox_api_token_id` - API token ID for Proxmox
 - `proxmox_api_token_secret` - API token secret for Proxmox
-- `environment` - Deployment environment (dev, staging, autopush, canary, prod)
+- `environment` - Deployment environment (dev, staging, autopush, uat, canary, prod, priv)
 - `deployment_profile` - VM sizing profile (min, medium, recommended)
 
 ### Environment Configuration
@@ -48,19 +48,33 @@ environments:
     description: "Autopush environment"
     priority: 3
 
+  uat:
+    domain:
+      base: "uat.example.com"
+      wildcard: "*.uat.example.com"
+    description: "User Acceptance Testing environment"
+    priority: 4
+
   canary:
     domain:
       base: "canary.example.com"
       wildcard: "*.canary.example.com"
     description: "Canary environment"
-    priority: 4
+    priority: 5
 
   prod:
     domain:
       base: "example.com"
       wildcard: "*.example.com"
     description: "Production environment"
-    priority: 5
+    priority: 6
+
+  priv:
+    domain:
+      base: "priv.example.com"
+      wildcard: "*.priv.example.com"
+    description: "Private environment for sensitive services"
+    priority: 7
 
 # Default environment (used if none specified)
 default: "dev"
@@ -93,8 +107,17 @@ terraform apply -var="environment=dev"
 # Deploy to staging environment
 terraform apply -var="environment=staging"
 
+# Deploy to uat environment
+terraform apply -var="environment=uat"
+
+# Deploy to canary environment
+terraform apply -var="environment=canary"
+
 # Deploy to production environment
 terraform apply -var="environment=prod"
+
+# Deploy to private environment
+terraform apply -var="environment=priv"
 ```
 
 ### Deployment Profiles

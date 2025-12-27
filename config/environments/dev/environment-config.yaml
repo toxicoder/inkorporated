@@ -1,0 +1,43 @@
+# Environment Configuration for Dev
+# This file contains environment-specific settings for the dev environment
+
+environment: "dev"
+description: "Development environment"
+priority: 1
+
+# Domain configuration
+domain:
+  base: "dev.example.com"
+  wildcard: "*.dev.example.com"
+
+# Resource limits and requests
+resources:
+  cpu:
+    request: "100m"
+    limit: "500m"
+  memory:
+    request: "128Mi"
+    limit: "512Mi"
+
+# Replicas
+replicas: 1
+
+# Storage configuration
+storage:
+  size: "10Gi"
+  class: "longhorn"
+
+# Security settings
+security:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 2000
+
+# Monitoring
+monitoring:
+  enabled: true
+  prometheus:
+    scrape: true
+    interval: "30s"

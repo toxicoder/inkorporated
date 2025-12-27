@@ -1,0 +1,43 @@
+# Environment Configuration for Autopush
+# This file contains environment-specific settings for the autopush environment
+
+environment: "autopush"
+description: "Autopush environment"
+priority: 3
+
+# Domain configuration
+domain:
+  base: "autopush.example.com"
+  wildcard: "*.autopush.example.com"
+
+# Resource limits and requests
+resources:
+  cpu:
+    request: "200m"
+    limit: "1000m"
+  memory:
+    request: "256Mi"
+    limit: "1Gi"
+
+# Replicas
+replicas: 2
+
+# Storage configuration
+storage:
+  size: "20Gi"
+  class: "longhorn"
+
+# Security settings
+security:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 2000
+
+# Monitoring
+monitoring:
+  enabled: true
+  prometheus:
+    scrape: true
+    interval: "30s"

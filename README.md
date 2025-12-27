@@ -1,131 +1,272 @@
-# Cline MCP Configuration System
+# Inkorporated Homelab Infrastructure
 
 ## Overview
-This project provides a secure configuration management system for Cline MCP servers. The configuration system separates sensitive credentials from the main settings file to improve security and maintainability.
 
-## Files
+This repository contains the complete infrastructure-as-code for the Inkorporated homelab, a comprehensive self-hosted, open-source internal work environment designed for homelab deployments. It provides a complete, integrated solution that combines infrastructure automation, GitOps deployment, and a rich set of productivity and collaboration tools.
 
-### Main Configuration Files
-- `cline_mcp_settings.json` - Main MCP server settings (contains no sensitive data)
-- `cline_mcp_config.example` - Example configuration with placeholder values
-- `cline_mcp_config.env` - Actual configuration file (not version controlled)
-- `.devcontainer/devcontainer-config.env` - Devcontainer-specific configuration for symlink setup
+## Project Structure
 
-### Management Scripts
-- `validate_config.sh` - Script to validate configuration setup
+The Inkorporated project is organized into several key areas:
 
-### Devcontainer Configuration
-The devcontainer is configured to automatically mount and symlink `cline_mcp_settings.json` to two required paths:
-1. `~/.config/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
-2. `~/.cline/data/settings/cline_mcp_settings.json`
+- **Infrastructure as Code**: Terraform for VM provisioning, Ansible for k3s setup
+- **GitOps Deployment**: ArgoCD for declarative infrastructure and application management
+- **Zero-trust Access**: Cloudflare Tunnel for secure external access
+- **Centralized Authentication**: Authentik SSO/OIDC integration
+- **Observability**: Prometheus, Grafana, and Loki stack
+- **Storage Solutions**: Longhorn and NFS CSI driver
+- **Backup & Recovery**: Velero with MinIO
+- **Service Mesh**: Traefik with forward-auth middleware
+- **Version Control**: Gitea instance for GitOps workflow
+- **CI/CD**: Gitea runners for automated deployments
 
-This is accomplished through the devcontainer configuration in `.devcontainer/` directory.
+## Deployment Patterns
+
+All services follow a consistent deployment pattern:
+1. Create Namespace
+2. Create Core Deployment with appropriate resources
+3. Create Service
+4. Create PodDisruptionBudget (where applicable)
+5. Create ConfigMap (where applicable)
+6. Create Ingress (where applicable)
+7. Create Secrets (where applicable)
+
+## Configuration Management
+
+The project implements a centralized configuration management system that separates sensitive credentials from main settings:
+
+- **Main Settings File**: `cline_mcp_settings.json` - Contains server configurations and settings (no sensitive data)
+- **Configuration File**: `cline_mcp_config.env` - Contains sensitive credentials and environment-specific settings (not version controlled)
+- **Environment-Specific Configurations**: Different files for different environments (`dev.env`, `staging.env`, `prod.env`)
+
+## Environment Structure
+
+The repository now supports multiple environments with dedicated configuration directories:
+
+- `config/environments/` - Environment-specific configurations
+- `apps/environments/` - Environment-specific application overrides
+
+### Supported Environments
+1. **dev** - Development environment
+2. **staging** - Staging environment  
+3. **autopush** - Autopush environment
+4. **uat** - User Acceptance Testing environment
+5. **canary** - Canary environment for feature testing
+6. **prod** - Production environment
+7. **priv** - Private environment for sensitive services
 
 ## Security Approach
 
 The configuration system follows security best practices:
 1. **Separation of Concerns**: Sensitive credentials are separated from settings
 2. **Version Control Safety**: No sensitive data is committed to version control
-3. **File Permissions**: Config files are secured with restrictive permissions
+3. **File Permissions**: Config files are secured with restrictive permissions (600)
 4. **Environment Variables**: Configuration loaded at runtime
+5. **Zero-trust Architecture**: Cloudflare Tunnel for external access
+6. **Centralized Authentication**: Authentik for SSO
+7. **Network Segmentation**: pfSense firewall with VLANs
+
+## Infrastructure Components
+
+The project implements a multi-zone network architecture with the following components:
+
+### Core Infrastructure Services
+- **Cloudflare Tunnel (cloudflared)**: Zero-trust access to services
+- **Traefik**: Ingress controller with TLS termination
+- **Authentik**: Central identity provider with OIDC + 2FA enforcement
+- **Longhorn**: Distributed block storage
+- **NFS CSI Driver**: Synology NAS integration
+- **MinIO**: S3 object storage for backups
+- **Velero**: Backup and restore solution
+- **cert-manager**: TLS automation
+- **MetalLB**: LoadBalancer provider
+
+### Collaboration Services
+- **Rocket.Chat**: Team chat platform
+- **WorkAdventure**: 2D virtual office
+- **Jitsi Meet**: Video conferencing
+- **Coturn**: TURN/STUN server for NAT traversal
+
+### Productivity Services
+- **AppFlowy**: Collaborative knowledge base
+- **LinkWarden**: Bookmark manager
+- **Homebox**: Inventory tracker
+- **Home Assistant**: Smart home hub
+
+### Remote Work Services
+- **Kasm Workspaces**: Browser-based workspaces
+- **Coder**: Cloud IDE workspaces
+
+### AI Services
+- **Ollama**: Local LLM runner
+- **Open WebUI**: Ollama web interface
+- **Langflow**: Visual LangChain builder
+- **Kokoro TTS**: Local TTS server
+- **Docling**: Document parsing server
+- **SearXNG**: Metasearch engine
+- **SurfSense**: AI research agent
+- **Perplexica**: AI search engine
+
+### Security Services
+- **Vaultwarden**: Bitwarden-compatible password manager
+- **HashiCorp Vault**: Secrets management
+
+## Implementation Phases
+
+The project follows a structured implementation approach:
+
+### Phase 1: Foundation & Preparation
+- Validate physical infrastructure readiness
+- Create Proxmox Cloud-Init template
+- Workstation setup with required tools
+
+### Phase 2: Repository & Code Setup
+- Create bootstrap repository with Terraform/Ansible
+- Create apps repository with GitOps manifests
+
+### Phase 3: Bootstrap Infrastructure
+- Provision VMs with Terraform
+- Install k3s with Ansible
+- Bootstrap ArgoCD
+
+### Phase 4: Core Infrastructure Deployment
+- Deploy storage solutions (Longhorn, NFS CSI)
+- Deploy database services (CloudNativePG, MongoDB)
+- Deploy backup and monitoring stack
+- Deploy core services (Authentik, Traefik, Cloudflared)
+
+### Phase 5: Post-Deployment
+- Configure authentication providers and groups
+- Deploy user dashboard (Homepage)
+- Enable backups and testing
+- Performance and security hardening
+- Documentation runbook creation
 
 ## Testing Framework
 
-A comprehensive testing framework has been implemented to ensure the reliability and security of the configuration system:
+A comprehensive testing framework has been implemented to ensure reliability and security:
 - Configuration validation tests
 - Security permission checks
 - Kubernetes manifest validation
 - Integration testing for services
 - Automated test suite with CI/CD integration
+- Infrastructure health monitoring tests
+- Backup and restore validation tests
 
-For more details, see the [tests/README.md](tests/README.md) documentation.
+## Development Workflow
 
-## Setup Instructions
+The project follows these development workflow patterns:
+- GitOps with ArgoCD for infrastructure and application deployment
+- Environment variable configuration for domain flexibility
+- Centralized configuration management system
+- Kubernetes manifest pattern for custom resources
+- Helm chart pattern for application deployment
+- Service-oriented architecture with proper namespace separation
+- MCP-based infrastructure automation workflows
+- Automated security and compliance validation
 
-### 1. Create Configuration File
-```bash
-# Copy the example configuration file
-cp cline_mcp_config.example cline_mcp_config.env
+## Tooling Preferences
 
-# Edit the file with your actual values
-nano cline_mcp_config.env
-```
+The project uses the following tooling preferences:
+- **Container Orchestration**: Kubernetes (k3s)
+- **Deployment Management**: ArgoCD (GitOps)
+- **Authentication**: Authentik (OIDC + SSO)
+- **Ingress Controller**: Traefik with forward-auth
+- **Zero-trust Access**: Cloudflare Tunnel (cloudflared)
+- **Network Security**: pfSense VM
+- **Storage**: Longhorn (block storage), NFS CSI driver (Synology NAS)
+- **Backup & DR**: Velero with MinIO
+- **Monitoring**: kube-prometheus-stack (Prometheus, Grafana, Loki)
+- **Infrastructure as Code**: Terraform, Ansible
+- **Development Tools**: kubectl, helm, terraform, ansible, cloudflared CLI
+- **MCP Integration**: context7 MCP server for documentation and patterns
+- **Security Tools**: Automated vulnerability scanning with MCP
 
-### 2. Set Secure Permissions
-```bash
-# Set restrictive permissions on config file
-chmod 600 cline_mcp_config.env
-```
+## Performance Requirements
 
-### 3. Load Configuration
-```bash
-# Load environment variables
-export $(grep -v '^#' cline_mcp_config.env | xargs)
+- Resource quotas and limits for all namespaces
+- High availability with PodDisruptionBudgets
+- Efficient resource utilization for all services
+- Monitoring and alerting for performance metrics
+- Backup and restore testing for disaster recovery
+- Automated performance optimization with MCP tools
 
-# Or use a dotenv library in your application
-```
+## Documentation Standards
 
-### 4. Validate Setup
-```bash
-# Run validation script
-./validate_config.sh
-```
+All documentation follows these standards:
+- Comprehensive technical documentation
+- Service-specific documentation with configurations
+- Implementation status tracking
+- Configuration management guidelines
+- Security and best practices documentation
+- Troubleshooting and maintenance guides
+- MCP integration documentation
+- Infrastructure automation workflows documentation
 
-## Configuration Structure
+## Accessibility Guidelines
 
-The configuration file follows the standard `.env` format:
-```env
-# GitHub Token
-GH_TOKEN=your_actual_github_token_here
+While the project is primarily focused on infrastructure and backend services, accessibility considerations include:
+- User-friendly dashboard interfaces
+- Clear navigation and organization of services
+- Consistent design patterns across applications
+- Support for keyboard navigation where applicable
 
-# Perplexity API Key
-PERPLEXITY_API_KEY=your_perplexity_api_key_here
+## Internationalization Needs
 
-# Tavily API Key
-TAVILY_API_KEY=your_tavily_api_key_here
+The project supports internationalization through:
+- Configurable domain names and URLs
+- Environment variable configuration for localization
+- Multi-language support in user-facing applications
+- Flexible configuration management for different regions
 
-# MongoDB URI
-MCP_MONGODB_URI=mongodb://your_mongo_uri_here
+## Security Considerations
 
-# Redis Password
-REDIS_PWD=your_redis_password_here
+- All sensitive data stored as Kubernetes secrets
+- Sealed secrets for Git-safe storage
+- Proper RBAC and access controls
+- Network policies for security segmentation
+- Regular security updates for container images
+- Centralized authentication with SSO
+- Zero-trust network architecture
+- Backup and disaster recovery procedures
+- Automated security scanning with MCP tools
+- Infrastructure hardening and compliance validation
 
-# Slack Token
-SLACK_MCP_XOXC_TOKEN=your_slack_token_here
+## Integration Patterns
 
-# Ollama Configuration
-OLLAMA_API_BASE_URL=http://localhost:11434
-OLLAMA_MODEL=llama3
+### Authentication Flow
+1. User accesses any service via subdomain (e.g., `https://chat.example.com`)
+2. Traefik forwards request to Authentik for authentication
+3. Authentik validates credentials and issues JWT
+4. User is redirected back to service with authenticated session
+5. Service validates JWT and grants access
 
-# Open WebUI Configuration
-OPEN_WEBUI_API_BASE_URL=http://localhost:3000
-OPEN_WEBUI_API_KEY=your_open_webui_api_key_here
+### Data Flow
+1. Services communicate through internal Kubernetes networks
+2. External services use Cloudflare Tunnel for secure access
+3. All data is encrypted in-transit using TLS
+4. Persistent data stored on Longhorn volumes or MinIO
 
-# Vector Search Configuration
-VECTOR_SEARCH_EMBEDDING_MODEL=text-embedding-3-small
-VECTOR_SEARCH_INDEX_PATH=/path/to/vector/index
-```
+## Maintenance and Operations
 
-## Environment-Specific Configurations
+- Regular security audits and updates
+- Automated container image updates
+- Monitoring and alerting review
+- Backup testing and verification
+- Performance optimization
+- Documentation updates
+- Automated infrastructure health checks
+- MCP-based operational workflows
 
-Create different configuration files for different environments:
-- `cline_mcp_config.dev.env` - Development environment
-- `cline_mcp_config.staging.env` - Staging environment  
-- `cline_mcp_config.prod.env` - Production environment
+## Future Enhancements
 
-## Security Best Practices
-
-1. **Never commit sensitive data** to version control
-2. **Use environment variables** to load configuration at runtime
-3. **Set proper file permissions** (600) for config files
-4. **Regularly rotate credentials** for production systems
-5. **Use different configurations** for different environments
-
-## Integration with MCP Servers
-
-The configuration values from `cline_mcp_config.env` are automatically loaded into the environment when the MCP servers are started, and are referenced in the `cline_mcp_settings.json` file through environment variable substitution.
-
-## Documentation
-
-For detailed configuration management information, see:
-- `config_management.md` - Comprehensive configuration management guide
+Planned features and improvements:
+- Enhanced AI integration capabilities
+- Improved monitoring and alerting
+- Additional security hardening
+- Performance optimization
+- Automated testing and CI/CD improvements
+- MCP-based infrastructure automation
+- Advanced backup and disaster recovery
+- Enhanced observability with AI insights
+- More comprehensive security scanning
+- Automated compliance validation

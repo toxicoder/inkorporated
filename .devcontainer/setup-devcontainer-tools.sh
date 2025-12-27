@@ -45,6 +45,25 @@ sudo chmod +x /usr/local/bin/argocd
 
 echo "Argo CD installation complete."
 
+# Check for MacOS-specific config directory and use it if available
+echo "Checking for MacOS-specific config directory..."
+MACOS_CONFIG_DIR="$HOME/Code/config/vscode/env"
+if [ -d "$MACOS_CONFIG_DIR" ]; then
+    echo "Found MacOS config directory: $MACOS_CONFIG_DIR"
+    
+    # Check for devcontainer-config.env
+    if [ -f "$MACOS_CONFIG_DIR/devcontainer-config.env" ]; then
+        echo "Using devcontainer-config.env from MacOS config directory"
+        cp -f "$MACOS_CONFIG_DIR/devcontainer-config.env" /workspaces/inkorporated/.devcontainer/devcontainer-config.env
+    fi
+    
+    # Check for cline_mcp_config.env
+    if [ -f "$MACOS_CONFIG_DIR/cline_mcp_config.env" ]; then
+        echo "Using cline_mcp_config.env from MacOS config directory"
+        cp -f "$MACOS_CONFIG_DIR/cline_mcp_config.env" /workspaces/inkorporated/.devcontainer/cline_mcp_config.env
+    fi
+fi
+
 echo "Copying Cline MCP settings file..."
 mkdir -p /home/vscode/.vscode-server/data/User/globalStorage/saoudrizwan.claude-dev/settings/
 cp -f /workspaces/inkorporated/.devcontainer/cline_mcp_settings.json /home/vscode/.vscode-server/data/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json

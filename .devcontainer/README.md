@@ -30,6 +30,14 @@ All environment variables used in the MCP settings can be overridden through:
 2. Environment variables set in the devcontainer
 3. Default values provided in `devcontainer-config.env`
 
+## MacOS-Specific Configuration
+
+On MacOS, the devcontainer will automatically check for configuration files in `~/Code/config/vscode/env` directory:
+- If `devcontainer-config.env` exists there, it will be used instead of the default file
+- If `cline_mcp_config.env` exists there, it will be used instead of the default file
+
+This allows for per-machine configuration while keeping the default files in version control.
+
 ## Mounting and Symlinking
 
 The devcontainer is configured to:

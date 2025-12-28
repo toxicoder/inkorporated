@@ -37,7 +37,13 @@
         }
     },
     "postCreateCommand": "echo \"Running as $(whoami)\" && echo 'Running devcontainer setup...' && bash /workspaces/inkorporated/.devcontainer/setup-devcontainer-tools.sh && echo 'Devcontainer setup complete!'",
-    "mounts": [],
+    "mounts": [
+        {
+            "type": "volume",
+            "source": "mcp-cache-volume",
+            "target": "/home/vscode/.cline/cache"
+        }
+    ],
     "remoteEnv": {
         "DOCKER_BUILDKIT": "1",
         "COMPOSE_DOCKER_CLI_BUILD": "1"

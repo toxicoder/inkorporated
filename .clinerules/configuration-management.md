@@ -19,7 +19,7 @@ This document describes the configuration management approach for Cline MCP serv
 
 ### 3. Devcontainer Configuration File
 - **File**: `.devcontainer/devcontainer-config.env`
-- **Purpose**: Contains devcontainer-specific settings for mounting and symlinking (MCP configuration variables are in cline_mcp_config.env)
+- **Purpose**: Contains devcontainer-specific settings for mounting and symlinking
 - **Usage**: Used by devcontainer to set up symlinked MCP settings at required paths
 
 ## Configuration Structure
@@ -29,14 +29,6 @@ The configuration file follows the standard `.env` format where each line contai
 ```env
 KEY=VALUE
 ```
-
-## MCP Server Configuration
-
-MCP servers are now controlled via environment variables rather than JSON configuration:
-- All MCP servers are disabled by default via the `MCP_SERVERS_DISABLED=true` environment variable
-- To enable MCP servers, set `MCP_SERVERS_DISABLED=false` in your environment configuration
-- This provides centralized control over MCP server activation/deactivation
-- The previous `disabled: true` flag has been removed from the JSON configuration file
 
 ## Security Best Practices
 
@@ -74,7 +66,6 @@ chmod 600 cline_mcp_config.env
 ## Environment-Specific Configurations
 
 Create different configuration files for different environments:
-
 - `cline_mcp_config.dev.env` - Development environment
 - `cline_mcp_config.staging.env` - Staging environment  
 - `cline_mcp_config.prod.env` - Production environment
@@ -123,6 +114,13 @@ done
 echo "Configuration validation complete."
 ```
 
-## Integration with MCP Servers
+## Integration with Inkorporated Homelab Infrastructure
 
-The configuration values from `cline_mcp_config.env` are automatically loaded into the environment when the MCP servers are started. The `cline_mcp_settings.json` file references these environment variables through variable substitution (e.g., `${GH_TOKEN}`). The devcontainer setup ensures that both `cline_mcp_config.env` and `cline_mcp_settings.json` are properly available within the development environment.
+The configuration values from `cline_mcp_config.env` are automatically loaded into the environment when the MCP servers are started, and are referenced in the `cline_mcp_settings.json` file through environment variable substitution.
+
+This configuration approach is integrated with the Inkorporated homelab's GitOps deployment workflow and follows the project's security patterns including:
+- Separation of sensitive credentials from main settings
+- Environment-specific configuration management
+- Proper file permissions (600) for sensitive files
+- Integration with the existing infrastructure as code patterns
+- Support for the multi-environment deployment strategy (dev, staging, prod)

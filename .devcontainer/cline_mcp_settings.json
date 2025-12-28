@@ -10,10 +10,10 @@
                 "/path/to/cline-community/build/index.js"
             ],
             "transportType": "stdio",
+            "disabled": "${CLINE_COMMUNITY_MCP_SERVER_DISABLED}",
             "env": {
-                "GH_TOKEN": "${GH_TOKEN}"
-            },
-            "disabled": true
+                "GITHUB_MCP_TOKEN": "${GITHUB_TOKEN}"
+            }
         },
         "github": {
             "command": "docker",
@@ -23,10 +23,10 @@
                 "--rm",
                 "ghcr.io/github/github-mcp-server"
             ],
+            "disabled": "${GITHUB_MCP_SERVER_DISABLED}",
             "env": {
-                "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
-            },
-            "disabled": true
+                "GITHUB_MCP_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+            }
         },
         "puppeteer": {
             "command": "npx",
@@ -34,19 +34,19 @@
                 "-y",
                 "@modelcontextprotocol/server-puppeteer"
             ],
-            "disabled": true
+            "disabled": "${PUPPETEER_MCP_SERVER_DISABLED}"
         },
         "filesystem": {
             "command": "node",
             "args": [
                 "/path/to/filesystem-mcp-server/dist/index.js"
             ],
+            "disabled": "${FILESYSTEM_MCP_SERVER_DISABLED}",
             "env": {
-                "MCP_LOG_LEVEL": "${MCP_LOG_LEVEL}",
-                "FS_BASE_DIRECTORY": "${FS_BASE_DIRECTORY}",
-                "MCP_TRANSPORT_TYPE": "${MCP_TRANSPORT_TYPE}"
+                "FILESYSTEM_MCP_MCP_LOG_LEVEL": "${FILESYSTEM_MCP_MCP_LOG_LEVEL}",
+                "FILESYSTEM_MCP_FS_BASE_DIRECTORY": "${FILESYSTEM_MCP_FS_BASE_DIRECTORY}",
+                "FILESYSTEM_MCP_MCP_TRANSPORT_TYPE": "${FILESYSTEM_MCP_MCP_TRANSPORT_TYPE}"
             },
-            "disabled": true,
             "autoApprove": []
         },
         "git-tools": {
@@ -55,16 +55,16 @@
             "args": [
                 "@cyanheads/git-mcp-server@latest"
             ],
+            "disabled": "${GIT_TOOLS_MCP_SERVER_DISABLED}",
             "env": {
-                "MCP_TRANSPORT_TYPE": "${MCP_TRANSPORT_TYPE}",
-                "MCP_LOG_LEVEL": "${MCP_LOG_LEVEL}",
-                "GIT_BASE_DIR": "${GIT_BASE_DIR}",
-                "LOGS_DIR": "${LOGS_DIR}",
-                "GIT_USERNAME": "${GIT_USERNAME}",
-                "GIT_EMAIL": "${GIT_EMAIL}",
-                "GIT_SIGN_COMMITS": "${GIT_SIGN_COMMITS}"
-            },
-            "disabled": true
+                "GIT_TOOLS_MCP_MCP_TRANSPORT_TYPE": "${MCP_TRANSPORT_TYPE}",
+                "GIT_TOOLS_MCP_MCP_LOG_LEVEL": "${MCP_LOG_LEVEL}",
+                "GIT_TOOLS_MCP_GIT_BASE_DIR": "${GIT_BASE_DIR}",
+                "GIT_TOOLS_MCP_LOGS_DIR": "${LOGS_DIR}",
+                "GIT_TOOLS_MCP_GIT_USERNAME": "${GIT_USERNAME}",
+                "GIT_TOOLS_MCP_GIT_EMAIL": "${GIT_EMAIL}",
+                "GIT_TOOLS_MCP_GIT_SIGN_COMMITS": "${GIT_SIGN_COMMITS}"
+            }
         },
         "perplexity": {
             "command": "npx",
@@ -72,10 +72,10 @@
                 "-y",
                 "@perplexity-ai/mcp-server"
             ],
+            "disabled": "${PERPLEXITY_MCP_SERVER_DISABLED}",
             "env": {
-                "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}"
+                "PERPLEXITY_MCP_API_KEY": "${PERPLEXITY_API_KEY}"
             },
-            "disabled": true,
             "alwaysAllow": []
         },
         "tavily": {
@@ -84,10 +84,10 @@
                 "-y",
                 "tavily-mcp"
             ],
+            "disabled": "${TAVILY_MCP_SERVER_DISABLED}",
             "env": {
-                "TAVILY_API_KEY": "${TAVILY_API_KEY}"
-            },
-            "disabled": true
+                "TAVILY_MCP_API_KEY": "${TAVILY_API_KEY}"
+            }
         },
         "mongodb": {
             "command": "npx",
@@ -96,11 +96,11 @@
                 "mcp-mongo-server",
                 "${MCP_MONGODB_URI}"
             ],
+            "disabled": "${MONGODB_MCP_SERVER_DISABLED}",
             "env": {
-                "MCP_MONGODB_URI": "${MCP_MONGODB_URI}",
-                "MCP_MONGODB_READONLY": "${MCP_MONGODB_READONLY}"
-            },
-            "disabled": true
+                "MONGODB_MCP_URI": "${MCP_MONGODB_URI}",
+                "MONGODB_MCP_READONLY": "${MCP_MONGODB_READONLY}"
+            }
         },
         "redis": {
             "type": "stdio",
@@ -112,12 +112,12 @@
                 "--url",
                 "redis://localhost:6379/0"
             ],
+            "disabled": "${REDIS_MCP_SERVER_DISABLED}",
             "env": {
-                "REDIS_HOST": "${REDIS_HOST}",
-                "REDIS_PORT": "${REDIS_PORT}",
-                "REDIS_PWD": "${REDIS_PWD}"
-            },
-            "disabled": true
+                "REDIS_MCP_HOST": "${REDIS_HOST}",
+                "REDIS_MCP_PORT": "${REDIS_PORT}",
+                "REDIS_MCP_PWD": "${REDIS_PWD}"
+            }
         },
         "slack": {
             "command": "go",
@@ -127,18 +127,18 @@
                 "--transport",
                 "stdio"
             ],
+            "disabled": "${SLACK_MCP_SERVER_DISABLED}",
             "env": {
                 "SLACK_MCP_XOXC_TOKEN": "${SLACK_MCP_XOXC_TOKEN}",
-                "SLACK_MCP_LOG_LEVEL": "${MCP_LOG_LEVEL}"
-            },
-            "disabled": true
+                "SLACK_MCP_LOG_LEVEL": "${SLACK_MCP_LOG_LEVEL}"
+            }
         },
         "docker-mcp": {
             "command": "uvx",
             "args": [
                 "docker-mcp"
             ],
-            "disabled": true
+            "disabled": "${DOCKER_MCP_MCP_SERVER_DISABLED}"
         },
         "postgres": {
             "command": "npx",
@@ -147,14 +147,14 @@
                 "@modelcontextprotocol/server-postgres",
                 "postgresql://${PG_USER}:${PG_PASSWORD}@${PG_HOST}:${PG_PORT}/${PG_DATABASE}"
             ],
+            "disabled": "${POSTGRES_MCP_SERVER_DISABLED}",
             "env": {
-                "PG_HOST": "${PG_HOST}",
-                "PG_PORT": "${PG_PORT}",
-                "PG_USER": "${PG_USER}",
-                "PG_PASSWORD": "${PG_PASSWORD}",
-                "PG_DATABASE": "${PG_DATABASE}"
-            },
-            "disabled": true
+                "POSTGRES_MCP_HOST": "${PG_HOST}",
+                "POSTGRES_MCP_PORT": "${PG_PORT}",
+                "POSTGRES_MCP_USER": "${PG_USER}",
+                "POSTGRES_MCP_PASSWORD": "${PG_PASSWORD}",
+                "POSTGRES_MCP_DATABASE": "${PG_DATABASE}"
+            }
         },
         "sqlite": {
             "command": "npx",
@@ -163,10 +163,10 @@
                 "@modelcontextprotocol/server-sqlite",
                 "${SQLITE_DB_PATH}"
             ],
+            "disabled": "${SQLITE_MCP_SERVER_DISABLED}",
             "env": {
-                "SQLITE_DB_PATH": "${SQLITE_DB_PATH}"
-            },
-            "disabled": true
+                "SQLITE_MCP_DB_PATH": "${SQLITE_DB_PATH}"
+            }
         },
         "gdrive": {
             "command": "npx",
@@ -174,11 +174,11 @@
                 "-y",
                 "@modelcontextprotocol/server-gdrive"
             ],
+            "disabled": "${GDRIVE_MCP_SERVER_DISABLED}",
             "env": {
-                "GDRIVE_CREDENTIALS": "${GDRIVE_CREDENTIALS}",
-                "GDRIVE_ROOT_FOLDER_ID": "${GDRIVE_ROOT_FOLDER_ID}"
-            },
-            "disabled": true
+                "GDRIVE_MCP_CREDENTIALS": "${GDRIVE_CREDENTIALS}",
+                "GDRIVE_MCP_ROOT_FOLDER_ID": "${GDRIVE_ROOT_FOLDER_ID}"
+            }
         },
         "git-official": {
             "type": "stdio",
@@ -188,7 +188,7 @@
                 "--repository",
                 "/path/to/git/repo"
             ],
-            "disabled": true
+            "disabled": "${GIT_OFFICIAL_MCP_SERVER_DISABLED}"
         },
         "gitlab": {
             "command": "npx",
@@ -196,12 +196,12 @@
                 "-y",
                 "@modelcontextprotocol/server-gitlab"
             ],
+            "disabled": "${GITLAB_MCP_SERVER_DISABLED}",
             "env": {
-                "GITLAB_URL": "${GITLAB_URL}",
-                "GITLAB_TOKEN": "${GITLAB_TOKEN}",
-                "GITLAB_PROJECT_ID": "${GITLAB_PROJECT_ID}"
-            },
-            "disabled": true
+                "GITLAB_MCP_URL": "${GITLAB_URL}",
+                "GITLAB_MCP_TOKEN": "${GITLAB_TOKEN}",
+                "GITLAB_MCP_PROJECT_ID": "${GITLAB_PROJECT_ID}"
+            }
         },
         "sentry": {
             "command": "npx",
@@ -209,12 +209,12 @@
                 "-y",
                 "@modelcontextprotocol/server-sentry"
             ],
+            "disabled": "${SENTRY_MCP_SERVER_DISABLED}",
             "env": {
-                "SENTRY_URL": "${SENTRY_URL}",
-                "SENTRY_AUTH_TOKEN": "${SENTRY_AUTH_TOKEN}",
-                "SENTRY_PROJECT": "${SENTRY_PROJECT}"
-            },
-            "disabled": true
+                "SENTRY_MCP_URL": "${SENTRY_URL}",
+                "SENTRY_MCP_AUTH_TOKEN": "${SENTRY_AUTH_TOKEN}",
+                "SENTRY_MCP_PROJECT": "${SENTRY_PROJECT}"
+            }
         },
         "context7": {
             "command": "npx",
@@ -226,15 +226,15 @@
                 "--api-key",
                 "${CONTEXT7_API_KEY}"
             ],
+            "disabled": "${CONTEXT7_MCP_SERVER_DISABLED}",
             "env": {
-                "MCP_CACHE_CACHE_DIR": "/home/vscode/.cline/cache",
-                "MCP_CACHE_MAX_TOKENS": "25000",
-                "MCP_CACHE_TTL": "7200",
-                "MCP_CACHE_ENABLE_INDEXING": "true",
-                "MCP_CACHE_COMPRESSION": "true",
-                "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
-            },
-            "disabled": true
+                "CONTEXT7_MCP_CACHE_DIR": "/home/vscode/.cline/cache",
+                "CONTEXT7_MCP_MAX_TOKENS": "25000",
+                "CONTEXT7_MCP_TTL": "7200",
+                "CONTEXT7_MCP_ENABLE_INDEXING": "true",
+                "CONTEXT7_MCP_COMPRESSION": "true",
+                "CONTEXT7_MCP_API_KEY": "${CONTEXT7_API_KEY}"
+            }
         },
         "ollama": {
             "command": "npx",
@@ -242,11 +242,11 @@
                 "-y",
                 "@modelcontextprotocol/server-ollama"
             ],
+            "disabled": "${OLLAMA_MCP_SERVER_DISABLED}",
             "env": {
-                "OLLAMA_API_BASE_URL": "${OLLAMA_API_BASE_URL}",
-                "OLLAMA_MODEL": "${OLLAMA_MODEL}"
-            },
-            "disabled": true
+                "OLLAMA_MCP_API_BASE_URL": "${OLLAMA_API_BASE_URL}",
+                "OLLAMA_MCP_MODEL": "${OLLAMA_MODEL}"
+            }
         },
         "open-webui": {
             "command": "npx",
@@ -254,11 +254,11 @@
                 "-y",
                 "@modelcontextprotocol/server-open-webui"
             ],
+            "disabled": "${OPEN_WEBUI_MCP_SERVER_DISABLED}",
             "env": {
-                "OPEN_WEBUI_API_BASE_URL": "${OPEN_WEBUI_API_BASE_URL}",
-                "OPEN_WEBUI_API_KEY": "${OPEN_WEBUI_API_KEY}"
-            },
-            "disabled": true
+                "OPEN_WEBUI_MCP_API_BASE_URL": "${OPEN_WEBUI_API_BASE_URL}",
+                "OPEN_WEBUI_MCP_API_KEY": "${OPEN_WEBUI_API_KEY}"
+            }
         },
         "vector-search": {
             "command": "npx",
@@ -266,11 +266,11 @@
                 "-y",
                 "@modelcontextprotocol/server-vector-search"
             ],
+            "disabled": "${VECTOR_SEARCH_MCP_SERVER_DISABLED}",
             "env": {
-                "VECTOR_SEARCH_EMBEDDING_MODEL": "${VECTOR_SEARCH_EMBEDDING_MODEL}",
-                "VECTOR_SEARCH_INDEX_PATH": "${VECTOR_SEARCH_INDEX_PATH}"
-            },
-            "disabled": true
+                "VECTOR_SEARCH_MCP_EMBEDDING_MODEL": "${VECTOR_SEARCH_EMBEDDING_MODEL}",
+                "VECTOR_SEARCH_MCP_INDEX_PATH": "${VECTOR_SEARCH_INDEX_PATH}"
+            }
         }
     }
 }

@@ -18,7 +18,11 @@ Contains environment variables that control the devcontainer setup:
 - `SETTINGS_FILE_PATH`: Path to the source settings file
 - `TARGET_PATH_1` and `TARGET_PATH_2`: Target symlink locations
 - `CREATE_SYMLINKS`: Toggle for symlink creation (default: true)
-- Environment variables for MCP server configurations
+- Devcontainer-specific configuration settings only
+
+### `cline_mcp_config.env.example`
+Example configuration file containing all MCP server environment variables.
+Copy this file to `cline_mcp_config.env` and populate with your actual values.
 
 ### `cline_mcp_settings.json`
 The main MCP server settings file containing configurations for various services.

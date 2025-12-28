@@ -19,3 +19,14 @@
 - Document performance benchmarks in /docs/performance
 - Add security considerations to relevant docs
 - Ensure documentation is searchable with a table of contents
+
+## MCP Configuration Documentation
+
+- Document the centralized configuration management system for MCP servers
+- Include details about the new MCP_SERVERS_DISABLED environment variable
+- Explain how MCP server enable/disable is now controlled via environment configuration
+- Document the separation of sensitive credentials from main settings
+- Update documentation to reflect that MCP servers are disabled by default via environment variable
+- Include examples of how to enable MCP servers by setting MCP_SERVERS_DISABLED=false
+- Document the migration from JSON-based disabled flag to environment-based configuration
+- Ensure all MCP server documentation reflects the new configuration approach

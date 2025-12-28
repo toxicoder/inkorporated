@@ -1,0 +1,278 @@
+{
+    "mcpServers": {
+        "cline-community": {
+            "autoApprove": [
+                "preview_cline_issue"
+            ],
+            "timeout": 10,
+            "command": "node",
+            "args": [
+                "/path/to/cline-community/build/index.js"
+            ],
+            "transportType": "stdio",
+            "disabled": "${CLINE_COMMUNITY_MCP_SERVER_DISABLED}",
+            "env": {
+                "GITHUB_MCP_TOKEN": "${GITHUB_TOKEN}"
+            }
+        },
+        "github": {
+            "command": "docker",
+            "args": [
+                "run",
+                "-i",
+                "--rm",
+                "ghcr.io/github/github-mcp-server"
+            ],
+            "disabled": "${GITHUB_MCP_SERVER_DISABLED}",
+            "env": {
+                "GITHUB_MCP_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+            }
+        },
+        "puppeteer": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-puppeteer"
+            ],
+            "disabled": "${PUPPETEER_MCP_SERVER_DISABLED}"
+        },
+        "filesystem": {
+            "type": "stdio",
+            "command": "node",
+            "args": [
+                "/path/to/filesystem-mcp-server/dist/index.js"
+            ],
+            "disabled": "${FILESYSTEM_MCP_SERVER_DISABLED}",
+            "env": {
+                "FILESYSTEM_MCP_MCP_LOG_LEVEL": "${FILESYSTEM_MCP_MCP_LOG_LEVEL}",
+                "FILESYSTEM_MCP_FS_BASE_DIRECTORY": "${FILESYSTEM_MCP_FS_BASE_DIRECTORY}",
+                "FILESYSTEM_MCP_MCP_TRANSPORT_TYPE": "${FILESYSTEM_MCP_MCP_TRANSPORT_TYPE}"
+            },
+            "autoApprove": []
+        },
+        "git-tools": {
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "@cyanheads/git-mcp-server@latest"
+            ],
+            "disabled": "${GIT_TOOLS_MCP_SERVER_DISABLED}",
+            "env": {
+                "GIT_TOOLS_MCP_MCP_TRANSPORT_TYPE": "${MCP_TRANSPORT_TYPE}",
+                "GIT_TOOLS_MCP_MCP_LOG_LEVEL": "${MCP_LOG_LEVEL}",
+                "GIT_TOOLS_MCP_GIT_BASE_DIR": "${GIT_BASE_DIR}",
+                "GIT_TOOLS_MCP_LOGS_DIR": "${LOGS_DIR}",
+                "GIT_TOOLS_MCP_GIT_USERNAME": "${GIT_USERNAME}",
+                "GIT_TOOLS_MCP_GIT_EMAIL": "${GIT_EMAIL}",
+                "GIT_TOOLS_MCP_GIT_SIGN_COMMITS": "${GIT_SIGN_COMMITS}"
+            }
+        },
+        "perplexity": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@perplexity-ai/mcp-server"
+            ],
+            "disabled": "${PERPLEXITY_MCP_SERVER_DISABLED}",
+            "env": {
+                "PERPLEXITY_MCP_API_KEY": "${PERPLEXITY_API_KEY}"
+            },
+            "alwaysAllow": []
+        },
+        "tavily": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "tavily-mcp"
+            ],
+            "disabled": "${TAVILY_MCP_SERVER_DISABLED}",
+            "env": {
+                "TAVILY_MCP_API_KEY": "${TAVILY_API_KEY}"
+            }
+        },
+        "mongodb": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "mcp-mongo-server",
+                "${MCP_MONGODB_URI}"
+            ],
+            "disabled": "${MONGODB_MCP_SERVER_DISABLED}",
+            "env": {
+                "MONGODB_MCP_URI": "${MCP_MONGODB_URI}",
+                "MONGODB_MCP_READONLY": "${MCP_MONGODB_READONLY}"
+            }
+        },
+        "redis": {
+            "type": "stdio",
+            "command": "uvx",
+            "args": [
+                "--from",
+                "redis-mcp-server@latest",
+                "redis-mcp-server",
+                "--url",
+                "redis://localhost:6379/0"
+            ],
+            "disabled": "${REDIS_MCP_SERVER_DISABLED}",
+            "env": {
+                "REDIS_MCP_HOST": "${REDIS_HOST}",
+                "REDIS_MCP_PORT": "${REDIS_PORT}",
+                "REDIS_MCP_PWD": "${REDIS_PWD}"
+            }
+        },
+        "slack": {
+            "command": "go",
+            "args": [
+                "run",
+                "/path/to/slack-mcp-server/mcp/mcp-server.go",
+                "--transport",
+                "stdio"
+            ],
+            "disabled": "${SLACK_MCP_SERVER_DISABLED}",
+            "env": {
+                "SLACK_MCP_XOXC_TOKEN": "${SLACK_MCP_XOXC_TOKEN}",
+                "SLACK_MCP_LOG_LEVEL": "${SLACK_MCP_LOG_LEVEL}"
+            }
+        },
+        "docker-mcp": {
+            "command": "uvx",
+            "args": [
+                "docker-mcp"
+            ],
+            "disabled": "${DOCKER_MCP_MCP_SERVER_DISABLED}"
+        },
+        "postgres": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-postgres",
+                "postgresql://${PG_USER}:${PG_PASSWORD}@${PG_HOST}:${PG_PORT}/${PG_DATABASE}"
+            ],
+            "disabled": "${POSTGRES_MCP_SERVER_DISABLED}",
+            "env": {
+                "POSTGRES_MCP_HOST": "${PG_HOST}",
+                "POSTGRES_MCP_PORT": "${PG_PORT}",
+                "POSTGRES_MCP_USER": "${PG_USER}",
+                "POSTGRES_MCP_PASSWORD": "${PG_PASSWORD}",
+                "POSTGRES_MCP_DATABASE": "${PG_DATABASE}"
+            }
+        },
+        "sqlite": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-sqlite",
+                "${SQLITE_DB_PATH}"
+            ],
+            "disabled": "${SQLITE_MCP_SERVER_DISABLED}",
+            "env": {
+                "SQLITE_MCP_DB_PATH": "${SQLITE_DB_PATH}"
+            }
+        },
+        "gdrive": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-gdrive"
+            ],
+            "disabled": "${GDRIVE_MCP_SERVER_DISABLED}",
+            "env": {
+                "GDRIVE_MCP_CREDENTIALS": "${GDRIVE_CREDENTIALS}",
+                "GDRIVE_MCP_ROOT_FOLDER_ID": "${GDRIVE_ROOT_FOLDER_ID}"
+            }
+        },
+        "git-official": {
+            "type": "stdio",
+            "command": "uvx",
+            "args": [
+                "mcp-server-git",
+                "--repository",
+                "${GIT_OFFICIAL_REPOSITORY_PATH}"
+            ],
+            "disabled": "${GIT_OFFICIAL_MCP_SERVER_DISABLED}"
+        },
+        "gitlab": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-gitlab"
+            ],
+            "disabled": "${GITLAB_MCP_SERVER_DISABLED}",
+            "env": {
+                "GITLAB_MCP_URL": "${GITLAB_URL}",
+                "GITLAB_MCP_TOKEN": "${GITLAB_TOKEN}",
+                "GITLAB_MCP_PROJECT_ID": "${GITLAB_PROJECT_ID}"
+            }
+        },
+        "sentry": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-sentry"
+            ],
+            "disabled": "${SENTRY_MCP_SERVER_DISABLED}",
+            "env": {
+                "SENTRY_MCP_URL": "${SENTRY_URL}",
+                "SENTRY_MCP_AUTH_TOKEN": "${SENTRY_AUTH_TOKEN}",
+                "SENTRY_MCP_PROJECT": "${SENTRY_PROJECT}"
+            }
+        },
+        "context7": {
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "mcp-cache",
+                "npx",
+                "-y",
+                "@upstash/context7-mcp@latest",
+                "--api-key",
+                "${CONTEXT7_API_KEY}"
+            ],
+            "disabled": "${CONTEXT7_MCP_SERVER_DISABLED}",
+            "env": {
+                "CONTEXT7_MCP_CACHE_DIR": "/home/vscode/.cline/cache",
+                "CONTEXT7_MCP_MAX_TOKENS": "25000",
+                "CONTEXT7_MCP_TTL": "7200",
+                "CONTEXT7_MCP_ENABLE_INDEXING": "true",
+                "CONTEXT7_MCP_COMPRESSION": "true",
+                "CONTEXT7_MCP_API_KEY": "${CONTEXT7_API_KEY}"
+            }
+        },
+        "ollama": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-ollama"
+            ],
+            "disabled": "${OLLAMA_MCP_SERVER_DISABLED}",
+            "env": {
+                "OLLAMA_MCP_API_BASE_URL": "${OLLAMA_API_BASE_URL}",
+                "OLLAMA_MCP_MODEL": "${OLLAMA_MODEL}"
+            }
+        },
+        "open-webui": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-open-webui"
+            ],
+            "disabled": "${OPEN_WEBUI_MCP_SERVER_DISABLED}",
+            "env": {
+                "OPEN_WEBUI_MCP_API_BASE_URL": "${OPEN_WEBUI_API_BASE_URL}",
+                "OPEN_WEBUI_MCP_API_KEY": "${OPEN_WEBUI_API_KEY}"
+            }
+        },
+        "vector-search": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-vector-search"
+            ],
+            "disabled": "${VECTOR_SEARCH_MCP_SERVER_DISABLED}",
+            "env": {
+                "VECTOR_SEARCH_MCP_EMBEDDING_MODEL": "${VECTOR_SEARCH_EMBEDDING_MODEL}",
+                "VECTOR_SEARCH_MCP_INDEX_PATH": "${VECTOR_SEARCH_INDEX_PATH}"
+            }
+        }
+    }
+}

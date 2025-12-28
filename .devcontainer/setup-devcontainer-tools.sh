@@ -45,6 +45,19 @@ sudo chmod +x /usr/local/bin/argocd
 
 echo "Argo CD installation complete."
 
+# Check for local config directory and use it if available
+echo "Checking for local MCP config directory..."
+LOCAL_MCP_CONFIG_DIR="$HOME/Code/devcontainers/config/env"
+if [ -d "$LOCAL_MCP_CONFIG_DIR" ]; then
+    echo "Found local MCP config directory: $LOCAL_MCP_CONFIG_DIR"
+    
+    # Check for cline_mcp_config.env
+    if [ -f "$LOCAL_MCP_CONFIG_DIR/cline_mcp_config.env" ]; then
+        echo "Using cline_mcp_config.env from local config directory"
+        cp -f "$LOCAL_MCP_CONFIG_DIR/cline_mcp_config.env" /workspaces/inkorporated/.devcontainer/cline_mcp_config.env
+    fi
+fi
+
 # Check for MacOS-specific config directory and use it if available
 echo "Checking for MacOS-specific config directory..."
 MACOS_CONFIG_DIR="$HOME/Code/config/vscode/env"

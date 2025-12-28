@@ -30,3 +30,4 @@
 - Include examples of how to enable MCP servers by setting MCP_SERVERS_DISABLED=false
 - Document the migration from JSON-based disabled flag to environment-based configuration
 - Ensure all MCP server documentation reflects the new configuration approach
+- **FIXED: MCP settings schema issue resolved - removed deprecated "disabled": true flags**

@@ -42,6 +42,11 @@
             "type": "volume",
             "source": "mcp-cache-volume",
             "target": "/home/vscode/.cline/cache"
+        },
+        {
+            "type": "bind",
+            "source": "${localEnv:HOME}/Code/devcontainers/config/env",
+            "target": "/home/vscode/.config/cline/mcp"
         }
     ],
     "remoteEnv": {

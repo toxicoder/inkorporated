@@ -77,6 +77,17 @@ if [ -d "$MACOS_CONFIG_DIR" ]; then
     fi
 fi
 
+# Ensure the MCP config environment file exists and has proper permissions
+echo "Ensuring MCP config environment file exists with proper permissions..."
+MCP_CONFIG_FILE="/home/vscode/.config/cline/mcp/cline_mcp_config.env"
+if [ -f "/workspaces/inkorporated/.devcontainer/cline_mcp_config.env" ]; then
+    # Copy the config file to the proper location
+    mkdir -p "$(dirname "$MCP_CONFIG_FILE")"
+    cp -f "/workspaces/inkorporated/.devcontainer/cline_mcp_config.env" "$MCP_CONFIG_FILE"
+    chmod 600 "$MCP_CONFIG_FILE"
+    echo "MCP config file copied to $MCP_CONFIG_FILE with 600 permissions"
+fi
+
 echo "Copying Cline MCP settings file..."
 mkdir -p /home/vscode/.vscode-server/data/User/globalStorage/saoudrizwan.claude-dev/settings/
 cp -f /workspaces/inkorporated/.devcontainer/cline_mcp_settings.json /home/vscode/.vscode-server/data/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json

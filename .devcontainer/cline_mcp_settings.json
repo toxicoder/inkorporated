@@ -19,14 +19,10 @@
             }
         },
         "brave-search": {
-            "command": "docker",
+            "command": "npx",
             "args": [
-                "run",
-                "-i",
-                "--rm",
-                "-e",
-                "BRAVE_API_KEY",
-                "docker.io/mcp/brave-search"
+                "-y",
+                "brave-search"
             ],
             "env": {
                 "BRAVE_API_KEY": "${BRAVE_API_KEY}"

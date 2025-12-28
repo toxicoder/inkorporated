@@ -1,30 +1,46 @@
-# Devcontainer Configuration
+# Devcontainer MCP Environment Configuration
 
-This directory contains configuration files for the development container environment.
+This directory contains configuration files and scripts for managing MCP (Model Context Protocol) environment variables in the devcontainer environment.
 
-## Persistent Volumes
+## Problem Solved
 
-### MCP Cache Volume
-The context7 MCP server uses a persistent volume for caching to maintain cache data between container instances.
+The original devcontainer configuration mounted MCP configuration files but didn't ensure that environment variables were loaded early in the container lifecycle. This meant that MCP servers might not have access to required environment variables when they started.
 
-**Volume Configuration:**
-- Volume name: `mcp-cache-volume`
-- Mount path: `/home/vscode/.cline/cache`
-- This volume persists data even when the container is stopped or removed
+## Solution Implemented
 
-**Configuration Details:**
-The persistent volume is defined in `.devcontainer/devcontainer.json`:
-```json
-{
-    "type": "volume",
-    "source": "mcp-cache-volume",
-    "target": "/home/vscode/.cline/cache"
-}
+1. **Environment Loader Script**: Created `load-mcp-env.sh` that sources MCP environment variables early
+2. **Shell Integration**: Added automatic loading to both bash and zsh shell initialization files
+3. **Setup Script Enhancement**: Updated `setup-devcontainer-tools.sh` to ensure proper file placement and permissions
+4. **Documentation**: Added clear documentation about the configuration
+
+## Key Files
+
+- `load-mcp-env.sh` - Main script to load MCP environment variables
+- `.bashrc` - Modified to source the loader script for bash
+- `.zshrc` - Modified to source the loader script for zsh
+- `setup-devcontainer-tools.sh` - Enhanced to handle MCP config file properly
+- `devcontainer-config.env.example` - Updated with configuration documentation
+
+## How It Works
+
+1. When the devcontainer starts, the `setup-devcontainer-tools.sh` script runs
+2. It copies the MCP config file to the proper location with correct permissions
+3. When bash or zsh shells start, they automatically source the loader script
+4. The loader script sources the MCP environment file, making variables available to MCP servers
+
+## Usage
+
+1. Place your MCP environment variables in `.devcontainer/cline_mcp_config.env`
+2. The environment variables will be automatically loaded for all shell sessions
+3. MCP servers will have access to these variables when they start
+
+## Testing
+
+You can test the environment loading with:
+```bash
+source /home/vscode/.devcontainer/load-mcp-env.sh
 ```
 
-The context7 MCP server is configured to use this path for its cache directory in `cline_mcp_settings.json`:
-```json
-"CONTEXT7_CACHE_DIR": "/home/vscode/.cline/cache"
-```
-
-This ensures that cached data, including documentation and code examples, persists between development sessions.
+Or run the test script:
+```bash
+/home/vscode/.devcontainer/test-env-loading.sh

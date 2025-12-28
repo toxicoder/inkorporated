@@ -10,7 +10,6 @@
 /.env
 /.env.local
 /.env.*.local
-/cline_mcp_config.env
 /devcontainer-config.env
 
 # OS generated files

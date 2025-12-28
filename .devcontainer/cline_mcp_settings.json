@@ -17,6 +17,20 @@
                 "CONTEXT7_COMPRESSION": "true",
                 "CONTEXT7_API_KEY": "${CONTEXT7_MCP_API_KEY}"
             }
+        },
+        "brave-search": {
+            "command": "docker",
+            "args": [
+                "run",
+                "-i",
+                "--rm",
+                "-e",
+                "BRAVE_API_KEY",
+                "docker.io/mcp/brave-search"
+            ],
+            "env": {
+                "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+            }
         }
     }
 }

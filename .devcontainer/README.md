@@ -31,17 +31,21 @@ The original devcontainer configuration mounted MCP configuration files but didn
 
 ## Usage
 
-1. Place your MCP environment variables in `.devcontainer/cline_mcp_config.env`
+1. Place your MCP environment variables in `.devcontainer/cline_mcp_config.env` or `~/Code/devcontainers/config/env/.env`
 2. The environment variables will be automatically loaded for all shell sessions
 3. MCP servers will have access to these variables when they start
+
+**Note:** If you place your environment variables in `~/Code/devcontainers/config/env/.env` on your local system, the devcontainer will automatically pull them in and make them available to MCP servers.
 
 ## Testing
 
 You can test the environment loading with:
+
 ```bash
 source /home/vscode/.devcontainer/load-mcp-env.sh
 ```
 
 Or run the test script:
+
 ```bash
 /home/vscode/.devcontainer/test-env-loading.sh

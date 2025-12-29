@@ -88,11 +88,17 @@ if [ -d "$LOCAL_MCP_CONFIG_DIR" ]; then
         echo "Using cline_mcp_config.env from local config directory"
         cp -f "$LOCAL_MCP_CONFIG_DIR/cline_mcp_config.env" /workspaces/inkorporated/.devcontainer/cline_mcp_config.env
     fi
-    
+
     # Check for .env.example (now in devcontainer directory)
     if [ -f "$LOCAL_MCP_CONFIG_DIR/.env.example" ]; then
         echo "Using .env.example from local config directory"
         cp -f "$LOCAL_MCP_CONFIG_DIR/.env.example" /workspaces/inkorporated/.devcontainer/.env.example
+    fi
+
+    # Check for .env file
+    if [ -f "$LOCAL_MCP_CONFIG_DIR/.env" ]; then
+        echo "Using .env from local config directory"
+        cp -f "$LOCAL_MCP_CONFIG_DIR/.env" /workspaces/inkorporated/.devcontainer/cline_mcp_config.env
     fi
 fi
 

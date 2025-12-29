@@ -11,6 +11,7 @@
 /.env.local
 /.env.*.local
 /devcontainer-config.env
+.devcontainer/.env
 
 # OS generated files
 .DS_Store

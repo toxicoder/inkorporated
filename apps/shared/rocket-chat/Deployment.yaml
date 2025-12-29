@@ -24,7 +24,7 @@ spec:
             - name: PORT
               value: "3000"
             - name: ROOT_URL
-              value: "https://chat.$(DOMAIN_BASE)"
+              value: "https://chat.${DOMAIN_BASE}"
             - name: MONGO_URL
               value: "mongodb://rocketchat:rocketchatpassword@mongodb.mongodb.svc.cluster.local:27017/rocketchat"
             - name: MONGO_OPLOG_URL
@@ -52,39 +52,3 @@ spec:
           persistentVolumeClaim:
             claimName: rocketchat-pvc
       terminationGracePeriodSeconds: 60
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: rocketchat
-  namespace: rocketchat
-spec:
-  selector:
-    app: rocketchat
-  ports:
-    - port: 80
-      targetPort: 3000
-  type: ClusterIP
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: rocketchat-pvc
-  namespace: rocketchat
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 20Gi
----
-apiVersion: policy/v1
-kind: PodDisruptionBudget
-metadata:
-  name: rocketchat-pdb
-  namespace: rocketchat
-spec:
-  minAvailable: 2
-  selector:
-    matchLabels:
-      app: rocketchat

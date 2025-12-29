@@ -9,7 +9,7 @@ metadata:
     traefik.ingress.kubernetes.io/middleware: "surfsense-forward-auth@kubernetescrd"
 spec:
   rules:
-  - host: surfsense.{{ .Env.DOMAIN_BASE }}
+  - host: surfsense.${DOMAIN_BASE}
     http:
       paths:
       - path: /

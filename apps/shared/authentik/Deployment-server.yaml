@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authentik-server
+  namespace: authentik
+  labels:
+    app: authentik-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: authentik-server
+  template:
+    metadata:
+      labels:
+        app: authentik-server
+    spec:
+      containers:
+        - name: server
+          image: ghcr.io/goauthentik/server:2024.12.1
+          ports:
+            - containerPort: 9000
+              name: http
+          env:
+            - name: AUTHENTIK_POSTGRESQL__HOST
+              value: "postgres-ha-rw.authentik.svc.cluster.local"
+            - name: AUTHENTIK_POSTGRESQL__PORT
+              value: "5432"
+            - name: AUTHENTIK_POSTGRESQL__NAME
+              value: "authentik"
+            - name: AUTHENTIK_POSTGRESQL__USER
+              valueFrom:
+                secretKeyRef:
+                  name: authentik-postgres
+                  key: username
+            - name: AUTHENTIK_POSTGRESQL__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: authentik-postgres
+                  key: password
+            - name: AUTHENTIK_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: authentik-secret
+                  key: secret-key
+            - name: AUTHENTIK_EMAIL__HOST
+              value: "localhost"
+            - name: AUTHENTIK_EMAIL__PORT
+              value: "25"
+            - name: AUTHENTIK_EMAIL__USE_TLS
+              value: "false"
+            - name: AUTHENTIK_EMAIL__USE_SSL
+              value: "false"
+            - name: AUTHENTIK_EMAIL__USERNAME
+              value: ""
+            - name: AUTHENTIK_EMAIL__PASSWORD
+              value: ""
+            - name: AUTHENTIK_EMAIL__FROM
+              value: "${DOMAIN_BASE}"
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+            limits:
+              cpu: 1000m
+              memory: 2Gi
+      terminationGracePeriodSeconds: 60

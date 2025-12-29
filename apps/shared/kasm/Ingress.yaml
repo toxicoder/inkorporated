@@ -9,7 +9,7 @@ metadata:
     traefik.ingress.kubernetes.io/middleware: "kasm-forward-auth@kubernetescrd"
 spec:
   rules:
-  - host: kasm.{{ .Env.DOMAIN_BASE }}
+  - host: kasm.${DOMAIN_BASE}
     http:
       paths:
       - path: /

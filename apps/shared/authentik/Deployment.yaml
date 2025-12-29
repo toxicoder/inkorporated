@@ -56,7 +56,7 @@ spec:
             - name: AUTHENTIK_EMAIL__PASSWORD
               value: ""
             - name: AUTHENTIK_EMAIL__FROM
-              value: "{{ .Env.DOMAIN_BASE }}"
+              value: "${DOMAIN_BASE}"
           resources:
             requests:
               cpu: 500m

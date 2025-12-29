@@ -9,7 +9,7 @@ metadata:
     traefik.ingress.kubernetes.io/middleware: "homeassistant-forward-auth@kubernetescrd"
 spec:
   rules:
-  - host: homeassistant.{{ .Env.DOMAIN_BASE }}
+  - host: homeassistant.${DOMAIN_BASE}
     http:
       paths:
       - path: /

@@ -1,0 +1,26 @@
+---
+- name: Install k3s on master node
+  block:
+    - name: Download and install k3s
+      ansible.builtin.command:
+        cmd: curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
+        creates: /usr/local/bin/k3s
+
+    - name: Start and enable k3s service
+      ansible.builtin.systemd:
+        name: k3s
+        state: started
+        enabled: yes
+
+- name: Install k3s on worker node
+  block:
+    - name: Download and install k3s
+      ansible.builtin.command:
+        cmd: curl -sfL https://get.k3s.io | sh -s - --server {{ k3s_server }} --token {{ k3s_token }}
+        creates: /usr/local/bin/k3s
+
+    - name: Start and enable k3s service
+      ansible.builtin.systemd:
+        name: k3s
+        state: started
+        enabled: yes

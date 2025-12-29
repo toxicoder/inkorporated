@@ -9,7 +9,7 @@ metadata:
     traefik.ingress.kubernetes.io/middleware: "coder-forward-auth@kubernetescrd"
 spec:
   rules:
-  - host: coder.{{ .Env.DOMAIN_BASE }}
+  - host: coder.${DOMAIN_BASE}
     http:
       paths:
       - path: /

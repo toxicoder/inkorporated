@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infrastructure-staging
+  namespace: argocd
+spec:
+  source:
+    repoURL: https://github.com/toxicoder/inkorporated.git
+    path: infrastructure/staging
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default

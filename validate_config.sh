@@ -27,8 +27,9 @@ PERMS=$(stat -c "%a" .devcontainer/.env 2>/dev/null || stat -f "%p" .devcontaine
 if [[ $PERMS -le 600 ]]; then
     echo "✅ Configuration file has secure permissions ($PERMS)"
 else
-    echo "⚠️  Warning: Configuration file permissions ($PERMS) may be too permissive"
-    echo "   Consider running: chmod 600 .devcontainer/.env"
+    echo "❌ Error: Configuration file permissions ($PERMS) are too permissive"
+    echo "   Please run: chmod 600 .devcontainer/.env"
+    exit 1
 fi
 
 # Check for common required variables

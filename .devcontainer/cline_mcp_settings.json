@@ -7,7 +7,7 @@
                 "-y",
                 "@upstash/context7-mcp@latest",
                 "--api-key",
-                "${CONTEXT7_MCP_API_KEY}"
+                "${CONTEXT7_API_KEY}"
             ],
             "env": {
                 "CONTEXT7_CACHE_DIR": "/home/vscode/.cline/cache",
@@ -15,7 +15,7 @@
                 "CONTEXT7_TTL": "7200",
                 "CONTEXT7_ENABLE_INDEXING": "true",
                 "CONTEXT7_COMPRESSION": "true",
-                "CONTEXT7_API_KEY": "${CONTEXT7_MCP_API_KEY}"
+                "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
             }
         },
         "brave-search": {

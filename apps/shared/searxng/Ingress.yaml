@@ -9,7 +9,7 @@ metadata:
     traefik.ingress.kubernetes.io/middleware: "searxng-forward-auth@kubernetescrd"
 spec:
   rules:
-  - host: searxng.{{ .Env.DOMAIN_BASE }}
+  - host: searxng.${DOMAIN_BASE}
     http:
       paths:
       - path: /

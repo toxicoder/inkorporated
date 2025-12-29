@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "echo \"Starting Inkorporated infrastructure\""
+    "start": "echo \"Starting Inkorporated infrastructure\"",
+    "prepare": "husky install"
   },
   "keywords": [
     "homelab",
@@ -18,5 +19,11 @@
   "license": "MIT",
   "dependencies": {
     "brave-search": "^0.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "husky": "^9.1.7",
+    "prettier": "^3.7.4",
+    "shellcheck": "^4.1.0"
   }
 }

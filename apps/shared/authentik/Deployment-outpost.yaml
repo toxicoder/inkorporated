@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authentik-outpost
+  namespace: authentik
+  labels:
+    app: authentik-outpost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authentik-outpost
+  template:
+    metadata:
+      labels:
+        app: authentik-outpost
+    spec:
+      containers:
+        - name: outpost
+          image: ghcr.io/goauthentik/outpost:2024.12.1
+          ports:
+            - containerPort: 9000
+              name: http
+          env:
+            - name: AUTHENTIK_HOST
+              value: "http://authentik-server.authentik.svc.cluster.local:9000"
+            - name: AUTHENTIK_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: authentik-outpost
+                  key: token
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      terminationGracePeriodSeconds: 60

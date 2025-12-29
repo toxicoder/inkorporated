@@ -9,7 +9,7 @@ metadata:
     traefik.ingress.kubernetes.io/middleware: "perplexica-forward-auth@kubernetescrd"
 spec:
   rules:
-  - host: perplexica.{{ .Env.DOMAIN_BASE }}
+  - host: perplexica.${DOMAIN_BASE}
     http:
       paths:
       - path: /

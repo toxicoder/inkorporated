@@ -9,7 +9,7 @@ metadata:
     traefik.ingress.kubernetes.io/middleware: "gitea-forward-auth@kubernetescrd"
 spec:
   rules:
-  - host: gitea.{{ .Env.DOMAIN_BASE }}
+  - host: gitea.${DOMAIN_BASE}
     http:
       paths:
       - path: /

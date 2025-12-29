@@ -22,7 +22,7 @@ spec:
         - containerPort: 3000
         env:
         - name: CODER_ACCESS_URL
-          value: "https://coder.{{ .Env.DOMAIN_BASE }}"
+          value: "https://coder.${DOMAIN_BASE}"
         - name: CODER_PG_CONNECTION_URL
           value: "postgresql://coder:password@postgres-ha-rw.coder.svc:5432/coder"
         resources:

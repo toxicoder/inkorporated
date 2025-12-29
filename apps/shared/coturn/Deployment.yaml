@@ -38,7 +38,7 @@ spec:
             - --listening-port=3478
             - --tls-listening-port=5349
             - --external-ip=$(POD_IP)
-            - --realm={{ .Env.DOMAIN_BASE }}
+            - --realm=${DOMAIN_BASE}
             - --auth-secret=$(TURN_SECRET)
             - --no-cli
             - --no-tcp-relay

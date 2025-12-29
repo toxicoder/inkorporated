@@ -10,7 +10,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.middlewares: "open-webui-forward-auth@kubernetescrd"
 spec:
   rules:
-    - host: webui.{{ .Env.DOMAIN_BASE }}
+    - host: webui.${DOMAIN_BASE}
       http:
         paths:
           - path: /

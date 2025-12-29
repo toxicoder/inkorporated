@@ -9,7 +9,7 @@ metadata:
     traefik.ingress.kubernetes.io/middleware: "docling-forward-auth@kubernetescrd"
 spec:
   rules:
-  - host: docling.{{ .Env.DOMAIN_BASE }}
+  - host: docling.${DOMAIN_BASE}
     http:
       paths:
       - path: /

@@ -24,7 +24,7 @@ spec:
             - name: PORT
               value: "8080"
             - name: BASE_URL
-              value: "https://workadventure.$(DOMAIN_BASE)"
+              value: "https://workadventure.${DOMAIN_BASE}"
             - name: POSTGRES_HOST
               value: "postgres-ha-rw.workadventure.svc.cluster.local"
             - name: POSTGRES_PORT
@@ -42,11 +42,11 @@ spec:
                   name: workadventure-postgres
                   key: password
             - name: JITSIMEET_URL
-              value: "https://jitsi.$(DOMAIN_BASE)"
+              value: "https://jitsi.${DOMAIN_BASE}"
             - name: TURN_URL
               value: "turn:coturn.workadventure.svc.cluster.local:3478"
             - name: OIDC_ISSUER
-              value: "https://authentik.$(DOMAIN_BASE)/application/o/workadventure/"
+              value: "https://authentik.${DOMAIN_BASE}/application/o/workadventure/"
             - name: OIDC_CLIENT_ID
               value: "workadventure"
             - name: OIDC_CLIENT_SECRET

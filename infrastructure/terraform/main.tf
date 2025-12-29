@@ -1,61 +1,41 @@
-# Terraform Main Configuration
-# This file orchestrates the overall infrastructure provisioning
-
 terraform {
-  required_version = ">= 1.0"
   required_providers {
     proxmox = {
-      source  = "telmate/proxmox"
-      version = "2.9.14"
+      source = "TelsaLabs/proxmox"
+      version = "0.6.0"
     }
   }
 }
 
-# Provider configuration
 provider "proxmox" {
-  pm_api_url      = var.proxmox_api_url
-  pm_api_token_id = var.proxmox_api_token_id
-  pm_api_token_secret = var.proxmox_api_token_secret
-  pm_tls_insecure = var.proxmox_tls_insecure
+  pm_api_url = var.proxmox_api_url
+  pm_api_token_id = var.proxmox_token_id
+  pm_api_token_secret = var.proxmox_token_secret
+  pm_insecure = true
 }
 
-# Environment variable for deployment
-variable "environment" {
-  description = "Deployment environment (dev, staging, autopush, canary, prod)"
+variable "proxmox_token_id" {
+  description = "Proxmox API token ID"
   type        = string
-  default     = "dev"
 }
 
-# Import existing configuration or create new one
-module "network_config" {
-  source = "./modules/network"
-  network_cidr = var.network_cidr
-  network_gateway = var.network_gateway
-  network_dns = var.network_dns
+variable "proxmox_token_secret" {
+  description = "Proxmox API token secret"
+  type        = string
 }
 
-# VM provisioning based on selected profile
-module "vm_provisioning" {
+module "k3s_master" {
   source = "./modules/vm"
-  
-  # Common variables
-  vm_memory = var.vm_memory
-  vm_cores = var.vm_cores
-  vm_sockets = var.vm_sockets
-  vm_disk_size = var.vm_disk_size
-  vm_network_bridge = var.vm_network_bridge
-  vm_iso_image = var.vm_iso_image
-  
-  # Profile-specific variables
-  control_plane_count = var.control_plane_count
-  worker_node_count = var.worker_node_count
-  
-  # VM naming and prefixes
-  vm_name_prefix = var.vm_name_prefix
-  vm_template_name = var.vm_template_name
-  
-  # Network configuration
-  network_cidr = module.network_config.network_cidr
-  network_gateway = module.network_config.network_gateway
-  network_dns = module.network_config.network_dns
+
+  name        = "k3s-master"
+  target_node = "proxmox-node1"
+  vmid        = 100
+  cores       = 4
+  memory      = 4096
+  os          = "cloud-init"
+  disk_size   = "32G"
+  network_model = "virtio"
+  network_bridge = "vmbr0"
+  hostname    = "k3s-master"
+  ssh_keys    = var.ssh_keys
 }

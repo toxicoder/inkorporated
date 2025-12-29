@@ -9,7 +9,7 @@ metadata:
     traefik.ingress.kubernetes.io/middleware: "homebox-forward-auth@kubernetescrd"
 spec:
   rules:
-  - host: homebox.{{ .Env.DOMAIN_BASE }}
+  - host: homebox.${DOMAIN_BASE}
     http:
       paths:
       - path: /

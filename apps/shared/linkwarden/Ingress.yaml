@@ -9,7 +9,7 @@ metadata:
     traefik.ingress.kubernetes.io/middleware: "linkwarden-forward-auth@kubernetescrd"
 spec:
   rules:
-  - host: linkwarden.{{ .Env.DOMAIN_BASE }}
+  - host: linkwarden.${DOMAIN_BASE}
     http:
       paths:
       - path: /

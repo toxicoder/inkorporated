@@ -9,7 +9,7 @@ metadata:
     traefik.ingress.kubernetes.io/middleware: "appflowy-forward-auth@kubernetescrd"
 spec:
   rules:
-  - host: appflowy.{{ .Env.DOMAIN_BASE }}
+  - host: appflowy.${DOMAIN_BASE}
     http:
       paths:
       - path: /

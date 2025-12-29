@@ -26,7 +26,7 @@ spec:
             - name: BASE_PATH
               value: "/"
             - name: DOMAIN_BASE
-              value: "{{ .Env.DOMAIN_BASE }}"
+              value: "${DOMAIN_BASE}"
           resources:
             requests:
               cpu: 100m

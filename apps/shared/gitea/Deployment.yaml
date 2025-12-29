@@ -23,9 +23,9 @@ spec:
         - containerPort: 22
         env:
         - name: GITEA__server__DOMAIN
-          value: "gitea.{{ .Env.DOMAIN_BASE }}"
+          value: "gitea.${DOMAIN_BASE}"
         - name: GITEA__server__ROOT_URL
-          value: "https://gitea.{{ .Env.DOMAIN_BASE }}"
+          value: "https://gitea.${DOMAIN_BASE}"
         - name: GITEA__database__DB_TYPE
           value: "postgres"
         - name: GITEA__database__HOST

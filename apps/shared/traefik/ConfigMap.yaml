@@ -15,9 +15,9 @@ data:
             enabled: true
             certResolver: myresolver
             domains:
-              - main: "{{ .Env.DOMAIN_BASE }}"
+              - main: "${DOMAIN_BASE}"
                 sans:
-                  - "*.{{ .Env.DOMAIN_BASE }}"
+                  - "*.${DOMAIN_BASE}"
     providers:
       kubernetesIngress:
         enabled: true

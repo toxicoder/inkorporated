@@ -43,7 +43,7 @@ The server responded with an error asking for the BRAVE_API_KEY, which confirms:
 ## Requirements
 To use the brave-search MCP server, you need:
 1. A Brave Search API key (get one at https://brave.com/search/api/)
-2. Set the `BRAVE_API_KEY` environment variable in your `cline_mcp_config.env` file
+2. Set the `BRAVE_API_KEY` environment variable in your `.devcontainer/.env` file
 
 ## Features Available
 The MCP server provides the following tools:

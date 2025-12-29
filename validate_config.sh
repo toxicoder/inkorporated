@@ -5,17 +5,17 @@ echo " validating Cline MCP configuration..."
 echo "================================================"
 
 # Check if config file exists
-if [ ! -f "cline_mcp_config.env" ]; then
-    echo "❌ Error: Configuration file 'cline_mcp_config.env' not found!"
-    echo "   Please create it by copying 'cline_mcp_config.example'"
+if [ ! -f ".devcontainer/.env" ]; then
+    echo "❌ Error: Configuration file '.devcontainer/.env' not found!"
+    echo "   Please create it by copying '.devcontainer/.env.example'"
     echo "   and filling in your actual values."
     exit 1
 fi
 
-echo "✅ Configuration file found: cline_mcp_config.env"
+echo "✅ Configuration file found: .devcontainer/.env"
 
 # Check file permissions
-if [ -r "cline_mcp_config.env" ]; then
+if [ -r ".devcontainer/.env" ]; then
     echo "✅ Configuration file is readable"
 else
     echo "❌ Error: Configuration file is not readable"
@@ -23,12 +23,12 @@ else
 fi
 
 # Check if file has proper permissions (should be 600 or more restrictive)
-PERMS=$(stat -c "%a" cline_mcp_config.env 2>/dev/null || stat -f "%p" cline_mcp_config.env 2>/dev/null | cut -c 4-6)
+PERMS=$(stat -c "%a" .devcontainer/.env 2>/dev/null || stat -f "%p" .devcontainer/.env 2>/dev/null | cut -c 4-6)
 if [[ $PERMS -le 600 ]]; then
     echo "✅ Configuration file has secure permissions ($PERMS)"
 else
     echo "⚠️  Warning: Configuration file permissions ($PERMS) may be too permissive"
-    echo "   Consider running: chmod 600 cline_mcp_config.env"
+    echo "   Consider running: chmod 600 .devcontainer/.env"
 fi
 
 # Check for common required variables
@@ -44,9 +44,9 @@ REQUIRED_VARS=(
 echo ""
 echo "Checking for required configuration variables..."
 for var in "${REQUIRED_VARS[@]}"; do
-    if grep -q "^$var=" cline_mcp_config.env 2>/dev/null; then
+    if grep -q "^$var=" .devcontainer/.env 2>/dev/null; then
         # Check if variable is set (not empty)
-        VALUE=$(grep "^$var=" cline_mcp_config.env | cut -d'=' -f2-)
+        VALUE=$(grep "^$var=" .devcontainer/.env | cut -d'=' -f2-)
         if [ -n "$VALUE" ] && [ "$VALUE" != "your_${var,,}_here" ] && [ "$VALUE" != "YOUR_${var}_HERE" ]; then
             echo "✅ $var is configured"
         else
@@ -63,5 +63,5 @@ echo "Configuration validation complete!"
 echo ""
 echo "Next steps:"
 echo "1. Make sure all sensitive values are properly set"
-echo "2. Set secure file permissions: chmod 600 cline_mcp_config.env"
-echo "3. Load configuration: export \$(grep -v '^#' cline_mcp_config.env | xargs)"
+echo "2. Set secure file permissions: chmod 600 .devcontainer/.env"
+echo "3. Load configuration: export \$(grep -v '^#' .devcontainer/.env | xargs)"

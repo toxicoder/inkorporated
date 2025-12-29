@@ -4,14 +4,14 @@
 echo "Running Configuration Validation Tests..."
 
 # Test 1: Check config file exists
-if [ ! -f "cline_mcp_config.env" ]; then
+if [ ! -f ".devcontainer/.env" ]; then
     echo "❌ FAIL: Configuration file not found"
     exit 1
 fi
 echo "✅ PASS: Configuration file exists"
 
 # Test 2: Check file permissions
-PERMS=$(stat -c "%a" cline_mcp_config.env 2>/dev/null || stat -f "%p" cline_mcp_config.env 2>/dev/null | cut -c 4-6)
+PERMS=$(stat -c "%a" .devcontainer/.env 2>/dev/null || stat -f "%p" .devcontainer/.env 2>/dev/null | cut -c 4-6)
 if [[ $PERMS -le 600 ]]; then
     echo "✅ PASS: Configuration file has secure permissions ($PERMS)"
 else
@@ -30,8 +30,8 @@ REQUIRED_VARS=(
 )
 
 for var in "${REQUIRED_VARS[@]}"; do
-    if grep -q "^$var=" cline_mcp_config.env 2>/dev/null; then
-        VALUE=$(grep "^$var=" cline_mcp_config.env | cut -d'=' -f2-)
+    if grep -q "^$var=" .devcontainer/.env 2>/dev/null; then
+        VALUE=$(grep "^$var=" .devcontainer/.env | cut -d'=' -f2-)
         if [ -n "$VALUE" ] && [ "$VALUE" != "your_${var,,}_here" ] && [ "$VALUE" != "YOUR_${var}_HERE" ]; then
             echo "✅ PASS: $var is configured"
         else

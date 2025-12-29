@@ -12,14 +12,14 @@ This document describes the configuration management approach for Cline MCP serv
 - **Usage**: Version controlled, shared across environments
 
 ### 2. Configuration File
-- **File**: `cline_mcp_config.env` (example: `.devcontainer/.env.example`)
+- **File**: `.devcontainer/.env`
 - **Purpose**: Contains sensitive credentials and environment-specific settings
 - **Security**: Contains all sensitive data (tokens, passwords, keys)
 - **Usage**: NOT version controlled, environment-specific
 
 ### 3. Devcontainer Configuration File
 - **File**: `.devcontainer/devcontainer-config.env`
-- **Purpose**: Contains devcontainer-specific settings for mounting and symlinking (MCP configuration variables are in cline_mcp_config.env)
+- **Purpose**: Contains devcontainer-specific settings for mounting and symlinking (MCP configuration variables are in .devcontainer/.env)
 - **Usage**: Used by devcontainer to set up symlinked MCP settings at required paths
 
 ## Configuration Structure
@@ -51,16 +51,16 @@ MCP servers are now controlled via environment variables rather than JSON config
 ### 1. Setup Configuration
 ```bash
 # Copy the example configuration file
-cp cline_mcp_config.example cline_mcp_config.env
+cp .devcontainer/.env.example .devcontainer/.env
 
 # Edit the file with your actual values
-nano cline_mcp_config.env
+nano .devcontainer/.env
 ```
 
 ### 2. Load Configuration
 ```bash
 # Load environment variables from config file
-export $(grep -v '^#' cline_mcp_config.env | xargs)
+export $(grep -v '^#' .devcontainer/.env | xargs)
 
 # Or use a tool like dotenv to load in your application
 ```
@@ -68,16 +68,16 @@ export $(grep -v '^#' cline_mcp_config.env | xargs)
 ### 3. File Permissions
 ```bash
 # Set proper permissions for sensitive config file
-chmod 600 cline_mcp_config.env
+chmod 600 .devcontainer/.env
 ```
 
 ## Environment-Specific Configurations
 
 Create different configuration files for different environments:
 
-- `cline_mcp_config.dev.env` - Development environment
-- `cline_mcp_config.staging.env` - Staging environment  
-- `cline_mcp_config.prod.env` - Production environment
+- `.devcontainer/.env.dev` - Development environment
+- `.devcontainer/.env.staging` - Staging environment
+- `.devcontainer/.env.prod` - Production environment
 
 ## Devcontainer Setup
 
@@ -91,7 +91,7 @@ This is accomplished through the devcontainer configuration in `.devcontainer/` 
 
 ```javascript
 // Load environment variables
-require('dotenv').config({ path: 'cline_mcp_config.env' });
+require('dotenv').config({ path: '.devcontainer/.env' });
 
 // Access configuration values
 const githubToken = process.env.GH_TOKEN;
@@ -107,7 +107,7 @@ A simple validation script can be created to verify configuration:
 # validate_config.sh
 
 echo "Validating configuration..."
-if [ ! -f "cline_mcp_config.env" ]; then
+if [ ! -f ".devcontainer/.env" ]; then
     echo "Error: Configuration file not found!"
     exit 1
 fi
@@ -125,4 +125,4 @@ echo "Configuration validation complete."
 
 ## Integration with MCP Servers
 
-The configuration values from `cline_mcp_config.env` are automatically loaded into the environment when the MCP servers are started. The `cline_mcp_settings.json` file references these environment variables through variable substitution (e.g., `${GH_TOKEN}`). The devcontainer setup ensures that both `cline_mcp_config.env` and `cline_mcp_settings.json` are properly available within the development environment.
+The configuration values from `.devcontainer/.env` are automatically loaded into the environment when the MCP servers are started. The `cline_mcp_settings.json` file references these environment variables through variable substitution (e.g., `${GH_TOKEN}`). The devcontainer setup ensures that both `.devcontainer/.env` and `cline_mcp_settings.json` are properly available within the development environment.

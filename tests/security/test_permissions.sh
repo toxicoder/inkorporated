@@ -4,8 +4,8 @@
 echo "Running Security Permission Tests..."
 
 # Test configuration file permissions
-if [ -f "cline_mcp_config.env" ]; then
-    PERMS=$(stat -c "%a" cline_mcp_config.env 2>/dev/null || stat -f "%p" cline_mcp_config.env 2>/dev/null | cut -c 4-6)
+if [ -f ".devcontainer/.env" ]; then
+    PERMS=$(stat -c "%a" .devcontainer/.env 2>/dev/null || stat -f "%p" .devcontainer/.env 2>/dev/null | cut -c 4-6)
     if [[ $PERMS -le 600 ]]; then
         echo "✅ PASS: Configuration file permissions secure ($PERMS)"
     else
@@ -18,8 +18,8 @@ else
 fi
 
 # Test example config file permissions (should be readable)
-if [ -f "cline_mcp_config.example" ]; then
-    PERMS=$(stat -c "%a" cline_mcp_config.example 2>/dev/null || stat -f "%p" cline_mcp_config.example 2>/dev/null | cut -c 4-6)
+if [ -f ".devcontainer/.env.example" ]; then
+    PERMS=$(stat -c "%a" .devcontainer/.env.example 2>/dev/null || stat -f "%p" .devcontainer/.env.example 2>/dev/null | cut -c 4-6)
     if [[ $PERMS -ge 644 ]]; then
         echo "✅ PASS: Example configuration file permissions correct ($PERMS)"
     else

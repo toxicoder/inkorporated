@@ -35,8 +35,8 @@ All services follow a consistent deployment pattern:
 The project implements a centralized configuration management system that separates sensitive credentials from main settings:
 
 - **Main Settings File**: `cline_mcp_settings.json` - Contains server configurations and settings (no sensitive data)
-- **Configuration File**: `cline_mcp_config.env` - Contains sensitive credentials and environment-specific settings (not version controlled)
-- **Environment-Specific Configurations**: Different files for different environments (`dev.env`, `staging.env`, `prod.env`)
+- **Configuration File**: `.devcontainer/.env` - Contains sensitive credentials and environment-specific settings (not version controlled)
+- **Environment-Specific Configurations**: Different files for different environments (`.devcontainer/.env.dev`, `.devcontainer/.env.staging`, `.devcontainer/.env.prod`)
 
 ## Environment Structure
 

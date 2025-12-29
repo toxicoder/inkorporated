@@ -4,7 +4,7 @@
 echo "Running Environment Variable Tests..."
 
 # Test loading configuration
-if export $(grep -v '^#' cline_mcp_config.env | xargs) 2>/dev/null; then
+if export $(grep -v '^#' .devcontainer/.env | xargs) 2>/dev/null; then
     echo "✅ PASS: Configuration loaded successfully"
 else
     echo "❌ FAIL: Failed to load configuration"

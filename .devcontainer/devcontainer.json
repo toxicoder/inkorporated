@@ -46,12 +46,12 @@
                 "ms-vscode.remote-server",
                 "ms-vscode-remote.vscode-remote-extensionpack",
                 "ms-vscode.remote-explorer",
-                "ms-vscode.remote-repositories",
+                "ms-vscode-remote.remote-repositories",
                 "RobbOwen.synthwave-vscode",
                 "4ops.terraform",
                 "ms-dotnettools.vscode-dotnet-runtime",
                 "ms-dotnettools.csharp",
-                "ms-azuretools.vscode-containers",
+                "ms-vscode-remote.vscode-containers",
                 "Dart-Code.dart-code",
                 "vscjava.vscode-java-debug",
                 "vscjava.vscode-java-pack",
@@ -96,7 +96,8 @@
         {
             "type": "bind",
             "source": "${localEnv:HOME}/Code/devcontainers/config/env",
-            "target": "/home/vscode/.config/cline/mcp"
+            "target": "/home/vscode/.config/cline/mcp",
+            "options": ["ro"]
         }
     ],
     "remoteEnv": {

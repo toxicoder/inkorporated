@@ -12,7 +12,7 @@ This document describes the configuration management approach for Cline MCP serv
 - **Usage**: Version controlled, shared across environments
 
 ### 2. Configuration File
-- **File**: `cline_mcp_config.env` (example: `cline_mcp_config.example`)
+- **File**: `cline_mcp_config.env` (example: `.devcontainer/.env.example`)
 - **Purpose**: Contains sensitive credentials and environment-specific settings
 - **Security**: Contains all sensitive data (tokens, passwords, keys)
 - **Usage**: NOT version controlled, environment-specific

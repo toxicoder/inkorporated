@@ -20,6 +20,7 @@ The original devcontainer configuration mounted MCP configuration files but didn
 - `.zshrc` - Modified to source the loader script for zsh
 - `setup-devcontainer-tools.sh` - Enhanced to handle MCP config file properly
 - `devcontainer-config.env.example` - Updated with configuration documentation
+- `.env.example` - Environment variables example file (moved to this directory)
 
 ## How It Works
 

@@ -86,7 +86,7 @@
             ]
         }
     },
-    "postCreateCommand": "echo \"Running as $(whoami)\" && echo 'Running devcontainer setup...' && bash /workspaces/inkorporated/.devcontainer/setup-devcontainer-tools.sh && echo 'Devcontainer setup complete!' && sudo mkdir -p /home/vscode/.cline/data && sudo chown -R vscode:vscode /home/vscode/.cline/",
+    "postCreateCommand": "bash /workspaces/inkorporated/.devcontainer/scripts/post_create_command.sh",
     "mounts": [
         {
             "type": "volume",

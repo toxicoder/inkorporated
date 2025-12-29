@@ -5,14 +5,15 @@
 # Function to load MCP environment variables
 load_mcp_env() {
     # Path to the MCP config file
-    MCP_CONFIG_FILE="/home/vscode/.config/cline/mcp/cline_mcp_config.env"
-    
+    MCP_CONFIG_FILE="/workspaces/inkorporated/.devcontainer/.env"
+
     # Check if the config file exists
     if [ -f "$MCP_CONFIG_FILE" ]; then
         echo "Loading MCP environment variables from $MCP_CONFIG_FILE"
         # Source the environment file to load variables into current shell
         # Set -a to automatically export all variables, then source, then unset -a
         set -a  # Automatically export all variables
+        # shellcheck disable=SC1090
         if source "$MCP_CONFIG_FILE"; then
             set +a  # Stop automatic export
             echo "MCP environment variables loaded successfully"

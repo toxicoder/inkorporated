@@ -22,7 +22,9 @@
             "command": "npx",
             "args": [
                 "-y",
-                "brave-search"
+                "@brave/brave-search-mcp-server",
+                "--transport",
+                "stdio"
             ],
             "env": {
                 "BRAVE_API_KEY": "${BRAVE_API_KEY}"

@@ -1,0 +1,16 @@
+# Terraform BUILD file for Inkorporated project
+
+load("@rules_tf//tf:rules.bzl", "tf_validate", "tf_fmt_test")
+
+# Terraform validation for all .tf files
+tf_validate(
+    name = "terraform_validate",
+    srcs = glob(["**/*.tf"]),
+)
+
+# Format check (prevents style issues)
+tf_fmt_test(
+    name = "terraform_fmt",
+    srcs = glob(["**/*.tf"]),
+    tags = ["manual"],
+)

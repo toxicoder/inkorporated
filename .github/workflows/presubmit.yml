@@ -1,0 +1,38 @@
+name: Bazel Presubmit Checks
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  bazel-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Bazelisk
+        uses: bazelbuild/setup-bazelisk@v3
+        
+      - name: Run Terraform Validation
+        run: bazel test //infrastructure/terraform:terraform_validate
+        
+      - name: Run Terraform Format Check
+        run: bazel test //infrastructure/terraform:terraform_fmt
+        
+      - name: Run Ansible Linting
+        run: bazel test //infrastructure/ansible:ansible_lint
+        
+      - name: Run Configuration Validation
+        run: bazel test //tests/config:validate_infrastructure
+        
+      - name: Run Configuration Security Scan
+        run: bazel test //tests/config:config_security_scan
+        
+      - name: Run All Tests
+        run: bazel test //:all_tests
+        
+      - name: Cache Bazel artifacts
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/bazel
+          key: ${{ runner.os }}-bazel-${{ hashFiles('**/WORKSPACE.bazel') }}

@@ -42,6 +42,7 @@ This document tracks the implementation status of all services in the Inkorporat
 - 🔄 `prometheus/` - Metrics collection
 - 🔄 `grafana/` - Dashboards
 - 🔄 `loki/` - Logging
+- 🔄 `dgx-integration/` - NVIDIA DGX Spark integration
 
 ## Implementation Priority
 
@@ -88,6 +89,7 @@ This document tracks the implementation status of all services in the Inkorporat
    - Cert-manager
    - MetalLB
    - Prometheus/Grafana/Loki
+   - DGX Spark Integration
 
 ## Implementation Approach
 
@@ -103,3 +105,7 @@ Each service follows a consistent pattern:
 ## Next Steps
 
 Continue implementing services in the order of priority, starting with database services that other applications depend on.
+
+## DGX Integration Notes
+
+The NVIDIA DGX Spark integration is documented in detail in `docs/DGX_INTEGRATION_PLAN.md` and will be implemented in Phase 4 following the deployment of core infrastructure components.

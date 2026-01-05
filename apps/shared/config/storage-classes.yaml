@@ -1,0 +1,11 @@
+# Storage Class Mapping
+# This file is for reference on how storage classes are mapped in the ApplicationSet
+
+# On-Prem (Proxmox):
+# storageClass: longhorn
+
+# Cloud (AWS):
+# storageClass: gp2
+
+# Cloud (GCP):
+# storageClass: standard

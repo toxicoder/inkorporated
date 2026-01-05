@@ -4,12 +4,27 @@
 
 This repository contains the complete infrastructure-as-code for the Inkorporated homelab, a comprehensive self-hosted, open-source internal work environment designed for homelab deployments. It provides a complete, integrated solution that combines infrastructure automation, GitOps deployment, and a rich set of productivity and collaboration tools.
 
+## Architecture
+
+Inkorporated now supports a **Hybrid Cloud** architecture, enabling workloads to run on both on-premises Proxmox clusters and public cloud providers (AWS, GCP).
+
+*   **Proxmox**: Hosts the core control plane and persistent workloads.
+*   **Public Cloud (AWS/GCP)**: Used for burst capacity and temporary workloads.
+*   **Networking**: Hybrid nodes are connected via VPN (Tailscale/Wireguard - *implementation detail*).
+*   **Storage**:
+    *   On-Prem: Longhorn / NFS
+    *   Cloud: Cloud-native storage (e.g., gp2/standard)
+
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for detailed diagrams and topology.
+
 ## Project Structure
 
 The Inkorporated project is organized into several key areas:
 
-- **Infrastructure as Code**: Terraform for VM provisioning, Ansible for k3s setup
-- **GitOps Deployment**: ArgoCD for declarative infrastructure and application management
+- **Infrastructure as Code**:
+    - `infrastructure/terraform`: Modular Terraform for Hybrid Cloud provisioning (Proxmox, AWS, GCP).
+    - `infrastructure/ansible`: Ansible roles for hybrid k3s setup (LXC, VMs, Cloud).
+- **GitOps Deployment**: ArgoCD for declarative infrastructure and application management using ApplicationSets.
 - **Zero-trust Access**: Cloudflare Tunnel for secure external access
 - **Centralized Authentication**: Authentik SSO/OIDC integration
 - **Observability**: Prometheus, Grafana, and Loki stack
@@ -47,7 +62,7 @@ The repository now supports multiple environments with dedicated configuration d
 
 ### Supported Environments
 1. **dev** - Development environment
-2. **staging** - Staging environment  
+2. **staging** - Staging environment
 3. **autopush** - Autopush environment
 4. **uat** - User Acceptance Testing environment
 5. **canary** - Canary environment for feature testing

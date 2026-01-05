@@ -1,18 +1,43 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: infrastructure
   namespace: argocd
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/toxicoder/inkorporated.git
-    targetRevision: HEAD
-    path: infrastructure
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements:
+      - cluster: in-cluster
+        url: https://kubernetes.default.svc
+        values:
+          env: on-prem
+          storageClass: longhorn
+      # Add more clusters here as needed, e.g.
+      # - cluster: aws-cluster
+      #   url: https://<aws-cluster-url>
+      #   values:
+      #     env: cloud
+      #     storageClass: gp2
+  template:
+    metadata:
+      name: 'infrastructure-{{.cluster}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/toxicoder/inkorporated.git
+        targetRevision: HEAD
+        path: infrastructure
+        helm:
+          values: |
+            global:
+              environment: {{.values.env}}
+              storageClass: {{.values.storageClass}}
+      destination:
+        server: '{{.url}}'
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true

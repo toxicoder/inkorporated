@@ -7,7 +7,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-feed
 remote_theme: toxicoder/materialistic-jekyll
-repository: toxicoder/inkorporated
+repository: toxicoder/inkorporated # Links to https://github.com/toxicoder/inkorporated
 # Configuration for GitHub Pages deployment from docs/ directory
 
 extra_javascript:

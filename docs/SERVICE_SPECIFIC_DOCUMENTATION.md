@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Service Specific Documentation"
+permalink: /SERVICE_SPECIFIC_DOCUMENTATION.html
+---
+
 # Service-Specific Documentation
 
 This document provides detailed documentation for each service in the Inkorporated homelab infrastructure, organized by service type and including technical specifications, configuration details, and integration information.

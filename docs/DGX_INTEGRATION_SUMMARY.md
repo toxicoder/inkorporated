@@ -1,3 +1,9 @@
+---
+layout: page
+title: "DGX Integration Summary"
+permalink: /DGX_INTEGRATION_SUMMARY.html
+---
+
 # NVIDIA DGX Spark Integration - Summary
 
 ## Overview

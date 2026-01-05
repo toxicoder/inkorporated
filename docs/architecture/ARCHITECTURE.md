@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Architecture"
+permalink: /architecture/ARCHITECTURE.html
+---
+
 # Inkorporated Homelab Architecture
 
 ## High-Level Architecture

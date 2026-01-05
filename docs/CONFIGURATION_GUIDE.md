@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Configuration Guide"
+permalink: /CONFIGURATION_GUIDE.html
+---
+
 # Configuration Management Guide
 
 ## Overview

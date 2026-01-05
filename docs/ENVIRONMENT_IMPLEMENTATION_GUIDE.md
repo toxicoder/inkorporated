@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Environment Implementation Guide"
+permalink: /ENVIRONMENT_IMPLEMENTATION_GUIDE.html
+---
+
 # Environment Implementation Guide
 
 This document provides guidance on implementing and managing multiple environments (dev, staging, autopush, prod) for the Inkorporated homelab infrastructure.

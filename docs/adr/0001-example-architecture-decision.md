@@ -1,3 +1,9 @@
+---
+layout: page
+title: "ADR 0001: Example Architecture Decision"
+permalink: /adr/0001-example-architecture-decision.html
+---
+
 # 0001 - Example Architecture Decision
 
 ## Status

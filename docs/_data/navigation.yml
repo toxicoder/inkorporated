@@ -13,8 +13,6 @@ docs:
 
   - title: Implementation Status
     children:
-      - title: Status Tracking
-        url: /IMPLEMENTATION_STATUS_TRACKING.html
       - title: Discovery Summary
         url: /DISCOVERY_AND_DOCUMENTATION_SUMMARY.html
       - title: DGX Integration Summary
@@ -33,17 +31,10 @@ docs:
         url: /CONFIGURATION_GUIDE.html
       - title: Environment Implementation
         url: /ENVIRONMENT_IMPLEMENTATION_GUIDE.html
-      - title: Infrastructure Setup
-        url: /infrastructure_setup_guide.html
       - title: Technical Design
         url: /technical_design_doc.html
       - title: Infrastructure Validation
         url: /infrastructure_validation_report.html
-
-  - title: Security & Compliance
-    children:
-      - title: SSO Verification
-        url: /sso_verification_report.html
 
   - title: Subdirectories
     children:

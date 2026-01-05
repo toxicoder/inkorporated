@@ -1,3 +1,9 @@
+---
+layout: page
+title: Documentation Readme
+permalink: /readme.html
+---
+
 # Inkorporated Homelab Documentation
 
 This directory contains comprehensive documentation for the Inkorporated homelab project. The documentation is organized into logical sections to provide easy navigation and understanding of the project.

@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Project Overview"
+permalink: /guides/overview.html
+---
+
 # Inkorporated Homelab - Complete Project Overview
 
 ## Executive Summary

@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Technical Design Document"
+permalink: /technical_design_doc.html
+---
+
 # Inkorporated Homelab Technical Design Document – Final Version
 
 **Project Name:** Inkorporated  

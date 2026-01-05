@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Discovery and Documentation Summary"
+permalink: /DISCOVERY_AND_DOCUMENTATION_SUMMARY.html
+---
+
 # Inkorporated Homelab - Documentation Discovery and Summary
 
 ## Project Overview

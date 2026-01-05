@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Comprehensive Project Documentation"
+permalink: /COMPREHENSIVE_PROJECT_DOCUMENTATION.html
+---
+
 # Inkorporated Homelab - Complete Project Documentation
 
 ## Project Overview

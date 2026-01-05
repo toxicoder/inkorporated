@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Infrastructure Validation Report"
+permalink: /infrastructure_validation_report.html
+---
+
 # Infrastructure Validation Report
 
 ## Project: Inkorporated Homelab Infrastructure

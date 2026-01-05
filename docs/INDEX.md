@@ -1,3 +1,9 @@
+---
+layout: home
+title: Home
+permalink: /
+---
+
 # Inkorporated Homelab Documentation Index
 
 This index provides a comprehensive overview of all documentation files in the Inkorporated homelab project, organized by category for easy navigation.

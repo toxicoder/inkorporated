@@ -1,3 +1,9 @@
+---
+layout: page
+title: "DGX Integration Plan"
+permalink: /DGX_INTEGRATION_PLAN.html
+---
+
 # NVIDIA DGX Spark Integration Plan
 
 ## Overview

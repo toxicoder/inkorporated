@@ -1,3 +1,9 @@
+---
+layout: page
+title: "ADR Template"
+permalink: /adr/template.html
+---
+
 # {{ADR_NUMBER}} - {{TITLE}}
 
 ## Status

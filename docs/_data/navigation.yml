@@ -1,57 +1,57 @@
 docs:
   - title: Home
-    url: /docs/
+    url: /
 
   - title: Core Documentation
     children:
       - title: Project Overview
-        url: /docs/PROJECT_OVERVIEW.html
+        url: /guides/overview.html
       - title: Comprehensive Documentation
-        url: /docs/COMPREHENSIVE_PROJECT_DOCUMENTATION.html
+        url: /COMPREHENSIVE_PROJECT_DOCUMENTATION.html
       - title: Architecture
-        url: /docs/ARCHITECTURE.html
+        url: /architecture/ARCHITECTURE.html
 
   - title: Implementation Status
     children:
       - title: Status Tracking
-        url: /docs/IMPLEMENTATION_STATUS_TRACKING.html
+        url: /IMPLEMENTATION_STATUS_TRACKING.html
       - title: Discovery Summary
-        url: /docs/DISCOVERY_AND_DOCUMENTATION_SUMMARY.html
+        url: /DISCOVERY_AND_DOCUMENTATION_SUMMARY.html
       - title: DGX Integration Summary
-        url: /docs/DGX_INTEGRATION_SUMMARY.html
+        url: /DGX_INTEGRATION_SUMMARY.html
       - title: DGX Integration Plan
-        url: /docs/DGX_INTEGRATION_PLAN.html
+        url: /DGX_INTEGRATION_PLAN.html
 
   - title: Service Documentation
     children:
       - title: Service Specifics
-        url: /docs/SERVICE_SPECIFIC_DOCUMENTATION.html
+        url: /SERVICE_SPECIFIC_DOCUMENTATION.html
 
   - title: Technical Reference
     children:
       - title: Configuration Guide
-        url: /docs/CONFIGURATION_GUIDE.html
+        url: /CONFIGURATION_GUIDE.html
       - title: Environment Implementation
-        url: /docs/ENVIRONMENT_IMPLEMENTATION_GUIDE.html
+        url: /ENVIRONMENT_IMPLEMENTATION_GUIDE.html
       - title: Infrastructure Setup
-        url: /docs/infrastructure_setup_guide.html
+        url: /infrastructure_setup_guide.html
       - title: Technical Design
-        url: /docs/technical_design_doc.html
+        url: /technical_design_doc.html
       - title: Infrastructure Validation
-        url: /docs/infrastructure_validation_report.html
+        url: /infrastructure_validation_report.html
 
   - title: Security & Compliance
     children:
       - title: SSO Verification
-        url: /docs/sso_verification_report.html
+        url: /sso_verification_report.html
 
   - title: Subdirectories
     children:
       - title: Architecture
-        url: /docs/architecture/
+        url: /architecture/
       - title: Guides
-        url: /docs/guides/
+        url: /guides/
       - title: Reference
-        url: /docs/reference/
+        url: /reference/
       - title: ADRs
-        url: /docs/adr/
+        url: /adr/

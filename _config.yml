@@ -1,0 +1,5 @@
+title: Inkorporated Homelab Documentation
+description: Comprehensive documentation for the Inkorporated homelab project.
+plugins:
+  - jekyll-remote-theme
+remote_theme: toxicoder/materialistic-jekyll

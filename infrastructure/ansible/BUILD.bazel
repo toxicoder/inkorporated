@@ -1,0 +1,11 @@
+# Ansible BUILD file for Inkorporated project
+
+load("@rules_sh//sh:defs.bzl", "sh_test")
+
+# Ansible linting test
+sh_test(
+    name = "ansible_lint",
+    srcs = ["ansible_lint_wrapper.sh"],
+    data = glob(["**/*.yml", "**/*.yaml"]),
+    args = ["--strict", "--force-color"],
+)

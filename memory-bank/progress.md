@@ -146,6 +146,7 @@ This section contains the detailed implementation status tracking information th
 | Task 4.25: Deploy Kasm Workspaces | In Progress | 50% | Browser apps deployment files created |
 | Task 4.26: Deploy Per-Env Gitea and Coder | In Progress | 50% | Dev tools deployment files created |
 | Task 4.27: Deploy Observability Stack | Not Started | 0% | Monitoring deployment pending |
+| Task 4.28: Integrate DGX Spark Systems | Not Started | 0% | GPU worker node integration pending |
 
 #### Phase 5: Post-Deployment
 

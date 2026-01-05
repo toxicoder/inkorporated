@@ -9,6 +9,9 @@ plugins:
 remote_theme: toxicoder/materialistic-jekyll
 # Configuration for GitHub Pages deployment from docs/ directory
 
+extra_javascript:
+  - /assets/js/mermaid-support.js
+
 defaults:
   - scope:
       path: ""

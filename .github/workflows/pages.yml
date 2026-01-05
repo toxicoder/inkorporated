@@ -1,36 +1,95 @@
-name: GitHub Pages
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# Sample workflow for building and deploying a Jekyll site to GitHub Pages
+name: Deploy Jekyll site to Pages
 
 on:
+  # Runs on pushes targeting the default branch
   push:
-    branches:
-      - main
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  # Build and Deploy job
+  build_and_deploy:
     runs-on: ubuntu-latest
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1' # Not needed if a .ruby-version file is present
+          ruby-version: '3.1' # Not needed with a .ruby-version file
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          cache-version: 0
           working-directory: './docs'
 
-      - name: Build
+      - name: Build with Jekyll
+        # Outputs to the './_site' directory by default
         working-directory: ./docs
         run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/_site
+      - name: Deploy to GitHub Pages branch
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Check if remote branch exists, if not create it
+          git fetch origin gh-pages || git branch gh-pages
+
+          # Create worktree
+          # Note: If fetch failed, origin/gh-pages is invalid. Using 'gh-pages' (local) as fallback would be safer
+          # but sticking to user reference with minimal path adaptation.
+          # Ideally: git worktree add -B gh-pages deploy_branch origin/gh-pages 2>/dev/null || git worktree add -B gh-pages deploy_branch gh-pages
+          # But let's assume origin/gh-pages works or the fetch logic intended to sync.
+          # To make it robust for first run (when origin/gh-pages is missing):
+          if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
+            git worktree add -B gh-pages deploy_branch origin/gh-pages
+          else
+            git worktree add -B gh-pages deploy_branch gh-pages
+          fi
+
+          cd deploy_branch
+
+          # Clean existing files but keep .git
+          find . -maxdepth 1 ! -name '.git' ! -name '.' ! -name '..' -exec rm -rf {} +
+
+          # Create docs directory as per user requirement
+          mkdir -p docs
+
+          # Copy _site content to docs
+          # Adapted path: ../docs/_site/* (since build ran in docs/)
+          cp -r ../docs/_site/* docs/
+
+          # Add .nojekyll to docs to ensure GitHub Pages doesn't try to build it again
+          touch docs/.nojekyll
+
+          # Commit and push
+          git add .
+          git commit -m "Deploy to GitHub Pages" || echo "No changes to commit"
+          git push origin gh-pages
+
+          cd ..
+          git worktree remove deploy_branch

@@ -2,56 +2,48 @@ docs:
   - title: Home
     url: /
 
-  - title: Core Documentation
+  - title: Core Concepts
     children:
       - title: Project Overview
         url: /guides/overview.html
-      - title: Comprehensive Documentation
-        url: /COMPREHENSIVE_PROJECT_DOCUMENTATION.html
       - title: Architecture
-        url: /architecture/ARCHITECTURE.html
-
-  - title: Implementation Status
-    children:
-      - title: Status Tracking
-        url: /IMPLEMENTATION_STATUS_TRACKING.html
-      - title: Discovery Summary
-        url: /DISCOVERY_AND_DOCUMENTATION_SUMMARY.html
-      - title: DGX Integration Summary
-        url: /DGX_INTEGRATION_SUMMARY.html
-      - title: DGX Integration Plan
-        url: /DGX_INTEGRATION_PLAN.html
-
-  - title: Service Documentation
-    children:
-      - title: Service Specifics
-        url: /SERVICE_SPECIFIC_DOCUMENTATION.html
-
-  - title: Technical Reference
-    children:
-      - title: Configuration Guide
-        url: /CONFIGURATION_GUIDE.html
-      - title: Environment Implementation
-        url: /ENVIRONMENT_IMPLEMENTATION_GUIDE.html
-      - title: Infrastructure Setup
-        url: /infrastructure_setup_guide.html
+        url: /architecture/index.html
+      - title: Network Topology
+        url: /architecture/network.html
       - title: Technical Design
-        url: /technical_design_doc.html
+        url: /architecture/technical_design.html
+
+  - title: Guides
+    children:
+      - title: Installation
+        url: /guides/installation.html
+      - title: Configuration
+        url: /guides/configuration.html
+      - title: Environments
+        url: /guides/environments.html
+      - title: Deployment & Ops
+        url: /guides/deployment.html
+      - title: Security
+        url: /guides/security.html
+      - title: Observability
+        url: /guides/observability.html
+      - title: Backups
+        url: /guides/backups.html
+      - title: Troubleshooting
+        url: /guides/troubleshooting.html
+
+  - title: Reference
+    children:
+      - title: Service Catalog
+        url: /reference/services.html
+
+  - title: Status & Reports
+    children:
+      - title: Discovery Summary
+        url: /status/discovery_summary.html
+      - title: DGX Integration
+        url: /status/dgx_integration_summary.html
       - title: Infrastructure Validation
-        url: /infrastructure_validation_report.html
-
-  - title: Security & Compliance
-    children:
-      - title: SSO Verification
-        url: /sso_verification_report.html
-
-  - title: Subdirectories
-    children:
-      - title: Architecture
-        url: /architecture/
-      - title: Guides
-        url: /guides/
-      - title: Reference
-        url: /reference/
-      - title: ADRs
-        url: /adr/
+        url: /status/infrastructure_validation_report.html
+      - title: DGX Plan
+        url: /architecture/dgx_integration_plan.html

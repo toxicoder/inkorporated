@@ -1,0 +1,2 @@
+# Disable Bzlmod to continue using WORKSPACE.bazel
+common --noenable_bzlmod

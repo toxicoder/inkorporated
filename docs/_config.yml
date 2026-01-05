@@ -1,5 +1,7 @@
 title: Inkorporated Homelab Documentation
 description: Comprehensive documentation for the Inkorporated homelab project.
+url: "https://toxicoder.github.io"
+baseurl: "/inkorporated"
 plugins:
   - jekyll-remote-theme
   - jekyll-seo-tag

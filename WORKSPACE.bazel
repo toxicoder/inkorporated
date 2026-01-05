@@ -2,14 +2,19 @@ workspace(name = "inkorporated")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-# Rules for Terraform
+# Terraform Binary
 http_archive(
-    name = "rules_tf",
-    urls = ["https://github.com/ggramal/rules_tf/archive/refs/heads/master.zip"],
-    strip_prefix = "rules_tf-master",
+    name = "terraform_linux_amd64",
+    build_file_content = """
+package(default_visibility = ["//visibility:public"])
+filegroup(
+    name = "terraform",
+    srcs = ["terraform"],
 )
-load("@rules_tf//tf:dependencies.bzl", "tf_rules_dependencies")
-tf_rules_dependencies()
+""",
+    urls = ["https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip"],
+    sha256 = "6543b591b798782d02c5c9930f3a60a89d7b4c653069152f67931b64366539f1",
+)
 
 # Rules for linting (general, including YAML for Ansible)
 http_archive(

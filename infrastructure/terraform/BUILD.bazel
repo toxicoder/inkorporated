@@ -1,16 +1,31 @@
 # Terraform BUILD file for Inkorporated project
 
-load("@rules_tf//tf:rules.bzl", "tf_validate", "tf_fmt_test")
+package(default_visibility = ["//visibility:public"])
 
-# Terraform validation for all .tf files
-tf_validate(
+# Terraform validation
+sh_test(
     name = "terraform_validate",
-    srcs = glob(["**/*.tf"]),
+    srcs = ["validate.sh"],
+    data = [
+        "@terraform_linux_amd64//:terraform",
+        ":terraform_srcs",
+    ],
+    args = ["$(location @terraform_linux_amd64//:terraform)"],
 )
 
-# Format check (prevents style issues)
-tf_fmt_test(
+# Terraform formatting check
+sh_test(
     name = "terraform_fmt",
-    srcs = glob(["**/*.tf"]),
+    srcs = ["fmt.sh"],
+    data = [
+        "@terraform_linux_amd64//:terraform",
+        ":terraform_srcs",
+    ],
+    args = ["$(location @terraform_linux_amd64//:terraform)"],
     tags = ["manual"],
+)
+
+filegroup(
+    name = "terraform_srcs",
+    srcs = glob(["**/*.tf", "**/*.tfvars"]),
 )

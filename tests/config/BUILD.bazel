@@ -1,7 +1,7 @@
 # Configuration tests BUILD file for Inkorporated project
 
 load("@rules_sh//sh:defs.bzl", "sh_test")
-load("@rules_lint//lint:defs.bzl", "secret_scan")
+load("@aspect_rules_lint//lint:defs.bzl", "secret_scan")
 
 # Test for infrastructure validation
 sh_test(

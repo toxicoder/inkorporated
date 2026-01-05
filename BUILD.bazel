@@ -1,6 +1,6 @@
 # Root BUILD file for Inkorporated Bazel workspace
 
-load("@rules_sh//sh:defs.bzl", "sh_test")
+load("@rules_sh//shell:sh_test.bzl", "sh_test")
 
 # Target that runs all tests (depends on validate_config and tests)
 sh_test(

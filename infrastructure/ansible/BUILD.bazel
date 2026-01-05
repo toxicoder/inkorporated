@@ -1,6 +1,6 @@
 # Ansible BUILD file for Inkorporated project
 
-load("@rules_sh//sh:defs.bzl", "sh_test")
+load("@rules_sh//shell:sh_test.bzl", "sh_test")
 
 # Ansible linting test
 sh_test(

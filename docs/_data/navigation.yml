@@ -1,0 +1,48 @@
+docs:
+  - title: Home
+    url: /
+
+  - title: Core Documentation
+    children:
+      - title: Project Overview
+        url: /guides/overview.html
+      - title: Comprehensive Documentation
+        url: /COMPREHENSIVE_PROJECT_DOCUMENTATION.html
+      - title: Architecture
+        url: /architecture/ARCHITECTURE.html
+
+  - title: Implementation Status
+    children:
+      - title: Discovery Summary
+        url: /DISCOVERY_AND_DOCUMENTATION_SUMMARY.html
+      - title: DGX Integration Summary
+        url: /DGX_INTEGRATION_SUMMARY.html
+      - title: DGX Integration Plan
+        url: /DGX_INTEGRATION_PLAN.html
+
+  - title: Service Documentation
+    children:
+      - title: Service Specifics
+        url: /SERVICE_SPECIFIC_DOCUMENTATION.html
+
+  - title: Technical Reference
+    children:
+      - title: Configuration Guide
+        url: /CONFIGURATION_GUIDE.html
+      - title: Environment Implementation
+        url: /ENVIRONMENT_IMPLEMENTATION_GUIDE.html
+      - title: Technical Design
+        url: /technical_design_doc.html
+      - title: Infrastructure Validation
+        url: /infrastructure_validation_report.html
+
+  - title: Subdirectories
+    children:
+      - title: Architecture
+        url: /architecture/
+      - title: Guides
+        url: /guides/
+      - title: Reference
+        url: /reference/
+      - title: ADRs
+        url: /adr/

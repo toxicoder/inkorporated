@@ -1061,7 +1061,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/toxicoder/inkorporated-k8s-apps.git
+    repoURL: https://github.com/toxicoder/inkorporated.git
     targetRevision: HEAD
     path: apps
   destination:

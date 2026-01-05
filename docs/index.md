@@ -38,4 +38,4 @@ Welcome to the comprehensive documentation for the Inkorporated homelab project.
 
 ## Contributing
 
-This project is open-source and welcomes contributions. Please see the [README](https://github.com/toxicoder/inkorporated-k8s-apps/blob/main/README.md) for more information.
+This project is open-source and welcomes contributions. Please see the [README](https://github.com/toxicoder/inkorporated/blob/main/README.md) for more information.

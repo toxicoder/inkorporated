@@ -115,7 +115,7 @@ All services are FOSS and self-hosted.
 ### `inkorporated-bootstrap`
 Terraform + Ansible for Proxmox VMs (including pfSense), Synology folder, k3s install, Promtail on hosts.
 
-### `inkorporated-k8s-apps` (Private Gitea Repo)
+### `inkorporated` (Private Gitea Repo)
 Organized by `infra/shared` (all listed services), `infra/cluster-scoped`, `environments`, `apps/per-env`, `apps/priv-optional`, `app-of-apps/root`.
 
 ## 5. Integration & User Experience

@@ -1,0 +1,20 @@
+# Tasks for joining cloud nodes to the cluster
+---
+- name: Check if k3s is already installed
+  stat:
+    path: /usr/local/bin/k3s
+  register: k3s_bin
+
+- name: Get k3s token from master
+  command: cat /var/lib/rancher/k3s/server/node-token
+  register: k3s_token
+  delegate_to: "{{ groups['control_plane'][0] }}"
+  run_once: true
+  when: not k3s_bin.stat.exists
+
+- name: Install k3s agent
+  shell: |
+    curl -sfL {{ k3s_install_url }} | K3S_URL=https://{{ hostvars[groups['control_plane'][0]]['ansible_host'] }}:6443 K3S_TOKEN={{ k3s_token.stdout }} sh -
+  environment:
+    INSTALL_K3S_VERSION: "{{ k3s_version }}"
+  when: not k3s_bin.stat.exists

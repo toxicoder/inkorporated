@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # 0001 - Example Architecture Decision
 
 ## Status

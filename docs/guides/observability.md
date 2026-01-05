@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Observability
 
 ## Monitoring Stack

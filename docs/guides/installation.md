@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Implementation Phases
 
 ## Phase 1: Foundation & Preparation

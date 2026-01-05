@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # {{ADR_NUMBER}} - {{TITLE}}
 
 ## Status

@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Security Implementation
 
 ## Authentication & Authorization

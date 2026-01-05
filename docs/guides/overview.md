@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Inkorporated Homelab Project Overview
 
 **Inkorporated** is a comprehensive, self-hosted, open-source internal work environment designed for homelab deployments. This project provides a complete, integrated solution that combines infrastructure automation, GitOps deployment, and a rich set of productivity and collaboration tools.

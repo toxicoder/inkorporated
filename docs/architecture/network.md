@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Network Topology
 
 The Inkorporated homelab implements a multi-zone network architecture to provide security segmentation and logical separation of services:

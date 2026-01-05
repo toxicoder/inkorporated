@@ -8,3 +8,9 @@ plugins:
   - jekyll-feed
 remote_theme: toxicoder/materialistic-jekyll
 # Configuration for GitHub Pages deployment from docs/ directory
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "doc"

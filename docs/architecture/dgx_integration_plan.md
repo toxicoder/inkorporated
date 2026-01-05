@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # NVIDIA DGX Spark Integration Plan
 
 ## Overview

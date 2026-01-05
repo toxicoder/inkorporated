@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Configuration Management Guide
 
 ## Overview

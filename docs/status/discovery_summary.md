@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Inkorporated Homelab - Documentation Discovery and Summary
 
 ## Project Overview

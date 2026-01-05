@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Inkorporated Homelab Architecture
 
 ## High-Level Architecture

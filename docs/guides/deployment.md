@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Deployment & Operations
 
 ## Deployment Process

@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Backup & Disaster Recovery
 
 - **Velero**: Scheduled cluster backups to MinIO

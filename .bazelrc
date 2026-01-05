@@ -1,4 +1,0 @@
-# Disable Bzlmod to continue using WORKSPACE.bazel
-common --noenable_bzlmod
-# Explicitly enable WORKSPACE as it might be disabled by default in newer Bazel versions (8.0+)
-common --enable_workspace

@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Infrastructure Validation Report
 
 ## Project: Inkorporated Homelab Infrastructure

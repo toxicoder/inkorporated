@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Hybrid Cloud Architecture
 
 ## Overview

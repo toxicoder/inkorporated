@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Troubleshooting Guide
 
 ## Common Issues

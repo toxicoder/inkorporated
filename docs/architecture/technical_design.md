@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 # Inkorporated Homelab Technical Design Document – Final Version
 
 **Project Name:** Inkorporated  

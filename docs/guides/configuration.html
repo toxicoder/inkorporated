@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Inkorporated Homelab Documentation | Comprehensive documentation for the Inkorporated homelab project.</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Inkorporated Homelab Documentation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Comprehensive documentation for the Inkorporated homelab project." />
+<meta property="og:description" content="Comprehensive documentation for the Inkorporated homelab project." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/guides/configuration.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/guides/configuration.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Inkorporated Homelab Documentation" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/guides/configuration.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    <a href="https://github.com/toxicoder/materialistic-jekyll" class="icon-btn outlined" aria-label="GitHub Repository" style="margin-left: 8px;" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+      </svg>
+    </a>
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link active" href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="configuration-management-guide">Configuration Management Guide</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This guide explains how to use the centralized configuration management system for the Inkorporated homelab infrastructure. The system replaces hardcoded domain references with configurable environment variables to make deployments more flexible across different environments.</p>
+
+<h2 id="configuration-structure">Configuration Structure</h2>
+
+<h3 id="centralized-configuration">Centralized Configuration</h3>
+
+<p>All configuration variables are now managed through the <code class="language-plaintext highlighter-rouge">inkorporated-config</code> ConfigMap in the <code class="language-plaintext highlighter-rouge">inkorporated</code> namespace. The configuration is loaded from <code class="language-plaintext highlighter-rouge">config/domain-config.yaml</code> and <code class="language-plaintext highlighter-rouge">config/environment-config.yaml</code>:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Domain configuration</span>
+<span class="na">DOMAIN_BASE</span><span class="pi">:</span> <span class="s2">"</span><span class="s">example.com"</span>
+<span class="na">DOMAIN_WILDCARD</span><span class="pi">:</span> <span class="s2">"</span><span class="s">*.example.com"</span>
+
+<span class="c1"># Service-specific prefixes (loaded from config/domain-config.yaml)</span>
+<span class="na">SERVICE_WEBUI</span><span class="pi">:</span> <span class="s2">"</span><span class="s">webui"</span>
+<span class="na">SERVICE_CHAT</span><span class="pi">:</span> <span class="s2">"</span><span class="s">chat"</span>
+<span class="na">SERVICE_WORKADVENTURE</span><span class="pi">:</span> <span class="s2">"</span><span class="s">workadventure"</span>
+<span class="na">SERVICE_JITSI</span><span class="pi">:</span> <span class="s2">"</span><span class="s">jitsi"</span>
+<span class="c1"># ... and so on for all services</span>
+</code></pre></div></div>
+
+<h3 id="environment-configuration">Environment Configuration</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">config/environment-config.yaml</code> file contains environment-specific settings for different deployment environments:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">environments</span><span class="pi">:</span>
+  <span class="na">dev</span><span class="pi">:</span>
+    <span class="na">domain</span><span class="pi">:</span>
+      <span class="na">base</span><span class="pi">:</span> <span class="s2">"</span><span class="s">dev.example.com"</span>
+      <span class="na">wildcard</span><span class="pi">:</span> <span class="s2">"</span><span class="s">*.dev.example.com"</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Development</span><span class="nv"> </span><span class="s">environment"</span>
+    <span class="na">priority</span><span class="pi">:</span> <span class="m">1</span>
+
+  <span class="na">staging</span><span class="pi">:</span>
+    <span class="na">domain</span><span class="pi">:</span>
+      <span class="na">base</span><span class="pi">:</span> <span class="s2">"</span><span class="s">staging.example.com"</span>
+      <span class="na">wildcard</span><span class="pi">:</span> <span class="s2">"</span><span class="s">*.staging.example.com"</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Staging</span><span class="nv"> </span><span class="s">environment"</span>
+    <span class="na">priority</span><span class="pi">:</span> <span class="m">2</span>
+
+  <span class="na">autopush</span><span class="pi">:</span>
+    <span class="na">domain</span><span class="pi">:</span>
+      <span class="na">base</span><span class="pi">:</span> <span class="s2">"</span><span class="s">autopush.example.com"</span>
+      <span class="na">wildcard</span><span class="pi">:</span> <span class="s2">"</span><span class="s">*.autopush.example.com"</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Autopush</span><span class="nv"> </span><span class="s">environment"</span>
+    <span class="na">priority</span><span class="pi">:</span> <span class="m">3</span>
+
+  <span class="na">canary</span><span class="pi">:</span>
+    <span class="na">domain</span><span class="pi">:</span>
+      <span class="na">base</span><span class="pi">:</span> <span class="s2">"</span><span class="s">canary.example.com"</span>
+      <span class="na">wildcard</span><span class="pi">:</span> <span class="s2">"</span><span class="s">*.canary.example.com"</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Canary</span><span class="nv"> </span><span class="s">environment"</span>
+    <span class="na">priority</span><span class="pi">:</span> <span class="m">4</span>
+
+  <span class="na">prod</span><span class="pi">:</span>
+    <span class="na">domain</span><span class="pi">:</span>
+      <span class="na">base</span><span class="pi">:</span> <span class="s2">"</span><span class="s">example.com"</span>
+      <span class="na">wildcard</span><span class="pi">:</span> <span class="s2">"</span><span class="s">*.example.com"</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Production</span><span class="nv"> </span><span class="s">environment"</span>
+    <span class="na">priority</span><span class="pi">:</span> <span class="m">5</span>
+
+<span class="c1"># Default environment (used if none specified)</span>
+<span class="na">default</span><span class="pi">:</span> <span class="s2">"</span><span class="s">dev"</span>
+</code></pre></div></div>
+
+<h3 id="using-domain-configyaml">Using domain-config.yaml</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">config/domain-config.yaml</code> file contains the base domain configuration and service subdomain mappings. This file should be modified to customize the domain setup for your environment:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Domain Configuration</span>
+<span class="c1"># This file contains domain settings for the Inkorporated template</span>
+<span class="c1"># Users can modify these values to customize their deployment</span>
+
+<span class="na">domain</span><span class="pi">:</span>
+  <span class="na">base</span><span class="pi">:</span> <span class="s2">"</span><span class="s">example.com"</span>
+  <span class="na">wildcard</span><span class="pi">:</span> <span class="s2">"</span><span class="s">*.example.com"</span>
+  
+<span class="c1"># Service subdomains (will be constructed as service.example.com)</span>
+<span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">dashboard"</span>
+    <span class="na">subdomain</span><span class="pi">:</span> <span class="s2">"</span><span class="s">dashboard"</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">authentik"</span>
+    <span class="na">subdomain</span><span class="pi">:</span> <span class="s2">"</span><span class="s">authentik"</span>
+  <span class="c1"># ... and so on for all services</span>
+</code></pre></div></div>
+
+<h2 id="how-to-use">How to Use</h2>
+
+<h3 id="1-environment-variables-in-deployments">1. Environment Variables in Deployments</h3>
+
+<p>Services now reference configuration through environment variables:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">env</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">DOMAIN_BASE</span>
+    <span class="na">valueFrom</span><span class="pi">:</span>
+      <span class="na">configMapKeyRef</span><span class="pi">:</span>
+        <span class="na">name</span><span class="pi">:</span> <span class="s">inkorporated-config</span>
+        <span class="na">key</span><span class="pi">:</span> <span class="s">DOMAIN_BASE</span>
+</code></pre></div></div>
+
+<h3 id="2-domain-references-in-services">2. Domain References in Services</h3>
+
+<p>Hardcoded domains have been replaced with variable references:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before (hardcoded)</span>
+<span class="na">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://webui.example.com"</span>
+
+<span class="c1"># After (configurable)</span>
+<span class="na">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://webui."</span>
+</code></pre></div></div>
+
+<h3 id="3-deployment-updates">3. Deployment Updates</h3>
+
+<p>To deploy with a different domain, simply update the <code class="language-plaintext highlighter-rouge">DOMAIN_BASE</code> value in the ConfigMap:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl patch configmap inkorporated-config <span class="nt">-n</span> inkorporated <span class="nt">-p</span> <span class="s1">'{"data":{"DOMAIN_BASE":"mydomain.com"}}'</span>
+</code></pre></div></div>
+
+<h2 id="services-updated">Services Updated</h2>
+
+<p>The following services have been updated to use the new configuration system:</p>
+
+<ul>
+  <li>Traefik (ingress controller)</li>
+  <li>Authentik (identity provider)</li>
+  <li>Open WebUI</li>
+  <li>Rocket.Chat</li>
+  <li>WorkAdventure</li>
+  <li>Vaultwarden</li>
+  <li>Homepage</li>
+  <li>Gitea</li>
+  <li>Coturn</li>
+  <li>Cloudflared</li>
+</ul>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<ol>
+  <li><strong>Namespace Organization</strong>: All configuration is centralized in the <code class="language-plaintext highlighter-rouge">inkorporated</code> namespace</li>
+  <li><strong>Environment Variable Usage</strong>: Services should reference configuration through environment variables</li>
+  <li><strong>Template Variables</strong>: For ConfigMaps that support templating, use `` syntax</li>
+  <li><strong>Environment Selection</strong>: Use the <code class="language-plaintext highlighter-rouge">ENVIRONMENT</code> variable to select deployment environment</li>
+  <li><strong>Consistent Naming</strong>: Use consistent naming conventions for configuration variables</li>
+  <li><strong>Backward Compatibility</strong>: Existing deployments will continue to work with default values</li>
+</ol>
+
+<h2 id="testing-configuration-changes">Testing Configuration Changes</h2>
+
+<p>To test configuration changes:</p>
+
+<ol>
+  <li>Update the ConfigMap with new values:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl edit configmap inkorporated-config <span class="nt">-n</span> inkorporated
+</code></pre></div>    </div>
+  </li>
+  <li>Restart affected pods:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl rollout restart deployment/&lt;deployment-name&gt; <span class="nt">-n</span> &lt;namespace&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Verify the changes are applied:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods <span class="nt">-n</span> &lt;namespace&gt;
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="future-improvements">Future Improvements</h2>
+
+<p>The configuration system can be extended to include:</p>
+<ul>
+  <li>Additional environment-specific variables</li>
+  <li>Service-specific configuration</li>
+  <li>More complex templating for ConfigMaps</li>
+  <li>Integration with external configuration management tools</li>
+</ul>
+
+<h2 id="environment-deployment-example">Environment Deployment Example</h2>
+
+<p>To deploy to different environments, use the following approach:</p>
+
+<h3 id="using-terraform-with-environment-selection">Using Terraform with Environment Selection</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Set environment in terraform.tfvars or via command line</span>
+terraform apply <span class="nt">-var</span><span class="o">=</span><span class="s2">"environment=staging"</span>
+</code></pre></div></div>
+
+<h3 id="switching-environments-in-kubernetes">Switching Environments in Kubernetes</h3>
+
+<p>To switch environments in your deployments:</p>
+
+<ol>
+  <li>Update the ConfigMap to specify the environment:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl patch configmap inkorporated-config <span class="nt">-n</span> inkorporated <span class="nt">-p</span> <span class="s1">'{"data":{"ENVIRONMENT":"staging"}}'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Restart affected pods to pick up the new configuration:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl rollout restart deployment/open-webui <span class="nt">-n</span> webui
+kubectl rollout restart deployment/authentik <span class="nt">-n</span> authentik
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="environment-specific-domain-configuration">Environment-Specific Domain Configuration</h3>
+
+<p>Each environment uses its own domain configuration:</p>
+
+<ul>
+  <li><strong>dev</strong>: <code class="language-plaintext highlighter-rouge">dev.example.com</code></li>
+  <li><strong>staging</strong>: <code class="language-plaintext highlighter-rouge">staging.example.com</code></li>
+  <li><strong>autopush</strong>: <code class="language-plaintext highlighter-rouge">autopush.example.com</code></li>
+  <li><strong>canary</strong>: <code class="language-plaintext highlighter-rouge">canary.example.com</code></li>
+  <li><strong>prod</strong>: <code class="language-plaintext highlighter-rouge">example.com</code></li>
+</ul>
+
+<p>The environment configuration is loaded from <code class="language-plaintext highlighter-rouge">config/environment-config.yaml</code> and automatically applied when deploying with the appropriate Terraform variables.</p>
+
+<h2 id="infrastructure-setup-guide">Infrastructure Setup Guide</h2>
+
+<p>This guide provides detailed instructions for setting up the inkorporated homelab infrastructure using Terraform and Ansible.</p>
+
+<h3 id="overview-1">Overview</h3>
+
+<p>The infrastructure setup consists of two main components:</p>
+<ol>
+  <li><strong>Terraform</strong>: Provisions VMs in Proxmox</li>
+  <li><strong>Ansible</strong>: Installs and configures k3s, Gitea, ArgoCD, and GitOps components</li>
+</ol>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<h4 id="hardware-requirements">Hardware Requirements</h4>
+<ul>
+  <li>Proxmox VE server with sufficient resources</li>
+  <li>Minimum 4GB RAM per VM (for min profile)</li>
+  <li>Minimum 20GB disk space per VM (for min profile)</li>
+  <li>Network connectivity between Proxmox and target machines</li>
+</ul>
+
+<h4 id="software-requirements">Software Requirements</h4>
+<ul>
+  <li>Terraform 1.0+</li>
+  <li>Ansible 2.10+</li>
+  <li>SSH access to Proxmox server</li>
+  <li>Properly configured Proxmox API credentials</li>
+</ul>
+
+<h3 id="setup-steps">Setup Steps</h3>
+
+<h4 id="1-terraform-infrastructure-provisioning">1. Terraform Infrastructure Provisioning</h4>
+
+<h5 id="configure-variables">Configure Variables</h5>
+<p>Navigate to <code class="language-plaintext highlighter-rouge">infrastructure/terraform/</code> and create a <code class="language-plaintext highlighter-rouge">terraform.tfvars</code> file by copying the example:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp </span>infrastructure/terraform/terraform.tfvars.example infrastructure/terraform/terraform.tfvars
+</code></pre></div></div>
+
+<p>Edit the <code class="language-plaintext highlighter-rouge">terraform.tfvars</code> file with your specific values:</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proxmox Configuration</span>
+<span class="nx">proxmox_api_url</span> <span class="o">=</span> <span class="s2">"https://your-proxmox-server:8006/api2/json"</span>
+<span class="nx">proxmox_api_token_id</span> <span class="o">=</span> <span class="s2">"your-token-id"</span>
+<span class="nx">proxmox_api_token_secret</span> <span class="o">=</span> <span class="s2">"your-token-secret"</span>
+
+<span class="c1"># Network Configuration</span>
+<span class="nx">network_cidr</span> <span class="o">=</span> <span class="s2">"192.168.1.0/24"</span>
+<span class="nx">network_gateway</span> <span class="o">=</span> <span class="s2">"192.168.1.1"</span>
+<span class="nx">network_dns</span> <span class="o">=</span> <span class="s2">"192.168.1.1"</span>
+
+<span class="c1"># VM Configuration</span>
+<span class="nx">vm_memory</span> <span class="o">=</span> <span class="mi">2048</span>
+<span class="nx">vm_cores</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nx">vm_sockets</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nx">vm_disk_size</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="nx">vm_network_bridge</span> <span class="o">=</span> <span class="s2">"vmbr0"</span>
+<span class="nx">vm_iso_image</span> <span class="o">=</span> <span class="s2">"local:iso/ubuntu-22.04.3-live-server-amd64.iso"</span>
+
+<span class="c1"># VM Count Configuration (Profile-based)</span>
+<span class="nx">control_plane_count</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nx">worker_node_count</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># VM Naming</span>
+<span class="nx">vm_name_prefix</span> <span class="o">=</span> <span class="s2">"inkorporated"</span>
+<span class="nx">vm_template_name</span> <span class="o">=</span> <span class="s2">"k3s-template"</span>
+
+<span class="c1"># Deployment Profile</span>
+<span class="nx">deployment_profile</span> <span class="o">=</span> <span class="s2">"recommended"</span>
+
+<span class="c1"># Service Selection</span>
+<span class="nx">enable_gitea</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="nx">enable_argocd</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="nx">enable_authentik</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="nx">enable_traefik</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="nx">enable_prometheus</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="nx">enable_grafana</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="nx">enable_loki</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="nx">enable_longhorn</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="nx">enable_velero</span> <span class="o">=</span> <span class="kc">true</span>
+</code></pre></div></div>
+
+<h5 id="select-deployment-profile">Select Deployment Profile</h5>
+<p>Choose from the available profiles:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">min</code>: 1 control plane, 0 workers</li>
+  <li><code class="language-plaintext highlighter-rouge">medium</code>: 1 control plane, 1 worker</li>
+  <li><code class="language-plaintext highlighter-rouge">recommended</code>: 1 control plane, 2 workers</li>
+</ul>
+
+<h5 id="apply-infrastructure">Apply Infrastructure</h5>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>infrastructure/terraform
+terraform init
+terraform plan
+terraform apply
+</code></pre></div></div>
+
+<h4 id="2-ansible-k3s-installation">2. Ansible k3s Installation</h4>
+
+<h5 id="configure-inventory">Configure Inventory</h5>
+<p>Update <code class="language-plaintext highlighter-rouge">infrastructure/ansible/inventory/hosts.ini</code> with your actual VM IPs:</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[control_plane]</span><span class="w">
+</span><span class="na">control-plane-1</span><span class="w"> </span><span class="py">ansible_host</span><span class="p">=</span><span class="s">192.168.1.10</span>
+<span class="w">
+</span><span class="nn">[worker_nodes]</span><span class="w">
+</span><span class="na">worker-1</span><span class="w"> </span><span class="py">ansible_host</span><span class="p">=</span><span class="s">192.168.1.11</span>
+<span class="na">worker-2</span><span class="w"> </span><span class="py">ansible_host</span><span class="p">=</span><span class="s">192.168.1.12</span>
+<span class="w">
+</span><span class="nn">[all:vars]</span><span class="w">
+</span><span class="py">ansible_user</span><span class="p">=</span><span class="s">ubuntu</span>
+<span class="py">ansible_become</span><span class="p">=</span><span class="s">yes</span>
+<span class="py">ansible_become_method</span><span class="p">=</span><span class="s">sudo</span>
+<span class="py">ansible_ssh_common_args</span><span class="p">=</span><span class="s">'-o StrictHostKeyChecking=no'</span>
+</code></pre></div></div>
+
+<h5 id="configure-variables-1">Configure Variables</h5>
+<p>Set any additional variables in:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">infrastructure/ansible/inventory/group_vars/control_plane.yml</code></li>
+  <li><code class="language-plaintext highlighter-rouge">infrastructure/ansible/inventory/group_vars/worker_nodes.yml</code></li>
+</ul>
+
+<h5 id="run-playbooks">Run Playbooks</h5>
+<p>Execute the Ansible playbooks in sequence:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>infrastructure/ansible
+
+<span class="c"># Install k3s</span>
+ansible-playbook playbooks/k3s-install.yml
+
+<span class="c"># Setup cluster</span>
+ansible-playbook playbooks/cluster-setup.yml
+
+<span class="c"># Post-setup configuration</span>
+ansible-playbook playbooks/post-setup.yml
+
+<span class="c"># Bootstrap GitOps environment (Gitea, ArgoCD, runners)</span>
+ansible-playbook playbooks/bootstrap-gitops.yml
+</code></pre></div></div>
+
+<h3 id="deployment-profiles">Deployment Profiles</h3>
+
+<h4 id="min-profile">Min Profile</h4>
+<ul>
+  <li>1 VM for control plane</li>
+  <li>Minimal resource allocation</li>
+  <li>Suitable for small homelabs</li>
+  <li>Memory: 1024MB, Cores: 1, Disk: 10GB</li>
+</ul>
+
+<h4 id="medium-profile">Medium Profile</h4>
+<ul>
+  <li>1 VM for control plane</li>
+  <li>1 VM for worker node</li>
+  <li>Balanced resource allocation</li>
+  <li>Memory: 2048MB, Cores: 2, Disk: 20GB</li>
+</ul>
+
+<h4 id="recommended-profile">Recommended Profile</h4>
+<ul>
+  <li>1 VM for control plane</li>
+  <li>2 VMs for worker nodes</li>
+  <li>Production-ready resource allocation</li>
+  <li>Memory: 4096MB, Cores: 4, Disk: 40GB</li>
+</ul>
+
+<h3 id="gitops-workflow">GitOps Workflow</h3>
+
+<p>After successful infrastructure setup, the system provides a complete GitOps workflow:</p>
+
+<ol>
+  <li><strong>Gitea</strong>: Version control system for managing infrastructure and applications</li>
+  <li><strong>ArgoCD</strong>: GitOps continuous delivery for Kubernetes applications</li>
+  <li><strong>Gitea Runners</strong>: CI/CD runners for automated deployments</li>
+</ol>
+
+<h4 id="using-the-gitops-workflow">Using the GitOps Workflow</h4>
+
+<ol>
+  <li>Access Gitea at <code class="language-plaintext highlighter-rouge">http://&lt;gitea-ip&gt;:3000</code></li>
+  <li>Create repositories for your infrastructure and applications</li>
+  <li>Push your configurations to Git</li>
+  <li>ArgoCD will automatically deploy changes to your k3s cluster</li>
+  <li>Use Gitea runners for automated CI/CD pipelines</li>
+</ol>
+
+<h3 id="troubleshooting">Troubleshooting</h3>
+
+<h4 id="common-issues">Common Issues</h4>
+
+<ol>
+  <li><strong>Proxmox API Connection Errors</strong>
+    <ul>
+      <li>Verify API credentials and URL</li>
+      <li>Ensure API token has proper permissions</li>
+      <li>Check network connectivity</li>
+    </ul>
+  </li>
+  <li><strong>SSH Connection Failures</strong>
+    <ul>
+      <li>Verify SSH keys are configured</li>
+      <li>Ensure Ubuntu user has proper permissions</li>
+      <li>Check firewall settings</li>
+    </ul>
+  </li>
+  <li><strong>k3s Installation Failures</strong>
+    <ul>
+      <li>Check system requirements</li>
+      <li>Verify network connectivity</li>
+      <li>Review Ansible logs for detailed errors</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="debugging-commands">Debugging Commands</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Check Terraform state</span>
+terraform state list
+
+<span class="c"># Check Ansible inventory</span>
+ansible-inventory <span class="nt">-i</span> inventory/hosts.ini <span class="nt">--list</span>
+
+<span class="c"># Check k3s status</span>
+systemctl status k3s
+
+<span class="c"># Check k3s logs</span>
+journalctl <span class="nt">-u</span> k3s <span class="nt">-f</span>
+
+<span class="c"># Check ArgoCD pods</span>
+kubectl get pods <span class="nt">-n</span> argocd
+
+<span class="c"># Check Gitea service</span>
+kubectl get svc gitea <span class="nt">-n</span> default
+</code></pre></div></div>
+
+<h3 id="next-steps">Next Steps</h3>
+
+<p>After successful infrastructure setup, you’ll have a complete GitOps environment ready for use:</p>
+
+<ol>
+  <li><strong>Configure Services</strong>: Enable/disable services through Terraform variables</li>
+  <li><strong>Deploy Applications</strong>: Use ArgoCD to deploy applications through Git</li>
+  <li><strong>Version Control</strong>: Manage all infrastructure and applications through Gitea</li>
+  <li><strong>CI/CD</strong>: Automate deployments using Gitea runners</li>
+  <li><strong>Monitoring</strong>: Use the built-in Prometheus, Grafana, and Loki stack</li>
+</ol>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+
+  </body>
+
+</html>

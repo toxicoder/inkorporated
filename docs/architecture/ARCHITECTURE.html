@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | Inkorporated Homelab Documentation</title>
+<title>Inkorporated Homelab Documentation | Comprehensive documentation for the Inkorporated homelab project.</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Inkorporated Homelab Documentation" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Comprehensive documentation for the Inkorporated homelab project." />
 <meta property="og:description" content="Comprehensive documentation for the Inkorporated homelab project." />
-<link rel="canonical" href="https://toxicoder.github.io/inkorporated/" />
-<meta property="og:url" content="https://toxicoder.github.io/inkorporated/" />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/architecture/ARCHITECTURE.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/architecture/ARCHITECTURE.html" />
 <meta property="og:site_name" content="Inkorporated Homelab Documentation" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Inkorporated Homelab Documentation" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Home","name":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/architecture/ARCHITECTURE.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/inkorporated/assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -248,7 +248,7 @@
 
 <li class="nav-item">
   
-    <a class="nav-link active" href="/inkorporated/">
+    <a class="nav-link " href="/inkorporated/">
       Home
     </a>
   
@@ -525,54 +525,288 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Home</h1>
+    <h1 class="post-title"></h1>
   </header>
 
   <div class="post-content">
-    <h1 id="inkorporated-homelab-documentation">Inkorporated Homelab Documentation</h1>
+    <h1 id="inkorporated-homelab-architecture">Inkorporated Homelab Architecture</h1>
 
-<p>Welcome to the comprehensive documentation for the Inkorporated homelab project.</p>
+<h2 id="high-level-architecture">High-Level Architecture</h2>
 
-<h2 id="core-documentation">Core Documentation</h2>
+<pre><code class="language-mermaid">graph TD
+    subgraph "Physical Layer"
+        Proxmox["Proxmox Cluster\n4 Physical Nodes"]
+        Synology["Synology NAS\nNFS Storage"]
+    end
 
+    subgraph "Virtualization Layer"
+        pfSense["pfSense VM\nFirewall / Router / VPN"]
+        k3sVMs["k3s VMs\n3 Control Planes + Workers"]
+    end
+
+    subgraph Kubernetes["Kubernetes Cluster (k3s)"]
+        direction TB
+        Namespaces["Namespaces\n- dev\n- staging\n- uat\n- canary\n- auto-push\n- priv\n- prod"]
+        Shared["Shared Infrastructure\nTraefik | Authentik | Rocket.Chat | WorkAdventure\nJitsi | Coturn | Vaultwarden | HashiCorp Vault\nOllama | Open WebUI | Langflow | Kokoro TTS | Docling\nAppFlowy | SearXNG | SurfSense | Perplexica | LinkWarden\nHomebox | Home Assistant | Kasm Workspaces\nGitea | Coder | cert-manager | MetalLB\nLonghorn | CloudNativePG | MinIO | Velero | MongoDB | cloudflared"]
+        Monitoring["Monitoring Stack\nPrometheus | Grafana | Alertmanager | Loki"]
+        GitOps[ArgoCD]
+    end
+
+    subgraph "Observability &amp; Backups"
+        PromtailHosts["Promtail on Proxmox Hosts"]
+        BackupsS3["MinIO S3 on NFS PVC"]
+    end
+
+    Internet --&gt; pfSense
+    pfSense --&gt; k3sVMs
+    pfSense --&gt; Synology
+    Proxmox --&gt; pfSense
+    Proxmox --&gt; k3sVMs
+    k3sVMs --&gt; Kubernetes
+    Kubernetes --&gt; Namespaces
+    Namespaces --&gt; Shared &amp; Monitoring &amp; GitOps
+    Synology --&gt; NFS_CSI["NFS CSI Driver\n(Provides PVCs)"]
+    NFS_CSI --&gt; BackupsS3 &amp; Monitoring
+    Shared --&gt;|Backups to| BackupsS3
+    Proxmox --&gt; PromtailHosts --&gt; Loki[in Monitoring Stack]
+    Kubernetes --&gt;|Pod Logs via Promtail DS| Loki
+    Shared --&gt;|Metrics Scraped| Prometheus[in Monitoring Stack]
+    CloudflareEdge[Cloudflare Edge] --&gt; cloudflared[in Shared] --&gt; SecureTunnel["Secure Tunnel\nZero-Trust Access to Services"]
+</code></pre>
+
+<h2 id="core-components">Core Components</h2>
+
+<h3 id="infrastructure-layer">Infrastructure Layer</h3>
 <ul>
-  <li><a href="/guides/overview.html">Project Overview</a>: Executive summary and key features.</li>
-  <li><a href="/architecture/index.html">Architecture</a>: High-level architectural design and diagrams.</li>
-  <li><a href="/architecture/network.html">Network Topology</a>: Detailed network zones and security layers.</li>
-  <li><a href="/architecture/technical_design.html">Technical Design</a>: In-depth technical specifications.</li>
+  <li><strong>Proxmox Cluster</strong>: 4 physical nodes for VM hosting</li>
+  <li><strong>Synology NAS</strong>: NFS storage for persistent volumes</li>
+  <li><strong>pfSense VM</strong>: Firewall, router, and VPN termination</li>
 </ul>
 
-<h2 id="guides--handbooks">Guides &amp; Handbooks</h2>
-
+<h3 id="kubernetes-layer">Kubernetes Layer</h3>
 <ul>
-  <li><a href="/guides/installation.html">Installation Guide</a>: Step-by-step implementation phases.</li>
-  <li><a href="/guides/configuration.html">Configuration Guide</a>: Detailed configuration references.</li>
-  <li><a href="/guides/environments.html">Environment Guide</a>: Managing dev, staging, and prod environments.</li>
-  <li><a href="/guides/deployment.html">Deployment &amp; Operations</a>: GitOps workflows and maintenance.</li>
-  <li><a href="/guides/security.html">Security Handbook</a>: Authentication, authorization, and data protection.</li>
-  <li><a href="/guides/observability.html">Observability Guide</a>: Monitoring, logging, and alerting.</li>
-  <li><a href="/guides/backups.html">Backup &amp; Recovery</a>: Disaster recovery strategies.</li>
-  <li><a href="/guides/troubleshooting.html">Troubleshooting</a>: Common issues and debugging.</li>
+  <li><strong>k3s Cluster</strong>: Lightweight Kubernetes distribution</li>
+  <li><strong>Namespaces</strong>: Isolated environments (dev, staging, prod, etc.)</li>
+  <li><strong>Shared Infrastructure</strong>: Common services deployed across all namespaces</li>
 </ul>
 
-<h2 id="reference">Reference</h2>
-
+<h3 id="services-overview">Services Overview</h3>
 <ul>
-  <li><a href="/reference/services.html">Service Catalog</a>: Detailed specifications for all deployed services.</li>
-  <li><a href="/guides/overview.html#repository-structure">Repository Structure</a>: Codebase organization.</li>
+  <li><strong>Authentication</strong>: Authentik SSO/OIDC</li>
+  <li><strong>Collaboration</strong>: Rocket.Chat, WorkAdventure, Jitsi Meet</li>
+  <li><strong>Productivity</strong>: AppFlowy, LinkWarden, Homebox, Home Assistant</li>
+  <li><strong>Remote Work</strong>: Kasm Workspaces, Coder</li>
+  <li><strong>AI Services</strong>: Ollama, Open WebUI, Langflow, Kokoro TTS, Docling, SearXNG, SurfSense, Perplexica</li>
+  <li><strong>Security</strong>: Vaultwarden, HashiCorp Vault</li>
+  <li><strong>Infrastructure</strong>: Longhorn, MinIO, Velero, CloudNativePG, Traefik, cert-manager, MetalLB</li>
 </ul>
 
-<h2 id="status--reports">Status &amp; Reports</h2>
+<h2 id="network-topology">Network Topology</h2>
 
+<p>The Inkorporated homelab implements a multi-zone network architecture:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Department/Zone</th>
+      <th>Subnet</th>
+      <th>Example Gateway IP</th>
+      <th>Purpose/Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Headquarters</td>
+      <td>10.0.1.0/24</td>
+      <td>10.0.1.1</td>
+      <td>Executive offices and admin staff</td>
+    </tr>
+    <tr>
+      <td>Sales</td>
+      <td>10.0.2.0/24</td>
+      <td>10.0.2.1</td>
+      <td>Sales team workstations and CRM access</td>
+    </tr>
+    <tr>
+      <td>Engineering</td>
+      <td>10.0.3.0/24</td>
+      <td>10.0.3.1</td>
+      <td>Development and testing environments</td>
+    </tr>
+    <tr>
+      <td>Finance</td>
+      <td>10.0.4.0/24</td>
+      <td>10.0.4.1</td>
+      <td>Accounting and financial systems</td>
+    </tr>
+    <tr>
+      <td>Human Resources</td>
+      <td>10.0.5.0/24</td>
+      <td>10.0.5.1</td>
+      <td>HR personnel and sensitive data storage</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>10.0.6.0/24</td>
+      <td>10.0.6.1</td>
+      <td>IT support and monitoring tools</td>
+    </tr>
+    <tr>
+      <td>Servers</td>
+      <td>10.0.7.0/24</td>
+      <td>10.0.7.1</td>
+      <td>Internal servers (e.g., file shares, databases)</td>
+    </tr>
+    <tr>
+      <td>DMZ</td>
+      <td>10.0.8.0/24</td>
+      <td>10.0.8.1</td>
+      <td>Public-facing services (e.g., web/email servers)</td>
+    </tr>
+    <tr>
+      <td>Guest WiFi</td>
+      <td>10.0.9.0/24</td>
+      <td>10.0.9.1</td>
+      <td>Visitor network - isolated with captive portal</td>
+    </tr>
+    <tr>
+      <td>Remote Access</td>
+      <td>10.0.10.0/24</td>
+      <td>10.0.10.1</td>
+      <td>VPN pool for remote workers</td>
+    </tr>
+    <tr>
+      <td>inkternal</td>
+      <td>10.0.11.0/24</td>
+      <td>10.0.11.1</td>
+      <td>Employee devices connect here</td>
+    </tr>
+    <tr>
+      <td>inklab</td>
+      <td>10.0.12.0/24</td>
+      <td>10.0.12.1</td>
+      <td>Internal-facing services</td>
+    </tr>
+    <tr>
+      <td>publink</td>
+      <td>10.0.13.0/24</td>
+      <td>10.0.13.1</td>
+      <td>Production services for external access</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="security-implementation">Security Implementation</h2>
+
+<h3 id="zero-trust-architecture">Zero-trust Architecture</h3>
 <ul>
-  <li><a href="/status/discovery_summary.html">Discovery Summary</a>: Consolidated documentation overview.</li>
-  <li><a href="/status/infrastructure_validation_report.html">Infrastructure Validation</a>: Validation report for the infrastructure.</li>
-  <li><a href="/status/dgx_integration_summary.html">DGX Integration Summary</a>: Status of NVIDIA DGX integration.</li>
+  <li><strong>Cloudflare Tunnel</strong>: Secure external access with zero-trust principles</li>
+  <li><strong>Authentik SSO</strong>: Centralized authentication with OIDC + 2FA</li>
+  <li><strong>Network Segmentation</strong>: pfSense firewall with VLANs</li>
+  <li><strong>Secrets Management</strong>: Vault for apps, Vaultwarden for users, SealedSecrets in GitOps</li>
 </ul>
 
-<h2 id="contributing">Contributing</h2>
+<h3 id="data-protection">Data Protection</h3>
+<ul>
+  <li><strong>In-transit</strong>: All encrypted via Traefik TLS</li>
+  <li><strong>At-rest</strong>: Longhorn storage encryption</li>
+  <li><strong>Backup</strong>: Velero scheduled backups to MinIO S3</li>
+</ul>
 
-<p>This project is open-source and welcomes contributions. Please see the <a href="https://github.com/toxicoder/inkorporated-k8s-apps/blob/main/README.md">README</a> for more information.</p>
+<h2 id="observability-stack">Observability Stack</h2>
+
+<h3 id="monitoring">Monitoring</h3>
+<ul>
+  <li><strong>Prometheus</strong>: Metrics collection from all services</li>
+  <li><strong>Grafana</strong>: Dashboards for system monitoring</li>
+  <li><strong>Alertmanager</strong>: Alerting for critical system events</li>
+</ul>
+
+<h3 id="logging">Logging</h3>
+<ul>
+  <li><strong>Loki</strong>: Unified logs (pods + hosts)</li>
+  <li><strong>Promtail</strong>: Log collection agents on hosts and pods</li>
+</ul>
+
+<h2 id="storage-solutions">Storage Solutions</h2>
+
+<h3 id="primary-storage">Primary Storage</h3>
+<ul>
+  <li><strong>Longhorn</strong>: Distributed block storage with 3-replica redundancy</li>
+  <li><strong>NFS CSI Driver</strong>: Provides PVCs from Synology NFS storage</li>
+</ul>
+
+<h3 id="object-storage">Object Storage</h3>
+<ul>
+  <li><strong>MinIO</strong>: S3-compatible object storage for backups and file storage</li>
+  <li><strong>Velero</strong>: Backup and restore solution for Kubernetes resources</li>
+</ul>
+
+<h2 id="deployment-strategy">Deployment Strategy</h2>
+
+<h3 id="gitops-workflow">GitOps Workflow</h3>
+<ol>
+  <li><strong>Terraform</strong> → <strong>Ansible bootstrap</strong> (including pfSense VM)</li>
+  <li><strong>Configure pfSense</strong> post-deploy (interfaces, rules, VPN)</li>
+  <li><strong>ArgoCD sync</strong> (wave order: storage → DBs → Authentik → backends → frontends)</li>
+  <li><strong>Post-deploy</strong> configuration (Authentik applications, homepage shortcuts, etc.)</li>
+</ol>
+
+<h3 id="infrastructure-as-code">Infrastructure as Code</h3>
+<ul>
+  <li><strong>Terraform</strong>: VM provisioning and initial setup</li>
+  <li><strong>Ansible</strong>: k3s cluster configuration</li>
+  <li><strong>Kubernetes manifests</strong>: Declarative configuration</li>
+  <li><strong>ArgoCD</strong>: GitOps engine for application deployment</li>
+</ul>
+
+<h2 id="implementation-phases">Implementation Phases</h2>
+
+<h3 id="phase-1-foundation--preparation">Phase 1: Foundation &amp; Preparation</h3>
+<ul>
+  <li>Validate physical infrastructure readiness</li>
+  <li>Create Proxmox Cloud-Init template</li>
+  <li>Set up workstation tools</li>
+</ul>
+
+<h3 id="phase-2-repository--code-setup">Phase 2: Repository &amp; Code Setup</h3>
+<ul>
+  <li>Create bootstrap repository with Terraform/Ansible</li>
+  <li>Create apps repository with GitOps manifests</li>
+  <li>Complete cloudflared tunnel deployment structure</li>
+</ul>
+
+<h3 id="phase-3-bootstrap-infrastructure">Phase 3: Bootstrap Infrastructure</h3>
+<ul>
+  <li>Provision VMs with Terraform</li>
+  <li>Install k3s with Ansible</li>
+  <li>Bootstrap ArgoCD for GitOps</li>
+</ul>
+
+<h3 id="phase-4-core-infrastructure-deployment">Phase 4: Core Infrastructure Deployment</h3>
+<ul>
+  <li>Deploy NFS CSI Driver</li>
+  <li>Deploy Longhorn Storage</li>
+  <li>Deploy MinIO Object Storage</li>
+  <li>Deploy CloudNativePG and MongoDB</li>
+  <li>Deploy Velero for backups</li>
+  <li>Deploy cert-manager for TLS</li>
+  <li>Deploy MetalLB for LoadBalancer</li>
+  <li>Deploy Traefik for Ingress</li>
+  <li>Deploy Authentik for SSO</li>
+  <li>Deploy Vaultwarden for passwords</li>
+  <li>Deploy HashiCorp Vault for secrets</li>
+  <li>Deploy cloudflared Tunnel for secure access</li>
+</ul>
+
+<h3 id="phase-5-post-deployment">Phase 5: Post-Deployment</h3>
+<ul>
+  <li>Configure Authentik providers and groups</li>
+  <li>Deploy user dashboard (Homepage)</li>
+  <li>Enable backups and testing</li>
+  <li>Performance and security hardening</li>
+  <li>Documentation runbook creation</li>
+</ul>
 
   </div>
 

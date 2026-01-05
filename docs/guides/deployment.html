@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | Inkorporated Homelab Documentation</title>
+<title>Inkorporated Homelab Documentation | Comprehensive documentation for the Inkorporated homelab project.</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Inkorporated Homelab Documentation" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Comprehensive documentation for the Inkorporated homelab project." />
 <meta property="og:description" content="Comprehensive documentation for the Inkorporated homelab project." />
-<link rel="canonical" href="https://toxicoder.github.io/inkorporated/" />
-<meta property="og:url" content="https://toxicoder.github.io/inkorporated/" />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/guides/deployment.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/guides/deployment.html" />
 <meta property="og:site_name" content="Inkorporated Homelab Documentation" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Inkorporated Homelab Documentation" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Home","name":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/guides/deployment.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/inkorporated/assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -248,7 +248,7 @@
 
 <li class="nav-item">
   
-    <a class="nav-link active" href="/inkorporated/">
+    <a class="nav-link " href="/inkorporated/">
       Home
     </a>
   
@@ -368,7 +368,7 @@
 
 <li class="nav-item">
   
-    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+    <a class="nav-link active" href="/inkorporated/guides/deployment.html">
       Deployment & Ops
     </a>
   
@@ -525,54 +525,75 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Home</h1>
+    <h1 class="post-title"></h1>
   </header>
 
   <div class="post-content">
-    <h1 id="inkorporated-homelab-documentation">Inkorporated Homelab Documentation</h1>
+    <h1 id="deployment--operations">Deployment &amp; Operations</h1>
 
-<p>Welcome to the comprehensive documentation for the Inkorporated homelab project.</p>
+<h2 id="deployment-process">Deployment Process</h2>
+<ol>
+  <li><strong>Terraform</strong> → <strong>Ansible bootstrap</strong> (including pfSense VM)</li>
+  <li><strong>Configure pfSense</strong> post-deploy (interfaces, rules, VPN)</li>
+  <li><strong>ArgoCD sync</strong> (wave order: storage → DBs → Authentik → backends → frontends)</li>
+  <li><strong>Post-deploy</strong> configuration (Authentik applications, homepage shortcuts, etc.)</li>
+</ol>
 
-<h2 id="core-documentation">Core Documentation</h2>
-
+<h2 id="maintenance">Maintenance</h2>
 <ul>
-  <li><a href="/guides/overview.html">Project Overview</a>: Executive summary and key features.</li>
-  <li><a href="/architecture/index.html">Architecture</a>: High-level architectural design and diagrams.</li>
-  <li><a href="/architecture/network.html">Network Topology</a>: Detailed network zones and security layers.</li>
-  <li><a href="/architecture/technical_design.html">Technical Design</a>: In-depth technical specifications.</li>
+  <li><strong>Manual infra syncs</strong> for infrastructure changes</li>
+  <li><strong>Monitor Grafana</strong> for system health</li>
+  <li><strong>Regular security updates</strong> for container images</li>
 </ul>
 
-<h2 id="guides--handbooks">Guides &amp; Handbooks</h2>
+<h2 id="configuration-management-strategy">Configuration Management Strategy</h2>
 
+<h3 id="gitops-principles">GitOps Principles</h3>
 <ul>
-  <li><a href="/guides/installation.html">Installation Guide</a>: Step-by-step implementation phases.</li>
-  <li><a href="/guides/configuration.html">Configuration Guide</a>: Detailed configuration references.</li>
-  <li><a href="/guides/environments.html">Environment Guide</a>: Managing dev, staging, and prod environments.</li>
-  <li><a href="/guides/deployment.html">Deployment &amp; Operations</a>: GitOps workflows and maintenance.</li>
-  <li><a href="/guides/security.html">Security Handbook</a>: Authentication, authorization, and data protection.</li>
-  <li><a href="/guides/observability.html">Observability Guide</a>: Monitoring, logging, and alerting.</li>
-  <li><a href="/guides/backups.html">Backup &amp; Recovery</a>: Disaster recovery strategies.</li>
-  <li><a href="/guides/troubleshooting.html">Troubleshooting</a>: Common issues and debugging.</li>
+  <li>All infrastructure and applications managed through Git</li>
+  <li>Declarative configuration files</li>
+  <li>Automated deployment through ArgoCD</li>
+  <li>Version-controlled changes with proper commit messages</li>
 </ul>
 
-<h2 id="reference">Reference</h2>
-
+<h3 id="secrets-management">Secrets Management</h3>
 <ul>
-  <li><a href="/reference/services.html">Service Catalog</a>: Detailed specifications for all deployed services.</li>
-  <li><a href="/guides/overview.html#repository-structure">Repository Structure</a>: Codebase organization.</li>
+  <li>Sensitive data stored as Kubernetes secrets</li>
+  <li>Sealed secrets for Git-safe storage</li>
+  <li>Proper RBAC and access controls</li>
 </ul>
 
-<h2 id="status--reports">Status &amp; Reports</h2>
-
+<h3 id="environment-management">Environment Management</h3>
 <ul>
-  <li><a href="/status/discovery_summary.html">Discovery Summary</a>: Consolidated documentation overview.</li>
-  <li><a href="/status/infrastructure_validation_report.html">Infrastructure Validation</a>: Validation report for the infrastructure.</li>
-  <li><a href="/status/dgx_integration_summary.html">DGX Integration Summary</a>: Status of NVIDIA DGX integration.</li>
+  <li>Multiple environments: dev, staging, uat, prod</li>
+  <li>Environment-specific configurations</li>
+  <li>Progressive deployment strategy</li>
 </ul>
 
-<h2 id="contributing">Contributing</h2>
+<h2 id="best-practices">Best Practices</h2>
 
-<p>This project is open-source and welcomes contributions. Please see the <a href="https://github.com/toxicoder/inkorporated-k8s-apps/blob/main/README.md">README</a> for more information.</p>
+<h3 id="infrastructure-as-code">Infrastructure as Code</h3>
+<ul>
+  <li>Use Terraform for infrastructure provisioning</li>
+  <li>Use Ansible for configuration management</li>
+  <li>Maintain idempotent scripts and configurations</li>
+</ul>
+
+<h3 id="security">Security</h3>
+<ul>
+  <li>Regular security audits</li>
+  <li>Keep container images updated</li>
+  <li>Implement proper network segmentation</li>
+  <li>Use least privilege principles</li>
+</ul>
+
+<h3 id="monitoring--logging">Monitoring &amp; Logging</h3>
+<ul>
+  <li>Comprehensive metrics collection</li>
+  <li>Centralized logging with Loki</li>
+  <li>Alerting for critical issues</li>
+  <li>Performance monitoring</li>
+</ul>
 
   </div>
 

@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | Inkorporated Homelab Documentation</title>
+<title>Inkorporated Homelab Documentation | Comprehensive documentation for the Inkorporated homelab project.</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Inkorporated Homelab Documentation" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Comprehensive documentation for the Inkorporated homelab project." />
 <meta property="og:description" content="Comprehensive documentation for the Inkorporated homelab project." />
-<link rel="canonical" href="https://toxicoder.github.io/inkorporated/" />
-<meta property="og:url" content="https://toxicoder.github.io/inkorporated/" />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/guides/environments.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/guides/environments.html" />
 <meta property="og:site_name" content="Inkorporated Homelab Documentation" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Inkorporated Homelab Documentation" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Home","name":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/guides/environments.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/inkorporated/assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -248,7 +248,7 @@
 
 <li class="nav-item">
   
-    <a class="nav-link active" href="/inkorporated/">
+    <a class="nav-link " href="/inkorporated/">
       Home
     </a>
   
@@ -357,7 +357,7 @@
 
 <li class="nav-item">
   
-    <a class="nav-link " href="/inkorporated/guides/environments.html">
+    <a class="nav-link active" href="/inkorporated/guides/environments.html">
       Environments
     </a>
   
@@ -525,54 +525,105 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Home</h1>
+    <h1 class="post-title"></h1>
   </header>
 
   <div class="post-content">
-    <h1 id="inkorporated-homelab-documentation">Inkorporated Homelab Documentation</h1>
+    <h1 id="environment-implementation-guide">Environment Implementation Guide</h1>
 
-<p>Welcome to the comprehensive documentation for the Inkorporated homelab project.</p>
+<p>This document provides guidance on implementing and managing multiple environments (dev, staging, autopush, prod) for the Inkorporated homelab infrastructure.</p>
 
-<h2 id="core-documentation">Core Documentation</h2>
+<h2 id="overview">Overview</h2>
 
-<ul>
-  <li><a href="/guides/overview.html">Project Overview</a>: Executive summary and key features.</li>
-  <li><a href="/architecture/index.html">Architecture</a>: High-level architectural design and diagrams.</li>
-  <li><a href="/architecture/network.html">Network Topology</a>: Detailed network zones and security layers.</li>
-  <li><a href="/architecture/technical_design.html">Technical Design</a>: In-depth technical specifications.</li>
-</ul>
-
-<h2 id="guides--handbooks">Guides &amp; Handbooks</h2>
+<p>The Inkorporated homelab supports multiple deployment environments to enable proper development, testing, and production workflows. The supported environments are:</p>
 
 <ul>
-  <li><a href="/guides/installation.html">Installation Guide</a>: Step-by-step implementation phases.</li>
-  <li><a href="/guides/configuration.html">Configuration Guide</a>: Detailed configuration references.</li>
-  <li><a href="/guides/environments.html">Environment Guide</a>: Managing dev, staging, and prod environments.</li>
-  <li><a href="/guides/deployment.html">Deployment &amp; Operations</a>: GitOps workflows and maintenance.</li>
-  <li><a href="/guides/security.html">Security Handbook</a>: Authentication, authorization, and data protection.</li>
-  <li><a href="/guides/observability.html">Observability Guide</a>: Monitoring, logging, and alerting.</li>
-  <li><a href="/guides/backups.html">Backup &amp; Recovery</a>: Disaster recovery strategies.</li>
-  <li><a href="/guides/troubleshooting.html">Troubleshooting</a>: Common issues and debugging.</li>
+  <li><strong>dev</strong> - Development environment</li>
+  <li><strong>staging</strong> - Staging environment</li>
+  <li><strong>autopush</strong> - Automated push environment</li>
+  <li><strong>canary</strong> - Canary deployment environment</li>
+  <li><strong>prod</strong> - Production environment</li>
 </ul>
 
-<h2 id="reference">Reference</h2>
+<h2 id="environment-configuration">Environment Configuration</h2>
+
+<p>Environment-specific configurations are managed through the <code class="language-plaintext highlighter-rouge">config/environment-config.yaml</code> file which defines the domains and settings for each environment.</p>
+
+<h2 id="kubernetes-manifest-updates">Kubernetes Manifest Updates</h2>
+
+<p>All Kubernetes manifests have been updated to support environment-specific deployments by:</p>
+
+<ol>
+  <li>Using environment variables in ConfigMaps and Deployments</li>
+  <li>Implementing proper namespace separation</li>
+  <li>Configuring domain routing for each environment</li>
+</ol>
+
+<h2 id="infrastructure-support">Infrastructure Support</h2>
+
+<h3 id="terraform">Terraform</h3>
+
+<p>The Terraform configuration now includes an <code class="language-plaintext highlighter-rouge">environment</code> variable that can be set during deployment:</p>
+
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">variable</span> <span class="s2">"environment"</span> <span class="p">{</span>
+  <span class="nx">description</span> <span class="o">=</span> <span class="s2">"Deployment environment (dev, staging, autopush, canary, prod)"</span>
+  <span class="nx">type</span>        <span class="o">=</span> <span class="nx">string</span>
+  <span class="nx">default</span>     <span class="o">=</span> <span class="s2">"dev"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="ansible">Ansible</h3>
+
+<p>The Ansible bootstrap playbook now supports environment-specific deployments through the <code class="language-plaintext highlighter-rouge">ENVIRONMENT</code> environment variable:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">vars</span><span class="pi">:</span>
+  <span class="na">environment</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+</code></pre></div></div>
+
+<h2 id="environment-specific-domain-configuration">Environment-Specific Domain Configuration</h2>
+
+<p>Each environment uses its own domain structure:</p>
+<ul>
+  <li><strong>dev</strong>: <code class="language-plaintext highlighter-rouge">dev.example.com</code> and <code class="language-plaintext highlighter-rouge">*.dev.example.com</code></li>
+  <li><strong>staging</strong>: <code class="language-plaintext highlighter-rouge">staging.example.com</code> and <code class="language-plaintext highlighter-rouge">*.staging.example.com</code></li>
+  <li><strong>autopush</strong>: <code class="language-plaintext highlighter-rouge">autopush.example.com</code> and <code class="language-plaintext highlighter-rouge">*.autopush.example.com</code></li>
+  <li><strong>canary</strong>: <code class="language-plaintext highlighter-rouge">canary.example.com</code> and <code class="language-plaintext highlighter-rouge">*.canary.example.com</code></li>
+  <li><strong>prod</strong>: <code class="language-plaintext highlighter-rouge">example.com</code> and <code class="language-plaintext highlighter-rouge">*.example.com</code></li>
+</ul>
+
+<h2 id="gitops-integration">GitOps Integration</h2>
+
+<p>The GitOps workflow supports environment-specific deployments through ArgoCD applications that target specific namespaces.</p>
+
+<h2 id="deployment-process">Deployment Process</h2>
+
+<ol>
+  <li>Set the <code class="language-plaintext highlighter-rouge">ENVIRONMENT</code> environment variable</li>
+  <li>Apply the appropriate configuration for the target environment</li>
+  <li>Deploy using ArgoCD or kubectl</li>
+</ol>
+
+<h2 id="testing-and-verification">Testing and Verification</h2>
+
+<p>To verify environment deployment:</p>
+
+<ol>
+  <li>Check that the correct namespace exists</li>
+  <li>Verify that environment-specific ConfigMaps are applied</li>
+  <li>Confirm that services are accessible at the correct domain</li>
+  <li>Validate that ingress rules are properly configured</li>
+</ol>
+
+<h2 id="best-practices">Best Practices</h2>
 
 <ul>
-  <li><a href="/reference/services.html">Service Catalog</a>: Detailed specifications for all deployed services.</li>
-  <li><a href="/guides/overview.html#repository-structure">Repository Structure</a>: Codebase organization.</li>
+  <li>Always use environment variables for domain configurations</li>
+  <li>Implement proper namespace isolation between environments</li>
+  <li>Use different storage configurations for different environments when needed</li>
+  <li>Maintain separate secrets for each environment</li>
+  <li>Implement appropriate resource limits for each environment</li>
+  <li>Use environment-specific labels for easier management and monitoring</li>
 </ul>
-
-<h2 id="status--reports">Status &amp; Reports</h2>
-
-<ul>
-  <li><a href="/status/discovery_summary.html">Discovery Summary</a>: Consolidated documentation overview.</li>
-  <li><a href="/status/infrastructure_validation_report.html">Infrastructure Validation</a>: Validation report for the infrastructure.</li>
-  <li><a href="/status/dgx_integration_summary.html">DGX Integration Summary</a>: Status of NVIDIA DGX integration.</li>
-</ul>
-
-<h2 id="contributing">Contributing</h2>
-
-<p>This project is open-source and welcomes contributions. Please see the <a href="https://github.com/toxicoder/inkorporated-k8s-apps/blob/main/README.md">README</a> for more information.</p>
 
   </div>
 

@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Inkorporated Homelab Documentation | Comprehensive documentation for the Inkorporated homelab project.</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Inkorporated Homelab Documentation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Comprehensive documentation for the Inkorporated homelab project." />
+<meta property="og:description" content="Comprehensive documentation for the Inkorporated homelab project." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/architecture/technical_design.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/architecture/technical_design.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Inkorporated Homelab Documentation" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/architecture/technical_design.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    <a href="https://github.com/toxicoder/materialistic-jekyll" class="icon-btn outlined" aria-label="GitHub Repository" style="margin-left: 8px;" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+      </svg>
+    </a>
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link active" href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="inkorporated-homelab-technical-design-document--final-version">Inkorporated Homelab Technical Design Document – Final Version</h1>
+
+<p><strong>Project Name:</strong> Inkorporated<br />
+<strong>Purpose:</strong> This is the definitive technical design for <strong>Inkorporated</strong>, a fully self-hosted, open-source internal work environment. Every component is free and open source (FOSS), self-hosted on a single k3s cluster, and integrated to feel like one cohesive platform. All services are protected by centralized authentication (Authentik SSO/OIDC where supported, forward-auth fallback), routed through Traefik with unique subdomains (<code class="language-plaintext highlighter-rouge">service.example.com</code> or env-specific), and backed by shared infrastructure (Longhorn storage, CloudNativePG PostgreSQL, MinIO backups).</p>
+
+<p>The environment provides:</p>
+<ul>
+  <li><strong>Collaboration</strong>: Chat (Rocket.Chat), virtual office (WorkAdventure), video (Jitsi), code (Gitea + Coder).</li>
+  <li><strong>Productivity</strong>: Knowledge base (AppFlowy), bookmarks (LinkWarden), inventory (Homebox), smart home (Home Assistant).</li>
+  <li><strong>Remote Work</strong>: Browser workspaces (Kasm), code IDEs (Coder).</li>
+  <li><strong>AI</strong>: Local LLMs (Ollama + Open WebUI + Langflow), enhanced with TTS (Kokoro) and document parsing (Docling), private search (SearXNG + Perplexica + SurfSense).</li>
+  <li><strong>Security</strong>: Passwords (Vaultwarden), secrets (HashiCorp Vault).</li>
+  <li><strong>Networking</strong>: Advanced firewall, routing, and VPN (pfSense VM), complemented by secure tunnels (cloudflared for Cloudflare Tunnel).</li>
+  <li><strong>User Dashboard</strong>: Centralized homepage (Homepage app) with shortcuts to all hosted apps for easy user navigation.</li>
+  <li><strong>Observability</strong>: Full metrics/logs/alerts (Grafana stack).</li>
+</ul>
+
+<p>Everything is GitOps-managed via ArgoCD, with progressive multi-env promotion and selective priv deployment.</p>
+
+<h2 id="2-high-level-architecture">2. High-Level Architecture</h2>
+
+<pre><code class="language-mermaid">graph TD
+    subgraph "Physical Layer"
+        Proxmox["Proxmox Cluster\n4 Physical Nodes"]
+        Synology["Synology NAS\nNFS Storage"]
+    end
+
+    subgraph "Virtualization Layer"
+        pfSense["pfSense VM\nFirewall / Router / VPN"]
+        k3sVMs["k3s VMs\n3 Control Planes + Workers"]
+    end
+
+    subgraph Kubernetes["Kubernetes Cluster (k3s)"]
+        direction TB
+        Namespaces["Namespaces\n- dev\n- staging\n- uat\n- canary\n- auto-push\n- priv\n- prod"]
+        Shared["Shared Infrastructure\nTraefik | Authentik | Rocket.Chat | WorkAdventure\nJitsi | Coturn | Vaultwarden | HashiCorp Vault\nOllama | Open WebUI | Langflow | Kokoro TTS | Docling\nAppFlowy | SearXNG | SurfSense | Perplexica | LinkWarden\nHomebox | Home Assistant | Kasm Workspaces\nGitea | Coder | cert-manager | MetalLB\nLonghorn | CloudNativePG | MinIO | Velero | MongoDB | cloudflared"]
+        Monitoring["Monitoring Stack\nPrometheus | Grafana | Alertmanager | Loki"]
+        GitOps[ArgoCD]
+    end
+
+    subgraph "Observability &amp; Backups"
+        PromtailHosts["Promtail on Proxmox Hosts"]
+        BackupsS3["MinIO S3 on NFS PVC"]
+    end
+
+    Internet --&gt; pfSense
+    pfSense --&gt; k3sVMs
+    pfSense --&gt; Synology
+    Proxmox --&gt; pfSense
+    Proxmox --&gt; k3sVMs
+    k3sVMs --&gt; Kubernetes
+    Kubernetes --&gt; Namespaces
+    Namespaces --&gt; Shared &amp; Monitoring &amp; GitOps
+    Synology --&gt; NFS_CSI["NFS CSI Driver\n(Provides PVCs)"]
+    NFS_CSI --&gt; BackupsS3 &amp; Monitoring
+    Shared --&gt;|Backups to| BackupsS3
+    Proxmox --&gt; PromtailHosts --&gt; Loki[in Monitoring Stack]
+    Kubernetes --&gt;|Pod Logs via Promtail DS| Loki
+    Shared --&gt;|Metrics Scraped| Prometheus[in Monitoring Stack]
+    CloudflareEdge[Cloudflare Edge] --&gt; cloudflared[in Shared] --&gt; SecureTunnel["Secure Tunnel\nZero-Trust Access to Services"]
+</code></pre>
+
+<h2 id="3-full-components-and-services">3. Full Components and Services</h2>
+
+<p>All services are FOSS and self-hosted.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Service/Component</th>
+      <th>Location/Namespace</th>
+      <th>Description</th>
+      <th>Purpose / Integration</th>
+      <th>HA Configuration</th>
+      <th>Backend/Storage</th>
+      <th>Monitoring</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>pfSense</strong></td>
+      <td>Proxmox VM</td>
+      <td>Open-source firewall and router</td>
+      <td>Central network security, NAT, VPN (OpenVPN/WireGuard), traffic shaping, DHCP/DNS</td>
+      <td>Single VM (active/passive CARP optional)</td>
+      <td>Local ZFS/VM disk</td>
+      <td>SNMP exporter + Grafana dashboard</td>
+    </tr>
+    <tr>
+      <td><strong>cloudflared</strong> (New)</td>
+      <td>cloudflared</td>
+      <td>Cloudflare Tunnel client</td>
+      <td>Secure zero-trust tunnels for exposing services without public IPs/ports (complements pfSense)</td>
+      <td>3 replicas + PDB</td>
+      <td>ConfigMap for tunnel creds; no persistent storage needed</td>
+      <td>Basic metrics</td>
+    </tr>
+    <tr>
+      <td><strong>Homepage</strong></td>
+      <td>homepage</td>
+      <td>Customizable dashboard with app shortcuts</td>
+      <td>User-focused homepage providing quick links to all hosted apps (e.g., grouped shortcuts to Rocket.Chat, Open WebUI)</td>
+      <td>Single replica (lightweight)</td>
+      <td>ConfigMap for links; optional PVC for custom images</td>
+      <td>Minimal metrics</td>
+    </tr>
+    <tr>
+      <td>Traefik</td>
+      <td>traefik</td>
+      <td>Ingress controller</td>
+      <td>Unified routing/TLS for all services</td>
+      <td>3 replicas + PDB</td>
+      <td>ACME certs (cert-manager)</td>
+      <td>Built-in metrics</td>
+    </tr>
+    <tr>
+      <td>Authentik</td>
+      <td>authentik</td>
+      <td>Identity provider (OIDC + forward-auth)</td>
+      <td>Single sign-on across entire stack</td>
+      <td>3 server + worker/outpost replicas</td>
+      <td>PostgreSQL (CNPG) + Redis</td>
+      <td>Built-in metrics</td>
+    </tr>
+    <tr>
+      <td>Rocket.Chat</td>
+      <td>rocketchat</td>
+      <td>Team chat platform</td>
+      <td>Real-time communication (channels, DMs, video via Jitsi)</td>
+      <td>3 replicas + PDB</td>
+      <td>MongoDB + Longhorn uploads</td>
+      <td>Prometheus exporter</td>
+    </tr>
+    <tr>
+      <td>WorkAdventure</td>
+      <td>workadventure</td>
+      <td>2D virtual office</td>
+      <td>Map-based coworking with proximity video (Jitsi)</td>
+      <td>3 backend replicas + PDB</td>
+      <td>PostgreSQL (CNPG)</td>
+      <td>Metrics exporter</td>
+    </tr>
+    <tr>
+      <td>Jitsi Meet</td>
+      <td>jitsi</td>
+      <td>Video conferencing</td>
+      <td>Embedded calls in Rocket.Chat/WorkAdventure</td>
+      <td>Multiple JVB replicas</td>
+      <td>Config persistence</td>
+      <td>Built-in metrics</td>
+    </tr>
+    <tr>
+      <td>Coturn</td>
+      <td>coturn</td>
+      <td>TURN/STUN server</td>
+      <td>NAT traversal for video</td>
+      <td>Multiple replicas</td>
+      <td>Config secret</td>
+      <td>Metrics</td>
+    </tr>
+    <tr>
+      <td>Vaultwarden</td>
+      <td>vaultwarden</td>
+      <td>Bitwarden-compatible password manager</td>
+      <td>Personal/team password vault</td>
+      <td>3 replicas + PDB</td>
+      <td>PostgreSQL (CNPG) + PVCs</td>
+      <td>Built-in metrics</td>
+    </tr>
+    <tr>
+      <td>HashiCorp Vault</td>
+      <td>vault</td>
+      <td>Secrets management</td>
+      <td>App/infra secrets + dynamic creds</td>
+      <td>3 replicas + auto-unseal</td>
+      <td>Integrated storage</td>
+      <td>Built-in metrics</td>
+    </tr>
+    <tr>
+      <td>Ollama</td>
+      <td>ollama</td>
+      <td>Local LLM runner</td>
+      <td>Backend for all AI tools</td>
+      <td>Single (scale pods as needed)</td>
+      <td>Longhorn PVC models</td>
+      <td>Exporter</td>
+    </tr>
+    <tr>
+      <td>Open WebUI</td>
+      <td>webui</td>
+      <td>Ollama web interface</td>
+      <td>Chat + RAG + TTS (Kokoro) + parsing (Docling)</td>
+      <td>3 replicas + PDB</td>
+      <td>PostgreSQL (CNPG)</td>
+      <td>Built-in metrics</td>
+    </tr>
+    <tr>
+      <td>Langflow</td>
+      <td>langflow</td>
+      <td>Visual LangChain builder</td>
+      <td>AI agent/pipeline creation</td>
+      <td>3 replicas + PDB</td>
+      <td>PostgreSQL (CNPG)</td>
+      <td>Built-in metrics</td>
+    </tr>
+    <tr>
+      <td>Kokoro TTS</td>
+      <td>kokoro</td>
+      <td>Local TTS server</td>
+      <td>Voice output in Open WebUI</td>
+      <td>Single replica</td>
+      <td>Model cache</td>
+      <td>Basic metrics</td>
+    </tr>
+    <tr>
+      <td>Docling</td>
+      <td>docling</td>
+      <td>Document parsing server</td>
+      <td>Advanced RAG in Open WebUI</td>
+      <td>Single replica</td>
+      <td>Config</td>
+      <td>Metrics</td>
+    </tr>
+    <tr>
+      <td>AppFlowy</td>
+      <td>appflowy</td>
+      <td>Collaborative knowledge base</td>
+      <td>Notion alternative</td>
+      <td>3 replicas + PDB</td>
+      <td>PostgreSQL (CNPG) + PVCs</td>
+      <td>Exporter</td>
+    </tr>
+    <tr>
+      <td>SearXNG</td>
+      <td>searxng</td>
+      <td>Metasearch engine</td>
+      <td>Privacy search backend for AI tools</td>
+      <td>Single replica</td>
+      <td>Config</td>
+      <td>Built-in metrics</td>
+    </tr>
+    <tr>
+      <td>SurfSense</td>
+      <td>surfsense</td>
+      <td>AI research agent</td>
+      <td>Advanced knowledge tool</td>
+      <td>3 replicas</td>
+      <td>PostgreSQL (CNPG) + vector store</td>
+      <td>Metrics</td>
+    </tr>
+    <tr>
+      <td>Perplexica</td>
+      <td>perplexica</td>
+      <td>AI search engine</td>
+      <td>Local Perplexity</td>
+      <td>Single/3 replicas</td>
+      <td>Embeddings persistence</td>
+      <td>Metrics</td>
+    </tr>
+    <tr>
+      <td>LinkWarden</td>
+      <td>linkwarden</td>
+      <td>Bookmark manager</td>
+      <td>Link archiving</td>
+      <td>3 replicas + PDB</td>
+      <td>PostgreSQL (CNPG)</td>
+      <td>Metrics</td>
+    </tr>
+    <tr>
+      <td>Homebox</td>
+      <td>homebox</td>
+      <td>Inventory tracker</td>
+      <td>Asset management</td>
+      <td>Single replica</td>
+      <td>PostgreSQL (CNPG)</td>
+      <td>Minimal</td>
+    </tr>
+    <tr>
+      <td>Home Assistant</td>
+      <td>homeassistant</td>
+      <td>Smart home hub</td>
+      <td>Automation</td>
+      <td>Single replica</td>
+      <td>Longhorn PVC</td>
+      <td>Prometheus exporter</td>
+    </tr>
+    <tr>
+      <td>Kasm Workspaces</td>
+      <td>kasm</td>
+      <td>Browser-based workspaces</td>
+      <td>Remote GUI apps/desktops</td>
+      <td>3+ core replicas + PDB</td>
+      <td>PostgreSQL (CNPG) + volumes</td>
+      <td>Built-in metrics</td>
+    </tr>
+    <tr>
+      <td>Gitea</td>
+      <td>per-env (excl. priv)</td>
+      <td>Git server</td>
+      <td>Code hosting (ArgoCD source)</td>
+      <td>3 replicas in prod, 1 elsewhere</td>
+      <td>PostgreSQL (CNPG) + PVC</td>
+      <td>Metrics</td>
+    </tr>
+    <tr>
+      <td>Coder</td>
+      <td>per-env (excl. priv)</td>
+      <td>Cloud IDE workspaces</td>
+      <td>Remote development</td>
+      <td>Conditional replicas</td>
+      <td>PostgreSQL (CNPG) + PVC</td>
+      <td>Metrics</td>
+    </tr>
+    <tr>
+      <td>MongoDB</td>
+      <td>mongodb</td>
+      <td>NoSQL replica set</td>
+      <td>Persistent storage for Rocket.Chat</td>
+      <td>3-member replica set</td>
+      <td>Longhorn PVCs</td>
+      <td>Exporter</td>
+    </tr>
+    <tr>
+      <td>CloudNativePG</td>
+      <td>infra</td>
+      <td>PostgreSQL operator + cluster</td>
+      <td>Shared DB for most apps</td>
+      <td>3 instances</td>
+      <td>Longhorn</td>
+      <td>Metrics</td>
+    </tr>
+    <tr>
+      <td>Longhorn</td>
+      <td>longhorn-system</td>
+      <td>Distributed block storage</td>
+      <td>Primary PVC backend</td>
+      <td>3 replicas per volume</td>
+      <td>Synology NFS optional</td>
+      <td>Dashboards</td>
+    </tr>
+    <tr>
+      <td>MinIO</td>
+      <td>minio</td>
+      <td>S3 object storage</td>
+      <td>Unified backup target</td>
+      <td>Single (homelab sufficient)</td>
+      <td>NFS PVC on Synology</td>
+      <td>Metrics</td>
+    </tr>
+    <tr>
+      <td>Velero</td>
+      <td>velero</td>
+      <td>Backup/restore</td>
+      <td>Disaster recovery</td>
+      <td>Single instance</td>
+      <td>MinIO S3</td>
+      <td>Metrics + alerts</td>
+    </tr>
+    <tr>
+      <td>ArgoCD</td>
+      <td>argocd</td>
+      <td>GitOps engine</td>
+      <td>Declarative deployment</td>
+      <td>Manual sync for infra</td>
+      <td>N/A</td>
+      <td>Metrics</td>
+    </tr>
+    <tr>
+      <td>cert-manager</td>
+      <td>cert-manager</td>
+      <td>TLS automation</td>
+      <td>Let’s Encrypt certs</td>
+      <td>3 replicas</td>
+      <td>N/A</td>
+      <td>Metrics</td>
+    </tr>
+    <tr>
+      <td>MetalLB</td>
+      <td>metallb-system</td>
+      <td>LoadBalancer provider</td>
+      <td>External service exposure</td>
+      <td>DaemonSet + controller</td>
+      <td>N/A</td>
+      <td>Minimal</td>
+    </tr>
+    <tr>
+      <td>Prometheus/Grafana/Loki</td>
+      <td>monitoring</td>
+      <td>Observability stack</td>
+      <td>Metrics, dashboards, logs, alerts</td>
+      <td>Replicas + PDB where applicable</td>
+      <td>Longhorn/NFS PVCs</td>
+      <td>Self-monitoring</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Supporting Services Added/Confirmed</strong>:</p>
+<ul>
+  <li><strong>Redis</strong>: Embedded or lightweight Deployment if needed (e.g., Authentik caching).</li>
+  <li><strong>MongoDB</strong>: Explicit for Rocket.Chat (no overlap with PostgreSQL apps).</li>
+  <li>All backends shared to minimize duplication.</li>
+</ul>
+
+<h2 id="4-repository-structure">4. Repository Structure</h2>
+
+<h3 id="inkorporated-bootstrap"><code class="language-plaintext highlighter-rouge">inkorporated-bootstrap</code></h3>
+<p>Terraform + Ansible for Proxmox VMs (including pfSense), Synology folder, k3s install, Promtail on hosts.</p>
+
+<h3 id="inkorporated-k8s-apps-private-gitea-repo"><code class="language-plaintext highlighter-rouge">inkorporated-k8s-apps</code> (Private Gitea Repo)</h3>
+<p>Organized by <code class="language-plaintext highlighter-rouge">infra/shared</code> (all listed services), <code class="language-plaintext highlighter-rouge">infra/cluster-scoped</code>, <code class="language-plaintext highlighter-rouge">environments</code>, <code class="language-plaintext highlighter-rouge">apps/per-env</code>, <code class="language-plaintext highlighter-rouge">apps/priv-optional</code>, <code class="language-plaintext highlighter-rouge">app-of-apps/root</code>.</p>
+
+<h2 id="5-integration--user-experience">5. Integration &amp; User Experience</h2>
+
+<ul>
+  <li><strong>Single Pane Access</strong>: <code class="language-plaintext highlighter-rouge">dashboard.example.com</code> → Homepage app with customizable shortcuts to all hosted apps (e.g., buttons/links to Rocket.Chat, Open WebUI, AppFlowy, etc.), grouped by category (Collaboration, AI, Productivity). Grafana remains for sysadmin monitoring.</li>
+  <li><strong>SSO Flow</strong>: Login once → seamless across Rocket.Chat, WorkAdventure, Open WebUI, Vaultwarden, etc.</li>
+  <li><strong>Collaboration Loop</strong>: Chat in Rocket.Chat → jump to WorkAdventure room → share screens via Jitsi → code in Coder/Kasm → document in AppFlowy → search via SearXNG/Perplexica.</li>
+  <li><strong>AI Workflow</strong>: Research (SurfSense) → build agents (Langflow) → chat (Open WebUI with voice/docs).</li>
+  <li><strong>Security Unified</strong>: Authentik groups drive access (e.g., admins/full, developers limited AI models).</li>
+  <li><strong>Network Security</strong>: pfSense handles WAN ingress, NAT, firewall rules, OpenVPN/WireGuard for remote access (alternative/complement to Tailscale).</li>
+  <li><strong>Subdomains</strong>: Consistent <code class="language-plaintext highlighter-rouge">service.example.com</code> pattern with env/priv suffixes.</li>
+</ul>
+
+<h2 id="6-security">6. Security</h2>
+
+<ul>
+  <li><strong>Auth</strong>: Authentik central (OIDC + 2FA enforcement).</li>
+  <li><strong>Network</strong>: pfSense as primary firewall (block all except necessary ports), VPN termination, IDS/IPS via packages.</li>
+  <li><strong>Secrets</strong>: Vault for apps; Vaultwarden for users; SealedSecrets in GitOps.</li>
+  <li><strong>Data</strong>: All encrypted in-transit (Traefik TLS); at-rest via Longhorn.</li>
+</ul>
+
+<h2 id="7-network-topology">7. Network Topology</h2>
+
+<p>The Inkorporated homelab implements a multi-zone network architecture to provide security segmentation and logical separation of services:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Department/Zone</th>
+      <th>Subnet</th>
+      <th>Example Gateway IP</th>
+      <th>Purpose/Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Headquarters</td>
+      <td>10.0.1.0/24</td>
+      <td>10.0.1.1</td>
+      <td>Executive offices and admin staff.</td>
+    </tr>
+    <tr>
+      <td>Sales</td>
+      <td>10.0.2.0/24</td>
+      <td>10.0.2.1</td>
+      <td>Sales team workstations and CRM access.</td>
+    </tr>
+    <tr>
+      <td>Engineering</td>
+      <td>10.0.3.0/24</td>
+      <td>10.0.3.1</td>
+      <td>Development and testing environments.</td>
+    </tr>
+    <tr>
+      <td>Finance</td>
+      <td>10.0.4.0/24</td>
+      <td>10.0.4.1</td>
+      <td>Accounting and financial systems.</td>
+    </tr>
+    <tr>
+      <td>Human Resources</td>
+      <td>10.0.5.0/24</td>
+      <td>10.0.5.1</td>
+      <td>HR personnel and sensitive data storage.</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>10.0.6.0/24</td>
+      <td>10.0.6.1</td>
+      <td>IT support and monitoring tools.</td>
+    </tr>
+    <tr>
+      <td>Servers</td>
+      <td>10.0.7.0/24</td>
+      <td>10.0.7.1</td>
+      <td>Internal servers (e.g., file shares, databases)—restricted access.</td>
+    </tr>
+    <tr>
+      <td>DMZ</td>
+      <td>10.0.8.0/24</td>
+      <td>10.0.8.1</td>
+      <td>Public-facing services (e.g., web/email servers)—behind firewall.</td>
+    </tr>
+    <tr>
+      <td>Guest WiFi</td>
+      <td>10.0.9.0/24</td>
+      <td>10.0.9.1</td>
+      <td>Visitor network—isolated with captive portal.</td>
+    </tr>
+    <tr>
+      <td>Remote Access</td>
+      <td>10.0.10.0/24</td>
+      <td>10.0.10.1</td>
+      <td>VPN pool for remote workers—authenticated access only.</td>
+    </tr>
+    <tr>
+      <td>inkternal</td>
+      <td>10.0.11.0/24</td>
+      <td>10.0.11.1</td>
+      <td>Employee devices connect here; can include VLANs for departments.</td>
+    </tr>
+    <tr>
+      <td>inklab</td>
+      <td>10.0.12.0/24</td>
+      <td>10.0.12.1</td>
+      <td>Internal-facing services (e.g., employee cloud computers)—no external access.</td>
+    </tr>
+    <tr>
+      <td>publink</td>
+      <td>10.0.13.0/24</td>
+      <td>10.0.13.1</td>
+      <td>Production services for external public/internet access—firewall-protected.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This network topology provides:</p>
+<ul>
+  <li>Security segmentation between different departments and service types</li>
+  <li>Isolation of sensitive data and systems</li>
+  <li>Controlled access to public-facing services through DMZ</li>
+  <li>Dedicated network zones for remote access and guest connectivity</li>
+  <li>Proper VLAN structure for employee devices and internal services</li>
+</ul>
+
+<h2 id="7-backup--dr">7. Backup &amp; DR</h2>
+
+<ul>
+  <li>Velero scheduled cluster backups to MinIO.</li>
+  <li>Longhorn recurring S3 exports.</li>
+  <li>CNPG/MongoDB continuous archiving.</li>
+  <li>pfSense config backup via package or manual export.</li>
+  <li>Test restores in dev namespace.</li>
+</ul>
+
+<h2 id="8-observability">8. Observability</h2>
+
+<ul>
+  <li>Grafana single pane: Dashboards for every service + Proxmox + pfSense (SNMP).</li>
+  <li>Loki for unified logs (pods + hosts).</li>
+  <li>Alerts for failures, resource exhaustion, backup issues, pfSense events.</li>
+</ul>
+
+<h2 id="9-deployment--operations">9. Deployment &amp; Operations</h2>
+
+<ol>
+  <li>Terraform → Ansible bootstrap (including pfSense VM).</li>
+  <li>Configure pfSense post-deploy (interfaces, rules, VPN).</li>
+  <li>ArgoCD sync (wave order: storage → DBs → Authentik → backends → frontends).</li>
+  <li>Post-deploy: Configure Authentik applications/providers, upload maps/models, create teams/channels, customize Homepage shortcuts.</li>
+  <li>Maintenance: Manual infra syncs; monitor Grafana.</li>
+</ol>
+
+<p><strong>Inkorporated</strong> is now a complete, integrated, open-source internal work environment—secure, private, and powerful, with professional-grade networking via pfSense and a user-friendly dashboard via Homepage. This final design is ready for implementation.</p>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+
+  </body>
+
+</html>

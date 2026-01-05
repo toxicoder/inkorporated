@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | Inkorporated Homelab Documentation</title>
+<title>Inkorporated Homelab Documentation | Comprehensive documentation for the Inkorporated homelab project.</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Inkorporated Homelab Documentation" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Comprehensive documentation for the Inkorporated homelab project." />
 <meta property="og:description" content="Comprehensive documentation for the Inkorporated homelab project." />
-<link rel="canonical" href="https://toxicoder.github.io/inkorporated/" />
-<meta property="og:url" content="https://toxicoder.github.io/inkorporated/" />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/status/dgx_integration_summary.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/status/dgx_integration_summary.html" />
 <meta property="og:site_name" content="Inkorporated Homelab Documentation" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Inkorporated Homelab Documentation" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Home","name":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/status/dgx_integration_summary.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/inkorporated/assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -248,7 +248,7 @@
 
 <li class="nav-item">
   
-    <a class="nav-link active" href="/inkorporated/">
+    <a class="nav-link " href="/inkorporated/">
       Home
     </a>
   
@@ -483,7 +483,7 @@
 
 <li class="nav-item">
   
-    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+    <a class="nav-link active" href="/inkorporated/status/dgx_integration_summary.html">
       DGX Integration
     </a>
   
@@ -525,54 +525,212 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Home</h1>
+    <h1 class="post-title"></h1>
   </header>
 
   <div class="post-content">
-    <h1 id="inkorporated-homelab-documentation">Inkorporated Homelab Documentation</h1>
+    <h1 id="nvidia-dgx-spark-integration---summary">NVIDIA DGX Spark Integration - Summary</h1>
 
-<p>Welcome to the comprehensive documentation for the Inkorporated homelab project.</p>
+<h2 id="overview">Overview</h2>
+<p>This document provides a comprehensive summary of the NVIDIA DGX Spark integration plan for the Inkorporated homelab infrastructure. The integration will add two NVIDIA DGX Spark systems as dedicated GPU-accelerated worker nodes to the existing k3s Kubernetes cluster.</p>
 
-<h2 id="core-documentation">Core Documentation</h2>
+<h2 id="current-project-status">Current Project Status</h2>
+<p>Based on the analysis of all documentation, the Inkorporated project is currently in Phase 4 of its implementation lifecycle with the following status:</p>
 
+<h3 id="implemented-services">Implemented Services</h3>
 <ul>
-  <li><a href="/guides/overview.html">Project Overview</a>: Executive summary and key features.</li>
-  <li><a href="/architecture/index.html">Architecture</a>: High-level architectural design and diagrams.</li>
-  <li><a href="/architecture/network.html">Network Topology</a>: Detailed network zones and security layers.</li>
-  <li><a href="/architecture/technical_design.html">Technical Design</a>: In-depth technical specifications.</li>
+  <li>✅ Cloudflared (Zero-trust access)</li>
+  <li>✅ Homepage (User dashboard)</li>
+  <li>✅ Traefik (Ingress controller)</li>
+  <li>✅ Authentik (Identity provider)</li>
+  <li>✅ MongoDB (Database)</li>
+  <li>✅ Rocket.Chat (Team chat)</li>
+  <li>✅ WorkAdventure (Virtual office)</li>
+  <li>✅ Jitsi (Video conferencing)</li>
+  <li>✅ Coturn (TURN/STUN server)</li>
+  <li>✅ Vaultwarden (Password manager)</li>
+  <li>✅ HashiCorp Vault (Secrets management)</li>
+  <li>✅ Ollama (Local LLM runner)</li>
+  <li>✅ Open WebUI (Ollama web interface)</li>
 </ul>
 
-<h2 id="guides--handbooks">Guides &amp; Handbooks</h2>
-
+<h3 id="services-to-be-implemented">Services To Be Implemented</h3>
 <ul>
-  <li><a href="/guides/installation.html">Installation Guide</a>: Step-by-step implementation phases.</li>
-  <li><a href="/guides/configuration.html">Configuration Guide</a>: Detailed configuration references.</li>
-  <li><a href="/guides/environments.html">Environment Guide</a>: Managing dev, staging, and prod environments.</li>
-  <li><a href="/guides/deployment.html">Deployment &amp; Operations</a>: GitOps workflows and maintenance.</li>
-  <li><a href="/guides/security.html">Security Handbook</a>: Authentication, authorization, and data protection.</li>
-  <li><a href="/guides/observability.html">Observability Guide</a>: Monitoring, logging, and alerting.</li>
-  <li><a href="/guides/backups.html">Backup &amp; Recovery</a>: Disaster recovery strategies.</li>
-  <li><a href="/guides/troubleshooting.html">Troubleshooting</a>: Common issues and debugging.</li>
+  <li>🔄 Langflow (Visual LangChain builder)</li>
+  <li>🔄 Kokoro TTS (Local TTS server)</li>
+  <li>🔄 Docling (Document parsing server)</li>
+  <li>🔄 AppFlowy (Collaborative knowledge base)</li>
+  <li>🔄 SearXNG (Metasearch engine)</li>
+  <li>🔄 SurfSense (AI research agent)</li>
+  <li>🔄 Perplexica (AI search engine)</li>
+  <li>🔄 LinkWarden (Bookmark manager)</li>
+  <li>🔄 Homebox (Inventory tracker)</li>
+  <li>🔄 Home Assistant (Smart home hub)</li>
+  <li>🔄 Kasm Workspaces (Browser-based workspaces)</li>
+  <li>🔄 Gitea (Git server)</li>
+  <li>🔄 Coder (Cloud IDE workspaces)</li>
+  <li>🔄 CloudNativePG (PostgreSQL operator)</li>
+  <li>🔄 Longhorn (Distributed block storage)</li>
+  <li>🔄 MinIO (S3 object storage)</li>
+  <li>🔄 Velero (Backup/restore)</li>
+  <li>🔄 Cert-manager (TLS automation)</li>
+  <li>🔄 MetalLB (LoadBalancer provider)</li>
+  <li>🔄 Prometheus/Grafana/Loki (Monitoring)</li>
+  <li>🔄 DGX Spark Integration (GPU worker nodes)</li>
 </ul>
 
-<h2 id="reference">Reference</h2>
+<h2 id="integration-plan">Integration Plan</h2>
 
+<h3 id="phase-1-prerequisite-infrastructure-deployment-phase-4-tasks">Phase 1: Prerequisite Infrastructure Deployment (Phase 4 Tasks)</h3>
+<p>Before integrating the DGX Spark systems, the following infrastructure components must be deployed:</p>
+
+<ol>
+  <li><strong>Task 4.01: Deploy NFS CSI Driver</strong>
+    <ul>
+      <li>Purpose: Provide NFS-based persistent volumes for shared storage</li>
+      <li>Status: Not Started</li>
+    </ul>
+  </li>
+  <li><strong>Task 4.02: Deploy Longhorn Storage</strong>
+    <ul>
+      <li>Purpose: Distributed block storage for GPU workloads</li>
+      <li>Status: Not Started</li>
+    </ul>
+  </li>
+  <li><strong>Task 4.03: Deploy MinIO Object Storage</strong>
+    <ul>
+      <li>Purpose: S3-compatible object storage for backups and AI datasets</li>
+      <li>Status: Not Started</li>
+    </ul>
+  </li>
+  <li><strong>Task 4.04: Deploy cert-manager</strong>
+    <ul>
+      <li>Purpose: TLS certificate automation for secure communication</li>
+      <li>Status: Not Started</li>
+    </ul>
+  </li>
+  <li><strong>Task 4.05: Deploy MetalLB</strong>
+    <ul>
+      <li>Purpose: LoadBalancer service type for external access</li>
+      <li>Status: Not Started</li>
+    </ul>
+  </li>
+  <li><strong>Task 4.06: Deploy Observability Stack</strong>
+    <ul>
+      <li>Purpose: Monitor GPU metrics and system performance</li>
+      <li>Status: Not Started</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="phase-2-dgx-spark-integration-task-428">Phase 2: DGX Spark Integration (Task 4.28)</h3>
+<p>Once prerequisite infrastructure is deployed, integrate the DGX Spark systems:</p>
+
+<ol>
+  <li><strong>Physical Setup</strong>
+    <ul>
+      <li>Connect DGX systems to LAN switch via Ethernet</li>
+      <li>Configure static IPs in management VLAN</li>
+      <li>Connect DGX nodes directly with OSFP cables (400 Gbps total)</li>
+      <li>Configure private subnet for direct communication</li>
+      <li>Set up jumbo frames (MTU=9000) and bonding</li>
+    </ul>
+  </li>
+  <li><strong>Software Installation</strong>
+    <ul>
+      <li>Install k3s agent on DGX nodes</li>
+      <li>Label nodes for GPU scheduling: <code class="language-plaintext highlighter-rouge">node-role.kubernetes.io/ai-gpu=true</code></li>
+      <li>Taint nodes for GPU workloads: <code class="language-plaintext highlighter-rouge">dedicated=gpu:NoSchedule</code></li>
+    </ul>
+  </li>
+  <li><strong>GPU Operator Deployment</strong>
+    <ul>
+      <li>Deploy NVIDIA GPU Operator via Helm</li>
+      <li>Configure driver, device plugin, and DCGM components</li>
+      <li>Verify GPU functionality</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="phase-3-ai-workload-configuration">Phase 3: AI Workload Configuration</h3>
+<p>Update existing AI services to utilize GPU nodes:</p>
+
+<ol>
+  <li><strong>Ollama Deployment</strong>
+    <ul>
+      <li>Apply node selector for GPU nodes</li>
+      <li>Configure GPU resource limits/requests</li>
+    </ul>
+  </li>
+  <li><strong>Open WebUI Deployment</strong>
+    <ul>
+      <li>Apply same node selector configuration</li>
+      <li>Configure GPU resources</li>
+    </ul>
+  </li>
+  <li><strong>Langflow Deployment</strong>
+    <ul>
+      <li>Configure node affinity and GPU resources</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="phase-4-monitoring-and-testing">Phase 4: Monitoring and Testing</h3>
+<ol>
+  <li><strong>GPU Metrics Monitoring</strong>
+    <ul>
+      <li>Configure DCGM exporter for GPU metrics</li>
+      <li>Set up Prometheus scraping</li>
+      <li>Create Grafana dashboards</li>
+    </ul>
+  </li>
+  <li><strong>Performance Testing</strong>
+    <ul>
+      <li>Deploy CUDA test workloads</li>
+      <li>Run distributed training jobs</li>
+      <li>Validate storage performance</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="implementation-timeline">Implementation Timeline</h2>
 <ul>
-  <li><a href="/reference/services.html">Service Catalog</a>: Detailed specifications for all deployed services.</li>
-  <li><a href="/guides/overview.html#repository-structure">Repository Structure</a>: Codebase organization.</li>
+  <li><strong>Week 1</strong>: Complete prerequisite infrastructure deployment (Longhorn, MetalLB, cert-manager, Observability)</li>
+  <li><strong>Week 2</strong>: Physical setup and k3s agent installation on DGX systems</li>
+  <li><strong>Week 3</strong>: GPU Operator deployment and AI service configuration</li>
+  <li><strong>Week 4</strong>: Testing and performance validation</li>
 </ul>
 
-<h2 id="status--reports">Status &amp; Reports</h2>
-
+<h2 id="resources-required">Resources Required</h2>
 <ul>
-  <li><a href="/status/discovery_summary.html">Discovery Summary</a>: Consolidated documentation overview.</li>
-  <li><a href="/status/infrastructure_validation_report.html">Infrastructure Validation</a>: Validation report for the infrastructure.</li>
-  <li><a href="/status/dgx_integration_summary.html">DGX Integration Summary</a>: Status of NVIDIA DGX integration.</li>
+  <li><strong>Hardware</strong>: 2x NVIDIA DGX Spark systems (Grace CPU + Blackwell GPU)</li>
+  <li><strong>Network</strong>: 10/25/100 Gbps Ethernet connectivity, 400 Gbps direct OSFP links</li>
+  <li><strong>Software</strong>: k3s cluster (existing), NVIDIA GPU Operator Helm chart, Longhorn storage operator</li>
 </ul>
 
-<h2 id="contributing">Contributing</h2>
+<h2 id="success-criteria">Success Criteria</h2>
+<ul>
+  <li>DGX nodes successfully join k3s cluster as worker nodes</li>
+  <li>GPU Operator deployed and functional</li>
+  <li>AI services can be scheduled on GPU nodes</li>
+  <li>GPU metrics available through monitoring stack</li>
+  <li>Performance benchmarks meet expected throughput requirements</li>
+</ul>
 
-<p>This project is open-source and welcomes contributions. Please see the <a href="https://github.com/toxicoder/inkorporated-k8s-apps/blob/main/README.md">README</a> for more information.</p>
+<h2 id="documentation-references">Documentation References</h2>
+<ul>
+  <li>Complete integration plan: <code class="language-plaintext highlighter-rouge">docs/DGX_INTEGRATION_PLAN.md</code></li>
+  <li>Implementation status tracking: <code class="language-plaintext highlighter-rouge">apps/shared/implementation_status.md</code></li>
+  <li>Progress tracking: <code class="language-plaintext highlighter-rouge">memory-bank/progress.md</code></li>
+</ul>
+
+<h2 id="next-steps">Next Steps</h2>
+<ol>
+  <li>Begin deployment of prerequisite infrastructure components</li>
+  <li>Prepare physical infrastructure for DGX systems</li>
+  <li>Update Ansible playbooks for DGX node configuration</li>
+  <li>Configure network settings per integration plan</li>
+</ol>
 
   </div>
 

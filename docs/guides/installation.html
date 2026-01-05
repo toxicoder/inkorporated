@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | Inkorporated Homelab Documentation</title>
+<title>Inkorporated Homelab Documentation | Comprehensive documentation for the Inkorporated homelab project.</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Inkorporated Homelab Documentation" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Comprehensive documentation for the Inkorporated homelab project." />
 <meta property="og:description" content="Comprehensive documentation for the Inkorporated homelab project." />
-<link rel="canonical" href="https://toxicoder.github.io/inkorporated/" />
-<meta property="og:url" content="https://toxicoder.github.io/inkorporated/" />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/guides/installation.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/guides/installation.html" />
 <meta property="og:site_name" content="Inkorporated Homelab Documentation" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Inkorporated Homelab Documentation" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Home","name":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/guides/installation.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/inkorporated/assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -248,7 +248,7 @@
 
 <li class="nav-item">
   
-    <a class="nav-link active" href="/inkorporated/">
+    <a class="nav-link " href="/inkorporated/">
       Home
     </a>
   
@@ -335,7 +335,7 @@
 
 <li class="nav-item">
   
-    <a class="nav-link " href="/inkorporated/guides/installation.html">
+    <a class="nav-link active" href="/inkorporated/guides/installation.html">
       Installation
     </a>
   
@@ -525,54 +525,169 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Home</h1>
+    <h1 class="post-title"></h1>
   </header>
 
   <div class="post-content">
-    <h1 id="inkorporated-homelab-documentation">Inkorporated Homelab Documentation</h1>
+    <h1 id="implementation-phases">Implementation Phases</h1>
 
-<p>Welcome to the comprehensive documentation for the Inkorporated homelab project.</p>
+<h2 id="phase-1-foundation--preparation">Phase 1: Foundation &amp; Preparation</h2>
 
-<h2 id="core-documentation">Core Documentation</h2>
-
+<p><strong>Task 1.01: Validate Physical Infrastructure Readiness</strong></p>
 <ul>
-  <li><a href="/guides/overview.html">Project Overview</a>: Executive summary and key features.</li>
-  <li><a href="/architecture/index.html">Architecture</a>: High-level architectural design and diagrams.</li>
-  <li><a href="/architecture/network.html">Network Topology</a>: Detailed network zones and security layers.</li>
-  <li><a href="/architecture/technical_design.html">Technical Design</a>: In-depth technical specifications.</li>
+  <li>Verify Proxmox: 4 nodes online, ≥64GB RAM total, ≥16 CPU cores, ≥500GB storage</li>
+  <li>Synology: Enable NFSv4.1, create <code class="language-plaintext highlighter-rouge">/volume1/k8s-backups</code>, permissions for LAN subnet</li>
+  <li>Cloudflare: Create account, add domain overeasy.io, generate tunnel token</li>
 </ul>
 
-<h2 id="guides--handbooks">Guides &amp; Handbooks</h2>
-
+<p><strong>Task 1.02: Create Proxmox Cloud-Init Template</strong></p>
 <ul>
-  <li><a href="/guides/installation.html">Installation Guide</a>: Step-by-step implementation phases.</li>
-  <li><a href="/guides/configuration.html">Configuration Guide</a>: Detailed configuration references.</li>
-  <li><a href="/guides/environments.html">Environment Guide</a>: Managing dev, staging, and prod environments.</li>
-  <li><a href="/guides/deployment.html">Deployment &amp; Operations</a>: GitOps workflows and maintenance.</li>
-  <li><a href="/guides/security.html">Security Handbook</a>: Authentication, authorization, and data protection.</li>
-  <li><a href="/guides/observability.html">Observability Guide</a>: Monitoring, logging, and alerting.</li>
-  <li><a href="/guides/backups.html">Backup &amp; Recovery</a>: Disaster recovery strategies.</li>
-  <li><a href="/guides/troubleshooting.html">Troubleshooting</a>: Common issues and debugging.</li>
+  <li>Upload Ubuntu 24.04 ISO</li>
+  <li>Create VM ID 9000: 2 CPU, 4GB RAM, 32GB disk, install minimal, enable qemu-guest-agent, SSH</li>
+  <li>Convert to template</li>
 </ul>
 
-<h2 id="reference">Reference</h2>
-
+<p><strong>Task 1.03: Workstation Setup</strong></p>
 <ul>
-  <li><a href="/reference/services.html">Service Catalog</a>: Detailed specifications for all deployed services.</li>
-  <li><a href="/guides/overview.html#repository-structure">Repository Structure</a>: Codebase organization.</li>
+  <li>Install Terraform, Ansible, kubectl, helm, argocd CLI, kubeseal, cloudflared CLI</li>
+  <li>Generate SSH key</li>
 </ul>
 
-<h2 id="status--reports">Status &amp; Reports</h2>
+<h2 id="phase-2-repository--code-setup">Phase 2: Repository &amp; Code Setup</h2>
 
+<p><strong>Task 2.01: Create Bootstrap Repository</strong></p>
 <ul>
-  <li><a href="/status/discovery_summary.html">Discovery Summary</a>: Consolidated documentation overview.</li>
-  <li><a href="/status/infrastructure_validation_report.html">Infrastructure Validation</a>: Validation report for the infrastructure.</li>
-  <li><a href="/status/dgx_integration_summary.html">DGX Integration Summary</a>: Status of NVIDIA DGX integration.</li>
+  <li>Create repo for Terraform/Ansible code</li>
+  <li>Add terraform for VMs (3 CP, 2 workers), Synology folder</li>
+  <li>Add Ansible for k3s</li>
 </ul>
 
-<h2 id="contributing">Contributing</h2>
+<p><strong>Task 2.02: Create Apps Repository</strong></p>
+<ul>
+  <li>Create repo for GitOps manifests</li>
+  <li>Add dirs for shared (including cloudflared subdir with Deployment.yaml, ConfigMap for tunnel config.yaml, secret for token)</li>
+</ul>
 
-<p>This project is open-source and welcomes contributions. Please see the <a href="https://github.com/toxicoder/inkorporated-k8s-apps/blob/main/README.md">README</a> for more information.</p>
+<h2 id="phase-3-bootstrap-infrastructure">Phase 3: Bootstrap Infrastructure</h2>
+
+<p><strong>Task 3.01: Provision VMs with Terraform</strong></p>
+<ul>
+  <li>Fill tfvars (creds, template)</li>
+  <li><code class="language-plaintext highlighter-rouge">terraform apply</code></li>
+</ul>
+
+<p><strong>Task 3.02: Install k3s with Ansible</strong></p>
+<ul>
+  <li>Update inventory</li>
+  <li>Run playbook</li>
+</ul>
+
+<p><strong>Task 3.03: Bootstrap ArgoCD</strong></p>
+<ul>
+  <li>Create ns argocd</li>
+  <li>Apply manifests</li>
+  <li>Add repo, apply root app</li>
+</ul>
+
+<h2 id="phase-4-core-infrastructure-deployment">Phase 4: Core Infrastructure Deployment</h2>
+
+<p><strong>Task 4.01: Deploy NFS CSI Driver</strong></p>
+<ul>
+  <li>Add Application: Helm chart, server=synology-ip, share=/volume1/k8s-backups</li>
+</ul>
+
+<p><strong>Task 4.02: Deploy Longhorn Storage</strong></p>
+<ul>
+  <li>Add Application: Chart v1.6.0, defaultReplicaCount=3, replicaSoftAntiAffinity=true</li>
+</ul>
+
+<p><strong>Task 4.03: Deploy MinIO Object Storage</strong></p>
+<ul>
+  <li>Add Application: Bitnami/minio, mode=standalone, storageClass=nfs-csi, size=5Ti, buckets=[“longhorn-backups”,”velero-backups”,”cnpg-backups”]</li>
+</ul>
+
+<p><strong>Task 4.04: Deploy CloudNativePG and MongoDB</strong></p>
+<ul>
+  <li>CNPG operator v1.23.1, Cluster: instances=3, storage=longhorn 50Gi, backup to minio</li>
+  <li>Mongo: Bitnami chart, replicaset=3, longhorn</li>
+</ul>
+
+<p><strong>Task 4.05: Deploy Velero</strong></p>
+<ul>
+  <li>Add Application: vmware-tanzu/velero, provider=aws, s3Url=http://minio.minio.svc:9000, bucket=velero-backups, credentials=sealed</li>
+</ul>
+
+<p><strong>Task 4.06: Deploy cert-manager</strong></p>
+<ul>
+  <li>Add Application: jetstack/cert-manager v1.14.0, installCRDs=true, replicas=3</li>
+</ul>
+
+<p><strong>Task 4.07: Deploy MetalLB</strong></p>
+<ul>
+  <li>Add Application: metallb/metallb v0.15.3, controller.replicas=1, speaker.daemonset=true</li>
+</ul>
+
+<p><strong>Task 4.08: Deploy Traefik</strong></p>
+<ul>
+  <li>Add Application: traefik/traefik v28.1.0, ports.websecure.tls=true</li>
+</ul>
+
+<p><strong>Task 4.09: Deploy Authentik</strong></p>
+<ul>
+  <li>Add Application: goauthentik/authentik, postgresql.host=postgres-ha-rw, database=authentik, secret=sealed</li>
+</ul>
+
+<p><strong>Task 4.10: Deploy Vaultwarden</strong></p>
+<ul>
+  <li>Add Application: vaultwarden/server, postgres.host=postgres-ha-rw, database=vaultwarden, secret=sealed</li>
+</ul>
+
+<p><strong>Task 4.11: Deploy HashiCorp Vault</strong></p>
+<ul>
+  <li>Add Application: hashicorp/vault v0.28.0, ha.replicas=3, raft.enabled=true, ui=true</li>
+</ul>
+
+<p><strong>Task 4.12: Deploy cloudflared Tunnel</strong></p>
+<ul>
+  <li>Create Cloudflare Tunnel in dashboard, get token=sealed</li>
+  <li>Add Application: Deployment image=cloudflare/cloudflared:latest, command=[“tunnel”, “–config”, “/etc/config.yaml”]</li>
+</ul>
+
+<h2 id="phase-5-post-deployment">Phase 5: Post-Deployment</h2>
+
+<p><strong>Task 5.01: Configure Authentik Providers and Groups</strong></p>
+<ul>
+  <li>UI: OIDC providers for each service</li>
+  <li>Groups: admins, developers, testers, priv-users, guests</li>
+  <li>Bind apps to groups</li>
+</ul>
+
+<p><strong>Task 5.02: Deploy User Dashboard (Homepage)</strong></p>
+<ul>
+  <li>Add Application: homepage/homepage latest, namespace=homepage</li>
+  <li>Config: services configuration with grouped shortcuts</li>
+  <li>Forward-auth middleware</li>
+  <li>Ingress: dashboard.example.com</li>
+</ul>
+
+<p><strong>Task 5.03: Enable Backups and Test</strong></p>
+<ul>
+  <li>Schedule: includeNamespaces=[“*”], ttl=720h, schedule=”0 3 * * *”</li>
+  <li>Test backup/restore dev</li>
+</ul>
+
+<p><strong>Task 5.04: Performance and Security Hardening</strong></p>
+<ul>
+  <li>Quotas non-prod: cpu=4, mem=8Gi</li>
+  <li>LimitRange default cpu=500m mem=512Mi</li>
+  <li>Network policies deny default</li>
+</ul>
+
+<p><strong>Task 5.05: Documentation Runbook</strong></p>
+<ul>
+  <li>docs/ with URLs, creds, backups</li>
+  <li>Add to Homepage</li>
+</ul>
 
   </div>
 

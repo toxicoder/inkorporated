@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | Inkorporated Homelab Documentation</title>
+<title>Inkorporated Homelab Documentation | Comprehensive documentation for the Inkorporated homelab project.</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Inkorporated Homelab Documentation" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Comprehensive documentation for the Inkorporated homelab project." />
 <meta property="og:description" content="Comprehensive documentation for the Inkorporated homelab project." />
-<link rel="canonical" href="https://toxicoder.github.io/inkorporated/" />
-<meta property="og:url" content="https://toxicoder.github.io/inkorporated/" />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/architecture/dgx_integration_plan.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/architecture/dgx_integration_plan.html" />
 <meta property="og:site_name" content="Inkorporated Homelab Documentation" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Inkorporated Homelab Documentation" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Home","name":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/architecture/dgx_integration_plan.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/inkorporated/assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -248,7 +248,7 @@
 
 <li class="nav-item">
   
-    <a class="nav-link active" href="/inkorporated/">
+    <a class="nav-link " href="/inkorporated/">
       Home
     </a>
   
@@ -505,7 +505,7 @@
 
 <li class="nav-item">
   
-    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+    <a class="nav-link active" href="/inkorporated/architecture/dgx_integration_plan.html">
       DGX Plan
     </a>
   
@@ -525,54 +525,378 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Home</h1>
+    <h1 class="post-title"></h1>
   </header>
 
   <div class="post-content">
-    <h1 id="inkorporated-homelab-documentation">Inkorporated Homelab Documentation</h1>
+    <h1 id="nvidia-dgx-spark-integration-plan">NVIDIA DGX Spark Integration Plan</h1>
 
-<p>Welcome to the comprehensive documentation for the Inkorporated homelab project.</p>
+<h2 id="overview">Overview</h2>
+<p>This document outlines the technical implementation plan for integrating two NVIDIA DGX Spark systems into the Inkorporated homelab infrastructure. The DGX Spark systems, equipped with NVIDIA Grace CPU and Blackwell GPU architecture, will be added as dedicated GPU-accelerated worker nodes to the existing k3s Kubernetes cluster.</p>
 
-<h2 id="core-documentation">Core Documentation</h2>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before integrating DGX Spark systems, the following infrastructure components must be deployed:</p>
+<ol>
+  <li>Longhorn Storage (Block storage for persistent volumes)</li>
+  <li>MetalLB (LoadBalancer provider for external services)</li>
+  <li>Observability Stack (Prometheus/Grafana/Loki for monitoring)</li>
+  <li>cert-manager (TLS automation)</li>
+  <li>MinIO Object Storage (Backup target)</li>
+</ol>
 
+<h2 id="integration-phases">Integration Phases</h2>
+
+<h3 id="phase-1-prerequisite-infrastructure-deployment">Phase 1: Prerequisite Infrastructure Deployment</h3>
+<p>This phase aligns with Phase 4 of the current implementation plan in progress.md.</p>
+
+<h4 id="task-401-deploy-nfs-csi-driver">Task 4.01: Deploy NFS CSI Driver</h4>
 <ul>
-  <li><a href="/guides/overview.html">Project Overview</a>: Executive summary and key features.</li>
-  <li><a href="/architecture/index.html">Architecture</a>: High-level architectural design and diagrams.</li>
-  <li><a href="/architecture/network.html">Network Topology</a>: Detailed network zones and security layers.</li>
-  <li><a href="/architecture/technical_design.html">Technical Design</a>: In-depth technical specifications.</li>
+  <li><strong>Status</strong>: Not Started</li>
+  <li><strong>Purpose</strong>: Provide NFS-based persistent volumes for shared storage</li>
+  <li><strong>Implementation</strong>: Deploy NFS CSI driver using Helm chart</li>
+  <li><strong>Resources</strong>:
+    <ul>
+      <li>NFS CSI Driver Helm chart</li>
+      <li>NFS server configuration</li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="guides--handbooks">Guides &amp; Handbooks</h2>
-
+<h4 id="task-402-deploy-longhorn-storage">Task 4.02: Deploy Longhorn Storage</h4>
 <ul>
-  <li><a href="/guides/installation.html">Installation Guide</a>: Step-by-step implementation phases.</li>
-  <li><a href="/guides/configuration.html">Configuration Guide</a>: Detailed configuration references.</li>
-  <li><a href="/guides/environments.html">Environment Guide</a>: Managing dev, staging, and prod environments.</li>
-  <li><a href="/guides/deployment.html">Deployment &amp; Operations</a>: GitOps workflows and maintenance.</li>
-  <li><a href="/guides/security.html">Security Handbook</a>: Authentication, authorization, and data protection.</li>
-  <li><a href="/guides/observability.html">Observability Guide</a>: Monitoring, logging, and alerting.</li>
-  <li><a href="/guides/backups.html">Backup &amp; Recovery</a>: Disaster recovery strategies.</li>
-  <li><a href="/guides/troubleshooting.html">Troubleshooting</a>: Common issues and debugging.</li>
+  <li><strong>Status</strong>: Not Started</li>
+  <li><strong>Purpose</strong>: Distributed block storage for GPU workloads</li>
+  <li><strong>Implementation</strong>:
+    <ul>
+      <li>Install Longhorn via Helm chart</li>
+      <li>Configure storage class for GPU workloads</li>
+      <li>Set up Longhorn volume replication</li>
+    </ul>
+  </li>
+  <li><strong>Resources</strong>:
+    <ul>
+      <li>Longhorn Helm chart</li>
+      <li>Storage configuration for DGX local SSDs</li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="reference">Reference</h2>
-
+<h4 id="task-403-deploy-minio-object-storage">Task 4.03: Deploy MinIO Object Storage</h4>
 <ul>
-  <li><a href="/reference/services.html">Service Catalog</a>: Detailed specifications for all deployed services.</li>
-  <li><a href="/guides/overview.html#repository-structure">Repository Structure</a>: Codebase organization.</li>
+  <li><strong>Status</strong>: Not Started</li>
+  <li><strong>Purpose</strong>: S3-compatible object storage for backups and AI datasets</li>
+  <li><strong>Implementation</strong>:
+    <ul>
+      <li>Deploy MinIO via Helm chart</li>
+      <li>Configure MinIO as backup target</li>
+      <li>Set up persistent storage</li>
+    </ul>
+  </li>
+  <li><strong>Resources</strong>:
+    <ul>
+      <li>MinIO Helm chart</li>
+      <li>NFS PVC for data persistence</li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="status--reports">Status &amp; Reports</h2>
-
+<h4 id="task-404-deploy-cert-manager">Task 4.04: Deploy cert-manager</h4>
 <ul>
-  <li><a href="/status/discovery_summary.html">Discovery Summary</a>: Consolidated documentation overview.</li>
-  <li><a href="/status/infrastructure_validation_report.html">Infrastructure Validation</a>: Validation report for the infrastructure.</li>
-  <li><a href="/status/dgx_integration_summary.html">DGX Integration Summary</a>: Status of NVIDIA DGX integration.</li>
+  <li><strong>Status</strong>: Not Started</li>
+  <li><strong>Purpose</strong>: TLS certificate automation for secure communication</li>
+  <li><strong>Implementation</strong>:
+    <ul>
+      <li>Install cert-manager via Helm chart</li>
+      <li>Configure ClusterIssuer for Let’s Encrypt</li>
+    </ul>
+  </li>
+  <li><strong>Resources</strong>:
+    <ul>
+      <li>cert-manager Helm chart</li>
+      <li>ACME configuration</li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="contributing">Contributing</h2>
+<h4 id="task-405-deploy-metallb">Task 4.05: Deploy MetalLB</h4>
+<ul>
+  <li><strong>Status</strong>: Not Started</li>
+  <li><strong>Purpose</strong>: LoadBalancer service type for external access</li>
+  <li><strong>Implementation</strong>:
+    <ul>
+      <li>Install MetalLB via Helm chart</li>
+      <li>Configure IP address pool for external services</li>
+    </ul>
+  </li>
+  <li><strong>Resources</strong>:
+    <ul>
+      <li>MetalLB Helm chart</li>
+      <li>IP address configuration</li>
+    </ul>
+  </li>
+</ul>
 
-<p>This project is open-source and welcomes contributions. Please see the <a href="https://github.com/toxicoder/inkorporated-k8s-apps/blob/main/README.md">README</a> for more information.</p>
+<h4 id="task-406-deploy-observability-stack">Task 4.06: Deploy Observability Stack</h4>
+<ul>
+  <li><strong>Status</strong>: Not Started</li>
+  <li><strong>Purpose</strong>: Monitor GPU metrics and system performance</li>
+  <li><strong>Implementation</strong>:
+    <ul>
+      <li>Deploy kube-prometheus-stack (Prometheus, Grafana, Loki)</li>
+      <li>Configure DCGM exporter for GPU metrics</li>
+      <li>Set up monitoring dashboards for AI workloads</li>
+    </ul>
+  </li>
+  <li><strong>Resources</strong>:
+    <ul>
+      <li>Prometheus/Grafana Helm chart</li>
+      <li>DCGM exporter configuration</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="phase-2-dgx-spark-integration">Phase 2: DGX Spark Integration</h3>
+
+<h4 id="task-4x-integrate-dgx-spark-systems-as-worker-nodes">Task 4.x: Integrate DGX Spark Systems as Worker Nodes</h4>
+
+<h5 id="physical-setup">Physical Setup</h5>
+<ol>
+  <li><strong>Network Configuration</strong>
+    <ul>
+      <li>Connect each DGX Spark system to the LAN switch via Ethernet</li>
+      <li>Configure static IPs in management VLAN (e.g., 192.168.1.101/102 for DGX1/DGX2)</li>
+      <li>Connect DGX nodes directly with two OSFP cables (200 Gbps each, 400 Gbps total)</li>
+      <li>Assign private subnet for direct communication (e.g., 192.168.100.0/24)</li>
+      <li>Configure jumbo frames (MTU=9000) for high throughput</li>
+      <li>Bond interfaces for redundancy (Linux bonding driver)</li>
+    </ul>
+  </li>
+  <li><strong>Security Configuration</strong>
+    <ul>
+      <li>Update pfSense firewall rules to allow:
+        <ul>
+          <li>k3s API access (6443)</li>
+          <li>etcd communication (2379-2380)</li>
+          <li>Node ports (30000-32767)</li>
+        </ul>
+      </li>
+      <li>Configure DNS entries for DGX nodes (e.g., dgx-spark-1.inkorporated.local)</li>
+      <li>Implement network segmentation per multi-zone topology</li>
+    </ul>
+  </li>
+</ol>
+
+<h5 id="software-installation">Software Installation</h5>
+
+<ol>
+  <li><strong>k3s Agent Installation</strong>
+    <ul>
+      <li>Extend existing Ansible playbooks in <code class="language-plaintext highlighter-rouge">infrastructure/ansible/</code></li>
+      <li>Join DGX systems as worker nodes to the k3s cluster</li>
+      <li>Install required dependencies:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt update <span class="o">&amp;&amp;</span> apt upgrade <span class="nt">-y</span>
+apt <span class="nb">install </span>curl iptables-persistent <span class="nt">-y</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Node Configuration</strong>
+    <ul>
+      <li>Label nodes for GPU scheduling:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl label nodes dgx-spark-1 node-role.kubernetes.io/ai-gpu<span class="o">=</span><span class="nb">true </span>nvidia.com/gpu<span class="o">=</span><span class="nb">true
+</span>kubectl label nodes dgx-spark-2 node-role.kubernetes.io/ai-gpu<span class="o">=</span><span class="nb">true </span>nvidia.com/gpu<span class="o">=</span><span class="nb">true</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Taint nodes for GPU workloads:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl taint nodes dgx-spark-1 <span class="nv">dedicated</span><span class="o">=</span>gpu:NoSchedule
+kubectl taint nodes dgx-spark-2 <span class="nv">dedicated</span><span class="o">=</span>gpu:NoSchedule
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h5 id="gpu-operator-deployment">GPU Operator Deployment</h5>
+
+<ol>
+  <li><strong>NVIDIA GPU Operator Installation</strong>
+    <ul>
+      <li>Add NVIDIA Helm repository:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm repo add nvidia https://helm.ngc.nvidia.com/nvidia
+helm repo update
+</code></pre></div>        </div>
+      </li>
+      <li>Deploy GPU Operator:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm <span class="nb">install </span>gpu-operator nvidia/gpu-operator <span class="se">\</span>
+  <span class="nt">--set</span> driver.enabled<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+  <span class="nt">--set</span> devicePlugin.enabled<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+  <span class="nt">--set</span> dcgm.enabled<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+  <span class="nt">--set</span> dcgmExporter.enabled<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+  <span class="nt">--namespace</span> nvidia-gpu-operator <span class="se">\</span>
+  <span class="nt">--create-namespace</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Verification</strong>
+    <ul>
+      <li>Verify GPU operator pods:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods <span class="nt">-n</span> nvidia-gpu-operator
+</code></pre></div>        </div>
+      </li>
+      <li>Test GPU detection:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl run <span class="nt">-it</span> <span class="nt">--rm</span> <span class="nt">--image</span><span class="o">=</span>nvidia/cuda:12.4.1-base-ubuntu22.04 nvidia-smi
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="phase-3-ai-workload-configuration">Phase 3: AI Workload Configuration</h3>
+
+<h4 id="update-existing-ai-services-to-use-gpu-nodes">Update Existing AI Services to Use GPU Nodes</h4>
+
+<ol>
+  <li><strong>Ollama Deployment</strong>
+    <ul>
+      <li>Modify deployment to use node selector:
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">spec</span><span class="pi">:</span>
+  <span class="na">template</span><span class="pi">:</span>
+    <span class="na">spec</span><span class="pi">:</span>
+      <span class="na">nodeSelector</span><span class="pi">:</span>
+        <span class="na">node-role.kubernetes.io/ai-gpu</span><span class="pi">:</span> <span class="s2">"</span><span class="s">true"</span>
+      <span class="na">tolerations</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">dedicated"</span>
+        <span class="na">operator</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Equal"</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">gpu"</span>
+        <span class="na">effect</span><span class="pi">:</span> <span class="s2">"</span><span class="s">NoSchedule"</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Open WebUI Deployment</strong>
+    <ul>
+      <li>Apply same node selector configuration</li>
+      <li>Configure GPU resources in deployment spec:
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">resources</span><span class="pi">:</span>
+  <span class="na">limits</span><span class="pi">:</span>
+    <span class="na">nvidia.com/gpu</span><span class="pi">:</span> <span class="m">1</span>
+  <span class="na">requests</span><span class="pi">:</span>
+    <span class="na">nvidia.com/gpu</span><span class="pi">:</span> <span class="m">1</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Langflow Deployment</strong>
+    <ul>
+      <li>Configure node affinity and GPU resources</li>
+      <li>Update deployment to target GPU worker nodes</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="storage-integration">Storage Integration</h4>
+
+<ol>
+  <li><strong>Longhorn Extension</strong>
+    <ul>
+      <li>Deploy Longhorn agent on DGX nodes</li>
+      <li>Configure local SSDs for volume replicas</li>
+      <li>Create Longhorn storage class for AI workloads</li>
+    </ul>
+  </li>
+  <li><strong>Persistent Volume Claims</strong>
+    <ul>
+      <li>Update AI services to use Longhorn PVCs for model storage</li>
+      <li>Configure storage size requirements for different AI workloads</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="phase-4-monitoring-and-testing">Phase 4: Monitoring and Testing</h3>
+
+<h4 id="gpu-metrics-monitoring">GPU Metrics Monitoring</h4>
+<ol>
+  <li><strong>DCGM Exporter Configuration</strong>
+    <ul>
+      <li>Configure DCGM exporter to collect GPU metrics</li>
+      <li>Set up Prometheus scrape configuration</li>
+      <li>Create Grafana dashboards for GPU utilization</li>
+    </ul>
+  </li>
+  <li><strong>Performance Testing</strong>
+    <ul>
+      <li>Deploy test CUDA workloads to verify GPU functionality</li>
+      <li>Run distributed training jobs to test inter-node communication</li>
+      <li>Validate storage performance with AI datasets</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="security-implementation">Security Implementation</h4>
+<ol>
+  <li><strong>RBAC Policies</strong>
+    <ul>
+      <li>Create role-based access controls for GPU resources</li>
+      <li>Implement network policies for GPU node communication</li>
+      <li>Configure Authentik integration for admin access</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="implementation-timeline">Implementation Timeline</h3>
+<ul>
+  <li><strong>Week 1</strong>: Complete prerequisite infrastructure deployment (Longhorn, MetalLB, cert-manager, Observability)</li>
+  <li><strong>Week 2</strong>: Physical setup and k3s agent installation on DGX systems</li>
+  <li><strong>Week 3</strong>: GPU Operator deployment and AI service configuration</li>
+  <li><strong>Week 4</strong>: Testing and performance validation</li>
+</ul>
+
+<h3 id="risk-mitigation">Risk Mitigation</h3>
+<ol>
+  <li><strong>Compatibility Risks</strong>
+    <ul>
+      <li>Test DGX OS compatibility with k3s agent</li>
+      <li>Verify NVIDIA driver versions with k3s cluster</li>
+    </ul>
+  </li>
+  <li><strong>Performance Bottlenecks</strong>
+    <ul>
+      <li>Monitor network throughput with iperf3 tests</li>
+      <li>Validate GPU memory allocation and utilization</li>
+    </ul>
+  </li>
+  <li><strong>Rollback Strategy</strong>
+    <ul>
+      <li>Implement node draining for maintenance</li>
+      <li>Maintain backup of existing configurations</li>
+      <li>Document rollback procedures for each phase</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="resource-requirements">Resource Requirements</h3>
+<ul>
+  <li><strong>Hardware</strong>: 2x NVIDIA DGX Spark systems (Grace CPU + Blackwell GPU)</li>
+  <li><strong>Network</strong>: 10/25/100 Gbps Ethernet connectivity, 400 Gbps direct OSFP links</li>
+  <li><strong>Software</strong>:
+    <ul>
+      <li>k3s cluster (existing)</li>
+      <li>NVIDIA GPU Operator Helm chart</li>
+      <li>Longhorn storage operator</li>
+      <li>Prometheus/Grafana monitoring stack</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="success-criteria">Success Criteria</h3>
+<ul>
+  <li>DGX nodes successfully join k3s cluster as worker nodes</li>
+  <li>GPU Operator deployed and functional</li>
+  <li>AI services can be scheduled on GPU nodes</li>
+  <li>GPU metrics available through monitoring stack</li>
+  <li>Performance benchmarks meet expected throughput requirements</li>
+</ul>
 
   </div>
 

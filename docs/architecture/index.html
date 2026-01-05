@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | Inkorporated Homelab Documentation</title>
+<title>Inkorporated Homelab Documentation | Comprehensive documentation for the Inkorporated homelab project.</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Inkorporated Homelab Documentation" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Comprehensive documentation for the Inkorporated homelab project." />
 <meta property="og:description" content="Comprehensive documentation for the Inkorporated homelab project." />
-<link rel="canonical" href="https://toxicoder.github.io/inkorporated/" />
-<meta property="og:url" content="https://toxicoder.github.io/inkorporated/" />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/architecture/" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/architecture/" />
 <meta property="og:site_name" content="Inkorporated Homelab Documentation" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Inkorporated Homelab Documentation" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Home","name":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/architecture/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/inkorporated/assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -248,7 +248,7 @@
 
 <li class="nav-item">
   
-    <a class="nav-link active" href="/inkorporated/">
+    <a class="nav-link " href="/inkorporated/">
       Home
     </a>
   
@@ -525,54 +525,57 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Home</h1>
+    <h1 class="post-title"></h1>
   </header>
 
   <div class="post-content">
-    <h1 id="inkorporated-homelab-documentation">Inkorporated Homelab Documentation</h1>
+    <h1 id="hybrid-cloud-architecture">Hybrid Cloud Architecture</h1>
 
-<p>Welcome to the comprehensive documentation for the Inkorporated homelab project.</p>
+<h2 id="overview">Overview</h2>
 
-<h2 id="core-documentation">Core Documentation</h2>
+<p>The Inkorporated homelab now utilizes a Hybrid Cloud architecture, combining the control and persistence of on-premises hardware with the scalability of public cloud providers.</p>
 
+<h2 id="topology">Topology</h2>
+
+<h3 id="on-premises-proxmox">On-Premises (Proxmox)</h3>
 <ul>
-  <li><a href="/guides/overview.html">Project Overview</a>: Executive summary and key features.</li>
-  <li><a href="/architecture/index.html">Architecture</a>: High-level architectural design and diagrams.</li>
-  <li><a href="/architecture/network.html">Network Topology</a>: Detailed network zones and security layers.</li>
-  <li><a href="/architecture/technical_design.html">Technical Design</a>: In-depth technical specifications.</li>
+  <li><strong>Role</strong>: Primary control plane, persistent storage, stable workloads.</li>
+  <li><strong>Nodes</strong>: 5 Proxmox hosts running VMs and LXC containers.</li>
+  <li><strong>Kubernetes</strong>: k3s server (master) nodes and worker nodes.</li>
+  <li><strong>Storage</strong>: Longhorn (block) and NFS (file).</li>
 </ul>
 
-<h2 id="guides--handbooks">Guides &amp; Handbooks</h2>
-
+<h3 id="cloud-aws--gcp">Cloud (AWS / GCP)</h3>
 <ul>
-  <li><a href="/guides/installation.html">Installation Guide</a>: Step-by-step implementation phases.</li>
-  <li><a href="/guides/configuration.html">Configuration Guide</a>: Detailed configuration references.</li>
-  <li><a href="/guides/environments.html">Environment Guide</a>: Managing dev, staging, and prod environments.</li>
-  <li><a href="/guides/deployment.html">Deployment &amp; Operations</a>: GitOps workflows and maintenance.</li>
-  <li><a href="/guides/security.html">Security Handbook</a>: Authentication, authorization, and data protection.</li>
-  <li><a href="/guides/observability.html">Observability Guide</a>: Monitoring, logging, and alerting.</li>
-  <li><a href="/guides/backups.html">Backup &amp; Recovery</a>: Disaster recovery strategies.</li>
-  <li><a href="/guides/troubleshooting.html">Troubleshooting</a>: Common issues and debugging.</li>
+  <li><strong>Role</strong>: Burst capacity, temporary testing, high-availability fallover (future).</li>
+  <li><strong>Nodes</strong>: EC2 instances or GCE VMs.</li>
+  <li><strong>Kubernetes</strong>: k3s agent (worker) nodes joined to the on-prem master.</li>
+  <li><strong>Storage</strong>: Cloud-native block storage (EBS gp2/gp3, GCE standard/pd-ssd).</li>
 </ul>
 
-<h2 id="reference">Reference</h2>
-
+<h2 id="networking">Networking</h2>
 <ul>
-  <li><a href="/reference/services.html">Service Catalog</a>: Detailed specifications for all deployed services.</li>
-  <li><a href="/guides/overview.html#repository-structure">Repository Structure</a>: Codebase organization.</li>
+  <li><strong>VPN</strong>: A mesh VPN (e.g., Tailscale or Wireguard) connects all nodes.</li>
+  <li><strong>Service Discovery</strong>: Internal DNS or K8s Service discovery works across the mesh.</li>
 </ul>
 
-<h2 id="status--reports">Status &amp; Reports</h2>
-
+<h2 id="gitops--application-management">GitOps &amp; Application Management</h2>
 <ul>
-  <li><a href="/status/discovery_summary.html">Discovery Summary</a>: Consolidated documentation overview.</li>
-  <li><a href="/status/infrastructure_validation_report.html">Infrastructure Validation</a>: Validation report for the infrastructure.</li>
-  <li><a href="/status/dgx_integration_summary.html">DGX Integration Summary</a>: Status of NVIDIA DGX integration.</li>
+  <li><strong>ArgoCD</strong>: Manages deployments across all environments.</li>
+  <li><strong>ApplicationSets</strong>: Dynamically target clusters/environments.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">on-prem</code>: Targets local cluster, sets storageClass to <code class="language-plaintext highlighter-rouge">longhorn</code>.</li>
+      <li><code class="language-plaintext highlighter-rouge">cloud</code>: Targets cloud nodes (via node selectors or separate clusters), sets storageClass to <code class="language-plaintext highlighter-rouge">gp2</code>.</li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="contributing">Contributing</h2>
-
-<p>This project is open-source and welcomes contributions. Please see the <a href="https://github.com/toxicoder/inkorporated-k8s-apps/blob/main/README.md">README</a> for more information.</p>
+<h2 id="scaling-bursting">Scaling (Bursting)</h2>
+<ul>
+  <li>Scripts in <code class="language-plaintext highlighter-rouge">cloud/burst.sh</code> monitor load.</li>
+  <li>When thresholds are met, <code class="language-plaintext highlighter-rouge">terraform apply</code> is triggered with a higher count for cloud instances.</li>
+  <li>New nodes automatically join the k3s cluster via <code class="language-plaintext highlighter-rouge">cloud-init</code> and Ansible.</li>
+</ul>
 
   </div>
 

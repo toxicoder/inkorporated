@@ -1,6 +1,8 @@
 {
     "name": "Generalized Developer Container",
-    "image": "mcr.microsoft.com/devcontainers/base:jammy",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
     "remoteUser": "vscode",
     "features": {
         "ghcr.io/devcontainers/features/node:1": {

@@ -1,6 +1,6 @@
 # Inkorporated Repository Agent Guide
 
-This document outlines the rules, conventions, and operational procedures for agents (human and AI) working on the **Inkorporated** repository.
+This document outlines the authoritative rules, conventions, and operational procedures for agents (human and AI) working on the **Inkorporated** repository.
 
 ## 1. Project Overview
 
@@ -12,72 +12,82 @@ This document outlines the rules, conventions, and operational procedures for ag
 
 ## 2. Environment Setup & Configuration
 
-*   **Dev Container:** The project relies on the `.devcontainer` configuration. The environment is built from `.devcontainer/Dockerfile` (Ubuntu Jammy base) and includes Node.js, Python, and ArgoCD.
-*   **Configuration Security:**
-    *   The file `.devcontainer/.env` is the source of truth for secrets and environment-specific settings.
-    *   **CRITICAL:** `.devcontainer/.env` MUST have file permissions set to `600` (`chmod 600 .devcontainer/.env`).
-    *   Validation scripts (e.g., `tests/config/test_config_validation.sh`) will fail if permissions are incorrect.
-    *   To set up: Copy `.devcontainer/.env.example` to `.devcontainer/.env`.
-*   **Infrastructure Tools:** Scripts like `tests/config/validate_infrastructure.sh` will skip execution if tools (e.g., `pvecm`) are missing, to ensure CI compatibility.
+*   **Dev Container:** The project relies on the `.devcontainer` configuration.
+*   **Secrets & Settings:**
+    *   **Source of Truth:** `.devcontainer/.env`.
+    *   **Security:** File permissions **MUST** be set to `600` (`chmod 600 .devcontainer/.env`).
+    *   **Validation:** `validate_config.sh` checks for permissions and required MCP variables (e.g., `GH_TOKEN`, `PERPLEXITY_API_KEY`).
+    *   **Setup:** Copy `.devcontainer/.env.example` to `.devcontainer/.env`.
+*   **Environments:**
+    *   Configuration is split by environment (dev, staging, prod) in `config/environments/`.
+    *   Application overrides are in `apps/environments/`.
 
-## 3. Build System (Bazel)
+## 3. Directory Structure
 
-*   **Mode:** Workspace mode is explicitly enabled (`common --enable_workspace`) and Bzlmod is disabled (`common --noenable_bzlmod`) in `.bazelrc`.
+*   `apps/`: GitOps manifests (ArgoCD Applications, ApplicationSets).
+    *   `apps/shared/`: Base manifests.
+    *   `apps/environments/`: Environment-specific overlays.
+*   `config/`: Global and environment-specific configuration files.
+*   `docs/`: Jekyll-based documentation.
+*   `infrastructure/`:
+    *   `terraform/`: Infrastructure provisioning (Proxmox, AWS, GCP).
+    *   `ansible/`: Configuration management (k3s installation).
+*   `tests/`: Validation scripts and Bazel test targets.
+
+## 4. Build System (Bazel)
+
+*   **Mode:** Workspace enabled (`common --enable_workspace`), Bzlmod disabled (`common --noenable_bzlmod`).
 *   **Rules:**
-    *   **Shell:** Use `rules_sh` (defined in `WORKSPACE.bazel`).
-    *   **Loading Definitions:** You MUST load definitions from specific files (e.g., `load("@rules_sh//shell:sh_test.bzl", "sh_test")`). Do NOT assume a central `defs.bzl`.
+    *   Use `rules_sh` for shell tests (defined in `WORKSPACE.bazel`).
+    *   Load from specific files: `load("@rules_sh//shell:sh_test.bzl", "sh_test")`.
 *   **Data Attributes:**
-    *   Use direct labels for `data` attributes (e.g., `//config:all_configs`).
-    *   **Do NOT use `glob()`** directly on label lists in `data`.
-    *   For glob usage in `srcs` (e.g., Ansible linting), set `allow_empty=True`.
+    *   Use direct labels (e.g., `//config:all_configs`).
+    *   **No `glob()`** in `data` attributes.
+    *   Use `allow_empty=True` for `glob()` in `srcs` where files might be missing.
 
-## 4. Infrastructure as Code
+## 5. Infrastructure as Code
 
 ### Terraform
-*   **Location:** `infrastructure/terraform/`
-*   **Structure:**
-    *   Root `main.tf` manages provider-specific modules (`providers/{proxmox,aws,gcp}`).
-    *   **State Migration:** Use `moved` blocks in `main.tf` to preserve resource state during refactoring.
-*   **Validation:**
-    *   Tests run via Bazel `sh_test` targets calling `validate_terraform.sh` and `check_fmt.sh`.
-    *   These scripts rely on the `terraform` binary being available.
+*   **Location:** `infrastructure/terraform/`.
+*   **State:** Use `moved` blocks in `main.tf` for refactoring.
+*   **Validation:** Run via `validate_terraform.sh`.
 
 ### Ansible
-*   **Location:** `infrastructure/ansible/`
-*   **Inventory:** Segments hosts into:
-    *   `proxmox_vms`
-    *   `proxmox_lxc`
-    *   `cloud_nodes`
-*   **Roles:** Use the `cloud-join` role for remote nodes.
-*   **Linting:** `ansible_lint_wrapper.sh` runs via Bazel but exits 0 (skips) if `ansible-lint` is missing.
+*   **Location:** `infrastructure/ansible/`.
+*   **Linting:** `ansible_lint_wrapper.sh` (skips if binary missing).
 
-## 5. Documentation
+## 6. GitOps & Applications
 
-*   **Location:** `docs/`
-*   **Engine:** Jekyll with `toxicoder/materialistic-jekyll` remote theme.
-*   **Configuration (`docs/_config.yml`):**
-    *   `url`: `https://toxicoder.github.io`
-    *   `baseurl`: `/inkorporated`
-    *   `repository`: `toxicoder/inkorporated`
-    *   Required Plugins: `jekyll-seo-tag`, `jekyll-feed`.
-*   **Content Rules:**
-    *   **Links:** Internal links must be **relative** and point to `.html` files (e.g., `guides/overview.html`), not `.md` and not absolute paths.
-    *   **Project Name:** Refer to the project as **Inkorporated**. Replace legacy references to `inkorporated-k8s-apps`.
-    *   **Mermaid:** Diagrams are supported via `docs/assets/js/mermaid-support.js`. Use `.language-mermaid` code blocks.
-    *   **Assets:** Navigation links in `docs/_data/navigation.yml` are absolute (starting with `/`).
+*   **Manifests:** Located in `apps/`.
+*   **Domains:**
+    *   **NEVER** hardcode domains (e.g., `example.com`) in Ingress manifests.
+    *   Use templated references: `{{ .Env.DOMAIN_BASE }}`.
+    *   Validation: `validate_domain_config.sh` enforces this.
 
-## 6. Testing & Verification
+## 7. Documentation
 
-*   **Main Entrypoint:** `./run_all_tests.sh` runs the full suite.
-*   **Configuration Validation:** `./validate_config.sh` and `./validate_domain_config.sh`.
-*   **Security Scanning:**
-    *   Run via `//tests/config:config_security_scan` (calls `scan_secrets.sh`).
-    *   **Exclusions:** Explicitly excludes `.git`, `node_modules`, `_site`, `.terraform`.
-*   **Frontend/Docs:** GitHub Pages deployment is handled manually via `git worktree` to the `gh-pages` branch.
+*   **Location:** `docs/`.
+*   **Structure:**
+    *   `docs/guides/`: User handbooks and runbooks.
+    *   `docs/architecture/`: Design documents and decisions.
+    *   `docs/reference/`: Service reference documentation.
+    *   `docs/status/`: Reports and implementation status.
+*   **Config:** `_config.yml` uses `toxicoder/materialistic-jekyll` theme.
+*   **Links:**
+    *   Internal links must be **relative** to the current file.
+    *   Target `.html` files, not `.md` (e.g., `../guides/overview.html`).
+*   **Diagrams:** Use Mermaid (`.language-mermaid`).
 
-## 7. Development Workflow
+## 8. Verification & Testing
 
-1.  **Modify Source:** Edit files in `src/`, `infrastructure/`, `docs/`, etc.
-2.  **Verify:** Run relevant validation scripts or Bazel tests.
-3.  **Pre-Commit:** Ensure all tests pass.
-4.  **Submit:** Commit with descriptive messages.
+Before submitting changes, run:
+
+1.  **`./validate_config.sh`**: Verifies `.env` setup.
+2.  **`./validate_domain_config.sh`**: Checks for hardcoded domains.
+3.  **`./run_all_tests.sh`**: Runs the full suite (Bazel tests, infrastructure validation).
+
+## 9. MCP & AI Integration
+
+*   This repository is designed to work with MCP (Model Context Protocol).
+*   **Configuration:** MCP settings are in `cline_mcp_settings.json` (general) and `.devcontainer/.env` (secrets).
+*   **Security:** `scan_secrets.sh` is used to prevent secret leakage. Run `//tests/config:config_security_scan`.

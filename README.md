@@ -1,4 +1,4 @@
-# Inkorporated - Eazy Homelab & Corp IaC
+# Inkorporated - Eazy Homelab <> Corp IaC
 
 [![Inkorporated banner](static/images/inkorporated-globe-banner.jpg)]()
 

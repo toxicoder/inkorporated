@@ -4,7 +4,9 @@
 
 ## Overview
 
-This repository contains the complete infrastructure-as-code for the Inkorporated homelab, a comprehensive self-hosted, open-source internal work environment designed for homelab deployments. It provides a complete, integrated solution that combines infrastructure automation, GitOps deployment, and a rich set of productivity and collaboration tools.
+This repository contains the complete infrastructure-as-code for the Inkorporated homelab/corplab, a comprehensive self-hosted, open-source internal work environment designed for homelab deployments. It provides a complete, integrated solution that combines infrastructure automation, GitOps deployment, and a rich set of productivity and collaboration tools.
+
+This project aims to provide robust, scalable infrastructure suitable for organizations of all sizes, with a specific focus on production ready practices offering an easy onramp to the cloud for those big ideas that turn into big demand 🚀.
 
 ## Architecture
 

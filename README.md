@@ -1,4 +1,6 @@
-# Inkorporated Homelab Infrastructure
+# Inkorporated - Eazy Homelab & Corp IaC
+
+[![Inkorporated banner](static/images/inkorporated-globe-banner.jpg)]()
 
 ## Overview
 

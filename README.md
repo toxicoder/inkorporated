@@ -19,7 +19,7 @@ Inkorporated now supports a **Hybrid Cloud** architecture, enabling workloads to
     *   On-Prem: Longhorn / NFS
     *   Cloud: Cloud-native storage (e.g., gp2/standard)
 
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for detailed diagrams and topology.
+See [docs/architecture/ARCHITECTURE.md](docs/architecture/ARCHITECTURE.md) for detailed diagrams and topology.
 
 ## Project Structure
 

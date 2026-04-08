@@ -35,10 +35,10 @@
             "minikube": "none"
         }
     },
-    "runArgs": [
-        "--env-file",
-        ".env"
-    ],
+    "remoteEnv": {
+        "CONTEXT7_API_KEY": "${localEnv:CONTEXT7_API_KEY}",
+        "BRAVE_API_KEY": "${localEnv:BRAVE_API_KEY}"
+    },
     "postCreateCommand": "echo '✅ Ultimate dev environment ready! Run node --version, python --version, docker --version, bazel --version to verify.'",
     "hostRequirements": {
         "cpus": 2,

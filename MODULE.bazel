@@ -1,0 +1,19 @@
+###############################################################################
+# Bzlmod configuration for the Inkorporated project.
+#
+# This file declares external dependencies using Bazel's module system.
+# Bzlmod is the recommended dependency management system in Bazel 8+.
+#
+# References:
+#   https://bazel.build/external/module-setup - Bzlmod setup guide
+###############################################################################
+
+module(
+    name = "inkorporated",
+    version = "0.1.0",
+)
+
+# rules_shell provides shell script rules for Bazel (sh_test, sh_binary, sh_library).
+# Used for defining shell-based test targets throughout the project.
+# Official repository: https://github.com/bazel-contrib/rules_shell
+bazel_dep(name = "rules_shell", version = "0.7.1")

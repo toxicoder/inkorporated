@@ -1,0 +1,20 @@
+# Integration tests BUILD file for the Inkorporated project.
+#
+# This file defines test targets for integration testing across multiple
+# components and services. Integration tests verify that different parts
+# of the system work together correctly.
+#
+# Targets:
+#   authentik_integration - Tests Authentik service integration
+#
+
+# Load sh_test from rules_shell (Bzlmod version).
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
+
+# Integration test for Authentik authentication service.
+# Verifies that Authentik integrates properly with other services
+# and that authentication flows work as expected.
+sh_test(
+    name = "authentik_integration",
+    srcs = ["test_authentik.sh"],
+)

@@ -10,7 +10,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.middlewares: "workadventure-forward-auth@kubernetescrd"
 spec:
   rules:
-    - host: work.${DOMAIN_BASE}
+    - host: workadventure.${DOMAIN_BASE}
       http:
         paths:
           - path: /

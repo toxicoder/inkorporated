@@ -1,8 +1,26 @@
-# Ansible BUILD file for Inkorporated project
+# Ansible configuration management tests for the Inkorporated project.
+#
+# This BUILD file defines test targets for Ansible playbook linting and
+# validation. It uses rules_sh for shell script-based testing since the
+# project has a custom wrapper for ansible-lint.
+#
+# The linting test uses a wrapper script that gracefully handles cases where
+# ansible-lint is not installed on the system.
+#
+# Targets:
+#   ansible_lint - Lints Ansible playbooks and roles
+#
 
-load("@rules_sh//shell:sh_test.bzl", "sh_test")
+# Load sh_test from rules_shell (Bzlmod version).
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
 
-# Ansible linting test
+# Lints all Ansible playbooks and roles in this directory.
+# Uses ansible_lint_wrapper.sh which checks for ansible-lint binary
+# availability before running. If ansible-lint is not installed, the
+# test gracefully exits without failure.
+#
+# Uses allow_empty=True for glob() to handle cases where no YAML files
+# exist in the directory.
 sh_test(
     name = "ansible_lint",
     srcs = ["ansible_lint_wrapper.sh"],

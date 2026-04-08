@@ -1,15 +1,33 @@
-# Root BUILD file for Inkorporated Bazel workspace
+# Root BUILD file for the Inkorporated Bazel workspace.
+#
+# This file defines the primary test targets for the Inkorporated project,
+# a hybrid cloud infrastructure-as-code repository combining Proxmox with
+# AWS/GCP cloud bursting capabilities.
+#
+# The project uses rules_sh for shell script-based testing since many
+# validation tasks are implemented as shell scripts.
+#
+# Targets:
+#   all_tests      - Meta-target that runs all project tests
+#   validate_config - Validates configuration files and environment setup
+#
 
-load("@rules_sh//shell:sh_test.bzl", "sh_test")
+# Load the sh_test rule from rules_sh.
+# Used for defining shell script-based tests.
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
 
-# Target that runs all tests (depends on validate_config and tests)
+# Meta-target that executes all project tests.
+# Depends on validate_config and the aggregated tests target.
+# Uses run_all_tests.sh as the entry point for comprehensive test execution.
 sh_test(
     name = "all_tests",
     srcs = ["run_all_tests.sh"],
     deps = [":validate_config", "//tests:all"],
 )
 
-# Target for config validation
+# Validates project configuration files and environment setup.
+# Ensures .env file is properly configured with required variables
+# and has correct file permissions (600).
 sh_test(
     name = "validate_config",
     srcs = ["validate_config.sh"],

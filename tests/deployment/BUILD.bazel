@@ -1,0 +1,20 @@
+# Deployment tests BUILD file for the Inkorporated project.
+#
+# This file defines test targets for validating deployment configurations
+# and Helm chart templates. It ensures that deployment manifests are
+# properly configured before being applied to Kubernetes clusters.
+#
+# Targets:
+#   helm_validate - Validates Helm chart configurations
+#
+
+# Load sh_test from rules_shell (Bzlmod version).
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
+
+# Validates Helm chart configurations and templates.
+# Uses test_helm.sh to verify Helm chart integrity and rendering.
+# Ensures charts produce valid Kubernetes manifests when templated.
+sh_test(
+    name = "helm_validate",
+    srcs = ["test_helm.sh"],
+)

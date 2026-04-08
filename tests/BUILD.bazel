@@ -1,0 +1,31 @@
+# Tests BUILD file for the Inkorporated project.
+#
+# This file serves as the aggregation point for all test targets in the
+# project. It provides a single target that depends on all subdirectory
+# test targets, enabling easy execution of the complete test suite.
+#
+# This is compliant with AGENTS.md requirements for modular, reusable code.
+#
+# Targets:
+#   all - Aggregation target that depends on all test subdirectories
+#
+
+# Package-level documentation: The tests package aggregates all test targets
+# from subdirectories including configuration tests, integration tests,
+# Kubernetes validation, security scans, and deployment validation.
+package(default_visibility = ["//visibility:public"])
+
+# Aggregation target for all project tests.
+# This target depends on all subdirectory test directories, effectively
+# including all tests when run. Use: bazel test //tests:all
+filegroup(
+    name = "all",
+    srcs = [],
+    deps = [
+        "//tests/config:...",
+        "//tests/deployment:...",
+        "//tests/integration:...",
+        "//tests/kubernetes:...",
+        "//tests/security:...",
+    ],
+)

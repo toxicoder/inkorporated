@@ -1,10 +1,14 @@
+###############################################################################
+# Bazel workspace for the Inkorporated project.
+#
+# This workspace defines the external dependencies required for building and
+# testing the Inkorporated hybrid cloud infrastructure project.
+#
+# NOTE: External dependencies are now managed via MODULE.bazel using Bzlmod.
+# This WORKSPACE file only contains workspace-level configuration.
+#
+# References:
+#   https://bazel.build/external/module-setup
+###############################################################################
+
 workspace(name = "inkorporated")
-
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
-# Rules for shell testing
-http_archive(
-    name = "rules_sh",
-    urls = ["https://github.com/bazelbuild/rules_shell/archive/refs/heads/main.zip"],
-    strip_prefix = "rules_shell-main",
-)

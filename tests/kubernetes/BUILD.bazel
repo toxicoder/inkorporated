@@ -1,0 +1,29 @@
+# Kubernetes manifest tests BUILD file for the Inkorporated project.
+#
+# This file defines test targets for validating Kubernetes manifests,
+# checking resource quotas, and ensuring proper configuration of
+# deployed services.
+#
+# Targets:
+#   manifest_validate - Validates Kubernetes manifest syntax and structure
+#   resource_quota_check - Verifies resource quota configurations
+#
+
+# Load sh_test from rules_shell (Bzlmod version).
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
+
+# Validates all Kubernetes manifests in the project.
+# Uses test_manifests.sh to verify YAML syntax, required fields,
+# and proper configuration of deployments, services, and ingress.
+sh_test(
+    name = "manifest_validate",
+    srcs = ["test_manifests.sh"],
+)
+
+# Verifies resource quota configurations for namespaces.
+# Uses test_resource_quotas.sh to ensure proper resource limits
+# are defined and enforced across the cluster.
+sh_test(
+    name = "resource_quota_check",
+    srcs = ["test_resource_quotas.sh"],
+)

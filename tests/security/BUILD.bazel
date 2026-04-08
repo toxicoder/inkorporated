@@ -1,0 +1,19 @@
+# Security tests BUILD file for the Inkorporated project.
+#
+# This file defines test targets for security-related validation,
+# including permission checks and security configuration validation.
+#
+# Targets:
+#   permissions_check - Validates file and directory permissions
+#
+
+# Load sh_test from rules_shell (Bzlmod version).
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
+
+# Validates file and directory permissions across the project.
+# Uses test_permissions.sh to ensure sensitive files have proper
+# access controls (e.g., .env files should be 600).
+sh_test(
+    name = "permissions_check",
+    srcs = ["test_permissions.sh"],
+)

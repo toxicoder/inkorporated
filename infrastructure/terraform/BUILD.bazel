@@ -1,19 +1,35 @@
-# Terraform BUILD file for Inkorporated project
+# Terraform infrastructure tests for the Inkorporated project.
+#
+# This BUILD file defines shell-based test targets for Terraform validation
+# and formatting. Since rules_tf is unavailable, we use rules_sh for shell
+# script-based testing.
+#
+# Prerequisites: terraform binary must be available in the system PATH.
+#
+# Targets:
+#   terraform_validate - Validates Terraform configuration files
+#   terraform_fmt      - Checks Terraform formatting compliance
+#
 
-# Since rules_tf is removed (repository is 404), we define simple shell tests
-# for Terraform validation and formatting.
-# Requirement: 'terraform' binary must be in the PATH.
+# Load sh_test from rules_shell (Bzlmod version).
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
 
+# Validates all Terraform configuration files in this directory.
+# Uses validate_terraform.sh to run terraform validate.
+# Tagged "manual" to skip when terraform is not installed.
 sh_test(
     name = "terraform_validate",
     srcs = ["validate_terraform.sh"],
     data = glob(["**/*.tf"]),
-    tags = ["manual"], # Skip if terraform is not installed
+    tags = ["manual"],
 )
 
+# Checks Terraform formatting using terraform fmt -check.
+# Uses check_fmt.sh to verify proper formatting.
+# Tagged "manual" to skip when terraform is not installed.
 sh_test(
     name = "terraform_fmt",
     srcs = ["check_fmt.sh"],
     data = glob(["**/*.tf"]),
-    tags = ["manual"], # Skip if terraform is not installed
+    tags = ["manual"],
 )

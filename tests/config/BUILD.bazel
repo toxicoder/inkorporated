@@ -1,19 +1,60 @@
-# Configuration tests BUILD file for Inkorporated project
+# Configuration tests BUILD file for the Inkorporated project.
+#
+# This file defines test targets for validating configuration files,
+# environment variables, and infrastructure settings. It uses rules_sh
+# for shell script-based testing.
+#
+# Per AGENTS.md policy, data attributes use direct labels instead of glob()
+# to ensure explicit and predictable file dependencies.
+#
+# Targets:
+#   validate_infrastructure - Validates infrastructure configuration
+#   config_security_scan   - Scans configuration for potential secrets leakage
+#
 
-load("@rules_sh//shell:sh_test.bzl", "sh_test")
+# Load sh_test from rules_shell (Bzlmod version).
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
 
-# Test for infrastructure validation
+# Validates infrastructure configuration files.
+# Uses validate_infrastructure.sh to verify all required configuration
+# files exist and are properly formatted.
 sh_test(
     name = "validate_infrastructure",
     srcs = ["validate_infrastructure.sh"],
-    data = glob(["**/*.sh"]),
+    data = [
+        "//config:all_configs",
+    ],
 )
 
-# Security scan for configuration files
-# Replaced 'secret_scan' from rules_lint with a local shell test
+# Tests configuration validation script.
+# Verifies validate_config.sh properly checks environment setup.
+sh_test(
+    name = "test_validation_script",
+    srcs = ["test_validation_script.sh"],
+)
+
+# Tests environment variable loading.
+# Verifies environment variables are correctly loaded from .env files.
+sh_test(
+    name = "test_env_vars",
+    srcs = ["test_env_vars.sh"],
+)
+
+# Tests environment inheritance configuration.
+# Verifies environment-specific configs inherit correctly from base.
+sh_test(
+    name = "test_environment_inheritance",
+    srcs = ["test_environment_inheritance.sh"],
+)
+
+# Scans configuration files for potential secrets leakage.
+# Uses scan_secrets.sh to detect hardcoded credentials.
+# Tagged "manual" to run only when explicitly requested.
 sh_test(
     name = "config_security_scan",
     srcs = ["scan_secrets.sh"],
-    data = ["//config:all_configs"],
+    data = [
+        "//config:all_configs",
+    ],
     tags = ["manual"],
 )

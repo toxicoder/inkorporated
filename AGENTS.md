@@ -90,9 +90,7 @@ Before submitting changes, run:
 
 ## 9. MCP & AI Integration
 
-- This repository is designed to work with MCP (Model Context Protocol).
-- **Configuration:** MCP settings are in `cline_mcp_settings.json` (general) and `.devcontainer/.env` (secrets).
-  -his repository is designed to work with MCP (Model Context Protocol).
+This repository is designed to work with MCP (Model Context Protocol).
 
-* **Configuration:** MCP settings are in `cline_mcp_settings.json` (general) and `.devcontainer/.env` (secrets).
-* **Security:** `scan_secrets.sh` is used to prevent secret leakage. Run `//tests/config:config_security_scan`.
+- **Configuration:** MCP settings are in `cline_mcp_settings.json` (general) and `.devcontainer/.env` (secrets).
+- **Security:** `scan_secrets.sh` is used to prevent secret leakage. Run `//tests/config:config_security_scan`.

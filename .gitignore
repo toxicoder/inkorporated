@@ -12,6 +12,9 @@
 /.env.*.local
 /devcontainer-config.env
 .devcontainer/.env
+.devcontainer/.env.mcp
+.devcontainer/cline/
+.devcontainer/cline-globalstorage/
 
 # OS generated files
 .DS_Store

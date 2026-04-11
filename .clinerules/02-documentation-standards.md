@@ -1,21 +1,18 @@
+---
+description: Documentation formatting, structure, and markdown guidelines
+author: toxicoder
+version: 2.0
+globs: ["**/*.md", "**/*.mdx"]
+tags: ["documentation", "markdown", "standards"]
+---
+
 # Documentation Standards
 
 > **Purpose**: Documentation formatting, structure, and README guidelines
 
 ---
 
-## Code Documentation
-
-### Docstring Requirements
-
-Document all public functions, classes, and interfaces including:
-
-- Description of purpose and behavior
-- Each parameter with type and description
-- Return type and description
-- Exceptions that may be thrown
-
-### Inline Comment Guidelines
+## Inline Comment Guidelines
 
 - Add comments for **complex logic**, not obvious code
 - Prefer **self-documenting code** through good naming
@@ -46,10 +43,7 @@ Always follow The [CommonMark specification](https://spec.commonmark.org/) when 
 
 Always include a language specifier:
 
-- Wrong
-
 ````text
-
 # Wrong
 
 ```
@@ -61,7 +55,6 @@ code here
 ```bash
 code here
 ```
-
 ````
 
 #### MDLINT Rules

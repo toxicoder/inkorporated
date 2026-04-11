@@ -1222,7 +1222,6 @@ kubectl get pvc -A
 5. Documentation updates
 
 ## Documentation Navigation
-- [Project Overview](PROJECT_OVERVIEW.md) - Executive summary and key features
-- [Complete Architecture](COMPREHENSIVE_PROJECT_DOCUMENTATION.md) - Full technical documentation
-- [Implementation Status](IMPLEMENTATION_STATUS_TRACKING.md) - Current progress tracking
-- [Discovery Summary](DISCOVERY_AND_DOCUMENTATION_SUMMARY.md) - Consolidated documentation overview
+- [Project Overview](../guides/overview.md) - Executive summary and key features
+- [Architecture](../architecture/index.md) - High-level architectural design
+- [Implementation Status](../../apps/shared/implementation_status.md) - Current progress tracking

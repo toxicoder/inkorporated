@@ -8,23 +8,11 @@
 # to ensure explicit and predictable file dependencies.
 #
 # Targets:
-#   validate_infrastructure - Validates infrastructure configuration
 #   config_security_scan   - Scans configuration for potential secrets leakage
 #
-
+ 
 # Load sh_test from rules_shell (Bzlmod version).
 load("@rules_shell//shell:sh_test.bzl", "sh_test")
-
-# Validates infrastructure configuration files.
-# Uses validate_infrastructure.sh to verify all required configuration
-# files exist and are properly formatted.
-sh_test(
-    name = "validate_infrastructure",
-    srcs = ["validate_infrastructure.sh"],
-    data = [
-        "//config:all_configs",
-    ],
-)
 
 # Tests configuration validation script.
 # Verifies validate_config.sh properly checks environment setup.

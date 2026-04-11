@@ -41,5 +41,4 @@ layout: doc
 │   ├── overlays/             # Environment-specific configurations
 │   └── argocd/               # ArgoCD configurations
 ├── docs/                     # Documentation
-└── memory-bank/              # Project documentation and context
 ```

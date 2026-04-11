@@ -32,9 +32,7 @@ Welcome to the comprehensive documentation for the Inkorporated homelab project.
 
 ## Status & Reports
 
-*   [Discovery Summary](status/discovery_summary.html): Consolidated documentation overview.
-*   [Infrastructure Validation](status/infrastructure_validation_report.html): Validation report for the infrastructure.
-*   [DGX Integration Summary](status/dgx_integration_summary.html): Status of NVIDIA DGX integration.
+*   [Infrastructure Validation](status/infrastructure_validation_report.html): Validation report template for infrastructure.
 
 ## Contributing
 

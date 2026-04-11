@@ -49,9 +49,9 @@
     ],
     "postCreateCommand": "sudo apt-get update && sudo apt-get install -y ca-certificates fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 libc6 libcairo2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release xdg-utils && sudo chown -R vscode:vscode /home/vscode/.cline 2>/dev/null || true && npm install -g cline@latest && echo '✅ Ultimate dev environment ready! Run node --version, python --version, docker --version, bazel --version, cline --version to verify.'",
     "hostRequirements": {
-        "cpus": 2,
-        "memory": "4gb",
-        "storage": "10gb",
+        "cpus": 4,
+        "memory": "12gb",
+        "storage": "20gb",
         "gpu": "optional"
     },
     "customizations": {

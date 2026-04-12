@@ -1,0 +1,579 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  // =============================================
+  // CORE MODEL SETTINGS (INVERTED)
+  // =============================================
+  "model": "openai-compatible-coder/qwen3-coder-next-local",
+  "small_model": "openai-compatible/qwen35-27b-reasoning-local",
+  "default_agent": "code",
+  "logLevel": "INFO",
+  // =============================================
+  // HIDE EVERYTHING EXCEPT YOUR LOCAL MODELS
+  // =============================================
+  "enabled_providers": [
+    "openai-compatible",
+    "openai-compatible-coder"
+  ],
+  // =============================================
+  // PROVIDERS — TWO SEPARATE SERVERS
+  // =============================================
+  "provider": {
+    "openai-compatible": {
+      "options": {
+        "baseURL": "http://{env:NVIDIA_DGX_SPARK_0_IP}:8000/v1",
+        "apiKey": "x",
+        "timeout": 180000,
+        "chunkTimeout": 60000,
+      },
+      "models": {
+        "qwen35-27b-reasoning-local": {
+          "name": "Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-NVFP4 (Big — 256K)",
+          "id": "mconcat/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-NVFP4",
+          "tool_call": true,
+          "reasoning": true,
+          "temperature": true,
+          "attachment": true,
+          "limit": {
+            "context": 262144,
+            "output": 65536,
+            "input": 245000,
+          },
+          "variants": {
+            "fast": {
+              "temperature": 0.3,
+              "reasoning": false,
+            },
+            "deep": {
+              "temperature": 0.1,
+              "reasoning": true,
+            },
+          },
+        },
+      },
+    },
+    "openai-compatible-coder": {
+      "options": {
+        "baseURL": "http://{env:NVIDIA_DGX_SPARK_1_IP}:8000/v1",
+        "apiKey": "x",
+        "timeout": 180000,
+        "chunkTimeout": 60000,
+      },
+      "models": {
+        "qwen3-coder-next-local": {
+          "name": "RedHatAI/Qwen3-Coder-Next-NVFP4 (Small — 256K)",
+          "id": "RedHatAI/Qwen3-Coder-Next-NVFP4",
+          "tool_call": true,
+          "reasoning": true,
+          "temperature": true,
+          "attachment": true,
+          "limit": {
+            "context": 262144,
+            "output": 65536,
+            "input": 245000,
+          },
+          "variants": {
+            "fast": {
+              "temperature": 0.4,
+              "reasoning": false,
+            },
+            "deep": {
+              "temperature": 0.2,
+              "reasoning": true,
+            },
+          },
+        },
+      },
+    },
+  },
+  // =============================================
+  // GLOBAL PERMISSIONS — BROWSER AUTOMATION ENABLED
+  // =============================================
+  "permission": {
+    "*": "ask",
+    "read": "allow",
+    "edit": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "codesearch": "allow",
+    "lsp": "allow",
+    "browser": "allow",
+    "bash": {
+      "*": "ask",
+      "git *": "allow",
+      "npm *": "allow",
+      "yarn *": "allow",
+      "pnpm *": "allow",
+      "cargo *": "allow",
+      "go *": "allow",
+      "python -m pytest*": "allow",
+      "python -m unittest*": "allow",
+      "ls *": "allow",
+      "cat *": "allow",
+      "grep *": "allow",
+      "find *": "allow",
+      "rm -rf *": "deny",
+      "sudo *": "deny",
+      "curl *": "ask",
+      "wget *": "ask",
+    },
+    "external_directory": "ask",
+    "webfetch": "ask",
+    "websearch": "ask",
+    "task": "ask",
+    "question": "allow",
+    "todowrite": "allow",
+    "doom_loop": "ask",
+    "skill": "allow",
+    "context7": "allow",
+    "brave-search": "allow",
+    "playwright": "allow",
+  },
+  // =============================================
+  // AGENTS — INVERTED MODEL ASSIGNMENT
+  // =============================================
+  "agent": {
+    "code": {
+      "model": "openai-compatible-coder/qwen3-coder-next-local",
+      "variant": "fast",
+      "temperature": 0.25,
+      "steps": 45,
+      "description": "Main code generation & implementation agent (fast lightweight coder model — gets things done)",
+      "mode": "primary",
+      "permission": {
+        "read": {
+          "*": "allow",
+        },
+        "edit": {
+          "*": "allow",
+        },
+        "glob": "allow",
+        "grep": "allow",
+        "codesearch": "allow",
+        "lsp": "allow",
+        "task": "allow",
+        "skill": "allow",
+        "context7": "allow",
+        "brave-search": "allow",
+        "playwright": "allow",
+      },
+    },
+    "debug": {
+      "model": "openai-compatible/qwen35-27b-reasoning-local",
+      "variant": "deep",
+      "temperature": 0.15,
+      "steps": 35,
+      "description": "Debugging, error analysis, and troubleshooting agent (big reasoning model)",
+      "mode": "primary",
+      "permission": {
+        "read": {
+          "*": "allow",
+        },
+        "edit": {
+          "*": "allow",
+        },
+        "glob": "allow",
+        "grep": "allow",
+        "codesearch": "allow",
+        "lsp": "allow",
+        "task": "allow",
+        "skill": "allow",
+        "context7": "allow",
+        "brave-search": "allow",
+        "playwright": "allow",
+      },
+    },
+    "orchestrator": {
+      "model": "openai-compatible/qwen35-27b-reasoning-local",
+      "variant": "deep",
+      "temperature": 0.1,
+      "steps": 50,
+      "description": "Orchestrator agent — coordinates multiple sub-agents and plans complex workflows (big reasoning model)",
+      "mode": "primary",
+      "permission": {
+        "read": {
+          "*": "allow",
+        },
+        "edit": {
+          "*": "allow",
+        },
+        "glob": "allow",
+        "grep": "allow",
+        "codesearch": "allow",
+        "lsp": "allow",
+        "task": "allow",
+        "skill": "allow",
+        "context7": "allow",
+        "brave-search": "allow",
+        "playwright": "allow",
+      },
+    },
+    "ask": {
+      "model": "openai-compatible-coder/qwen3-coder-next-local",
+      "variant": "fast",
+      "temperature": 0.4,
+      "steps": 8,
+      "description": "Quick Q&A and general assistance agent (fast small 256K model)",
+      "mode": "primary",
+      "permission": {
+        "read": {
+          "*": "allow",
+        },
+        "edit": {
+          "*": "deny",
+        },
+        "glob": "allow",
+        "grep": "allow",
+        "codesearch": "allow",
+        "lsp": "allow",
+        "task": "allow",
+        "skill": "allow",
+        "context7": "allow",
+        "brave-search": "allow",
+        "playwright": "allow",
+      },
+    },
+    "plan": {
+      "model": "openai-compatible/qwen35-27b-reasoning-local",
+      "variant": "deep",
+      "temperature": 0.1,
+      "steps": 20,
+      "description": "High-level planning (big dense 256K reasoning model)",
+      "mode": "primary",
+      "permission": {
+        "read": {
+          "*": "allow",
+        },
+        "edit": {
+          "*": "deny",
+        },
+        "glob": "allow",
+        "grep": "allow",
+        "codesearch": "allow",
+        "lsp": "allow",
+        "task": "allow",
+        "skill": "allow",
+        "context7": "allow",
+        "brave-search": "allow",
+        "playwright": "allow",
+      },
+    },
+    "coder": {
+      "model": "openai-compatible-coder/qwen3-coder-next-local",
+      "variant": "fast",
+      "temperature": 0.25,
+      "steps": 45,
+      "description": "Fast specialized coding agent — best for implementation, refactoring, bug fixes (lightweight coder model)",
+      "mode": "subagent",
+      "permission": {
+        "read": {
+          "*": "allow",
+        },
+        "edit": {
+          "*": "allow",
+        },
+        "glob": "allow",
+        "grep": "allow",
+        "codesearch": "allow",
+        "lsp": "allow",
+        "task": "allow",
+        "skill": "allow",
+        "context7": "allow",
+        "brave-search": "allow",
+        "playwright": "allow",
+      },
+    },
+    "general": {
+      "model": "openai-compatible-coder/qwen3-coder-next-local",
+      "variant": "fast",
+      "temperature": 0.3,
+      "steps": 8,
+      "mode": "subagent",
+      "permission": {
+        "read": {
+          "*": "allow",
+        },
+        "edit": {
+          "*": "deny",
+        },
+        "glob": "allow",
+        "grep": "allow",
+        "codesearch": "allow",
+        "lsp": "allow",
+        "task": "allow",
+        "skill": "allow",
+        "context7": "allow",
+        "brave-search": "allow",
+        "playwright": "allow",
+      },
+    },
+    "title": {
+      "model": "openai-compatible-coder/qwen3-coder-next-local",
+      "variant": "fast",
+      "temperature": 0.7,
+      "steps": 3,
+      "permission": {
+        "read": {
+          "*": "allow",
+        },
+        "edit": {
+          "*": "deny",
+        },
+        "glob": "allow",
+        "grep": "allow",
+        "codesearch": "allow",
+        "lsp": "allow",
+        "task": "allow",
+        "skill": "allow",
+        "context7": "allow",
+        "brave-search": "allow",
+        "playwright": "allow",
+      },
+    },
+    "summary": {
+      "model": "openai-compatible-coder/qwen3-coder-next-local",
+      "variant": "fast",
+      "temperature": 0.3,
+      "steps": 5,
+      "permission": {
+        "read": {
+          "*": "allow",
+        },
+        "edit": {
+          "*": "deny",
+        },
+        "glob": "allow",
+        "grep": "allow",
+        "codesearch": "allow",
+        "lsp": "allow",
+        "task": "allow",
+        "skill": "allow",
+        "context7": "allow",
+        "brave-search": "allow",
+        "playwright": "allow",
+      },
+    },
+    "compaction": {
+      "model": "openai-compatible-coder/qwen3-coder-next-local",
+      "variant": "fast",
+      "temperature": 0.1,
+      "steps": 3,
+      "permission": {
+        "read": {
+          "*": "allow",
+        },
+        "edit": {
+          "*": "deny",
+        },
+        "glob": "allow",
+        "grep": "allow",
+        "codesearch": "allow",
+        "lsp": "allow",
+        "task": "allow",
+        "skill": "allow",
+        "context7": "allow",
+        "brave-search": "allow",
+        "playwright": "allow",
+      },
+    },
+    "code-reviewer": {
+      "model": "openai-compatible/qwen35-27b-reasoning-local",
+      "variant": "deep",
+      "temperature": 0.2,
+      "steps": 10,
+      "mode": "subagent",
+      "permission": {
+        "read": {
+          "*": "allow",
+        },
+        "edit": {
+          "*": "deny",
+        },
+        "glob": "allow",
+        "grep": "allow",
+        "codesearch": "allow",
+        "lsp": "allow",
+        "task": "allow",
+        "skill": "allow",
+        "context7": "allow",
+        "brave-search": "allow",
+        "playwright": "allow",
+      },
+    },
+  },
+  // =============================================
+  // MCP SERVERS (Playwright uses its own Chromium)
+  // =============================================
+  "mcp": {
+    "context7": {
+      "type": "local",
+      "command": [
+        "npx",
+        "envmcp",
+        "-e",
+        "/workspaces/inkorporated/.devcontainer/.env",
+        "npx",
+        "-y",
+        "@upstash/context7-mcp@latest",
+        "--api-key",
+        "$CONTEXT7_API_KEY",
+      ],
+      "environment": {
+        "CONTEXT7_CACHE_DIR": "/home/vscode/.cline/cache",
+        "CONTEXT7_MAX_TOKENS": "128000",
+        "CONTEXT7_TTL": "7200",
+        "CONTEXT7_ENABLE_INDEXING": "true",
+        "CONTEXT7_COMPRESSION": "true",
+      },
+      "enabled": true,
+      "timeout": 60000,
+    },
+    "brave-search": {
+      "type": "local",
+      "command": [
+        "npx",
+        "envmcp",
+        "-e",
+        "/workspaces/inkorporated/.devcontainer/.env",
+        "npx",
+        "-y",
+        "@brave/brave-search-mcp-server",
+        "--brave-api-key",
+        "$BRAVE_API_KEY",
+      ],
+      "environment": {},
+      "enabled": true,
+      "timeout": 30000,
+    },
+    "playwright": {
+      "type": "local",
+      "command": [
+        "npx",
+        "@playwright/mcp@latest",
+        "--browser",
+        "chromium"
+      ],
+      "environment": {},
+      "enabled": true,
+      "timeout": 60000,
+    },
+  },
+  "skills": {
+    "paths": [],
+    "urls": [],
+  },
+  "server": {
+    "port": 8080,
+    "hostname": "0.0.0.0",
+    "mdns": false,
+    "mdnsDomain": "opencode.local",
+    "cors": [],
+  },
+  "command": {
+    "review": {
+      "template": "Review this code for bugs, performance, security, and style issues.",
+      "description": "Run a full code review",
+      "agent": "code-reviewer",
+    },
+    "test": {
+      "template": "Write comprehensive tests for the current file or function.",
+      "description": "Generate tests",
+      "agent": "coder",
+    },
+  },
+  "watcher": {
+    "ignore": [
+      "**/.git/**",
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.kilo/**",
+      "**/target/**",
+      "**/__pycache__/**",
+      "**/.env*",
+    ],
+  },
+  "snapshot": true,
+  "plugin": [],
+  "share": "auto",
+  "autoupdate": "notify",
+  "formatter": {
+    "*": {
+      "disabled": false,
+      "command": [
+        "npx",
+        "prettier",
+        "--write"
+      ],
+      "extensions": [
+        ".js",
+        ".jsx",
+        ".ts",
+        ".tsx",
+        ".json",
+        ".jsonc",
+        ".md",
+        ".mdx",
+        ".html",
+        ".css",
+        ".scss",
+        ".yaml",
+        ".yml",
+      ],
+    },
+  },
+  "lsp": {
+    "typescript": {
+      "command": [
+        "typescript-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".ts",
+        ".tsx",
+        ".js",
+        ".jsx"
+      ],
+    },
+    "python": {
+      "command": [
+        "pyright-langserver",
+        "--stdio"
+      ],
+      "extensions": [
+        ".py"
+      ],
+    },
+    "rust": {
+      "command": [
+        "rust-analyzer"
+      ],
+      "extensions": [
+        ".rs"
+      ],
+    },
+  },
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 8192,
+  },
+  "experimental": {
+    "batch_tool": true,
+    "disable_paste_summary": false,
+    "mcp_timeout": 60000,
+    "continue_loop_on_deny": true,
+    "openTelemetry": false,
+    "codebase_search": true,
+  },
+  // =============================================
+  // INSTRUCTIONS / RULES
+  // =============================================
+  "instructions": [
+    ".kilo/rules/00-claude-4-sonnet-emulation.md",
+    ".kilo/rules/01-core-rules.md",
+    ".kilo/rules/02-documentation-standards.md",
+    ".kilo/rules/03-project-context.md",
+    ".kilo/AGENTS.md",
+  ],
+}

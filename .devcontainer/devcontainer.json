@@ -1,221 +1,236 @@
 {
-    "name": "Ultimate Dev Container (Ubuntu 22.04 Multi-Arch)",
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
-    "remoteUser": "vscode",
-    "features": {
-        "ghcr.io/devcontainers/features/common-utils:2": {
-            "installZsh": true,
-            "configureZshAsDefaultShell": true,
-            "installOhMyZsh": true
-        },
-        "ghcr.io/devcontainers/features/git:1": {},
-        "ghcr.io/devcontainers/features/github-cli:1": {},
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {
-            "moby": false,
-            "version": "latest"
-        },
-        "ghcr.io/devcontainers/features/python:1": {
-            "version": "3.12"
-        },
-        "ghcr.io/devcontainers-community/features/bazel:1": {
-            "bazelisk_version": "latest",
-            "buildifier_version": "latest"
-        },
-        "ghcr.io/devcontainers/features/node:1": {
-            "version": "lts"
-        },
-        "ghcr.io/devcontainers/features/terraform:1": {
-            "version": "latest",
-            "tflint": "latest",
-            "terragrunt": "latest"
-        },
-        "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
-            "version": "latest",
-            "helm": "latest",
-            "minikube": "none"
-        }
+  "name": "Ultimate Dev Container (Ubuntu 22.04 Multi-Arch)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true
     },
-    "containerEnv": {
-        "CONTEXT7_API_KEY": "${localEnv:CONTEXT7_API_KEY}",
-        "BRAVE_API_KEY": "${localEnv:BRAVE_API_KEY}"
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "moby": false,
+      "version": "latest"
     },
-    "remoteEnv": {
-        "CONTEXT7_API_KEY": "${localEnv:CONTEXT7_API_KEY}",
-        "BRAVE_API_KEY": "${localEnv:BRAVE_API_KEY}"
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
     },
-    "mounts": [
-        // Only this mount — persists Cline task history, rules, custom instructions, etc.
-        "source=${localWorkspaceFolder}/.devcontainer/cline,target=/home/vscode/.cline,type=bind"
-    ],
-    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y ca-certificates fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 libc6 libcairo2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release xdg-utils && sudo chown -R vscode:vscode /home/vscode/.cline 2>/dev/null || true && npm install -g cline@latest && echo '✅ Ultimate dev environment ready! Run node --version, python --version, docker --version, bazel --version, cline --version to verify.'",
-    "hostRequirements": {
-        "cpus": 4,
-        "memory": "12gb",
-        "storage": "20gb",
-        "gpu": "optional"
+    "ghcr.io/devcontainers-community/features/bazel:1": {
+      "bazelisk_version": "latest",
+      "buildifier_version": "latest"
     },
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "4ops.terraform",
-                "aaron-bond.better-comments",
-                "bazelbuild.vscode-bazel",
-                "bierner.markdown-mermaid",
-                "bmewburn.vscode-intelephense-client",
-                "Dart-Code.dart-code",
-                "DavidAnson.vscode-markdownlint",
-                "dbaeumer.vscode-eslint",
-                "dsznajder.es7-react-js-snippets",
-                "eamodio.gitlens",
-                "ecmel.vscode-html-css",
-                "EditorConfig.EditorConfig",
-                "esbenp.prettier-vscode",
-                "firefox-devtools.vscode-firefox-debug",
-                "foxundermoon.shell-format",
-                "GitHub.github-vscode-theme",
-                "GitHub.remotehub",
-                "github.vscode-github-actions",
-                "GitHub.vscode-pull-request-github",
-                "golang.go",
-                "Gruntfuggly.todo-tree",
-                "hashicorp.terraform",
-                "humao.rest-client",
-                "kilocode.Kilo-Code",
-                "monokai.theme-monokai-pro-vscode",
-                "ms-azuretools.vscode-docker",
-                "ms-dotnettools.csharp",
-                "ms-dotnettools.vscode-dotnet-runtime",
-                "ms-edgedevtools.vscode-edge-devtools",
-                "ms-python.black-formatter",
-                "ms-python.debugpy",
-                "ms-python.flake8",
-                "ms-python.pylint",
-                "ms-python.python",
-                "ms-python.vscode-pylance",
-                "ms-python.vscode-python-envs",
-                "ms-toolsai.jupyter-keymap",
-                "ms-toolsai.jupyter-renderers",
-                "ms-toolsai.jupyter",
-                "ms-toolsai.vscode-jupyter-cell-tags",
-                "ms-toolsai.vscode-jupyter-slideshow",
-                "ms-vscode-remote.remote-containers",
-                "ms-vscode-remote.remote-repositories",
-                "ms-vscode-remote.remote-ssh-edit",
-                "ms-vscode-remote.remote-ssh",
-                "ms-vscode-remote.vscode-containers",
-                "ms-vscode-remote.vscode-remote-extensionpack",
-                "ms-vscode.azure-repos",
-                "ms-vscode.remote-explorer",
-                "ms-vscode.remote-server",
-                "ms-vscode.vscode-json",
-                "ms-vscode.vscode-typescript-next",
-                "ms-vscode.vscode-yaml",
-                "ms-windows-ai-studio.windows-ai-studio",
-                "ParallelsDesktop.parallels-desktop",
-                "PKief.material-icon-theme",
-                "redhat.java",
-                "redhat.vscode-yaml",
-                "ritwickdey.LiveServer",
-                "RobbOwen.synthwave-vscode",
-                "rust-lang.rust-analyzer",
-                "saoudrizwan.claude-dev",
-                "sdras.night-owl",
-                "Shopify.ruby-lsp",
-                "streetsidesoftware.code-spell-checker",
-                "timonwong.shellcheck",
-                "usernamehw.errorlens",
-                "vscjava.vscode-gradle",
-                "vscjava.vscode-java-debug",
-                "vscjava.vscode-java-dependency",
-                "vscjava.vscode-java-pack",
-                "vscjava.vscode-java-test",
-                "vscjava.vscode-maven",
-                "vscodevim.vim",
-                "Vue.volar"
-            ],
-            "unwantedRecommendations": [
-                "GitHub.copilot",
-                "GitHub.copilot-chat"
-            ],
-            "settings": {
-                // ───── AI / Copilot — FULLY DISABLED ─────
-                "chat.disableAIFeatures": true,
-                "github.copilot.enable": {
-                    "*": false,
-                    "plaintext": false,
-                    "markdown": false
-                },
-                "editor.inlineSuggest.enabled": false,
-                "inlineChat.enabled": false,
-                "workbench.commandPalette.ai.enabled": false,
-                // ───── Core Editor & Formatting (team standards) ─────
-                "editor.formatOnSave": true,
-                "editor.defaultFormatter": "esbenp.prettier-vscode",
-                "editor.tabSize": 4,
-                "editor.insertSpaces": true,
-                "editor.detectIndentation": true,
-                "editor.renderWhitespace": "boundary",
-                "editor.wordWrap": "on",
-                "editor.codeActionsOnSave": {
-                    "source.fixAll": "explicit"
-                },
-                // ───── Files & Save ─────
-                "files.autoSave": "afterDelay",
-                "files.autoSaveDelay": 1000,
-                "files.trimTrailingWhitespace": true,
-                "files.insertFinalNewline": true,
-                "files.trimFinalNewlines": true,
-                // ───── Explorer & UI ─────
-                "workbench.iconTheme": "material-icon-theme",
-                "explorer.compactFolders": false,
-                "explorer.confirmDelete": false,
-                "workbench.startupEditor": "none",
-                // ───── Terminal (zsh from common-utils) ─────
-                "terminal.integrated.defaultProfile.linux": "zsh",
-                "terminal.integrated.fontSize": 14,
-                // ───── Search & Exclude ─────
-                "search.exclude": {
-                    "**/node_modules": true,
-                    "**/bower_components": true,
-                    "**/.git": true,
-                    "**/.vscode": false
-                },
-                "files.exclude": {
-                    "**/.git": true,
-                    "**/.svn": true,
-                    "**/.hg": true,
-                    "**/CVS": true,
-                    "**/.DS_Store": true,
-                    "**/Thumbs.db": true
-                },
-                // ───── Extensions & Performance ─────
-                "extensions.autoUpdate": false,
-                "extensions.ignoreRecommendations": false,
-                "cSpell.words": [
-                    "airules",
-                    "bazelrc",
-                    "conftest",
-                    "ededed",
-                    "GITEA",
-                    "homelab",
-                    "Lightspeed",
-                    "mypy",
-                    "Nemo",
-                    "nemoclaw",
-                    "PVTI",
-                    "PVTSSF",
-                    "pyproject",
-                    "pytest",
-                    "Resto",
-                    "srcs",
-                    "starlark"
-                ]
-            }
-        }
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
     },
-    "overrideFeatureInstallOrder": [
-        "ghcr.io/devcontainers/features/node",
-        "ghcr.io/devcontainers/features/terraform",
-        "ghcr.io/devcontainers/features/kubectl-helm-minikube"
-    ]
+    "ghcr.io/devcontainers/features/terraform:1": {
+      "version": "latest",
+      "tflint": "latest",
+      "terragrunt": "latest"
+    },
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+      "version": "latest",
+      "helm": "latest",
+      "minikube": "none"
+    }
+  },
+  "runArgs": [
+    "--env-file",
+    "${localWorkspaceFolder}/.devcontainer/.env"
+  ],
+  "containerEnv": {
+    "CONTEXT7_API_KEY": "${localEnv:CONTEXT7_API_KEY}",
+    "BRAVE_API_KEY": "${localEnv:BRAVE_API_KEY}"
+  },
+  "remoteEnv": {
+    "CONTEXT7_API_KEY": "${localEnv:CONTEXT7_API_KEY}",
+    "BRAVE_API_KEY": "${localEnv:BRAVE_API_KEY}"
+  },
+  "mounts": [
+    // Cline task history, rules, custom instructions, etc.
+    "source=${localWorkspaceFolder}/.devcontainer/cline,target=/home/vscode/.cline,type=bind",
+    // Kilo Code state (local to developer machine - not committed)
+    // Kilo Code - .kilo/node_modules/
+    "source=${localEnv:HOME}/.kilo-state/node_modules,target=/home/vscode/.kilo/node_modules,type=bind",
+    // Kilo Code - .kilo/worktrees/
+    "source=${localEnv:HOME}/.kilo-state/worktrees,target=/home/vscode/.kilo/worktrees,type=bind",
+    // Kilo Code - .kilo/agent-manager.json
+    "source=${localEnv:HOME}/.kilo-state/agent-manager.json,target=/home/vscode/.kilo/agent-manager.json,type=bind",
+    // Kilo Code - .kilo/package.json
+    "source=${localEnv:HOME}/.kilo-state/package.json,target=/home/vscode/.kilo/package.json,type=bind",
+    // Kilo Code - .kilo/bun.lock
+    "source=${localEnv:HOME}/.kilo-state/bun.lock,target=/home/vscode/.kilo/bun.lock,type=bind"
+  ],
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y ca-certificates fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 libc6 libcairo2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release xdg-utils && sudo chown -R vscode:vscode /home/vscode/.cline 2>/dev/null || true && npm install -g cline@latest && echo '✅ Ultimate dev environment ready! Run node --version, python --version, docker --version, bazel --version, cline --version to verify.'",
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "12gb",
+    "storage": "20gb",
+    "gpu": "optional"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "4ops.terraform",
+        "aaron-bond.better-comments",
+        "bazelbuild.vscode-bazel",
+        "bierner.markdown-mermaid",
+        "bmewburn.vscode-intelephense-client",
+        "Dart-Code.dart-code",
+        "DavidAnson.vscode-markdownlint",
+        "dbaeumer.vscode-eslint",
+        "dsznajder.es7-react-js-snippets",
+        "eamodio.gitlens",
+        "ecmel.vscode-html-css",
+        "EditorConfig.EditorConfig",
+        "esbenp.prettier-vscode",
+        "firefox-devtools.vscode-firefox-debug",
+        "foxundermoon.shell-format",
+        "GitHub.github-vscode-theme",
+        "GitHub.remotehub",
+        "github.vscode-github-actions",
+        "GitHub.vscode-pull-request-github",
+        "golang.go",
+        "Gruntfuggly.todo-tree",
+        "hashicorp.terraform",
+        "humao.rest-client",
+        "kilocode.Kilo-Code",
+        "monokai.theme-monokai-pro-vscode",
+        "ms-azuretools.vscode-docker",
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "ms-edgedevtools.vscode-edge-devtools",
+        "ms-python.black-formatter",
+        "ms-python.debugpy",
+        "ms-python.flake8",
+        "ms-python.pylint",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.vscode-python-envs",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.vscode-jupyter-cell-tags",
+        "ms-toolsai.vscode-jupyter-slideshow",
+        "ms-vscode-remote.remote-containers",
+        "ms-vscode-remote.remote-repositories",
+        "ms-vscode-remote.remote-ssh-edit",
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode-remote.vscode-containers",
+        "ms-vscode-remote.vscode-remote-extensionpack",
+        "ms-vscode.azure-repos",
+        "ms-vscode.remote-explorer",
+        "ms-vscode.remote-server",
+        "ms-vscode.vscode-json",
+        "ms-vscode.vscode-typescript-next",
+        "ms-vscode.vscode-yaml",
+        "ms-windows-ai-studio.windows-ai-studio",
+        "ParallelsDesktop.parallels-desktop",
+        "PKief.material-icon-theme",
+        "redhat.java",
+        "redhat.vscode-yaml",
+        "ritwickdey.LiveServer",
+        "RobbOwen.synthwave-vscode",
+        "rust-lang.rust-analyzer",
+        "saoudrizwan.claude-dev",
+        "sdras.night-owl",
+        "Shopify.ruby-lsp",
+        "streetsidesoftware.code-spell-checker",
+        "timonwong.shellcheck",
+        "usernamehw.errorlens",
+        "vscjava.vscode-gradle",
+        "vscjava.vscode-java-debug",
+        "vscjava.vscode-java-dependency",
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-java-test",
+        "vscjava.vscode-maven",
+        "vscodevim.vim",
+        "Vue.volar"
+      ],
+      "unwantedRecommendations": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        // ───── AI / Copilot — FULLY DISABLED ─────
+        "chat.disableAIFeatures": true,
+        "github.copilot.enable": {
+          "*": false,
+          "plaintext": false,
+          "markdown": false
+        },
+        "editor.inlineSuggest.enabled": false,
+        "inlineChat.enabled": false,
+        "workbench.commandPalette.ai.enabled": false,
+        // ───── Core Editor & Formatting (team standards) ─────
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": true,
+        "editor.renderWhitespace": "boundary",
+        "editor.wordWrap": "on",
+        "editor.codeActionsOnSave": {
+          "source.fixAll": "explicit"
+        },
+        // ───── Files & Save ─────
+        "files.autoSave": "afterDelay",
+        "files.autoSaveDelay": 1000,
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        // ───── Explorer & UI ─────
+        "workbench.iconTheme": "material-icon-theme",
+        "explorer.compactFolders": false,
+        "explorer.confirmDelete": false,
+        "workbench.startupEditor": "none",
+        // ───── Terminal (zsh from common-utils) ─────
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.fontSize": 14,
+        // ───── Search & Exclude ─────
+        "search.exclude": {
+          "**/node_modules": true,
+          "**/bower_components": true,
+          "**/.git": true,
+          "**/.vscode": false
+        },
+        "files.exclude": {
+          "**/.git": true,
+          "**/.svn": true,
+          "**/.hg": true,
+          "**/CVS": true,
+          "**/.DS_Store": true,
+          "**/Thumbs.db": true
+        },
+        // ───── Extensions & Performance ─────
+        "extensions.autoUpdate": false,
+        "extensions.ignoreRecommendations": false,
+        "cSpell.words": [
+          "airules",
+          "bazelrc",
+          "conftest",
+          "ededed",
+          "GITEA",
+          "homelab",
+          "Lightspeed",
+          "mypy",
+          "Nemo",
+          "nemoclaw",
+          "PVTI",
+          "PVTSSF",
+          "pyproject",
+          "pytest",
+          "Resto",
+          "srcs",
+          "starlark"
+        ]
+      }
+    }
+  },
+  "overrideFeatureInstallOrder": [
+    "ghcr.io/devcontainers/features/node",
+    "ghcr.io/devcontainers/features/terraform",
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube"
+  ]
 }

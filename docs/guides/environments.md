@@ -1,8 +1,28 @@
 ---
-layout: doc
+title: Environments
+description: Environments for Inkorporated.
+tags: [infrastructure]
 ---
 
 # Environment Implementation Guide
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+
+## Environment progression
+
+```mermaid
+flowchart LR
+  dev --> staging --> uat --> canary --> prod
+  priv[priv]
+```
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 This document provides guidance on implementing and managing multiple environments (dev, staging, autopush, prod) for the Inkorporated homelab infrastructure.
 

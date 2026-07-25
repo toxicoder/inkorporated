@@ -1,37 +1,42 @@
 ---
-layout: doc
+title: Docs directory
+description: How the Inkorporated documentation site is organized.
+tags: [documentation]
 ---
 
-# Inkorporated Homelab Documentation
+# Documentation
 
-This directory contains comprehensive documentation for the Inkorporated homelab project. The documentation is organized into logical sections to provide easy navigation and understanding of the project.
+**What's on this page**
 
-## Documentation Structure
+- MkDocs Material site layout
+- Local build commands
+- Pointers to enterprise OS and infrastructure content
 
-### Guides
-- **Overview**: Executive summary and project structure
-- **Getting Started**: Quick start and setup instructions
+**What this enables**
 
-### Architecture
-- **High-Level Architecture**: System overview and design
-- **Network Topology**: Detailed network structure
+- Contributors can find and build docs quickly
 
-### Implementation
-- **Status Tracking**: Current implementation progress and task tracking
-- **Phases**: Implementation phases and milestones
+## Build
 
-### Reference
-- **Configuration**: Technical specifications and configuration examples
-- **Troubleshooting**: Common issues and solutions
-- **Best Practices**: Recommended approaches and guidelines
+From the repository root:
 
-## Navigation
+```bash
+./docs/manage-docs.sh serve
+./docs/manage-docs.sh build --strict
+```
 
-- [Project Overview](guides/overview.md) - Executive summary and key features
-- [Architecture](architecture/README.md) - High-level system architecture
-- [Implementation Status](implementation/status.md) - Current progress and tracking
-- [Documentation Index](INDEX.md) - Comprehensive documentation index
+Site config: [`mkdocs.yml`](https://github.com/toxicoder/inkorporated/blob/main/mkdocs.yml) at the repo root.
 
-## Contributing
+## Structure
 
-Documentation improvements are welcome. Please see the contribution guidelines in the main repository.
+| Tree | Content |
+| --- | --- |
+| `organization/` | Org charts, matrix, leveling, coverage |
+| `corporate_strategy/` | Strategy and governance |
+| `job_roles/` | Role catalog |
+| `cyborgs/` | Human docs for agent personas (`cyborgs/*.yaml` is machine SoT at repo root) |
+| `engineering_standards/`, `policies/`, `style_guides/` | How we work |
+| `guides/`, `architecture/`, `reference/` | Infrastructure |
+| `interview_questions/`, `onboarding/`, `training/` | People systems |
+
+See [project-conventions.md](project-conventions.md) and [CONTRIBUTING.md](CONTRIBUTING.md).

@@ -1,8 +1,19 @@
 ---
-layout: doc
+title: Network
+description: Network for Inkorporated.
+tags: [infrastructure]
 ---
 
 # Network Topology
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 The Inkorporated homelab implements a multi-zone network architecture to provide security segmentation and logical separation of services:
 

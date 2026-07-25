@@ -1,8 +1,19 @@
 ---
-layout: doc
+title: Infrastructure Validation Report
+description: Infrastructure Validation Report for Inkorporated.
+tags: [infrastructure]
 ---
 
 # Infrastructure Validation Report
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 ## Project: Inkorporated Homelab Infrastructure
 

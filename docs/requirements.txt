@@ -1,5 +1,5 @@
 mkdocs==1.6.1
-mkdocs-material==9.7.6
+mkdocs-material==9.7.7
 mkdocs-glightbox==0.5.2
 # Multi-version docs (latest from main, development from development branch).
 mike==2.1.3

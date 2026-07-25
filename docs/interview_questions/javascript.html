@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>JavaScript Interview Questions &amp; Answers (100+) | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="JavaScript Interview Questions &amp; Answers (100+)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="JavaScript Interview Questions &amp; Answers (100+) for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="JavaScript Interview Questions &amp; Answers (100+) for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/interview_questions/javascript.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/interview_questions/javascript.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="JavaScript Interview Questions &amp; Answers (100+)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"JavaScript Interview Questions &amp; Answers (100+) for Inkorporated.","headline":"JavaScript Interview Questions &amp; Answers (100+)","url":"https://toxicoder.github.io/inkorporated/interview_questions/javascript.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">JavaScript Interview Questions &amp; Answers (100+)</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="javascript-interview-questions--answers-100">JavaScript Interview Questions &amp; Answers (100+)</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This guide contains 100+ JavaScript interview questions, ranging from basic to advanced. Each question includes a model answer, code snippets, and potential follow-up paths based on the candidate’s response.</p>
+
+<h2 id="part-1-core-javascript-basics-1-20">Part 1: Core JavaScript Basics (1-20)</h2>
+<h3 id="1-what-are-the-different-data-types-in-javascript">1. What are the different data types in JavaScript?</h3>
+
+<p>JavaScript has <strong>Primitive</strong> and <strong>Non-Primitive</strong> (Reference) types.</p>
+
+<ul>
+  <li><strong>Primitives:</strong>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">String</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Number</code></li>
+      <li><code class="language-plaintext highlighter-rouge">BigInt</code> (ES2020)</li>
+      <li><code class="language-plaintext highlighter-rouge">Boolean</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Undefined</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Null</code></li>
+      <li><code class="language-plaintext highlighter-rouge">Symbol</code> (ES6)</li>
+    </ol>
+  </li>
+  <li><strong>Non-Primitive:</strong>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">Object</code> (includes Arrays, Functions, etc.)</li>
+    </ol>
+  </li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions <code class="language-plaintext highlighter-rouge">null</code> vs <code class="language-plaintext highlighter-rouge">undefined</code>.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What is the result of <code class="language-plaintext highlighter-rouge">typeof null</code>?”</li>
+      <li><em>Answer:</em> <code class="language-plaintext highlighter-rouge">"object"</code>. This is a known bug in JavaScript that hasn’t been fixed for legacy reasons.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-what-is-the-difference-between-var-let-and-const">2. What is the difference between <code class="language-plaintext highlighter-rouge">var</code>, <code class="language-plaintext highlighter-rouge">let</code>, and <code class="language-plaintext highlighter-rouge">const</code>?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left"><code class="language-plaintext highlighter-rouge">var</code></th>
+      <th style="text-align: left"><code class="language-plaintext highlighter-rouge">let</code></th>
+      <th style="text-align: left"><code class="language-plaintext highlighter-rouge">const</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Scope</strong></td>
+      <td style="text-align: left">Function Scope</td>
+      <td style="text-align: left">Block Scope</td>
+      <td style="text-align: left">Block Scope</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Hoisting</strong></td>
+      <td style="text-align: left">Yes (initialized <code class="language-plaintext highlighter-rouge">undefined</code>)</td>
+      <td style="text-align: left">Yes (TDZ)</td>
+      <td style="text-align: left">Yes (TDZ)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Reassignable</strong></td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">No</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Redeclarable</strong></td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">No</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions TDZ (Temporal Dead Zone).</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Can you explain what the Temporal Dead Zone is?”</li>
+      <li><em>Answer:</em> It’s the period between the start of the block and the actual declaration of the variable. Accessing the variable during this time throws a <code class="language-plaintext highlighter-rouge">ReferenceError</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="3-what-is-hoisting">3. What is Hoisting?</h3>
+
+<p>Hoisting is JavaScript’s default behavior of moving declarations to the top of the current scope (script or function) during the compilation phase.</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">var</code>:</strong> Hoisted and initialized with <code class="language-plaintext highlighter-rouge">undefined</code>.</li>
+  <li><strong>Function Declarations:</strong> Fully hoisted (can call before definition).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">let</code>/<code class="language-plaintext highlighter-rouge">const</code>:</strong> Hoisted but not initialized (enter Temporal Dead Zone).</li>
+</ul>
+
+<h3 id="4-explain--vs-">4. Explain <code class="language-plaintext highlighter-rouge">==</code> vs <code class="language-plaintext highlighter-rouge">===</code>.</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">==</code> (Loose Equality): Performs <strong>Type Coercion</strong> before comparison.</li>
+  <li><code class="language-plaintext highlighter-rouge">===</code> (Strict Equality): Checks both <strong>Value</strong> and <strong>Type</strong>.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="o">==</span> <span class="kc">false</span>   <span class="c1">// true</span>
+<span class="mi">0</span> <span class="o">===</span> <span class="kc">false</span>  <span class="c1">// false</span>
+<span class="dl">'</span><span class="s1">1</span><span class="dl">'</span> <span class="o">==</span> <span class="mi">1</span>     <span class="c1">// true</span>
+<span class="dl">'</span><span class="s1">1</span><span class="dl">'</span> <span class="o">===</span> <span class="mi">1</span>    <span class="c1">// false</span>
+</code></pre></div></div>
+
+<h3 id="5-what-is-type-coercion">5. What is Type Coercion?</h3>
+
+<p>The automatic or implicit conversion of values from one data type to another (e.g., string to number).</p>
+
+<ul>
+  <li><strong>Implicit:</strong> <code class="language-plaintext highlighter-rouge">1 + '2'</code> -&gt; <code class="language-plaintext highlighter-rouge">'12'</code></li>
+  <li><strong>Explicit:</strong> <code class="language-plaintext highlighter-rouge">Number('2')</code></li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate discusses truthy/falsy.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Is <code class="language-plaintext highlighter-rouge">[]</code> truthy or falsy?”</li>
+      <li><em>Answer:</em> Truthy. But <code class="language-plaintext highlighter-rouge">[] == false</code> is <code class="language-plaintext highlighter-rouge">true</code> (coercion fun).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="6-what-is-nan">6. What is <code class="language-plaintext highlighter-rouge">NaN</code>?</h3>
+
+<p>It stands for “Not-a-Number”. It is a value of the <code class="language-plaintext highlighter-rouge">Number</code> type.
+It results from invalid math operations (e.g., <code class="language-plaintext highlighter-rouge">Math.sqrt(-1)</code>, <code class="language-plaintext highlighter-rouge">'a' * 1</code>).</p>
+
+<p><strong>Properties:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">NaN === NaN</code> is <strong>false</strong>.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">Number.isNaN(value)</code> to check.</li>
+</ul>
+
+<h3 id="7-what-are-the-falsy-values-in-javascript">7. What are the Falsy values in JavaScript?</h3>
+
+<p>There are 6 falsy values (plus <code class="language-plaintext highlighter-rouge">false</code> itself):</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">false</code></li>
+  <li><code class="language-plaintext highlighter-rouge">0</code> (and <code class="language-plaintext highlighter-rouge">-0</code>, <code class="language-plaintext highlighter-rouge">0n</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">""</code> (Empty string)</li>
+  <li><code class="language-plaintext highlighter-rouge">null</code></li>
+  <li><code class="language-plaintext highlighter-rouge">undefined</code></li>
+  <li><code class="language-plaintext highlighter-rouge">NaN</code></li>
+</ol>
+
+<p>Everything else is <strong>Truthy</strong> (e.g., <code class="language-plaintext highlighter-rouge">[]</code>, <code class="language-plaintext highlighter-rouge">{}</code>, <code class="language-plaintext highlighter-rouge">"0"</code>, <code class="language-plaintext highlighter-rouge">"false"</code>).</p>
+
+<h3 id="8-what-is-the-difference-between-null-and-undefined">8. What is the difference between <code class="language-plaintext highlighter-rouge">null</code> and <code class="language-plaintext highlighter-rouge">undefined</code>?</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">undefined</code>:</strong> A variable has been declared but not assigned a value. It is the default value of uninitialized variables/parameters.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">null</code>:</strong> Represents the intentional absence of any object value. It is an assignment value.</li>
+</ul>
+
+<h3 id="9-explain-strict-mode-use-strict">9. Explain strict mode (<code class="language-plaintext highlighter-rouge">'use strict'</code>).</h3>
+
+<p>Strict mode is a way to opt in to a restricted variant of JavaScript.
+<strong>Benefits:</strong></p>
+<ol>
+  <li>Eliminates some silent errors by throwing them.</li>
+  <li>Fixes mistakes that make it difficult for engines to perform optimizations.</li>
+  <li>Prohibits some syntax likely to be defined in future versions.
+<strong>Example:</strong> Prevents accidental global variables (<code class="language-plaintext highlighter-rouge">x = 3.14</code> throws error if <code class="language-plaintext highlighter-rouge">x</code> not declared).</li>
+</ol>
+
+<h3 id="10-how-do-you-check-the-type-of-a-variable">10. How do you check the type of a variable?</h3>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">typeof</code> operator.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typeof</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span> <span class="c1">// "string"</span>
+<span class="k">typeof</span> <span class="mf">3.14</span>   <span class="c1">// "number"</span>
+<span class="k">typeof</span> <span class="p">{}</span>     <span class="c1">// "object"</span>
+<span class="k">typeof</span> <span class="p">[]</span>     <span class="c1">// "object"</span>
+<span class="k">typeof </span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{})</span> <span class="c1">// "function"</span>
+</code></pre></div></div>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate notes <code class="language-plaintext highlighter-rouge">typeof array</code> is object.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How do you specifically check if a variable is an Array?”</li>
+      <li><em>Answer:</em> <code class="language-plaintext highlighter-rouge">Array.isArray(variable)</code> or <code class="language-plaintext highlighter-rouge">variable instanceof Array</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="11-what-is-the-difference-between-function-declaration-and-function-expression">11. What is the difference between Function Declaration and Function Expression?</h3>
+
+<ul>
+  <li><strong>Declaration:</strong> <code class="language-plaintext highlighter-rouge">function foo() {}</code>. Hoisted (can be called before defined).</li>
+  <li><strong>Expression:</strong> <code class="language-plaintext highlighter-rouge">const foo = function() {}</code>. Not hoisted (behaves like variable).</li>
+</ul>
+
+<h3 id="12-what-is-an-iife-immediately-invoked-function-expression">12. What is an IIFE (Immediately Invoked Function Expression)?</h3>
+
+<p>A function that runs as soon as it is defined.
+Used to create a local scope and avoid polluting the global namespace.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">secret</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">I am safe here</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+<h3 id="13-what-is-the-difference-between-call-apply-and-bind">13. What is the difference between <code class="language-plaintext highlighter-rouge">call</code>, <code class="language-plaintext highlighter-rouge">apply</code>, and <code class="language-plaintext highlighter-rouge">bind</code>?</h3>
+
+<p>All three allow you to control the value of <code class="language-plaintext highlighter-rouge">this</code> inside a function.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Method</th>
+      <th style="text-align: left">Syntax</th>
+      <th style="text-align: left">Execution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">call</code></strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">func.call(thisObj, arg1, arg2)</code></td>
+      <td style="text-align: left">Immediately</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">apply</code></strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">func.apply(thisObj, [argArray])</code></td>
+      <td style="text-align: left">Immediately</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">bind</code></strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">const newFunc = func.bind(thisObj)</code></td>
+      <td style="text-align: left">Returns new function</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="14-what-is-this-keyword">14. What is <code class="language-plaintext highlighter-rouge">this</code> keyword?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">this</code> refers to the object that is <strong>executing</strong> the current function.</p>
+<ul>
+  <li><strong>Global Context:</strong> <code class="language-plaintext highlighter-rouge">window</code> (browsers) or <code class="language-plaintext highlighter-rouge">global</code> (Node).</li>
+  <li><strong>Object Method:</strong> The object itself.</li>
+  <li><strong>Event Handler:</strong> The element that received the event.</li>
+  <li><strong>Arrow Function:</strong> Lexical <code class="language-plaintext highlighter-rouge">this</code> (inherits from outer scope).</li>
+</ul>
+
+<h3 id="15-what-are-arrow-functions">15. What are Arrow Functions?</h3>
+
+<p>A concise syntax for writing function expressions.
+<strong>Key Differences:</strong></p>
+<ol>
+  <li>No own <code class="language-plaintext highlighter-rouge">this</code> (lexical scoping).</li>
+  <li>No <code class="language-plaintext highlighter-rouge">arguments</code> object.</li>
+  <li>Cannot be used as constructors (<code class="language-plaintext highlighter-rouge">new</code> fails).</li>
+</ol>
+
+<h3 id="16-what-is-a-callback-function">16. What is a Callback Function?</h3>
+
+<p>A function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action.</p>
+
+<h3 id="17-what-is-scope">17. What is Scope?</h3>
+
+<p>Scope determines the accessibility (visibility) of variables.</p>
+<ol>
+  <li><strong>Global Scope:</strong> Accessible everywhere.</li>
+  <li><strong>Function Scope:</strong> Accessible only within the function.</li>
+  <li><strong>Block Scope:</strong> (<code class="language-plaintext highlighter-rouge">let</code>, <code class="language-plaintext highlighter-rouge">const</code>) Accessible only within the block <code class="language-plaintext highlighter-rouge">{}</code>.</li>
+</ol>
+
+<h3 id="18-what-is-a-closure">18. What is a Closure?</h3>
+
+<p>A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function’s scope from an inner function.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">makeAdder</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">add5</span> <span class="o">=</span> <span class="nf">makeAdder</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">add5</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span> <span class="c1">// 7</span>
+</code></pre></div></div>
+
+<h3 id="19-explain-the-module-pattern">19. Explain the module pattern.</h3>
+
+<p>A design pattern used to wrap a set of variables and functions together in a single scope. It is used to define private and public access levels (encapsulation) using closures (often IIFEs).</p>
+
+<h3 id="20-what-is-currying">20. What is “Currying”?</h3>
+
+<p>Currying is the process of converting a function that takes multiple arguments into a sequence of functions that each take a single argument.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">add</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">=&gt;</span> <span class="nx">b</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="nf">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// 3</span>
+</code></pre></div></div>
+
+<h2 id="part-2-objects-arrays--prototypes-21-40">Part 2: Objects, Arrays &amp; Prototypes (21-40)</h2>
+
+<h3 id="21-what-is-the-prototype-chain">21. What is the Prototype Chain?</h3>
+
+<p>In JavaScript, objects have a special hidden property <code class="language-plaintext highlighter-rouge">[[Prototype]]</code> (exposed as <code class="language-plaintext highlighter-rouge">__proto__</code>). If you access a property that doesn’t exist on the object, JS looks for it on the prototype, then the prototype’s prototype, until it reaches <code class="language-plaintext highlighter-rouge">null</code>. This chain is used for inheritance.</p>
+
+<h3 id="22-what-is-the-difference-between-__proto__-and-prototype">22. What is the difference between <code class="language-plaintext highlighter-rouge">__proto__</code> and <code class="language-plaintext highlighter-rouge">prototype</code>?</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">__proto__</code>:</strong> The actual object that is used in the lookup chain to resolve methods, etc. (exists on instances).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">prototype</code>:</strong> The object that will be used as the <code class="language-plaintext highlighter-rouge">__proto__</code> of instances created when using <code class="language-plaintext highlighter-rouge">new Constructor()</code>. (exists on functions).</li>
+</ul>
+
+<h3 id="23-how-do-you-create-an-object-in-javascript">23. How do you create an object in JavaScript?</h3>
+
+<ol>
+  <li><strong>Object Literal:</strong> <code class="language-plaintext highlighter-rouge">const o = {}</code></li>
+  <li><strong>Constructor:</strong> <code class="language-plaintext highlighter-rouge">const o = new Object()</code></li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Object.create()</code>:</strong> <code class="language-plaintext highlighter-rouge">const o = Object.create(proto)</code></li>
+  <li><strong>Class (ES6):</strong> <code class="language-plaintext highlighter-rouge">new MyClass()</code></li>
+</ol>
+
+<h3 id="24-what-is-objectfreeze-vs-objectseal">24. What is <code class="language-plaintext highlighter-rouge">Object.freeze()</code> vs <code class="language-plaintext highlighter-rouge">Object.seal()</code>?</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Object.freeze()</code>:</strong> Totally immutable. Cannot add, remove, or modify properties.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Object.seal()</code>:</strong> Cannot add or remove properties, but <em>can</em> modify existing property values.</li>
+</ul>
+
+<h3 id="25-how-do-you-check-if-a-key-exists-in-an-object">25. How do you check if a key exists in an object?</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">"key" in obj</code> (Check prototype chain too)</li>
+  <li><code class="language-plaintext highlighter-rouge">obj.hasOwnProperty("key")</code> (Check own properties only)</li>
+  <li><code class="language-plaintext highlighter-rouge">Object.hasOwn(obj, "key")</code> (Modern, safer version of <code class="language-plaintext highlighter-rouge">hasOwnProperty</code>)</li>
+</ol>
+
+<h3 id="26-what-are-the-primitive-wrapper-objects">26. What are the primitive wrapper objects?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">String</code>, <code class="language-plaintext highlighter-rouge">Number</code>, <code class="language-plaintext highlighter-rouge">Boolean</code>.
+They allow you to access properties/methods on primitives (e.g., <code class="language-plaintext highlighter-rouge">"hello".toUpperCase()</code>). JS temporarily wraps the primitive in an object, calls the method, and discards the object.</p>
+
+<h3 id="27-what-is-destructuring-assignment">27. What is Destructuring Assignment?</h3>
+
+<p>A syntax that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="na">isVerified</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">isVerified</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">user</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="28-what-is-the-spread-operator-">28. What is the Spread Operator (<code class="language-plaintext highlighter-rouge">...</code>)?</h3>
+
+<p>It expands an iterable (like an array or string) into more elements.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">arr1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span> <span class="c1">// [1, 2, 3, 4]</span>
+</code></pre></div></div>
+<p>Also used for Object spread (shallow copy/merge).</p>
+
+<h3 id="29-what-is-the-rest-parameter-">29. What is the Rest Parameter (<code class="language-plaintext highlighter-rouge">...</code>)?</h3>
+
+<p>It allows a function to accept an indefinite number of arguments as an array.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">sum</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">args</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="30-explain-shallow-copy-vs-deep-copy">30. Explain Shallow Copy vs Deep Copy.</h3>
+
+<ul>
+  <li><strong>Shallow Copy:</strong> Copies the object, but nested objects are still references to the original. (<code class="language-plaintext highlighter-rouge">{...obj}</code>, <code class="language-plaintext highlighter-rouge">Object.assign()</code>).</li>
+  <li><strong>Deep Copy:</strong> Recursively copies everything. (<code class="language-plaintext highlighter-rouge">JSON.parse(JSON.stringify(obj))</code> or <code class="language-plaintext highlighter-rouge">structuredClone()</code>).</li>
+</ul>
+
+<h3 id="31-what-is-the-difference-between-map-and-foreach">31. What is the difference between <code class="language-plaintext highlighter-rouge">map</code> and <code class="language-plaintext highlighter-rouge">forEach</code>?</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">map()</code>:</strong> Returns a <strong>new array</strong>. Used to transform data.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">forEach()</code>:</strong> Returns <code class="language-plaintext highlighter-rouge">undefined</code>. Used for side effects.</li>
+</ul>
+
+<h3 id="32-how-does-reduce-work">32. How does <code class="language-plaintext highlighter-rouge">reduce()</code> work?</h3>
+
+<p>Executes a reducer function on each element of the array, resulting in a single output value.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">curr</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">acc</span> <span class="o">+</span> <span class="nx">curr</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="33-what-is-filter">33. What is <code class="language-plaintext highlighter-rouge">filter()</code>?</h3>
+
+<p>Creates a new array with all elements that pass the test implemented by the provided function.</p>
+
+<h3 id="34-what-are-higher-order-functions">34. What are Higher-Order Functions?</h3>
+
+<p>Functions that take other functions as arguments or return functions as their result. (e.g., <code class="language-plaintext highlighter-rouge">map</code>, <code class="language-plaintext highlighter-rouge">filter</code>, <code class="language-plaintext highlighter-rouge">setTimeout</code>).</p>
+
+<h3 id="35-what-is-the-difference-between-slice-and-splice">35. What is the difference between <code class="language-plaintext highlighter-rouge">slice()</code> and <code class="language-plaintext highlighter-rouge">splice()</code>?</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">slice(start, end)</code>:</strong> Returns a new array (shallow copy). Does <strong>not</strong> modify original.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">splice(start, count, ...items)</code>:</strong> Removes/Adds items. <strong>Modifies</strong> the original array.</li>
+</ul>
+
+<h3 id="36-what-is-a-set">36. What is a <code class="language-plaintext highlighter-rouge">Set</code>?</h3>
+
+<p>A collection of values where each value must be <strong>unique</strong>.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">unique</span> <span class="o">=</span> <span class="p">[...</span><span class="k">new</span> <span class="nc">Set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])];</span> <span class="c1">// [1, 2, 3]</span>
+</code></pre></div></div>
+
+<h3 id="37-what-is-a-map-vs-object">37. What is a <code class="language-plaintext highlighter-rouge">Map</code> vs <code class="language-plaintext highlighter-rouge">Object</code>?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">Map</th>
+      <th style="text-align: left">Object</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Keys</strong></td>
+      <td style="text-align: left">Any type (incl. objects)</td>
+      <td style="text-align: left">Strings &amp; Symbols</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Order</strong></td>
+      <td style="text-align: left">Insertion order</td>
+      <td style="text-align: left">Not guaranteed (historically)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Size</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">.size</code> property</td>
+      <td style="text-align: left">Manually count</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Iteration</strong></td>
+      <td style="text-align: left">Directly iterable</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Object.keys()</code>, etc.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="38-what-is-a-weakmap">38. What is a <code class="language-plaintext highlighter-rouge">WeakMap</code>?</h3>
+
+<p>A <code class="language-plaintext highlighter-rouge">Map</code> where keys must be objects and are held “weakly”. If the key object is not referenced elsewhere, it can be garbage collected. Not iterable.</p>
+
+<h3 id="39-how-do-you-sort-an-array-of-numbers">39. How do you sort an array of numbers?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">[1, 10, 2].sort()</code> sorts alphabetically by default -&gt; <code class="language-plaintext highlighter-rouge">[1, 10, 2]</code>.
+<strong>Correct way:</strong></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">].</span><span class="nf">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">);</span> <span class="c1">// [1, 2, 10]</span>
+</code></pre></div></div>
+
+<h3 id="40-what-is-arrayfrom">40. What is <code class="language-plaintext highlighter-rouge">Array.from()</code>?</h3>
+
+<p>Creates a new Array instance from an array-like or iterable object (e.g., <code class="language-plaintext highlighter-rouge">NodeList</code>, <code class="language-plaintext highlighter-rouge">arguments</code>, <code class="language-plaintext highlighter-rouge">String</code>).</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="dl">'</span><span class="s1">foo</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// ["f", "o", "o"]</span>
+</code></pre></div></div>
+
+<h2 id="part-3-async-javascript-41-60">Part 3: Async JavaScript (41-60)</h2>
+
+<h3 id="41-what-is-the-event-loop">41. What is the Event Loop?</h3>
+
+<p>JavaScript is single-threaded. The Event Loop monitors the Call Stack and the Callback Queue. If the Call Stack is empty, it takes the first event from the queue and pushes it to the stack.</p>
+
+<p><strong>Diagram:</strong></p>
+<pre><code class="language-mermaid">graph TD
+    CallStack[Call Stack] --&gt;|Execute| API[Web APIs]
+    API --&gt;|Callback| Queue[Callback Queue]
+    Queue --&gt;|Event Loop| CallStack
+</code></pre>
+
+<h3 id="42-explain-synchronous-vs-asynchronous">42. Explain Synchronous vs Asynchronous.</h3>
+
+<ul>
+  <li><strong>Synchronous:</strong> Code executes line-by-line, blocking execution until completion.</li>
+  <li><strong>Asynchronous:</strong> Code executes without blocking (e.g., timers, network requests), providing a callback or promise to handle the result later.</li>
+</ul>
+
+<h3 id="43-what-is-a-promise">43. What is a Promise?</h3>
+
+<p>An object representing the eventual completion (or failure) of an asynchronous operation and its resulting value.
+<strong>States:</strong></p>
+<ol>
+  <li>Pending</li>
+  <li>Fulfilled (Resolved)</li>
+  <li>Rejected</li>
+</ol>
+
+<h3 id="44-what-are-the-instance-methods-of-a-promise">44. What are the instance methods of a Promise?</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">.then(onSuccess, onFailure)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.catch(onFailure)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.finally(onAlways)</code></li>
+</ol>
+
+<h3 id="45-explain-promiseall-vs-promiseallsettled">45. Explain <code class="language-plaintext highlighter-rouge">Promise.all()</code> vs <code class="language-plaintext highlighter-rouge">Promise.allSettled()</code>.</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Promise.all(iterable)</code>:</strong> Waits for all to resolve. Rejects immediately if <strong>any</strong> promise rejects (fail-fast).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Promise.allSettled(iterable)</code>:</strong> Waits for all to finish (resolve or reject). Returns an array of status objects.</li>
+</ul>
+
+<h3 id="46-what-is-promiserace">46. What is <code class="language-plaintext highlighter-rouge">Promise.race()</code>?</h3>
+
+<p>Returns a promise that resolves or rejects as soon as one of the promises in the iterable resolves or rejects.</p>
+
+<h3 id="47-explain-async-and-await">47. Explain <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code>.</h3>
+
+<p>Syntactic sugar built on top of Promises to write asynchronous code that looks synchronous.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">async</code> function returns a Promise.</li>
+  <li><code class="language-plaintext highlighter-rouge">await</code> pauses execution until the Promise resolves.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">fetchData</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api</span><span class="dl">'</span><span class="p">);</span>
+        <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nf">json</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="48-what-happens-if-you-await-a-non-promise">48. What happens if you <code class="language-plaintext highlighter-rouge">await</code> a non-promise?</h3>
+
+<p>It is converted to a resolved Promise automatically.
+<code class="language-plaintext highlighter-rouge">const x = await 5; // x is 5</code></p>
+
+<h3 id="49-can-you-use-await-inside-a-loop">49. Can you use <code class="language-plaintext highlighter-rouge">await</code> inside a loop?</h3>
+
+<p>Yes.</p>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">forEach</code>:</strong> <code class="language-plaintext highlighter-rouge">async</code> callbacks run in parallel (doesn’t wait).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">for...of</code>:</strong> <code class="language-plaintext highlighter-rouge">await</code> inside pauses the loop (sequential execution).</li>
+</ul>
+
+<h3 id="50-what-is-a-microtask-vs-macrotask">50. What is a Microtask vs Macrotask?</h3>
+
+<ul>
+  <li><strong>Microtasks:</strong> Promises, <code class="language-plaintext highlighter-rouge">queueMicrotask</code>, <code class="language-plaintext highlighter-rouge">MutationObserver</code>. (High priority, run immediately after current script).</li>
+  <li><strong>Macrotasks:</strong> <code class="language-plaintext highlighter-rouge">setTimeout</code>, <code class="language-plaintext highlighter-rouge">setInterval</code>, <code class="language-plaintext highlighter-rouge">setImmediate</code>, I/O. (Run in next Event Loop tick).</li>
+</ul>
+
+<p><strong>Execution Order:</strong> Script -&gt; All Microtasks -&gt; Render -&gt; One Macrotask.</p>
+
+<h3 id="51-what-is-the-output">51. What is the output?</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+<span class="nb">Promise</span><span class="p">.</span><span class="nf">resolve</span><span class="p">().</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+</code></pre></div></div>
+<p><strong>Answer:</strong> <code class="language-plaintext highlighter-rouge">1, 4, 3, 2</code>
+(Sync -&gt; Sync -&gt; Microtask -&gt; Macrotask).</p>
+
+<h3 id="52-what-is-settimeout">52. What is <code class="language-plaintext highlighter-rouge">setTimeout</code>?</h3>
+
+<p>Schedules code to be run after a specified delay (in ms). It is <strong>not</strong> part of JS engine, but a Web API provided by the browser/Node environment.</p>
+
+<h3 id="53-why-is-settimeoutfn-0-useful">53. Why is <code class="language-plaintext highlighter-rouge">setTimeout(fn, 0)</code> useful?</h3>
+
+<p>It pushes the function to the end of the Call Stack (to the task queue), allowing the UI to update or the current execution to finish first.</p>
+
+<h3 id="54-what-is-callback-hell">54. What is Callback Hell?</h3>
+
+<p>The situation where callbacks are nested within other callbacks several levels deep, making code difficult to read and maintain.
+<strong>Solution:</strong> Use Promises or Async/Await.</p>
+
+<h3 id="55-what-is-fetch-api">55. What is <code class="language-plaintext highlighter-rouge">fetch</code> API?</h3>
+
+<p>A modern interface for making HTTP requests (replacement for <code class="language-plaintext highlighter-rouge">XMLHttpRequest</code>). It returns a Promise.</p>
+
+<h3 id="56-how-do-you-cancel-a-fetch-request">56. How do you cancel a fetch request?</h3>
+
+<p>Using an <code class="language-plaintext highlighter-rouge">AbortController</code>.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">controller</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AbortController</span><span class="p">();</span>
+<span class="nf">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">signal</span><span class="p">:</span> <span class="nx">controller</span><span class="p">.</span><span class="nx">signal</span> <span class="p">});</span>
+<span class="nx">controller</span><span class="p">.</span><span class="nf">abort</span><span class="p">();</span> <span class="c1">// Cancels request</span>
+</code></pre></div></div>
+
+<h3 id="57-what-is-jsonparse-and-jsonstringify">57. What is <code class="language-plaintext highlighter-rouge">JSON.parse</code> and <code class="language-plaintext highlighter-rouge">JSON.stringify</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JSON.parse()</code>: Parses a JSON string to a JS object.</li>
+  <li><code class="language-plaintext highlighter-rouge">JSON.stringify()</code>: Converts a JS object to a JSON string.</li>
+</ul>
+
+<h3 id="58-what-is-debouncing">58. What is debouncing?</h3>
+
+<p>Ensures that a function is not called again until a certain amount of time has passed since it was last called. (e.g., search input).</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">debounce</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">timeout</span><span class="p">;</span>
+    <span class="k">return </span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nf">clearTimeout</span><span class="p">(</span><span class="nx">timeout</span><span class="p">);</span>
+        <span class="nx">timeout</span> <span class="o">=</span> <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nf">func</span><span class="p">(...</span><span class="nx">args</span><span class="p">),</span> <span class="nx">delay</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="59-what-is-throttling">59. What is throttling?</h3>
+
+<p>Ensures that a function is called at most once in a specified time period. (e.g., window resize, scroll).</p>
+
+<h3 id="60-what-is-a-generator-function-in-async-context">60. What is a Generator Function in async context?</h3>
+
+<p>Generators (<code class="language-plaintext highlighter-rouge">function*</code>) can yield Promises. Before <code class="language-plaintext highlighter-rouge">async/await</code>, libraries like <code class="language-plaintext highlighter-rouge">co</code> used generators to mimic sync-style async code.</p>
+
+<h2 id="part-4-dom--web-api-61-80">Part 4: DOM &amp; Web API (61-80)</h2>
+
+<h3 id="61-what-is-the-dom">61. What is the DOM?</h3>
+
+<p><strong>Document Object Model.</strong> A tree structure representation of the HTML document. It allows JS to manipulate content, structure, and style.</p>
+
+<h3 id="62-how-to-select-elements-in-dom">62. How to select elements in DOM?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">document.getElementById('id')</code></li>
+  <li><code class="language-plaintext highlighter-rouge">document.getElementsByClassName('class')</code></li>
+  <li><code class="language-plaintext highlighter-rouge">document.getElementsByTagName('div')</code></li>
+  <li><code class="language-plaintext highlighter-rouge">document.querySelector('.class')</code> (Returns first match)</li>
+  <li><code class="language-plaintext highlighter-rouge">document.querySelectorAll('.class')</code> (Returns NodeList)</li>
+</ul>
+
+<h3 id="63-nodelist-vs-htmlcollection">63. <code class="language-plaintext highlighter-rouge">NodeList</code> vs <code class="language-plaintext highlighter-rouge">HTMLCollection</code>?</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">HTMLCollection</code>:</strong> Live (updates automatically if DOM changes). Returned by <code class="language-plaintext highlighter-rouge">getElementsByClassName</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">NodeList</code>:</strong> Static (mostly). Returned by <code class="language-plaintext highlighter-rouge">querySelectorAll</code>.</li>
+</ul>
+
+<h3 id="64-what-is-event-bubbling">64. What is Event Bubbling?</h3>
+
+<p>When an event triggers on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors. (Bottom -&gt; Up).</p>
+
+<h3 id="65-what-is-event-capturing-trickling">65. What is Event Capturing (Trickling)?</h3>
+
+<p>The opposite of bubbling. The event goes down to the element. (Top -&gt; Down).
+Enabled by passing <code class="language-plaintext highlighter-rouge">{ capture: true }</code> to <code class="language-plaintext highlighter-rouge">addEventListener</code>.</p>
+
+<h3 id="66-how-to-stop-propagation">66. How to stop propagation?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">event.stopPropagation()</code> stops the event from moving to the next part of the propagation flow (bubbling or capturing).</p>
+
+<h3 id="67-what-is-eventpreventdefault">67. What is <code class="language-plaintext highlighter-rouge">event.preventDefault()</code>?</h3>
+
+<p>Prevents the browser’s default behavior for the event (e.g., prevents form submission, or link navigation).</p>
+
+<h3 id="68-what-is-event-delegation">68. What is Event Delegation?</h3>
+
+<p>Instead of attaching event listeners to individual elements, you attach a single listener to a common parent. It utilizes event bubbling to handle events for child elements (even dynamically added ones).</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">list</span><span class="dl">'</span><span class="p">).</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">tagName</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">LI</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">List item clicked</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="69-what-is-the-dataset-property">69. What is the <code class="language-plaintext highlighter-rouge">dataset</code> property?</h3>
+
+<p>Allows access to custom data attributes (<code class="language-plaintext highlighter-rouge">data-*</code>) on elements.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"user"</span> <span class="na">data-id=</span><span class="s">"123"</span> <span class="na">data-role=</span><span class="s">"admin"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+    <span class="kd">const</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">el</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// "123"</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h3 id="70-innerhtml-vs-innertext-vs-textcontent">70. <code class="language-plaintext highlighter-rouge">innerHTML</code> vs <code class="language-plaintext highlighter-rouge">innerText</code> vs <code class="language-plaintext highlighter-rouge">textContent</code>?</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">innerHTML</code>:</strong> Parses HTML string (Security risk: XSS).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">innerText</code>:</strong> Visible text (aware of CSS styling like <code class="language-plaintext highlighter-rouge">display: none</code>).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">textContent</code>:</strong> All text (including hidden elements). Faster.</li>
+</ul>
+
+<h3 id="71-what-is-the-bom-browser-object-model">71. What is the BOM (Browser Object Model)?</h3>
+
+<p>Objects provided by the browser to interact with everything <em>outside</em> the page content.
+Examples: <code class="language-plaintext highlighter-rouge">window</code>, <code class="language-plaintext highlighter-rouge">navigator</code>, <code class="language-plaintext highlighter-rouge">location</code>, <code class="language-plaintext highlighter-rouge">history</code>, <code class="language-plaintext highlighter-rouge">screen</code>.</p>
+
+<h3 id="72-how-do-you-detect-the-browser-name">72. How do you detect the browser name?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">navigator.userAgent</code>. (Though feature detection is preferred over browser detection).</p>
+
+<h3 id="73-what-is-localstorage-vs-sessionstorage">73. What is <code class="language-plaintext highlighter-rouge">localStorage</code> vs <code class="language-plaintext highlighter-rouge">sessionStorage</code>?</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">localStorage</code>:</strong> Data persists even after the browser is closed. (No expiration).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">sessionStorage</code>:</strong> Data survives page refresh but is cleared when the tab/window is closed.</li>
+</ul>
+
+<h3 id="74-what-are-cookies">74. What are Cookies?</h3>
+
+<p>Small data stored in the browser. Sent with every HTTP request to the server.
+Properties: <code class="language-plaintext highlighter-rouge">Expires</code>, <code class="language-plaintext highlighter-rouge">HttpOnly</code> (secure against XSS), <code class="language-plaintext highlighter-rouge">Secure</code> (HTTPS only).</p>
+
+<h3 id="75-how-to-create-a-new-dom-element">75. How to create a new DOM element?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">document.createElement('tagName')</code>.</p>
+
+<h3 id="76-what-is-a-documentfragment">76. What is a DocumentFragment?</h3>
+
+<p>A lightweight, minimal document object. It has no parent. Appending to it doesn’t cause reflow. Appending the fragment to DOM moves all its children. Used for performance optimization when adding multiple elements.</p>
+
+<h3 id="77-what-is-reflow-and-repaint">77. What is Reflow and Repaint?</h3>
+
+<ul>
+  <li><strong>Reflow (Layout):</strong> Calculating positions and geometries of elements. (Expensive).</li>
+  <li><strong>Repaint:</strong> Changing visibility (color, background) without changing layout.</li>
+</ul>
+
+<h3 id="78-what-is-shadow-dom">78. What is Shadow DOM?</h3>
+
+<p>Encapsulation mechanism. Allows a hidden DOM tree to be attached to an element. Styles inside Shadow DOM don’t leak out, and global styles don’t leak in. Basis of Web Components.</p>
+
+<h3 id="79-what-is-windowonload-vs-domcontentloaded">79. What is <code class="language-plaintext highlighter-rouge">window.onload</code> vs <code class="language-plaintext highlighter-rouge">DOMContentLoaded</code>?</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">DOMContentLoaded</code>:</strong> HTML is parsed and DOM is built. (External scripts/styles might not be loaded).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">window.onload</code>:</strong> Everything is loaded (images, styles, scripts).</li>
+</ul>
+
+<h3 id="80-how-does-defer-and-async-work-in-script-tags">80. How does <code class="language-plaintext highlighter-rouge">defer</code> and <code class="language-plaintext highlighter-rouge">async</code> work in script tags?</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>:</strong> Blocks parsing, fetches, executes.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">&lt;script async&gt;</code>:</strong> Fetches in parallel, executes as soon as fetched (pauses parsing). Order not guaranteed.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">&lt;script defer&gt;</code>:</strong> Fetches in parallel, executes after HTML parsing is complete. Order guaranteed.</li>
+</ul>
+
+<h2 id="part-5-es6--advanced-concepts-81-100">Part 5: ES6+ &amp; Advanced Concepts (81-100)</h2>
+
+<h3 id="81-what-is-a-class-in-es6">81. What is a Class in ES6?</h3>
+
+<p>Syntactic sugar over prototype-based inheritance.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+    <span class="nf">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nf">greet</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s2">`Hi, </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="82-what-are-modules-esm">82. What are Modules (ESM)?</h3>
+
+<p>Official standard for modules.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">export</code> (Named or Default).</li>
+  <li><code class="language-plaintext highlighter-rouge">import</code>.</li>
+  <li>File-based scope. Always strict mode.</li>
+</ul>
+
+<h3 id="83-what-are-template-literals">83. What are Template Literals?</h3>
+
+<p>String literals allowing embedded expressions. Enclosed by backticks (<code class="language-plaintext highlighter-rouge">`</code>).
+Supports multi-line strings.</p>
+
+<h3 id="84-what-is-the-optional-chaining-operator-">84. What is the Optional Chaining Operator (<code class="language-plaintext highlighter-rouge">?.</code>)?</h3>
+
+<p>Safely access nested properties. Returns <code class="language-plaintext highlighter-rouge">undefined</code> if reference is nullish.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">zip</span> <span class="o">=</span> <span class="nx">user</span><span class="p">?.</span><span class="nx">address</span><span class="p">?.</span><span class="nx">zipCode</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="85-what-is-the-nullish-coalescing-operator-">85. What is the Nullish Coalescing Operator (<code class="language-plaintext highlighter-rouge">??</code>)?</h3>
+
+<p>Returns the right-hand operand when the left is <code class="language-plaintext highlighter-rouge">null</code> or <code class="language-plaintext highlighter-rouge">undefined</code> (not just falsy).</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">??</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 0</span>
+<span class="kd">const</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">||</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 5</span>
+</code></pre></div></div>
+
+<h3 id="86-what-is-a-symbol">86. What is a Symbol?</h3>
+
+<p>A unique and immutable primitive. Often used as object keys to create private-like properties or avoid name collisions.</p>
+
+<h3 id="87-what-is-a-proxy">87. What is a Proxy?</h3>
+
+<p>An object that wraps another object and intercepts operations (like read, write, function call).</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">get</span><span class="p">:</span> <span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">prop</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">prop</span> <span class="k">in</span> <span class="nx">obj</span> <span class="p">?</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">prop</span><span class="p">]</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">Not Found</span><span class="dl">"</span>
+<span class="p">};</span>
+<span class="kd">const</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Proxy</span><span class="p">({},</span> <span class="nx">handler</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="88-what-is-reflect">88. What is <code class="language-plaintext highlighter-rouge">Reflect</code>?</h3>
+
+<p>A built-in object that provides methods for interceptable JavaScript operations. Complements <code class="language-plaintext highlighter-rouge">Proxy</code>.</p>
+
+<h3 id="89-what-is-memory-leak-in-js">89. What is Memory Leak in JS?</h3>
+
+<p>When objects are no longer needed but are still referenced, preventing Garbage Collection.
+<strong>Causes:</strong> Global variables, forgotton timers, closures, detached DOM nodes.</p>
+
+<h3 id="90-how-does-garbage-collection-work">90. How does Garbage Collection work?</h3>
+
+<p><strong>Mark-and-Sweep:</strong></p>
+<ol>
+  <li>Roots (Global, Stack) are marked.</li>
+  <li>References are traversed and marked.</li>
+  <li>Unmarked objects (unreachable) are swept (deleted).</li>
+</ol>
+
+<h3 id="91-what-is-bigint">91. What is <code class="language-plaintext highlighter-rouge">BigInt</code>?</h3>
+
+<p>A primitive for integers larger than <code class="language-plaintext highlighter-rouge">2^53 - 1</code>. Created by appending <code class="language-plaintext highlighter-rouge">n</code>.
+<code class="language-plaintext highlighter-rouge">const huge = 1234567890123456789012345678901234567890n;</code></p>
+
+<h3 id="92-what-is-globalthis">92. What is <code class="language-plaintext highlighter-rouge">globalThis</code>?</h3>
+
+<p>A standard way to access the global object across environments (window, self, global).</p>
+
+<h3 id="93-what-is-currying-vs-partial-application">93. What is Currying vs Partial Application?</h3>
+
+<ul>
+  <li><strong>Currying:</strong> <code class="language-plaintext highlighter-rouge">f(a, b, c)</code> -&gt; <code class="language-plaintext highlighter-rouge">f(a)(b)(c)</code>.</li>
+  <li><strong>Partial App:</strong> <code class="language-plaintext highlighter-rouge">f(a, b, c)</code> -&gt; <code class="language-plaintext highlighter-rouge">g(b, c)</code> (where <code class="language-plaintext highlighter-rouge">a</code> is fixed).</li>
+</ul>
+
+<h3 id="94-what-is-memoization">94. What is Memoization?</h3>
+
+<p>Optimization technique. Caching the result of an expensive function call based on arguments and returning the cached result when the same inputs occur again.</p>
+
+<h3 id="95-what-is-the-difference-between-forin-and-forof">95. What is the difference between <code class="language-plaintext highlighter-rouge">for...in</code> and <code class="language-plaintext highlighter-rouge">for...of</code>?</h3>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">for...in</code>:</strong> Iterates over <strong>keys</strong> (enumerable properties). (Works on Objects).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">for...of</code>:</strong> Iterates over <strong>values</strong>. (Works on Iterables: Array, Map, Set, String).</li>
+</ul>
+
+<h3 id="96-what-is-tco-tail-call-optimization">96. What is TCO (Tail Call Optimization)?</h3>
+
+<p>An optimization where a recursive function call is the last action in the function. The engine reuses the stack frame. (Supported in Safari, theoretically in ES6 spec).</p>
+
+<h3 id="97-what-is-a-polyfill">97. What is a Polyfill?</h3>
+
+<p>Code that implements a feature on web browsers that do not support the feature.</p>
+
+<h3 id="98-what-is-transpilation-babel">98. What is Transpilation (Babel)?</h3>
+
+<p>Converting modern JS (ES6+) code into older JS (ES5) to ensure compatibility with older browsers.</p>
+
+<h3 id="99-what-are-worker-threads-web-workers">99. What are Worker Threads (Web Workers)?</h3>
+
+<p>Allow running scripts in background threads, separate from the main execution thread. Prevents UI blocking during heavy computations. They don’t have access to DOM.</p>
+
+<h3 id="100-what-is-server-side-rendering-ssr-vs-client-side-rendering-csr">100. What is Server-Side Rendering (SSR) vs Client-Side Rendering (CSR)?</h3>
+
+<ul>
+  <li><strong>CSR:</strong> Browser downloads minimal HTML and a JS bundle. JS fetches data and builds the UI. (Slower initial load, faster interaction).</li>
+  <li><strong>SSR:</strong> Server renders HTML with data and sends it. (Faster initial load, SEO friendly).</li>
+</ul>
+
+<hr />
+<p><strong>End of Interview Questions</strong></p>
+
+<h2 id="study-guide">Study Guide</h2>
+
+<p>To deepen your understanding of these concepts, check out the following resources:</p>
+
+<ul>
+  <li><strong>Official Documentation</strong>: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">Javascript Docs</a></li>
+  <li><strong>Internal Style Guide</strong>: <a href="../style_guides/javascript/javascript_style_guide.md">Javascript Style Guide</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

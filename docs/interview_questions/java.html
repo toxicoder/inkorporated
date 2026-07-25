@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Java Interview Questions &amp; Answers (100+) | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Java Interview Questions &amp; Answers (100+)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Java Interview Questions &amp; Answers (100+) for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="Java Interview Questions &amp; Answers (100+) for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/interview_questions/java.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/interview_questions/java.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Java Interview Questions &amp; Answers (100+)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Java Interview Questions &amp; Answers (100+) for Inkorporated.","headline":"Java Interview Questions &amp; Answers (100+)","url":"https://toxicoder.github.io/inkorporated/interview_questions/java.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Java Interview Questions &amp; Answers (100+)</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="java-interview-questions--answers-100">Java Interview Questions &amp; Answers (100+)</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This guide contains 100+ Java interview questions, ranging from core concepts to advanced concurrency and performance tuning. Each question includes a model answer and potential follow-up paths based on the candidate’s response.</p>
+
+<h2 id="part-1-core-java--oop-1-20">Part 1: Core Java &amp; OOP (1-20)</h2>
+
+<h3 id="1-what-is-the-difference-between-jdk-jre-and-jvm">1. What is the difference between JDK, JRE, and JVM?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Component</th>
+      <th style="text-align: left">Full Form</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Contains</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>JVM</strong></td>
+      <td style="text-align: left">Java Virtual Machine</td>
+      <td style="text-align: left">The abstract machine that executes Java bytecode.</td>
+      <td style="text-align: left">Just the execution engine.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>JRE</strong></td>
+      <td style="text-align: left">Java Runtime Environment</td>
+      <td style="text-align: left">The environment required to run Java applications.</td>
+      <td style="text-align: left">JVM + Class Libraries.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>JDK</strong></td>
+      <td style="text-align: left">Java Development Kit</td>
+      <td style="text-align: left">The kit required to develop and compile Java applications.</td>
+      <td style="text-align: left">JRE + Development Tools (javac, jdb, etc).</td>
+    </tr>
+  </tbody>
+</table>
+
+<pre><code class="language-mermaid">graph TD
+    subgraph JDK
+        subgraph JRE
+            JVM
+            Libraries[Class Libraries]
+        end
+        Tools[Dev Tools: javac, debugger]
+    end
+</code></pre>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate focuses on definitions.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Can I run a Java program with just the JVM installed?”</li>
+      <li><em>Answer:</em> No, you need the JRE which includes the libraries and the JVM.</li>
+    </ul>
+  </li>
+  <li><strong>Path B: Candidate mentions platform independence.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Is the JVM itself platform-independent?”</li>
+      <li><em>Answer:</em> No, the JVM is platform-dependent (there are specific JVMs for Windows, Linux, Mac), but it makes Java programs platform-independent.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-explain-the-difference-between--and-equals">2. Explain the difference between <code class="language-plaintext highlighter-rouge">==</code> and <code class="language-plaintext highlighter-rouge">equals()</code>.</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">==</code>: Operator that checks for <strong>reference equality</strong> (memory address) for objects, and <strong>value equality</strong> for primitives.</li>
+  <li><code class="language-plaintext highlighter-rouge">equals()</code>: Method in the Object class that checks for <strong>content equality</strong> (logical equality).</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions overriding.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What happens if I don’t override <code class="language-plaintext highlighter-rouge">equals()</code> in my custom class?”</li>
+      <li><em>Answer:</em> It defaults to the implementation in the <code class="language-plaintext highlighter-rouge">Object</code> class, which uses <code class="language-plaintext highlighter-rouge">==</code> (reference equality).</li>
+    </ul>
+  </li>
+  <li><strong>Path B: Candidate mentions String pool.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Why does <code class="language-plaintext highlighter-rouge">"abc" == "abc"</code> return true?”</li>
+      <li><em>Answer:</em> Because of String Interning/String Pool, both literals point to the same object.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="3-what-are-the-4-pillars-of-object-oriented-programming-oop">3. What are the 4 pillars of Object-Oriented Programming (OOP)?</h3>
+
+<ol>
+  <li><strong>Encapsulation:</strong> Wrapping data (variables) and code (methods) together as a single unit (Class). Hiding internal details (private).</li>
+  <li><strong>Inheritance:</strong> Mechanism where one class acquires the properties and behaviors of another class.</li>
+  <li><strong>Polymorphism:</strong> The ability to perform a single action in different ways (Overloading &amp; Overriding).</li>
+  <li><strong>Abstraction:</strong> Hiding implementation details and showing only functionality to the user (Interfaces &amp; Abstract Classes).</li>
+</ol>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Real-world examples.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Give me a real-world example of Polymorphism.”</li>
+      <li><em>Answer:</em> A <code class="language-plaintext highlighter-rouge">Shape</code> interface with a <code class="language-plaintext highlighter-rouge">draw()</code> method. <code class="language-plaintext highlighter-rouge">Circle</code> and <code class="language-plaintext highlighter-rouge">Square</code> implement it differently. The caller just calls <code class="language-plaintext highlighter-rouge">draw()</code> without knowing the specific shape.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="4-why-is-java-not-considered-pure-object-oriented">4. Why is Java not considered “pure” object-oriented?</h3>
+
+<p>Because it supports <strong>Primitive Types</strong> (int, char, boolean, etc.) which are not objects.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions ‘static’.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How does the static keyword violate pure OOP?”</li>
+      <li><em>Answer:</em> Static methods/variables belong to the class, not an instance. Pure OOP suggests everything is an object interaction.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="5-what-is-the-difference-between-an-abstract-class-and-an-interface">5. What is the difference between an Abstract Class and an Interface?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">Abstract Class</th>
+      <th style="text-align: left">Interface (Java 8+)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Methods</strong></td>
+      <td style="text-align: left">Can have abstract and concrete methods.</td>
+      <td style="text-align: left">Can have abstract, default, and static methods.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Variables</strong></td>
+      <td style="text-align: left">Can have final, non-final, static, non-static.</td>
+      <td style="text-align: left">All variables are <code class="language-plaintext highlighter-rouge">public static final</code> (constants).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Inheritance</strong></td>
+      <td style="text-align: left">A class can extend only one class.</td>
+      <td style="text-align: left">A class can implement multiple interfaces.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Constructor</strong></td>
+      <td style="text-align: left">Can have constructors.</td>
+      <td style="text-align: left">Cannot have constructors.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Design choice.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “When would you choose an Abstract Class over an Interface?”</li>
+      <li><em>Answer:</em> When you want to share code (state/implementation) among closely related classes, or require non-static / non-final fields.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="6-what-is-the-difference-between-method-overloading-and-method-overriding">6. What is the difference between Method Overloading and Method Overriding?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">Overloading</th>
+      <th style="text-align: left">Overriding</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Definition</strong></td>
+      <td style="text-align: left">Same method name, different parameter list (signature).</td>
+      <td style="text-align: left">Same method name and signature in child class.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Scope</strong></td>
+      <td style="text-align: left">Within the same class.</td>
+      <td style="text-align: left">Inheritance (Parent vs Child).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Binding</strong></td>
+      <td style="text-align: left">Static/Compile-time polymorphism.</td>
+      <td style="text-align: left">Dynamic/Runtime polymorphism.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="7-what-is-the-static-keyword">7. What is the <code class="language-plaintext highlighter-rouge">static</code> keyword?</h3>
+
+<p>It means the member belongs to the type (class) itself, rather than to an instance of that type.</p>
+<ul>
+  <li><strong>Static Variable:</strong> Shared among all instances.</li>
+  <li><strong>Static Method:</strong> Can be called without creating an object. Cannot access instance variables.</li>
+  <li><strong>Static Block:</strong> Executed once when the class is loaded.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Memory management.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Where are static variables stored?”</li>
+      <li><em>Answer:</em> In the Metaspace (previously PermGen), specifically in the Class definitions.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="8-can-we-override-a-static-method">8. Can we override a <code class="language-plaintext highlighter-rouge">static</code> method?</h3>
+
+<p>No. If you define a static method with the same signature in the child class, it is called <strong>Method Hiding</strong>, not overriding. The method called depends on the type of the reference, not the object.</p>
+
+<h3 id="9-what-is-the-difference-between-final-finally-and-finalize">9. What is the difference between <code class="language-plaintext highlighter-rouge">final</code>, <code class="language-plaintext highlighter-rouge">finally</code>, and <code class="language-plaintext highlighter-rouge">finalize</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">final</code>: Keyword to apply restrictions.
+    <ul>
+      <li><strong>Variable:</strong> Constant.</li>
+      <li><strong>Method:</strong> Cannot be overridden.</li>
+      <li><strong>Class:</strong> Cannot be inherited (e.g., <code class="language-plaintext highlighter-rouge">String</code>).</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">finally</code>: Block used in Exception Handling. Executes always (with rare exceptions).</li>
+  <li><code class="language-plaintext highlighter-rouge">finalize</code>: Method used for Garbage Collection cleanup (Deprecated in Java 9).</li>
+</ul>
+
+<h3 id="10-why-is-string-immutable-in-java">10. Why is <code class="language-plaintext highlighter-rouge">String</code> immutable in Java?</h3>
+
+<ol>
+  <li><strong>Security:</strong> Used for network connections, database URLs, usernames/passwords.</li>
+  <li><strong>Synchronization:</strong> Automatically thread-safe.</li>
+  <li><strong>Caching:</strong> String Pool requires immutability to ensure one reference doesn’t change the value for others.</li>
+  <li><strong>Hashcode Caching:</strong> The hashcode is calculated once and cached, making it a great key for Maps.</li>
+</ol>
+
+<h3 id="11-string-vs-stringbuilder-vs-stringbuffer">11. <code class="language-plaintext highlighter-rouge">String</code> vs <code class="language-plaintext highlighter-rouge">StringBuilder</code> vs <code class="language-plaintext highlighter-rouge">StringBuffer</code>?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Class</th>
+      <th style="text-align: left">Mutable?</th>
+      <th style="text-align: left">Thread-Safe?</th>
+      <th style="text-align: left">Performance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">String</code></td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">Yes (Immutable)</td>
+      <td style="text-align: left">Slow (creates new objects)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">StringBuilder</code></td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">Fast</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">StringBuffer</code></td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">Yes (Synchronized)</td>
+      <td style="text-align: left">Slower than Builder</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Usage context.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “When would you use <code class="language-plaintext highlighter-rouge">StringBuffer</code>?”</li>
+      <li><em>Answer:</em> Only in multi-threaded environments where a shared mutable string is being modified. Otherwise, <code class="language-plaintext highlighter-rouge">StringBuilder</code> is preferred.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="12-explain-the-difference-between-checked-and-unchecked-exceptions">12. Explain the difference between Checked and Unchecked Exceptions.</h3>
+
+<ul>
+  <li><strong>Checked Exceptions:</strong> Checked at compile-time. Must be handled (<code class="language-plaintext highlighter-rouge">try-catch</code>) or declared (<code class="language-plaintext highlighter-rouge">throws</code>).
+    <ul>
+      <li><em>Examples:</em> <code class="language-plaintext highlighter-rouge">IOException</code>, <code class="language-plaintext highlighter-rouge">SQLException</code>.</li>
+    </ul>
+  </li>
+  <li><strong>Unchecked Exceptions:</strong> Runtime Exceptions. Compiler does not force handling.
+    <ul>
+      <li><em>Examples:</em> <code class="language-plaintext highlighter-rouge">NullPointerException</code>, <code class="language-plaintext highlighter-rouge">ArrayIndexOutOfBoundsException</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Design philosophy.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “When creating a custom exception, which one should you extend?”</li>
+      <li><em>Answer:</em> Generally <code class="language-plaintext highlighter-rouge">RuntimeException</code> (Unchecked) if the client cannot recover from it. <code class="language-plaintext highlighter-rouge">Exception</code> (Checked) if you expect the client to recover.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="13-what-is-the-try-with-resources-statement">13. What is the <code class="language-plaintext highlighter-rouge">try-with-resources</code> statement?</h3>
+
+<p>Introduced in Java 7, it allows declaring resources (that implement <code class="language-plaintext highlighter-rouge">AutoCloseable</code>) inside the <code class="language-plaintext highlighter-rouge">try(...)</code> parenthesis. It ensures that the resources are closed automatically at the end of the block, replacing the verbose <code class="language-plaintext highlighter-rouge">finally</code> block pattern.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">(</span><span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileReader</span><span class="o">(</span><span class="n">path</span><span class="o">)))</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+<span class="o">}</span> <span class="c1">// br is closed here automatically</span>
+</code></pre></div></div>
+
+<h3 id="14-does-the-finally-block-always-execute">14. Does the <code class="language-plaintext highlighter-rouge">finally</code> block always execute?</h3>
+
+<p>Yes, except in these cases:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">System.exit()</code> is called.</li>
+  <li>The thread is killed.</li>
+  <li>JVM crashes / Power failure.</li>
+</ol>
+
+<h3 id="15-what-are-wrapper-classes">15. What are Wrapper Classes?</h3>
+
+<p>Classes that wrap primitive data types into objects.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">int</code> -&gt; <code class="language-plaintext highlighter-rouge">Integer</code></li>
+  <li><code class="language-plaintext highlighter-rouge">char</code> -&gt; <code class="language-plaintext highlighter-rouge">Character</code></li>
+  <li><code class="language-plaintext highlighter-rouge">double</code> -&gt; <code class="language-plaintext highlighter-rouge">Double</code></li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Autoboxing.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What is Autoboxing and Unboxing?”</li>
+      <li><em>Answer:</em> Automatic conversion between primitives and wrappers by the compiler.</li>
+      <li><em>Follow-up:</em> “What is the danger of Unboxing?”</li>
+      <li><em>Answer:</em> <code class="language-plaintext highlighter-rouge">NullPointerException</code> if the wrapper is null.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="16-what-is-a-marker-interface">16. What is a Marker Interface?</h3>
+
+<p>An interface with no methods or fields. It provides run-time type information about objects so the JVM or compiler can take some special action.</p>
+<ul>
+  <li><em>Examples:</em> <code class="language-plaintext highlighter-rouge">Serializable</code>, <code class="language-plaintext highlighter-rouge">Cloneable</code>, <code class="language-plaintext highlighter-rouge">Remote</code>.</li>
+  <li><em>Modern Alternative:</em> Annotations.</li>
+</ul>
+
+<h3 id="17-explain-public-static-void-mainstring-args">17. Explain <code class="language-plaintext highlighter-rouge">public static void main(String[] args)</code>.</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">public</code>: Access modifier, JVM can call it from outside.</li>
+  <li><code class="language-plaintext highlighter-rouge">static</code>: No object needed to call it.</li>
+  <li><code class="language-plaintext highlighter-rouge">void</code>: Returns nothing.</li>
+  <li><code class="language-plaintext highlighter-rouge">main</code>: Identifier name the JVM looks for.</li>
+  <li><code class="language-plaintext highlighter-rouge">String[] args</code>: Command line arguments.</li>
+</ul>
+
+<h3 id="18-can-we-execute-a-program-without-main-method">18. Can we execute a program without <code class="language-plaintext highlighter-rouge">main</code> method?</h3>
+
+<p>Prior to Java 7, yes, using a static block. In modern Java versions (JDK 7+), No. The JVM explicitly looks for the main method before initializing the class.</p>
+
+<h3 id="19-what-is-pass-by-value-vs-pass-by-reference">19. What is “Pass by Value” vs “Pass by Reference”?</h3>
+
+<p>Java is strictly <strong>Pass by Value</strong>.</p>
+<ul>
+  <li>For <strong>primitives</strong>, the actual value is copied.</li>
+  <li>For <strong>objects</strong>, the <em>value of the reference</em> (memory address) is copied. The object itself is not copied, but the new reference points to the same object.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Confusion.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “If I pass an object to a method and modify its field, does the original object change?”</li>
+      <li><em>Answer:</em> Yes, because the copy of the reference points to the same heap object.</li>
+      <li><em>Follow-up:</em> “If I reassign the object parameter to a <code class="language-plaintext highlighter-rouge">new Object()</code> inside the method, does the original reference change?”</li>
+      <li><em>Answer:</em> No. You only changed the local copy of the reference.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="20-what-is-the-super-keyword">20. What is the <code class="language-plaintext highlighter-rouge">super</code> keyword?</h3>
+
+<p>A reference variable used to refer to the immediate parent class object.</p>
+<ol>
+  <li>Call parent constructor: <code class="language-plaintext highlighter-rouge">super()</code>.</li>
+  <li>Call parent method: <code class="language-plaintext highlighter-rouge">super.method()</code>.</li>
+  <li>Access parent field: <code class="language-plaintext highlighter-rouge">super.field</code>.</li>
+</ol>
+
+<h2 id="part-2-collections--generics-21-40">Part 2: Collections &amp; Generics (21-40)</h2>
+
+<h3 id="21-what-is-the-difference-between-array-and-arraylist">21. What is the difference between Array and ArrayList?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">Array</th>
+      <th style="text-align: left">ArrayList</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Size</strong></td>
+      <td style="text-align: left">Fixed</td>
+      <td style="text-align: left">Dynamic (Resizes automatically)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Performance</strong></td>
+      <td style="text-align: left">Fast (Direct index access)</td>
+      <td style="text-align: left">Slightly slower (due to resizing overhead)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Primitives</strong></td>
+      <td style="text-align: left">Can store primitives (int, char).</td>
+      <td style="text-align: left">Stores only Objects (Integer, Character).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Generics</strong></td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">Yes</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="22-explain-the-hierarchy-of-the-collection-framework">22. Explain the hierarchy of the Collection Framework.</h3>
+
+<pre><code class="language-mermaid">graph TD
+    Iterable --&gt; Collection
+    Collection --&gt; List
+    Collection --&gt; Set
+    Collection --&gt; Queue
+    List --&gt; ArrayList
+    List --&gt; LinkedList
+    List --&gt; Vector
+    Set --&gt; HashSet
+    Set --&gt; LinkedHashSet
+    Set --&gt; TreeSet
+    Queue --&gt; PriorityQueue
+    Queue --&gt; Deque
+</code></pre>
+<p><em>(Note: Map is not part of the Collection interface hierarchy, it is separate).</em></p>
+
+<h3 id="23-list-vs-set-vs-map">23. List vs Set vs Map?</h3>
+
+<ul>
+  <li><strong>List:</strong> Ordered collection. Allows duplicates. Accessed by index.</li>
+  <li><strong>Set:</strong> Unordered collection. No duplicates.</li>
+  <li><strong>Map:</strong> Key-Value pairs. Unique keys.</li>
+</ul>
+
+<h3 id="24-how-does-hashset-check-for-duplicates">24. How does <code class="language-plaintext highlighter-rouge">HashSet</code> check for duplicates?</h3>
+
+<p>It uses <code class="language-plaintext highlighter-rouge">hashCode()</code> and <code class="language-plaintext highlighter-rouge">equals()</code>.</p>
+<ol>
+  <li>Calculates hash code of the object.</li>
+  <li>Checks if that hash code exists in the internal bucket.</li>
+  <li>If yes, it uses <code class="language-plaintext highlighter-rouge">equals()</code> to check if the objects are actually identical.</li>
+</ol>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Internal implementation.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What does HashSet use internally to store data?”</li>
+      <li><em>Answer:</em> It uses a <code class="language-plaintext highlighter-rouge">HashMap</code>, storing the element as the Key and a dummy object (<code class="language-plaintext highlighter-rouge">PRESENT</code>) as the Value.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="25-explain-the-internal-working-of-hashmap">25. Explain the internal working of <code class="language-plaintext highlighter-rouge">HashMap</code>.</h3>
+
+<p>It uses an array of “Nodes” (buckets). Each node is a Linked List (or Red-Black Tree in Java 8+).</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">put(K, V)</code> -&gt; Hash(K) -&gt; Index.</li>
+  <li>If bucket is empty, add Node.</li>
+  <li>If bucket is not empty (Collision), append to Linked List/Tree.</li>
+</ol>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Java 8 Improvement.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What changed in Java 8 regarding HashMap collisions?”</li>
+      <li><em>Answer:</em> When a bucket’s linked list grows beyond a threshold (8), it converts to a <strong>Balanced Tree (Red-Black Tree)</strong> to improve worst-case search from O(n) to O(log n).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="26-arraylist-vs-linkedlist">26. <code class="language-plaintext highlighter-rouge">ArrayList</code> vs <code class="language-plaintext highlighter-rouge">LinkedList</code>?</h3>
+
+<ul>
+  <li><strong>ArrayList:</strong> Uses a dynamic array.
+    <ul>
+      <li><em>Get:</em> O(1)</li>
+      <li><em>Insert/Delete:</em> O(n) (needs shifting).</li>
+    </ul>
+  </li>
+  <li><strong>LinkedList:</strong> Uses a doubly linked list.
+    <ul>
+      <li><em>Get:</em> O(n) (needs traversal).</li>
+      <li><em>Insert/Delete:</em> O(1) (pointer change, assuming you are at the node).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="27-what-is-the-difference-between-hashmap-and-hashtable">27. What is the difference between <code class="language-plaintext highlighter-rouge">HashMap</code> and <code class="language-plaintext highlighter-rouge">Hashtable</code>?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">HashMap</th>
+      <th style="text-align: left">Hashtable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Thread-Safe</strong></td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">Yes (Synchronized)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Null Keys/Values</strong></td>
+      <td style="text-align: left">Allows 1 null key, multiple null values.</td>
+      <td style="text-align: left">Does not allow nulls.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Performance</strong></td>
+      <td style="text-align: left">Fast</td>
+      <td style="text-align: left">Slow</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Legacy</strong></td>
+      <td style="text-align: left">Modern</td>
+      <td style="text-align: left">Legacy (Vector/Stack/Hashtable)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="28-what-is-concurrenthashmap">28. What is <code class="language-plaintext highlighter-rouge">ConcurrentHashMap</code>?</h3>
+
+<p>A thread-safe implementation of Map. Unlike <code class="language-plaintext highlighter-rouge">Hashtable</code> (which locks the entire map), <code class="language-plaintext highlighter-rouge">ConcurrentHashMap</code> uses <strong>Bucket-Level Locking</strong> (Segment locking in older versions, CAS + Synchronized on Node in Java 8+). It allows concurrent reads and writes.</p>
+
+<h3 id="29-what-is-the-difference-between-comparable-and-comparator">29. What is the difference between <code class="language-plaintext highlighter-rouge">Comparable</code> and <code class="language-plaintext highlighter-rouge">Comparator</code>?</h3>
+
+<ul>
+  <li><strong>Comparable:</strong> Natural ordering. Implemented by the class itself (<code class="language-plaintext highlighter-rouge">implements Comparable&lt;T&gt;</code>). Override <code class="language-plaintext highlighter-rouge">compareTo()</code>.
+    <ul>
+      <li><em>Example:</em> <code class="language-plaintext highlighter-rouge">Collections.sort(list)</code> uses this.</li>
+    </ul>
+  </li>
+  <li><strong>Comparator:</strong> Custom ordering. Implemented by a separate class (<code class="language-plaintext highlighter-rouge">implements Comparator&lt;T&gt;</code>). Override <code class="language-plaintext highlighter-rouge">compare()</code>.
+    <ul>
+      <li><em>Example:</em> <code class="language-plaintext highlighter-rouge">Collections.sort(list, new MyComparator())</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="30-what-is-a-priorityqueue">30. What is a PriorityQueue?</h3>
+
+<p>A queue where elements are ordered based on their priority (Natural ordering or Comparator), not insertion order. The head is always the least element.</p>
+<ul>
+  <li><em>Implementation:</em> Binary Heap.</li>
+  <li><em>Time Complexity:</em> Enqueue/Dequeue takes O(log n).</li>
+</ul>
+
+<h3 id="31-what-is-the-contract-between-hashcode-and-equals">31. What is the contract between <code class="language-plaintext highlighter-rouge">hashCode()</code> and <code class="language-plaintext highlighter-rouge">equals()</code>?</h3>
+
+<ol>
+  <li>If two objects are equal according to <code class="language-plaintext highlighter-rouge">equals()</code>, they MUST have the same <code class="language-plaintext highlighter-rouge">hashCode()</code>.</li>
+  <li>If two objects have the same <code class="language-plaintext highlighter-rouge">hashCode()</code>, they are NOT necessarily equal (Collision).</li>
+</ol>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Violation consequences.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What goes wrong if I override equals but not hashCode?”</li>
+      <li><em>Answer:</em> Collections relying on hashing (HashMap, HashSet) will fail to find the object because they look in the wrong bucket.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="32-what-is-fail-fast-vs-fail-safe-iterator">32. What is <code class="language-plaintext highlighter-rouge">fail-fast</code> vs <code class="language-plaintext highlighter-rouge">fail-safe</code> iterator?</h3>
+
+<ul>
+  <li><strong>Fail-Fast:</strong> Throws <code class="language-plaintext highlighter-rouge">ConcurrentModificationException</code> if the collection is modified while iterating (except via iterator’s own remove method).
+    <ul>
+      <li><em>Examples:</em> ArrayList, HashMap iterators.</li>
+    </ul>
+  </li>
+  <li><strong>Fail-Safe:</strong> Works on a clone or snapshot of the collection. Does not throw exception.
+    <ul>
+      <li><em>Examples:</em> <code class="language-plaintext highlighter-rouge">CopyOnWriteArrayList</code>, <code class="language-plaintext highlighter-rouge">ConcurrentHashMap</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="33-what-are-generics">33. What are Generics?</h3>
+
+<p>Generics allow types (classes and interfaces) to be parameters when defining classes, interfaces, and methods. It provides <strong>Type Safety</strong> at compile time and eliminates manual casting.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+</code></pre></div></div>
+
+<h3 id="34-what-is-type-erasure">34. What is Type Erasure?</h3>
+
+<p>The process where the compiler removes all generic type information after type checking. At runtime, <code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code> and <code class="language-plaintext highlighter-rouge">List&lt;Integer&gt;</code> become just <code class="language-plaintext highlighter-rouge">List</code>.</p>
+<ul>
+  <li><em>Why?</em> Backward compatibility with pre-Java 5 code.</li>
+</ul>
+
+<h3 id="35-what-is-the-difference-between--extends-t-and--super-t">35. What is the difference between <code class="language-plaintext highlighter-rouge">&lt;? extends T&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;? super T&gt;</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;? extends T&gt;</code>: Upper Bound Wildcard. Accepts T or its subclasses. (Read-only mostly).</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;? super T&gt;</code>: Lower Bound Wildcard. Accepts T or its superclasses. (Write-allowed).</li>
+  <li><strong>PECS Rule:</strong> Producer Extends, Consumer Super.</li>
+</ul>
+
+<h3 id="36-can-you-add-an-element-to-a-list">36. Can you add an element to a <code class="language-plaintext highlighter-rouge">List&lt;?&gt;</code>?</h3>
+
+<p>No (except <code class="language-plaintext highlighter-rouge">null</code>). Because the compiler doesn’t know what type the list holds, it prevents adding any object to ensure type safety.</p>
+
+<h3 id="37-what-is-identityhashmap">37. What is <code class="language-plaintext highlighter-rouge">IdentityHashMap</code>?</h3>
+
+<p>A map that uses reference equality (<code class="language-plaintext highlighter-rouge">==</code>) instead of object equality (<code class="language-plaintext highlighter-rouge">equals()</code>) for keys. Useful for topology preservation in serialization.</p>
+
+<h3 id="38-what-is-weakhashmap">38. What is <code class="language-plaintext highlighter-rouge">WeakHashMap</code>?</h3>
+
+<p>A Map where keys are <strong>WeakReferences</strong>. If a key is no longer referenced elsewhere in the application, the entry is eligible for Garbage Collection. Useful for Caches.</p>
+
+<h3 id="39-how-to-make-a-collection-read-only-immutable">39. How to make a collection Read-Only (Immutable)?</h3>
+
+<p>Use <code class="language-plaintext highlighter-rouge">Collections.unmodifiableList(list)</code>.</p>
+<ul>
+  <li><em>Note:</em> It returns a view. If the original list changes, the view changes. For a truly immutable independent copy, use <code class="language-plaintext highlighter-rouge">List.copyOf(list)</code> (Java 10+).</li>
+</ul>
+
+<h3 id="40-why-doesnt-map-extend-collection-interface">40. Why doesn’t <code class="language-plaintext highlighter-rouge">Map</code> extend <code class="language-plaintext highlighter-rouge">Collection</code> interface?</h3>
+
+<p>Because Map is a key-value pair, while Collection is a group of individual objects. The methods <code class="language-plaintext highlighter-rouge">add(E)</code> or <code class="language-plaintext highlighter-rouge">iterator()</code> don’t map directly to a Key-Value structure (which has <code class="language-plaintext highlighter-rouge">put(K,V)</code>, <code class="language-plaintext highlighter-rouge">keySet()</code>, <code class="language-plaintext highlighter-rouge">entrySet()</code>).</p>
+
+<h2 id="part-3-concurrency--multithreading-41-60">Part 3: Concurrency &amp; Multithreading (41-60)</h2>
+
+<h3 id="41-what-is-the-difference-between-process-and-thread">41. What is the difference between <code class="language-plaintext highlighter-rouge">Process</code> and <code class="language-plaintext highlighter-rouge">Thread</code>?</h3>
+
+<ul>
+  <li><strong>Process:</strong> An instance of a program in execution. Has its own memory space (Heap, Stack). Heavyweight.</li>
+  <li><strong>Thread:</strong> A subset of a process. Share the same memory space (Heap) but have their own Stack. Lightweight.</li>
+</ul>
+
+<h3 id="42-how-can-we-create-a-thread-in-java">42. How can we create a Thread in Java?</h3>
+
+<ol>
+  <li><strong>Extending <code class="language-plaintext highlighter-rouge">Thread</code> class.</strong></li>
+  <li><strong>Implementing <code class="language-plaintext highlighter-rouge">Runnable</code> interface.</strong> (Preferred, as it allows extending other classes).</li>
+  <li><strong>Implementing <code class="language-plaintext highlighter-rouge">Callable</code> interface.</strong> (Returns a value).</li>
+</ol>
+
+<h3 id="43-what-is-the-difference-between-start-and-run">43. What is the difference between <code class="language-plaintext highlighter-rouge">start()</code> and <code class="language-plaintext highlighter-rouge">run()</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">start()</code>: Creates a new thread and then calls <code class="language-plaintext highlighter-rouge">run()</code> internally.</li>
+  <li><code class="language-plaintext highlighter-rouge">run()</code>: Just executes the method in the <em>current</em> thread (no new thread created).</li>
+</ul>
+
+<h3 id="44-explain-thread-lifecycle-states">44. Explain Thread Lifecycle (States).</h3>
+
+<ol>
+  <li><strong>New:</strong> Created but not started.</li>
+  <li><strong>Runnable:</strong> Ready to run (waiting for CPU).</li>
+  <li><strong>Running:</strong> Executing code.</li>
+  <li><strong>Blocked/Waiting:</strong> Waiting for resource or another thread.</li>
+  <li><strong>Terminated:</strong> Finished execution.</li>
+</ol>
+
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; New
+    New --&gt; Runnable: start()
+    Runnable --&gt; Running: Scheduler
+    Running --&gt; Runnable: yield()
+    Running --&gt; Blocked: sleep()/wait()
+    Blocked --&gt; Runnable: notify()/time out
+    Running --&gt; Terminated: End
+</code></pre>
+
+<h3 id="45-what-is-synchronization">45. What is Synchronization?</h3>
+
+<p>A mechanism to control access of multiple threads to shared resources to prevent data inconsistency (Race Conditions).</p>
+<ul>
+  <li><strong>Method Synchronization:</strong> <code class="language-plaintext highlighter-rouge">public synchronized void method() {}</code></li>
+  <li><strong>Block Synchronization:</strong> <code class="language-plaintext highlighter-rouge">synchronized(this) { ... }</code></li>
+</ul>
+
+<h3 id="46-what-is-a-race-condition">46. What is a “Race Condition”?</h3>
+
+<p>A condition where multiple threads access and modify shared data concurrently, and the final result depends on the order of execution (which is unpredictable).</p>
+
+<h3 id="47-what-is-deadlock">47. What is Deadlock?</h3>
+
+<p>A situation where two or more threads are blocked forever, waiting for each other.</p>
+<ul>
+  <li><em>Conditions:</em> Mutual Exclusion, Hold and Wait, No Preemption, Circular Wait.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Prevention.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How can we prevent Deadlock?”</li>
+      <li><em>Answer:</em> Eliminate Circular Wait by enforcing a strict order of acquiring locks.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="48-wait-vs-sleep">48. <code class="language-plaintext highlighter-rouge">wait()</code> vs <code class="language-plaintext highlighter-rouge">sleep()</code>?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left"><code class="language-plaintext highlighter-rouge">wait()</code></th>
+      <th style="text-align: left"><code class="language-plaintext highlighter-rouge">sleep()</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Origin</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Object</code> class</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Thread</code> class</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Lock</strong></td>
+      <td style="text-align: left">Releases the lock.</td>
+      <td style="text-align: left">Keeps the lock.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Usage</strong></td>
+      <td style="text-align: left">Inter-thread communication.</td>
+      <td style="text-align: left">Pausing execution.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="49-what-is-the-volatile-keyword">49. What is the <code class="language-plaintext highlighter-rouge">volatile</code> keyword?</h3>
+
+<p>It guarantees <strong>Visibility</strong>.</p>
+<ul>
+  <li>The value of a volatile variable will always be read from the main memory, not from the thread’s local cache.</li>
+  <li>It also prevents instruction reordering.</li>
+  <li><em>Note:</em> It does NOT guarantee Atomicity (e.g., <code class="language-plaintext highlighter-rouge">count++</code> is not safe even if <code class="language-plaintext highlighter-rouge">count</code> is volatile).</li>
+</ul>
+
+<h3 id="50-what-is-threadlocal">50. What is <code class="language-plaintext highlighter-rouge">ThreadLocal</code>?</h3>
+
+<p>A class that provides thread-local variables. Each thread accessing the variable has its own, independently initialized copy.</p>
+<ul>
+  <li><em>Usage:</em> Storing User ID in a web request, Transaction context.</li>
+</ul>
+
+<h3 id="51-what-is-the-executor-framework">51. What is the Executor Framework?</h3>
+
+<p>Introduced in Java 5 (<code class="language-plaintext highlighter-rouge">java.util.concurrent</code>). It separates task submission from task execution.</p>
+<ul>
+  <li><strong>Interfaces:</strong> <code class="language-plaintext highlighter-rouge">Executor</code>, <code class="language-plaintext highlighter-rouge">ExecutorService</code>.</li>
+  <li><strong>Implementations:</strong> <code class="language-plaintext highlighter-rouge">ThreadPoolExecutor</code>.</li>
+</ul>
+
+<h3 id="52-what-is-the-difference-between-runnable-and-callable">52. What is the difference between <code class="language-plaintext highlighter-rouge">Runnable</code> and <code class="language-plaintext highlighter-rouge">Callable</code>?</h3>
+
+<ul>
+  <li><strong>Runnable:</strong> <code class="language-plaintext highlighter-rouge">run()</code> method returns <code class="language-plaintext highlighter-rouge">void</code>. Cannot throw checked exceptions.</li>
+  <li><strong>Callable:</strong> <code class="language-plaintext highlighter-rouge">call()</code> method returns <code class="language-plaintext highlighter-rouge">V</code> (Result). Can throw checked exceptions.</li>
+</ul>
+
+<h3 id="53-what-is-a-future">53. What is a <code class="language-plaintext highlighter-rouge">Future</code>?</h3>
+
+<p>Represents the result of an asynchronous computation.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">get()</code>: Retrieves the result (blocks if not ready).</li>
+  <li><code class="language-plaintext highlighter-rouge">isDone()</code>: Checks if task is completed.</li>
+</ul>
+
+<h3 id="54-what-is-the-difference-between-submit-and-execute">54. What is the difference between <code class="language-plaintext highlighter-rouge">submit()</code> and <code class="language-plaintext highlighter-rouge">execute()</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">execute(Runnable)</code>: Defined in <code class="language-plaintext highlighter-rouge">Executor</code>. Returns void. Fire and forget.</li>
+  <li><code class="language-plaintext highlighter-rouge">submit(Callable/Runnable)</code>: Defined in <code class="language-plaintext highlighter-rouge">ExecutorService</code>. Returns a <code class="language-plaintext highlighter-rouge">Future</code>.</li>
+</ul>
+
+<h3 id="55-what-is-a-thread-pool">55. What is a “Thread Pool”?</h3>
+
+<p>A collection of pre-created threads waiting for tasks.</p>
+<ul>
+  <li><em>Benefits:</em> Reduces overhead of thread creation/destruction. Limits resource usage.</li>
+</ul>
+
+<h3 id="56-types-of-thread-pools-in-executors-class">56. Types of Thread Pools in <code class="language-plaintext highlighter-rouge">Executors</code> class?</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">newFixedThreadPool(n)</code>: Fixed number of threads.</li>
+  <li><code class="language-plaintext highlighter-rouge">newCachedThreadPool()</code>: Creates new threads as needed, reuses idle ones.</li>
+  <li><code class="language-plaintext highlighter-rouge">newSingleThreadExecutor()</code>: Single worker thread.</li>
+  <li><code class="language-plaintext highlighter-rouge">newScheduledThreadPool(n)</code>: For scheduled tasks.</li>
+</ol>
+
+<h3 id="57-what-is-countdownlatch">57. What is <code class="language-plaintext highlighter-rouge">CountDownLatch</code>?</h3>
+
+<p>A synchronizer that allows one or more threads to wait until a set of operations being performed in other threads completes.</p>
+<ul>
+  <li><em>Mechanism:</em> Initialized with count N. <code class="language-plaintext highlighter-rouge">await()</code> blocks until count reaches 0. Other threads call <code class="language-plaintext highlighter-rouge">countDown()</code>.</li>
+</ul>
+
+<h3 id="58-what-is-cyclicbarrier">58. What is <code class="language-plaintext highlighter-rouge">CyclicBarrier</code>?</h3>
+
+<p>A synchronizer that allows a set of threads to all wait for each other to reach a common barrier point.</p>
+<ul>
+  <li><em>Difference from CountDownLatch:</em> CyclicBarrier can be reused (reset) after the barrier is broken.</li>
+</ul>
+
+<h3 id="59-what-is-atomicinteger">59. What is <code class="language-plaintext highlighter-rouge">AtomicInteger</code>?</h3>
+
+<p>A class in <code class="language-plaintext highlighter-rouge">java.util.concurrent.atomic</code> that provides atomic operations on <code class="language-plaintext highlighter-rouge">int</code> using CAS (Compare-And-Swap) machine instructions, without using synchronization.</p>
+<ul>
+  <li><em>Example:</em> <code class="language-plaintext highlighter-rouge">incrementAndGet()</code> is atomic.</li>
+</ul>
+
+<h3 id="60-what-is-cas-compare-and-swap">60. What is “CAS” (Compare-And-Swap)?</h3>
+
+<p>An optimistic locking technique used in non-blocking algorithms.</p>
+<ul>
+  <li><em>Operation:</em> “I think the value is A. If it is essentially A, change it to B. If not, tell me the real value and I’ll try again.”</li>
+  <li><em>Benefit:</em> Much faster than locks (synchronized) for low contention.</li>
+</ul>
+
+<h2 id="part-4-jvm-memory--performance-61-80">Part 4: JVM, Memory &amp; Performance (61-80)</h2>
+
+<h3 id="61-explain-the-jvm-memory-structure">61. Explain the JVM Memory Structure.</h3>
+
+<ol>
+  <li><strong>Heap Memory:</strong> Stores Objects and Class variables. Shared by all threads.</li>
+  <li><strong>Stack Memory:</strong> Stores method calls, local variables, and reference variables. Per-thread.</li>
+  <li><strong>Metaspace (formerly PermGen):</strong> Stores Class definitions, Method metadata, static variables.</li>
+  <li><strong>PC Register:</strong> Current instruction address.</li>
+  <li><strong>Native Method Stack:</strong> For native (C/C++) methods.</li>
+</ol>
+
+<pre><code class="language-mermaid">graph TD
+    JVM[JVM Memory] --&gt; Heap
+    JVM --&gt; Stack
+    JVM --&gt; Metaspace
+    JVM --&gt; PC[PC Register]
+    JVM --&gt; Native[Native Stack]
+    Heap --&gt; Young[Young Gen]
+    Heap --&gt; Old[Old Gen]
+    Young --&gt; Eden
+    Young --&gt; S0[Survivor 0]
+    Young --&gt; S1[Survivor 1]
+</code></pre>
+
+<h3 id="62-what-is-garbage-collection-gc">62. What is Garbage Collection (GC)?</h3>
+
+<p>The process by which the JVM automatically identifies and removes objects from memory (Heap) that are no longer reachable (referenced) by the application.</p>
+
+<h3 id="63-how-does-the-jvm-know-an-object-is-garbage">63. How does the JVM know an object is “garbage”?</h3>
+
+<p>It uses <strong>Reachability Analysis</strong>.</p>
+<ul>
+  <li><strong>GC Roots:</strong> Objects that are always accessible (e.g., Local variables in active stack, Static variables, Active threads).</li>
+  <li>Any object not reachable from a GC Root is considered garbage.</li>
+</ul>
+
+<h3 id="64-explain-the-generational-garbage-collection-process">64. Explain the Generational Garbage Collection process.</h3>
+
+<ol>
+  <li>New objects are created in <strong>Eden</strong> (Young Gen).</li>
+  <li>When Eden fills, a <strong>Minor GC</strong> occurs. Alive objects move to <strong>Survivor Space (S0)</strong>.</li>
+  <li>Next Minor GC: Alive objects in Eden + S0 move to <strong>S1</strong>. S0 is cleared. S0 and S1 swap roles.</li>
+  <li>Objects surviving multiple Minor GC cycles (threshold age) are promoted to <strong>Old Gen</strong>.</li>
+  <li>When Old Gen fills, a <strong>Major GC (Full GC)</strong> occurs.</li>
+</ol>
+
+<h3 id="65-what-are-the-different-types-of-garbage-collectors">65. What are the different types of Garbage Collectors?</h3>
+
+<ol>
+  <li><strong>Serial GC:</strong> Single-threaded. (Small apps).</li>
+  <li><strong>Parallel GC:</strong> Multi-threaded for Minor GC. (Throughput-oriented).</li>
+  <li><strong>CMS (Concurrent Mark Sweep):</strong> Minimizes pause times (Deprecated).</li>
+  <li><strong>G1 GC (Garbage First):</strong> Splits heap into regions. Default in Java 9+. Balanced throughput/latency.</li>
+  <li><strong>ZGC:</strong> Ultra-low latency (&lt;10ms).</li>
+</ol>
+
+<h3 id="66-what-is-a-memory-leak-in-java">66. What is a “Memory Leak” in Java?</h3>
+
+<p>A situation where objects are no longer used by the application but are still referenced (e.g., in a static List or Map), preventing the GC from removing them. Eventually leads to <code class="language-plaintext highlighter-rouge">OutOfMemoryError</code>.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Debugging.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How do you detect a memory leak?”</li>
+      <li><em>Answer:</em> Use a profiler (VisualVM, JProfiler) to analyze Heap Dumps. Look for objects with growing instance counts that shouldn’t be growing.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="67-what-is-stackoverflowerror">67. What is <code class="language-plaintext highlighter-rouge">StackOverflowError</code>?</h3>
+
+<p>Occurs when the Stack memory is exhausted.</p>
+<ul>
+  <li><em>Cause:</em> Deep or infinite recursion.</li>
+</ul>
+
+<h3 id="68-what-is-outofmemoryerror-oom">68. What is <code class="language-plaintext highlighter-rouge">OutOfMemoryError</code> (OOM)?</h3>
+
+<p>Occurs when the Heap (or Metaspace) is full and GC cannot free up enough space.</p>
+<ul>
+  <li><em>Types:</em> <code class="language-plaintext highlighter-rouge">Java heap space</code>, <code class="language-plaintext highlighter-rouge">Metaspace</code>, <code class="language-plaintext highlighter-rouge">GC Overhead limit exceeded</code>.</li>
+</ul>
+
+<h3 id="69-what-is-classloading">69. What is Classloading?</h3>
+
+<p>The process of finding and loading class files (<code class="language-plaintext highlighter-rouge">.class</code>) into the JVM memory at runtime.</p>
+
+<h3 id="70-explain-the-classloader-hierarchy">70. Explain the Classloader Hierarchy.</h3>
+
+<ol>
+  <li><strong>Bootstrap Classloader:</strong> Loads core Java classes (<code class="language-plaintext highlighter-rouge">rt.jar</code>, <code class="language-plaintext highlighter-rouge">java.lang.*</code>). Native implementation.</li>
+  <li><strong>Platform/Extension Classloader:</strong> Loads extensions (<code class="language-plaintext highlighter-rouge">lib/ext</code>).</li>
+  <li><strong>Application/System Classloader:</strong> Loads classes from the classpath.</li>
+</ol>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Delegation Model.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How does the delegation model work?”</li>
+      <li><em>Answer:</em> A classloader delegates the search to its parent first. Only if the parent cannot find it, does it try to load it itself.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="71-what-is-jit-just-in-time-compiler">71. What is JIT (Just-In-Time) Compiler?</h3>
+
+<p>Part of the JVM execution engine. It compiles “hot” bytecode (frequently executed code) into native machine code at runtime for higher performance, while interpreting the rest.</p>
+
+<h3 id="72-what-are-soft-weak-and-phantom-references">72. What are Soft, Weak, and Phantom References?</h3>
+
+<ul>
+  <li><strong>Strong Reference:</strong> Default (<code class="language-plaintext highlighter-rouge">obj = new Object()</code>). Never collected if reachable.</li>
+  <li><strong>Soft Reference:</strong> Collected only if JVM is running out of memory. (Good for Caches).</li>
+  <li><strong>Weak Reference:</strong> Collected aggressively at the next GC event. (Good for Metadata maps).</li>
+  <li><strong>Phantom Reference:</strong> Collected when the object is physically removed. Used for scheduling post-mortem cleanup.</li>
+</ul>
+
+<h3 id="73-what-is-the-difference-between-heap-and-stack-memory">73. What is the difference between Heap and Stack memory?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">Heap</th>
+      <th style="text-align: left">Stack</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Storage</strong></td>
+      <td style="text-align: left">Objects</td>
+      <td style="text-align: left">Primitives, References, Methods</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Visibility</strong></td>
+      <td style="text-align: left">Global (All threads)</td>
+      <td style="text-align: left">Local (Per thread)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Size</strong></td>
+      <td style="text-align: left">Large</td>
+      <td style="text-align: left">Small</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Speed</strong></td>
+      <td style="text-align: left">Slower access</td>
+      <td style="text-align: left">Faster access</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="74-how-do-you-tune-jvm-memory">74. How do you tune JVM Memory?</h3>
+
+<p>Using JVM flags:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-Xms</code>: Initial Heap Size.</li>
+  <li><code class="language-plaintext highlighter-rouge">-Xmx</code>: Maximum Heap Size.</li>
+  <li><code class="language-plaintext highlighter-rouge">-Xss</code>: Stack Size per thread.</li>
+  <li><code class="language-plaintext highlighter-rouge">-XX:MaxMetaspaceSize</code>: Max Metaspace size.</li>
+</ul>
+
+<h3 id="75-what-is-string-interning">75. What is “String Interning”?</h3>
+
+<p>The process of storing only one copy of each distinct string value, which must be immutable.
+<code class="language-plaintext highlighter-rouge">String s = "hello"</code> places “hello” in the <strong>String Constant Pool</strong> (in Heap).
+<code class="language-plaintext highlighter-rouge">s.intern()</code> forces a string object into the pool.</p>
+
+<h3 id="76-why-is-finalize-deprecated">76. Why is <code class="language-plaintext highlighter-rouge">finalize()</code> deprecated?</h3>
+
+<ol>
+  <li><strong>Unpredictable:</strong> No guarantee when (or if) it will run.</li>
+  <li><strong>Performance:</strong> Adds overhead to object creation and destruction.</li>
+  <li><strong>Security:</strong> Vulnerable to “Finalizer attacks”.</li>
+  <li><em>Alternative:</em> Use <code class="language-plaintext highlighter-rouge">AutoCloseable</code> (try-with-resources) or <code class="language-plaintext highlighter-rouge">Cleaner</code> API.</li>
+</ol>
+
+<h3 id="77-what-happens-if-you-run-a-recursive-function-without-a-base-case">77. What happens if you run a recursive function without a base case?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">StackOverflowError</code>. Each call adds a frame to the thread’s stack until it hits the limit (<code class="language-plaintext highlighter-rouge">-Xss</code>).</p>
+
+<h3 id="78-what-is-the-purpose-of-the-transient-keyword">78. What is the purpose of the <code class="language-plaintext highlighter-rouge">transient</code> keyword?</h3>
+
+<p>It indicates that a field should <strong>not be serialized</strong>. When an object is deserialized, transient fields are initialized to their default values (null/0).</p>
+
+<h3 id="79-what-is-escape-analysis">79. What is “Escape Analysis”?</h3>
+
+<p>A JIT optimization. If an object is allocated inside a method and its reference never “escapes” that method (i.e., not returned or assigned to a global variable), the JVM might allocate it on the <strong>Stack</strong> instead of the Heap (Stack Allocation), or eliminate the allocation entirely (Scalar Replacement).</p>
+
+<h3 id="80-how-does-the-jvm-handle-integer-caching">80. How does the JVM handle Integer Caching?</h3>
+
+<p>The JVM caches <code class="language-plaintext highlighter-rouge">Integer</code> objects for values between -128 and 127.
+<code class="language-plaintext highlighter-rouge">Integer a = 100; Integer b = 100;</code> -&gt; <code class="language-plaintext highlighter-rouge">a == b</code> is true.
+<code class="language-plaintext highlighter-rouge">Integer x = 200; Integer y = 200;</code> -&gt; <code class="language-plaintext highlighter-rouge">x == y</code> is false (creates new objects).</p>
+
+<h2 id="part-5-advanced-features-frameworks--design-patterns-81-100">Part 5: Advanced Features, Frameworks &amp; Design Patterns (81-100)</h2>
+
+<h3 id="81-what-is-the-singleton-design-pattern">81. What is the Singleton Design Pattern?</h3>
+
+<p>A design pattern that ensures a class has only one instance and provides a global point of access to it.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Thread-safe Bill Pugh Singleton</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Singleton</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nf">Singleton</span><span class="o">()</span> <span class="o">{}</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Holder</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Singleton</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Singleton</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">Holder</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="82-what-is-the-factory-design-pattern">82. What is the Factory Design Pattern?</h3>
+
+<p>A creational pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.</p>
+
+<h3 id="83-what-is-dependency-injection-di">83. What is Dependency Injection (DI)?</h3>
+
+<p>A design pattern used to implement IoC (Inversion of Control). It allows the creation of dependent objects outside of a class and provides those objects to a class through different ways (Constructor, Setter, Interface).</p>
+
+<h3 id="84-what-is-reflection">84. What is Reflection?</h3>
+
+<p>An API that is used to examine or modify the behavior of methods, classes, and interfaces at runtime.</p>
+<ul>
+  <li><em>Uses:</em> IDEs, Debuggers, Test Tools, Spring Framework (DI).</li>
+  <li><em>Drawbacks:</em> Performance overhead, Security risk, Breaks encapsulation.</li>
+</ul>
+
+<h3 id="85-what-are-java-annotations">85. What are Java Annotations?</h3>
+
+<p>Metadata about the program that is not part of the program itself.</p>
+<ul>
+  <li><em>Built-in:</em> <code class="language-plaintext highlighter-rouge">@Override</code>, <code class="language-plaintext highlighter-rouge">@Deprecated</code>, <code class="language-plaintext highlighter-rouge">@SuppressWarnings</code>.</li>
+  <li><em>Custom:</em> Created using <code class="language-plaintext highlighter-rouge">@interface</code>.</li>
+</ul>
+
+<h3 id="86-what-is-a-functional-interface">86. What is a Functional Interface?</h3>
+
+<p>An interface with exactly one abstract method.</p>
+<ul>
+  <li><em>Annotation:</em> <code class="language-plaintext highlighter-rouge">@FunctionalInterface</code>.</li>
+  <li><em>Purpose:</em> Used as the assignment target for a <strong>Lambda Expression</strong> or Method Reference.</li>
+  <li><em>Examples:</em> <code class="language-plaintext highlighter-rouge">Runnable</code>, <code class="language-plaintext highlighter-rouge">Callable</code>, <code class="language-plaintext highlighter-rouge">Comparator</code>, <code class="language-plaintext highlighter-rouge">Predicate</code>.</li>
+</ul>
+
+<h3 id="87-explain-java-8-stream-api">87. Explain Java 8 Stream API.</h3>
+
+<p>A sequence of elements supporting sequential and parallel aggregate operations.</p>
+<ul>
+  <li><strong>Intermediate Operations (Lazy):</strong> <code class="language-plaintext highlighter-rouge">filter</code>, <code class="language-plaintext highlighter-rouge">map</code>, <code class="language-plaintext highlighter-rouge">sorted</code>.</li>
+  <li><strong>Terminal Operations (Eager):</strong> <code class="language-plaintext highlighter-rouge">forEach</code>, <code class="language-plaintext highlighter-rouge">collect</code>, <code class="language-plaintext highlighter-rouge">reduce</code>, <code class="language-plaintext highlighter-rouge">count</code>.</li>
+</ul>
+
+<h3 id="88-what-is-the-difference-between-map-and-flatmap">88. What is the difference between <code class="language-plaintext highlighter-rouge">map()</code> and <code class="language-plaintext highlighter-rouge">flatMap()</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">map()</code>: Transforms each element into another object. One-to-One.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code> -&gt; <code class="language-plaintext highlighter-rouge">List&lt;Integer&gt;</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">flatMap()</code>: Transforms each element into a Stream of objects, then flattens the streams into a single Stream. One-to-Many.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">List&lt;List&lt;String&gt;&gt;</code> -&gt; <code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="89-what-is-optional">89. What is <code class="language-plaintext highlighter-rouge">Optional</code>?</h3>
+
+<p>A container object which may or may not contain a non-null value. It is used to avoid <code class="language-plaintext highlighter-rouge">NullPointerException</code> and explicit null checks.</p>
+<ul>
+  <li><em>Methods:</em> <code class="language-plaintext highlighter-rouge">isPresent()</code>, <code class="language-plaintext highlighter-rouge">ifPresent()</code>, <code class="language-plaintext highlighter-rouge">orElse()</code>, <code class="language-plaintext highlighter-rouge">orElseGet()</code>, <code class="language-plaintext highlighter-rouge">orElseThrow()</code>.</li>
+</ul>
+
+<h3 id="90-what-are-default-methods-in-interfaces">90. What are Default Methods in Interfaces?</h3>
+
+<p>Introduced in Java 8, they allow adding new methods to interfaces without breaking the existing implementation classes.</p>
+<ul>
+  <li><em>Keyword:</em> <code class="language-plaintext highlighter-rouge">default</code>.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Diamond Problem.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What happens if a class implements two interfaces with the same default method?”</li>
+      <li><em>Answer:</em> The class fails to compile unless it overrides the method to resolve the conflict.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="91-what-are-java-modules-project-jigsaw">91. What are Java Modules (Project Jigsaw)?</h3>
+
+<p>Introduced in Java 9. A module is a named, self-describing collection of code and data.</p>
+<ul>
+  <li><em>File:</em> <code class="language-plaintext highlighter-rouge">module-info.java</code>.</li>
+  <li><em>Keywords:</em> <code class="language-plaintext highlighter-rouge">module</code>, <code class="language-plaintext highlighter-rouge">requires</code>, <code class="language-plaintext highlighter-rouge">exports</code>.</li>
+  <li><em>Benefit:</em> Better encapsulation (stronger than packages), reduced runtime image size (<code class="language-plaintext highlighter-rouge">jlink</code>).</li>
+</ul>
+
+<h3 id="92-what-are-java-records">92. What are Java Records?</h3>
+
+<p>Introduced in Java 14 (Preview) / 16 (Standard). A concise way to declare classes that are transparent holders for immutable data.</p>
+<ul>
+  <li><em>Replaces:</em> POJOs with boilerplate getters, <code class="language-plaintext highlighter-rouge">equals</code>, <code class="language-plaintext highlighter-rouge">hashCode</code>, <code class="language-plaintext highlighter-rouge">toString</code>.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">record</span> <span class="nf">Point</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{}</span>
+</code></pre></div></div>
+
+<h3 id="93-what-is-var-in-java">93. What is <code class="language-plaintext highlighter-rouge">var</code> in Java?</h3>
+
+<p>Introduced in Java 10. Local Variable Type Inference.</p>
+<ul>
+  <li><em>Usage:</em> <code class="language-plaintext highlighter-rouge">var list = new ArrayList&lt;String&gt;();</code></li>
+  <li><em>Constraint:</em> Can only be used for local variables with an initializer. Cannot be used for method parameters or return types.</li>
+</ul>
+
+<h3 id="94-what-is-the-difference-between-serialization-and-deserialization">94. What is the difference between Serialization and Deserialization?</h3>
+
+<ul>
+  <li><strong>Serialization:</strong> Converting an object state into a byte stream (to save to file/DB or send over network).</li>
+  <li><strong>Deserialization:</strong> Recreating the object from the byte stream.</li>
+</ul>
+
+<h3 id="95-what-is-serialversionuid">95. What is <code class="language-plaintext highlighter-rouge">serialVersionUID</code>?</h3>
+
+<p>A unique identifier for each class version. It is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization.</p>
+
+<h3 id="96-what-is-the-observer-design-pattern">96. What is the Observer Design Pattern?</h3>
+
+<p>A behavioral design pattern where an object (Subject) maintains a list of its dependents (Observers), and notifies them automatically of any state changes.</p>
+<ul>
+  <li><em>Usage:</em> Event handling systems (GUI), Pub-Sub systems.</li>
+</ul>
+
+<h3 id="97-what-is-inversion-of-control-ioc">97. What is Inversion of Control (IoC)?</h3>
+
+<p>A principle where the control of objects or portions of a program is transferred to a container or framework.</p>
+<ul>
+  <li><em>Traditional:</em> Application code calls Library.</li>
+  <li><em>IoC:</em> Framework calls Application code (e.g., Spring calling your Controller methods).</li>
+</ul>
+
+<h3 id="98-what-is-aop-aspect-oriented-programming">98. What is AOP (Aspect Oriented Programming)?</h3>
+
+<p>A programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns (e.g., logging, transaction management, security) from the business logic.</p>
+
+<h3 id="99-explain-the-double-checked-locking-pattern">99. Explain the “Double-Checked Locking” pattern.</h3>
+
+<p>Used to reduce the overhead of acquiring a lock by first testing the locking criterion (the “lock hint”) without actually acquiring the lock. Only if the check indicates that locking is required does the actual locking logic proceed.</p>
+<ul>
+  <li><em>Crucial:</em> The variable must be <code class="language-plaintext highlighter-rouge">volatile</code>.</li>
+</ul>
+
+<h3 id="100-what-is-a-sealed-class">100. What is a Sealed Class?</h3>
+
+<p>Introduced in Java 15 (Preview) / 17 (Standard). It allows a class or interface to restrict which other classes or interfaces may extend or implement it.</p>
+<ul>
+  <li><em>Keywords:</em> <code class="language-plaintext highlighter-rouge">sealed</code>, <code class="language-plaintext highlighter-rouge">permits</code>.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="n">sealed</span> <span class="kd">class</span> <span class="nc">Shape</span> <span class="n">permits</span> <span class="nc">Circle</span><span class="o">,</span> <span class="nc">Square</span> <span class="o">{}</span>
+</code></pre></div></div>
+
+<hr />
+<p><strong>End of Interview Questions</strong></p>
+
+<h2 id="study-guide">Study Guide</h2>
+
+<p>To deepen your understanding of these concepts, check out the following resources:</p>
+
+<ul>
+  <li><strong>Official Documentation</strong>: <a href="https://docs.oracle.com/en/java/">Java Docs</a></li>
+  <li><strong>Internal Style Guide</strong>: <a href="../style_guides/java/java_style_guide.md">Java Style Guide</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

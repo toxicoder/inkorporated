@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Starlark Style Guide | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Starlark Style Guide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Starlark Style Guide for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="Starlark Style Guide for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/style_guides/starlark/starlark_style_guide.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/style_guides/starlark/starlark_style_guide.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Starlark Style Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Starlark Style Guide for Inkorporated.","headline":"Starlark Style Guide","url":"https://toxicoder.github.io/inkorporated/style_guides/starlark/starlark_style_guide.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Starlark Style Guide</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="starlark-style-guide">Starlark Style Guide</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This document outlines the coding standards and best practices for Starlark development (used in Bazel, Buck2, etc.) within this project. Adhering to these guidelines ensures code consistency, readability, and maintainability.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#general-principles">General Principles</a></li>
+  <li><a href="#code-layout">Code Layout</a></li>
+  <li><a href="#naming-conventions">Naming Conventions</a></li>
+  <li><a href="#build-files-vs-extensions">Build Files vs. Extensions</a></li>
+  <li><a href="#load-statements">Load Statements</a></li>
+  <li><a href="#macros-and-rules">Macros and Rules</a></li>
+  <li><a href="#functions">Functions</a></li>
+  <li><a href="#data-structures">Data Structures</a></li>
+  <li><a href="#control-flow">Control Flow</a></li>
+  <li><a href="#error-handling">Error Handling</a></li>
+  <li><a href="#documentation">Documentation</a></li>
+  <li><a href="#tooling">Tooling</a></li>
+</ol>
+
+<h2 id="general-principles">General Principles</h2>
+
+<ul>
+  <li><strong>Hermeticity</strong>: Starlark code should be hermetic. Outputs should depend only on inputs and configuration, not on the external environment (timestamps, network, absolute paths).</li>
+  <li><strong>Determinism</strong>: Execution must be deterministic. Iteration order of dictionaries is fixed in Starlark, but be mindful of sets (which don’t exist in Starlark, use <code class="language-plaintext highlighter-rouge">depset</code> or sorted lists).</li>
+  <li><strong>Readability</strong>: Starlark is optimized for readability. It is often read by developers who are not experts in the build system. Keep logic simple.</li>
+  <li><strong>Pythonic</strong>: Starlark is a dialect of Python. Follow Python best practices (PEP 8) where they apply and don’t conflict with Starlark specifics.</li>
+</ul>
+
+<h2 id="code-layout">Code Layout</h2>
+
+<ul>
+  <li><strong>Indentation</strong>: Use 4 spaces for indentation. Do not use tabs.</li>
+  <li><strong>Line Length</strong>: Limit lines to 79 characters. This is the standard for <code class="language-plaintext highlighter-rouge">.bzl</code> and <code class="language-plaintext highlighter-rouge">BUILD</code> files (enforced by Buildifier).</li>
+  <li><strong>Whitespace</strong>:
+    <ul>
+      <li>Use spaces around operators (<code class="language-plaintext highlighter-rouge">=</code>, <code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">+=</code>, etc.).</li>
+      <li>No spaces around keyword argument assignments in calls (<code class="language-plaintext highlighter-rouge">func(arg=value)</code>), but spaces around default values in definitions (<code class="language-plaintext highlighter-rouge">def func(arg = value):</code>).</li>
+    </ul>
+  </li>
+  <li><strong>Blank Lines</strong>:
+    <ul>
+      <li>Use blank lines to separate rules and macro calls in <code class="language-plaintext highlighter-rouge">BUILD</code> files.</li>
+      <li>Use 2 blank lines between top-level function definitions in <code class="language-plaintext highlighter-rouge">.bzl</code> files.</li>
+    </ul>
+  </li>
+  <li><strong>Trailing Commas</strong>: Always use trailing commas in multi-line lists, dictionaries, and function calls. This reduces merge conflicts and makes reordering easier.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Good
+</span><span class="nf">my_rule</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="sh">"</span><span class="s">my_target</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="sh">"</span><span class="s">file1.cc</span><span class="sh">"</span><span class="p">,</span>
+        <span class="sh">"</span><span class="s">file2.cc</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="sh">"</span><span class="s">:lib</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="naming-conventions">Naming Conventions</h2>
+
+<ul>
+  <li><strong>Variables/Functions</strong>: <code class="language-plaintext highlighter-rouge">snake_case</code>.</li>
+  <li><strong>Rules/Macros</strong>: <code class="language-plaintext highlighter-rouge">snake_case</code>.</li>
+  <li><strong>Providers</strong>: <code class="language-plaintext highlighter-rouge">PascalCase</code> (e.g., <code class="language-plaintext highlighter-rouge">MyInfo</code>).</li>
+  <li><strong>Constants</strong>: <code class="language-plaintext highlighter-rouge">UPPER_CASE</code> (e.g., <code class="language-plaintext highlighter-rouge">DEFAULT_TIMEOUT</code>).</li>
+  <li><strong>Private Symbols</strong>: Prefix with <code class="language-plaintext highlighter-rouge">_</code> (underscore). These are not exported from the <code class="language-plaintext highlighter-rouge">.bzl</code> file.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">def _my_private_helper():</code></li>
+    </ul>
+  </li>
+  <li><strong>Filenames</strong>:
+    <ul>
+      <li>Build files: <code class="language-plaintext highlighter-rouge">BUILD</code> or <code class="language-plaintext highlighter-rouge">BUILD.bazel</code>.</li>
+      <li>Extension files: <code class="language-plaintext highlighter-rouge">snake_case.bzl</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="build-files-vs-extensions">Build Files vs. Extensions</h2>
+
+<ul>
+  <li><strong>BUILD Files</strong>:
+    <ul>
+      <li>Should be declarative.</li>
+      <li>Avoid complex logic (loops, <code class="language-plaintext highlighter-rouge">if</code> statements) in <code class="language-plaintext highlighter-rouge">BUILD</code> files. Move logic to macros in <code class="language-plaintext highlighter-rouge">.bzl</code> files.</li>
+      <li>Variable definitions should be minimal.</li>
+    </ul>
+  </li>
+  <li><strong>.bzl Files</strong>:
+    <ul>
+      <li>Can contain logic, function definitions, rules, and macros.</li>
+      <li>Should be organized logically (loads, constants, providers, implementation functions, rule definitions, macros).</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="load-statements">Load Statements</h2>
+
+<ul>
+  <li><strong>Placement</strong>: All <code class="language-plaintext highlighter-rouge">load()</code> statements must be at the top of the file, after the license header and docstring.</li>
+  <li><strong>Sorting</strong>: Load statements should be sorted alphabetically by the label (first argument).</li>
+  <li><strong>Symbols</strong>: Symbols loaded from a file should be sorted alphabetically.</li>
+  <li><strong>Format</strong>:</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">load</span><span class="p">(</span><span class="sh">"</span><span class="s">@rules_cc//cc:defs.bzl</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">cc_binary</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">cc_library</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">load</span><span class="p">(</span><span class="sh">"</span><span class="s">//path/to/package:defs.bzl</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">my_macro</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Aliases</strong>: Avoid aliasing unless necessary for disambiguation. If used, follow <code class="language-plaintext highlighter-rouge">original_name = "alias"</code> (which is not supported directly in load, so <code class="language-plaintext highlighter-rouge">load("...", other_name = "original_name")</code>). Note: Starlark <code class="language-plaintext highlighter-rouge">load</code> syntax is <code class="language-plaintext highlighter-rouge">load("file", local_name = "symbol_name")</code>.</li>
+</ul>
+
+<h2 id="macros-and-rules">Macros and Rules</h2>
+
+<ul>
+  <li><strong>Macros</strong>:
+    <ul>
+      <li>Should wrap one or more rules.</li>
+      <li>Must have a <code class="language-plaintext highlighter-rouge">name</code> argument.</li>
+      <li>Should usually pass <code class="language-plaintext highlighter-rouge">**kwargs</code> to the main underlying rule to forward common attributes like <code class="language-plaintext highlighter-rouge">tags</code>, <code class="language-plaintext highlighter-rouge">visibility</code>, <code class="language-plaintext highlighter-rouge">testonly</code>.</li>
+      <li>Use <code class="language-plaintext highlighter-rouge">native.existing_rule()</code> to check if a target already exists (be careful with performance).</li>
+    </ul>
+  </li>
+  <li><strong>Rules</strong>:
+    <ul>
+      <li>Implementation functions should be named <code class="language-plaintext highlighter-rouge">_rule_name_impl</code>.</li>
+      <li>Attributes should be defined clearly using <code class="language-plaintext highlighter-rouge">attr.*</code>.</li>
+      <li>Prefer <code class="language-plaintext highlighter-rouge">executable = True</code> and <code class="language-plaintext highlighter-rouge">test = True</code> where appropriate.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">my_macro</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">Wraps a cc_binary with default settings.
+
+    Args:
+        name: The name of the target.
+        **kwargs: Arguments forwarded to cc_binary.
+    </span><span class="sh">"""</span>
+    <span class="nf">cc_binary</span><span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">copts</span> <span class="o">=</span> <span class="p">[</span><span class="sh">"</span><span class="s">-Werror</span><span class="sh">"</span><span class="p">],</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="functions">Functions</h2>
+
+<ul>
+  <li><strong>Arguments</strong>:
+    <ul>
+      <li>Use keyword arguments for readability, especially for booleans or when a function has many arguments.</li>
+      <li>Document arguments in docstrings.</li>
+    </ul>
+  </li>
+  <li><strong>Return Values</strong>: Keep return values simple. Structs or providers are preferred over complex dictionaries.</li>
+</ul>
+
+<h2 id="data-structures">Data Structures</h2>
+
+<ul>
+  <li><strong>Lists vs Tuples</strong>:
+    <ul>
+      <li>Lists are mutable (unless frozen). Use them when you need to construct a collection.</li>
+      <li>Tuples are immutable. Use them for fixed collections.</li>
+      <li>Note: In <code class="language-plaintext highlighter-rouge">BUILD</code> files, lists are often used for <code class="language-plaintext highlighter-rouge">srcs</code> and <code class="language-plaintext highlighter-rouge">deps</code>.</li>
+    </ul>
+  </li>
+  <li><strong>Dictionaries</strong>:
+    <ul>
+      <li>Dictionary concatenation (<code class="language-plaintext highlighter-rouge">+</code>) matches Python semantics (last write wins).</li>
+      <li>Iteration order is deterministic (insertion order).</li>
+    </ul>
+  </li>
+  <li><strong>Depsets</strong>:
+    <ul>
+      <li>Use <code class="language-plaintext highlighter-rouge">depset</code> instead of lists for accumulating transitive data (like headers, object files) to avoid O(N^2) memory consumption.</li>
+      <li>Understand <code class="language-plaintext highlighter-rouge">order</code> semantics (<code class="language-plaintext highlighter-rouge">"default"</code>, <code class="language-plaintext highlighter-rouge">"postorder"</code>, <code class="language-plaintext highlighter-rouge">"preorder"</code>, <code class="language-plaintext highlighter-rouge">"topological"</code>).</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="control-flow">Control Flow</h2>
+
+<ul>
+  <li><strong>Loops</strong>: <code class="language-plaintext highlighter-rouge">for</code> loops are allowed. <code class="language-plaintext highlighter-rouge">while</code> loops are not supported.</li>
+  <li><strong>Recursion</strong>: Recursion is not allowed in Starlark.</li>
+  <li><strong>Conditionals</strong>: <code class="language-plaintext highlighter-rouge">if</code>, <code class="language-plaintext highlighter-rouge">elif</code>, <code class="language-plaintext highlighter-rouge">else</code> behave as in Python.</li>
+  <li><strong>List Comprehensions</strong>: Encouraged for succinct transformations.</li>
+</ul>
+
+<h2 id="error-handling">Error Handling</h2>
+
+<ul>
+  <li><strong>fail()</strong>: Use <code class="language-plaintext highlighter-rouge">fail("Error message")</code> to stop execution with an error.
+    <ul>
+      <li>Use meaningful error messages.</li>
+      <li>Do not use <code class="language-plaintext highlighter-rouge">print()</code> for errors; it is for debugging only.</li>
+      <li><code class="language-plaintext highlighter-rouge">fail</code> is preferable to <code class="language-plaintext highlighter-rouge">assert</code> style checks if specific error messaging is needed.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="documentation">Documentation</h2>
+
+<ul>
+  <li><strong>Docstrings</strong>:
+    <ul>
+      <li>All exported rules, macros, and providers must have a docstring.</li>
+      <li>Use the Google docstring format (triple quotes).</li>
+      <li>Document arguments (<code class="language-plaintext highlighter-rouge">Args:</code>), return values (<code class="language-plaintext highlighter-rouge">Returns:</code>), and attributes.</li>
+    </ul>
+  </li>
+  <li><strong>Stardoc</strong>:
+    <ul>
+      <li>Write docstrings compatible with Stardoc to generate documentation automatically.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">my_rule_impl</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">Implementation of my_rule.</span><span class="sh">"""</span>
+    <span class="k">pass</span>
+
+<span class="n">my_rule</span> <span class="o">=</span> <span class="nf">rule</span><span class="p">(</span>
+    <span class="n">implementation</span> <span class="o">=</span> <span class="n">my_rule_impl</span><span class="p">,</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="sh">"""</span><span class="s">
+    A rule that does something useful.
+
+    Attributes:
+        srcs: Source files.
+    </span><span class="sh">"""</span><span class="p">,</span>
+    <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sh">"</span><span class="s">srcs</span><span class="sh">"</span><span class="p">:</span> <span class="n">attr</span><span class="p">.</span><span class="nf">label_list</span><span class="p">(</span><span class="n">allow_files</span> <span class="o">=</span> <span class="bp">True</span><span class="p">),</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="tooling">Tooling</h2>
+
+<ul>
+  <li><strong>Buildifier</strong>:
+    <ul>
+      <li>Use <code class="language-plaintext highlighter-rouge">buildifier</code> to format and lint Starlark code.</li>
+      <li>Run <code class="language-plaintext highlighter-rouge">buildifier -r .</code> to format all files recursively.</li>
+      <li>Use comments <code class="language-plaintext highlighter-rouge"># buildifier: disable=rule-name</code> to suppress specific warnings if absolutely necessary, but explain why.</li>
+    </ul>
+  </li>
+</ul>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

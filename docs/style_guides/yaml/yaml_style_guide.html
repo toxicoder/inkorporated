@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>YAML Style Guide | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="YAML Style Guide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="YAML Style Guide for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="YAML Style Guide for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/style_guides/yaml/yaml_style_guide.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/style_guides/yaml/yaml_style_guide.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="YAML Style Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"YAML Style Guide for Inkorporated.","headline":"YAML Style Guide","url":"https://toxicoder.github.io/inkorporated/style_guides/yaml/yaml_style_guide.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">YAML Style Guide</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="yaml-style-guide">YAML Style Guide</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This document outlines the coding standards and best practices for YAML (YAML Ain’t Markup Language) files within this project. Adhering to these guidelines ensures consistency, readability, and prevents common pitfalls in configuration files.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#general-principles">General Principles</a></li>
+  <li><a href="#file-extension-and-formatting">File Extension and Formatting</a></li>
+  <li><a href="#syntax-and-structure">Syntax and Structure</a></li>
+  <li><a href="#naming-conventions">Naming Conventions</a></li>
+  <li><a href="#data-types">Data Types</a></li>
+  <li><a href="#comments">Comments</a></li>
+  <li><a href="#keys-and-values">Keys and Values</a></li>
+  <li><a href="#lists-and-dictionaries">Lists and Dictionaries</a></li>
+  <li><a href="#multi-line-strings">Multi-line Strings</a></li>
+  <li><a href="#anchors-and-aliases">Anchors and Aliases</a></li>
+  <li><a href="#security">Security</a></li>
+  <li><a href="#validation-and-schemas">Validation and Schemas</a></li>
+  <li><a href="#recommended-tools">Recommended Tools</a></li>
+</ol>
+
+<h2 id="general-principles">General Principles</h2>
+
+<ul>
+  <li><strong>Human Readability</strong>: YAML is designed to be human-readable. Prioritize layout and structure that aids human understanding.</li>
+  <li><strong>Consistency</strong>: Stick to a single style for quoting, indentation, and key naming throughout a project.</li>
+  <li><strong>Data vs. Code</strong>: Remember that YAML is a data serialization language, not a programming language. Avoid complex logic (like excessive anchors/aliases) that mimics code inheritance unless absolutely necessary.</li>
+  <li><strong>DRY (Don’t Repeat Yourself)</strong>: Use anchors and aliases judiciously to reduce repetition, but not at the expense of readability.</li>
+</ul>
+
+<h2 id="file-extension-and-formatting">File Extension and Formatting</h2>
+
+<ul>
+  <li><strong>Extension</strong>: Use <code class="language-plaintext highlighter-rouge">.yaml</code> for all YAML files. Do not use <code class="language-plaintext highlighter-rouge">.yml</code>.</li>
+  <li><strong>Indentation</strong>:
+    <ul>
+      <li>Use <strong>2 spaces</strong> per indentation level.</li>
+      <li><strong>Never</strong> use tabs.</li>
+    </ul>
+  </li>
+  <li><strong>Line Length</strong>: Limit lines to <strong>80 characters</strong> where possible, or <strong>100 characters</strong> max. This matches common editor settings and improves side-by-side diffing.</li>
+  <li><strong>Encoding</strong>: Always use <strong>UTF-8</strong>.</li>
+  <li><strong>End of File</strong>: Ensure files end with a single newline character.</li>
+</ul>
+
+<h2 id="syntax-and-structure">Syntax and Structure</h2>
+
+<ul>
+  <li><strong>Document Separators</strong>:
+    <ul>
+      <li>Start files with <code class="language-plaintext highlighter-rouge">---</code> (document start marker) if the file might be concatenated or if it helps clarity.</li>
+      <li>Omit <code class="language-plaintext highlighter-rouge">---</code> for simple configuration files where it adds noise.</li>
+      <li>Avoid <code class="language-plaintext highlighter-rouge">...</code> (document end marker) unless strictly necessary for stream processing.</li>
+    </ul>
+  </li>
+  <li><strong>Directives</strong>: Place directives (like <code class="language-plaintext highlighter-rouge">%YAML 1.2</code>) at the very top if used, but they are generally optional for configuration files.</li>
+</ul>
+
+<h2 id="naming-conventions">Naming Conventions</h2>
+
+<ul>
+  <li><strong>Keys</strong>:
+    <ul>
+      <li>Use <strong>snake_case</strong> (<code class="language-plaintext highlighter-rouge">key_name</code>) as the primary standard for general configuration.</li>
+      <li>Use <strong>kebab-case</strong> (<code class="language-plaintext highlighter-rouge">key-name</code>) if mandated by the specific ecosystem (e.g., Kubernetes, Ansible).</li>
+      <li>Be consistent within a single file and project.</li>
+      <li>Avoid spaces and special characters in keys to prevent the need for quoting.</li>
+    </ul>
+  </li>
+  <li><strong>Consistency</strong>: Match the naming convention of the application consuming the YAML.</li>
+</ul>
+
+<h2 id="data-types">Data Types</h2>
+
+<h3 id="booleans">Booleans</h3>
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">true</code> and <code class="language-plaintext highlighter-rouge">false</code> (all lowercase).</li>
+  <li><strong>Avoid</strong>: <code class="language-plaintext highlighter-rouge">yes</code>, <code class="language-plaintext highlighter-rouge">no</code>, <code class="language-plaintext highlighter-rouge">on</code>, <code class="language-plaintext highlighter-rouge">off</code>, <code class="language-plaintext highlighter-rouge">True</code>, <code class="language-plaintext highlighter-rouge">False</code>. The YAML 1.2 spec is stricter, but many parsers still accept 1.1 types. Sticking to <code class="language-plaintext highlighter-rouge">true</code>/<code class="language-plaintext highlighter-rouge">false</code> is safest and most standard.</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Good</span>
+<span class="na">feature_enabled</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="na">debug_mode</span><span class="pi">:</span> <span class="kc">false</span>
+
+<span class="c1"># Bad</span>
+<span class="na">feature_enabled</span><span class="pi">:</span> <span class="s">yes</span>
+<span class="na">debug_mode</span><span class="pi">:</span> <span class="s">OFF</span>
+</code></pre></div></div>
+
+<h3 id="strings">Strings</h3>
+<ul>
+  <li><strong>Unquoted</strong>: Use unquoted strings for simple alphanumeric values without special characters.</li>
+  <li><strong>Quoted</strong>:
+    <ul>
+      <li>Use <strong>double quotes</strong> <code class="language-plaintext highlighter-rouge">"</code> if the string contains special characters, escape sequences (like <code class="language-plaintext highlighter-rouge">\n</code>), or starts with a character that could confuse the parser (e.g., <code class="language-plaintext highlighter-rouge">[</code>, <code class="language-plaintext highlighter-rouge">{</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">#</code>, <code class="language-plaintext highlighter-rouge">!</code>, <code class="language-plaintext highlighter-rouge">%</code>, <code class="language-plaintext highlighter-rouge">@</code>, <code class="language-plaintext highlighter-rouge">&amp;</code>, <code class="language-plaintext highlighter-rouge">|</code>, <code class="language-plaintext highlighter-rouge">&gt;</code>, <code class="language-plaintext highlighter-rouge">?</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">:</code>, <code class="language-plaintext highlighter-rouge">,</code>).</li>
+      <li>Use <strong>single quotes</strong> <code class="language-plaintext highlighter-rouge">'</code> if the string contains double quotes and no escape sequences are needed.</li>
+    </ul>
+  </li>
+  <li><strong>Numbers as Strings</strong>: Always quote numbers that should be treated as strings (e.g., versions, account numbers) to prevent them from being parsed as integers or floats.</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">1.10"</span>  <span class="c1"># Good (keeps it a string)</span>
+<span class="na">version</span><span class="pi">:</span> <span class="m">1.10</span>    <span class="c1"># Bad (parsed as float 1.1)</span>
+<span class="na">country_code</span><span class="pi">:</span> <span class="s2">"</span><span class="s">045"</span> <span class="c1"># Good (preserves leading zero)</span>
+</code></pre></div></div>
+
+<h3 id="null">Null</h3>
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">null</code> or omit the value.</li>
+  <li>Avoid <code class="language-plaintext highlighter-rouge">~</code>.</li>
+</ul>
+
+<h3 id="numbers">Numbers</h3>
+<ul>
+  <li>Be explicit.</li>
+  <li>Avoid octal notation (starting with <code class="language-plaintext highlighter-rouge">0</code>) unless intentional and standard-compliant (YAML 1.2 uses <code class="language-plaintext highlighter-rouge">0o</code>).</li>
+</ul>
+
+<h2 id="comments">Comments</h2>
+
+<ul>
+  <li><strong>Style</strong>: Use <code class="language-plaintext highlighter-rouge">#</code> followed by a space.</li>
+  <li><strong>Placement</strong>:
+    <ul>
+      <li><strong>Inline</strong>: Allowed for short explanations.</li>
+      <li><strong>Block</strong>: Preferred for detailed descriptions. Indent block comments to align with the code they describe.</li>
+    </ul>
+  </li>
+  <li><strong>Content</strong>: Explain <em>why</em> a configuration is set, especially for non-obvious values or workarounds.</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Timeout set to 30s to accommodate slow legacy backend</span>
+<span class="na">timeout</span><span class="pi">:</span> <span class="m">30</span>
+
+<span class="na">retry_count</span><span class="pi">:</span> <span class="m">5</span> <span class="c1"># Retry 5 times before failing</span>
+</code></pre></div></div>
+
+<h2 id="keys-and-values">Keys and Values</h2>
+
+<ul>
+  <li><strong>Colons</strong>: Put a single space after the colon <code class="language-plaintext highlighter-rouge">: </code>.
+    <ul>
+      <li>Good: <code class="language-plaintext highlighter-rouge">key: value</code></li>
+      <li>Bad: <code class="language-plaintext highlighter-rouge">key:value</code></li>
+    </ul>
+  </li>
+  <li><strong>Duplicate Keys</strong>: Never use duplicate keys in the same mapping. Most parsers will either error out or silently overwrite the first value.</li>
+</ul>
+
+<h2 id="lists-and-dictionaries">Lists and Dictionaries</h2>
+
+<ul>
+  <li><strong>Block Style</strong>: Prefer block style (indented) for readability.</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Good</span>
+<span class="na">items</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">item1</span>
+  <span class="pi">-</span> <span class="s">item2</span>
+
+<span class="c1"># Acceptable for short lists</span>
+<span class="na">items</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">item1</span><span class="pi">,</span> <span class="nv">item2</span><span class="pi">]</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Flow Style</strong>: Use flow style (<code class="language-plaintext highlighter-rouge">{...}</code>, <code class="language-plaintext highlighter-rouge">[...]</code>) only for very short, simple structures that fit on one line.</li>
+  <li><strong>List Items</strong>: Indent the hyphen <code class="language-plaintext highlighter-rouge">-</code> at the same level as the key or indented by 2 spaces. Pick one style and stick to it.
+    <ul>
+      <li><strong>Recommended</strong>: Indent list items by 2 spaces relative to the parent key.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Recommended</span>
+<span class="na">users</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">alice</span>
+    <span class="na">uid</span><span class="pi">:</span> <span class="m">1001</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">bob</span>
+    <span class="na">uid</span><span class="pi">:</span> <span class="m">1002</span>
+
+<span class="c1"># Also common (no indentation for hyphen)</span>
+<span class="na">users</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">alice</span>
+  <span class="na">uid</span><span class="pi">:</span> <span class="m">1001</span>
+</code></pre></div></div>
+
+<h2 id="multi-line-strings">Multi-line Strings</h2>
+
+<ul>
+  <li><strong>Literal Style (<code class="language-plaintext highlighter-rouge">|</code>)</strong>: Preserves newlines. Use for code blocks or embedded scripts.</li>
+  <li><strong>Folded Style (<code class="language-plaintext highlighter-rouge">&gt;</code>)</strong>: Replaces single newlines with spaces. Use for long prose or descriptions.</li>
+  <li><strong>Chomping Indicators</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">|-</code> or <code class="language-plaintext highlighter-rouge">&gt;-</code>: Strip the final newline.</li>
+      <li><code class="language-plaintext highlighter-rouge">|+</code> or <code class="language-plaintext highlighter-rouge">&gt;+</code>: Keep all trailing newlines.</li>
+      <li>Default (no indicator): Keep a single trailing newline.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">description</span><span class="pi">:</span> <span class="pi">&gt;</span>
+  <span class="s">This is a long description that spans multiple</span>
+  <span class="s">lines in the YAML file but will be rendered</span>
+  <span class="s">as a single line string.</span>
+
+<span class="na">script</span><span class="pi">:</span> <span class="pi">|</span>
+  <span class="s">echo "Hello World"</span>
+  <span class="s">ls -la</span>
+</code></pre></div></div>
+
+<h2 id="anchors-and-aliases">Anchors and Aliases</h2>
+
+<ul>
+  <li><strong>Usage</strong>: Use anchors (<code class="language-plaintext highlighter-rouge">&amp;name</code>) and aliases (<code class="language-plaintext highlighter-rouge">*name</code>) to avoid repetition of large data structures.</li>
+  <li><strong>Merge Keys (<code class="language-plaintext highlighter-rouge">&lt;&lt;</code>)</strong>: Use merge keys to inherit from a base dictionary. Note that merge keys are optional in YAML 1.2, but widely supported.</li>
+  <li><strong>Clarity</strong>: Do not overuse. If the hierarchy becomes too deep or complex, it becomes hard to read.</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">default_settings</span><span class="pi">:</span> <span class="nl">&amp;defaults</span>
+  <span class="na">timeout</span><span class="pi">:</span> <span class="m">10</span>
+  <span class="na">retries</span><span class="pi">:</span> <span class="m">3</span>
+
+<span class="na">production</span><span class="pi">:</span>
+  <span class="na">&lt;&lt;</span><span class="pi">:</span> <span class="nv">*defaults</span>
+  <span class="na">timeout</span><span class="pi">:</span> <span class="m">30</span>
+</code></pre></div></div>
+
+<h2 id="security">Security</h2>
+
+<ul>
+  <li><strong>Safe Loading</strong>: When writing code that parses YAML, always use “safe load” functions (e.g., <code class="language-plaintext highlighter-rouge">yaml.safe_load()</code> in Python) to prevent code execution vulnerabilities from unsafe tags like <code class="language-plaintext highlighter-rouge">!!python/object</code>.</li>
+  <li><strong>Secrets</strong>: Do not commit secrets (passwords, API keys) to version control in YAML files. Use templating, environment variables, or secret management tools (e.g., Sealed Secrets, Vault).</li>
+</ul>
+
+<h2 id="validation-and-schemas">Validation and Schemas</h2>
+
+<ul>
+  <li><strong>JSON Schema</strong>: Use JSON Schema to validate YAML configuration files where structure is critical.</li>
+  <li><strong>Linting</strong>: Enforce style and syntax checks using CI/CD pipelines.</li>
+</ul>
+
+<h2 id="recommended-tools">Recommended Tools</h2>
+
+<ul>
+  <li><strong>Linter</strong>: <a href="https://github.com/adrienverge/yamllint"><code class="language-plaintext highlighter-rouge">yamllint</code></a>
+    <ul>
+      <li>Can verify indentation, line length, trailing spaces, and more.</li>
+    </ul>
+  </li>
+  <li><strong>Formatter</strong>: <a href="https://prettier.io/"><code class="language-plaintext highlighter-rouge">prettier</code></a>
+    <ul>
+      <li>Supports YAML and enforces consistent formatting.</li>
+    </ul>
+  </li>
+  <li><strong>Processor</strong>: <a href="https://github.com/mikefarah/yq"><code class="language-plaintext highlighter-rouge">yq</code></a>
+    <ul>
+      <li>Lightweight and portable command-line YAML processor (like <code class="language-plaintext highlighter-rouge">jq</code> for YAML).</li>
+    </ul>
+  </li>
+  <li><strong>Validation</strong>: <a href="https://www.kubeval.com/"><code class="language-plaintext highlighter-rouge">kubeval</code></a> (for Kubernetes), <a href="https://github.com/python-jsonschema/check-jsonschema"><code class="language-plaintext highlighter-rouge">check-jsonschema</code></a>.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

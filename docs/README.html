@@ -2,21 +2,21 @@
 <html lang="en" class="palette-1"><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Inkorporated Homelab Documentation | Comprehensive documentation for the Inkorporated homelab project.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Docs directory | Inkorporated Homelab Documentation</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Inkorporated Homelab Documentation" />
+<meta property="og:title" content="Docs directory" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Comprehensive documentation for the Inkorporated homelab project." />
-<meta property="og:description" content="Comprehensive documentation for the Inkorporated homelab project." />
+<meta name="description" content="How the Inkorporated documentation site is organized." />
+<meta name="twitter:description" property="og:description" content="How the Inkorporated documentation site is organized." />
 <link rel="canonical" href="https://toxicoder.github.io/inkorporated/README.html" />
 <meta property="og:url" content="https://toxicoder.github.io/inkorporated/README.html" />
 <meta property="og:site_name" content="Inkorporated Homelab Documentation" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Inkorporated Homelab Documentation" />
+<meta name="twitter:title" content="Docs directory" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/README.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"How the Inkorporated documentation site is organized.","headline":"Docs directory","url":"https://toxicoder.github.io/inkorporated/README.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/inkorporated/assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -521,53 +521,78 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title"></h1>
+    <h1 class="post-title">Docs directory</h1>
   </header>
 
   <div class="post-content">
-    <h1 id="inkorporated-homelab-documentation">Inkorporated Homelab Documentation</h1>
+    <h1 id="documentation">Documentation</h1>
 
-<p>This directory contains comprehensive documentation for the Inkorporated homelab project. The documentation is organized into logical sections to provide easy navigation and understanding of the project.</p>
-
-<h2 id="documentation-structure">Documentation Structure</h2>
-
-<h3 id="guides">Guides</h3>
-<ul>
-  <li><strong>Overview</strong>: Executive summary and project structure</li>
-  <li><strong>Getting Started</strong>: Quick start and setup instructions</li>
-</ul>
-
-<h3 id="architecture">Architecture</h3>
-<ul>
-  <li><strong>High-Level Architecture</strong>: System overview and design</li>
-  <li><strong>Network Topology</strong>: Detailed network structure</li>
-</ul>
-
-<h3 id="implementation">Implementation</h3>
-<ul>
-  <li><strong>Status Tracking</strong>: Current implementation progress and task tracking</li>
-  <li><strong>Phases</strong>: Implementation phases and milestones</li>
-</ul>
-
-<h3 id="reference">Reference</h3>
-<ul>
-  <li><strong>Configuration</strong>: Technical specifications and configuration examples</li>
-  <li><strong>Troubleshooting</strong>: Common issues and solutions</li>
-  <li><strong>Best Practices</strong>: Recommended approaches and guidelines</li>
-</ul>
-
-<h2 id="navigation">Navigation</h2>
+<p><strong>What’s on this page</strong></p>
 
 <ul>
-  <li><a href="guides/overview.md">Project Overview</a> - Executive summary and key features</li>
-  <li><a href="architecture/README.md">Architecture</a> - High-level system architecture</li>
-  <li><a href="implementation/status.md">Implementation Status</a> - Current progress and tracking</li>
-  <li><a href="INDEX.md">Documentation Index</a> - Comprehensive documentation index</li>
+  <li>MkDocs Material site layout</li>
+  <li>Local build commands</li>
+  <li>Pointers to enterprise OS and infrastructure content</li>
 </ul>
 
-<h2 id="contributing">Contributing</h2>
+<p><strong>What this enables</strong></p>
 
-<p>Documentation improvements are welcome. Please see the contribution guidelines in the main repository.</p>
+<ul>
+  <li>Contributors can find and build docs quickly</li>
+</ul>
+
+<h2 id="build">Build</h2>
+
+<p>From the repository root:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./docs/manage-docs.sh serve
+./docs/manage-docs.sh build <span class="nt">--strict</span>
+</code></pre></div></div>
+
+<p>Site config: <a href="https://github.com/toxicoder/inkorporated/blob/main/mkdocs.yml"><code class="language-plaintext highlighter-rouge">mkdocs.yml</code></a> at the repo root.</p>
+
+<h2 id="structure">Structure</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tree</th>
+      <th>Content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">organization/</code></td>
+      <td>Org charts, matrix, leveling, coverage</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">corporate_strategy/</code></td>
+      <td>Strategy and governance</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">job_roles/</code></td>
+      <td>Role catalog</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cyborgs/</code></td>
+      <td>Human docs for agent personas (<code class="language-plaintext highlighter-rouge">cyborgs/*.yaml</code> is machine SoT at repo root)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">engineering_standards/</code>, <code class="language-plaintext highlighter-rouge">policies/</code>, <code class="language-plaintext highlighter-rouge">style_guides/</code></td>
+      <td>How we work</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">guides/</code>, <code class="language-plaintext highlighter-rouge">architecture/</code>, <code class="language-plaintext highlighter-rouge">reference/</code></td>
+      <td>Infrastructure</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">interview_questions/</code>, <code class="language-plaintext highlighter-rouge">onboarding/</code>, <code class="language-plaintext highlighter-rouge">training/</code></td>
+      <td>People systems</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>See <a href="project-conventions.md">project-conventions.md</a> and <a href="CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
 
   </div>
 

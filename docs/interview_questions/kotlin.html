@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Kotlin Interview Questions &amp; Answers (100+) | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Kotlin Interview Questions &amp; Answers (100+)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Kotlin Interview Questions &amp; Answers (100+) for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="Kotlin Interview Questions &amp; Answers (100+) for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/interview_questions/kotlin.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/interview_questions/kotlin.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Kotlin Interview Questions &amp; Answers (100+)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Kotlin Interview Questions &amp; Answers (100+) for Inkorporated.","headline":"Kotlin Interview Questions &amp; Answers (100+)","url":"https://toxicoder.github.io/inkorporated/interview_questions/kotlin.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Kotlin Interview Questions &amp; Answers (100+)</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="kotlin-interview-questions--answers-100">Kotlin Interview Questions &amp; Answers (100+)</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This guide contains 100+ Kotlin interview questions, ranging from basic syntax to advanced concurrency and coroutines. Each question includes a model answer, code examples, and potential follow-up paths based on the candidate’s response.</p>
+
+<h2 id="part-1-basic-kotlin-concepts-1-20">Part 1: Basic Kotlin Concepts (1-20)</h2>
+
+<h3 id="1-what-is-the-difference-between-val-and-var">1. What is the difference between <code class="language-plaintext highlighter-rouge">val</code> and <code class="language-plaintext highlighter-rouge">var</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">val</code>: Immutable reference. Once assigned, it cannot be reassigned. (Similar to <code class="language-plaintext highlighter-rouge">final</code> in Java).</li>
+  <li><code class="language-plaintext highlighter-rouge">var</code>: Mutable reference. Can be reassigned.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions ‘Immutable’.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Does <code class="language-plaintext highlighter-rouge">val</code> mean the object itself is immutable?”</li>
+      <li><em>Answer:</em> No, <code class="language-plaintext highlighter-rouge">val</code> only guarantees the <em>reference</em> is immutable. If the object is a <code class="language-plaintext highlighter-rouge">MutableList</code>, you can still add items to it.</li>
+    </ul>
+  </li>
+  <li><strong>Path B: Candidate compares to Java.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “When would you prefer <code class="language-plaintext highlighter-rouge">val</code> over <code class="language-plaintext highlighter-rouge">var</code>?”</li>
+      <li><em>Answer:</em> Always prefer <code class="language-plaintext highlighter-rouge">val</code> for thread safety and predictability, unless mutation is strictly required.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-how-does-kotlin-handle-null-safety">2. How does Kotlin handle Null Safety?</h3>
+
+<p>Kotlin’s type system distinguishes between references that can hold <code class="language-plaintext highlighter-rouge">null</code> (nullable references) and those that cannot (non-null references).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Syntax</th>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">String</code></td>
+      <td style="text-align: left">Non-nullable</td>
+      <td style="text-align: left">Cannot hold null. Compiler error if assigned null.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">String?</code></td>
+      <td style="text-align: left">Nullable</td>
+      <td style="text-align: left">Can hold null.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Key Operators:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">?.</code> (Safe Call)</li>
+  <li><code class="language-plaintext highlighter-rouge">!!</code> (Not-null Assertion)</li>
+  <li><code class="language-plaintext highlighter-rouge">?:</code> (Elvis Operator)</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions <code class="language-plaintext highlighter-rouge">!!</code>.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “When is it acceptable to use <code class="language-plaintext highlighter-rouge">!!</code>?”</li>
+      <li><em>Answer:</em> Rarely. Only when you are 100% sure the value is not null and the compiler can’t deduce it, or in quick prototypes/tests. It throws a <code class="language-plaintext highlighter-rouge">NullPointerException</code> if null.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="3-what-is-the-elvis-operator-">3. What is the Elvis Operator <code class="language-plaintext highlighter-rouge">?:</code>?</h3>
+
+<p>It returns the expression on its left if it is not null, otherwise it returns the expression on its right.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">length</span> <span class="p">=</span> <span class="n">text</span><span class="o">?.</span><span class="n">length</span> <span class="o">?:</span> <span class="p">-</span><span class="mi">1</span>
+</code></pre></div></div>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Control flow.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Can you use <code class="language-plaintext highlighter-rouge">return</code> or <code class="language-plaintext highlighter-rouge">throw</code> on the right side of <code class="language-plaintext highlighter-rouge">?:</code>?”</li>
+      <li><em>Answer:</em> Yes, because <code class="language-plaintext highlighter-rouge">return</code> and <code class="language-plaintext highlighter-rouge">throw</code> are expressions in Kotlin.
+        <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">name</span> <span class="p">=</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="o">?:</span> <span class="k">throw</span> <span class="nc">IllegalArgumentException</span><span class="p">(</span><span class="s">"Name required"</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="4-what-is-type-inference">4. What is Type Inference?</h3>
+
+<p>The compiler can automatically identify the data type of a variable from the context or the assigned value.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">name</span> <span class="p">=</span> <span class="s">"Kotlin"</span> <span class="c1">// Compiler knows this is String</span>
+</code></pre></div></div>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Limitations.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “When <em>must</em> you explicitly specify the type?”</li>
+      <li><em>Answer:</em> When declaring a variable without initializing it immediately, or when the inferred type is not the desired one (e.g., <code class="language-plaintext highlighter-rouge">Long</code> vs <code class="language-plaintext highlighter-rouge">Int</code>).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="5-what-is-the-difference-between-const-val-and-val">5. What is the difference between <code class="language-plaintext highlighter-rouge">const val</code> and <code class="language-plaintext highlighter-rouge">val</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">val</code>: Read-only variable, determined at <strong>runtime</strong>.</li>
+  <li><code class="language-plaintext highlighter-rouge">const val</code>: Compile-time constant. Must be a top-level property or a member of an <code class="language-plaintext highlighter-rouge">object</code> (or <code class="language-plaintext highlighter-rouge">companion object</code>). Only primitives and String.</li>
+</ul>
+
+<h3 id="6-what-are-string-templates">6. What are String Templates?</h3>
+
+<p>Strings that contain expressions beginning with <code class="language-plaintext highlighter-rouge">$</code>.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">i</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="nf">println</span><span class="p">(</span><span class="s">"i = $i"</span><span class="p">)</span>
+<span class="nf">println</span><span class="p">(</span><span class="s">"i + 1 = ${i + 1}"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="7-explain-lateinit-vs-lazy">7. Explain <code class="language-plaintext highlighter-rouge">lateinit</code> vs <code class="language-plaintext highlighter-rouge">lazy</code>.</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left"><code class="language-plaintext highlighter-rouge">lateinit</code></th>
+      <th style="text-align: left"><code class="language-plaintext highlighter-rouge">lazy</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Mutability</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">var</code> (Mutable)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">val</code> (Read-only)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Type</strong></td>
+      <td style="text-align: left">Non-primitive types only</td>
+      <td style="text-align: left">Any type</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Initialization</strong></td>
+      <td style="text-align: left">Later in code</td>
+      <td style="text-align: left">On first access</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Thread Safety</strong></td>
+      <td style="text-align: left">Not thread-safe by default</td>
+      <td style="text-align: left">Thread-safe (synchronized) by default</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Use cases.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Why use <code class="language-plaintext highlighter-rouge">lateinit</code> in Android?”</li>
+      <li><em>Answer:</em> For dependency injection or View initialization in <code class="language-plaintext highlighter-rouge">onCreate</code> where you can’t initialize at declaration but know it won’t be null when used.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="8-what-are-data-classes">8. What are Data Classes?</h3>
+
+<p>Classes whose main purpose is to hold data. The compiler automatically derives the following members:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">equals()</code> / <code class="language-plaintext highlighter-rouge">hashCode()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">toString()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">componentN()</code> functions (for destructuring)</li>
+  <li><code class="language-plaintext highlighter-rouge">copy()</code></li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">data class</span> <span class="nc">User</span><span class="p">(</span><span class="kd">val</span> <span class="py">name</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="kd">val</span> <span class="py">age</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Inheritance.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Can a Data Class be <code class="language-plaintext highlighter-rouge">open</code> or <code class="language-plaintext highlighter-rouge">abstract</code>?”</li>
+      <li><em>Answer:</em> No, data classes are final by default and cannot be open or abstract.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="9-what-is-the-difference-between--and-">9. What is the difference between <code class="language-plaintext highlighter-rouge">==</code> and <code class="language-plaintext highlighter-rouge">===</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">==</code>: Structural equality. Checks if contents are equal (calls <code class="language-plaintext highlighter-rouge">equals()</code>).</li>
+  <li><code class="language-plaintext highlighter-rouge">===</code>: Referential equality. Checks if variables point to the same object in memory.</li>
+</ul>
+
+<h3 id="10-how-does-the-when-expression-work">10. How does the <code class="language-plaintext highlighter-rouge">when</code> expression work?</h3>
+
+<p>It replaces the switch operator of C-like languages but is more powerful. It can be used as a statement or an expression.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">result</span> <span class="p">=</span> <span class="k">when</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="mi">1</span> <span class="p">-&gt;</span> <span class="s">"One"</span>
+    <span class="k">in</span> <span class="mi">2</span><span class="o">..</span><span class="mi">10</span> <span class="p">-&gt;</span> <span class="s">"Between 2 and 10"</span>
+    <span class="k">is</span> <span class="nc">String</span> <span class="p">-&gt;</span> <span class="s">"It's a string"</span>
+    <span class="k">else</span> <span class="p">-&gt;</span> <span class="s">"Unknown"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="11-how-do-loops-work-in-kotlin">11. How do loops work in Kotlin?</h3>
+
+<ul>
+  <li><strong>For:</strong> Iterates over anything that provides an iterator.
+    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">item</span> <span class="k">in</span> <span class="n">collection</span><span class="p">)</span> <span class="nf">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>While / Do-While:</strong> Standard conditional loops.</li>
+</ul>
+
+<h3 id="12-what-are-range-expressions">12. What are Range Expressions?</h3>
+
+<p>Tools to define a range of values.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">r1</span> <span class="p">=</span> <span class="mi">1</span><span class="o">..</span><span class="mi">10</span>        <span class="c1">// 1 to 10 inclusive</span>
+<span class="kd">val</span> <span class="py">r2</span> <span class="p">=</span> <span class="mi">1</span> <span class="n">until</span> <span class="mi">10</span>   <span class="c1">// 1 to 9</span>
+<span class="kd">val</span> <span class="py">r3</span> <span class="p">=</span> <span class="mi">10</span> <span class="n">downTo</span> <span class="mi">1</span>  <span class="c1">// 10 to 1</span>
+<span class="kd">val</span> <span class="py">r4</span> <span class="p">=</span> <span class="mi">1</span><span class="o">..</span><span class="mi">10</span> <span class="n">step</span> <span class="mi">2</span> <span class="c1">// 1, 3, 5, 7, 9</span>
+</code></pre></div></div>
+
+<h3 id="13-how-do-you-define-a-function">13. How do you define a function?</h3>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nc">Int</span><span class="p">):</span> <span class="nc">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="p">+</span> <span class="n">b</span>
+<span class="p">}</span>
+<span class="c1">// Single-expression syntax</span>
+<span class="k">fun</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span> <span class="p">=</span> <span class="n">a</span> <span class="p">+</span> <span class="n">b</span>
+</code></pre></div></div>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Default Arguments.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How do default arguments help compared to Java?”</li>
+      <li><em>Answer:</em> They reduce the need for method overloading.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="14-what-are-extension-functions">14. What are Extension Functions?</h3>
+
+<p>They allow you to add new functionality to a class without inheriting from it or using design patterns like Decorator.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nc">String</span><span class="p">.</span><span class="nf">removeFirstLastChar</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span>  <span class="k">this</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">length</span> <span class="p">-</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Under the hood.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Does it actually modify the class?”</li>
+      <li><em>Answer:</em> No, it resolves statically. It’s syntactic sugar for a static method that takes the instance as the first parameter.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="15-what-are-infix-functions">15. What are Infix Functions?</h3>
+
+<p>Functions marked with <code class="language-plaintext highlighter-rouge">infix</code> keyword can be called using infix notation (omitting the dot and the parentheses).</p>
+<ul>
+  <li>Must be member functions or extension functions.</li>
+  <li>Must have a single parameter.</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">infix</span> <span class="k">fun</span> <span class="nc">Int</span><span class="p">.</span><span class="nf">plus</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nc">Int</span><span class="p">):</span> <span class="nc">Int</span> <span class="p">=</span> <span class="k">this</span> <span class="p">+</span> <span class="n">x</span>
+<span class="c1">// Usage</span>
+<span class="mi">1</span> <span class="n">plus</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<h3 id="16-explain-classes-and-objects-in-kotlin">16. Explain Classes and Objects in Kotlin.</h3>
+
+<p>Classes are declared using <code class="language-plaintext highlighter-rouge">class</code>. Objects can be:</p>
+<ul>
+  <li><strong>Object Declaration:</strong> Singleton.</li>
+  <li><strong>Object Expression:</strong> Anonymous class.</li>
+</ul>
+
+<h3 id="17-what-are-the-visibility-modifiers">17. What are the Visibility Modifiers?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">public</code> (Default): Visible everywhere.</li>
+  <li><code class="language-plaintext highlighter-rouge">private</code>: Visible inside file (top-level) or class.</li>
+  <li><code class="language-plaintext highlighter-rouge">protected</code>: Visible in class and subclasses.</li>
+  <li><code class="language-plaintext highlighter-rouge">internal</code>: Visible within the same module.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Internal.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What constitutes a ‘module’?”</li>
+      <li><em>Answer:</em> A Maven/Gradle module, or an IntelliJ IDEA module.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="18-primary-vs-secondary-constructors">18. Primary vs Secondary Constructors.</h3>
+
+<ul>
+  <li><strong>Primary:</strong> Part of the class header.</li>
+  <li><strong>Secondary:</strong> Prefixed with <code class="language-plaintext highlighter-rouge">constructor</code>. Must delegate to the primary constructor (directly or indirectly) using <code class="language-plaintext highlighter-rouge">this()</code>.</li>
+</ul>
+
+<h3 id="19-how-does-inheritance-work">19. How does Inheritance work?</h3>
+
+<p>All classes inherit from <code class="language-plaintext highlighter-rouge">Any</code>. Classes are <code class="language-plaintext highlighter-rouge">final</code> by default. To allow inheritance, mark the class with <code class="language-plaintext highlighter-rouge">open</code>.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">open</span> <span class="kd">class</span> <span class="nc">Base</span><span class="p">(</span><span class="n">p</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span>
+<span class="kd">class</span> <span class="nc">Derived</span><span class="p">(</span><span class="n">p</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span> <span class="p">:</span> <span class="nc">Base</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="20-how-are-interfaces-different-in-kotlin-compared-to-java-7">20. How are Interfaces different in Kotlin compared to Java 7?</h3>
+
+<p>Kotlin interfaces can contain properties and functions with default implementations. They cannot store state.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">MyInterface</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">prop</span><span class="p">:</span> <span class="nc">Int</span> <span class="c1">// abstract</span>
+    <span class="k">fun</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span> <span class="nf">print</span><span class="p">(</span><span class="s">"Default impl"</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="part-2-oop--functional-programming-21-40">Part 2: OOP &amp; Functional Programming (21-40)</h2>
+
+<h3 id="21-what-is-the-difference-between-an-abstract-class-and-an-interface">21. What is the difference between an Abstract Class and an Interface?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">Abstract Class</th>
+      <th style="text-align: left">Interface</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>State</strong></td>
+      <td style="text-align: left">Can hold state (fields).</td>
+      <td style="text-align: left">Cannot hold state (only properties without backing fields).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Constructor</strong></td>
+      <td style="text-align: left">Can have constructors.</td>
+      <td style="text-align: left">Cannot have constructors.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Inheritance</strong></td>
+      <td style="text-align: left">Single inheritance.</td>
+      <td style="text-align: left">Multiple implementation.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Use Case</strong></td>
+      <td style="text-align: left">Is-A relationship, sharing state.</td>
+      <td style="text-align: left">Can-Do relationship, behavior contract.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="22-what-are-sealed-classes">22. What are Sealed Classes?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">sealed</code> classes represent restricted class hierarchies. All direct subclasses must be known at compile time and declared in the same package (and same module).</p>
+
+<p><strong>Use Case:</strong>
+Perfect for <code class="language-plaintext highlighter-rouge">when</code> expressions, ensuring all cases are covered without an <code class="language-plaintext highlighter-rouge">else</code> branch.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">sealed</span> <span class="kd">class</span> <span class="nc">Result</span>
+<span class="kd">data class</span> <span class="nc">Success</span><span class="p">(</span><span class="kd">val</span> <span class="py">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">Result</span><span class="p">()</span>
+<span class="kd">data class</span> <span class="nc">Error</span><span class="p">(</span><span class="kd">val</span> <span class="py">exception</span><span class="p">:</span> <span class="nc">Exception</span><span class="p">)</span> <span class="p">:</span> <span class="nc">Result</span><span class="p">()</span>
+<span class="kd">object</span> <span class="nc">Loading</span> <span class="p">:</span> <span class="nc">Result</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="23-what-is-an-object-declaration">23. What is an Object Declaration?</h3>
+
+<p>It is Kotlin’s way of defining a Singleton.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">object</span> <span class="nc">DatabaseConfig</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">url</span> <span class="p">=</span> <span class="s">"jdbc:..."</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>The initialization is thread-safe and lazy (on first access).</p>
+
+<h3 id="24-what-is-a-companion-object">24. What is a Companion Object?</h3>
+
+<p>An object declared inside a class using the <code class="language-plaintext highlighter-rouge">companion</code> keyword.</p>
+<ul>
+  <li>It is tied to the class, not instances.</li>
+  <li>Similar to <code class="language-plaintext highlighter-rouge">static</code> members in Java.</li>
+  <li>Can implement interfaces.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Access.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How do you access members of a companion object?”</li>
+      <li><em>Answer:</em> Simply by using the class name: <code class="language-plaintext highlighter-rouge">MyClass.create()</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="25-what-are-the-requirements-for-a-data-class">25. What are the requirements for a Data Class?</h3>
+
+<ol>
+  <li>Primary constructor must have at least one parameter.</li>
+  <li>All primary constructor parameters must be marked as <code class="language-plaintext highlighter-rouge">val</code> or <code class="language-plaintext highlighter-rouge">var</code>.</li>
+  <li>Cannot be abstract, open, sealed, or inner.</li>
+</ol>
+
+<h3 id="26-explain-class-delegation-by-keyword">26. Explain Class Delegation (<code class="language-plaintext highlighter-rouge">by</code> keyword).</h3>
+
+<p>Kotlin supports the “composition over inheritance” pattern natively. A class can implement an interface by delegating all of its public members to a specified object.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Base</span> <span class="p">{</span> <span class="k">fun</span> <span class="nf">print</span><span class="p">()</span> <span class="p">}</span>
+<span class="kd">class</span> <span class="nc">BaseImpl</span><span class="p">(</span><span class="kd">val</span> <span class="py">x</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span> <span class="p">:</span> <span class="nc">Base</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">print</span><span class="p">()</span> <span class="p">=</span> <span class="nf">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Derived</span><span class="p">(</span><span class="n">b</span><span class="p">:</span> <span class="nc">Base</span><span class="p">)</span> <span class="p">:</span> <span class="nc">Base</span> <span class="k">by</span> <span class="n">b</span>
+</code></pre></div></div>
+
+<h3 id="27-what-are-higher-order-functions">27. What are Higher-Order Functions?</h3>
+
+<p>A function that takes another function as a parameter and/or returns a function.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nf">calculate</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span> <span class="n">operation</span><span class="p">:</span> <span class="p">(</span><span class="nc">Int</span><span class="p">,</span> <span class="nc">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nc">Int</span><span class="p">):</span> <span class="nc">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nf">operation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="28-what-is-a-lambda-expression">28. What is a Lambda Expression?</h3>
+
+<p>An anonymous function that can be treated as a value.
+Syntax: <code class="language-plaintext highlighter-rouge">{ variable(s) -&gt; body }</code></p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: ‘it’ keyword.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “When can you use <code class="language-plaintext highlighter-rouge">it</code>?”</li>
+      <li><em>Answer:</em> When a lambda has exactly one parameter, you can omit the parameter declaration and refer to it as <code class="language-plaintext highlighter-rouge">it</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="29-what-are-inline-functions">29. What are Inline Functions?</h3>
+
+<p>Using higher-order functions imposes runtime penalties (object allocation for lambdas). The <code class="language-plaintext highlighter-rouge">inline</code> modifier tells the compiler to copy the function’s code (and the lambda) directly into the call site.</p>
+
+<p><strong>Pros:</strong> Performance boost for loop-heavy high-order functions.
+<strong>Cons:</strong> Code size increases.</p>
+
+<h3 id="30-what-is-noinline-and-crossinline">30. What is <code class="language-plaintext highlighter-rouge">noinline</code> and <code class="language-plaintext highlighter-rouge">crossinline</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">noinline</code>: Used in an inline function to prevent a specific lambda parameter from being inlined.</li>
+  <li><code class="language-plaintext highlighter-rouge">crossinline</code>: Used when a lambda is passed to an inline function but executed in a different context (e.g., inside a nested object or local function), disallowing non-local returns.</li>
+</ul>
+
+<h3 id="31-what-are-reified-type-parameters">31. What are Reified Type Parameters?</h3>
+
+<p>In Java, generics are erased at runtime (Type Erasure). In Kotlin, you can use <code class="language-plaintext highlighter-rouge">inline</code> functions with <code class="language-plaintext highlighter-rouge">reified</code> type parameters to access the type at runtime.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">inline</span> <span class="k">fun</span> <span class="p">&lt;</span><span class="k">reified</span> <span class="nc">T</span><span class="p">&gt;</span> <span class="nf">isType</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nc">Any</span><span class="p">)</span> <span class="p">=</span> <span class="n">value</span> <span class="k">is</span> <span class="nc">T</span>
+</code></pre></div></div>
+
+<h3 id="32-explain-scope-functions-let-run-with-apply-also">32. Explain Scope Functions (<code class="language-plaintext highlighter-rouge">let</code>, <code class="language-plaintext highlighter-rouge">run</code>, <code class="language-plaintext highlighter-rouge">with</code>, <code class="language-plaintext highlighter-rouge">apply</code>, <code class="language-plaintext highlighter-rouge">also</code>).</h3>
+
+<p>They execute a block of code within the context of an object.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Function</th>
+      <th style="text-align: left">Object Reference</th>
+      <th style="text-align: left">Return Value</th>
+      <th style="text-align: left">Use Case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">let</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">it</code></td>
+      <td style="text-align: left">Lambda result</td>
+      <td style="text-align: left">Null checks, temporary scope.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">run</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">this</code></td>
+      <td style="text-align: left">Lambda result</td>
+      <td style="text-align: left">Object configuration + computation.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">with</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">this</code></td>
+      <td style="text-align: left">Lambda result</td>
+      <td style="text-align: left">Grouping calls on an object.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">apply</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">this</code></td>
+      <td style="text-align: left">Object itself</td>
+      <td style="text-align: left">Object configuration (builder).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">also</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">it</code></td>
+      <td style="text-align: left">Object itself</td>
+      <td style="text-align: left">Side effects (logging, validation).</td>
+    </tr>
+  </tbody>
+</table>
+
+<pre><code class="language-mermaid">graph TD
+    A[Start] --&gt; B{Returns Object?}
+    B -- Yes --&gt; C{Ref is 'this'?}
+    B -- No --&gt; D{Ref is 'this'?}
+    C -- Yes --&gt; E[apply]
+    C -- No --&gt; F[also]
+    D -- Yes --&gt; G[run / with]
+    D -- No --&gt; H[let]
+</code></pre>
+
+<h3 id="33-what-are-destructuring-declarations">33. What are Destructuring Declarations?</h3>
+
+<p>A way to unpack a single composite value into multiple variables.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="p">(</span><span class="py">name</span><span class="p">,</span> <span class="py">age</span><span class="p">)</span> <span class="p">=</span> <span class="n">user</span> <span class="c1">// user must be data class or have componentN functions</span>
+</code></pre></div></div>
+
+<h3 id="34-what-is-operator-overloading">34. What is Operator Overloading?</h3>
+
+<p>Kotlin allows providing custom implementations for a predefined set of operators (<code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">++</code>, etc.) on user-defined types. You must use the <code class="language-plaintext highlighter-rouge">operator</code> modifier.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">data class</span> <span class="nc">Point</span><span class="p">(</span><span class="kd">val</span> <span class="py">x</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span> <span class="kd">val</span> <span class="py">y</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">operator</span> <span class="k">fun</span> <span class="nf">plus</span><span class="p">(</span><span class="n">p</span><span class="p">:</span> <span class="nc">Point</span><span class="p">)</span> <span class="p">=</span> <span class="nc">Point</span><span class="p">(</span><span class="n">x</span> <span class="p">+</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">+</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="35-what-are-type-aliases">35. What are Type Aliases?</h3>
+
+<p>Provide alternative names for existing types. Useful for shortening long generic types.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typealias</span> <span class="nc">NodeSet</span> <span class="p">=</span> <span class="nc">Set</span><span class="p">&lt;</span><span class="nc">Network</span><span class="p">.</span><span class="nc">Node</span><span class="p">&gt;</span>
+<span class="k">typealias</span> <span class="nc">MyHandler</span> <span class="p">=</span> <span class="p">(</span><span class="nc">Int</span><span class="p">,</span> <span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nc">Unit</span>
+</code></pre></div></div>
+
+<h3 id="36-nested-vs-inner-classes">36. Nested vs Inner Classes.</h3>
+
+<ul>
+  <li><strong>Nested Class:</strong> By default, a class inside another class does <strong>not</strong> have access to the members of the outer class. (Static nested in Java).</li>
+  <li><strong>Inner Class:</strong> Marked with <code class="language-plaintext highlighter-rouge">inner</code>. Has reference to the outer class object. Can access members.</li>
+</ul>
+
+<h3 id="37-what-are-anonymous-inner-classes">37. What are Anonymous Inner Classes?</h3>
+
+<p>Created using <code class="language-plaintext highlighter-rouge">object</code> expressions.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">window</span><span class="p">.</span><span class="nf">addMouseListener</span><span class="p">(</span><span class="kd">object</span> <span class="err">: </span><span class="nc">MouseAdapter</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">mouseClicked</span><span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="nc">MouseEvent</span><span class="p">)</span> <span class="p">{</span> <span class="o">..</span><span class="p">.</span> <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="38-what-is-sam-conversion">38. What is SAM Conversion?</h3>
+
+<p><strong>Single Abstract Method</strong>.
+Kotlin allows passing a lambda for a Java interface that has only one abstract method.
+<em>Example:</em> <code class="language-plaintext highlighter-rouge">Runnable</code>, <code class="language-plaintext highlighter-rouge">Callable</code>, <code class="language-plaintext highlighter-rouge">OnClickListener</code>.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">button</span><span class="p">.</span><span class="nf">setOnClickListener</span> <span class="p">{</span> <span class="n">view</span> <span class="p">-&gt;</span> <span class="o">..</span><span class="p">.</span> <span class="p">}</span> <span class="c1">// Lambda instead of object implementation</span>
+</code></pre></div></div>
+
+<h3 id="39-what-is-a-tail-recursive-function">39. What is a Tail Recursive Function?</h3>
+
+<p>A recursive function where the recursive call is the <em>last</em> operation performed.
+Marked with <code class="language-plaintext highlighter-rouge">tailrec</code>.
+The compiler optimizes this into a loop, preventing <code class="language-plaintext highlighter-rouge">StackOverflowError</code>.</p>
+
+<h3 id="40-what-is-a-functional-interface">40. What is a Functional Interface?</h3>
+
+<p>An interface with exactly one abstract method. Marked with <code class="language-plaintext highlighter-rouge">fun interface</code>.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nf">interface</span> <span class="nc">IntPredicate</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">accept</span><span class="p">(</span><span class="n">i</span><span class="p">:</span> <span class="nc">Int</span><span class="p">):</span> <span class="nc">Boolean</span>
+<span class="p">}</span>
+<span class="kd">val</span> <span class="py">isEven</span> <span class="p">=</span> <span class="nc">IntPredicate</span> <span class="p">{</span> <span class="n">it</span> <span class="p">%</span> <span class="mi">2</span> <span class="p">==</span> <span class="mi">0</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="part-3-coroutines--concurrency-41-60">Part 3: Coroutines &amp; Concurrency (41-60)</h2>
+
+<h3 id="41-what-are-coroutines">41. What are Coroutines?</h3>
+
+<p>Coroutines are light-weight threads. They allow writing asynchronous code in a sequential manner. They are suspendable computations: they can suspend their execution without blocking the underlying thread.</p>
+
+<h3 id="42-difference-between-launch-and-async">42. Difference between <code class="language-plaintext highlighter-rouge">launch</code> and <code class="language-plaintext highlighter-rouge">async</code>.</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left"><code class="language-plaintext highlighter-rouge">launch</code></th>
+      <th style="text-align: left"><code class="language-plaintext highlighter-rouge">async</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Return</strong></td>
+      <td style="text-align: left">Returns a <code class="language-plaintext highlighter-rouge">Job</code>.</td>
+      <td style="text-align: left">Returns a <code class="language-plaintext highlighter-rouge">Deferred&lt;T&gt;</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Result</strong></td>
+      <td style="text-align: left">Fire and forget. No result.</td>
+      <td style="text-align: left">Promise of a result later.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Exception</strong></td>
+      <td style="text-align: left">Crashes application if unhandled.</td>
+      <td style="text-align: left">Stored inside Deferred, thrown on <code class="language-plaintext highlighter-rouge">.await()</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="43-what-is-runblocking">43. What is <code class="language-plaintext highlighter-rouge">runBlocking</code>?</h3>
+
+<p>It runs a new coroutine and <strong>blocks</strong> the current thread interruptibly until its completion.
+<strong>Use Case:</strong> Mainly for <code class="language-plaintext highlighter-rouge">main</code> functions and tests. Avoid in production UI code.</p>
+
+<h3 id="44-what-is-a-suspend-function">44. What is a Suspend Function?</h3>
+
+<p>A function marked with <code class="language-plaintext highlighter-rouge">suspend</code> modifier. It can suspend the execution of a coroutine without blocking the thread.</p>
+<ul>
+  <li>Can only be called from a coroutine or another suspend function.</li>
+</ul>
+
+<h3 id="45-coroutinescope-vs-coroutinecontext">45. CoroutineScope vs CoroutineContext.</h3>
+
+<ul>
+  <li><strong>CoroutineScope:</strong> Defines the scope for new coroutines. It manages the lifecycle (cancellation) of coroutines.</li>
+  <li><strong>CoroutineContext:</strong> A set of elements that define the behavior of a coroutine (Job, Dispatcher, Name, ExceptionHandler).</li>
+</ul>
+
+<h3 id="46-explain-dispatchers">46. Explain Dispatchers.</h3>
+
+<p>They determine which thread(s) the coroutine runs on.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Dispatchers.Main</code>: UI thread (Android).</li>
+  <li><code class="language-plaintext highlighter-rouge">Dispatchers.IO</code>: Optimized for disk/network IO (Thread pool).</li>
+  <li><code class="language-plaintext highlighter-rouge">Dispatchers.Default</code>: Optimized for CPU-intensive work (Thread pool size = CPU cores).</li>
+  <li><code class="language-plaintext highlighter-rouge">Dispatchers.Unconfined</code>: Starts in current thread, resumes in whatever thread called resume.</li>
+</ul>
+
+<h3 id="47-what-is-job-vs-deferred">47. What is <code class="language-plaintext highlighter-rouge">Job</code> vs <code class="language-plaintext highlighter-rouge">Deferred</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Job</code>: A handle to a background task with a lifecycle (Active, Cancelled, Completed).</li>
+  <li><code class="language-plaintext highlighter-rouge">Deferred</code>: A generic subclass of <code class="language-plaintext highlighter-rouge">Job</code> that holds a result. It adds <code class="language-plaintext highlighter-rouge">await()</code> to retrieve the value.</li>
+</ul>
+
+<h3 id="48-what-is-structured-concurrency">48. What is Structured Concurrency?</h3>
+
+<p>A paradigm where new coroutines can only be launched in a specific <code class="language-plaintext highlighter-rouge">CoroutineScope</code>. This ensures:</p>
+<ol>
+  <li>Children inherit context from parents.</li>
+  <li>Parent waits for all children to complete.</li>
+  <li>If parent is cancelled, all children are cancelled.</li>
+  <li>If a child fails, the parent (and other children) are cancelled.</li>
+</ol>
+
+<h3 id="49-how-do-you-handle-exceptions-in-coroutines">49. How do you handle exceptions in Coroutines?</h3>
+
+<ul>
+  <li><strong>try-catch:</strong> Inside the coroutine body.</li>
+  <li><strong>CoroutineExceptionHandler:</strong> Context element to handle uncaught exceptions (only works on root coroutines launched with <code class="language-plaintext highlighter-rouge">launch</code>).</li>
+  <li><strong>SupervisorJob / supervisorScope:</strong> Prevents failure propagation to the parent.</li>
+</ul>
+
+<h3 id="50-supervisorscope-vs-coroutinescope">50. <code class="language-plaintext highlighter-rouge">supervisorScope</code> vs <code class="language-plaintext highlighter-rouge">coroutineScope</code>.</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">coroutineScope</code>: If one child fails, the scope fails and cancels all other children.</li>
+  <li><code class="language-plaintext highlighter-rouge">supervisorScope</code>: If one child fails, it does <strong>not</strong> affect other children or the scope itself.</li>
+</ul>
+
+<p><strong>Diagram: Failure Propagation</strong></p>
+
+<pre><code class="language-mermaid">graph TD
+    A[Parent] --&gt; B[Child 1 (Fails)]
+    A --&gt; C[Child 2]
+    B -- "With coroutineScope" --&gt; A
+    A -- "Cancels" --&gt; C
+    B -- "With supervisorScope" --&gt; X[Handled locally]
+    A -. "Unaffected" .- C
+</code></pre>
+
+<h3 id="51-what-are-channels">51. What are Channels?</h3>
+
+<p>Primitives for communication between coroutines. They provide a way to transfer a stream of values.</p>
+<ul>
+  <li>Logically similar to <code class="language-plaintext highlighter-rouge">BlockingQueue</code>.</li>
+  <li>Support <code class="language-plaintext highlighter-rouge">send</code> (suspend) and <code class="language-plaintext highlighter-rouge">receive</code> (suspend).</li>
+</ul>
+
+<h3 id="52-explain-flow-cold-stream-vs-channel-hot-stream">52. Explain Flow (Cold Stream) vs Channel (Hot Stream).</h3>
+
+<ul>
+  <li><strong>Flow:</strong> Cold. Code inside <code class="language-plaintext highlighter-rouge">flow { ... }</code> does not run until <code class="language-plaintext highlighter-rouge">collect()</code> is called. Each collector gets its own execution.</li>
+  <li><strong>Channel:</strong> Hot. Values are produced even if no one is listening.</li>
+</ul>
+
+<h3 id="53-stateflow-vs-sharedflow">53. <code class="language-plaintext highlighter-rouge">StateFlow</code> vs <code class="language-plaintext highlighter-rouge">SharedFlow</code>.</h3>
+
+<ul>
+  <li><strong>StateFlow:</strong> A hot flow that holds state. Always has an initial value. Only emits the <em>last</em> known value to new collectors. (Replacement for LiveData).</li>
+  <li><strong>SharedFlow:</strong> Highly configurable hot flow. Can emit events without state (no initial value). Can replay <code class="language-plaintext highlighter-rouge">n</code> values to new collectors.</li>
+</ul>
+
+<h3 id="54-what-are-buffer-conflate-and-collectlatest">54. What are <code class="language-plaintext highlighter-rouge">buffer</code>, <code class="language-plaintext highlighter-rouge">conflate</code>, and <code class="language-plaintext highlighter-rouge">collectLatest</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">buffer()</code>: Buffers emissions if collector is slow.</li>
+  <li><code class="language-plaintext highlighter-rouge">conflate()</code>: Skips intermediate values if collector is slow, only processing the latest.</li>
+  <li><code class="language-plaintext highlighter-rouge">collectLatest()</code>: Cancels the current block if a new value arrives.</li>
+</ul>
+
+<h3 id="55-how-to-handle-backpressure-in-flows">55. How to handle Backpressure in Flows?</h3>
+
+<p>Flows support backpressure by default because they use suspending functions. If the collector is slow, the emitter suspends.</p>
+
+<h3 id="56-thread-vs-coroutine">56. Thread vs Coroutine?</h3>
+
+<ul>
+  <li><strong>Thread:</strong> OS-managed resource. Expensive (~1MB stack). Context switching is costly.</li>
+  <li><strong>Coroutine:</strong> User-space managed. Cheap (Objects). Thousands can run on one thread.</li>
+</ul>
+
+<h3 id="57-what-is-a-mutex">57. What is a Mutex?</h3>
+
+<p>Mutual Exclusion. A locking primitive for coroutines.
+Unlike <code class="language-plaintext highlighter-rouge">synchronized</code> (which blocks the thread), <code class="language-plaintext highlighter-rouge">Mutex.withLock</code> suspends the coroutine.</p>
+
+<h3 id="58-what-is-an-actor">58. What is an Actor?</h3>
+
+<p>An entity made up of a coroutine, the state that is confined and encapsulated into this coroutine, and a channel to communicate with other coroutines.
+<em>Note: The <code class="language-plaintext highlighter-rouge">actor</code> builder is currently obsolete in Kotlin Coroutines API favor of complex channels or other primitives, but the concept remains.</em></p>
+
+<h3 id="59-what-is-the-select-expression">59. What is the <code class="language-plaintext highlighter-rouge">select</code> expression?</h3>
+
+<p>It waits for the result of multiple suspending functions simultaneously and selects the first one that becomes available.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">select</span><span class="p">&lt;</span><span class="nc">Unit</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="n">channelA</span><span class="p">.</span><span class="nf">onReceive</span> <span class="p">{</span> <span class="o">..</span><span class="p">.</span> <span class="p">}</span>
+    <span class="n">channelB</span><span class="p">.</span><span class="nf">onReceive</span> <span class="p">{</span> <span class="o">..</span><span class="p">.</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="60-how-do-you-test-coroutines">60. How do you test Coroutines?</h3>
+
+<p>Using <code class="language-plaintext highlighter-rouge">kotlinx-coroutines-test</code> library.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">runTest</code>: Replaces <code class="language-plaintext highlighter-rouge">runBlocking</code> for tests. Skips delays (virtual time).</li>
+  <li><code class="language-plaintext highlighter-rouge">StandardTestDispatcher</code>: default for <code class="language-plaintext highlighter-rouge">runTest</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">UnconfinedTestDispatcher</code>.</li>
+</ul>
+
+<h2 id="part-4-standard-library--collections-61-80">Part 4: Standard Library &amp; Collections (61-80)</h2>
+
+<h3 id="61-list-vs-mutablelist">61. List vs MutableList.</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">List&lt;T&gt;</code>: Read-only interface. No <code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">remove</code>, <code class="language-plaintext highlighter-rouge">set</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">MutableList&lt;T&gt;</code>: Modifiable interface. Extends <code class="language-plaintext highlighter-rouge">List</code>.</li>
+</ul>
+
+<h3 id="62-map-filter-and-reduce">62. <code class="language-plaintext highlighter-rouge">map</code>, <code class="language-plaintext highlighter-rouge">filter</code>, and <code class="language-plaintext highlighter-rouge">reduce</code>.</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">map</code>: Transforms each element.</li>
+  <li><code class="language-plaintext highlighter-rouge">filter</code>: Returns elements matching a predicate.</li>
+  <li><code class="language-plaintext highlighter-rouge">reduce</code>: Accumulates value starting with the first element.</li>
+</ul>
+
+<h3 id="63-what-is-flatmap">63. What is <code class="language-plaintext highlighter-rouge">flatMap</code>?</h3>
+
+<p>Transforms each element into an Iterable and then flattens these iterables into a single list.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">list</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="s">"abc"</span><span class="p">,</span> <span class="s">"def"</span><span class="p">)</span>
+<span class="n">list</span><span class="p">.</span><span class="nf">flatMap</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="nf">toList</span><span class="p">()</span> <span class="p">}</span> <span class="c1">// ['a', 'b', 'c', 'd', 'e', 'f']</span>
+</code></pre></div></div>
+
+<h3 id="64-what-does-zip-do">64. What does <code class="language-plaintext highlighter-rouge">zip</code> do?</h3>
+
+<p>Combines two collections into a list of pairs.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">a</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">b</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">)</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">zip</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1">// [(1, "A"), (2, "B")]</span>
+</code></pre></div></div>
+
+<h3 id="65-difference-between-fold-and-reduce">65. Difference between <code class="language-plaintext highlighter-rouge">fold</code> and <code class="language-plaintext highlighter-rouge">reduce</code>.</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">reduce</code>: Uses the first element as the initial accumulator value. Throws exception on empty collection.</li>
+  <li><code class="language-plaintext highlighter-rouge">fold</code>: Takes an explicit initial value. Works on empty collections.</li>
+</ul>
+
+<h3 id="66-sequence-vs-iterable-list">66. Sequence vs Iterable (List).</h3>
+
+<ul>
+  <li><strong>Iterable (List):</strong> Eager evaluation. Each step (<code class="language-plaintext highlighter-rouge">map</code>, <code class="language-plaintext highlighter-rouge">filter</code>) creates a new intermediate list.</li>
+  <li><strong>Sequence:</strong> Lazy evaluation. Operations are vertical (element by element) rather than horizontal (step by step). No intermediate collections. Better for huge data sets.</li>
+</ul>
+
+<h3 id="67-how-does-groupby-work">67. How does <code class="language-plaintext highlighter-rouge">groupBy</code> work?</h3>
+
+<p>Returns a <code class="language-plaintext highlighter-rouge">Map</code> where keys are the grouping criteria and values are lists of original elements.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">words</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"abc"</span><span class="p">,</span> <span class="s">"ab"</span><span class="p">,</span> <span class="s">"def"</span><span class="p">,</span> <span class="s">"abcd"</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">byLength</span> <span class="p">=</span> <span class="n">words</span><span class="p">.</span><span class="nf">groupBy</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">length</span> <span class="p">}</span>
+<span class="c1">// {1=[a], 3=[abc, def], 2=[ab], 4=[abcd]}</span>
+</code></pre></div></div>
+
+<h3 id="68-what-is-partition">68. What is <code class="language-plaintext highlighter-rouge">partition</code>?</h3>
+
+<p>Splits the collection into a pair of lists based on a predicate.</p>
+<ul>
+  <li>First list: Elements that match.</li>
+  <li>Second list: Elements that don’t match.</li>
+</ul>
+
+<h3 id="69-any-all-and-none">69. <code class="language-plaintext highlighter-rouge">any</code>, <code class="language-plaintext highlighter-rouge">all</code>, and <code class="language-plaintext highlighter-rouge">none</code>.</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">any</code>: True if at least one matches.</li>
+  <li><code class="language-plaintext highlighter-rouge">all</code>: True if all match.</li>
+  <li><code class="language-plaintext highlighter-rouge">none</code>: True if no elements match.</li>
+</ul>
+
+<h3 id="70-what-is-associateby">70. What is <code class="language-plaintext highlighter-rouge">associateBy</code>?</h3>
+
+<p>Creates a Map using elements as values and a key derived from the element.
+<strong>Risk:</strong> If keys are duplicates, the last one wins.</p>
+
+<h3 id="71-distinct-vs-toset">71. <code class="language-plaintext highlighter-rouge">distinct</code> vs <code class="language-plaintext highlighter-rouge">toSet</code>.</h3>
+
+<p>Both return unique elements.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">toSet()</code>: Converts to a <code class="language-plaintext highlighter-rouge">Set</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">distinct()</code>: Returns a <code class="language-plaintext highlighter-rouge">List</code> containing only distinct elements.</li>
+</ul>
+
+<h3 id="72-arrays-intarray-vs-arrayint">72. Arrays: <code class="language-plaintext highlighter-rouge">IntArray</code> vs <code class="language-plaintext highlighter-rouge">Array&lt;Int&gt;</code>.</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">IntArray</code>: Primitive <code class="language-plaintext highlighter-rouge">int[]</code> in JVM. Unboxed. Efficient.</li>
+  <li><code class="language-plaintext highlighter-rouge">Array&lt;Int&gt;</code>: Object <code class="language-plaintext highlighter-rouge">Integer[]</code> in JVM. Boxed. More memory overhead.</li>
+</ul>
+
+<h3 id="73-string-manipulation">73. String Manipulation.</h3>
+
+<p>Strings are immutable.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">trimMargin()</code>: Removes whitespace.</li>
+  <li><code class="language-plaintext highlighter-rouge">split()</code>: Returns List.</li>
+  <li><code class="language-plaintext highlighter-rouge">replace()</code>: Returns new String.</li>
+</ul>
+
+<h3 id="74-comparable-vs-comparator">74. <code class="language-plaintext highlighter-rouge">Comparable</code> vs <code class="language-plaintext highlighter-rouge">Comparator</code>.</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Comparable</code>: Interface implemented by the class itself (<code class="language-plaintext highlighter-rouge">compareTo</code>). Defines natural order.</li>
+  <li><code class="language-plaintext highlighter-rouge">Comparator</code>: External object that defines specific ordering (<code class="language-plaintext highlighter-rouge">compare</code>).</li>
+</ul>
+
+<h3 id="75-why-use-the-copy-method-in-data-classes">75. Why use the <code class="language-plaintext highlighter-rouge">copy</code> method in Data Classes?</h3>
+
+<p>To create a new instance with some properties modified, while keeping others the same. Essential for immutability patterns.</p>
+
+<h3 id="76-range-iterators-until-vs-downto">76. Range iterators: <code class="language-plaintext highlighter-rouge">until</code> vs <code class="language-plaintext highlighter-rouge">downTo</code>.</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">until</code>: Excludes the end value. <code class="language-plaintext highlighter-rouge">1 until 10</code> (1..9).</li>
+  <li><code class="language-plaintext highlighter-rouge">downTo</code>: Descending order. <code class="language-plaintext highlighter-rouge">10 downTo 1</code>.</li>
+</ul>
+
+<h3 id="77-what-is-coercein">77. What is <code class="language-plaintext highlighter-rouge">coerceIn</code>?</h3>
+
+<p>Ensures a value is within a specific range.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">x</span> <span class="p">=</span> <span class="mi">15</span><span class="p">.</span><span class="nf">coerceIn</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">// Returns 10</span>
+</code></pre></div></div>
+
+<h3 id="78-how-to-measure-execution-time">78. How to measure execution time?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">measureTimeMillis { ... }</code> or <code class="language-plaintext highlighter-rouge">measureTime { ... }</code> (requires kotlin.time).</p>
+
+<h3 id="79-how-to-generate-random-numbers">79. How to generate Random numbers?</h3>
+
+<p>Since Kotlin 1.3: <code class="language-plaintext highlighter-rouge">Random.nextInt(from, until)</code>.
+Avoid <code class="language-plaintext highlighter-rouge">java.util.Random</code> in pure Kotlin code for multiplatform support.</p>
+
+<h3 id="80-regular-expressions-in-kotlin">80. Regular Expressions in Kotlin.</h3>
+
+<p>Create using <code class="language-plaintext highlighter-rouge">Regex("pattern")</code>.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">matchEntire()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">find()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">replace()</code></li>
+</ul>
+
+<h2 id="part-5-advanced-android--multiplatform-81-100">Part 5: Advanced, Android &amp; Multiplatform (81-100)</h2>
+
+<h3 id="81-explain-jvmstatic-jvmoverloads-jvmfield">81. Explain <code class="language-plaintext highlighter-rouge">JvmStatic</code>, <code class="language-plaintext highlighter-rouge">JvmOverloads</code>, <code class="language-plaintext highlighter-rouge">JvmField</code>.</h3>
+
+<p>Interoperability annotations.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">@JvmStatic</code>: Generates a real static method in the bytecode.</li>
+  <li><code class="language-plaintext highlighter-rouge">@JvmOverloads</code>: Generates overloads for functions with default arguments.</li>
+  <li><code class="language-plaintext highlighter-rouge">@JvmField</code>: Exposes a property as a public field (no getters/setters).</li>
+</ul>
+
+<h3 id="82-what-is-kotlin-multiplatform-kmp">82. What is Kotlin Multiplatform (KMP)?</h3>
+
+<p>A way to share code between platforms (Android, iOS, Web, Desktop).</p>
+<ul>
+  <li><strong>Common code:</strong> Business logic.</li>
+  <li><strong>Platform code:</strong> UI, Hardware access.</li>
+</ul>
+
+<h3 id="83-what-is-expect--actual-mechanism">83. What is <code class="language-plaintext highlighter-rouge">expect</code> / <code class="language-plaintext highlighter-rouge">actual</code> mechanism?</h3>
+
+<p>Used in KMP.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">expect</code>: Defined in common module. Declares “I need this functionality”.</li>
+  <li><code class="language-plaintext highlighter-rouge">actual</code>: Defined in platform modules (Android, iOS). Provides implementation.</li>
+</ul>
+
+<h3 id="84-reflection-in-kotlin">84. Reflection in Kotlin.</h3>
+
+<p>Inspects classes, properties, and functions at runtime.
+Requires <code class="language-plaintext highlighter-rouge">kotlin-reflect.jar</code>.
+Syntax: <code class="language-plaintext highlighter-rouge">MyClass::class</code>, <code class="language-plaintext highlighter-rouge">::myFunction</code>.</p>
+
+<h3 id="85-kapt-vs-ksp">85. KAPT vs KSP.</h3>
+
+<ul>
+  <li><strong>KAPT:</strong> Kotlin Annotation Processing Tool. Runs Java annotation processors. Slow (generates Java stubs).</li>
+  <li><strong>KSP:</strong> Kotlin Symbol Processing. Native to Kotlin. Faster.</li>
+</ul>
+
+<h3 id="86-dependency-injection-concept">86. Dependency Injection (Concept).</h3>
+
+<ul>
+  <li><strong>Koin:</strong> Service Locator pattern (DSL). Pure Kotlin. No code generation. Runtime check.</li>
+  <li><strong>Dagger/Hilt:</strong> Dependency Injection pattern. Compile-time generation. Strict.</li>
+</ul>
+
+<h3 id="87-what-is-viewbinding">87. What is ViewBinding?</h3>
+
+<p>Generates a binding class for each XML layout file. Replaces <code class="language-plaintext highlighter-rouge">findViewById</code>. Null-safe and Type-safe.</p>
+
+<h3 id="88-what-is-jetpack-compose">88. What is Jetpack Compose?</h3>
+
+<p>Modern toolkit for building native UI in Android using Kotlin.</p>
+<ul>
+  <li><strong>Declarative:</strong> You describe the UI state, framework updates the view.</li>
+  <li><strong>Functions:</strong> UI components are functions annotated with <code class="language-plaintext highlighter-rouge">@Composable</code>.</li>
+</ul>
+
+<h3 id="89-memory-management-jvm">89. Memory Management (JVM).</h3>
+
+<p>Kotlin on JVM uses the JVM Garbage Collector.</p>
+<ul>
+  <li><strong>Heap:</strong> Objects.</li>
+  <li><strong>Stack:</strong> Primitives, references.</li>
+</ul>
+
+<h3 id="90-what-is-a-value-class-inline-class">90. What is a <code class="language-plaintext highlighter-rouge">value class</code> (Inline Class)?</h3>
+
+<p>Wraps a single value. At runtime, instances are represented by the underlying value (unboxed) where possible, avoiding object allocation.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@JvmInline</span>
+<span class="n">value</span> <span class="kd">class</span> <span class="nc">Password</span><span class="p">(</span><span class="kd">val</span> <span class="py">s</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="91-what-is-type-erasure">91. What is Type Erasure?</h3>
+
+<p>Generics are checked at compile time but removed (erased) at runtime. <code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code> becomes just <code class="language-plaintext highlighter-rouge">List</code> (or raw <code class="language-plaintext highlighter-rouge">List</code>).
+<em>Solution:</em> Reified type parameters (inline functions).</p>
+
+<h3 id="92-covariance-and-contravariance-in-vs-out">92. Covariance and Contravariance (<code class="language-plaintext highlighter-rouge">in</code> vs <code class="language-plaintext highlighter-rouge">out</code>).</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">out T</code> (Covariant): Producer. Can only read T. Equivalent to <code class="language-plaintext highlighter-rouge">? extends T</code> in Java. <code class="language-plaintext highlighter-rouge">List&lt;out Number&gt;</code> can hold <code class="language-plaintext highlighter-rouge">List&lt;Int&gt;</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">in T</code> (Contravariant): Consumer. Can only write T. Equivalent to <code class="language-plaintext highlighter-rouge">? super T</code> in Java. <code class="language-plaintext highlighter-rouge">Comparable&lt;in Number&gt;</code> can accept <code class="language-plaintext highlighter-rouge">Double</code>.</li>
+</ul>
+
+<h3 id="93-what-is-star-projection-">93. What is Star Projection <code class="language-plaintext highlighter-rouge">*</code>?</h3>
+
+<p>Generic type with unknown argument.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MutableList&lt;*&gt;</code>: Safe to read as <code class="language-plaintext highlighter-rouge">Any?</code>, but unsafe to write (except Nothing).</li>
+</ul>
+
+<h3 id="94-what-is-the-nothing-type">94. What is the <code class="language-plaintext highlighter-rouge">Nothing</code> type?</h3>
+
+<p>A type that has no values. Represents “a value that never exists”.</p>
+<ul>
+  <li>Used as return type for functions that always throw exceptions.</li>
+  <li>Subtype of all types.</li>
+</ul>
+
+<h3 id="95-what-is-the-unit-type">95. What is the <code class="language-plaintext highlighter-rouge">Unit</code> type?</h3>
+
+<p>Corresponds to <code class="language-plaintext highlighter-rouge">void</code> in Java. It is a real object (singleton).</p>
+
+<h3 id="96-what-are-contracts">96. What are Contracts?</h3>
+
+<p>Let you describe the relationship between function parameters and return values/effects to the compiler.</p>
+<ul>
+  <li><em>Example:</em> <code class="language-plaintext highlighter-rouge">require(x != null)</code> tells the compiler <code class="language-plaintext highlighter-rouge">x</code> is non-null afterwards.</li>
+</ul>
+
+<h3 id="97-what-are-context-receivers">97. What are Context Receivers?</h3>
+
+<p>(Experimental) Allows a function to have multiple receivers.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">context</span><span class="p">(</span><span class="nc">LoggingContext</span><span class="p">,</span> <span class="nc">DatabaseContext</span><span class="p">)</span>
+<span class="k">fun</span> <span class="nf">storeUser</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="nc">User</span><span class="p">)</span> <span class="p">{</span> <span class="o">..</span><span class="p">.</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="98-kotlin-scripting-kts">98. Kotlin Scripting (.kts).</h3>
+
+<p>Kotlin code that can run as a script without compilation to a .jar.
+Used in Gradle Kotlin DSL.</p>
+
+<h3 id="99-gradle-kotlin-dsl">99. Gradle Kotlin DSL.</h3>
+
+<p>Writing <code class="language-plaintext highlighter-rouge">build.gradle.kts</code> using Kotlin instead of Groovy.</p>
+<ul>
+  <li><strong>Pros:</strong> Autocomplete, Refactoring, Type safety.</li>
+  <li><strong>Cons:</strong> Slower initial build (compilation).</li>
+</ul>
+
+<h3 id="100-what-is-the-k2-compiler">100. What is the K2 Compiler?</h3>
+
+<p>The new Kotlin compiler frontend.</p>
+<ul>
+  <li>Faster compilation.</li>
+  <li>Better type inference.</li>
+  <li>Foundation for future language features.</li>
+</ul>
+
+<hr />
+<p><strong>End of Interview Questions</strong></p>
+
+<h2 id="study-guide">Study Guide</h2>
+
+<p>To deepen your understanding of these concepts, check out the following resources:</p>
+
+<ul>
+  <li><strong>Official Documentation</strong>: <a href="https://kotlinlang.org/docs/home.html">Kotlin Docs</a></li>
+  <li><strong>Internal Style Guide</strong>: <a href="../style_guides/kotlin/kotlin_style_guide.md">Kotlin Style Guide</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

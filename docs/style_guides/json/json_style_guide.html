@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>JSON Style Guide | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="JSON Style Guide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="JSON Style Guide for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="JSON Style Guide for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/style_guides/json/json_style_guide.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/style_guides/json/json_style_guide.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="JSON Style Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"JSON Style Guide for Inkorporated.","headline":"JSON Style Guide","url":"https://toxicoder.github.io/inkorporated/style_guides/json/json_style_guide.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">JSON Style Guide</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="json-style-guide">JSON Style Guide</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This document outlines the coding standards and best practices for JSON (JavaScript Object Notation) files within this project. Adhering to these guidelines ensures consistency, interoperability, and prevents common parsing errors.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#general-principles">General Principles</a></li>
+  <li><a href="#file-extension-and-formatting">File Extension and Formatting</a></li>
+  <li><a href="#syntax-and-structure">Syntax and Structure</a></li>
+  <li><a href="#naming-conventions">Naming Conventions</a></li>
+  <li><a href="#data-types">Data Types</a></li>
+  <li><a href="#comments">Comments</a></li>
+  <li><a href="#date-and-time">Date and Time</a></li>
+  <li><a href="#json-variants">JSON Variants</a></li>
+  <li><a href="#security">Security</a></li>
+  <li><a href="#validation-and-schemas">Validation and Schemas</a></li>
+  <li><a href="#recommended-tools">Recommended Tools</a></li>
+</ol>
+
+<h2 id="general-principles">General Principles</h2>
+
+<ul>
+  <li><strong>Strictness</strong>: JSON is less forgiving than other formats (like YAML or JavaScript). Strict adherence to the spec is required.</li>
+  <li><strong>Interoperability</strong>: JSON is the lingua franca of data exchange. Prioritize structures that are easy to consume by various languages (JavaScript, Python, Go, etc.).</li>
+  <li><strong>Readability</strong>: While often machine-generated, configuration files and static data should be formatted for human readability.</li>
+  <li><strong>Consistency</strong>: Stick to a single style for indentation and naming conventions throughout a project.</li>
+</ul>
+
+<h2 id="file-extension-and-formatting">File Extension and Formatting</h2>
+
+<ul>
+  <li><strong>Extension</strong>: Use <code class="language-plaintext highlighter-rouge">.json</code> for standard JSON files.
+    <ul>
+      <li>Use <code class="language-plaintext highlighter-rouge">.jsonc</code> or <code class="language-plaintext highlighter-rouge">.json5</code> if you explicitly require comments or extended syntax (and your tools support it).</li>
+    </ul>
+  </li>
+  <li><strong>Indentation</strong>:
+    <ul>
+      <li>Use <strong>2 spaces</strong> per indentation level.</li>
+      <li><strong>Never</strong> use tabs.</li>
+    </ul>
+  </li>
+  <li><strong>Line Length</strong>: While JSON doesn’t enforce line limits, try to wrap long strings or deeply nested objects if it aids readability, but prioritize syntactic correctness.</li>
+  <li><strong>Encoding</strong>: Must be <strong>UTF-8</strong>.</li>
+  <li><strong>End of File</strong>: Ensure files end with a single newline character.</li>
+</ul>
+
+<h2 id="syntax-and-structure">Syntax and Structure</h2>
+
+<ul>
+  <li><strong>Root Element</strong>: A JSON payload should ideally be a single object <code class="language-plaintext highlighter-rouge">{}</code> or array <code class="language-plaintext highlighter-rouge">[]</code>. Avoid top-level primitives (like a raw string or number) for API responses as they can be security risks (JSON hijacking) or harder to extend.</li>
+  <li><strong>Quotes</strong>:
+    <ul>
+      <li><strong>Double quotes</strong> <code class="language-plaintext highlighter-rouge">"</code> are mandatory for all keys and string values.</li>
+      <li>Single quotes <code class="language-plaintext highlighter-rouge">'</code> are <strong>invalid</strong> in standard JSON.</li>
+    </ul>
+  </li>
+  <li><strong>Trailing Commas</strong>:
+    <ul>
+      <li><strong>Do not</strong> use trailing commas. They are invalid in standard JSON and will cause parsing errors in many environments (e.g., Python’s <code class="language-plaintext highlighter-rouge">json</code> library, stricter browsers).</li>
+    </ul>
+  </li>
+  <li><strong>Spacing</strong>:
+    <ul>
+      <li>No space before the colon.</li>
+      <li>One space after the colon.</li>
+      <li>Good: <code class="language-plaintext highlighter-rouge">"key": "value"</code></li>
+      <li>Bad: <code class="language-plaintext highlighter-rouge">"key" :"value"</code>, <code class="language-plaintext highlighter-rouge">"key":"value"</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="naming-conventions">Naming Conventions</h2>
+
+<ul>
+  <li><strong>Keys</strong>:
+    <ul>
+      <li>Use <strong>camelCase</strong> (<code class="language-plaintext highlighter-rouge">myKeyName</code>) as the primary standard, aligning with JavaScript conventions.</li>
+      <li><strong>snake_case</strong> (<code class="language-plaintext highlighter-rouge">my_key_name</code>) is acceptable if the backend system or language strictly prefers it (e.g., Python-heavy environments), but consistency is key.</li>
+      <li><strong>kebab-case</strong> (<code class="language-plaintext highlighter-rouge">my-key-name</code>) is discouraged for JSON keys as it is harder to access with dot notation in JavaScript (<code class="language-plaintext highlighter-rouge">obj.my-key-name</code> is invalid).</li>
+      <li>Keys must be unique within an object.</li>
+    </ul>
+  </li>
+  <li><strong>Meaningful Names</strong>: Use descriptive keys. Avoid abbreviations unless standard (e.g., <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">url</code>).</li>
+</ul>
+
+<h2 id="data-types">Data Types</h2>
+
+<h3 id="strings">Strings</h3>
+<ul>
+  <li>Escape special characters: <code class="language-plaintext highlighter-rouge">"</code> (<code class="language-plaintext highlighter-rouge">\"</code>), <code class="language-plaintext highlighter-rouge">\</code> (<code class="language-plaintext highlighter-rouge">\\</code>), backspace (<code class="language-plaintext highlighter-rouge">\b</code>), form feed (<code class="language-plaintext highlighter-rouge">\f</code>), newline (<code class="language-plaintext highlighter-rouge">\n</code>), carriage return (<code class="language-plaintext highlighter-rouge">\r</code>), tab (<code class="language-plaintext highlighter-rouge">\t</code>).</li>
+  <li>Avoid constructing JSON strings manually; use a serialization library to handle escaping correctly.</li>
+</ul>
+
+<h3 id="numbers">Numbers</h3>
+<ul>
+  <li>Do not use quotes for numbers.</li>
+  <li><strong>Integers</strong>: <code class="language-plaintext highlighter-rouge">123</code>, <code class="language-plaintext highlighter-rouge">-10</code>.</li>
+  <li><strong>Floats</strong>: <code class="language-plaintext highlighter-rouge">123.45</code>.</li>
+  <li><strong>Exponents</strong>: <code class="language-plaintext highlighter-rouge">1.23e4</code> is valid.</li>
+  <li><strong>Leading Zeros</strong>: <strong>Forbidden</strong>. <code class="language-plaintext highlighter-rouge">01</code> is invalid; use <code class="language-plaintext highlighter-rouge">1</code>.</li>
+  <li><strong>Infinity/NaN</strong>: Not supported in standard JSON. Use <code class="language-plaintext highlighter-rouge">null</code> or a string representation if strictly necessary (and documented).</li>
+</ul>
+
+<h3 id="booleans">Booleans</h3>
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">true</code> and <code class="language-plaintext highlighter-rouge">false</code> (all lowercase).</li>
+  <li>Do not quote them.</li>
+</ul>
+
+<h3 id="null">Null</h3>
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">null</code> (all lowercase) to represent an empty or missing value.</li>
+  <li>Do not quote it (<code class="language-plaintext highlighter-rouge">"null"</code> is a string).</li>
+</ul>
+
+<h3 id="arrays">Arrays</h3>
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">[]</code> for lists.</li>
+  <li>Elements can be of mixed types, but homogeneous lists (all elements of the same type) are preferred for schema consistency.</li>
+</ul>
+
+<h3 id="objects">Objects</h3>
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">{}</code> for key-value pairs.</li>
+</ul>
+
+<h2 id="comments">Comments</h2>
+
+<ul>
+  <li><strong>Standard JSON</strong>: Comments are <strong>forbidden</strong>. Do not include <code class="language-plaintext highlighter-rouge">//</code> or <code class="language-plaintext highlighter-rouge">/* */</code> in <code class="language-plaintext highlighter-rouge">.json</code> files.</li>
+  <li><strong>Configuration</strong>: If comments are absolutely necessary for configuration files:
+    <ul>
+      <li>Use a pre-processor (like <code class="language-plaintext highlighter-rouge">strip-json-comments</code>).</li>
+      <li>Use a derived format like <strong>JSONC</strong> (JSON with Comments) or <strong>JSON5</strong>.</li>
+      <li>Store documentation in a separate field (e.g., <code class="language-plaintext highlighter-rouge">"_comment": "This explains the setting"</code>) if strict JSON compliance is required.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="date-and-time">Date and Time</h2>
+
+<ul>
+  <li>JSON has no native date type.</li>
+  <li><strong>Format</strong>: Always use <strong>ISO 8601</strong> strings.
+    <ul>
+      <li>UTC is preferred: <code class="language-plaintext highlighter-rouge">YYYY-MM-DDThh:mm:ss.sssZ</code></li>
+      <li>Example: <code class="language-plaintext highlighter-rouge">"2023-10-27T10:00:00Z"</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="json-variants">JSON Variants</h2>
+
+<p>If standard JSON is too limiting (e.g., for config files needing comments):</p>
+
+<ul>
+  <li><strong>JSONC</strong>: Standard JSON syntax but allows comments. Visual Studio Code uses this for settings.</li>
+  <li><strong>JSON5</strong>: Extension of JSON that allows comments, unquoted keys (ES5 style), trailing commas, and single quotes.</li>
+  <li><strong>Usage</strong>: Ensure your parser supports these variants before using them. Do not use them for data exchange between disparate systems unless agreed upon.</li>
+</ul>
+
+<h2 id="security">Security</h2>
+
+<ul>
+  <li><strong>Top-Level Arrays</strong>: Avoid returning top-level arrays in API responses to mitigate JSON hijacking (though modern browsers have largely mitigated this). Return an object wrapping the array: <code class="language-plaintext highlighter-rouge">{"data": [...]}</code>.</li>
+  <li><strong>Depth Limit</strong>: When parsing JSON, enforce a maximum depth to prevent stack overflow attacks.</li>
+  <li><strong>XSS</strong>: Be wary of embedding JSON directly into HTML (e.g., in <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> tags). Characters like <code class="language-plaintext highlighter-rouge">&lt;</code> and <code class="language-plaintext highlighter-rouge">&gt;</code> should be properly escaped or sanitized to prevent Cross-Site Scripting.</li>
+</ul>
+
+<h2 id="validation-and-schemas">Validation and Schemas</h2>
+
+<ul>
+  <li><strong>JSON Schema</strong>: Strongly recommended for defining and validating the structure of JSON data.
+    <ul>
+      <li>Enables automated testing and documentation.</li>
+      <li>Use the latest draft (currently 2020-12) or draft-07.</li>
+    </ul>
+  </li>
+  <li><strong>Contract Testing</strong>: Use JSON Schemas to ensure API contracts between services are honored.</li>
+</ul>
+
+<h2 id="recommended-tools">Recommended Tools</h2>
+
+<ul>
+  <li><strong>Formatter</strong>: <a href="https://prettier.io/"><code class="language-plaintext highlighter-rouge">prettier</code></a>
+    <ul>
+      <li>excellent support for JSON, enforcing standard formatting.</li>
+    </ul>
+  </li>
+  <li><strong>Linter</strong>: <a href="https://www.npmjs.com/package/eslint-plugin-json"><code class="language-plaintext highlighter-rouge">eslint-plugin-json</code></a> or <a href="https://jsonlint.com/"><code class="language-plaintext highlighter-rouge">jsonlint</code></a></li>
+  <li><strong>Command Line</strong>: <a href="https://stedolan.github.io/jq/"><code class="language-plaintext highlighter-rouge">jq</code></a>
+    <ul>
+      <li>Essential for slicing, filtering, and mapping JSON data in the terminal.</li>
+    </ul>
+  </li>
+  <li><strong>Schema Validator</strong>: <a href="https://ajv.js.org/"><code class="language-plaintext highlighter-rouge">ajv</code></a> (JavaScript), <a href="https://python-jsonschema.readthedocs.io/"><code class="language-plaintext highlighter-rouge">jsonschema</code></a> (Python).</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

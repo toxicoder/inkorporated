@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Java Style Guide | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Java Style Guide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Java Style Guide for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="Java Style Guide for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/style_guides/java/java_style_guide.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/style_guides/java/java_style_guide.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Java Style Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Java Style Guide for Inkorporated.","headline":"Java Style Guide","url":"https://toxicoder.github.io/inkorporated/style_guides/java/java_style_guide.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Java Style Guide</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="java-style-guide">Java Style Guide</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This document outlines the coding standards and best practices for Java development within this project. Adhering to these guidelines ensures code consistency, readability, and maintainability.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#general-principles">General Principles</a></li>
+  <li><a href="#code-layout">Code Layout</a></li>
+  <li><a href="#naming-conventions">Naming Conventions</a></li>
+  <li><a href="#documentation-and-comments">Documentation and Comments</a></li>
+  <li><a href="#declarations">Declarations</a></li>
+  <li><a href="#imports">Imports</a></li>
+  <li><a href="#control-structures">Control Structures</a></li>
+  <li><a href="#object-oriented-programming">Object Oriented Programming</a></li>
+  <li><a href="#exception-handling">Exception Handling</a></li>
+  <li><a href="#generics">Generics</a></li>
+  <li><a href="#lambdas-and-streams">Lambdas and Streams</a></li>
+  <li><a href="#concurrency">Concurrency</a></li>
+  <li><a href="#logging">Logging</a></li>
+  <li><a href="#testing">Testing</a></li>
+  <li><a href="#modern-java-features">Modern Java Features</a></li>
+  <li><a href="#recommended-tools">Recommended Tools</a></li>
+</ol>
+
+<h2 id="general-principles">General Principles</h2>
+
+<ul>
+  <li><strong>Standard</strong>: Follow the <a href="https://google.github.io/styleguide/javaguide.html">Google Java Style Guide</a> unless otherwise specified.</li>
+  <li><strong>Readability</strong>: Code is read much more often than it is written. Prioritize clarity over cleverness.</li>
+  <li><strong>Consistency</strong>: Be consistent with the existing codebase. If you edit a file, follow its style.</li>
+  <li><strong>Simplicity</strong>: Keep code simple and focused. Avoid over-engineering.</li>
+</ul>
+
+<h2 id="code-layout">Code Layout</h2>
+
+<ul>
+  <li><strong>Indentation</strong>: Use 2 spaces (consistent with Google Style) or 4 spaces. <strong>Choose one and be consistent across the project.</strong> (Default for this guide: <strong>2 spaces</strong>). Do not use tabs.</li>
+  <li><strong>Line Length</strong>: Limit lines to 100 characters.</li>
+  <li><strong>Line Wrapping</strong>:
+    <ul>
+      <li>Break before operators.</li>
+      <li>Indent continuation lines by at least 4 spaces (or 2 indentation levels).</li>
+    </ul>
+  </li>
+  <li><strong>Blank Lines</strong>:
+    <ul>
+      <li>Use blank lines to separate logical groups of code within methods.</li>
+      <li>Use one blank line between methods.</li>
+      <li>Use one blank line between the class declaration and the first member.</li>
+    </ul>
+  </li>
+  <li><strong>Whitespace</strong>:
+    <ul>
+      <li>Separate keywords (<code class="language-plaintext highlighter-rouge">if</code>, <code class="language-plaintext highlighter-rouge">for</code>, <code class="language-plaintext highlighter-rouge">catch</code>) from the opening parenthesis with a space.</li>
+      <li>Separate closing parenthesis from the opening brace with a space.</li>
+      <li>Do not use space between method name and opening parenthesis.</li>
+      <li>Surround binary operators with spaces.</li>
+    </ul>
+  </li>
+  <li><strong>Braces</strong>:
+    <ul>
+      <li>Used for <code class="language-plaintext highlighter-rouge">if</code>, <code class="language-plaintext highlighter-rouge">else</code>, <code class="language-plaintext highlighter-rouge">for</code>, <code class="language-plaintext highlighter-rouge">do</code>, and <code class="language-plaintext highlighter-rouge">while</code> statements, even when the body is empty or contains only a single statement (K&amp;R style).</li>
+      <li>Opening brace on the same line as the declaration.</li>
+      <li>Closing brace on its own line.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">doSomething</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+  <span class="n">doSomethingElse</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="naming-conventions">Naming Conventions</h2>
+
+<ul>
+  <li><strong>Classes/Interfaces/Records</strong>: <code class="language-plaintext highlighter-rouge">UpperCamelCase</code> (PascalCase). Nouns for classes, adjectives or nouns for interfaces.</li>
+  <li><strong>Methods</strong>: <code class="language-plaintext highlighter-rouge">lowerCamelCase</code>. Verbs or verb phrases.</li>
+  <li><strong>Variables</strong>: <code class="language-plaintext highlighter-rouge">lowerCamelCase</code>. Meaningful names.</li>
+  <li><strong>Constants</strong>: <code class="language-plaintext highlighter-rouge">UPPER_SNAKE_CASE</code>. <code class="language-plaintext highlighter-rouge">static final</code> fields that are immutable.</li>
+  <li><strong>Packages</strong>: <code class="language-plaintext highlighter-rouge">lowercase</code>. No underscores. <code class="language-plaintext highlighter-rouge">com.example.project</code>.</li>
+  <li><strong>Type Parameters</strong>: Single capital letter (e.g., <code class="language-plaintext highlighter-rouge">T</code>, <code class="language-plaintext highlighter-rouge">E</code>, <code class="language-plaintext highlighter-rouge">K</code>, <code class="language-plaintext highlighter-rouge">V</code>).</li>
+  <li><strong>Test Classes</strong>: End with <code class="language-plaintext highlighter-rouge">Test</code> (e.g., <code class="language-plaintext highlighter-rouge">UserServiceTest</code>).</li>
+</ul>
+
+<h2 id="documentation-and-comments">Documentation and Comments</h2>
+
+<ul>
+  <li><strong>Javadoc</strong>: Required for all <code class="language-plaintext highlighter-rouge">public</code> and <code class="language-plaintext highlighter-rouge">protected</code> members (classes, methods, fields).
+    <ul>
+      <li>Use <code class="language-plaintext highlighter-rouge">@param</code>, <code class="language-plaintext highlighter-rouge">@return</code>, <code class="language-plaintext highlighter-rouge">@throws</code> tags.</li>
+      <li>The first sentence should be a summary fragment.</li>
+    </ul>
+  </li>
+  <li><strong>Implementation Comments</strong>: Use <code class="language-plaintext highlighter-rouge">//</code> for implementation details. Avoid block comments <code class="language-plaintext highlighter-rouge">/* ... */</code> for code explanations.</li>
+  <li><strong>Self-Documenting Code</strong>: Prefer meaningful variable and method names over comments.</li>
+  <li><strong>TODOs</strong>: Use <code class="language-plaintext highlighter-rouge">TODO(User):</code> format.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Calculates the sum of two integers.
+ *
+ * @param a the first integer
+ * @param b the second integer
+ * @return the sum of a and b
+ */</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="declarations">Declarations</h2>
+
+<ul>
+  <li><strong>Modifiers</strong>: Order should be: <code class="language-plaintext highlighter-rouge">public/protected/private</code>, <code class="language-plaintext highlighter-rouge">abstract</code>, <code class="language-plaintext highlighter-rouge">static</code>, <code class="language-plaintext highlighter-rouge">final</code>, <code class="language-plaintext highlighter-rouge">transient</code>, <code class="language-plaintext highlighter-rouge">volatile</code>, <code class="language-plaintext highlighter-rouge">synchronized</code>, <code class="language-plaintext highlighter-rouge">native</code>, <code class="language-plaintext highlighter-rouge">strictfp</code>.</li>
+  <li><strong>Annotations</strong>: Place annotations on separate lines before the declaration.</li>
+  <li><strong>Variables</strong>: Declare variables where they are first needed, and initialize them immediately if possible. Avoid C-style array declarations (<code class="language-plaintext highlighter-rouge">String[] args</code> not <code class="language-plaintext highlighter-rouge">String args[]</code>).</li>
+  <li><strong>Long Literals</strong>: Use uppercase <code class="language-plaintext highlighter-rouge">L</code> suffix for long literals (<code class="language-plaintext highlighter-rouge">3000L</code> not <code class="language-plaintext highlighter-rouge">3000l</code>).</li>
+</ul>
+
+<h2 id="imports">Imports</h2>
+
+<ul>
+  <li><strong>No Wildcards</strong>: Avoid wildcard imports (<code class="language-plaintext highlighter-rouge">import java.util.*;</code>). Import each class explicitly.</li>
+  <li><strong>Order</strong>:
+    <ol>
+      <li>Static imports.</li>
+      <li>Standard <code class="language-plaintext highlighter-rouge">java.*</code> and <code class="language-plaintext highlighter-rouge">javax.*</code> packages.</li>
+      <li>Third-party packages (e.g., <code class="language-plaintext highlighter-rouge">org.apache.*</code>, <code class="language-plaintext highlighter-rouge">com.google.*</code>).</li>
+      <li>Local application packages.</li>
+    </ol>
+  </li>
+  <li><strong>Separation</strong>: Insert a blank line between each group.</li>
+</ul>
+
+<h2 id="control-structures">Control Structures</h2>
+
+<ul>
+  <li><strong>Switch</strong>: Use the enhanced <code class="language-plaintext highlighter-rouge">switch</code> expression (Java 14+) where appropriate. Always include a <code class="language-plaintext highlighter-rouge">default</code> case unless covering all enum cases.</li>
+  <li><strong>Loops</strong>: Prefer enhanced <code class="language-plaintext highlighter-rouge">for</code> loops (<code class="language-plaintext highlighter-rouge">for (Type item : items)</code>) over index-based loops unless the index is needed.</li>
+  <li><strong>Conditionals</strong>: Avoid “yoda conditions” (<code class="language-plaintext highlighter-rouge">if (CONSTANT.equals(variable))</code>). While safe, standard <code class="language-plaintext highlighter-rouge">variable.equals(CONSTANT)</code> is preferred if null-safe, or use <code class="language-plaintext highlighter-rouge">Objects.equals()</code>.</li>
+  <li><strong>Nesting</strong>: Avoid deep nesting. Return early (Guard Clauses).</li>
+</ul>
+
+<h2 id="object-oriented-programming">Object Oriented Programming</h2>
+
+<ul>
+  <li><strong>Immutability</strong>: Prefer immutable objects. Use <code class="language-plaintext highlighter-rouge">final</code> fields and constructor injection.</li>
+  <li><strong>Interfaces</strong>: Prefer coding to interfaces rather than implementations (e.g., <code class="language-plaintext highlighter-rouge">List&lt;String&gt; list = new ArrayList&lt;&gt;();</code>).</li>
+  <li><strong>Constructors</strong>: Chain constructors using <code class="language-plaintext highlighter-rouge">this()</code> if multiple constructors exist.</li>
+  <li><strong>Overriding</strong>: Always use <code class="language-plaintext highlighter-rouge">@Override</code> annotation when overriding methods.</li>
+  <li><strong>Utility Classes</strong>: Should be <code class="language-plaintext highlighter-rouge">final</code> and have a private constructor.</li>
+  <li><strong>Records</strong>: Use <code class="language-plaintext highlighter-rouge">record</code> (Java 16+) for data carriers (DTOs).</li>
+</ul>
+
+<h2 id="exception-handling">Exception Handling</h2>
+
+<ul>
+  <li><strong>Checked vs Unchecked</strong>: Prefer unchecked exceptions (<code class="language-plaintext highlighter-rouge">RuntimeException</code>) for recoverable errors or programming errors. Use checked exceptions sparingly.</li>
+  <li><strong>Catching</strong>: Catch specific exceptions. Never catch <code class="language-plaintext highlighter-rouge">Exception</code> or <code class="language-plaintext highlighter-rouge">Throwable</code> unless absolutely necessary (e.g., at the top-level main loop).</li>
+  <li><strong>Ignored Exceptions</strong>: Don’t ignore exceptions. At least log them. If ignoring is intentional, comment why and name the variable <code class="language-plaintext highlighter-rouge">ignored</code>.</li>
+  <li><strong>Try-with-resources</strong>: Use try-with-resources for <code class="language-plaintext highlighter-rouge">AutoCloseable</code> resources (streams, connections).</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">(</span><span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileReader</span><span class="o">(</span><span class="n">path</span><span class="o">)))</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nf">UncheckedIOException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="generics">Generics</h2>
+
+<ul>
+  <li><strong>Raw Types</strong>: Never use raw types (e.g., <code class="language-plaintext highlighter-rouge">List</code> instead of <code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code>).</li>
+  <li><strong>Inference</strong>: Use the diamond operator <code class="language-plaintext highlighter-rouge">&lt;&gt;</code> when instantiating generics.</li>
+  <li><strong>Wildcards</strong>: Use <code class="language-plaintext highlighter-rouge">? extends T</code> for producers (read-only) and <code class="language-plaintext highlighter-rouge">? super T</code> for consumers (write-only) (PECS: Producer Extends, Consumer Super).</li>
+</ul>
+
+<h2 id="lambdas-and-streams">Lambdas and Streams</h2>
+
+<ul>
+  <li><strong>Lambdas</strong>: Keep lambdas short (one-liners preferred). If complex, extract to a method and use a method reference.</li>
+  <li><strong>Streams</strong>: Use streams for collection processing pipelines.
+    <ul>
+      <li>Break long stream chains onto multiple lines, one operation per line.</li>
+    </ul>
+  </li>
+  <li><strong>Side Effects</strong>: Avoid side effects in stream operations (e.g., modifying external state within <code class="language-plaintext highlighter-rouge">map</code> or <code class="language-plaintext highlighter-rouge">filter</code>).</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">names</span> <span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="nl">User:</span><span class="o">:</span><span class="n">isActive</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">User:</span><span class="o">:</span><span class="n">getName</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">sorted</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+</code></pre></div></div>
+
+<h2 id="concurrency">Concurrency</h2>
+
+<ul>
+  <li><strong>Threads</strong>: Avoid creating threads manually. Use <code class="language-plaintext highlighter-rouge">ExecutorService</code> or <code class="language-plaintext highlighter-rouge">CompletableFuture</code>.</li>
+  <li><strong>Synchronization</strong>: Prefer <code class="language-plaintext highlighter-rouge">java.util.concurrent</code> classes (<code class="language-plaintext highlighter-rouge">AtomicInteger</code>, <code class="language-plaintext highlighter-rouge">ConcurrentHashMap</code>, <code class="language-plaintext highlighter-rouge">Locks</code>) over <code class="language-plaintext highlighter-rouge">synchronized</code> blocks/methods.</li>
+  <li><strong>Virtual Threads</strong>: Use virtual threads (Java 21+) for high-throughput I/O-bound tasks.</li>
+  <li><strong>Thread Safety</strong>: Document thread safety of classes (<code class="language-plaintext highlighter-rouge">@ThreadSafe</code>, <code class="language-plaintext highlighter-rouge">@NotThreadSafe</code>).</li>
+</ul>
+
+<h2 id="logging">Logging</h2>
+
+<ul>
+  <li><strong>Framework</strong>: Use SLF4J as the facade (with Logback or Log4j2 as implementation).</li>
+  <li><strong>Levels</strong>: <code class="language-plaintext highlighter-rouge">ERROR</code> (failures), <code class="language-plaintext highlighter-rouge">WARN</code> (potential issues), <code class="language-plaintext highlighter-rouge">INFO</code> (milestones), <code class="language-plaintext highlighter-rouge">DEBUG</code> (diagnostic), <code class="language-plaintext highlighter-rouge">TRACE</code> (fine-grained).</li>
+  <li><strong>Format</strong>: Do not use string concatenation. Use placeholders.
+    <ul>
+      <li>Good: <code class="language-plaintext highlighter-rouge">log.debug("Processing user: {}", userId);</code></li>
+      <li>Bad: <code class="language-plaintext highlighter-rouge">log.debug("Processing user: " + userId);</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="testing">Testing</h2>
+
+<ul>
+  <li><strong>Framework</strong>: JUnit 5 (Jupiter).</li>
+  <li><strong>Assertions</strong>: AssertJ or Truth for fluent and readable assertions.</li>
+  <li><strong>Mocking</strong>: Mockito.</li>
+  <li><strong>Naming</strong>: <code class="language-plaintext highlighter-rouge">MethodName_StateUnderTest_ExpectedBehavior</code>.</li>
+  <li><strong>Structure</strong>: Tests should follow AAA (Arrange, Act, Assert).</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">calculateTotal_WithValidItems_ReturnsSum</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">// Arrange</span>
+    <span class="nc">Order</span> <span class="n">order</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Order</span><span class="o">(</span><span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">new</span> <span class="nc">Item</span><span class="o">(</span><span class="mi">10</span><span class="o">),</span> <span class="k">new</span> <span class="nc">Item</span><span class="o">(</span><span class="mi">20</span><span class="o">)));</span>
+
+    <span class="c1">// Act</span>
+    <span class="kt">int</span> <span class="n">total</span> <span class="o">=</span> <span class="n">order</span><span class="o">.</span><span class="na">calculateTotal</span><span class="o">();</span>
+
+    <span class="c1">// Assert</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">total</span><span class="o">).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">30</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="modern-java-features">Modern Java Features</h2>
+
+<ul>
+  <li><strong>Records</strong>: Use for immutable data classes.</li>
+  <li><strong>Text Blocks</strong>: Use <code class="language-plaintext highlighter-rouge">"""</code> for multi-line strings (SQL, JSON, HTML).</li>
+  <li><strong>Pattern Matching</strong>: Use <code class="language-plaintext highlighter-rouge">instanceof</code> with pattern matching to avoid casting.</li>
+  <li><strong>Switch Expressions</strong>: Use concise switch syntax.</li>
+  <li><strong>Sealed Classes</strong>: Use <code class="language-plaintext highlighter-rouge">sealed</code> classes to restrict inheritance hierarchies.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Pattern Matching</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">());</span>
+<span class="o">}</span>
+
+<span class="c1">// Switch Expression</span>
+<span class="kt">int</span> <span class="n">numLetters</span> <span class="o">=</span> <span class="k">switch</span> <span class="o">(</span><span class="n">day</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="no">MONDAY</span><span class="o">,</span> <span class="no">FRIDAY</span><span class="o">,</span> <span class="no">SUNDAY</span> <span class="o">-&gt;</span> <span class="mi">6</span><span class="o">;</span>
+    <span class="k">case</span> <span class="no">TUESDAY</span> <span class="o">-&gt;</span> <span class="mi">7</span><span class="o">;</span>
+    <span class="k">default</span> <span class="o">-&gt;</span> <span class="mi">8</span><span class="o">;</span>
+<span class="o">};</span>
+</code></pre></div></div>
+
+<h2 id="recommended-tools">Recommended Tools</h2>
+
+<ul>
+  <li><strong>Build Systems</strong>: Maven or Gradle.</li>
+  <li><strong>Formatter</strong>: <code class="language-plaintext highlighter-rouge">google-java-format</code> or Spotless.</li>
+  <li><strong>Linter</strong>: Checkstyle, PMD, SonarLint.</li>
+  <li><strong>Static Analysis</strong>: SpotBugs (successor to FindBugs).</li>
+  <li><strong>Testing</strong>: JUnit 5, Mockito, AssertJ.</li>
+</ul>
+
+<h2 id="related-interview-questions">Related Interview Questions</h2>
+
+<ul>
+  <li><strong><a href="../../interview_questions/java.md">Practice Questions</a></strong>: Test your knowledge of Java concepts.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

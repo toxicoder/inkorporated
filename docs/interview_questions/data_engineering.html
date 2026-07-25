@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Data Engineering Interview Questions &amp; Answers (100+) | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Data Engineering Interview Questions &amp; Answers (100+)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Data Engineering Interview Questions &amp; Answers (100+) for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="Data Engineering Interview Questions &amp; Answers (100+) for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/interview_questions/data_engineering.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/interview_questions/data_engineering.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Data Engineering Interview Questions &amp; Answers (100+)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Data Engineering Interview Questions &amp; Answers (100+) for Inkorporated.","headline":"Data Engineering Interview Questions &amp; Answers (100+)","url":"https://toxicoder.github.io/inkorporated/interview_questions/data_engineering.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Data Engineering Interview Questions &amp; Answers (100+)</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="data-engineering-interview-questions--answers-100">Data Engineering Interview Questions &amp; Answers (100+)</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This guide contains 100+ Data Engineering interview questions, covering Data Modeling, Big Data Frameworks (Spark), Pipelines, Warehousing, and System Design. Each question includes a model answer and potential follow-up paths.</p>
+
+<h2 id="part-1-data-modeling--architecture-1-20">Part 1: Data Modeling &amp; Architecture (1-20)</h2>
+
+<h3 id="1-what-is-the-difference-between-star-schema-and-snowflake-schema">1. What is the difference between Star Schema and Snowflake Schema?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">Star Schema</th>
+      <th style="text-align: left">Snowflake Schema</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Structure</strong></td>
+      <td style="text-align: left">Denormalized. One fact table, multiple dimension tables.</td>
+      <td style="text-align: left">Normalized. Dimension tables are split into sub-dimensions.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Joins</strong></td>
+      <td style="text-align: left">Fewer joins (simpler queries).</td>
+      <td style="text-align: left">More joins (complex queries).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Redundancy</strong></td>
+      <td style="text-align: left">High data redundancy.</td>
+      <td style="text-align: left">Low data redundancy.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Performance</strong></td>
+      <td style="text-align: left">Faster for read/aggregation (OLAP).</td>
+      <td style="text-align: left">Slightly slower due to joins.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions storage space.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “In modern cloud data warehouses (Snowflake, BigQuery), does the storage saving of Snowflake Schema matter?”</li>
+      <li><em>Answer:</em> Usually no. Storage is cheap; compute is expensive. Star Schema is preferred for performance (fewer joins).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-what-are-the-3-vs-of-big-data">2. What are the 3 Vs of Big Data?</h3>
+
+<ul>
+  <li><strong>Volume:</strong> The amount of data (TB, PB).</li>
+  <li><strong>Velocity:</strong> The speed at which data is generated and processed (Streaming vs Batch).</li>
+  <li><strong>Variety:</strong> The different types of data (Structured, Semi-structured JSON, Unstructured).</li>
+</ul>
+
+<p><em>Note: Some add Veracity (quality) and Value.</em></p>
+
+<h3 id="3-explain-the-difference-between-etl-and-elt">3. Explain the difference between ETL and ELT.</h3>
+
+<ul>
+  <li><strong>ETL (Extract, Transform, Load):</strong> Data is transformed <em>before</em> loading into the destination. Common in traditional DBs with limited compute.</li>
+  <li><strong>ELT (Extract, Load, Transform):</strong> Data is loaded raw into the destination, then transformed using the destination’s compute power. Common in Cloud Data Warehouses (Snowflake, BigQuery).</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate prefers ELT.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “When would you still use ETL over ELT?”</li>
+      <li><em>Answer:</em> When dealing with PII masking needs <em>before</em> data hits the warehouse, or when the transformation requires complex processing not efficiently done in SQL.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="4-what-is-data-normalization-vs-denormalization">4. What is Data Normalization vs Denormalization?</h3>
+
+<ul>
+  <li><strong>Normalization:</strong> Organizing data to reduce redundancy (1NF, 2NF, 3NF). Good for OLTP (Write heavy).</li>
+  <li><strong>Denormalization:</strong> Adding redundancy to optimize read performance. Good for OLAP (Read heavy).</li>
+</ul>
+
+<h3 id="5-what-is-a-slowly-changing-dimension-scd">5. What is a Slowly Changing Dimension (SCD)?</h3>
+
+<p>SCDs track changes in dimension attributes over time.</p>
+
+<ul>
+  <li><strong>Type 1 (Overwrite):</strong> No history kept. Update the record.</li>
+  <li><strong>Type 2 (Add Row):</strong> Keep history by adding a new row with <code class="language-plaintext highlighter-rouge">StartDate</code>, <code class="language-plaintext highlighter-rouge">EndDate</code>, and <code class="language-plaintext highlighter-rouge">IsCurrent</code> flags.</li>
+  <li><strong>Type 3 (Add Column):</strong> Keep limited history (e.g., <code class="language-plaintext highlighter-rouge">CurrentCity</code>, <code class="language-plaintext highlighter-rouge">PreviousCity</code>).</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions Type 2.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What is the downside of SCD Type 2?”</li>
+      <li><em>Answer:</em> The table grows indefinitely. Queries need to filter on <code class="language-plaintext highlighter-rouge">IsCurrent</code> or Date Ranges.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="6-what-is-a-data-lake">6. What is a Data Lake?</h3>
+
+<p>A centralized repository that allows you to store all your structured and unstructured data at any scale. (e.g., S3, ADLS, HDFS).</p>
+
+<h3 id="7-what-is-a-data-warehouse">7. What is a Data Warehouse?</h3>
+
+<p>A system used for reporting and data analysis. Stores data in a structured format (Schema-on-Write).</p>
+
+<h3 id="8-what-is-a-data-lakehouse">8. What is a Data Lakehouse?</h3>
+
+<p>A new architecture that combines the flexibility of a Data Lake with the management features of a Data Warehouse (ACID transactions, Schema enforcement) using formats like Delta Lake, Iceberg, or Hudi.</p>
+
+<pre><code class="language-mermaid">graph LR
+    A[Raw Data] --&gt; B((Data Lake))
+    B --&gt; C{Lakehouse Layer&lt;br&gt;Delta/Iceberg}
+    C --&gt; D[BI &amp; AI]
+</code></pre>
+
+<h3 id="9-explain-oltp-vs-olap">9. Explain OLTP vs OLAP.</h3>
+
+<ul>
+  <li><strong>OLTP (Online Transaction Processing):</strong> Operational apps. Fast, small inserts/updates. Row-oriented.</li>
+  <li><strong>OLAP (Online Analytical Processing):</strong> Analytics. Large scans/aggregations. Column-oriented.</li>
+</ul>
+
+<h3 id="10-why-is-columnar-storage-better-for-analytics">10. Why is Columnar Storage better for Analytics?</h3>
+
+<ul>
+  <li><strong>I/O Efficiency:</strong> Only reads the columns needed for the query.</li>
+  <li><strong>Compression:</strong> High compression ratios because similar data types are stored together.</li>
+</ul>
+
+<h3 id="11-what-is-cap-theorem">11. What is CAP Theorem?</h3>
+
+<p>In a distributed system, you can only provide 2 of 3:</p>
+<ul>
+  <li><strong>C</strong>onsistency (Every read receives the most recent write).</li>
+  <li><strong>A</strong>vailability (Every request receives a response).</li>
+  <li><strong>P</strong>artition Tolerance (System continues to operate despite network failures).</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate chooses CP.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Give an example of a CP system.”</li>
+      <li><em>Answer:</em> HBase, MongoDB (default).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="12-what-is-eventual-consistency">12. What is Eventual Consistency?</h3>
+
+<p>A consistency model used in distributed systems where, given enough time, all updates will propagate through the system and all replicas will be consistent. (AP systems like Cassandra).</p>
+
+<h3 id="13-what-is-a-surrogate-key">13. What is a Surrogate Key?</h3>
+
+<p>A system-generated unique identifier (usually an integer or UUID) used as the primary key, rather than a “Natural Key” from the business data.</p>
+
+<h3 id="14-what-is-data-governance">14. What is Data Governance?</h3>
+
+<p>The set of processes, roles, policies, standards, and metrics that ensure the effective and efficient use of information in enabling an organization to achieve its goals. Includes Data Quality, Privacy, and Access Control.</p>
+
+<h3 id="15-what-is-change-data-capture-cdc">15. What is Change Data Capture (CDC)?</h3>
+
+<p>A pattern to identify and track changes (Insert, Update, Delete) in a source system and deliver those changes to a downstream system in real-time. Tools: Debezium, Oracle GoldenGate.</p>
+
+<h3 id="16-what-is-the-difference-between-batch-and-stream-processing">16. What is the difference between Batch and Stream processing?</h3>
+
+<ul>
+  <li><strong>Batch:</strong> Processing a large volume of data all at once (high latency, high throughput).</li>
+  <li><strong>Stream:</strong> Processing data record-by-record as it arrives (low latency).</li>
+</ul>
+
+<h3 id="17-what-is-lambda-architecture">17. What is Lambda Architecture?</h3>
+
+<p>A hybrid approach designed to handle massive quantities of data by taking advantage of both batch and stream-processing methods.</p>
+
+<ul>
+  <li><strong>Speed Layer:</strong> Real-time (Streaming).</li>
+  <li><strong>Batch Layer:</strong> Historic (Batch).</li>
+  <li><strong>Serving Layer:</strong> Merges views.</li>
+</ul>
+
+<h3 id="18-what-is-kappa-architecture">18. What is Kappa Architecture?</h3>
+
+<p>An architecture that treats everything as a stream. Removes the batch layer of Lambda Architecture.
+<em>Pros:</em> Simpler code base (one logic for stream and replay).</p>
+
+<h3 id="19-what-is-sharding">19. What is Sharding?</h3>
+
+<p>Horizontal partitioning of a database across multiple instances to spread the load.</p>
+
+<h3 id="20-what-is-a-data-mesh">20. What is a Data Mesh?</h3>
+
+<p>A decentralized sociotechnical approach to data architecture. It shifts from a centralized monolith lake/warehouse to domain-oriented data products.</p>
+
+<h2 id="part-2-big-data-frameworks-sparkhadoop-21-40">Part 2: Big Data Frameworks (Spark/Hadoop) (21-40)</h2>
+
+<h3 id="21-what-are-the-core-components-of-hadoop">21. What are the core components of Hadoop?</h3>
+
+<ol>
+  <li><strong>HDFS:</strong> Storage (Distributed File System).</li>
+  <li><strong>YARN:</strong> Resource Management.</li>
+  <li><strong>MapReduce:</strong> Processing Engine.</li>
+</ol>
+
+<h3 id="22-why-is-spark-faster-than-mapreduce">22. Why is Spark faster than MapReduce?</h3>
+
+<p>Spark processes data in-memory (RAM), whereas MapReduce writes intermediate results to disk (HDFS) after every map/reduce step.</p>
+
+<h3 id="23-what-is-an-rdd-resilient-distributed-dataset">23. What is an RDD (Resilient Distributed Dataset)?</h3>
+
+<p>The fundamental data structure of Spark. It is an immutable, distributed collection of objects.</p>
+<ul>
+  <li><strong>Resilient:</strong> Can recover from node failure using lineage.</li>
+  <li><strong>Distributed:</strong> Split across cluster.</li>
+</ul>
+
+<h3 id="24-rdd-vs-dataframe-vs-dataset">24. RDD vs DataFrame vs Dataset?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">RDD</th>
+      <th style="text-align: left">DataFrame</th>
+      <th style="text-align: left">Dataset</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Level</strong></td>
+      <td style="text-align: left">Low-level (Java/Scala objects).</td>
+      <td style="text-align: left">High-level (Relational).</td>
+      <td style="text-align: left">Type-safe High-level.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Optimization</strong></td>
+      <td style="text-align: left">None (You optimize).</td>
+      <td style="text-align: left">Catalyst Optimizer.</td>
+      <td style="text-align: left">Catalyst Optimizer + Type Safety.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Language</strong></td>
+      <td style="text-align: left">Any.</td>
+      <td style="text-align: left">Any.</td>
+      <td style="text-align: left">Scala/Java only.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate prefers RDDs.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “When should you use RDDs today?”</li>
+      <li><em>Answer:</em> Rarely. Only when you need fine-grained control over physical data layout or unstructured data manipulation that doesn’t fit columnar format.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="25-what-is-the-catalyst-optimizer">25. What is the Catalyst Optimizer?</h3>
+
+<p>The internal query optimizer in Spark SQL. It converts the user’s code (DataFrame/SQL) into an optimized physical execution plan (e.g., predicate pushdown, join reordering).</p>
+
+<h3 id="26-what-is-a-shuffle-in-spark">26. What is a “Shuffle” in Spark?</h3>
+
+<p>The process of redistributing data across partitions (and nodes). It occurs during <code class="language-plaintext highlighter-rouge">groupBy</code>, <code class="language-plaintext highlighter-rouge">join</code>, or <code class="language-plaintext highlighter-rouge">repartition</code>.</p>
+<ul>
+  <li><em>Performance Impact:</em> Very expensive (Disk I/O + Network).</li>
+</ul>
+
+<h3 id="27-explain-lazy-evaluation-in-spark">27. Explain “Lazy Evaluation” in Spark.</h3>
+
+<p>Spark does not execute transformations (like <code class="language-plaintext highlighter-rouge">map</code>, <code class="language-plaintext highlighter-rouge">filter</code>) immediately. It builds a DAG (Directed Acyclic Graph) of instructions. Execution only starts when an <strong>Action</strong> (like <code class="language-plaintext highlighter-rouge">collect</code>, <code class="language-plaintext highlighter-rouge">count</code>, <code class="language-plaintext highlighter-rouge">save</code>) is called.
+<em>Benefit:</em> Allows optimization (combining filters).</p>
+
+<h3 id="28-what-is-the-difference-between-map-and-flatmap">28. What is the difference between <code class="language-plaintext highlighter-rouge">map()</code> and <code class="language-plaintext highlighter-rouge">flatMap()</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">map()</code>: One input -&gt; One output.</li>
+  <li><code class="language-plaintext highlighter-rouge">flatMap()</code>: One input -&gt; Zero or more outputs (flattens the result).</li>
+</ul>
+
+<h3 id="29-what-is-broadcast-join">29. What is Broadcast Join?</h3>
+
+<p>A join optimization where the smaller table is sent (broadcasted) to every worker node. This avoids shuffling the large table.
+<em>Config:</em> <code class="language-plaintext highlighter-rouge">spark.sql.autoBroadcastJoinThreshold</code>.</p>
+
+<h3 id="30-what-is-data-skew">30. What is Data Skew?</h3>
+
+<p>When data is unevenly distributed across partitions. One task takes much longer than others, slowing down the whole job.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Solution is Salting.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How does Salting fix skew?”</li>
+      <li><em>Answer:</em> You add a random key (salt) to the skewed keys to split them into smaller groups, process them, and then aggregate back.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="31-what-is-partition-pruning">31. What is Partition Pruning?</h3>
+
+<p>An optimization where the engine skips reading files/partitions that don’t match the query filter.
+<em>Requirement:</em> Data must be partitioned (e.g., by Date) and query must filter on that column.</p>
+
+<h3 id="32-what-is-predicate-pushdown">32. What is Predicate Pushdown?</h3>
+
+<p>Pushing filtering logic down to the source system (e.g., Parquet file or Database) to reduce the amount of data read into memory.</p>
+
+<h3 id="33-cache-vs-persist">33. <code class="language-plaintext highlighter-rouge">cache()</code> vs <code class="language-plaintext highlighter-rouge">persist()</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">cache()</code>: Persists to Memory (MEMORY_AND_DISK in newer versions).</li>
+  <li><code class="language-plaintext highlighter-rouge">persist(level)</code>: Allows specifying storage level (MEMORY_ONLY, DISK_ONLY, MEMORY_AND_DISK_SER).</li>
+</ul>
+
+<h3 id="34-what-are-accumulators">34. What are Accumulators?</h3>
+
+<p>Variables that are only “added” to through an associative and commutative operation. Used for counters or sums efficiently in parallel.</p>
+
+<h3 id="35-what-happens-if-a-worker-node-fails-in-spark">35. What happens if a worker node fails in Spark?</h3>
+
+<p>The Driver detects the failure. Using the DAG/Lineage, it reschedules the lost tasks on other healthy nodes to recompute the missing partitions.</p>
+
+<h3 id="36-coalesce-vs-repartition">36. Coalesce vs Repartition?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">repartition(n)</code>: Full shuffle. Increases or decreases partitions. balances data.</li>
+  <li><code class="language-plaintext highlighter-rouge">coalesce(n)</code>: No shuffle (usually). Only decreases partitions. Merges local partitions. Faster.</li>
+</ul>
+
+<h3 id="37-what-are-the-file-formats-optimized-for-big-data">37. What are the file formats optimized for Big Data?</h3>
+
+<ul>
+  <li><strong>Parquet:</strong> Columnar. Good for compression and partial reads.</li>
+  <li><strong>Avro:</strong> Row-based. Good for schema evolution and write-heavy loads.</li>
+  <li><strong>ORC:</strong> Optimized Row Columnar (Hive).</li>
+</ul>
+
+<h3 id="38-how-do-you-handle-small-file-problem-in-hdfsspark">38. How do you handle small file problem in HDFS/Spark?</h3>
+
+<ul>
+  <li><strong>Compaction:</strong> Run a job to merge small files.</li>
+  <li><strong>Writer Config:</strong> Adjust partition sizes before writing (<code class="language-plaintext highlighter-rouge">coalesce</code>).</li>
+</ul>
+
+<h3 id="39-what-is-a-dag">39. What is a DAG?</h3>
+
+<p><strong>Directed Acyclic Graph</strong>. A graph of the logical execution plan of steps.</p>
+
+<pre><code class="language-mermaid">graph TD
+    A[Read File] --&gt; B[Filter]
+    B --&gt; C[Map]
+    C --&gt; D[ReduceByKey]
+    D --&gt; E[Save]
+</code></pre>
+
+<h3 id="40-explain-serialization-in-spark">40. Explain Serialization in Spark.</h3>
+
+<p>Transferring data over network or to disk requires objects to be converted to bytes.</p>
+<ul>
+  <li><strong>Java Serialization:</strong> Default, slow.</li>
+  <li><strong>Kryo Serialization:</strong> Faster, compact. Recommended.</li>
+</ul>
+
+<h2 id="part-3-data-pipelines--orchestration-41-60">Part 3: Data Pipelines &amp; Orchestration (41-60)</h2>
+
+<h3 id="41-what-is-airflow">41. What is Airflow?</h3>
+
+<p>A platform to programmatically author, schedule, and monitor workflows as DAGs (Directed Acyclic Graphs) of tasks. Written in Python.</p>
+
+<h3 id="42-what-is-an-airflow-operator">42. What is an Airflow Operator?</h3>
+
+<p>A template for a predefined task.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">BashOperator</code>: Execute bash command.</li>
+  <li><code class="language-plaintext highlighter-rouge">PythonOperator</code>: Execute python function.</li>
+  <li><code class="language-plaintext highlighter-rouge">SnowflakeOperator</code>: Execute SQL in Snowflake.</li>
+</ul>
+
+<h3 id="43-what-is-backfilling">43. What is Backfilling?</h3>
+
+<p>Running a workflow for a past period. Airflow allows you to run DAG runs for dates in the past to “fill in” data.</p>
+
+<h3 id="44-what-is-a-sensor-in-airflow">44. What is a Sensor in Airflow?</h3>
+
+<p>A special type of operator that waits for a certain condition to be true (e.g., a file landing in S3, a specific time) before proceeding.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Performance.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What is <code class="language-plaintext highlighter-rouge">mode='reschedule'</code> in Sensors?”</li>
+      <li><em>Answer:</em> It releases the worker slot while waiting, checking again later. Prevents deadlock if many sensors block all workers.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="45-idempotency-in-pipelines">45. Idempotency in pipelines?</h3>
+
+<p>A pipeline is idempotent if running it multiple times with the same input produces the same result.
+<em>Critical for:</em> Retry logic and backfilling.</p>
+
+<h3 id="46-what-is-dbt-data-build-tool">46. What is dbt (data build tool)?</h3>
+
+<p>A transformation tool that runs within the data warehouse. It allows writing SQL with Jinja templating to build data models. “T” in ELT.</p>
+
+<h3 id="47-what-is-a-dag-run">47. What is a DAG Run?</h3>
+
+<p>An instance of a DAG running for a specific <code class="language-plaintext highlighter-rouge">execution_date</code>.</p>
+
+<h3 id="48-what-is-xcom-cross-communication">48. What is XCom (Cross-Communication)?</h3>
+
+<p>A mechanism in Airflow for tasks to exchange small amounts of data (metadata).
+<em>Warning:</em> Do not use for large data transfer (stored in Metadata DB).</p>
+
+<h3 id="49-push-vs-pull-model-in-pipelines">49. Push vs Pull model in Pipelines?</h3>
+
+<ul>
+  <li><strong>Push:</strong> Upstream triggers downstream.</li>
+  <li><strong>Pull:</strong> Downstream polls upstream for readiness.</li>
+</ul>
+
+<h3 id="50-what-is-data-lineage">50. What is Data Lineage?</h3>
+
+<p>Tracing the life cycle of data: where it originated, how it was transformed, and where it moved. Critical for debugging and compliance.</p>
+
+<h3 id="51-how-to-handle-pipeline-failures">51. How to handle pipeline failures?</h3>
+
+<ul>
+  <li><strong>Retries:</strong> Automatic retry with exponential backoff.</li>
+  <li><strong>Alerting:</strong> Slack/Email notifications on failure callback.</li>
+  <li><strong>Dead Letter Queue:</strong> Move bad data to a separate location for manual inspection.</li>
+</ul>
+
+<h3 id="52-what-is-templating-in-airflow">52. What is Templating in Airflow?</h3>
+
+<p>Using Jinja templating to inject variables (like `` for date string) into tasks dynamically at runtime.</p>
+
+<h3 id="53-dynamic-dag-generation">53. Dynamic DAG generation?</h3>
+
+<p>Creating DAG objects in a loop or based on external config files. Useful for generating similar pipelines for 100 different tables.</p>
+
+<h3 id="54-what-is-the-airflow-scheduler">54. What is the Airflow Scheduler?</h3>
+
+<p>The component that monitors all DAGs and tasks, triggers task instances once their dependencies are met.</p>
+
+<h3 id="55-kubernetes-executor-vs-celery-executor">55. Kubernetes Executor vs Celery Executor?</h3>
+
+<ul>
+  <li><strong>Celery:</strong> Distributed workers (VMs). Good for static scale.</li>
+  <li><strong>Kubernetes:</strong> Pod per task. dynamic scaling. Good for isolation and varying resource needs.</li>
+</ul>
+
+<h3 id="56-what-is-a-sla-in-airflow">56. What is a “SLA” in Airflow?</h3>
+
+<p>Service Level Agreement. You can define a time by which a task <em>must</em> complete. If it misses, an alert is sent.</p>
+
+<h3 id="57-incremental-loading-vs-full-load">57. Incremental Loading vs Full Load?</h3>
+
+<ul>
+  <li><strong>Full Load:</strong> Delete target, reload everything. Simple, robust, slow.</li>
+  <li><strong>Incremental:</strong> Load only new/changed rows (based on watermark/timestamp). Complex, fast.</li>
+</ul>
+
+<h3 id="58-how-do-you-ensure-data-quality-in-a-pipeline">58. How do you ensure data quality in a pipeline?</h3>
+
+<ul>
+  <li>Schema Validation.</li>
+  <li>Null checks / Range checks.</li>
+  <li>Tools: Great Expectations, dbt tests (<code class="language-plaintext highlighter-rouge">unique</code>, <code class="language-plaintext highlighter-rouge">not_null</code>).</li>
+</ul>
+
+<h3 id="59-what-is-a-zombie-task">59. What is a “Zombie Task”?</h3>
+
+<p>A task that the scheduler thinks is running, but the worker process has actually died.</p>
+
+<h3 id="60-how-to-parallelize-tasks">60. How to parallelize tasks?</h3>
+
+<p>In Airflow, simply setting dependencies such that multiple tasks depend on the same upstream task allows them to run in parallel (up to <code class="language-plaintext highlighter-rouge">concurrency</code> limits).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">start</span> <span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">task1</span><span class="p">,</span> <span class="n">task2</span><span class="p">,</span> <span class="n">task3</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">end</span>
+</code></pre></div></div>
+
+<h2 id="part-4-data-warehousing--storage-61-80">Part 4: Data Warehousing &amp; Storage (61-80)</h2>
+
+<h3 id="61-explain-shared-nothing-architecture">61. Explain “Shared-Nothing Architecture”.</h3>
+
+<p>Each node has its own disk and CPU. Nodes communicate via network.
+<em>Used in:</em> Redshift, Teradata, Greenplum.
+<em>Pros:</em> Performance (Parallelism).
+<em>Cons:</em> Resizing cluster requires data redistribution.</p>
+
+<h3 id="62-explain-shared-disk-architecture-separation-of-compute--storage">62. Explain “Shared-Disk Architecture” (Separation of Compute &amp; Storage).</h3>
+
+<p>All compute nodes access a central storage layer (Object Storage like S3).
+<em>Used in:</em> Snowflake, BigQuery.
+<em>Pros:</em> Independent scaling of storage and compute.</p>
+
+<h3 id="63-what-is-a-micro-partition-snowflake">63. What is a Micro-partition (Snowflake)?</h3>
+
+<p>Snowflake automatically divides tables into micro-partitions (contiguous units of storage). It stores metadata (min/max values) for pruning. No manual partitioning needed.</p>
+
+<h3 id="64-what-is-zero-copy-cloning">64. What is Zero-Copy Cloning?</h3>
+
+<p>Creating a copy of a database/table without duplicating the physical data. It just points to the same micro-partitions.
+<em>Use Case:</em> Creating Dev/Test environments instantly.</p>
+
+<h3 id="65-row-level-security-rls">65. Row-level Security (RLS)?</h3>
+
+<p>Restricting data access at the row level based on the user’s role.</p>
+
+<h3 id="66-what-is-the-difference-between-hot-warm-and-cold-storage">66. What is the difference between Hot, Warm, and Cold storage?</h3>
+
+<ul>
+  <li><strong>Hot:</strong> High performance, expensive (SSD/NVMe).</li>
+  <li><strong>Warm:</strong> Infrequent access, cheaper.</li>
+  <li><strong>Cold:</strong> Archive, cheapest, slow retrieval (Glacier).</li>
+</ul>
+
+<h3 id="67-explain-vacuum-operation-redshiftpostgres">67. Explain “Vacuum” operation (Redshift/Postgres).</h3>
+
+<p>Reclaims storage occupied by deleted/updated rows and sorts data.</p>
+
+<h3 id="68-what-is-a-time-series-database">68. What is a Time-Series Database?</h3>
+
+<p>Optimized for handling time-stamped data (metrics, IoT).
+<em>Examples:</em> InfluxDB, Prometheus, TimescaleDB.</p>
+
+<h3 id="69-nosql-types">69. NoSQL Types?</h3>
+
+<ol>
+  <li><strong>Key-Value:</strong> Redis, DynamoDB.</li>
+  <li><strong>Document:</strong> MongoDB.</li>
+  <li><strong>Column-Family:</strong> Cassandra, HBase.</li>
+  <li><strong>Graph:</strong> Neo4j.</li>
+</ol>
+
+<h3 id="70-when-to-use-cassandra">70. When to use Cassandra?</h3>
+
+<p>High write throughput, high availability (AP system). Distributed wide-column store. Good for chat logs, sensor data.</p>
+
+<h3 id="71-dynamodb-partition-key-vs-sort-key">71. DynamoDB Partition Key vs Sort Key?</h3>
+
+<ul>
+  <li><strong>Partition Key:</strong> Determines the physical node.</li>
+  <li><strong>Sort Key:</strong> Sorts data within the partition.</li>
+  <li>Combination = Primary Key.</li>
+</ul>
+
+<h3 id="72-what-is-a-bloom-filter">72. What is a Bloom Filter?</h3>
+
+<p>A probabilistic data structure used to test whether an element is a member of a set.</p>
+<ul>
+  <li>Returns “Possibly in set” or “Definitely not in set”.</li>
+  <li>Used in joins and disk lookups to avoid reading non-matching files.</li>
+</ul>
+
+<h3 id="73-redis-use-cases-in-de">73. Redis use cases in DE?</h3>
+
+<ul>
+  <li>Caching.</li>
+  <li>Deduplication (Sets/HyperLogLog).</li>
+  <li>Message Broker (Pub/Sub).</li>
+</ul>
+
+<h3 id="74-consistency-in-s3">74. Consistency in S3?</h3>
+
+<p>S3 now offers <strong>Strong Consistency</strong> (Read-after-Write). Previously it was eventual.</p>
+
+<h3 id="75-file-formats-csv-vs-json-vs-parquet">75. File Formats: CSV vs JSON vs Parquet?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Format</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Read Speed</th>
+      <th style="text-align: left">Write Speed</th>
+      <th style="text-align: left">Compression</th>
+      <th style="text-align: left">Schema?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>CSV</strong></td>
+      <td style="text-align: left">Text</td>
+      <td style="text-align: left">Slow</td>
+      <td style="text-align: left">Fast</td>
+      <td style="text-align: left">Poor</td>
+      <td style="text-align: left">No</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>JSON</strong></td>
+      <td style="text-align: left">Text</td>
+      <td style="text-align: left">Slow</td>
+      <td style="text-align: left">Fast</td>
+      <td style="text-align: left">Poor</td>
+      <td style="text-align: left">No</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Parquet</strong></td>
+      <td style="text-align: left">Binary (Col)</td>
+      <td style="text-align: left">Fast</td>
+      <td style="text-align: left">Slow</td>
+      <td style="text-align: left">Excellent</td>
+      <td style="text-align: left">Yes</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="76-partitioning-vs-clustering-bigquery">76. Partitioning vs Clustering (BigQuery)?</h3>
+
+<ul>
+  <li><strong>Partitioning:</strong> Physically splitting data by column (e.g., Day). Limits cost.</li>
+  <li><strong>Clustering:</strong> Sorting data within partitions by columns. Improves filter performance.</li>
+</ul>
+
+<h3 id="77-what-is-acid-transactions-support-in-data-lakes">77. What is ACID transactions support in Data Lakes?</h3>
+
+<p>Technologies like <strong>Delta Lake</strong> provide ACID transactions on top of Parquet files in S3.</p>
+<ul>
+  <li>Uses a transaction log (<code class="language-plaintext highlighter-rouge">_delta_log</code>) to track commits.</li>
+</ul>
+
+<h3 id="78-what-is-time-travel">78. What is Time Travel?</h3>
+
+<p>Querying data as it looked at a past point in time. Supported by Snowflake, Delta Lake, BigQuery.</p>
+
+<h3 id="79-schema-evolution">79. Schema Evolution?</h3>
+
+<p>The ability to handle changes in the schema (adding/renaming columns) without breaking the pipeline.</p>
+
+<h3 id="80-object-storage-vs-block-storage">80. Object Storage vs Block Storage?</h3>
+
+<ul>
+  <li><strong>Object (S3):</strong> Flat namespace, API access, Metadata, Immutable. Cheap.</li>
+  <li><strong>Block (EBS):</strong> Hierarchical, OS mountable, Fast IO. Expensive.</li>
+</ul>
+
+<h2 id="part-5-streaming--system-design-81-100">Part 5: Streaming &amp; System Design (81-100)</h2>
+
+<h3 id="81-explain-apache-kafka-architecture">81. Explain Apache Kafka architecture.</h3>
+
+<ul>
+  <li><strong>Producer:</strong> Sends messages.</li>
+  <li><strong>Broker:</strong> Server storing data.</li>
+  <li><strong>Topic:</strong> Category of messages.</li>
+  <li><strong>Partition:</strong> Split of a topic for scalability.</li>
+  <li><strong>Consumer:</strong> Reads messages.</li>
+  <li><strong>Zookeeper:</strong> Manages cluster state (Legacy, being replaced by KRaft).</li>
+</ul>
+
+<h3 id="82-what-is-a-consumer-group">82. What is a Consumer Group?</h3>
+
+<p>A group of consumers working together to consume a topic. Each partition is consumed by exactly one consumer in the group. Allows parallel processing.</p>
+
+<h3 id="83-kafka-at-least-once-vs-exactly-once">83. Kafka “At-least-once” vs “Exactly-once”?</h3>
+
+<ul>
+  <li><strong>At-least-once:</strong> Message might be processed twice (if ack fails). Default.</li>
+  <li><strong>Exactly-once:</strong> Transactional. Guaranteed processing once. Harder to achieve.</li>
+</ul>
+
+<h3 id="84-what-is-log-compaction-in-kafka">84. What is Log Compaction in Kafka?</h3>
+
+<p>Retaining only the last known value for each key in the log, rather than time-based retention. Good for “current state” (e.g., user profiles).</p>
+
+<h3 id="85-kafka-vs-rabbitmq">85. Kafka vs RabbitMQ?</h3>
+
+<ul>
+  <li><strong>Kafka:</strong> Log-based. Dumb broker / Smart consumer. High throughput. Replay capability.</li>
+  <li><strong>RabbitMQ:</strong> Queue-based. Smart broker. Good for complex routing. Messages removed after consumption.</li>
+</ul>
+
+<h3 id="86-what-is-watermarking-in-streaming">86. What is Watermarking in streaming?</h3>
+
+<p>A mechanism to handle late data. “I will wait until time T for data from time T-10 min”. After that, I finalize the window.</p>
+
+<h3 id="87-windowing-types">87. Windowing types?</h3>
+
+<ul>
+  <li><strong>Tumbling:</strong> Fixed size, non-overlapping (e.g., every 5 min).</li>
+  <li><strong>Sliding:</strong> Overlapping (e.g., every 5 min, slide by 1 min).</li>
+  <li><strong>Session:</strong> Dynamic, based on activity gaps.</li>
+</ul>
+
+<h3 id="88-explain-backpressure">88. Explain Backpressure.</h3>
+
+<p>When the system cannot process data as fast as it arrives.
+<em>Mechanism:</em> Stop reading from source until buffer clears.</p>
+
+<h3 id="89-system-design-design-a-top-k-leaderboard-real-time">89. System Design: Design a Top-K Leaderboard (Real-time).</h3>
+
+<ol>
+  <li><strong>Ingest:</strong> Events (Score updates) -&gt; Kafka.</li>
+  <li><strong>Process:</strong> Flink/Spark Streaming.
+    <ul>
+      <li>Window (1 min).</li>
+      <li>Aggregate scores per user.</li>
+    </ul>
+  </li>
+  <li><strong>Storage:</strong> Redis (Sorted Set).</li>
+  <li><strong>API:</strong> Query Redis for Top K.</li>
+</ol>
+
+<h3 id="90-system-design-deduplication-at-scale">90. System Design: Deduplication at scale.</h3>
+
+<ul>
+  <li><strong>Batch:</strong> <code class="language-plaintext highlighter-rouge">DISTINCT</code> or <code class="language-plaintext highlighter-rouge">row_number()</code>.</li>
+  <li><strong>Stream:</strong> Bloom Filter (Probabilistic) or RocksDB/State store (Deterministic).</li>
+</ul>
+
+<h3 id="91-what-is-flink">91. What is Flink?</h3>
+
+<p>A streaming-first processing engine. True streaming (not micro-batch like Spark). Low latency. Powerful state management.</p>
+
+<h3 id="92-rocksdb-in-stream-processing">92. RocksDB in Stream Processing?</h3>
+
+<p>Used as embedded storage for local state in Flink/Kafka Streams. Fast Key-Value store on disk.</p>
+
+<h3 id="93-how-to-handle-late-arriving-data">93. How to handle “Late Arriving Data”?</h3>
+
+<ol>
+  <li>Drop it.</li>
+  <li>Process in next window.</li>
+  <li>Update previous result (Retraction).</li>
+</ol>
+
+<h3 id="94-architecture-ingesting-logs-to-data-lake">94. Architecture: Ingesting logs to Data Lake.</h3>
+
+<pre><code class="language-mermaid">graph LR
+    App --&gt;|Logs| Fluentd
+    Fluentd --&gt;|Buffer| Kafka
+    Kafka --&gt;|Connect| S3[(Data Lake)]
+    S3 --&gt;|Trigger| Spark[ETL Job]
+    Spark --&gt;|Write| Warehouse
+</code></pre>
+
+<h3 id="95-what-is-a-dead-letter-queue-dlq">95. What is a Dead Letter Queue (DLQ)?</h3>
+
+<p>A queue where messages that cannot be processed (due to errors/parsing) are sent for manual intervention.</p>
+
+<h3 id="96-schema-registry">96. Schema Registry?</h3>
+
+<p>A central repository for managing schemas (Avro/Protobuf).</p>
+<ul>
+  <li>Producers validate schema before sending to Kafka.</li>
+  <li>Consumers retrieve schema to deserialize.</li>
+  <li>Enforces compatibility (Backward/Forward).</li>
+</ul>
+
+<h3 id="97-what-is-protobuf-vs-avro">97. What is ProtoBuf vs Avro?</h3>
+
+<ul>
+  <li><strong>Avro:</strong> Schema is JSON. Good for Hadoop.</li>
+  <li><strong>ProtoBuf:</strong> Google. Strongly typed. Good for gRPC and Microservices.</li>
+</ul>
+
+<h3 id="98-system-design-how-to-scale-a-sql-database">98. System Design: How to scale a SQL database?</h3>
+
+<ol>
+  <li>Read Replicas (for Read heavy).</li>
+  <li>Caching (Redis/Memcached).</li>
+  <li>Vertical Scaling.</li>
+  <li>Sharding (Last resort).</li>
+</ol>
+
+<h3 id="99-idempotent-consumer">99. Idempotent Consumer?</h3>
+
+<p>A consumer that can process the same message twice without side effects.
+<em>How:</em> Check if Message ID exists in DB before processing. Transactional updates.</p>
+
+<h3 id="100-best-practices-for-data-engineering">100. Best practices for Data Engineering?</h3>
+
+<ol>
+  <li><strong>Idempotency:</strong> Pipelines should be re-runnable.</li>
+  <li><strong>Infrastructure as Code:</strong> Terraform/Ansible.</li>
+  <li><strong>Version Control:</strong> SQL and DDL in Git.</li>
+  <li><strong>Testing:</strong> Unit tests, Data Quality tests.</li>
+  <li><strong>Monitoring:</strong> Observability on lag, failures, data volume.</li>
+</ol>
+
+<hr />
+<p><strong>End of Questions</strong></p>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Golang Interview Questions &amp; Answers (100+) | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Golang Interview Questions &amp; Answers (100+)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Golang Interview Questions &amp; Answers (100+) for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="Golang Interview Questions &amp; Answers (100+) for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/interview_questions/golang.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/interview_questions/golang.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Golang Interview Questions &amp; Answers (100+)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Golang Interview Questions &amp; Answers (100+) for Inkorporated.","headline":"Golang Interview Questions &amp; Answers (100+)","url":"https://toxicoder.github.io/inkorporated/interview_questions/golang.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Golang Interview Questions &amp; Answers (100+)</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="golang-interview-questions--answers-100">Golang Interview Questions &amp; Answers (100+)</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This guide contains 100+ Go (Golang) interview questions, ranging from basic syntax to advanced concurrency and runtime internals. Each question includes a model answer and potential follow-up paths based on the candidate’s response.</p>
+
+<h2 id="part-1-basic-go-concepts-1-20">Part 1: Basic Go Concepts (1-20)</h2>
+
+<h3 id="1-what-is-go-and-what-are-its-main-characteristics">1. What is Go and what are its main characteristics?</h3>
+
+<p>Go is an open-source programming language created at Google. It is statically typed, compiled, and designed for simplicity, concurrency, and performance.</p>
+
+<p><strong>Key Characteristics:</strong></p>
+<ul>
+  <li><strong>Simple Syntax:</strong> Easy to learn and read.</li>
+  <li><strong>Static Typing:</strong> Catches errors at compile time.</li>
+  <li><strong>Concurrency Primitives:</strong> Built-in support for concurrent execution (Goroutines, Channels).</li>
+  <li><strong>Garbage Collection:</strong> Automatic memory management.</li>
+  <li><strong>Fast Compilation:</strong> Fast build times.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions ‘Object-Oriented’.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Is Go an Object-Oriented language?”</li>
+      <li><em>Answer:</em> Go has some OO features (methods, interfaces), but it lacks inheritance and type hierarchy. It prefers composition over inheritance.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-what-is-the-difference-between-gopath-and-go-modules">2. What is the difference between <code class="language-plaintext highlighter-rouge">GOPATH</code> and Go Modules?</h3>
+
+<ul>
+  <li><strong>GOPATH:</strong> The legacy way of managing workspace. Code must live inside <code class="language-plaintext highlighter-rouge">$GOPATH/src</code>. No built-in versioning.</li>
+  <li><strong>Go Modules (go.mod):</strong> The modern dependency management system (introduced in Go 1.11). Allows code to live anywhere. Supports semantic versioning.</li>
+</ul>
+
+<p><strong>Chart: Comparison</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">GOPATH</th>
+      <th style="text-align: left">Go Modules</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Workspace</td>
+      <td style="text-align: left">Strict (<code class="language-plaintext highlighter-rouge">$GOPATH/src</code>)</td>
+      <td style="text-align: left">Flexible (Anywhere)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Versioning</td>
+      <td style="text-align: left">No (relied on master)</td>
+      <td style="text-align: left">Yes (Semantic Versioning)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dependency Loc</td>
+      <td style="text-align: left">Global (<code class="language-plaintext highlighter-rouge">$GOPATH/pkg</code>)</td>
+      <td style="text-align: left">Local cache + <code class="language-plaintext highlighter-rouge">go.sum</code> verification</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="3-how-do-you-define-public-exported-vs-private-unexported-symbols">3. How do you define public (exported) vs private (unexported) symbols?</h3>
+
+<p>In Go, visibility is controlled by the case of the first letter of the identifier.</p>
+<ul>
+  <li><strong>Uppercase (e.g., <code class="language-plaintext highlighter-rouge">User</code>):</strong> Public/Exported. Visible to other packages.</li>
+  <li><strong>Lowercase (e.g., <code class="language-plaintext highlighter-rouge">user</code>):</strong> Private/Unexported. Visible only within the same package.</li>
+</ul>
+
+<h3 id="4-what-are-the-basic-data-types-in-go">4. What are the basic data types in Go?</h3>
+
+<ul>
+  <li><strong>Boolean:</strong> <code class="language-plaintext highlighter-rouge">bool</code></li>
+  <li><strong>Numeric:</strong> <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">int8</code>, <code class="language-plaintext highlighter-rouge">int16</code>, <code class="language-plaintext highlighter-rouge">int32</code>, <code class="language-plaintext highlighter-rouge">int64</code>, <code class="language-plaintext highlighter-rouge">uint</code>, <code class="language-plaintext highlighter-rouge">float32</code>, <code class="language-plaintext highlighter-rouge">float64</code>, <code class="language-plaintext highlighter-rouge">complex64</code>, <code class="language-plaintext highlighter-rouge">complex128</code>.</li>
+  <li><strong>String:</strong> <code class="language-plaintext highlighter-rouge">string</code> (immutable).</li>
+  <li><strong>Byte:</strong> <code class="language-plaintext highlighter-rouge">byte</code> (alias for <code class="language-plaintext highlighter-rouge">uint8</code>).</li>
+  <li><strong>Rune:</strong> <code class="language-plaintext highlighter-rouge">rune</code> (alias for <code class="language-plaintext highlighter-rouge">int32</code>, represents a Unicode code point).</li>
+</ul>
+
+<h3 id="5-what-are-pointers-in-go">5. What are pointers in Go?</h3>
+
+<p>A pointer holds the memory address of a value.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&amp;</code> operator generates a pointer to its operand.</li>
+  <li><code class="language-plaintext highlighter-rouge">*</code> operator dereferences a pointer (accesses the value).</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Comparison with C.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Does Go support pointer arithmetic?”</li>
+      <li><em>Answer:</em> No, Go does not support pointer arithmetic (like <code class="language-plaintext highlighter-rouge">ptr++</code>) by default, to ensure safety. You can use <code class="language-plaintext highlighter-rouge">unsafe</code> package if absolutely necessary.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="6-explain-the-difference-between-arrays-and-slices">6. Explain the difference between Arrays and Slices.</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">Array</th>
+      <th style="text-align: left">Slice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Size</td>
+      <td style="text-align: left">Fixed length (<code class="language-plaintext highlighter-rouge">[5]int</code>)</td>
+      <td style="text-align: left">Dynamic length (<code class="language-plaintext highlighter-rouge">[]int</code>)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Value/Ref</td>
+      <td style="text-align: left">Value type (copying copies whole array)</td>
+      <td style="text-align: left">Reference type (points to underlying array)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Flexibility</td>
+      <td style="text-align: left">Rigid</td>
+      <td style="text-align: left">Flexible</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Slice internals.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What are the three components of a slice?”</li>
+      <li><em>Answer:</em> Pointer to underlying array, Length (<code class="language-plaintext highlighter-rouge">len</code>), and Capacity (<code class="language-plaintext highlighter-rouge">cap</code>).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="7-what-is-a-map">7. What is a Map?</h3>
+
+<p>A built-in data structure that associates keys with values (Hash Table).</p>
+<ul>
+  <li>Syntax: <code class="language-plaintext highlighter-rouge">map[KeyType]ValueType</code>.</li>
+  <li>KeyType must be comparable (supports <code class="language-plaintext highlighter-rouge">==</code>).</li>
+</ul>
+
+<h3 id="8-what-is-a-struct">8. What is a Struct?</h3>
+
+<p>A typed collection of fields. It is the closest thing to a “class” in Go, used to group data.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">Person</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">Name</span> <span class="kt">string</span>
+    <span class="n">Age</span>  <span class="kt">int</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="9-difference-between-functions-and-methods">9. Difference between Functions and Methods?</h3>
+
+<ul>
+  <li><strong>Function:</strong> Standalone code block. <code class="language-plaintext highlighter-rouge">func Add(a, b int) int</code>.</li>
+  <li><strong>Method:</strong> A function attached to a specific type (receiver). <code class="language-plaintext highlighter-rouge">func (p Person) Greet()</code>.</li>
+</ul>
+
+<h3 id="10-what-is-defer">10. What is <code class="language-plaintext highlighter-rouge">defer</code>?</h3>
+
+<p>A keyword used to schedule a function call to be run after the function completes.
+Commonly used for cleanup (closing files, unlocking mutexes).
+Executed in LIFO (Last-In-First-Out) order.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Evaluation time.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “When are the arguments to a deferred function evaluated?”</li>
+      <li><em>Answer:</em> They are evaluated immediately when the <code class="language-plaintext highlighter-rouge">defer</code> statement is executed, not when the function runs.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="11-what-is-panic-and-recover">11. What is <code class="language-plaintext highlighter-rouge">panic</code> and <code class="language-plaintext highlighter-rouge">recover</code>?</h3>
+
+<ul>
+  <li><strong>Panic:</strong> Stops normal execution. Similar to throwing an exception.</li>
+  <li><strong>Recover:</strong> Used inside a deferred function to regain control of a panicking goroutine.</li>
+</ul>
+
+<h3 id="12-difference-between-make-and-new">12. Difference between <code class="language-plaintext highlighter-rouge">make</code> and <code class="language-plaintext highlighter-rouge">new</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">new(T)</code>: Allocates zeroed storage for a new item of type <code class="language-plaintext highlighter-rouge">T</code> and returns its address <code class="language-plaintext highlighter-rouge">*T</code>. Used for all types.</li>
+  <li><code class="language-plaintext highlighter-rouge">make(T, args)</code>: Creates slices, maps, and channels only. Returns an initialized <code class="language-plaintext highlighter-rouge">T</code> (not a pointer).</li>
+</ul>
+
+<h3 id="13-what-is-the-init-function">13. What is the <code class="language-plaintext highlighter-rouge">init()</code> function?</h3>
+
+<p>A special function that executes before <code class="language-plaintext highlighter-rouge">main()</code>. It is used for package initialization.</p>
+<ul>
+  <li>Can have multiple <code class="language-plaintext highlighter-rouge">init()</code> functions per package (and per file).</li>
+  <li>Cannot be called explicitly.</li>
+</ul>
+
+<h3 id="14-what-is-the-blank-identifier-_">14. What is the Blank Identifier <code class="language-plaintext highlighter-rouge">_</code>?</h3>
+
+<p>It is a write-only variable used to discard values.
+<em>Example:</em> <code class="language-plaintext highlighter-rouge">_, err := os.Open("file.txt")</code> (if you don’t care about the file handle).</p>
+
+<h3 id="15-what-are-type-assertions">15. What are Type Assertions?</h3>
+
+<p>Used to extract the underlying value of a specific type from an interface.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">i</span> <span class="k">interface</span><span class="p">{}</span> <span class="o">=</span> <span class="s">"hello"</span>
+<span class="n">s</span> <span class="o">:=</span> <span class="n">i</span><span class="o">.</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="c">// panic if not string</span>
+<span class="n">s</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">i</span><span class="o">.</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="c">// safe check</span>
+</code></pre></div></div>
+
+<h3 id="16-what-is-a-type-switch">16. What is a Type Switch?</h3>
+
+<p>A switch statement that compares types rather than values.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span> <span class="n">v</span> <span class="o">:=</span> <span class="n">i</span><span class="o">.</span><span class="p">(</span><span class="k">type</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="kt">int</span><span class="o">:</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Integer"</span><span class="p">)</span>
+<span class="k">case</span> <span class="kt">string</span><span class="o">:</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"String"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="17-how-do-constants-work-iota">17. How do Constants work (iota)?</h3>
+
+<p>Constants are immutable values known at compile time.
+<code class="language-plaintext highlighter-rouge">iota</code> is a counter used to create enumerated constants.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="p">(</span>
+    <span class="n">Red</span> <span class="o">=</span> <span class="no">iota</span> <span class="c">// 0</span>
+    <span class="n">Blue</span>       <span class="c">// 1</span>
+    <span class="n">Green</span>      <span class="c">// 2</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="18-is-go-pass-by-value-or-pass-by-reference">18. Is Go pass-by-value or pass-by-reference?</h3>
+
+<p>Go is strictly <strong>pass-by-value</strong>.
+When passing a pointer, a copy of the pointer address is passed.
+When passing a slice, a copy of the slice header (ptr, len, cap) is passed, so modifications to elements affect the original array, but <code class="language-plaintext highlighter-rouge">append</code> might not.</p>
+
+<h3 id="19-how-are-strings-handled-in-go">19. How are Strings handled in Go?</h3>
+
+<p>Strings are immutable sequences of bytes (UTF-8 encoded).</p>
+<ul>
+  <li>Backticks (<code class="language-plaintext highlighter-rouge">`</code>) create raw string literals (multiline).</li>
+  <li>Double quotes (<code class="language-plaintext highlighter-rouge">""</code>) create interpreted string literals.</li>
+</ul>
+
+<h3 id="20-explain-the-for-loop-variations">20. Explain the <code class="language-plaintext highlighter-rouge">for</code> loop variations.</h3>
+
+<p>Go has only one looping keyword: <code class="language-plaintext highlighter-rouge">for</code>.</p>
+
+<ol>
+  <li><strong>C-style:</strong> <code class="language-plaintext highlighter-rouge">for i := 0; i &lt; 10; i++ {}</code></li>
+  <li><strong>While-style:</strong> <code class="language-plaintext highlighter-rouge">for i &lt; 10 {}</code></li>
+  <li><strong>Infinite:</strong> <code class="language-plaintext highlighter-rouge">for {}</code></li>
+  <li><strong>Range:</strong> <code class="language-plaintext highlighter-rouge">for index, value := range slice {}</code></li>
+</ol>
+
+<h2 id="part-2-concurrency--channels-21-40">Part 2: Concurrency &amp; Channels (21-40)</h2>
+
+<h3 id="21-what-is-a-goroutine">21. What is a Goroutine?</h3>
+
+<p>A goroutine is a lightweight thread of execution managed by the Go runtime.</p>
+<ul>
+  <li>Started with the <code class="language-plaintext highlighter-rouge">go</code> keyword.</li>
+  <li>Very cheap start-up cost (few KB of stack).</li>
+</ul>
+
+<h3 id="22-how-do-goroutines-differ-from-os-threads">22. How do Goroutines differ from OS threads?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">Goroutine</th>
+      <th style="text-align: left">OS Thread</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Stack Size</td>
+      <td style="text-align: left">Growable (starts ~2KB)</td>
+      <td style="text-align: left">Fixed (usually ~1MB)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Scheduling</td>
+      <td style="text-align: left">M:N Model (Go Runtime)</td>
+      <td style="text-align: left">Kernel Managed</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Switch Cost</td>
+      <td style="text-align: left">Low (user space)</td>
+      <td style="text-align: left">High (kernel context switch)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="23-what-is-a-channel">23. What is a Channel?</h3>
+
+<p>A typed conduit through which goroutines communicate and synchronize.</p>
+<ul>
+  <li><strong>Send:</strong> <code class="language-plaintext highlighter-rouge">ch &lt;- v</code></li>
+  <li><strong>Receive:</strong> <code class="language-plaintext highlighter-rouge">v := &lt;-ch</code></li>
+</ul>
+
+<h3 id="24-difference-between-buffered-and-unbuffered-channels">24. Difference between Buffered and Unbuffered Channels?</h3>
+
+<ul>
+  <li><strong>Unbuffered:</strong> <code class="language-plaintext highlighter-rouge">make(chan int)</code>. Sender blocks until receiver is ready. Guarantees synchronization.</li>
+  <li><strong>Buffered:</strong> <code class="language-plaintext highlighter-rouge">make(chan int, 5)</code>. Sender only blocks if buffer is full. Receiver blocks if buffer is empty.</li>
+</ul>
+
+<h3 id="25-what-happens-if-you-send-to-a-closed-channel">25. What happens if you send to a closed channel?</h3>
+
+<p>It causes a <strong>panic</strong>.</p>
+
+<h3 id="26-what-happens-if-you-read-from-a-closed-channel">26. What happens if you read from a closed channel?</h3>
+
+<ul>
+  <li>It returns the <strong>zero value</strong> of the channel’s type immediately (does not block).</li>
+  <li>The second return value (boolean) indicates if the channel is open: <code class="language-plaintext highlighter-rouge">val, ok := &lt;-ch</code>. <code class="language-plaintext highlighter-rouge">ok</code> will be <code class="language-plaintext highlighter-rouge">false</code>.</li>
+</ul>
+
+<h3 id="27-what-is-the-select-statement">27. What is the <code class="language-plaintext highlighter-rouge">select</code> statement?</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">select</code> statement lets a goroutine wait on multiple communication operations. It blocks until one of its cases can run, then it executes that case. If multiple are ready, it chooses one at random.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="p">{</span>
+<span class="k">case</span> <span class="n">msg1</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="n">c1</span><span class="o">:</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"received"</span><span class="p">,</span> <span class="n">msg1</span><span class="p">)</span>
+<span class="k">case</span> <span class="n">msg2</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="n">c2</span><span class="o">:</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"received"</span><span class="p">,</span> <span class="n">msg2</span><span class="p">)</span>
+<span class="k">default</span><span class="o">:</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"no message received"</span><span class="p">)</span> <span class="c">// Non-blocking</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="28-what-is-syncwaitgroup">28. What is <code class="language-plaintext highlighter-rouge">sync.WaitGroup</code>?</h3>
+
+<p>It waits for a collection of goroutines to finish.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Add(n)</code>: Increases counter.</li>
+  <li><code class="language-plaintext highlighter-rouge">Done()</code>: Decrements counter.</li>
+  <li><code class="language-plaintext highlighter-rouge">Wait()</code>: Blocks until counter is 0.</li>
+</ul>
+
+<h3 id="29-what-is-syncmutex">29. What is <code class="language-plaintext highlighter-rouge">sync.Mutex</code>?</h3>
+
+<p>A mutual exclusion lock. Used to protect shared memory (critical sections) from concurrent access.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Lock()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Unlock()</code></li>
+</ul>
+
+<h3 id="30-difference-between-mutex-and-rwmutex">30. Difference between <code class="language-plaintext highlighter-rouge">Mutex</code> and <code class="language-plaintext highlighter-rouge">RWMutex</code>?</h3>
+
+<ul>
+  <li><strong>Mutex:</strong> Exclusive lock. Only one goroutine can read or write at a time.</li>
+  <li><strong>RWMutex:</strong> Reader/Writer lock. Allows multiple readers (shared lock) OR one writer (exclusive lock). Better performance for read-heavy workloads.</li>
+</ul>
+
+<h3 id="31-what-is-a-data-race">31. What is a Data Race?</h3>
+
+<p>When two goroutines access the same variable concurrently, and at least one of the accesses is a write.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Undefined behavior.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What happens to the program during a data race?”</li>
+      <li><em>Answer:</em> The behavior is undefined. It might crash, corrupt data, or act unpredictably.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="32-how-to-detect-data-races-in-go">32. How to detect data races in Go?</h3>
+
+<p>Use the built-in race detector:
+<code class="language-plaintext highlighter-rouge">go run -race main.go</code> or <code class="language-plaintext highlighter-rouge">go test -race ./...</code></p>
+
+<h3 id="33-what-is-a-deadlock">33. What is a Deadlock?</h3>
+
+<p>A state where a group of goroutines are waiting for each other to release resources, and none can proceed.
+Common case: Channel full and sender blocks, but receiver is waiting on something else.</p>
+
+<h3 id="34-explain-the-fan-in-pattern">34. Explain the “Fan-in” pattern.</h3>
+
+<p>Merging multiple input channels into a single output channel.</p>
+
+<pre><code class="language-mermaid">graph LR
+    A[Source 1] --&gt;|Chan A| M(Merge)
+    B[Source 2] --&gt;|Chan B| M
+    M --&gt;|Chan Out| C[Consumer]
+</code></pre>
+
+<h3 id="35-what-is-the-context-package-used-for">35. What is the <code class="language-plaintext highlighter-rouge">context</code> package used for?</h3>
+
+<p>It carries deadlines, cancellation signals, and request-scoped values across API boundaries and between goroutines.</p>
+
+<h3 id="36-difference-between-contextbackground-and-contexttodo">36. Difference between <code class="language-plaintext highlighter-rouge">context.Background()</code> and <code class="language-plaintext highlighter-rouge">context.TODO()</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Background()</code>: Standard root context. Used in main, init, and tests.</li>
+  <li><code class="language-plaintext highlighter-rouge">TODO()</code>: Placeholder when you intend to use a context but haven’t structured the code yet. (Functionally identical to Background).</li>
+</ul>
+
+<h3 id="37-how-to-stop-a-goroutine-cancellation">37. How to stop a goroutine (cancellation)?</h3>
+
+<p>You cannot “kill” a goroutine from the outside. You must signal it to stop using a <strong>Context</strong> or a <strong>Done Channel</strong>.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ctx</span><span class="p">,</span> <span class="n">cancel</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithCancel</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">())</span>
+<span class="k">go</span> <span class="k">func</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">select</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">&lt;-</span><span class="n">ctx</span><span class="o">.</span><span class="n">Done</span><span class="p">()</span><span class="o">:</span>
+        <span class="k">return</span> <span class="c">// Return to exit</span>
+    <span class="p">}</span>
+<span class="p">}()</span>
+<span class="n">cancel</span><span class="p">()</span> <span class="c">// Send signal</span>
+</code></pre></div></div>
+
+<h3 id="38-what-is-synconce">38. What is <code class="language-plaintext highlighter-rouge">sync.Once</code>?</h3>
+
+<p>It ensures that a piece of code is executed <strong>exactly once</strong>, regardless of how many goroutines call it.
+Commonly used for singleton initialization.</p>
+
+<h3 id="39-what-is-syncpool">39. What is <code class="language-plaintext highlighter-rouge">sync.Pool</code>?</h3>
+
+<p>A set of temporary objects that may be individually saved and retrieved.</p>
+<ul>
+  <li>Used to reduce GC pressure by reusing allocated objects (e.g., buffers).</li>
+  <li>Items in the pool can be removed by GC at any time.</li>
+</ul>
+
+<h3 id="40-what-is-syncmap">40. What is <code class="language-plaintext highlighter-rouge">sync.Map</code>?</h3>
+
+<p>A concurrent-safe map implementation.</p>
+<ul>
+  <li>Unlike <code class="language-plaintext highlighter-rouge">map</code> + <code class="language-plaintext highlighter-rouge">Mutex</code>, <code class="language-plaintext highlighter-rouge">sync.Map</code> is optimized for cases where keys are only written once but read many times (e.g., caches).</li>
+  <li>Methods: <code class="language-plaintext highlighter-rouge">Load</code>, <code class="language-plaintext highlighter-rouge">Store</code>, <code class="language-plaintext highlighter-rouge">LoadOrStore</code>, <code class="language-plaintext highlighter-rouge">Delete</code>.</li>
+</ul>
+
+<h2 id="part-3-data-structures--interfaces-41-60">Part 3: Data Structures &amp; Interfaces (41-60)</h2>
+
+<h3 id="41-what-is-an-interface-in-go">41. What is an Interface in Go?</h3>
+
+<p>An interface is a type that defines a set of method signatures.</p>
+<ul>
+  <li><strong>Implicit Implementation:</strong> A type implements an interface by implementing its methods. No <code class="language-plaintext highlighter-rouge">implements</code> keyword.</li>
+  <li>Enables polymorphism.</li>
+</ul>
+
+<h3 id="42-what-is-the-empty-interface-interface">42. What is the Empty Interface <code class="language-plaintext highlighter-rouge">interface{}</code>?</h3>
+
+<p>An interface with zero methods.</p>
+<ul>
+  <li>Every type satisfies the empty interface.</li>
+  <li>Used to handle values of unknown type (similar to <code class="language-plaintext highlighter-rouge">Object</code> in Java/C#, or <code class="language-plaintext highlighter-rouge">any</code> in TS).</li>
+  <li>Go 1.18+ introduced the alias <code class="language-plaintext highlighter-rouge">any</code> for <code class="language-plaintext highlighter-rouge">interface{}</code>.</li>
+</ul>
+
+<h3 id="43-explain-struct-embedding-composition">43. Explain Struct Embedding (Composition).</h3>
+
+<p>Go allows you to embed one struct into another. The inner struct’s fields and methods are promoted to the outer struct.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">Base</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">ID</span> <span class="kt">int</span>
+<span class="p">}</span>
+<span class="k">type</span> <span class="n">User</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">Base</span> <span class="c">// Embedding</span>
+    <span class="n">Name</span> <span class="kt">string</span>
+<span class="p">}</span>
+<span class="c">// u.ID is accessible directly</span>
+</code></pre></div></div>
+
+<h3 id="44-how-does-go-implement-interfaces-implicitly">44. How does Go implement interfaces implicitly?</h3>
+
+<p>If a concrete type has all the methods that an interface requires, it automatically implements that interface. This decouples the definition of the interface from the implementation.</p>
+
+<h3 id="45-explain-the-internals-of-a-slice-len-vs-cap">45. Explain the internals of a Slice: <code class="language-plaintext highlighter-rouge">len</code> vs <code class="language-plaintext highlighter-rouge">cap</code>.</h3>
+
+<ul>
+  <li><strong>Length (<code class="language-plaintext highlighter-rouge">len</code>):</strong> The number of elements referred to by the slice.</li>
+  <li><strong>Capacity (<code class="language-plaintext highlighter-rouge">cap</code>):</strong> The number of elements in the underlying array (beginning at the element referred to by the slice pointer).</li>
+  <li><code class="language-plaintext highlighter-rouge">append</code> doubles capacity when full (up to a certain threshold), then grows by a smaller factor.</li>
+</ul>
+
+<h3 id="46-what-are-common-slice-tricks">46. What are common “Slice Tricks”?</h3>
+
+<ul>
+  <li><strong>Copy:</strong> <code class="language-plaintext highlighter-rouge">b = make([]T, len(a)); copy(b, a)</code></li>
+  <li><strong>Cut:</strong> <code class="language-plaintext highlighter-rouge">a = append(a[:i], a[j:]...)</code></li>
+  <li><strong>Delete:</strong> <code class="language-plaintext highlighter-rouge">a = append(a[:i], a[i+1:]...)</code></li>
+  <li><strong>Pop:</strong> <code class="language-plaintext highlighter-rouge">x, a = a[len(a)-1], a[:len(a)-1]</code></li>
+</ul>
+
+<h3 id="47-how-do-maps-work-internally">47. How do Maps work internally?</h3>
+
+<p>Go maps are implemented as <strong>Hash Tables</strong>.</p>
+<ul>
+  <li>They use buckets to store key/value pairs.</li>
+  <li>Collision resolution is done via chaining (overflow buckets).</li>
+  <li>Access time is O(1) on average.</li>
+</ul>
+
+<h3 id="48-what-are-struct-tags">48. What are Struct Tags?</h3>
+
+<p>Metadata attached to struct fields.</p>
+<ul>
+  <li>Accessed via Reflection (<code class="language-plaintext highlighter-rouge">reflect</code> package).</li>
+  <li>Commonly used for JSON serialization, ORM mapping, and validation.</li>
+</ul>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">User</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">Name</span> <span class="kt">string</span> <span class="s">`json:"name" validate:"required"`</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="49-how-does-json-marshaling-work">49. How does JSON Marshaling work?</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">encoding/json</code> package uses reflection to inspect struct fields and map them to JSON keys.</p>
+<ul>
+  <li>Only <strong>exported</strong> (public) fields are marshaled.</li>
+  <li>Fields with <code class="language-plaintext highlighter-rouge">json:"-"</code> are ignored.</li>
+</ul>
+
+<h3 id="50-what-types-are-comparable">50. What types are Comparable?</h3>
+
+<ul>
+  <li><strong>Comparable:</strong> Booleans, Numbers, Strings, Pointers, Channels, Interfaces (if dynamic type is comparable), Structs/Arrays (if all fields/elements are comparable).</li>
+  <li><strong>Not Comparable:</strong> Slices, Maps, Functions.</li>
+</ul>
+
+<h3 id="51-explain-the-interface-nil-vs-typed-nil-gotcha">51. Explain the “Interface nil” vs “Typed nil” gotcha.</h3>
+
+<p>An interface value is <code class="language-plaintext highlighter-rouge">nil</code> only if both its <strong>value</strong> and <strong>concrete type</strong> are <code class="language-plaintext highlighter-rouge">nil</code>.
+If an interface holds a <code class="language-plaintext highlighter-rouge">nil</code> pointer of a concrete type, the interface itself is <strong>not nil</strong>.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">p</span> <span class="o">*</span><span class="kt">int</span> <span class="o">=</span> <span class="no">nil</span>
+<span class="k">var</span> <span class="n">i</span> <span class="k">interface</span><span class="p">{}</span> <span class="o">=</span> <span class="n">p</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="no">nil</span><span class="p">)</span> <span class="c">// False!</span>
+</code></pre></div></div>
+
+<h3 id="52-what-is-the-functional-options-pattern">52. What is the Functional Options Pattern?</h3>
+
+<p>A design pattern for constructing complex structs with optional parameters.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">NewServer</span><span class="p">(</span><span class="n">addr</span> <span class="kt">string</span><span class="p">,</span> <span class="n">opts</span> <span class="o">...</span><span class="n">Option</span><span class="p">)</span> <span class="o">*</span><span class="n">Server</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Builder Pattern.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Why choose Functional Options over the Builder Pattern?”</li>
+      <li><em>Answer:</em> Functional options are often more idiomatic in Go and don’t require a separate Builder struct.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="53-how-do-generics-work-in-go-type-parameters">53. How do Generics work in Go (Type Parameters)?</h3>
+
+<p>Introduced in Go 1.18. Allows writing functions and data structures that work with any type.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">Map</span><span class="p">[</span><span class="n">T</span> <span class="n">any</span><span class="p">,</span> <span class="n">R</span> <span class="n">any</span><span class="p">](</span><span class="n">s</span> <span class="p">[]</span><span class="n">T</span><span class="p">,</span> <span class="n">f</span> <span class="k">func</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="n">R</span><span class="p">)</span> <span class="p">[]</span><span class="n">R</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="54-what-is-the-comparable-constraint">54. What is the <code class="language-plaintext highlighter-rouge">comparable</code> constraint?</h3>
+
+<p>A pre-declared identifier in generics constraints that denotes the set of all types that can be compared using <code class="language-plaintext highlighter-rouge">==</code> and <code class="language-plaintext highlighter-rouge">!=</code>. Required for map keys.</p>
+
+<h3 id="55-what-are-slice-expressions">55. What are Slice Expressions?</h3>
+
+<p>Constructing a new slice from an existing slice/array.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">a[low : high]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">a[low : high : max]</code> (Controls capacity)</li>
+</ul>
+
+<h3 id="56-what-does-the-copy-function-do">56. What does the <code class="language-plaintext highlighter-rouge">copy</code> function do?</h3>
+
+<p>Copies elements from a source slice into a destination slice.</p>
+<ul>
+  <li>Returns the number of elements copied (min of <code class="language-plaintext highlighter-rouge">len(src)</code> and <code class="language-plaintext highlighter-rouge">len(dst)</code>).</li>
+  <li>Handles overlapping slices correctly.</li>
+</ul>
+
+<h3 id="57-are-maps-safe-for-concurrent-use">57. Are Maps safe for concurrent use?</h3>
+
+<p><strong>No.</strong> Maps are not thread-safe.
+Concurrent reads are safe. Concurrent read/write or write/write causes a <strong>fatal error</strong>.
+Use <code class="language-plaintext highlighter-rouge">sync.RWMutex</code> or <code class="language-plaintext highlighter-rouge">sync.Map</code>.</p>
+
+<h3 id="58-explain-method-sets-pointer-vs-value-receivers">58. Explain Method Sets (Pointer vs Value Receivers).</h3>
+
+<ul>
+  <li><strong>Value Receiver (<code class="language-plaintext highlighter-rouge">func (t T)</code>):</strong> Can be called on both value and pointer. Operates on a copy.</li>
+  <li><strong>Pointer Receiver (<code class="language-plaintext highlighter-rouge">func (t *T)</code>):</strong> Can be called on both value (if addressable) and pointer. Can modify the original struct.</li>
+  <li><em>Rule:</em> If you want to modify the receiver, or if the struct is large, use a pointer receiver.</li>
+</ul>
+
+<p><strong>Table: Interface Implementation</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Method Receiver</th>
+      <th style="text-align: left">Interface requires</th>
+      <th style="text-align: left">Implemented by</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">(t T)</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">(t T)</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">T</code> and <code class="language-plaintext highlighter-rouge">*T</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">(t *T)</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">(t *T)</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">*T</code> only</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="59-what-is-interface-composition">59. What is Interface Composition?</h3>
+
+<p>Embedding interfaces within other interfaces.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">Reader</span> <span class="k">interface</span> <span class="p">{</span> <span class="n">Read</span><span class="p">(</span><span class="n">p</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="n">n</span> <span class="kt">int</span><span class="p">,</span> <span class="n">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">type</span> <span class="n">Writer</span> <span class="k">interface</span> <span class="p">{</span> <span class="n">Write</span><span class="p">(</span><span class="n">p</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="n">n</span> <span class="kt">int</span><span class="p">,</span> <span class="n">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">type</span> <span class="n">ReadWriter</span> <span class="k">interface</span> <span class="p">{</span>
+    <span class="n">Reader</span>
+    <span class="n">Writer</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="60-difference-between-type-definition-and-type-alias">60. Difference between Type Definition and Type Alias?</h3>
+
+<ul>
+  <li><strong>Type Definition:</strong> <code class="language-plaintext highlighter-rouge">type MyInt int</code>. Creates a <em>new</em> type. <code class="language-plaintext highlighter-rouge">MyInt</code> and <code class="language-plaintext highlighter-rouge">int</code> are distinct.</li>
+  <li><strong>Type Alias:</strong> <code class="language-plaintext highlighter-rouge">type MyInt = int</code>. <code class="language-plaintext highlighter-rouge">MyInt</code> and <code class="language-plaintext highlighter-rouge">int</code> are the <em>same</em> type. Used for refactoring/compatibility.</li>
+</ul>
+
+<h2 id="part-4-error-handling--testing-61-80">Part 4: Error Handling &amp; Testing (61-80)</h2>
+
+<h3 id="61-how-does-go-handle-errors">61. How does Go handle errors?</h3>
+
+<p>Go treats errors as values. Functions return an <code class="language-plaintext highlighter-rouge">error</code> interface as the last return value.
+There are no exceptions (in the traditional sense).</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">os</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s">"filename.ext"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">Fatal</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="62-how-do-you-define-a-custom-error-type">62. How do you define a custom error type?</h3>
+
+<p>Any type that implements the <code class="language-plaintext highlighter-rouge">Error() string</code> method satisfies the <code class="language-plaintext highlighter-rouge">error</code> interface.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">MyError</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">Msg</span> <span class="kt">string</span>
+    <span class="n">Code</span> <span class="kt">int</span>
+<span class="p">}</span>
+<span class="k">func</span> <span class="p">(</span><span class="n">e</span> <span class="o">*</span><span class="n">MyError</span><span class="p">)</span> <span class="n">Error</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"%d: %s"</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">Code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">Msg</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="63-what-is-error-wrapping-go-113">63. What is Error Wrapping (Go 1.13+)?</h3>
+
+<p>Wrapping an error with additional context while preserving the original error for inspection.</p>
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">%w</code> verb in <code class="language-plaintext highlighter-rouge">fmt.Errorf</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">fmt.Errorf("access denied: %w", err)</code></li>
+</ul>
+
+<h3 id="64-what-are-errorsis-and-errorsas">64. What are <code class="language-plaintext highlighter-rouge">errors.Is</code> and <code class="language-plaintext highlighter-rouge">errors.As</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">errors.Is(err, target)</code>: Checks if an error (or any error in its chain) matches a specific sentinel error value.</li>
+  <li><code class="language-plaintext highlighter-rouge">errors.As(err, &amp;target)</code>: Checks if an error (or any error in its chain) matches a specific type, and if so, assigns it to the target.</li>
+</ul>
+
+<h3 id="65-how-do-you-run-tests-in-go">65. How do you run tests in Go?</h3>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">go test</code> command.
+It looks for files ending in <code class="language-plaintext highlighter-rouge">_test.go</code> and executes functions starting with <code class="language-plaintext highlighter-rouge">Test</code>.</p>
+
+<h3 id="66-what-is-table-driven-testing">66. What is Table-Driven Testing?</h3>
+
+<p>A pattern where test inputs and expected outputs are defined in a slice of structs (the “table”), and a single test loop iterates over them.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Input</th>
+      <th style="text-align: left">Expected</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">“Positive”</td>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">true</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">“Negative”</td>
+      <td style="text-align: left">-1</td>
+      <td style="text-align: left">false</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="67-how-do-you-write-a-benchmark">67. How do you write a Benchmark?</h3>
+
+<ul>
+  <li>Function signature: <code class="language-plaintext highlighter-rouge">func BenchmarkName(b *testing.B)</code></li>
+  <li>Loop <code class="language-plaintext highlighter-rouge">b.N</code> times.</li>
+  <li>Run with <code class="language-plaintext highlighter-rouge">go test -bench .</code></li>
+</ul>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">BenchmarkRand</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span><span class="n">testing</span><span class="o">.</span><span class="n">B</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="o">:=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">.</span><span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="n">rand</span><span class="o">.</span><span class="n">Int</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="68-what-are-testable-examples">68. What are Testable Examples?</h3>
+
+<p>Functions starting with <code class="language-plaintext highlighter-rouge">Example</code> in test files. They serve as documentation and tests.
+The output is verified against a comment at the end of the function.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">ExampleHello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>
+    <span class="c">// Output: Hello</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="69-what-is-fuzzing-go-118">69. What is Fuzzing (Go 1.18+)?</h3>
+
+<p>Automated testing that provides random invalid/unexpected inputs to find bugs/crashes.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">func FuzzName(f *testing.F)</code></li>
+</ul>
+
+<h3 id="70-what-is-testmain">70. What is <code class="language-plaintext highlighter-rouge">TestMain</code>?</h3>
+
+<p>A function that allows setup and teardown code to run before and after all tests in a package.
+Must call <code class="language-plaintext highlighter-rouge">m.Run()</code> to execute tests.</p>
+
+<h3 id="71-how-do-you-run-subtests">71. How do you run subtests?</h3>
+
+<p>Using <code class="language-plaintext highlighter-rouge">t.Run("name", func(t *testing.T) { ... })</code>.
+Allows hierarchical test reporting and specific filtering.</p>
+
+<h3 id="72-how-do-you-run-tests-in-parallel">72. How do you run tests in parallel?</h3>
+
+<p>Call <code class="language-plaintext highlighter-rouge">t.Parallel()</code> inside the test function (and subtests).</p>
+
+<h3 id="73-difference-between-mocks-and-stubs">73. Difference between Mocks and Stubs?</h3>
+
+<ul>
+  <li><strong>Stub:</strong> Returns hardcoded data.</li>
+  <li><strong>Mock:</strong> Verifies behavior (e.g., “was this method called X times with Y arguments?”).</li>
+  <li>Go has no built-in mocking framework, but interfaces make it easy to write manual mocks or use tools like <code class="language-plaintext highlighter-rouge">gomock</code>.</li>
+</ul>
+
+<h3 id="74-how-to-handle-dependency-injection-in-go">74. How to handle Dependency Injection in Go?</h3>
+
+<p>Pass dependencies (usually interfaces) to the constructor or method.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">Service</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">db</span> <span class="n">Database</span> <span class="c">// interface</span>
+<span class="p">}</span>
+<span class="k">func</span> <span class="n">NewService</span><span class="p">(</span><span class="n">db</span> <span class="n">Database</span><span class="p">)</span> <span class="o">*</span><span class="n">Service</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="n">Service</span><span class="p">{</span><span class="n">db</span><span class="o">:</span> <span class="n">db</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="75-how-do-you-check-test-coverage">75. How do you check test coverage?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">go test -coverprofile=coverage.out</code>
+<code class="language-plaintext highlighter-rouge">go tool cover -html=coverage.out</code> (Visualizes coverage)</p>
+
+<h3 id="76-what-is-the-race-detector">76. What is the Race Detector?</h3>
+
+<p>(Covered in Part 2, but relevant here).
+It detects concurrent access to shared memory.
+Always run CI with <code class="language-plaintext highlighter-rouge">-race</code>.</p>
+
+<h3 id="77-what-is-go-vet">77. What is <code class="language-plaintext highlighter-rouge">go vet</code>?</h3>
+
+<p>A static analysis tool that examines Go source code and reports suspicious constructs (e.g., printf arguments mismatch, unreachable code).</p>
+
+<h3 id="78-when-should-you-panic-instead-of-returning-an-error">78. When should you panic instead of returning an error?</h3>
+
+<p>Only for <strong>unrecoverable</strong> errors that indicate a programmer error (e.g., nil pointer dereference, index out of bounds) or during initialization (<code class="language-plaintext highlighter-rouge">init()</code>) if the app cannot start (e.g., bad config).
+For all other cases, return <code class="language-plaintext highlighter-rouge">error</code>.</p>
+
+<h3 id="79-log-package-vs-structured-logging">79. Log package vs Structured Logging?</h3>
+
+<ul>
+  <li><strong>Standard <code class="language-plaintext highlighter-rouge">log</code>:</strong> Simple text output. Hard to parse by machines.</li>
+  <li><strong>Structured Logging (<code class="language-plaintext highlighter-rouge">slog</code> - Go 1.21+):</strong> Outputs logs as JSON/Key-Value pairs. Better for observability stacks (ELK, Datadog).</li>
+</ul>
+
+<h3 id="80-how-to-handle-http-errors">80. How to handle HTTP errors?</h3>
+
+<p>Check the status code.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">resp, err := client.Get(url)</code> checks connection errors.</li>
+  <li><code class="language-plaintext highlighter-rouge">if resp.StatusCode != http.StatusOK</code> checks application errors.</li>
+</ul>
+
+<h2 id="part-5-advanced--tooling-81-100">Part 5: Advanced &amp; Tooling (81-100)</h2>
+
+<h3 id="81-how-does-the-garbage-collector-work-in-go">81. How does the Garbage Collector work in Go?</h3>
+
+<p>Go uses a <strong>Concurrent Mark-and-Sweep (CMS)</strong> garbage collector (Tri-color marking).</p>
+<ul>
+  <li><strong>Concurrent:</strong> Runs alongside the application code.</li>
+  <li><strong>Low Latency:</strong> Designed to minimize “Stop the World” (STW) pauses.</li>
+  <li><strong>Write Barrier:</strong> Ensures data consistency during concurrent marking.</li>
+</ul>
+
+<h3 id="82-what-is-escape-analysis">82. What is Escape Analysis?</h3>
+
+<p>A compiler optimization technique that determines whether a variable can be allocated on the stack or must “escape” to the heap.</p>
+<ul>
+  <li><strong>Stack:</strong> Fast, automatic cleanup.</li>
+  <li><strong>Heap:</strong> Slower, requires GC.</li>
+  <li>Command: <code class="language-plaintext highlighter-rouge">go build -gcflags="-m"</code></li>
+</ul>
+
+<h3 id="83-what-is-inlining">83. What is Inlining?</h3>
+
+<p>The compiler replaces a function call with the function body itself to save the overhead of the function call (stack setup, jumps).</p>
+<ul>
+  <li>Only small, simple functions are inlined.</li>
+</ul>
+
+<h3 id="84-what-is-pprof">84. What is <code class="language-plaintext highlighter-rouge">pprof</code>?</h3>
+
+<p>A tool for visualization and analysis of profiling data.</p>
+<ul>
+  <li><strong>CPU Profile:</strong> Where CPU time is spent.</li>
+  <li><strong>Memory Profile:</strong> Heap allocations.</li>
+  <li><strong>Block Profile:</strong> Blocking on synchronization primitives.</li>
+</ul>
+
+<h3 id="85-what-is-go-tool-trace">85. What is <code class="language-plaintext highlighter-rouge">go tool trace</code>?</h3>
+
+<p>A tool to visualize the execution trace of the Go runtime.</p>
+<ul>
+  <li>Shows goroutine scheduling, GC pauses, and network blocking events over time.</li>
+</ul>
+
+<h3 id="86-what-are-build-tags">86. What are Build Tags?</h3>
+
+<p>Comments that control which files are included in the build.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">//go:build linux</code></li>
+  <li><code class="language-plaintext highlighter-rouge">// +build linux</code> (Legacy)</li>
+  <li>Used for platform-specific code or integration tests.</li>
+</ul>
+
+<h3 id="87-what-is-cgo">87. What is CGo?</h3>
+
+<p>A mechanism that allows Go packages to call C code.</p>
+<ul>
+  <li>Uses <code class="language-plaintext highlighter-rouge">import "C"</code>.</li>
+  <li><strong>Performance cost:</strong> High overhead due to stack switching (Goroutine stack vs C stack).</li>
+  <li><strong>Drawback:</strong> Makes cross-compilation harder and disables some Go tools.</li>
+</ul>
+
+<h3 id="88-explain-the-memory-layout-stack-vs-heap">88. Explain the Memory Layout (Stack vs Heap).</h3>
+
+<ul>
+  <li><strong>Stack:</strong> Per-goroutine. LIFO. Stores local variables, arguments. Grows dynamically.</li>
+  <li><strong>Heap:</strong> Global. Stores objects referenced across boundaries, large objects, or those that outlive the function scope (determined by Escape Analysis).</li>
+</ul>
+
+<h3 id="89-what-is-gomaxprocs">89. What is <code class="language-plaintext highlighter-rouge">GOMAXPROCS</code>?</h3>
+
+<p>An environment variable (and runtime function) that limits the number of operating system threads that can execute user-level Go code simultaneously.</p>
+<ul>
+  <li>Default: Number of CPU cores.</li>
+</ul>
+
+<h3 id="90-how-does-reflection-work-in-go">90. How does Reflection work in Go?</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">reflect</code> package allows inspecting type and value information at runtime.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">reflect.TypeOf()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">reflect.ValueOf()</code></li>
+  <li><strong>Cons:</strong> Slower than direct access, not type-safe at compile time.</li>
+</ul>
+
+<h3 id="91-what-is-the-unsafe-package">91. What is the <code class="language-plaintext highlighter-rouge">unsafe</code> package?</h3>
+
+<p>Bypasses Go’s type safety and memory security.</p>
+<ul>
+  <li>Allows pointer arithmetic.</li>
+  <li>Allows converting between arbitrary types.</li>
+  <li><strong>Risk:</strong> Can cause crashes and memory corruption.</li>
+</ul>
+
+<h3 id="92-what-are-go-plugins">92. What are Go Plugins?</h3>
+
+<p>Allows loading shared libraries (<code class="language-plaintext highlighter-rouge">.so</code> files) at runtime.</p>
+<ul>
+  <li>Limited support (Linux/macOS primarily).</li>
+  <li>Strict versioning requirements between main app and plugin.</li>
+</ul>
+
+<h3 id="93-what-is-the-vendor-directory">93. What is the <code class="language-plaintext highlighter-rouge">vendor</code> directory?</h3>
+
+<p>A directory that contains copies of all dependency packages.</p>
+<ul>
+  <li>Ensures reproducible builds without relying on external sources.</li>
+  <li><code class="language-plaintext highlighter-rouge">go mod vendor</code> creates it.</li>
+</ul>
+
+<h3 id="94-what-is-the-go-1-compatibility-guarantee">94. What is the Go 1 Compatibility Guarantee?</h3>
+
+<p>A promise that code written for Go 1.0 will continue to compile and run with all future Go 1.x versions.
+(Exceptions: Security fixes, undefined behaviors).</p>
+
+<h3 id="95-what-are-internal-packages">95. What are Internal Packages?</h3>
+
+<p>Packages inside a directory named <code class="language-plaintext highlighter-rouge">internal</code>.</p>
+<ul>
+  <li>They can only be imported by the direct parent package and its subdirectories.</li>
+  <li>Enforces encapsulation at the module level.</li>
+</ul>
+
+<h3 id="96-common-go-mod-commands">96. Common <code class="language-plaintext highlighter-rouge">go mod</code> commands?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">go mod init</code>: Initialize module.</li>
+  <li><code class="language-plaintext highlighter-rouge">go mod tidy</code>: Add missing and remove unused dependencies.</li>
+  <li><code class="language-plaintext highlighter-rouge">go mod download</code>: Download dependencies to cache.</li>
+  <li><code class="language-plaintext highlighter-rouge">go mod graph</code>: Print module requirement graph.</li>
+</ul>
+
+<h3 id="97-how-do-you-cross-compile-in-go">97. How do you Cross-Compile in Go?</h3>
+
+<p>Set <code class="language-plaintext highlighter-rouge">GOOS</code> and <code class="language-plaintext highlighter-rouge">GOARCH</code> environment variables.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">GOOS=linux GOARCH=arm64 go build main.go</code></li>
+  <li>Go makes this incredibly easy compared to C/C++.</li>
+</ul>
+
+<h3 id="98-what-is-the-embed-package-go-116">98. What is the <code class="language-plaintext highlighter-rouge">embed</code> package (Go 1.16+)?</h3>
+
+<p>Allows embedding static files (HTML, images, config) directly into the compiled Go binary.</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">//go:embed static/*</span>
+<span class="k">var</span> <span class="n">content</span> <span class="n">embed</span><span class="o">.</span><span class="n">FS</span>
+</code></pre></div></div>
+
+<h3 id="99-implement-singleton-pattern-in-go">99. Implement Singleton Pattern in Go.</h3>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="p">(</span>
+    <span class="n">instance</span> <span class="o">*</span><span class="n">Singleton</span>
+    <span class="n">once</span>     <span class="n">sync</span><span class="o">.</span><span class="n">Once</span>
+<span class="p">)</span>
+<span class="k">func</span> <span class="n">GetInstance</span><span class="p">()</span> <span class="o">*</span><span class="n">Singleton</span> <span class="p">{</span>
+    <span class="n">once</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="k">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">instance</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">Singleton</span><span class="p">{}</span>
+    <span class="p">})</span>
+    <span class="k">return</span> <span class="n">instance</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="100-implement-factory-pattern-in-go">100. Implement Factory Pattern in Go.</h3>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">Animal</span> <span class="k">interface</span> <span class="p">{</span> <span class="n">Speak</span><span class="p">()</span> <span class="kt">string</span> <span class="p">}</span>
+<span class="k">type</span> <span class="n">Dog</span> <span class="k">struct</span><span class="p">{}</span>
+<span class="k">func</span> <span class="p">(</span><span class="n">d</span> <span class="n">Dog</span><span class="p">)</span> <span class="n">Speak</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"Woof"</span> <span class="p">}</span>
+
+<span class="k">func</span> <span class="n">NewAnimal</span><span class="p">(</span><span class="k">type</span> <span class="kt">string</span><span class="p">)</span> <span class="n">Animal</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">type</span> <span class="o">==</span> <span class="s">"dog"</span> <span class="p">{</span> <span class="k">return</span> <span class="n">Dog</span><span class="p">{}</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="no">nil</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+<p><strong>End of Interview Questions</strong></p>
+
+<h2 id="study-guide">Study Guide</h2>
+
+<p>To deepen your understanding of these concepts, check out the following resources:</p>
+
+<ul>
+  <li><strong>Official Documentation</strong>: <a href="https://go.dev/doc/">Golang Docs</a></li>
+  <li><strong>Internal Style Guide</strong>: <a href="../style_guides/golang/golang_style_guide.md">Golang Style Guide</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

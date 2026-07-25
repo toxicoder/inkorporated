@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>System Design Interview Questions &amp; Answers (100+) | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="System Design Interview Questions &amp; Answers (100+)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="System Design Interview Questions &amp; Answers (100+) for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="System Design Interview Questions &amp; Answers (100+) for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/interview_questions/system_design.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/interview_questions/system_design.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="System Design Interview Questions &amp; Answers (100+)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"System Design Interview Questions &amp; Answers (100+) for Inkorporated.","headline":"System Design Interview Questions &amp; Answers (100+)","url":"https://toxicoder.github.io/inkorporated/interview_questions/system_design.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">System Design Interview Questions &amp; Answers (100+)</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="system-design-interview-questions--answers-100">System Design Interview Questions &amp; Answers (100+)</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This guide contains 100+ System Design interview questions, ranging from core concepts to complex distributed system scenarios. Each question includes a model answer and potential follow-up paths based on the candidate’s response.</p>
+
+<h2 id="part-1-core-concepts-1-25">Part 1: Core Concepts (1-25)</h2>
+
+<h3 id="1-what-is-the-difference-between-vertical-scaling-and-horizontal-scaling">1. What is the difference between Vertical Scaling and Horizontal Scaling?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">Vertical Scaling (Scale Up)</th>
+      <th style="text-align: left">Horizontal Scaling (Scale Out)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Definition</strong></td>
+      <td style="text-align: left">Adding more power (CPU, RAM) to an existing machine.</td>
+      <td style="text-align: left">Adding more machines to the resource pool.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Limit</strong></td>
+      <td style="text-align: left">Hard limit based on hardware capacity.</td>
+      <td style="text-align: left">Theoretically infinite (constrained by software/network).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Downtime</strong></td>
+      <td style="text-align: left">Usually requires downtime to upgrade.</td>
+      <td style="text-align: left">No downtime (add nodes dynamically).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Complexity</strong></td>
+      <td style="text-align: left">Low (no distributed logic).</td>
+      <td style="text-align: left">High (requires load balancing, consistency mgmt).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions Cost.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “At what point does vertical scaling become more expensive than horizontal?”</li>
+      <li><em>Answer:</em> Specialized high-end hardware follows a non-linear price curve. Two medium servers are often cheaper than one super-server.</li>
+    </ul>
+  </li>
+  <li><strong>Path B: Candidate focuses on Databases.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Why is it harder to horizontally scale a traditional SQL database?”</li>
+      <li><em>Answer:</em> ACID compliance and JOINS are difficult to maintain across distributed nodes.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-explain-load-balancing-l4-vs-l7">2. Explain Load Balancing (L4 vs L7).</h3>
+
+<p>A Load Balancer distributes incoming network traffic across a group of backend servers.</p>
+
+<ul>
+  <li><strong>Layer 4 (Transport Layer):</strong> Routes traffic based on IP address and Port (TCP/UDP). It is packet-level load balancing.</li>
+  <li><strong>Layer 7 (Application Layer):</strong> Routes traffic based on content (URL, Cookies, Headers). It is request-level load balancing.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Performance.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Which is faster, L4 or L7?”</li>
+      <li><em>Answer:</em> L4 is faster because it doesn’t need to decrypt/inspect the payload.</li>
+    </ul>
+  </li>
+  <li><strong>Path B: Security.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Why is L7 better for security?”</li>
+      <li><em>Answer:</em> It can inspect traffic for SQL injection, terminate SSL, and implement smarter rate limiting.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="3-what-is-the-cap-theorem">3. What is the CAP Theorem?</h3>
+
+<p>In a distributed data store, you can strictly provide only two of the three guarantees:</p>
+
+<ol>
+  <li><strong>Consistency:</strong> Every read receives the most recent write or an error.</li>
+  <li><strong>Availability:</strong> Every request receives a (non-error) response, without the guarantee that it contains the most recent write.</li>
+  <li><strong>Partition Tolerance:</strong> The system continues to operate despite an arbitrary number of messages being dropped or delayed by the network.</li>
+</ol>
+
+<pre><code class="language-mermaid">graph TD
+    C[Consistency] --- A[Availability]
+    A --- P[Partition Tolerance]
+    P --- C
+    style C fill:#f9f,stroke:#333
+    style A fill:#ff9,stroke:#333
+    style P fill:#9ff,stroke:#333
+</code></pre>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: “I choose CA”.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Can a distributed system actually be CA?”</li>
+      <li><em>Answer:</em> No. In a distributed system, network partitions <em>will</em> happen. You effectively choose between CP (stop serving requests) or AP (serve stale data) when a partition occurs.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="4-compare-acid-vs-base-models">4. Compare ACID vs BASE models.</h3>
+
+<ul>
+  <li><strong>ACID (Relational DBs):</strong> Atomicity, Consistency, Isolation, Durability. Focuses on strict data integrity.</li>
+  <li><strong>BASE (NoSQL DBs):</strong>
+    <ul>
+      <li><strong>B</strong>asically <strong>A</strong>vailable: System guarantees availability.</li>
+      <li><strong>S</strong>oft state: State may change over time, even without input.</li>
+      <li><strong>E</strong>ventual consistency: System will become consistent over time.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="5-what-are-the-common-caching-strategies">5. What are the common Caching Strategies?</h3>
+
+<ol>
+  <li><strong>Cache Aside (Lazy Loading):</strong> App checks cache. If miss, reads DB, writes to cache.</li>
+  <li><strong>Read-Through:</strong> App asks cache. Cache fetches from DB if miss.</li>
+  <li><strong>Write-Through:</strong> App writes to cache and DB synchronously.</li>
+  <li><strong>Write-Back (Write-Behind):</strong> App writes to cache. Cache writes to DB asynchronously.</li>
+</ol>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Write-Back.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What is the major risk of Write-Back?”</li>
+      <li><em>Answer:</em> Data loss if the cache crashes before flushing data to the persistent DB.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="6-what-is-a-cdn-content-delivery-network">6. What is a CDN (Content Delivery Network)?</h3>
+
+<p>A network of geographically distributed servers that deliver static content (images, CSS, JS, videos) to users based on their location.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Push vs Pull.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How does the CDN get the content?”</li>
+      <li><em>Answer:</em> <strong>Push:</strong> You upload to CDN. <strong>Pull:</strong> CDN fetches from Origin on first request (cache miss).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="7-stateless-vs-stateful-architecture">7. Stateless vs Stateful Architecture?</h3>
+
+<ul>
+  <li><strong>Stateless:</strong> Server retains no client information between requests. Every request must contain all necessary info (e.g., JWT). Scales easily.</li>
+  <li><strong>Stateful:</strong> Server remembers client data (Session ID) from previous requests. Harder to scale horizontally (requires Sticky Sessions).</li>
+</ul>
+
+<h3 id="8-latency-vs-throughput">8. Latency vs Throughput?</h3>
+
+<ul>
+  <li><strong>Latency:</strong> Time taken to process a single request (Speed).</li>
+  <li><strong>Throughput:</strong> Number of requests processed per unit time (Capacity).</li>
+</ul>
+
+<p><strong>Analogy:</strong></p>
+<ul>
+  <li><em>Latency:</em> How fast a car drives.</li>
+  <li><em>Throughput:</em> How many cars pass a point per hour.</li>
+</ul>
+
+<h3 id="9-what-are-common-availability-patterns">9. What are common Availability Patterns?</h3>
+
+<ol>
+  <li><strong>Fail-over:</strong>
+    <ul>
+      <li><em>Active-Passive:</em> Heartbeat sends signal. If Active dies, Passive takes over.</li>
+      <li><em>Active-Active:</em> Both handle traffic.</li>
+    </ul>
+  </li>
+  <li><strong>Replication:</strong> Master-Slave, Master-Master.</li>
+</ol>
+
+<h3 id="10-how-does-dns-resolution-work">10. How does DNS Resolution work?</h3>
+
+<ol>
+  <li>Browser checks local cache.</li>
+  <li>OS checks <code class="language-plaintext highlighter-rouge">hosts</code> file.</li>
+  <li>Query sent to <strong>Recursive Resolver</strong> (ISP).</li>
+  <li>Resolver queries <strong>Root Server</strong> (.) -&gt; <strong>TLD Server</strong> (.com) -&gt; <strong>Authoritative Name Server</strong> (example.com).</li>
+  <li>IP returned to browser.</li>
+</ol>
+
+<h3 id="11-what-is-consistent-hashing">11. What is Consistent Hashing?</h3>
+
+<p>A technique to distribute data across nodes in a way that minimizes reorganization when nodes are added or removed.
+Instead of <code class="language-plaintext highlighter-rouge">hash(key) % N</code>, it maps keys and nodes to a “Ring” (0 to 2^32).</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Hotspots.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What if one node is very powerful or gets too much data?”</li>
+      <li><em>Answer:</em> Use “Virtual Nodes” (vnodes). Map one physical node to multiple points on the ring.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="12-forward-proxy-vs-reverse-proxy">12. Forward Proxy vs Reverse Proxy?</h3>
+
+<ul>
+  <li><strong>Forward Proxy:</strong> Sit before the <em>Client</em>. Masks the Client ID. (e.g., VPN, Corporate Filter).</li>
+  <li><strong>Reverse Proxy:</strong> Sit before the <em>Server</em>. Masks the Server ID. (e.g., Nginx, Load Balancer).</li>
+</ul>
+
+<h3 id="13-polling-vs-websockets-vs-server-sent-events-sse">13. Polling vs WebSockets vs Server-Sent Events (SSE).</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">Polling (Short/Long)</th>
+      <th style="text-align: left">WebSockets</th>
+      <th style="text-align: left">SSE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Direction</strong></td>
+      <td style="text-align: left">Client -&gt; Server</td>
+      <td style="text-align: left">Bidirectional</td>
+      <td style="text-align: left">Server -&gt; Client</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Connection</strong></td>
+      <td style="text-align: left">New connection per request (Short)</td>
+      <td style="text-align: left">Persistent TCP</td>
+      <td style="text-align: left">Persistent HTTP</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Use Case</strong></td>
+      <td style="text-align: left">Dashboards, low frequency</td>
+      <td style="text-align: left">Chat, Gaming</td>
+      <td style="text-align: left">News feeds, Stock Tickers</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="14-lsm-tree-vs-b-tree-database-indexing">14. LSM Tree vs B-Tree (Database Indexing).</h3>
+
+<ul>
+  <li><strong>B-Tree:</strong> (Used in SQL) Optimized for Reads. Data stored in sorted pages. Update in-place.</li>
+  <li><strong>LSM (Log-Structured Merge):</strong> (Used in Cassandra, Kafka) Optimized for Writes. Appends to log, merges in background.</li>
+</ul>
+
+<h3 id="15-what-are-common-rate-limiting-algorithms">15. What are common Rate Limiting Algorithms?</h3>
+
+<ol>
+  <li><strong>Token Bucket:</strong> Tokens added at rate <code class="language-plaintext highlighter-rouge">r</code>. Request consumes token. (Allows Bursts).</li>
+  <li><strong>Leaky Bucket:</strong> Requests enter queue, processed at constant rate. (Smooths traffic).</li>
+  <li><strong>Fixed Window Counter:</strong> Counter resets every minute. (Edge case: double bursts at boundary).</li>
+  <li><strong>Sliding Window Log:</strong> Precise, stores timestamps. (High memory).</li>
+  <li><strong>Sliding Window Counter:</strong> Hybrid approach.</li>
+</ol>
+
+<h3 id="16-strong-vs-eventual-consistency">16. Strong vs Eventual Consistency?</h3>
+
+<ul>
+  <li><strong>Strong:</strong> After a write, any subsequent read returns the new value. (High Latency).</li>
+  <li><strong>Eventual:</strong> After a write, reads may return old value for a “window of inconsistency”. (Low Latency).</li>
+</ul>
+
+<h3 id="17-what-is-a-heartbeat">17. What is a Heartbeat?</h3>
+
+<p>A periodic signal sent by a component to indicate it is alive and functioning. Used in Fail-over mechanisms.</p>
+
+<h3 id="18-what-is-a-checksum">18. What is a Checksum?</h3>
+
+<p>A small-sized datum derived from a block of digital data for the purpose of detecting errors that may have been introduced during its transmission or storage.</p>
+
+<h3 id="19-what-is-a-bloom-filter">19. What is a Bloom Filter?</h3>
+
+<p>A probabilistic data structure used to test whether an element is a member of a set.</p>
+<ul>
+  <li>Returns either “Possibly in set” or “Definitely not in set”.</li>
+  <li>Never returns False Negative. Can return False Positive.</li>
+  <li><em>Use Case:</em> Checking if a username is taken before hitting the DB.</li>
+</ul>
+
+<h3 id="20-what-is-quorum">20. What is Quorum?</h3>
+
+<p>The minimum number of votes that a distributed transaction has to obtain to be allowed to perform an operation in a distributed system.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">R + W &gt; N</code> (Read nodes + Write nodes &gt; Total nodes) guarantees strong consistency.</li>
+</ul>
+
+<h3 id="21-how-does-leader-election-work">21. How does Leader Election work?</h3>
+
+<p>Process of designating a single process as the organizer of some task among several computers (nodes).</p>
+<ul>
+  <li><strong>Algorithms:</strong> Paxos, Raft, Zookeeper (ZAB).</li>
+</ul>
+
+<h3 id="22-what-is-idempotency">22. What is Idempotency?</h3>
+
+<p>An operation is idempotent if applying it multiple times has the same effect as applying it once.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">POST</code> is generally NOT idempotent.</li>
+  <li><code class="language-plaintext highlighter-rouge">PUT</code> and <code class="language-plaintext highlighter-rouge">DELETE</code> ARE idempotent.</li>
+  <li><em>Implementation:</em> Use a unique “Idempotency Key” in request headers.</li>
+</ul>
+
+<h3 id="23-what-is-long-polling">23. What is Long-Polling?</h3>
+
+<ol>
+  <li>Client sends request.</li>
+  <li>Server holds request open until data is available.</li>
+  <li>Server sends response.</li>
+  <li>Client immediately sends new request.</li>
+</ol>
+
+<h3 id="24-peer-to-peer-p2p-networks">24. Peer-to-Peer (P2P) Networks?</h3>
+
+<p>Decentralized network where each node acts as both client and server (peer).</p>
+<ul>
+  <li><em>Pros:</em> High availability, no single point of failure.</li>
+  <li><em>Cons:</em> Security, slower discovery (Gossip protocol).</li>
+</ul>
+
+<h3 id="25-what-is-service-discovery">25. What is Service Discovery?</h3>
+
+<p>How microservices locate each other on a network (IP + Port).</p>
+<ul>
+  <li><strong>Client-Side:</strong> Client queries Service Registry (Netflix Eureka), then calls service.</li>
+  <li><strong>Server-Side:</strong> Client calls Load Balancer (AWS ELB), LB queries Registry.</li>
+</ul>
+
+<h2 id="part-2-distributed-systems--data-26-50">Part 2: Distributed Systems &amp; Data (26-50)</h2>
+
+<h3 id="26-what-is-database-partitioning-sharding">26. What is Database Partitioning (Sharding)?</h3>
+
+<p>Breaking up a large database into smaller, more manageable parts called shards.</p>
+
+<p><strong>Methods:</strong></p>
+<ol>
+  <li><strong>Horizontal Sharding:</strong> Rows split by key (e.g., UserID 1-1000 in DB1).</li>
+  <li><strong>Vertical Sharding:</strong> Columns split by feature (e.g., User Profile in DB1, User Photos in DB2).</li>
+  <li><strong>Directory Based:</strong> Lookup table knows where data is.</li>
+</ol>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Cross-shard joins.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How do you handle a query that needs data from multiple shards?”</li>
+      <li><em>Answer:</em> Perform application-level joins or de-normalize data to avoid the join.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="27-master-slave-vs-master-master-replication">27. Master-Slave vs Master-Master Replication?</h3>
+
+<ul>
+  <li><strong>Master-Slave:</strong> Writes go to Master. Reads go to Slaves.
+    <ul>
+      <li><em>Pros:</em> Simple. Strong consistency on Master.</li>
+      <li><em>Cons:</em> Master is SPOF for writes. Replication lag.</li>
+    </ul>
+  </li>
+  <li><strong>Master-Master:</strong> Writes go to any Master.
+    <ul>
+      <li><em>Pros:</em> High availability for writes.</li>
+      <li><em>Cons:</em> Write conflicts (Split Brain). Complexity.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="28-what-is-the-two-phase-commit-2pc">28. What is the Two-Phase Commit (2PC)?</h3>
+
+<p>A distributed algorithm that coordinates all the processes that participate in a distributed atomic transaction on whether to commit or abort (roll back) the transaction.</p>
+
+<ol>
+  <li><strong>Prepare Phase:</strong> Coordinator asks “Can you commit?”. Nodes lock resources and say “Yes”.</li>
+  <li><strong>Commit Phase:</strong> If all “Yes”, Coordinator says “Commit”. Else “Rollback”.</li>
+</ol>
+
+<ul>
+  <li><em>Downside:</em> Blocking protocol. Slow.</li>
+</ul>
+
+<h3 id="29-what-is-saga-pattern">29. What is Saga Pattern?</h3>
+
+<p>A sequence of local transactions. Each local transaction updates the database and publishes an event or message to trigger the next local transaction in the saga.</p>
+<ul>
+  <li><strong>Compensation:</strong> If a step fails, execute compensating transactions to undo changes.</li>
+</ul>
+
+<h3 id="30-explain-split-brain-in-distributed-systems">30. Explain “Split Brain” in distributed systems.</h3>
+
+<p>A condition where the network partitions, and two nodes both believe they are the Master/Leader. They both accept writes, leading to data corruption/divergence.</p>
+<ul>
+  <li><em>Solution:</em> Quorum (Majority vote).</li>
+</ul>
+
+<h3 id="31-row-oriented-vs-column-oriented-databases">31. Row-Oriented vs Column-Oriented Databases?</h3>
+
+<ul>
+  <li><strong>Row-Oriented (Postgres, MySQL):</strong> Stores data by row. Efficient for writing/reading whole records (OLTP).</li>
+  <li><strong>Column-Oriented (Redshift, Cassandra):</strong> Stores data by column. Efficient for aggregating specific columns over many rows (OLAP).</li>
+</ul>
+
+<h3 id="32-what-is-nosql-types-of-nosql-databases">32. What is NoSQL? Types of NoSQL databases?</h3>
+
+<p>Non-relational databases. Scalable, flexible schemas.</p>
+
+<ol>
+  <li><strong>Key-Value:</strong> Redis, DynamoDB. (Fast, simple).</li>
+  <li><strong>Document:</strong> MongoDB, CouchDB. (JSON-like, flexible).</li>
+  <li><strong>Column-Family:</strong> Cassandra, HBase. (Write heavy, massive scale).</li>
+  <li><strong>Graph:</strong> Neo4j. (Relations, Friends).</li>
+</ol>
+
+<h3 id="33-when-to-use-cassandra">33. When to use Cassandra?</h3>
+
+<ul>
+  <li>Heavy Write throughput.</li>
+  <li>Need linear horizontal scalability.</li>
+  <li>Can tolerate eventual consistency.</li>
+  <li>Don’t need complex JOINS.</li>
+</ul>
+
+<h3 id="34-how-does-redis-persist-data">34. How does Redis persist data?</h3>
+
+<ol>
+  <li><strong>RDB (Snapshotting):</strong> Saves point-in-time snapshots of dataset at intervals. (Fast restart, data loss possible).</li>
+  <li><strong>AOF (Append Only File):</strong> Logs every write operation. (Slower restart, higher durability).</li>
+</ol>
+
+<h3 id="35-what-is-a-thundering-herd-problem">35. What is a “Thundering Herd” problem?</h3>
+
+<p>A large number of processes/users waiting for an event occur simultaneously when the event happens (e.g., Cache Expiry). They all hit the database at once, crashing it.</p>
+<ul>
+  <li><em>Solution:</em> Stagger expiration times (Jitter) or use a “Mutex” to let only one populate the cache.</li>
+</ul>
+
+<h3 id="36-what-is-backpressure">36. What is “Backpressure”?</h3>
+
+<p>A feedback mechanism in data flow. If the consumer cannot keep up with the producer, it signals the producer to slow down.</p>
+<ul>
+  <li><em>Without Backpressure:</em> Consumer runs out of memory (OOM) buffering incoming data.</li>
+</ul>
+
+<h3 id="37-what-is-the-difference-between-put-and-patch">37. What is the difference between <code class="language-plaintext highlighter-rouge">PUT</code> and <code class="language-plaintext highlighter-rouge">PATCH</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">PUT</code>: Replaces the <em>entire</em> resource. (Idempotent).</li>
+  <li><code class="language-plaintext highlighter-rouge">PATCH</code>: Applies a <em>partial</em> update to the resource. (Not necessarily idempotent).</li>
+</ul>
+
+<h3 id="38-what-is-database-federation">38. What is “Database Federation”?</h3>
+
+<p>Splitting data by function across multiple distinct databases (e.g., Forum DB, User DB, Product DB).</p>
+<ul>
+  <li><em>Pros:</em> Less coupling.</li>
+  <li><em>Cons:</em> No cross-DB joins.</li>
+</ul>
+
+<h3 id="39-explain-gossip-protocol">39. Explain “Gossip Protocol”.</h3>
+
+<p>A peer-to-peer communication protocol where nodes periodically exchange state information with random other nodes. Info spreads like a virus (epidemic).</p>
+<ul>
+  <li>Used in Cassandra/Dynamo for cluster state management.</li>
+</ul>
+
+<h3 id="40-what-is-a-dead-letter-queue-dlq">40. What is a “Dead Letter Queue” (DLQ)?</h3>
+
+<p>A service implementation to store messages that meet one or more of the following criteria:</p>
+<ol>
+  <li>Message that cannot be delivered.</li>
+  <li>Message processing failed N times.
+    <ul>
+      <li>Allows debugging of bad messages without blocking the main queue.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="41-what-is-geohashing">41. What is “Geohashing”?</h3>
+
+<p>A system for encoding a geographic location into a short string of letters and digits.</p>
+<ul>
+  <li>Grid-based.</li>
+  <li>Shared prefix indicates proximity.</li>
+  <li><em>Use Case:</em> Yelp, Uber (Find nearby).</li>
+</ul>
+
+<h3 id="42-what-is-quadtree">42. What is QuadTree?</h3>
+
+<p>A tree data structure where each internal node has exactly four children. Used to partition a two-dimensional space.</p>
+<ul>
+  <li><em>Use Case:</em> Spatial indexing. Better than Geohash for non-uniform distribution of points.</li>
+</ul>
+
+<h3 id="43-pull-vs-push-models-in-monitoringmetrics">43. Pull vs Push models in Monitoring/Metrics?</h3>
+
+<ul>
+  <li><strong>Push (StatsD, Telegraf):</strong> App sends metrics to collector.
+    <ul>
+      <li><em>Pros:</em> App controls frequency. Short-lived jobs supported.</li>
+    </ul>
+  </li>
+  <li><strong>Pull (Prometheus):</strong> Collector scrapes metrics endpoint on App.
+    <ul>
+      <li><em>Pros:</em> Central control. App doesn’t need to know destination.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="44-what-is-a-circuit-breaker">44. What is a “Circuit Breaker”?</h3>
+
+<p>A design pattern used to detect failures and encapsulate the logic of preventing a failure from constantly recurring.</p>
+<ul>
+  <li><strong>Closed:</strong> Requests pass through.</li>
+  <li><strong>Open:</strong> Requests fail immediately (after threshold of errors).</li>
+  <li><strong>Half-Open:</strong> Allow test request. If success, Close.</li>
+</ul>
+
+<h3 id="45-what-is-message-acknowledgment">45. What is “Message Acknowledgment”?</h3>
+
+<p>Ensures delivery.</p>
+<ul>
+  <li><strong>At-most-once:</strong> Fire and forget.</li>
+  <li><strong>At-least-once:</strong> Retry until Ack received. (Consumer must handle duplicates).</li>
+  <li><strong>Exactly-once:</strong> Hardest to achieve (Kafka transactions).</li>
+</ul>
+
+<h3 id="46-what-is-compensating-transaction">46. What is “Compensating Transaction”?</h3>
+
+<p>In a distributed transaction (Saga), a transaction that undoes the effect of a previous transaction that had committed. (e.g., Refund money if Order fails).</p>
+
+<h3 id="47-explain-isolation-levels-in-context-of-distributed-systems">47. Explain “Isolation Levels” in context of Distributed Systems.</h3>
+
+<ul>
+  <li><strong>Read Uncommitted</strong></li>
+  <li><strong>Read Committed</strong></li>
+  <li><strong>Repeatable Read</strong></li>
+  <li><strong>Serializable</strong></li>
+  <li><em>Snapshot Isolation:</em> Reads see a consistent snapshot of the DB from start of transaction.</li>
+</ul>
+
+<h3 id="48-what-is-hyperloglog">48. What is “HyperLogLog”?</h3>
+
+<p>A probabilistic data structure used for estimating the cardinality (count of unique items) of a set.</p>
+<ul>
+  <li>Uses very little memory compared to storing all unique IDs.</li>
+  <li><em>Use Case:</em> Count unique daily visitors (100M+).</li>
+</ul>
+
+<h3 id="49-what-is-tombstone-in-deletion">49. What is “Tombstone” in deletion?</h3>
+
+<p>In systems like Cassandra (LSM), you cannot physically delete a row immediately (immutable files).
+Instead, you write a “Tombstone” marker. The data is actually removed during Compaction.</p>
+
+<h3 id="50-file-storage-vs-block-storage-vs-object-storage">50. File Storage vs Block Storage vs Object Storage?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Access</th>
+      <th style="text-align: left">Example</th>
+      <th style="text-align: left">Use Case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Block</strong></td>
+      <td style="text-align: left">Low-level blocks via OS (Fast)</td>
+      <td style="text-align: left">AWS EBS, HDD</td>
+      <td style="text-align: left">Databases, OS Boot</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>File</strong></td>
+      <td style="text-align: left">Hierarchical files (Shared)</td>
+      <td style="text-align: left">AWS EFS, NAS</td>
+      <td style="text-align: left">Shared directories</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Object</strong></td>
+      <td style="text-align: left">API (HTTP), Metadata heavy</td>
+      <td style="text-align: left">AWS S3</td>
+      <td style="text-align: left">Images, Backups, Static Web</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="part-3-architecture-patterns--components-51-75">Part 3: Architecture Patterns &amp; Components (51-75)</h2>
+
+<h3 id="51-microservices-vs-monolith">51. Microservices vs Monolith?</h3>
+
+<ul>
+  <li><strong>Monolith:</strong> Single codebase, single build, single deployment.
+    <ul>
+      <li><em>Pros:</em> Simple to develop/test/deploy initially. Fast internal calls.</li>
+      <li><em>Cons:</em> Tight coupling. Hard to scale specific parts. Long build times.</li>
+    </ul>
+  </li>
+  <li><strong>Microservices:</strong> Collection of small, independent services communicating via APIs.
+    <ul>
+      <li><em>Pros:</em> Loose coupling. Scale independently. Technology agnostic.</li>
+      <li><em>Cons:</em> Complexity of distributed system. Network latency. Data consistency.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="52-rest-vs-graphql-vs-grpc">52. REST vs GraphQL vs gRPC?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">REST</th>
+      <th style="text-align: left">GraphQL</th>
+      <th style="text-align: left">gRPC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Protocol</strong></td>
+      <td style="text-align: left">HTTP/1.1</td>
+      <td style="text-align: left">HTTP/1.1 or 2</td>
+      <td style="text-align: left">HTTP/2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Data Format</strong></td>
+      <td style="text-align: left">JSON (usually)</td>
+      <td style="text-align: left">JSON</td>
+      <td style="text-align: left">Protobuf (Binary)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Fetching</strong></td>
+      <td style="text-align: left">Over-fetching / Under-fetching</td>
+      <td style="text-align: left">Exact fetching</td>
+      <td style="text-align: left">-</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Use Case</strong></td>
+      <td style="text-align: left">Public APIs, Simple</td>
+      <td style="text-align: left">Complex Client Data Needs</td>
+      <td style="text-align: left">Internal Microservices</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="53-what-is-an-api-gateway">53. What is an API Gateway?</h3>
+
+<p>A server that acts as an entry point for a system, sitting between clients and microservices.</p>
+<ul>
+  <li><strong>Responsibilities:</strong> Routing, Authentication, Rate Limiting, SSL Termination, Caching.</li>
+</ul>
+
+<h3 id="54-what-is-service-mesh">54. What is “Service Mesh”?</h3>
+
+<p>A dedicated infrastructure layer for handling service-to-service communication. (e.g., Istio, Linkerd).</p>
+<ul>
+  <li><strong>Sidecar Pattern:</strong> A proxy container sits next to every service instance to handle network logic.</li>
+</ul>
+
+<h3 id="55-what-is-the-sidecar-pattern">55. What is the Sidecar Pattern?</h3>
+
+<p>Attaching a secondary component (sidecar) to the primary application to provide support features (logging, proxying, monitoring) without changing the app code.</p>
+
+<h3 id="56-what-is-event-sourcing">56. What is “Event Sourcing”?</h3>
+
+<p>Storing the state of a system as a sequence of events (e.g., “AccountCreated”, “MoneyDeposited”) rather than just the current state (Balance=100).</p>
+<ul>
+  <li><em>Pros:</em> Audit trail, ability to replay history.</li>
+  <li><em>Cons:</em> Complexity, Event schema evolution.</li>
+</ul>
+
+<h3 id="57-cqrs-command-query-responsibility-segregation">57. CQRS (Command Query Responsibility Segregation)?</h3>
+
+<p>Separating the Read (Query) and Write (Command) models.</p>
+<ul>
+  <li><strong>Write Model:</strong> Optimized for updates (Normalized).</li>
+  <li><strong>Read Model:</strong> Optimized for reading (Denormalized/Views).</li>
+  <li>Often paired with Event Sourcing.</li>
+</ul>
+
+<h3 id="58-what-is-strangler-fig-pattern">58. What is “Strangler Fig Pattern”?</h3>
+
+<p>A migration pattern to modernize a Monolith.</p>
+<ol>
+  <li>Put a Proxy/Gateway in front of Monolith.</li>
+  <li>Route specific traffic to new Microservices.</li>
+  <li>Slowly “strangle” the Monolith until it’s gone.</li>
+</ol>
+
+<h3 id="59-explain-oauth-20">59. Explain OAuth 2.0.</h3>
+
+<p>An authorization framework.</p>
+<ul>
+  <li><strong>Roles:</strong> Resource Owner (User), Client (App), Authorization Server, Resource Server (API).</li>
+  <li><strong>Flows:</strong> Authorization Code (Servers), Implicit (Browser/Mobile - deprecated), Client Credentials (Machine-to-Machine).</li>
+</ul>
+
+<h3 id="60-what-is-jwt-json-web-token">60. What is JWT (JSON Web Token)?</h3>
+
+<p>A compact, URL-safe means of representing claims to be transferred between two parties.</p>
+<ul>
+  <li><strong>Structure:</strong> Header . Payload . Signature</li>
+  <li><em>Stateless:</em> Server verifies signature, doesn’t need to look up session in DB.</li>
+</ul>
+
+<h3 id="61-symmetric-vs-asymmetric-encryption">61. Symmetric vs Asymmetric Encryption?</h3>
+
+<ul>
+  <li><strong>Symmetric:</strong> Same key for encryption and decryption. (Fast).</li>
+  <li><strong>Asymmetric:</strong> Public Key encrypts, Private Key decrypts. (Secure exchange, slower).</li>
+  <li><em>HTTPS:</em> Uses Asymmetric to exchange a Symmetric key, then uses Symmetric for data.</li>
+</ul>
+
+<h3 id="62-what-is-ssltls-handshake">62. What is SSL/TLS Handshake?</h3>
+
+<ol>
+  <li>Client Hello (I support TLS 1.2, Cipher Suites).</li>
+  <li>Server Hello (Let’s use TLS 1.2).</li>
+  <li>Server sends Certificate (Public Key).</li>
+  <li>Client verifies Certificate with CA.</li>
+  <li>Client generates Session Key, encrypts with Server’s Public Key, sends to Server.</li>
+  <li>Server decrypts with Private Key. Secure channel established.</li>
+</ol>
+
+<h3 id="63-what-is-dependency-injection">63. What is “Dependency Injection”?</h3>
+
+<p>A design pattern where an object receives other objects that it depends on (dependencies) from an external source rather than creating them itself.</p>
+<ul>
+  <li>Decouples code. Makes testing easier (mocking).</li>
+</ul>
+
+<h3 id="64-what-is-docker-vs-kubernetes">64. What is Docker vs Kubernetes?</h3>
+
+<ul>
+  <li><strong>Docker:</strong> Containerization platform. Packages app + libs into a portable container.</li>
+  <li><strong>Kubernetes (K8s):</strong> Container Orchestration. Manages deployment, scaling, and networking of containers.</li>
+</ul>
+
+<h3 id="65-what-is-bluegreen-deployment">65. What is “Blue/Green Deployment”?</h3>
+
+<p>Run two identical environments.</p>
+<ul>
+  <li><strong>Blue:</strong> Live.</li>
+  <li><strong>Green:</strong> New version (Idle).</li>
+  <li>Switch Router from Blue to Green.</li>
+  <li><em>Pros:</em> Instant rollback.</li>
+</ul>
+
+<h3 id="66-what-is-canary-deployment">66. What is “Canary Deployment”?</h3>
+
+<p>Roll out the update to a small subset of users (Canaries) first. Monitor for errors. If safe, roll out to the rest.</p>
+
+<h3 id="67-what-is-serverless-faas">67. What is “Serverless” (FaaS)?</h3>
+
+<p>Cloud computing model where the cloud provider dynamically manages the allocation of machine resources. (AWS Lambda).</p>
+<ul>
+  <li><em>Pros:</em> Pay per execution. No server management.</li>
+  <li><em>Cons:</em> Cold starts. Vendor lock-in.</li>
+</ul>
+
+<h3 id="68-what-is-publishersubscriber-pubsub-pattern">68. What is “Publisher/Subscriber” (Pub/Sub) pattern?</h3>
+
+<p>Messaging pattern where Senders (Publishers) do not program the messages to be sent directly to specific Receivers (Subscribers). Instead, messages are categorized.</p>
+<ul>
+  <li>Decouples components.</li>
+</ul>
+
+<h3 id="69-rabbitmq-vs-kafka">69. RabbitMQ vs Kafka?</h3>
+
+<ul>
+  <li><strong>RabbitMQ:</strong> Traditional Message Broker. Smart Broker / Dumb Consumer. Good for complex routing logic. Messages removed after ack.</li>
+  <li><strong>Kafka:</strong> Distributed Event Streaming. Dumb Broker / Smart Consumer. High throughput. Messages persisted on disk for retention period.</li>
+</ul>
+
+<h3 id="70-what-is-batch-processing-vs-stream-processing">70. What is “Batch Processing” vs “Stream Processing”?</h3>
+
+<ul>
+  <li><strong>Batch:</strong> Process a large volume of data all at once (e.g., Daily Hadoop job). High Latency.</li>
+  <li><strong>Stream:</strong> Process data item by item as it arrives (e.g., Flink, Spark Streaming). Real-time.</li>
+</ul>
+
+<h3 id="71-what-is-a-reverse-index-inverted-index">71. What is a “Reverse Index” (Inverted Index)?</h3>
+
+<p>Maps content (words) to its location (documents).</p>
+<ul>
+  <li><em>Use Case:</em> Search Engines (Elasticsearch). “Apple” -&gt; [Doc1, Doc3].</li>
+</ul>
+
+<h3 id="72-explain-mapreduce">72. Explain “MapReduce”.</h3>
+
+<p>Programming model for processing large data sets.</p>
+<ol>
+  <li><strong>Map:</strong> Filter and sort data.</li>
+  <li><strong>Reduce:</strong> Aggregate the data.</li>
+</ol>
+
+<h3 id="73-what-is-data-lake-vs-data-warehouse">73. What is “Data Lake” vs “Data Warehouse”?</h3>
+
+<ul>
+  <li><strong>Data Lake (S3):</strong> Stores raw, unstructured data. Low cost. Schema-on-Read.</li>
+  <li><strong>Data Warehouse (Snowflake):</strong> Stores processed, structured data. High cost. Schema-on-Write.</li>
+</ul>
+
+<h3 id="74-what-is-etl">74. What is “ETL”?</h3>
+
+<p>Extract, Transform, Load.</p>
+<ul>
+  <li>Process of moving data from source systems to a Data Warehouse.</li>
+</ul>
+
+<h3 id="75-what-is-distributed-tracing">75. What is “Distributed Tracing”?</h3>
+
+<p>A method used to profile and monitor applications, especially those built using a microservices architecture.</p>
+<ul>
+  <li>Assigns a unique Request ID (Trace ID) at ingress and propagates it through all services. (Jaeger, Zipkin).</li>
+</ul>
+
+<h2 id="part-4-system-design-scenarios-76-100">Part 4: System Design Scenarios (76-100)</h2>
+
+<h3 id="76-design-a-url-shortener-tinyurl">76. Design a URL Shortener (TinyURL).</h3>
+
+<ul>
+  <li><strong>Core Req:</strong> Shorten long URL, Redirect short to long. High Read/Write ratio (100:1).</li>
+  <li><strong>Capacity:</strong> 1B new URLs/month. Storage: 500 bytes per URL = 500GB/month. 5 Years = 30TB.</li>
+  <li><strong>Key Idea:</strong> Base62 Encoding. 7 chars = $62^7$ = 3.5 Trillion combinations.</li>
+  <li><strong>DB:</strong> K-V Store (DynamoDB).</li>
+  <li><strong>Collision:</strong> Pre-generate keys (Key Generation Service) to avoid DB lock.</li>
+</ul>
+
+<h3 id="77-design-a-chat-system-whatsapp">77. Design a Chat System (WhatsApp).</h3>
+
+<ul>
+  <li><strong>Core Req:</strong> 1-on-1 chat, Group chat, Online status.</li>
+  <li><strong>Protocol:</strong> WebSockets or XMPP (legacy).</li>
+  <li><strong>Storage:</strong> HBase or Cassandra (Write heavy).</li>
+  <li><strong>Flow:</strong> User A -&gt; Gateway -&gt; Chat Server -&gt; User B.</li>
+  <li><strong>Unread:</strong> If User B offline, store in Push Notification Queue.</li>
+</ul>
+
+<h3 id="78-design-instagram-news-feed">78. Design Instagram (News Feed).</h3>
+
+<ul>
+  <li><strong>Core Req:</strong> Upload photos, Follow users, Generate Feed.</li>
+  <li><strong>Feed Generation:</strong>
+    <ul>
+      <li><em>Pull Model:</em> Query DB for all followings on load. (Slow).</li>
+      <li><em>Push Model (Fan-out on Write):</em> When User A posts, push ID to all followers’ pre-computed feed cache. (Fast reads).</li>
+    </ul>
+  </li>
+  <li><strong>Storage:</strong> S3 for Images. SQL/NoSQL for Metadata.</li>
+</ul>
+
+<h3 id="79-design-rate-limiter">79. Design Rate Limiter.</h3>
+
+<ul>
+  <li><strong>Placement:</strong> API Gateway or Sidecar.</li>
+  <li><strong>Storage:</strong> Redis (Sorted Sets or Counters) because it’s fast.</li>
+  <li><strong>Algorithm:</strong> Token Bucket or Sliding Window.</li>
+  <li><strong>Distributed:</strong> Use Lua scripts in Redis for atomicity.</li>
+</ul>
+
+<h3 id="80-design-youtube-video-streaming">80. Design YouTube (Video Streaming).</h3>
+
+<ul>
+  <li><strong>Core Req:</strong> Upload, Transcode, Stream.</li>
+  <li><strong>Upload:</strong> Split video into chunks. Upload to S3.</li>
+  <li><strong>Processing:</strong> Lambda/Worker Queue to Transcode into multiple formats (720p, 1080p) and codecs (H.264, VP9).</li>
+  <li><strong>Streaming:</strong> DASH or HLS protocols. Adaptive Bitrate Streaming (switch quality based on bandwidth).</li>
+  <li><strong>CDN:</strong> Critical for serving chunks.</li>
+</ul>
+
+<h3 id="81-design-typeahead-suggestion-google-search">81. Design Typeahead Suggestion (Google Search).</h3>
+
+<ul>
+  <li><strong>Data Structure:</strong> Trie (Prefix Tree).</li>
+  <li><strong>Optimization:</strong> Store top 5 popular queries at each Trie node.</li>
+  <li><strong>Storage:</strong> In-memory (Redis) or custom implementation.</li>
+  <li><strong>Update:</strong> Asynchronously update weights based on logs.</li>
+</ul>
+
+<h3 id="82-design-a-web-crawler">82. Design a Web Crawler.</h3>
+
+<ul>
+  <li><strong>Components:</strong>
+    <ul>
+      <li><em>Seed URLs:</em> Starting point.</li>
+      <li><em>URL Frontier:</em> Priority Queue of URLs to visit.</li>
+      <li><em>Fetcher:</em> Downloads HTML.</li>
+      <li><em>Parser:</em> Extracts links.</li>
+      <li><em>Dedup:</em> Checksum/Bloom Filter to avoid cycles/duplicates.</li>
+    </ul>
+  </li>
+  <li><strong>Politeness:</strong> Respect <code class="language-plaintext highlighter-rouge">robots.txt</code> and rate limits.</li>
+</ul>
+
+<h3 id="83-design-notification-system">83. Design Notification System.</h3>
+
+<ul>
+  <li><strong>Inputs:</strong> Email, SMS, Push.</li>
+  <li><strong>Components:</strong>
+    <ul>
+      <li><em>Notification Service:</em> Receives requests.</li>
+      <li><em>Queue:</em> Buffers requests (RabbitMQ).</li>
+      <li><em>Workers:</em> Call 3rd party providers (SendGrid, Twilio, APNS).</li>
+    </ul>
+  </li>
+  <li><strong>Reliability:</strong> Retry mechanism for failed calls.</li>
+</ul>
+
+<h3 id="84-design-dropbox-file-sync">84. Design Dropbox (File Sync).</h3>
+
+<ul>
+  <li><strong>Chunking:</strong> Split files into 4MB chunks. Only upload changed chunks (Differential Sync).</li>
+  <li><strong>Hashing:</strong> Hash each chunk. Deduplication (if another user has same chunk, just point to it).</li>
+  <li><strong>Client:</strong> Watcher process detects FS changes.</li>
+  <li><strong>Metadata DB:</strong> Strong consistency (ACID) required for file namespace.</li>
+</ul>
+
+<h3 id="85-design-twitter-search">85. Design Twitter Search.</h3>
+
+<ul>
+  <li><strong>Challenge:</strong> Real-time indexing.</li>
+  <li><strong>Solution:</strong> EarlyBird (Twitter’s internal).</li>
+  <li><strong>Architecture:</strong> Ingest Tweets -&gt; Tokenize -&gt; Write to In-Memory Shards (based on Tweet ID or Time).</li>
+  <li><strong>Query:</strong> Scatter-Gather to all shards -&gt; Merge results.</li>
+</ul>
+
+<h3 id="86-design-uber-ride-sharing">86. Design Uber (Ride Sharing).</h3>
+
+<ul>
+  <li><strong>Core Req:</strong> Match Rider with nearby Driver.</li>
+  <li><strong>Location:</strong> Drivers send GPS every 3s.</li>
+  <li><strong>Geo-Index:</strong> Geohash or S2 Geometry. Redis GEO commands.</li>
+  <li><strong>Matching:</strong> Search nearby drivers in Redis. Lock driver. Send request.</li>
+</ul>
+
+<h3 id="87-design-ticketmaster-booking-system">87. Design Ticketmaster (Booking System).</h3>
+
+<ul>
+  <li><strong>Challenge:</strong> Concurrency. 10,000 users want the same seat.</li>
+  <li><strong>Locking:</strong>
+    <ul>
+      <li><em>Optimistic:</em> User selects seat. On checkout, check if still available.</li>
+      <li><em>Pessimistic:</em> Lock seat for 10 mins when selected. Release if timeout. (Better UX).</li>
+    </ul>
+  </li>
+  <li><strong>Queue:</strong> Virtual Waiting Room if traffic &gt; capacity.</li>
+</ul>
+
+<h3 id="88-design-unique-id-generator-snowflake">88. Design Unique ID Generator (Snowflake).</h3>
+
+<ul>
+  <li><strong>Req:</strong> Unique, Numerical, Time-sortable, High throughput.</li>
+  <li><strong>Twitter Snowflake:</strong> 64-bit Integer.
+    <ul>
+      <li>1 bit: Sign.</li>
+      <li>41 bits: Timestamp (millis).</li>
+      <li>10 bits: Machine ID (Datacenter + Worker).</li>
+      <li>12 bits: Sequence Number (per millisecond).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="89-design-key-value-store-like-dynamodb">89. Design Key-Value Store (like DynamoDB).</h3>
+
+<ul>
+  <li><strong>Partitioning:</strong> Consistent Hashing.</li>
+  <li><strong>Replication:</strong> Preference List (Top N nodes in ring).</li>
+  <li><strong>Consistency:</strong> Tunable (W + R &gt; N). Vector Clocks for versioning.</li>
+  <li><strong>Gossip:</strong> For node membership.</li>
+</ul>
+
+<h3 id="90-design-metrics-monitoring-system-datadog">90. Design Metrics Monitoring System (Datadog).</h3>
+
+<ul>
+  <li><strong>Write Heavy:</strong> Time Series Database (TSDB) like InfluxDB or Prometheus (internally Whisper/TSDB).</li>
+  <li><strong>Data Model:</strong> Metric Name, Tags (Host, Region), Timestamp, Value.</li>
+  <li><strong>Downsampling:</strong> Keep raw data for 7 days. Roll up to 1-min avg for 30 days. 1-hour avg for 1 year.</li>
+</ul>
+
+<h3 id="91-design-leaderboard">91. Design Leaderboard.</h3>
+
+<ul>
+  <li><strong>Real-time:</strong> Redis <code class="language-plaintext highlighter-rouge">Sorted Sets</code> (ZSET).
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">ZADD leaderboard &lt;score&gt; &lt;user&gt;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">ZREVRANGE leaderboard 0 9</code> (Top 10).</li>
+    </ul>
+  </li>
+  <li><strong>Scale:</strong> Shard by range of scores if too big? No, shard by UserID to update score, use Gatherer to merge top lists.</li>
+</ul>
+
+<h3 id="92-design-payment-system">92. Design Payment System.</h3>
+
+<ul>
+  <li><strong>Critical:</strong> ACID, Idempotency, Audit Logs.</li>
+  <li><strong>Reconciliation:</strong> Asynchronous process to compare DB records with Bank Statements.</li>
+  <li><strong>Double Entry Ledger:</strong> Every transaction has a Debit and Credit. Sum must be zero.</li>
+</ul>
+
+<h3 id="93-design-a-url-crawler-cacheproxy">93. Design a URL Crawler Cache/Proxy.</h3>
+
+<ul>
+  <li><strong>Req:</strong> Save bandwidth.</li>
+  <li><strong>Hashing:</strong> Hash(URL) -&gt; File Path.</li>
+  <li><strong>Expiry:</strong> Check HTTP Headers (Cache-Control, ETag).</li>
+</ul>
+
+<h3 id="94-design-amazon-shopping-cart">94. Design Amazon Shopping Cart.</h3>
+
+<ul>
+  <li><strong>Availability:</strong> Must never fail to add item.</li>
+  <li><strong>Consistency:</strong> Eventual.</li>
+  <li><strong>Conflict:</strong> Merging carts from different devices (Session vs Logged In). DynamoDB was built for this (Shopping Cart anomaly).</li>
+</ul>
+
+<h3 id="95-design-nearby-friends">95. Design ‘Nearby Friends’.</h3>
+
+<ul>
+  <li><strong>Updates:</strong> Sparse updates (only when moving significant distance).</li>
+  <li><strong>P2P:</strong> Not viable for mobile.</li>
+  <li><strong>Server:</strong> Ephemeral location history. Redis Geo.</li>
+</ul>
+
+<h3 id="96-design-distributed-job-scheduler">96. Design Distributed Job Scheduler.</h3>
+
+<ul>
+  <li><strong>Coordination:</strong> Zookeeper/Etcd to elect Leader.</li>
+  <li><strong>Storage:</strong> Tasks in DB.</li>
+  <li><strong>Execution:</strong> Workers poll or Leader pushes to Kafka.</li>
+  <li><strong>Ack:</strong> Worker acks upon completion. If timeout, re-queue.</li>
+</ul>
+
+<h3 id="97-design-who-viewed-your-profile">97. Design ‘Who Viewed Your Profile’.</h3>
+
+<ul>
+  <li><strong>Volume:</strong> High write volume.</li>
+  <li><strong>Async:</strong> Push event to Kafka. Consumer aggregates in batch.</li>
+  <li><strong>Storage:</strong> NoSQL (Wide Column). Key: <code class="language-plaintext highlighter-rouge">ProfileOwner_Date</code>, Col: <code class="language-plaintext highlighter-rouge">ViewerID</code>.</li>
+</ul>
+
+<h3 id="98-design-collaborative-editor-google-docs">98. Design Collaborative Editor (Google Docs).</h3>
+
+<ul>
+  <li><strong>Algorithm:</strong> Operational Transformation (OT) or CRDT (Conflict-free Replicated Data Type).</li>
+  <li><strong>Communication:</strong> WebSockets for real-time chars.</li>
+</ul>
+
+<h3 id="99-design-api-rate-limiter-distributed">99. Design API Rate Limiter (Distributed).</h3>
+
+<ul>
+  <li><strong>Problem:</strong> Syncing counters across nodes is slow.</li>
+  <li><strong>Solution:</strong> Sticky Sessions (Local memory) OR Redis (Centralized, but latency penalty). OR “Gossip” limit (approximate).</li>
+</ul>
+
+<h3 id="100-design-a-proximity-service-yelp">100. Design a Proximity Service (Yelp).</h3>
+
+<ul>
+  <li><strong>Read/Write:</strong> High Read (Search), Low Write (Business moves).</li>
+  <li><strong>Index:</strong> Static QuadTree. Store in SQL or NoSQL.</li>
+  <li><strong>Search:</strong> Find QuadTree node, search it + 8 neighbors.</li>
+</ul>
+
+<hr />
+<p><strong>End of System Design Questions</strong></p>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

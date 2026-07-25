@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Engineering Principles | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Engineering Principles" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Engineering Principles for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="Engineering Principles for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/engineering_standards/engineering_principles.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/engineering_standards/engineering_principles.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Engineering Principles" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Engineering Principles for Inkorporated.","headline":"Engineering Principles","url":"https://toxicoder.github.io/inkorporated/engineering_standards/engineering_principles.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Engineering Principles</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="engineering-principles">Engineering Principles</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>These principles are the DNA of our engineering culture. They are not just words on a page; they are the heuristics we use to make difficult decisions, the standard by which we evaluate our work, and the shared language that binds our diverse teams together.</p>
+
+<p>We draw inspiration from the best engineering organizations in the world, yet these principles are uniquely ours. They reflect who we are and who we aspire to be.</p>
+
+<hr />
+
+<h2 id="1-customer-obsession">1. Customer Obsession</h2>
+
+<blockquote>
+  <p><strong>Start with the customer and work backwards.</strong></p>
+</blockquote>
+
+<h3 id="core-philosophy">Core Philosophy</h3>
+<p>Our existence depends on our customers. We are not here to build technology for technology’s sake; we are here to solve real problems for real people. Leaders start with the customer and work backwards. They work vigorously to earn and keep customer trust. Although leaders pay attention to competitors, they obsess over customers.</p>
+
+<h3 id="why-it-matters">Why It Matters</h3>
+<ul>
+  <li><strong>Relevance:</strong> Building features that nobody uses is the ultimate waste of engineering resources.</li>
+  <li><strong>Trust:</strong> Trust is hard to earn and easy to lose. Every interaction, every API call, and every pixel matters.</li>
+  <li><strong>Focus:</strong> It acts as a razor to cut through distractions. If it doesn’t help the customer, why are we doing it?</li>
+</ul>
+
+<h3 id="applying-it-in-engineering">Applying it in Engineering</h3>
+<ul>
+  <li><strong>API Design:</strong> Design APIs that are intuitive for the developer consuming them, not just convenient for the backend engineer building them.</li>
+  <li><strong>Latency:</strong> Treat latency as a bug. A slow application disrespects the user’s time.</li>
+  <li><strong>Observability:</strong> Monitor what the customer experiences (SLIs), not just CPU usage. If the server is healthy but the customer sees a 500 error, the system is down.</li>
+</ul>
+
+<h3 id="applying-it-in-culture">Applying it in Culture</h3>
+<ul>
+  <li><strong>Empathy:</strong> We listen to customer feedback, read support tickets, and jump on calls with users.</li>
+  <li><strong>Prioritization:</strong> When faced with a choice between a cool refactor and a critical customer fix, the customer wins.</li>
+</ul>
+
+<h3 id="anti-patterns">Anti-Patterns</h3>
+<ul>
+  <li><strong>“The customer doesn’t know what they want.”</strong> (Arrogance)</li>
+  <li><strong>“That’s a sales problem.”</strong> (Siloing)</li>
+  <li><strong>Building features based on what competitors are doing rather than what customers need.</strong></li>
+</ul>
+
+<h3 id="concrete-example">Concrete Example</h3>
+<ul>
+  <li><em>Scenario:</em> A database migration is required.</li>
+  <li><em>Bad:</em> Taking the site down for 4 hours on a Tuesday because it’s easier for the engineering team.</li>
+  <li><em>Good:</em> Investing two weeks in a dual-write migration strategy to ensure zero downtime for the customer, even though it’s much harder to implement.</li>
+</ul>
+
+<hr />
+
+<h2 id="2-ownership">2. Ownership</h2>
+
+<blockquote>
+  <p><strong>Leaders are owners. They think long term and don’t sacrifice long-term value for short-term results.</strong></p>
+</blockquote>
+
+<h3 id="core-philosophy-1">Core Philosophy</h3>
+<p>There is no such thing as “someone else’s code” or “someone else’s problem.” We act on behalf of the entire company, beyond just our own team. We never say “that’s not my job.”</p>
+
+<h3 id="why-it-matters-1">Why It Matters</h3>
+<ul>
+  <li><strong>Quality:</strong> When you own something, you care for it. Rental cars are treated differently than personal cars.</li>
+  <li><strong>Speed:</strong> Ownership eliminates the “bystander effect.” When an issue arises, owners jump in to fix it.</li>
+  <li><strong>Growth:</strong> Taking ownership is the fastest way to learn and grow your career.</li>
+</ul>
+
+<h3 id="applying-it-in-engineering-1">Applying it in Engineering</h3>
+<ul>
+  <li><strong>“You Build It, You Run It”:</strong> Teams are responsible for the operation of their services in production.</li>
+  <li><strong>Root Cause Analysis:</strong> When things break, we don’t blame; we investigate. We fix the systemic issue so it doesn’t happen again.</li>
+  <li><strong>Tech Debt:</strong> Owners pay their debts. We proactively manage technical debt before it bankrupts us.</li>
+</ul>
+
+<h3 id="applying-it-in-culture-1">Applying it in Culture</h3>
+<ul>
+  <li><strong>Janitorial Work:</strong> Senior engineers are not above fixing typos, updating documentation, or cleaning up dead code.</li>
+  <li><strong>Proactivity:</strong> If you see a piece of trash on the floor (or a bug in the code), you pick it up.</li>
+</ul>
+
+<h3 id="anti-patterns-1">Anti-Patterns</h3>
+<ul>
+  <li><strong>“It worked on my machine.”</strong></li>
+  <li><strong>“I threw it over the wall to QA.”</strong></li>
+  <li><strong>Optimizing for a specific team’s metrics at the expense of the company’s success.</strong></li>
+</ul>
+
+<h3 id="concrete-example-1">Concrete Example</h3>
+<ul>
+  <li><em>Scenario:</em> You notice a flaky test in a repository you don’t usually work in.</li>
+  <li><em>Bad:</em> Re-running the build until it passes and ignoring the flakiness.</li>
+  <li><em>Good:</em> Investigating the flake, fixing it, or at least filing a detailed ticket and disabling the test to keep the build green for everyone else.</li>
+</ul>
+
+<hr />
+
+<h2 id="3-move-fast-and-fix-things">3. Move Fast and Fix Things</h2>
+
+<blockquote>
+  <p><strong>Speed is a competitive advantage in business.</strong></p>
+</blockquote>
+
+<h3 id="core-philosophy-2">Core Philosophy</h3>
+<p>We value calculated risk-taking. Many decisions and actions are reversible and do not need extensive study. We value business delivery over architectural perfection. However, “Move Fast” does not mean “Move Recklessly.” When we break things, we fix them immediately.</p>
+
+<h3 id="why-it-matters-2">Why It Matters</h3>
+<ul>
+  <li><strong>Learning:</strong> The faster we ship, the faster we learn what works.</li>
+  <li><strong>Market:</strong> The market doesn’t wait for perfect code.</li>
+  <li><strong>Momentum:</strong> High velocity creates high morale.</li>
+</ul>
+
+<h3 id="applying-it-in-engineering-2">Applying it in Engineering</h3>
+<ul>
+  <li><strong>CI/CD:</strong> We invest heavily in automated testing and deployment pipelines to make shipping code safe and fast.</li>
+  <li><strong>Feature Flags:</strong> We decouple deployment from release, allowing us to merge code constantly without breaking users.</li>
+  <li><strong>MVP:</strong> We build the Minimum Viable Product, ship it, and iterate.</li>
+</ul>
+
+<h3 id="applying-it-in-culture-2">Applying it in Culture</h3>
+<ul>
+  <li><strong>Bias for Action:</strong> We prefer action over analysis paralysis.</li>
+  <li><strong>Psychological Safety:</strong> It’s okay to fail as long as we learn and recover quickly.</li>
+</ul>
+
+<h3 id="anti-patterns-2">Anti-Patterns</h3>
+<ul>
+  <li><strong>Analysis Paralysis:</strong> Spending weeks debating a decision that can be reversed in an hour.</li>
+  <li><strong>Cowboy Coding:</strong> Pushing changes to production without review or testing.</li>
+  <li><strong>Leaving broken windows:</strong> Ignoring broken builds or failing tests.</li>
+</ul>
+
+<h3 id="concrete-example-2">Concrete Example</h3>
+<ul>
+  <li><em>Scenario:</em> A new feature has high uncertainty.</li>
+  <li><em>Bad:</em> Spending 3 months architecting a perfect, scalable solution.</li>
+  <li><em>Good:</em> Spending 1 week building a “throwaway” prototype to test the market hypothesis, then rebuilding it properly if it succeeds.</li>
+</ul>
+
+<hr />
+
+<h2 id="4-operational-excellence">4. Operational Excellence</h2>
+
+<blockquote>
+  <p><strong>Reliability is our number one feature.</strong></p>
+</blockquote>
+
+<h3 id="core-philosophy-3">Core Philosophy</h3>
+<p>We have a relentless focus on the health of our systems. We are never satisfied with the status quo. We look for defects and inefficiencies and we fix them. We operate with a “Safety 2” mindset—we don’t just ask why things went wrong, we ask how things usually go right.</p>
+
+<h3 id="why-it-matters-3">Why It Matters</h3>
+<ul>
+  <li><strong>Trust:</strong> Customers cannot trust a system that is down.</li>
+  <li><strong>Efficiency:</strong> Stable systems require less firefighting, freeing up time for innovation.</li>
+  <li><strong>Sleep:</strong> We want our engineers to sleep through the night.</li>
+</ul>
+
+<h3 id="applying-it-in-engineering-3">Applying it in Engineering</h3>
+<ul>
+  <li><strong>Observability:</strong> We instrument everything. Logs, metrics, traces. If you can’t measure it, you can’t manage it.</li>
+  <li><strong>Chaos Engineering:</strong> We proactively break our systems to ensure they can recover.</li>
+  <li><strong>Capacity Planning:</strong> We anticipate growth and scale our systems before they fall over.</li>
+</ul>
+
+<h3 id="applying-it-in-culture-3">Applying it in Culture</h3>
+<ul>
+  <li><strong>Blameless Post-Mortems:</strong> We focus on process failures, not human errors.</li>
+  <li><strong>Game Days:</strong> We practice incident response regularly.</li>
+</ul>
+
+<h3 id="anti-patterns-3">Anti-Patterns</h3>
+<ul>
+  <li><strong>Hope-driven operations:</strong> “It should be fine.”</li>
+  <li><strong>Alert Fatigue:</strong> Ignoring alerts because “they always fire.”</li>
+  <li><strong>Manual Runbooks:</strong> Relying on human memory during a crisis.</li>
+</ul>
+
+<h3 id="concrete-example-3">Concrete Example</h3>
+<ul>
+  <li><em>Scenario:</em> A service hits 90% CPU utilization.</li>
+  <li><em>Bad:</em> Manually logging in to add more servers.</li>
+  <li><em>Good:</em> An autoscaling group automatically detects the load and provisions new instances. An alert is sent to a Slack channel for awareness, but no human intervention is required.</li>
+</ul>
+
+<hr />
+
+<h2 id="5-simplicity-over-complexity">5. Simplicity Over Complexity</h2>
+
+<blockquote>
+  <p><strong>Complexity is the enemy of reliability.</strong></p>
+</blockquote>
+
+<h3 id="core-philosophy-4">Core Philosophy</h3>
+<p>Simple systems are easier to understand, easier to maintain, and harder to break. We strive for essential complexity (the problem itself) and ruthlessly eliminate accidental complexity (the mess we create).</p>
+
+<h3 id="why-it-matters-4">Why It Matters</h3>
+<ul>
+  <li><strong>Cognitive Load:</strong> Engineers can only hold so much context in their heads. Simple code fits in the brain.</li>
+  <li><strong>Bugs:</strong> Complexity hides bugs. Simplicity exposes them.</li>
+  <li><strong>Onboarding:</strong> New engineers can contribute faster to simple codebases.</li>
+</ul>
+
+<h3 id="applying-it-in-engineering-4">Applying it in Engineering</h3>
+<ul>
+  <li><strong>YAGNI (You Ain’t Gonna Need It):</strong> Don’t build for hypothetical future use cases.</li>
+  <li><strong>KISS (Keep It Simple, Stupid):</strong> The most clever solution is usually the wrong one.</li>
+  <li><strong>Refactoring:</strong> We aggressively delete dead code and simplify complex logic.</li>
+</ul>
+
+<h3 id="applying-it-in-culture-4">Applying it in Culture</h3>
+<ul>
+  <li><strong>Communication:</strong> We write clear, concise documents. We avoid jargon.</li>
+  <li><strong>Process:</strong> We keep our processes lightweight. If a meeting doesn’t add value, we cancel it.</li>
+</ul>
+
+<h3 id="anti-patterns-4">Anti-Patterns</h3>
+<ul>
+  <li><strong>Resume Driven Development:</strong> Choosing a technology because it looks good on a resume, not because it’s the right tool for the job.</li>
+  <li><strong>Premature Optimization:</strong> Optimizing code that isn’t a bottleneck.</li>
+  <li><strong>The “Not Invented Here” Syndrome:</strong> Building a custom solution when a standard library exists.</li>
+</ul>
+
+<h3 id="concrete-example-4">Concrete Example</h3>
+<ul>
+  <li><em>Scenario:</em> Need to implement a queue.</li>
+  <li><em>Bad:</em> Writing a custom distributed queue system in C++ because it’s “faster.”</li>
+  <li><em>Good:</em> Using SQS, RabbitMQ, or Redis.</li>
+</ul>
+
+<hr />
+
+<h2 id="6-disagree-and-commit">6. Disagree and Commit</h2>
+
+<blockquote>
+  <p><strong>Have a backbone; disagree and commit.</strong></p>
+</blockquote>
+
+<h3 id="core-philosophy-5">Core Philosophy</h3>
+<p>Leaders are obligated to respectfully challenge decisions when they disagree, even when doing so is uncomfortable or exhausting. Leaders have conviction and are tenacious. They do not compromise for the sake of social cohesion. Once a decision is determined, they commit wholly.</p>
+
+<h3 id="why-it-matters-5">Why It Matters</h3>
+<ul>
+  <li><strong>Groupthink:</strong> Without dissent, teams make mediocre decisions.</li>
+  <li><strong>Alignment:</strong> Once we commit, we move as one force. Partial commitment leads to sabotage.</li>
+  <li><strong>Clarity:</strong> Arguments clarify the problem space.</li>
+</ul>
+
+<h3 id="applying-it-in-engineering-5">Applying it in Engineering</h3>
+<ul>
+  <li><strong>Code Reviews:</strong> We critique the code, not the person. We push back on design flaws.</li>
+  <li><strong>RFCs:</strong> We write Request for Comments documents to solicit feedback before writing code.</li>
+</ul>
+
+<h3 id="applying-it-in-culture-5">Applying it in Culture</h3>
+<ul>
+  <li><strong>Respect:</strong> We listen to understand, not just to respond.</li>
+  <li><strong>Hierarchy:</strong> The best idea wins, regardless of who proposed it. A junior engineer can challenge a VP (respectfully).</li>
+</ul>
+
+<h3 id="anti-patterns-5">Anti-Patterns</h3>
+<ul>
+  <li><strong>Silent Disagreement:</strong> Nodding in the meeting but complaining at the water cooler.</li>
+  <li><strong>Pocket Veto:</strong> Agreeing to a task but then deprioritizing it into oblivion.</li>
+  <li><strong>“Design by Committee”:</strong> Trying to please everyone and ending up with a solution that pleases no one.</li>
+</ul>
+
+<h3 id="concrete-example-5">Concrete Example</h3>
+<ul>
+  <li><em>Scenario:</em> The team is debating between React and Vue.</li>
+  <li><em>Bad:</em> Half the team uses React, the other half uses Vue, resulting in a fractured codebase.</li>
+  <li><em>Good:</em> The team debates vigorously. The lead decides on React. The Vue advocates switch gears and become React experts to ensure the project’s success.</li>
+</ul>
+
+<hr />
+
+<h2 id="7-automate-everything">7. Automate Everything</h2>
+
+<blockquote>
+  <p><strong>If you have to do it twice, automate it.</strong></p>
+</blockquote>
+
+<h3 id="core-philosophy-6">Core Philosophy</h3>
+<p>Toil is the kind of work that tends to be manual, repetitive, automatable, tactical, devoid of enduring value, and that scales linearly as a service grows. We hate toil. We automate it away.</p>
+
+<h3 id="why-it-matters-6">Why It Matters</h3>
+<ul>
+  <li><strong>Scale:</strong> You cannot hire your way out of operational scaling problems.</li>
+  <li><strong>Consistency:</strong> Humans make mistakes. Scripts do not.</li>
+  <li><strong>Happiness:</strong> Engineers are happier solving novel problems, not copy-pasting CSVs.</li>
+</ul>
+
+<h3 id="applying-it-in-engineering-6">Applying it in Engineering</h3>
+<ul>
+  <li><strong>Infrastructure as Code (IaC):</strong> We treat infrastructure (Terraform, Ansible) like software.</li>
+  <li><strong>Test Automation:</strong> Manual regression testing is forbidden.</li>
+  <li><strong>Self-Healing:</strong> Systems should detect failures and recover automatically.</li>
+</ul>
+
+<h3 id="applying-it-in-culture-6">Applying it in Culture</h3>
+<ul>
+  <li><strong>Self-Service:</strong> We build platforms that allow other teams to serve themselves, rather than filing tickets for us to do work for them.</li>
+</ul>
+
+<h3 id="anti-patterns-6">Anti-Patterns</h3>
+<ul>
+  <li><strong>“Job Security”:</strong> Hoarding knowledge and manual processes so you are indispensable.</li>
+  <li><strong>“It’s faster to do it manually just this once.”</strong> (Repeated 100 times).</li>
+</ul>
+
+<h3 id="concrete-example-6">Concrete Example</h3>
+<ul>
+  <li><em>Scenario:</em> Onboarding a new engineer.</li>
+  <li><em>Bad:</em> A 20-page wiki doc of manual steps to set up the dev environment.</li>
+  <li><em>Good:</em> A single <code class="language-plaintext highlighter-rouge">make setup</code> script that installs dependencies, configures DBs, and seeds data.</li>
+</ul>
+
+<hr />
+
+<h2 id="8-security-first">8. Security First</h2>
+
+<blockquote>
+  <p><strong>Security is everyone’s responsibility.</strong></p>
+</blockquote>
+
+<h3 id="core-philosophy-7">Core Philosophy</h3>
+<p>Security is not a feature you add at the end; it is a fundamental constraint. We design for security from the ground up. We protect our customer’s data as if it were our own.</p>
+
+<h3 id="why-it-matters-7">Why It Matters</h3>
+<ul>
+  <li><strong>Survival:</strong> A major breach can destroy the company.</li>
+  <li><strong>Trust:</strong> Customers trust us with their most sensitive data.</li>
+  <li><strong>Compliance:</strong> We operate in a regulated world.</li>
+</ul>
+
+<h3 id="applying-it-in-engineering-7">Applying it in Engineering</h3>
+<ul>
+  <li><strong>Least Privilege:</strong> Services and users only have the permissions they strictly need.</li>
+  <li><strong>Defense in Depth:</strong> We don’t rely on a single firewall. We layer defenses.</li>
+  <li><strong>Shift Left:</strong> We scan for vulnerabilities in the PR, not just in production.</li>
+</ul>
+
+<h3 id="applying-it-in-culture-7">Applying it in Culture</h3>
+<ul>
+  <li><strong>Transparency:</strong> If we make a mistake, we disclose it responsibly.</li>
+  <li><strong>Education:</strong> We constantly train on the latest threats (phishing, social engineering).</li>
+</ul>
+
+<h3 id="anti-patterns-7">Anti-Patterns</h3>
+<ul>
+  <li><strong>Hardcoded Credentials:</strong> Committing secrets to git.</li>
+  <li><strong>“Security Team’s Problem”:</strong> Ignoring security warnings until the security audit.</li>
+  <li><strong>Security via Obscurity:</strong> Hoping attackers won’t find the vulnerability.</li>
+</ul>
+
+<h3 id="concrete-example-7">Concrete Example</h3>
+<ul>
+  <li><em>Scenario:</em> Implementing a new API endpoint.</li>
+  <li><em>Bad:</em> Relying on the frontend to hide the button for unauthorized users.</li>
+  <li><em>Good:</em> Enforcing strict Role-Based Access Control (RBAC) at the API gateway and service level.</li>
+</ul>
+
+<hr />
+
+<h2 id="9-data-driven-decisions">9. Data-Driven Decisions</h2>
+
+<blockquote>
+  <p><strong>In God we trust; all others must bring data.</strong></p>
+</blockquote>
+
+<h3 id="core-philosophy-8">Core Philosophy</h3>
+<p>We rely on evidence, not opinions. When we make a claim, we back it up with metrics. We define success criteria before we start.</p>
+
+<h3 id="why-it-matters-8">Why It Matters</h3>
+<ul>
+  <li><strong>Objectivity:</strong> Data cuts through politics and hierarchy.</li>
+  <li><strong>Improvement:</strong> You cannot improve what you do not measure.</li>
+  <li><strong>Reality:</strong> Intuition is often wrong. Data reveals the truth.</li>
+</ul>
+
+<h3 id="applying-it-in-engineering-8">Applying it in Engineering</h3>
+<ul>
+  <li><strong>A/B Testing:</strong> We test changes on a subset of users to measure impact.</li>
+  <li><strong>Performance Profiling:</strong> We don’t guess where the bottleneck is; we use a profiler.</li>
+  <li><strong>Capacity Modeling:</strong> We use historical data to predict future resource needs.</li>
+</ul>
+
+<h3 id="applying-it-in-culture-8">Applying it in Culture</h3>
+<ul>
+  <li><strong>Metrics Reviews:</strong> We regularly review our KPIs (Key Performance Indicators).</li>
+  <li><strong>Intellectual Honesty:</strong> If the data contradicts our hypothesis, we change our hypothesis.</li>
+</ul>
+
+<h3 id="anti-patterns-8">Anti-Patterns</h3>
+<ul>
+  <li><strong>Vanity Metrics:</strong> Measuring “Total Registered Users” (which always goes up) instead of “Daily Active Users” (which shows health).</li>
+  <li><strong>Cherry-picking:</strong> Selecting only the data that supports your argument.</li>
+  <li><strong>HiPPO (Highest Paid Person’s Opinion):</strong> Letting the boss’s gut feeling override the data.</li>
+</ul>
+
+<h3 id="concrete-example-8">Concrete Example</h3>
+<ul>
+  <li><em>Scenario:</em> A debate about whether a new UI design is better.</li>
+  <li><em>Bad:</em> The designer and PM arguing for hours about aesthetics.</li>
+  <li><em>Good:</em> Running an A/B test and seeing that the new design increases conversion by 5%.</li>
+</ul>
+
+<hr />
+
+<h2 id="10-learn-and-be-curious">10. Learn and Be Curious</h2>
+
+<blockquote>
+  <p><strong>Leaders are never done learning and always seek to improve themselves.</strong></p>
+</blockquote>
+
+<h3 id="core-philosophy-9">Core Philosophy</h3>
+<p>Technology changes fast. What was best practice yesterday is legacy today. We are lifelong learners. We are curious about how things work. We explore new possibilities.</p>
+
+<h3 id="why-it-matters-9">Why It Matters</h3>
+<ul>
+  <li><strong>Innovation:</strong> Curiosity drives innovation.</li>
+  <li><strong>Adaptability:</strong> The ability to learn is the only sustainable competitive advantage.</li>
+  <li><strong>Engagement:</strong> Learning is fun.</li>
+</ul>
+
+<h3 id="applying-it-in-engineering-9">Applying it in Engineering</h3>
+<ul>
+  <li><strong>Tech Talks:</strong> We share knowledge through internal presentations.</li>
+  <li><strong>Post-Mortems:</strong> We treat outages as learning opportunities.</li>
+  <li><strong>Experimentation:</strong> We set aside time to play with new technologies.</li>
+</ul>
+
+<h3 id="applying-it-in-culture-9">Applying it in Culture</h3>
+<ul>
+  <li><strong>Questions:</strong> We encourage asking “why?”</li>
+  <li><strong>Hiring:</strong> We hire for potential and aptitude, not just specific skill sets.</li>
+</ul>
+
+<h3 id="anti-patterns-9">Anti-Patterns</h3>
+<ul>
+  <li><strong>Complacency:</strong> “We’ve always done it this way.”</li>
+  <li><strong>Gatekeeping:</strong> Hoarding knowledge to feel superior.</li>
+</ul>
+
+<h3 id="concrete-example-9">Concrete Example</h3>
+<ul>
+  <li><em>Scenario:</em> A new language (e.g., Rust) is gaining popularity.</li>
+  <li><em>Bad:</em> Ignoring it because “Java is fine.”</li>
+  <li><em>Good:</em> Forming a study group to evaluate its potential benefits for our high-performance services.</li>
+</ul>
+
+<hr />
+
+<h2 id="11-bias-for-action">11. Bias for Action</h2>
+
+<blockquote>
+  <p><strong>Speed matters in business.</strong></p>
+</blockquote>
+
+<h3 id="core-philosophy-10">Core Philosophy</h3>
+<p>Many decisions and actions are reversible and do not need extensive study. We value calculated risk taking.</p>
+
+<h3 id="why-it-matters-10">Why It Matters</h3>
+<ul>
+  <li><strong>Opportunity Cost:</strong> The cost of delay is often higher than the cost of a mistake.</li>
+  <li><strong>Feedback:</strong> You learn nothing until you ship.</li>
+</ul>
+
+<h3 id="applying-it-in-engineering-10">Applying it in Engineering</h3>
+<ul>
+  <li><strong>One-way vs Two-way Doors:</strong> Distinguish between reversible decisions (two-way doors) and irreversible ones (one-way doors). Walk through two-way doors quickly.</li>
+  <li><strong>Incremental Delivery:</strong> Ship small chunks of value frequently.</li>
+</ul>
+
+<h3 id="anti-patterns-10">Anti-Patterns</h3>
+<ul>
+  <li><strong>Bureaucracy:</strong> Requiring 5 approvals to change a CSS color.</li>
+  <li><strong>Fear:</strong> Being afraid to make a mistake.</li>
+</ul>
+
+<h3 id="concrete-example-10">Concrete Example</h3>
+<ul>
+  <li><em>Scenario:</em> A customer reports a minor bug.</li>
+  <li><em>Bad:</em> Scheduling a meeting to discuss the prioritization of the bug for next quarter.</li>
+  <li><em>Good:</em> A developer fixes it, tests it, and deploys it within the hour.</li>
+</ul>
+
+<hr />
+
+<h2 id="12-frugality">12. Frugality</h2>
+
+<blockquote>
+  <p><strong>Accomplish more with less.</strong></p>
+</blockquote>
+
+<h3 id="core-philosophy-11">Core Philosophy</h3>
+<p>Constraints breed resourcefulness, self-sufficiency, and invention. There are no extra points for growing headcount, budget size, or fixed expense.</p>
+
+<h3 id="why-it-matters-11">Why It Matters</h3>
+<ul>
+  <li><strong>Sustainability:</strong> Efficient companies survive.</li>
+  <li><strong>Focus:</strong> Having too many resources leads to waste and lack of focus.</li>
+  <li><strong>Creativity:</strong> Limitations force us to think outside the box.</li>
+</ul>
+
+<h3 id="applying-it-in-engineering-11">Applying it in Engineering</h3>
+<ul>
+  <li><strong>Resource Efficiency:</strong> Writing efficient code that saves compute costs.</li>
+  <li><strong>Tooling:</strong> Using open-source solutions where appropriate instead of expensive enterprise software.</li>
+</ul>
+
+<h3 id="anti-patterns-11">Anti-Patterns</h3>
+<ul>
+  <li><strong>Over-provisioning:</strong> Running large instances when small ones would do.</li>
+  <li><strong>“Use it or lose it”:</strong> Spending budget just because it’s there.</li>
+</ul>
+
+<h3 id="concrete-example-11">Concrete Example</h3>
+<ul>
+  <li><em>Scenario:</em> Logs are costing too much to store.</li>
+  <li><em>Bad:</em> Asking for more budget.</li>
+  <li><em>Good:</em> optimizing log formats, setting retention policies, and filtering out noise to reduce volume by 50%.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

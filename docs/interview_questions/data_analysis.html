@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Data Analysis Interview Questions &amp; Answers (100+) | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Data Analysis Interview Questions &amp; Answers (100+)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Data Analysis Interview Questions &amp; Answers (100+) for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="Data Analysis Interview Questions &amp; Answers (100+) for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/interview_questions/data_analysis.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/interview_questions/data_analysis.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Data Analysis Interview Questions &amp; Answers (100+)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Data Analysis Interview Questions &amp; Answers (100+) for Inkorporated.","headline":"Data Analysis Interview Questions &amp; Answers (100+)","url":"https://toxicoder.github.io/inkorporated/interview_questions/data_analysis.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Data Analysis Interview Questions &amp; Answers (100+)</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="data-analysis-interview-questions--answers-100">Data Analysis Interview Questions &amp; Answers (100+)</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This guide contains 100+ Data Analysis interview questions, covering statistics, data cleaning, visualization, machine learning concepts, and business metrics. Each question includes a model answer and potential follow-up paths to explore the candidate’s depth of understanding.</p>
+
+<h2 id="part-1-statistics--probability-1-20">Part 1: Statistics &amp; Probability (1-20)</h2>
+
+<h3 id="1-what-is-the-difference-between-specific-and-sensitivity">1. What is the difference between specific and sensitivity?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Metric</th>
+      <th style="text-align: left">Formula</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">“Layman” Term</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Sensitivity</strong> (Recall)</td>
+      <td style="text-align: left">$TP / (TP + FN)$</td>
+      <td style="text-align: left">Ability to correctly identify positive cases.</td>
+      <td style="text-align: left">True Positive Rate</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Specificity</strong></td>
+      <td style="text-align: left">$TN / (TN + FP)$</td>
+      <td style="text-align: left">Ability to correctly identify negative cases.</td>
+      <td style="text-align: left">True Negative Rate</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Medical Context.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “In a cancer screening test, would you prioritize sensitivity or specificity?”</li>
+      <li><em>Answer:</em> Sensitivity. You don’t want to miss a positive case (False Negative). False Positives can be ruled out with further testing.</li>
+    </ul>
+  </li>
+  <li><strong>Path B: Spam Filter Context.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “For a spam folder, which is more important?”</li>
+      <li><em>Answer:</em> Specificity. You don’t want important emails (Ham) going to Spam (False Positive).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-explain-the-p-value-to-a-non-technical-stakeholder">2. Explain the P-value to a non-technical stakeholder.</h3>
+
+<p>The P-value is the probability of seeing results <em>at least as extreme</em> as what we observed, assuming that nothing interesting is happening (the null hypothesis is true).</p>
+
+<ul>
+  <li><strong>Low P-value (&lt; 0.05):</strong> “This result is very surprising if there’s no actual effect. We should probably reject the idea that nothing is happening.”</li>
+  <li><strong>High P-value (&gt; 0.05):</strong> “This result could easily happen by random chance. We can’t say for sure there’s an effect.”</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: “Probability the hypothesis is true”.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Is P=0.03 a 97% chance the alternative hypothesis is true?”</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td><em>Answer:</em> No. It is a common misconception. It strictly refers to the data probability given the null hypothesis, $P(Data</td>
+              <td>H_0)$, not $P(H_1</td>
+              <td>Data)$.</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="3-what-is-the-central-limit-theorem-clt">3. What is the Central Limit Theorem (CLT)?</h3>
+
+<p>The CLT states that the sampling distribution of the sample mean will approach a <strong>Normal Distribution</strong> as the sample size increases, regardless of the population’s distribution, provided the samples are independent and identically distributed (i.i.d).</p>
+
+<pre><code class="language-mermaid">graph LR
+    A[Population (Any Shape)] --&gt; B{Sampling}
+    B --&gt; C[Sample 1 Mean]
+    B --&gt; D[Sample 2 Mean]
+    B --&gt; E[Sample N Mean]
+    C --&gt; F[Distribution of Means]
+    D --&gt; F
+    E --&gt; F
+    F --&gt; G[Normal Distribution (Bell Curve)]
+</code></pre>
+
+<h3 id="4-what-is-type-i-vs-type-ii-error">4. What is Type I vs Type II error?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Error</th>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Example (Fire Alarm)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Type I</strong></td>
+      <td style="text-align: left">False Positive</td>
+      <td style="text-align: left">Rejecting $H_0$ when it is true.</td>
+      <td style="text-align: left">Alarm goes off, but no fire.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Type II</strong></td>
+      <td style="text-align: left">False Negative</td>
+      <td style="text-align: left">Failing to reject $H_0$ when it is false.</td>
+      <td style="text-align: left">Fire burning, but alarm stays silent.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Alpha and Beta.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What is the relationship between Type I error and Statistical Power?”</li>
+      <li><em>Answer:</em> Power = $1 - \beta$ (where $\beta$ is Type II error probability). Reducing Type I error ($\alpha$) usually increases Type II error ($\beta$) if sample size is fixed.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="5-what-is-simpsons-paradox">5. What is Simpson’s Paradox?</h3>
+
+<p>A phenomenon where a trend appears in several different groups of data but disappears or reverses when these groups are combined.</p>
+
+<p><em>Example:</em></p>
+<ul>
+  <li>Hospital A has higher death rates than Hospital B overall.</li>
+  <li>However, Hospital A has <em>lower</em> death rates for “Poor Condition” patients AND “Good Condition” patients individually.</li>
+  <li><em>Cause:</em> Hospital A takes in significantly more “Poor Condition” patients than B.</li>
+</ul>
+
+<h3 id="6-explain-the-difference-between-correlation-and-causation">6. Explain the difference between Correlation and Causation.</h3>
+
+<p>Correlation measures the strength of a linear relationship between two variables. Causation indicates that one variable <em>causes</em> the change in the other.</p>
+<ul>
+  <li>“Ice cream sales correlate with shark attacks.” (Both caused by Summer/Heat).</li>
+</ul>
+
+<h3 id="7-what-is-selection-bias">7. What is selection bias?</h3>
+
+<p>Bias introduced by the selection of individuals, groups, or data for analysis in such a way that proper randomization is not achieved.
+<em>Example:</em> Polling people by landline phone excludes younger demographics who only use mobiles.</p>
+
+<h3 id="8-what-is-the-law-of-large-numbers">8. What is the Law of Large Numbers?</h3>
+
+<p>As the size of a sample increases, the sample mean gets closer to the expected value (population mean).</p>
+
+<h3 id="9-describe-the-difference-between-a-normal-and-a-skewed-distribution">9. Describe the difference between a Normal and a Skewed distribution.</h3>
+
+<ul>
+  <li><strong>Normal:</strong> Symmetric, Bell-shaped. Mean = Median = Mode.</li>
+  <li><strong>Left Skewed (Negative):</strong> Tail is on the left. Mean &lt; Median &lt; Mode.</li>
+  <li><strong>Right Skewed (Positive):</strong> Tail is on the right. Mode &lt; Median &lt; Mean. (e.g., Income distribution).</li>
+</ul>
+
+<h3 id="10-how-do-you-handle-missing-data">10. How do you handle missing data?</h3>
+
+<ol>
+  <li><strong>Deletion:</strong> Remove rows (Listwise) or columns. (Good if data is Missing Completely At Random - MCAR).</li>
+  <li><strong>Imputation:</strong>
+    <ul>
+      <li>Mean/Median/Mode (Simple).</li>
+      <li>KNN or Regression (Advanced).</li>
+    </ul>
+  </li>
+  <li><strong>Flagging:</strong> Add a binary column <code class="language-plaintext highlighter-rouge">is_missing</code> to allow the model to learn the pattern.</li>
+</ol>
+
+<h3 id="11-what-is-r-squared">11. What is R-squared?</h3>
+
+<p>$R^2$ (Coefficient of Determination) represents the proportion of the variance for a dependent variable that’s explained by an independent variable or variables in a regression model.</p>
+<ul>
+  <li>$R^2 = 1$: Perfect fit.</li>
+  <li>$R^2 = 0$: The model explains none of the variability.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: “Higher is better”.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Can a low R-squared be good?”</li>
+      <li><em>Answer:</em> Yes, in fields like psychology or human behavior, predicting specific outcomes is hard, but significant trends (coefficients) are still valuable.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="12-what-is-adjusted-r-squared">12. What is Adjusted R-squared?</h3>
+
+<p>$R^2$ always increases (or stays same) when you add more predictors, even junk ones. <strong>Adjusted $R^2$</strong> penalizes the addition of useless predictors. It only increases if the new term improves the model more than would be expected by chance.</p>
+
+<h3 id="13-what-is-confidence-interval">13. What is Confidence Interval?</h3>
+
+<p>A range of values, derived from sample statistics, that is likely to contain the value of an unknown population parameter.</p>
+<ul>
+  <li><em>Interpretation:</em> “If we repeated this sampling 100 times, 95 of the calculated intervals would contain the true population mean.” (For a 95% CI).</li>
+</ul>
+
+<h3 id="14-what-is-ab-testing">14. What is A/B Testing?</h3>
+
+<p>A randomized experiment with two variants, A and B. It involves the application of statistical hypothesis testing (like a t-test or z-test) to determine if the difference in outcomes is significant.</p>
+
+<h3 id="15-what-are-the-assumptions-of-linear-regression">15. What are the assumptions of Linear Regression?</h3>
+
+<ol>
+  <li><strong>Linearity:</strong> The relationship between X and Y is linear.</li>
+  <li><strong>Independence:</strong> Observations are independent.</li>
+  <li><strong>Homoscedasticity:</strong> Constant variance of errors.</li>
+  <li><strong>Normality:</strong> Errors are normally distributed.</li>
+  <li><strong>No Multicollinearity:</strong> Independent variables are not highly correlated.</li>
+</ol>
+
+<h3 id="16-what-is-the-difference-between-probability-and-likelihood">16. What is the difference between Probability and Likelihood?</h3>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Probability:</strong> Given a set of parameters (e.g., a fair coin), what is the chance of seeing the data (HHT)? $P(Data</td>
+          <td>\theta)$.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Likelihood:</strong> Given the data (HHT), how likely are different parameters (e.g., coin fairness $\theta$)? $L(\theta</td>
+          <td>Data)$.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h3 id="17-what-is-bayesian-inference">17. What is Bayesian Inference?</h3>
+
+<p>A method of statistical inference in which Bayes’ theorem is used to update the probability for a hypothesis as more evidence or information becomes available.
+$Posterior \propto Likelihood \times Prior$</p>
+
+<h3 id="18-what-is-a-z-score">18. What is a Z-score?</h3>
+
+<p>A measure of how many standard deviations below or above the population mean a raw score is.
+$Z = (X - \mu) / \sigma$</p>
+
+<h3 id="19-when-should-you-use-a-t-test-vs-a-z-test">19. When should you use a T-test vs a Z-test?</h3>
+
+<ul>
+  <li><strong>Z-test:</strong> When population variance ($\sigma^2$) is <strong>known</strong> and sample size is large ($n &gt; 30$).</li>
+  <li><strong>T-test:</strong> When population variance is <strong>unknown</strong> or sample size is small ($n &lt; 30$).</li>
+</ul>
+
+<h3 id="20-what-is-a-box-plot-box-and-whisker">20. What is a Box Plot (Box and Whisker)?</h3>
+
+<p>A standardized way of displaying the distribution of data based on a five-number summary:</p>
+<ol>
+  <li>Minimum</li>
+  <li>First Quartile (Q1)</li>
+  <li>Median</li>
+  <li>Third Quartile (Q3)</li>
+  <li>Maximum</li>
+</ol>
+
+<p><strong>Chart: Box Plot Components</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      |----[  Q1  |  Q3  ]----|
+    Min        Median        Max
+</code></pre></div></div>
+
+<h2 id="part-2-data-cleaning--preprocessing-21-40">Part 2: Data Cleaning &amp; Preprocessing (21-40)</h2>
+
+<h3 id="21-how-do-you-detect-outliers">21. How do you detect outliers?</h3>
+
+<ul>
+  <li><strong>Visual:</strong> Box plots, Scatter plots.</li>
+  <li><strong>Z-Score:</strong> Points with $Z &gt; 3$ or $Z &lt; -3$.</li>
+  <li><strong>IQR Method:</strong> Points outside $1.5 \times IQR$ range (below $Q1 - 1.5 \times IQR$ or above $Q3 + 1.5 \times IQR$).</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Delete them.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “When should you NOT delete outliers?”</li>
+      <li><em>Answer:</em> When they are genuine data points (e.g., fraud detection, high-value customers). They might contain the most valuable signal.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="22-what-is-one-hot-encoding">22. What is One-Hot Encoding?</h3>
+
+<p>Converting categorical variables into a form that could be provided to ML algorithms to do a better job in prediction. It creates new binary columns for each category.</p>
+<ul>
+  <li>Color: Red, Blue -&gt; Is_Red: [1, 0], Is_Blue: [0, 1].</li>
+</ul>
+
+<h3 id="23-what-is-label-encoding">23. What is Label Encoding?</h3>
+
+<p>Converting each value in a column to a number.</p>
+<ul>
+  <li>Low, Medium, High -&gt; 0, 1, 2.</li>
+  <li><em>Risk:</em> Algorithms might misinterpret the numeric order (e.g., treating Dog(1) &lt; Cat(2) &lt; Bird(3) as a mathematical relationship).</li>
+</ul>
+
+<h3 id="24-how-do-you-handle-duplicate-data">24. How do you handle duplicate data?</h3>
+
+<ol>
+  <li>Identify unique keys (Primary Keys).</li>
+  <li>Check if duplicates are exact copies or partial (same ID, different timestamp).</li>
+  <li>Decide rule: Keep first? Keep last (most recent)? Aggregation (sum/mean)?</li>
+</ol>
+
+<h3 id="25-what-is-scalingnormalization">25. What is Scaling/Normalization?</h3>
+
+<p>Adjusting the range of features.</p>
+<ul>
+  <li><strong>Min-Max Scaling:</strong> Rescales to [0, 1]. $X_{new} = (X - X_{min}) / (X_{max} - X_{min})$.</li>
+  <li><strong>Standardization (Z-score):</strong> Center around 0 with std dev of 1.</li>
+</ul>
+
+<h3 id="26-why-do-we-need-to-scale-data">26. Why do we need to scale data?</h3>
+
+<p>Algorithms that compute distances (KNN, K-Means, SVM) are sensitive to the scale of input features. If one feature ranges 0-1 and another 0-1000, the second will dominate the distance calculation.</p>
+
+<h3 id="27-what-is-data-imputation-bias">27. What is Data Imputation bias?</h3>
+
+<p>When the method used to fill missing values distorts the data distribution.
+<em>Example:</em> Filling missing “Age” with the Mean reduces the variance of the Age variable, making the population look more uniform than it is.</p>
+
+<h3 id="28-how-do-you-parse-non-standard-date-formats">28. How do you parse non-standard date formats?</h3>
+
+<p>Using libraries like <code class="language-plaintext highlighter-rouge">pandas</code> (<code class="language-plaintext highlighter-rouge">to_datetime</code>) with format strings, or regex extraction for messy strings.</p>
+<ul>
+  <li>“2nd of Jan, 2021” -&gt; <code class="language-plaintext highlighter-rouge">%d%S of %b, %Y</code> (Requires custom logic for ordinal suffixes).</li>
+</ul>
+
+<h3 id="29-what-is-tidy-data">29. What is “Tidy Data”?</h3>
+
+<p>A standard way of mapping the meaning of a dataset to its structure (Hadley Wickham).</p>
+<ol>
+  <li>Each variable forms a column.</li>
+  <li>Each observation forms a row.</li>
+  <li>Each type of observational unit forms a table.</li>
+</ol>
+
+<h3 id="30-how-do-you-handle-string-data-with-inconsistent-capitalizationspacing">30. How do you handle string data with inconsistent capitalization/spacing?</h3>
+
+<ul>
+  <li>Standardize case (<code class="language-plaintext highlighter-rouge">.lower()</code>, <code class="language-plaintext highlighter-rouge">.upper()</code>).</li>
+  <li>Trim whitespace (<code class="language-plaintext highlighter-rouge">.strip()</code>).</li>
+  <li>Fuzzy matching (Levenshtein distance) to group similar strings (“New York” vs “new york “ vs “New  York”).</li>
+</ul>
+
+<h3 id="31-what-is-the-curse-of-dimensionality">31. What is the Curse of Dimensionality?</h3>
+
+<p>As the number of features (dimensions) increases, the volume of the space increases so fast that the available data becomes sparse. This makes it problematic for any method that requires statistical significance (clustering, nearest neighbors).</p>
+
+<h3 id="32-what-is-feature-engineering">32. What is Feature Engineering?</h3>
+
+<p>The process of using domain knowledge to extract features from raw data.</p>
+<ul>
+  <li><em>Date</em> -&gt; Day of Week, Is Weekend, Month.</li>
+  <li><em>Address</em> -&gt; Zip Code, City, Distance to Center.</li>
+</ul>
+
+<h3 id="33-what-is-binningdiscretization">33. What is Binning/Discretization?</h3>
+
+<p>Grouping continuous values into bins.</p>
+<ul>
+  <li>Age 0-100 -&gt; Groups: 0-18 (Child), 18-60 (Adult), 60+ (Senior).</li>
+  <li><em>Benefit:</em> Can handle outliers and non-linear relationships.</li>
+</ul>
+
+<h3 id="34-what-is-pca-principal-component-analysis">34. What is PCA (Principal Component Analysis)?</h3>
+
+<p>A dimensionality reduction technique that transforms features into a new set of orthogonal (uncorrelated) features called Principal Components, retaining the maximum variance.</p>
+
+<h3 id="35-how-do-you-handle-highly-correlated-features-multicollinearity">35. How do you handle highly correlated features (Multicollinearity)?</h3>
+
+<ul>
+  <li>Remove one of the correlated pairs.</li>
+  <li>Use PCA to combine them.</li>
+  <li>Use regularization (Lasso/Ridge) which can penalize coefficients.</li>
+</ul>
+
+<h3 id="36-what-is-the-difference-between-null-and-nan">36. What is the difference between <code class="language-plaintext highlighter-rouge">NULL</code> and <code class="language-plaintext highlighter-rouge">NaN</code>?</h3>
+
+<ul>
+  <li><strong>NULL:</strong> SQL concept for “unknown”.</li>
+  <li><strong>NaN (Not a Number):</strong> Floating point standard (IEEE 754) for undefined operations (0/0) or missing numerical data in Python/Pandas.</li>
+</ul>
+
+<h3 id="37-how-to-detect-data-drift">37. How to detect data drift?</h3>
+
+<p>Monitoring the statistical properties of the input data over time. If the distribution of input variables ($P(X)$) changes, the model trained on old data may degrade.</p>
+<ul>
+  <li><em>Metric:</em> Population Stability Index (PSI), Kullback-Leibler (KL) Divergence.</li>
+</ul>
+
+<h3 id="38-explain-target-leakage">38. Explain “Target Leakage”.</h3>
+
+<p>When training data contains information about the target that will not be available when the model is used for prediction.
+<em>Example:</em> Predicting “Will Churn?” but including “Cancellation Date” as a feature.</p>
+
+<h3 id="39-what-is-smote">39. What is SMOTE?</h3>
+
+<p><strong>Synthetic Minority Over-sampling Technique</strong>.
+Used for imbalanced datasets. It creates synthetic samples for the minority class by interpolating between existing samples, rather than just duplicating them.</p>
+
+<h3 id="40-how-do-you-validate-that-your-data-cleaning-was-successful">40. How do you validate that your data cleaning was successful?</h3>
+
+<ul>
+  <li><strong>Sanity Checks:</strong> Check ranges (Age &lt; 0?), uniqueness (IDs), constraints.</li>
+  <li><strong>Summary Statistics:</strong> Compare mean/distribution before and after (unless correction was the goal).</li>
+  <li><strong>Null Checks:</strong> Ensure no unexpected nulls remain.</li>
+</ul>
+
+<h2 id="part-3-exploratory-data-analysis--visualization-41-60">Part 3: Exploratory Data Analysis &amp; Visualization (41-60)</h2>
+
+<h3 id="41-what-is-eda">41. What is EDA?</h3>
+
+<p>Exploratory Data Analysis. The process of performing initial investigations on data to discover patterns, spot anomalies, test hypothesis and check assumptions with the help of summary statistics and graphical representations.</p>
+
+<h3 id="42-when-would-you-use-a-histogram-vs-a-bar-chart">42. When would you use a Histogram vs a Bar Chart?</h3>
+
+<ul>
+  <li><strong>Histogram:</strong> For continuous numerical data (distribution of Ages). Bars touch.</li>
+  <li><strong>Bar Chart:</strong> For categorical data (count of Sales by Product Category). Bars have gaps.</li>
+</ul>
+
+<h3 id="43-what-is-a-scatter-plot-used-for">43. What is a Scatter Plot used for?</h3>
+
+<p>To visualize the relationship (correlation) between two continuous variables.
+<em>Example:</em> Height vs Weight.</p>
+
+<h3 id="44-what-is-a-heatmap">44. What is a Heatmap?</h3>
+
+<p>A graphical representation of data where individual values are represented as colors.</p>
+<ul>
+  <li><em>Use Case:</em> Correlation Matrix, Website click density, Cohort Analysis retention rates.</li>
+</ul>
+
+<h3 id="45-explain-the-data-ink-ratio-edward-tufte">45. Explain the “Data-Ink Ratio” (Edward Tufte).</h3>
+
+<p>The proportion of a graphic’s ink devoted to the non-redundant display of data-information.</p>
+<ul>
+  <li><em>Goal:</em> Maximize the ratio. Remove backgrounds, 3D effects, excessive gridlines.</li>
+</ul>
+
+<h3 id="46-what-is-a-violin-plot">46. What is a Violin Plot?</h3>
+
+<p>Similar to a box plot, but adds a kernel density plot on each side. It shows the distribution shape (peaks/valleys) which a box plot hides.</p>
+
+<h3 id="47-how-do-you-visualize-more-than-3-dimensions">47. How do you visualize more than 3 dimensions?</h3>
+
+<ul>
+  <li><strong>Pair Plots:</strong> Matrix of scatter plots.</li>
+  <li><strong>Color/Size/Shape:</strong> Use bubble charts where size=Dim3, color=Dim4.</li>
+  <li><strong>Faceting/Small Multiples:</strong> Creating a grid of charts based on a categorical variable.</li>
+</ul>
+
+<h3 id="48-what-is-a-pareto-chart">48. What is a Pareto Chart?</h3>
+
+<p>A bar chart sorted by frequency (descending) with a line graph showing cumulative percentage. Used to identify the “vital few” problems (80/20 rule).</p>
+
+<pre><code class="language-mermaid">graph TD
+    A[Frequency Bars] --Sorted Desc--&gt; B[Pareto Chart]
+    C[Cumulative % Line] -- overlaid on --&gt; B
+</code></pre>
+
+<h3 id="49-when-is-a-pie-chart-appropriate">49. When is a Pie Chart appropriate?</h3>
+
+<p>Rarely. Only when comparing a few parts to a whole (2-5 categories) and the differences are large.</p>
+<ul>
+  <li><em>Criticism:</em> Humans are bad at comparing angles. Bar charts are usually better.</li>
+</ul>
+
+<h3 id="50-what-is-a-log-scale-used-for">50. What is a Log-Scale used for?</h3>
+
+<p>To visualize data that spans several orders of magnitude (e.g., GDP, Stock Prices, exponential growth). It turns exponential curves into straight lines.</p>
+
+<h3 id="51-what-is-a-cohort-analysis">51. What is a Cohort Analysis?</h3>
+
+<p>A subset of behavioral analytics that takes the data from a given dataset and rather than looking at all users as one unit, it breaks them into related groups for analysis.</p>
+<ul>
+  <li><em>Example:</em> Retention rate of users who signed up in Jan vs Feb vs Mar.</li>
+</ul>
+
+<h3 id="52-how-do-you-identify-seasonality-in-data">52. How do you identify seasonality in data?</h3>
+
+<ul>
+  <li><strong>Time Series Decomposition:</strong> Decompose into Trend, Seasonality, and Noise.</li>
+  <li><strong>Autocorrelation Plot (ACF):</strong> Check if data correlates with lagged versions of itself (e.g., lag 12 for monthly data).</li>
+</ul>
+
+<h3 id="53-what-is-a-waterfall-chart">53. What is a Waterfall Chart?</h3>
+
+<p>A form of data visualization that helps in understanding the cumulative effect of sequentially introduced positive or negative values.</p>
+<ul>
+  <li><em>Use Case:</em> Financial Statements (Revenue -&gt; Cost of Goods -&gt; Gross Profit -&gt; Tax -&gt; Net Income).</li>
+</ul>
+
+<h3 id="54-what-is-a-funnel-chart">54. What is a Funnel Chart?</h3>
+
+<p>Visualizes stages in a process where items are progressively filtered out.</p>
+<ul>
+  <li><em>Use Case:</em> E-commerce conversion (Page View -&gt; Add to Cart -&gt; Checkout -&gt; Purchase).</li>
+</ul>
+
+<h3 id="55-what-is-anscombes-quartet">55. What is “Anscombe’s Quartet”?</h3>
+
+<p>Four datasets that have nearly identical simple descriptive statistics (mean, variance, correlation, regression line) but appear very different when graphed.</p>
+<ul>
+  <li><em>Lesson:</em> Always visualize your data; don’t trust summary stats blindly.</li>
+</ul>
+
+<h3 id="56-what-is-a-qq-plot-quantile-quantile">56. What is a QQ Plot (Quantile-Quantile)?</h3>
+
+<p>A probability plot to compare two probability distributions.</p>
+<ul>
+  <li><em>Use Case:</em> Checking if data follows a Normal Distribution. If points lie on the 45-degree line, it is normal.</li>
+</ul>
+
+<h3 id="57-what-is-overplotting-and-how-to-fix-it">57. What is Overplotting and how to fix it?</h3>
+
+<p>When so many data points overlap in a scatter plot that it becomes a solid blob.</p>
+<ul>
+  <li><em>Fixes:</em> Reduce marker size, decrease opacity (alpha), use jitter, or use a Hexbin/Heatmap.</li>
+</ul>
+
+<h3 id="58-choosing-colors-for-visualization">58. Choosing colors for visualization.</h3>
+
+<ul>
+  <li><strong>Sequential:</strong> Low to High (Light Blue to Dark Blue). For continuous values.</li>
+  <li><strong>Diverging:</strong> Negative to Positive (Red to White to Green). For deviations from a median/zero.</li>
+  <li><strong>Categorical:</strong> Distinct hues. For discrete categories.</li>
+</ul>
+
+<h3 id="59-what-is-a-sankey-diagram">59. What is a Sankey Diagram?</h3>
+
+<p>A flow diagram in which the width of the arrows is proportional to the flow rate.</p>
+<ul>
+  <li><em>Use Case:</em> User journey flow, Energy transfer, Budget breakdown.</li>
+</ul>
+
+<h3 id="60-how-do-you-visualize-uncertainty">60. How do you visualize uncertainty?</h3>
+
+<ul>
+  <li>Error bars on points/bars.</li>
+  <li>Shaded confidence regions (e.g., in line charts for time series).</li>
+</ul>
+
+<h2 id="part-4-machine-learning-basics-for-analysts-61-80">Part 4: Machine Learning Basics for Analysts (61-80)</h2>
+
+<h3 id="61-supervised-vs-unsupervised-learning">61. Supervised vs Unsupervised Learning?</h3>
+
+<ul>
+  <li><strong>Supervised:</strong> Labeled data. Input -&gt; Output. (Regression, Classification).</li>
+  <li><strong>Unsupervised:</strong> Unlabeled data. Finding structure. (Clustering, PCA).</li>
+</ul>
+
+<h3 id="62-classification-vs-regression">62. Classification vs Regression?</h3>
+
+<ul>
+  <li><strong>Classification:</strong> Predicting a discrete class label (Spam/Not Spam).</li>
+  <li><strong>Regression:</strong> Predicting a continuous quantity (House Price).</li>
+</ul>
+
+<h3 id="63-what-is-overfitting">63. What is Overfitting?</h3>
+
+<p>When a model learns the training data <em>too well</em>, including the noise, and fails to generalize to new data.</p>
+<ul>
+  <li><em>Symptoms:</em> Low Train Error, High Test Error.</li>
+  <li><em>Fixes:</em> Simplify model, Regularization, Cross-Validation, More Data.</li>
+</ul>
+
+<h3 id="64-what-is-underfitting">64. What is Underfitting?</h3>
+
+<p>When a model is too simple to capture the underlying structure of the data.</p>
+<ul>
+  <li><em>Symptoms:</em> High Train Error, High Test Error.</li>
+  <li><em>Fixes:</em> More complex model, more features.</li>
+</ul>
+
+<p><strong>Chart: Bias-Variance Tradeoff</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: left">Low Variance</th>
+      <th style="text-align: left">High Variance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Low Bias</strong></td>
+      <td style="text-align: left">Ideal Model</td>
+      <td style="text-align: left">Overfitting</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>High Bias</strong></td>
+      <td style="text-align: left">Underfitting</td>
+      <td style="text-align: left">Worst Case</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="65-what-is-cross-validation-k-fold">65. What is Cross-Validation (K-Fold)?</h3>
+
+<p>Splitting data into K subsets (folds). Train on K-1, test on 1. Repeat K times and average the performance.</p>
+<ul>
+  <li><em>Benefit:</em> Reduces the variance of the performance estimate.</li>
+</ul>
+
+<h3 id="66-explain-the-confusion-matrix">66. Explain the Confusion Matrix.</h3>
+
+<p>A table used to evaluate classification models.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: left">Predicted Positive</th>
+      <th style="text-align: left">Predicted Negative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Actual Positive</strong></td>
+      <td style="text-align: left">True Positive (TP)</td>
+      <td style="text-align: left">False Negative (FN)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Actual Negative</strong></td>
+      <td style="text-align: left">False Positive (FP)</td>
+      <td style="text-align: left">True Negative (TN)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="67-accuracy-vs-precision-vs-recall-vs-f1">67. Accuracy vs Precision vs Recall vs F1?</h3>
+
+<ul>
+  <li><strong>Accuracy:</strong> $(TP+TN) / Total$. (Bad for imbalanced data).</li>
+  <li><strong>Precision:</strong> $TP / (TP+FP)$. (Quality of positive predictions).</li>
+  <li><strong>Recall:</strong> $TP / (TP+FN)$. (Quantity of positives found).</li>
+  <li><strong>F1 Score:</strong> Harmonic mean of Precision and Recall. $2 \times (P \times R) / (P + R)$.</li>
+</ul>
+
+<h3 id="68-what-is-roc-auc">68. What is ROC-AUC?</h3>
+
+<ul>
+  <li><strong>ROC Curve:</strong> Plot of TPR (Recall) vs FPR (1-Specificity) at various thresholds.</li>
+  <li><strong>AUC (Area Under Curve):</strong> Probability that the model ranks a random positive example higher than a random negative example. 0.5 = Random Guess, 1.0 = Perfect.</li>
+</ul>
+
+<h3 id="69-what-is-k-means-clustering">69. What is K-Means Clustering?</h3>
+
+<p>An unsupervised algorithm that partitions data into K clusters.</p>
+<ol>
+  <li>Initialize K centroids.</li>
+  <li>Assign points to nearest centroid.</li>
+  <li>Update centroids to mean of assigned points.</li>
+  <li>Repeat until convergence.</li>
+</ol>
+
+<h3 id="70-how-to-choose-k-in-k-means">70. How to choose K in K-Means?</h3>
+
+<p><strong>Elbow Method:</strong> Plot Sum of Squared Errors (Inertia) vs K. Look for the “elbow” where improvements diminish.</p>
+
+<h3 id="71-what-is-decision-tree-pruning">71. What is Decision Tree Pruning?</h3>
+
+<p>Removing sections of the tree that provide little power to classify instances (to reduce overfitting).</p>
+
+<h3 id="72-random-forest-vs-decision-tree">72. Random Forest vs Decision Tree?</h3>
+
+<ul>
+  <li><strong>Decision Tree:</strong> Single tree. Easy to interpret. Prone to overfitting.</li>
+  <li><strong>Random Forest:</strong> Ensemble of many trees (Bagging). Robust, higher accuracy. Harder to interpret.</li>
+</ul>
+
+<h3 id="73-what-is-logistic-regression">73. What is Logistic Regression?</h3>
+
+<p>Despite the name, it’s a <strong>Classification</strong> algorithm for binary outcomes. It uses the Sigmoid function to squash output between 0 and 1 (probability).
+$P(y=1) = 1 / (1 + e^{-(b0 + b1x)})$.</p>
+
+<h3 id="74-what-is-gradient-descent">74. What is Gradient Descent?</h3>
+
+<p>An optimization algorithm used to minimize a function (cost function) by iteratively moving in the direction of steepest descent.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Learning Rate.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What happens if the learning rate is too high vs too low?”</li>
+      <li><em>Answer:</em> High = Overshoot minimum, diverge. Low = Slow convergence, might get stuck in local minima.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="75-what-is-regularization-l1-vs-l2">75. What is Regularization (L1 vs L2)?</h3>
+
+<p>Techniques to prevent overfitting by adding a penalty term to the loss function.</p>
+<ul>
+  <li><strong>L1 (Lasso):</strong> Adds absolute value of coefficients. Can drive coefficients to zero (Feature Selection).</li>
+  <li><strong>L2 (Ridge):</strong> Adds squared magnitude of coefficients. Shrinks coefficients evenly.</li>
+</ul>
+
+<h3 id="76-what-is-a-time-series">76. What is a Time Series?</h3>
+
+<p>A sequence of data points indexed in time order.</p>
+<ul>
+  <li><em>Components:</em> Trend, Seasonality, Cyclicality, Irregularity (Noise).</li>
+</ul>
+
+<h3 id="77-stationarity-in-time-series">77. Stationarity in Time Series?</h3>
+
+<p>A time series is stationary if its statistical properties (mean, variance) do not change over time. Most forecasting models (ARIMA) assume stationarity.</p>
+
+<h3 id="78-what-is-bagging-vs-boosting">78. What is Bagging vs Boosting?</h3>
+
+<ul>
+  <li><strong>Bagging (Bootstrap Aggregating):</strong> Train parallel models on random subsets (with replacement) and average predictions. (e.g., Random Forest). Reduces Variance.</li>
+  <li><strong>Boosting:</strong> Train models sequentially. Each model corrects the errors of the previous one. (e.g., XGBoost, AdaBoost). Reduces Bias and Variance.</li>
+</ul>
+
+<h3 id="79-explain-naive-bayes">79. Explain “Naive Bayes”.</h3>
+
+<p>A classification algorithm based on Bayes’ Theorem with an assumption of independence among predictors. “Naive” because it assumes the presence of a feature is unrelated to any other feature.</p>
+
+<h3 id="80-what-is-abn-testing">80. What is A/B/n Testing?</h3>
+
+<p>Testing more than 2 versions (A, B, C…) simultaneously.</p>
+
+<h2 id="part-5-product-metrics--business-81-100">Part 5: Product Metrics &amp; Business (81-100)</h2>
+
+<h3 id="81-define-churn-rate">81. Define Churn Rate.</h3>
+
+<p>The percentage of customers who stop using a product or service during a given time period.
+$Churn = (Lost Customers / Start Customers) \times 100$.</p>
+
+<h3 id="82-what-is-daumau">82. What is DAU/MAU?</h3>
+
+<ul>
+  <li><strong>DAU:</strong> Daily Active Users.</li>
+  <li><strong>MAU:</strong> Monthly Active Users.</li>
+  <li><strong>Ratio (DAU/MAU):</strong> Measures “Stickiness”. Example: 50% means the average user uses the app 15 days a month.</li>
+</ul>
+
+<h3 id="83-what-is-arpu">83. What is ARPU?</h3>
+
+<p><strong>Average Revenue Per User</strong>.
+Total Revenue / Total Users.</p>
+
+<h3 id="84-what-is-clv-customer-lifetime-value">84. What is CLV (Customer Lifetime Value)?</h3>
+
+<p>The total revenue a business can reasonably expect from a single customer account.
+$CLV = Avg Order Value \times Purchase Frequency \times Customer Lifespan$.</p>
+
+<h3 id="85-what-is-cac-customer-acquisition-cost">85. What is CAC (Customer Acquisition Cost)?</h3>
+
+<p>Total Cost of Sales &amp; Marketing / Number of New Customers Acquired.</p>
+<ul>
+  <li><em>Health Check:</em> LTV:CAC ratio. Ideally &gt; 3:1.</li>
+</ul>
+
+<h3 id="86-how-to-measure-retention">86. How to measure Retention?</h3>
+
+<p><strong>Cohort Analysis</strong> is best.</p>
+<ul>
+  <li>Day N Retention: % of users who return exactly on Day N.</li>
+  <li>Rolling Retention: % of users who return on Day N <em>or any day after</em>.</li>
+</ul>
+
+<h3 id="87-what-is-a-north-star-metric">87. What is a “North Star Metric”?</h3>
+
+<p>The single metric that best captures the core value your product delivers to its customers.</p>
+<ul>
+  <li><em>Airbnb:</em> Nights Booked. (Not just revenue, but value exchanged).</li>
+  <li><em>Facebook:</em> Daily Active Users.</li>
+</ul>
+
+<h3 id="88-how-would-you-investigate-a-sudden-drop-in-dau">88. How would you investigate a sudden drop in DAU?</h3>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Technical vs Business.</strong>
+    <ul>
+      <li><em>Step 1:</em> Check data pipeline status (Is it a bug?).</li>
+      <li><em>Step 2:</em> Segmentation. Is it one region? One device (iOS vs Android)? One user type?</li>
+      <li><em>Step 3:</em> External factors. (Holiday? Competitor launch? Server outage?).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="89-metric-for-an-e-commerce-site">89. Metric for an E-commerce site?</h3>
+
+<ul>
+  <li>Conversion Rate (Visits to Purchase).</li>
+  <li>AOV (Average Order Value).</li>
+  <li>Cart Abandonment Rate.</li>
+</ul>
+
+<h3 id="90-metric-for-a-streaming-service-netflix">90. Metric for a Streaming Service (Netflix)?</h3>
+
+<ul>
+  <li>Hours Streamed per User.</li>
+  <li>Retention Rate (Subscription Renewals).</li>
+  <li>Content Completion Rate.</li>
+</ul>
+
+<h3 id="91-what-is-survivorship-bias-in-business">91. What is Survivorship Bias in business?</h3>
+
+<p>Focusing on the people/companies that “survived” (succeeded) and overlooking those that failed, leading to false conclusions about what causes success.
+<em>Example:</em> “Steve Jobs dropped out, so college is useless.” (Ignoring all dropouts who failed).</p>
+
+<h3 id="92-how-to-measure-the-success-of-a-search-feature">92. How to measure the success of a Search feature?</h3>
+
+<ul>
+  <li><strong>CTR:</strong> Click-Through Rate on results.</li>
+  <li><strong>Zero Results Rate:</strong> % of searches returning nothing.</li>
+  <li><strong>Search-to-Action:</strong> % of searches leading to a play/purchase.</li>
+  <li><strong>Time to Result:</strong> Latency.</li>
+</ul>
+
+<h3 id="93-what-is-nps">93. What is NPS?</h3>
+
+<p><strong>Net Promoter Score</strong>. “How likely are you to recommend us to a friend?” (0-10).</p>
+<ul>
+  <li>Promoters (9-10).</li>
+  <li>Passives (7-8).</li>
+  <li>Detractors (0-6).</li>
+  <li>$NPS = \%Promoters - \%Detractors$.</li>
+</ul>
+
+<h3 id="94-explain-the-difference-between-leading-and-lagging-indicators">94. Explain the difference between Leading and Lagging indicators.</h3>
+
+<ul>
+  <li><strong>Lagging:</strong> Output metrics. What happened? (Revenue, Churn). Hard to influence directly.</li>
+  <li><strong>Leading:</strong> Input metrics. Predictive. (Daily Logins, Customer Satisfaction). Can be influenced to change future lagging metrics.</li>
+</ul>
+
+<h3 id="95-what-is-funnel-drop-off">95. What is Funnel Drop-off?</h3>
+
+<p>The percentage of users who leave the process at each step. Identifying the step with the highest drop-off tells you where to optimize.</p>
+
+<h3 id="96-how-do-you-estimate-market-size-tam">96. How do you estimate market size (TAM)?</h3>
+
+<p><strong>Total Addressable Market</strong>.</p>
+<ul>
+  <li><em>Top-Down:</em> Industry reports $\times$ % Share.</li>
+  <li><em>Bottom-Up:</em> Price $\times$ Potential Customer Count (Better).</li>
+</ul>
+
+<h3 id="97-what-is-seasonality-vs-trend">97. What is Seasonality vs Trend?</h3>
+
+<ul>
+  <li><strong>Seasonality:</strong> Repeating short-term cycles (Sales up in Dec).</li>
+  <li><strong>Trend:</strong> Long-term direction (Sales growing 10% YoY).</li>
+</ul>
+
+<h3 id="98-how-do-you-prioritize-features">98. How do you prioritize features?</h3>
+
+<ul>
+  <li><strong>RICE Score:</strong> (Reach $\times$ Impact $\times$ Confidence) / Effort.</li>
+  <li><strong>MoSCoW:</strong> Must have, Should have, Could have, Won’t have.</li>
+</ul>
+
+<h3 id="99-investigating-revenue-is-down-but-traffic-is-up">99. Investigating: “Revenue is down, but Traffic is up.”</h3>
+
+<ul>
+  <li>Check Conversion Rate (Are we getting low-quality traffic?).</li>
+  <li>Check AOV (Are people buying cheaper items?).</li>
+  <li>Check Pricing changes or Discounts running.</li>
+  <li>Check Mix Shift (Selling more low-margin items).</li>
+</ul>
+
+<h3 id="100-define-network-effects">100. Define “Network Effects”.</h3>
+
+<p>The phenomenon where a product or service becomes more valuable when more people use it. (e.g., Telephone, Social Networks).</p>
+
+<hr />
+<p><strong>End of Interview Questions</strong></p>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

@@ -2,21 +2,21 @@
 <html lang="en" class="palette-1"><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | Inkorporated Homelab Documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Inkorporated documentation | Inkorporated Homelab Documentation</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Inkorporated documentation" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Comprehensive documentation for the Inkorporated homelab project." />
-<meta property="og:description" content="Comprehensive documentation for the Inkorporated homelab project." />
+<meta name="description" content="Enterprise operating system and hybrid-cloud infrastructure docs for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="Enterprise operating system and hybrid-cloud infrastructure docs for Inkorporated." />
 <link rel="canonical" href="https://toxicoder.github.io/inkorporated/" />
 <meta property="og:url" content="https://toxicoder.github.io/inkorporated/" />
 <meta property="og:site_name" content="Inkorporated Homelab Documentation" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta name="twitter:title" content="Inkorporated documentation" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Home","name":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","description":"Enterprise operating system and hybrid-cloud infrastructure docs for Inkorporated.","headline":"Inkorporated documentation","name":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/inkorporated/assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -521,54 +521,135 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Home</h1>
+    <h1 class="post-title">Inkorporated documentation</h1>
   </header>
 
   <div class="post-content">
-    <h1 id="inkorporated-homelab-documentation">Inkorporated Homelab Documentation</h1>
+    <h1 id="inkorporated">Inkorporated</h1>
 
-<p>Welcome to the comprehensive documentation for the Inkorporated homelab project.</p>
-
-<h2 id="core-documentation">Core Documentation</h2>
+<p><strong>What’s on this page</strong></p>
 
 <ul>
-  <li><a href="guides/overview.html">Project Overview</a>: Executive summary and key features.</li>
-  <li><a href="architecture/index.html">Architecture</a>: High-level architectural design and diagrams.</li>
-  <li><a href="architecture/network.html">Network Topology</a>: Detailed network zones and security layers.</li>
-  <li><a href="architecture/technical_design.html">Technical Design</a>: In-depth technical specifications.</li>
+  <li>Dual identity: enterprise OS + hybrid-cloud homelab/corplab</li>
+  <li>Entry points for organization, roles, cyborgs, and infrastructure</li>
+  <li>Links to contributing and conventions</li>
 </ul>
 
-<h2 id="guides--handbooks">Guides &amp; Handbooks</h2>
+<p><strong>What this enables</strong></p>
+
+<h2 id="mental-model">Mental model</h2>
+
+<pre><code class="language-mermaid">flowchart TB
+  home[Docs home]
+  home --&gt; ent[Enterprise OS]
+  home --&gt; infra[Infrastructure]
+  ent --&gt; org[Organization]
+  ent --&gt; roles[Job roles]
+  ent --&gt; cy[Cyborg roster]
+  ent --&gt; pol[Policies]
+  infra --&gt; arch[Architecture]
+  infra --&gt; guides[Guides]
+  infra --&gt; ref[Service catalog]
+</code></pre>
 
 <ul>
-  <li><a href="guides/installation.html">Installation Guide</a>: Step-by-step implementation phases.</li>
-  <li><a href="guides/configuration.html">Configuration Guide</a>: Detailed configuration references.</li>
-  <li><a href="guides/environments.html">Environment Guide</a>: Managing dev, staging, and prod environments.</li>
-  <li><a href="guides/deployment.html">Deployment &amp; Operations</a>: GitOps workflows and maintenance.</li>
-  <li><a href="guides/security.html">Security Handbook</a>: Authentication, authorization, and data protection.</li>
-  <li><a href="guides/observability.html">Observability Guide</a>: Monitoring, logging, and alerting.</li>
-  <li><a href="guides/backups.html">Backup &amp; Recovery</a>: Disaster recovery strategies.</li>
-  <li><a href="guides/troubleshooting.html">Troubleshooting</a>: Common issues and debugging.</li>
+  <li>One monorepo to understand how the company is designed <em>and</em> how the platform is run</li>
+  <li>Fast onboarding for humans and AI agents</li>
 </ul>
 
-<h2 id="reference">Reference</h2>
+<p>Inkorporated is a <strong>one-stop shop to spin up a full-blown global enterprise</strong>: corporate strategy, org design, job roles, policies, interview loops, and AI <strong>cyborg</strong> personas — on top of production-minded hybrid infrastructure (Proxmox + AWS/GCP, k3s, ArgoCD, Bazel).</p>
+
+<h2 id="enterprise-operating-system">Enterprise operating system</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Area</th>
+      <th>Start here</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Organization &amp; org charts</td>
+      <td><a href="organization/index.md">Organization system</a></td>
+    </tr>
+    <tr>
+      <td>Corporate strategy</td>
+      <td><a href="corporate_strategy/mission_vision_values.md">Mission, vision &amp; values</a></td>
+    </tr>
+    <tr>
+      <td>Job roles</td>
+      <td><a href="job_roles/job_role_organization.md">Job role catalog</a></td>
+    </tr>
+    <tr>
+      <td>Cyborg AI personas</td>
+      <td><a href="cyborgs/index.md">Cyborgs</a></td>
+    </tr>
+    <tr>
+      <td>Engineering standards</td>
+      <td><a href="engineering_standards/engineering_principles.md">Engineering principles</a></td>
+    </tr>
+    <tr>
+      <td>Policies</td>
+      <td><a href="policies/code_of_conduct.md">Code of conduct</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="infrastructure--operations">Infrastructure &amp; operations</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Area</th>
+      <th>Start here</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Overview</td>
+      <td><a href="guides/overview.md">Project overview</a></td>
+    </tr>
+    <tr>
+      <td>Architecture</td>
+      <td><a href="architecture/index.md">Architecture index</a></td>
+    </tr>
+    <tr>
+      <td>Install</td>
+      <td><a href="guides/installation.md">Installation</a></td>
+    </tr>
+    <tr>
+      <td>Security</td>
+      <td><a href="guides/security.md">Security handbook</a></td>
+    </tr>
+    <tr>
+      <td>Observability</td>
+      <td><a href="guides/observability.md">Observability</a></td>
+    </tr>
+    <tr>
+      <td>Services</td>
+      <td><a href="reference/services.md">Service catalog</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="contribute">Contribute</h2>
 
 <ul>
-  <li><a href="reference/services.html">Service Catalog</a>: Detailed specifications for all deployed services.</li>
-  <li><a href="guides/overview.html#repository-structure">Repository Structure</a>: Codebase organization.</li>
+  <li><a href="project-conventions.md">Project conventions</a></li>
+  <li><a href="CONTRIBUTING.md">Contributing to docs</a></li>
+  <li><a href="guides/git_workflow.md">Git workflow</a></li>
+  <li>Root <a href="https://github.com/toxicoder/inkorporated/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> · <a href="https://github.com/toxicoder/inkorporated/blob/main/SECURITY.md">SECURITY.md</a></li>
 </ul>
 
-<h2 id="status--reports">Status &amp; Reports</h2>
+<h2 id="multi-version-docs">Multi-version docs</h2>
+
+<p>When published via mike:</p>
 
 <ul>
-  <li><a href="status/discovery_summary.html">Discovery Summary</a>: Consolidated documentation overview.</li>
-  <li><a href="status/infrastructure_validation_report.html">Infrastructure Validation</a>: Validation report for the infrastructure.</li>
-  <li><a href="status/dgx_integration_summary.html">DGX Integration Summary</a>: Status of NVIDIA DGX integration.</li>
+  <li><strong>latest</strong> — from <code class="language-plaintext highlighter-rouge">main</code></li>
+  <li><strong>development</strong> — from <code class="language-plaintext highlighter-rouge">development</code></li>
 </ul>
-
-<h2 id="contributing">Contributing</h2>
-
-<p>This project is open-source and welcomes contributions. Please see the <a href="https://github.com/toxicoder/inkorporated/blob/main/README.md">README</a> for more information.</p>
 
   </div>
 

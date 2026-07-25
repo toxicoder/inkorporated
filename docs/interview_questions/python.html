@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Python Interview Questions &amp; Answers (100+) | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Python Interview Questions &amp; Answers (100+)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Python Interview Questions &amp; Answers (100+) for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="Python Interview Questions &amp; Answers (100+) for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/interview_questions/python.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/interview_questions/python.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Python Interview Questions &amp; Answers (100+)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Python Interview Questions &amp; Answers (100+) for Inkorporated.","headline":"Python Interview Questions &amp; Answers (100+)","url":"https://toxicoder.github.io/inkorporated/interview_questions/python.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Python Interview Questions &amp; Answers (100+)</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="python-interview-questions--answers-100">Python Interview Questions &amp; Answers (100+)</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This guide contains 100+ Python interview questions, ranging from basic to advanced. Each question includes a model answer, code snippets, and potential follow-up paths based on the candidate’s response.</p>
+
+<h2 id="part-1-core-python-basics-1-20">Part 1: Core Python Basics (1-20)</h2>
+
+<h3 id="1-what-is-the-difference-between-list-and-tuple">1. What is the difference between <code class="language-plaintext highlighter-rouge">list</code> and <code class="language-plaintext highlighter-rouge">tuple</code>?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">List</th>
+      <th style="text-align: left">Tuple</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Mutability</strong></td>
+      <td style="text-align: left">Mutable (can change)</td>
+      <td style="text-align: left">Immutable (cannot change)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Syntax</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[]</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">()</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Performance</strong></td>
+      <td style="text-align: left">Slower (overhead for resizing)</td>
+      <td style="text-align: left">Faster (fixed size)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Use Case</strong></td>
+      <td style="text-align: left">Collections of items that change</td>
+      <td style="text-align: left">Constant data, Dictionary keys</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions Mutability.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Can a tuple contain a mutable object (like a list) and can that object be modified?”</li>
+      <li><em>Answer:</em> Yes. <code class="language-plaintext highlighter-rouge">t = (1, [2, 3])</code>. You can modify <code class="language-plaintext highlighter-rouge">t[1]</code> because the tuple only stores the <em>reference</em> to the list, which doesn’t change, even if the list content does.</li>
+    </ul>
+  </li>
+  <li><strong>Path B: Candidate focuses on Syntax.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How do you create a tuple with a single element?”</li>
+      <li><em>Answer:</em> You must use a trailing comma: <code class="language-plaintext highlighter-rouge">t = (1,)</code>. Without it, Python interprets it as an integer in parentheses <code class="language-plaintext highlighter-rouge">(1)</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-how-is-memory-managed-in-python">2. How is memory managed in Python?</h3>
+
+<p>Python uses a private heap containing all Python objects and data structures. The management of this private heap is ensured internally by the <strong>Python Memory Manager</strong>.</p>
+
+<p>Key mechanisms:</p>
+<ol>
+  <li><strong>Reference Counting:</strong> Objects are deallocated when their reference count drops to zero.</li>
+  <li><strong>Garbage Collection:</strong> Handles cyclic references that reference counting cannot catch.</li>
+</ol>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions Garbage Collection (GC).</strong>
+    <ul>
+      <li><em>Follow-up:</em> “When does the Garbage Collector run?”</li>
+      <li><em>Answer:</em> It runs periodically based on thresholds (generations 0, 1, 2). It can also be triggered manually using <code class="language-plaintext highlighter-rouge">gc.collect()</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="3-what-is-pep-8">3. What is PEP 8?</h3>
+
+<p>PEP 8 is the style guide for Python code. It ensures consistency and readability.
+Key rules:</p>
+<ul>
+  <li>Indentation: 4 spaces.</li>
+  <li>Line Length: 79 characters.</li>
+  <li>Variable Names: <code class="language-plaintext highlighter-rouge">snake_case</code> for functions/variables, <code class="language-plaintext highlighter-rouge">CamelCase</code> for classes.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate is familiar.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How do you check your code against PEP 8 automatically?”</li>
+      <li><em>Answer:</em> Using linters like <code class="language-plaintext highlighter-rouge">flake8</code>, <code class="language-plaintext highlighter-rouge">pylint</code>, or formatters like <code class="language-plaintext highlighter-rouge">black</code> (which is opinionated but compliant).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="4-what-are-the-key-features-of-python">4. What are the key features of Python?</h3>
+
+<ul>
+  <li><strong>Interpreted:</strong> Executed line by line.</li>
+  <li><strong>Dynamically Typed:</strong> Type checks happen at runtime.</li>
+  <li><strong>Object-Oriented:</strong> Everything is an object.</li>
+  <li><strong>High-level:</strong> Abstraction from memory details.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions ‘Dynamically Typed’.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What is the difference between dynamic typing and strong typing? Is Python strongly typed?”</li>
+      <li><em>Answer:</em> Yes, Python is strongly typed. You cannot add “1” (string) and 1 (int) without explicit conversion, unlike JavaScript (weakly typed).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="5-explain-is-vs-">5. Explain <code class="language-plaintext highlighter-rouge">is</code> vs <code class="language-plaintext highlighter-rouge">==</code>.</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">==</code>: Checks for <strong>Value Equality</strong> (do they hold the same data?).</li>
+  <li><code class="language-plaintext highlighter-rouge">is</code>: Checks for <strong>Reference Equality</strong> (do they point to the exact same memory address?).</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span> <span class="c1"># True
+</span><span class="nf">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span> <span class="c1"># False (different objects)
+</span></code></pre></div></div>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate understands the difference.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Why is <code class="language-plaintext highlighter-rouge">None</code> usually compared using <code class="language-plaintext highlighter-rouge">is</code>?”</li>
+      <li><em>Answer:</em> Because <code class="language-plaintext highlighter-rouge">None</code> is a singleton. There is only one instance of <code class="language-plaintext highlighter-rouge">None</code> in the system, so <code class="language-plaintext highlighter-rouge">is</code> is faster and safer (prevents custom <code class="language-plaintext highlighter-rouge">__eq__</code> methods from fooling the check).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="6-what-acts-as-a-placeholder-for-an-empty-block">6. What acts as a placeholder for an empty block?</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">pass</code> statement.
+It is a null operation; nothing happens when it executes. Useful for empty function definitions or loops during development.</p>
+
+<h3 id="7-what-is-a-dictionary">7. What is a Dictionary?</h3>
+
+<p>A collection of Key-Value pairs. It is unordered (before Python 3.7), mutable, and indexed. Keys must be immutable (hashable).</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions Hashable keys.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Can I use a list as a dictionary key?”</li>
+      <li><em>Answer:</em> No, lists are mutable and thus not hashable. You can use a <code class="language-plaintext highlighter-rouge">tuple</code> as a key if it contains only immutable elements.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="8-how-do-you-copy-an-object-in-python">8. How do you copy an object in Python?</h3>
+
+<ul>
+  <li><strong>Assignment (<code class="language-plaintext highlighter-rouge">=</code>):</strong> Creates a new reference to the same object.</li>
+  <li><strong>Shallow Copy (<code class="language-plaintext highlighter-rouge">copy.copy()</code> or <code class="language-plaintext highlighter-rouge">[:]</code>):</strong> Creates a new object, but inserts references into it to the objects found in the original.</li>
+  <li><strong>Deep Copy (<code class="language-plaintext highlighter-rouge">copy.deepcopy()</code>):</strong> Creates a new object and recursively copies everything.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate explains Shallow Copy.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “If I change a nested list in a shallow copy, does it affect the original?”</li>
+      <li><em>Answer:</em> Yes, because the inner list reference is shared.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="9-what-is-a-set">9. What is a <code class="language-plaintext highlighter-rouge">set</code>?</h3>
+
+<p>Unordered collection of unique elements.
+Useful for:</p>
+<ul>
+  <li>Removing duplicates.</li>
+  <li>Set operations (Union <code class="language-plaintext highlighter-rouge">|</code>, Intersection <code class="language-plaintext highlighter-rouge">&amp;</code>, Difference <code class="language-plaintext highlighter-rouge">-</code>).</li>
+</ul>
+
+<h3 id="10-how-do-you-manage-packages-in-python">10. How do you manage packages in Python?</h3>
+
+<p>Using <strong>pip</strong> (Python Installer Package).
+Files usually listed in <code class="language-plaintext highlighter-rouge">requirements.txt</code> or <code class="language-plaintext highlighter-rouge">pyproject.toml</code>.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions Virtual Environments.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Why are virtual environments important?”</li>
+      <li><em>Answer:</em> To isolate dependencies per project, avoiding version conflicts between projects or with the system Python.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="11-what-is-the-difference-between-py-and-pyc-files">11. What is the difference between <code class="language-plaintext highlighter-rouge">.py</code> and <code class="language-plaintext highlighter-rouge">.pyc</code> files?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.py</code>: Source code.</li>
+  <li><code class="language-plaintext highlighter-rouge">.pyc</code>: Bytecode (compiled version). Python compiles <code class="language-plaintext highlighter-rouge">.py</code> to <code class="language-plaintext highlighter-rouge">.pyc</code> to speed up loading. Stored in <code class="language-plaintext highlighter-rouge">__pycache__</code>.</li>
+</ul>
+
+<h3 id="12-explain-string-interpolation-methods">12. Explain String Interpolation methods.</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">%</code> formatting (Old): <code class="language-plaintext highlighter-rouge">"Hello %s" % name</code></li>
+  <li><code class="language-plaintext highlighter-rouge">.format()</code> (Newer): <code class="language-plaintext highlighter-rouge">"Hello {}".format(name)</code></li>
+  <li><strong>f-Strings</strong> (Modern, Python 3.6+): <code class="language-plaintext highlighter-rouge">f"Hello {name}"</code> (Fastest and most readable).</li>
+</ol>
+
+<h3 id="13-what-is-the-global-interpreter-lock-gil">13. What is the Global Interpreter Lock (GIL)?</h3>
+
+<p>A mutex that protects access to Python objects, preventing multiple native threads from executing Python bytecodes at once. This means Python threads are not truly parallel on multi-core CPUs for CPU-bound tasks.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate says ‘Python cannot do parallelism’.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How do we achieve parallelism then?”</li>
+      <li><em>Answer:</em> Use <code class="language-plaintext highlighter-rouge">multiprocessing</code> (separate processes have their own memory/GIL) or use libraries like NumPy that release the GIL for heavy computations.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="14-what-are-negative-indexes">14. What are negative indexes?</h3>
+
+<p>Python allows accessing elements from the end of a sequence using negative numbers.
+<code class="language-plaintext highlighter-rouge">-1</code> is the last item, <code class="language-plaintext highlighter-rouge">-2</code> is the second to last.</p>
+
+<h3 id="15-what-is-slicing">15. What is slicing?</h3>
+
+<p>Extracting a part of a sequence.
+Syntax: <code class="language-plaintext highlighter-rouge">object[start:stop:step]</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># [5, 4, 3, 2, 1, 0] (Reverses list)
+</span></code></pre></div></div>
+
+<h3 id="16-what-is-the-difference-between-range-and-xrange">16. What is the difference between <code class="language-plaintext highlighter-rouge">range</code> and <code class="language-plaintext highlighter-rouge">xrange</code>?</h3>
+
+<ul>
+  <li><strong>Python 2:</strong> <code class="language-plaintext highlighter-rouge">range</code> returned a list, <code class="language-plaintext highlighter-rouge">xrange</code> returned an iterator (memory efficient).</li>
+  <li><strong>Python 3:</strong> <code class="language-plaintext highlighter-rouge">xrange</code> is gone. <code class="language-plaintext highlighter-rouge">range</code> now behaves like the old <code class="language-plaintext highlighter-rouge">xrange</code> (returns a range object/iterator).</li>
+</ul>
+
+<h3 id="17-how-do-you-handle-errors-in-python">17. How do you handle errors in Python?</h3>
+
+<p>Using <code class="language-plaintext highlighter-rouge">try</code>, <code class="language-plaintext highlighter-rouge">except</code>, <code class="language-plaintext highlighter-rouge">else</code>, and <code class="language-plaintext highlighter-rouge">finally</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="k">except</span> <span class="nb">ZeroDivisionError</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Error</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Success</span><span class="sh">"</span><span class="p">)</span> <span class="c1"># Runs if no exception
+</span><span class="k">finally</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Cleanup</span><span class="sh">"</span><span class="p">)</span> <span class="c1"># Always runs
+</span></code></pre></div></div>
+
+<h3 id="18-what-is-a-docstring">18. What is a Docstring?</h3>
+
+<p>A string literal that occurs as the first statement in a module, function, class, or method definition. Accessed via <code class="language-plaintext highlighter-rouge">__doc__</code>.</p>
+
+<p><strong>Style:</strong> Triple quotes <code class="language-plaintext highlighter-rouge">"""Description"""</code>.</p>
+
+<h3 id="19-what-is-__init__">19. What is <code class="language-plaintext highlighter-rouge">__init__</code>?</h3>
+
+<p>The constructor method for a class. It is automatically called when a new instance of the class is created. Used to initialize attributes.</p>
+
+<h3 id="20-what-is-self">20. What is <code class="language-plaintext highlighter-rouge">self</code>?</h3>
+
+<p>It represents the instance of the class. By using <code class="language-plaintext highlighter-rouge">self</code>, we can access the attributes and methods of the class in Python. It is an explicit first argument (unlike <code class="language-plaintext highlighter-rouge">this</code> in Java/C++ which is implicit).</p>
+
+<h2 id="part-2-control-flow--loops-21-35">Part 2: Control Flow &amp; Loops (21-35)</h2>
+
+<h3 id="21-what-is-the-difference-between-break-continue-and-pass">21. What is the difference between <code class="language-plaintext highlighter-rouge">break</code>, <code class="language-plaintext highlighter-rouge">continue</code>, and <code class="language-plaintext highlighter-rouge">pass</code>?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Statement</th>
+      <th style="text-align: left">Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">break</code></td>
+      <td style="text-align: left">Terminates the loop immediately.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">continue</code></td>
+      <td style="text-align: left">Skips the current iteration and jumps to the next.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">pass</code></td>
+      <td style="text-align: left">Does nothing (placeholder).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="22-can-you-have-an-else-clause-with-a-loop">22. Can you have an <code class="language-plaintext highlighter-rouge">else</code> clause with a loop?</h3>
+
+<p>Yes, <code class="language-plaintext highlighter-rouge">else</code> in a loop executes when the loop completes normally (without encountering a <code class="language-plaintext highlighter-rouge">break</code> statement).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Done</span><span class="sh">"</span><span class="p">)</span> <span class="c1"># Prints "Done"
+</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Done</span><span class="sh">"</span><span class="p">)</span> <span class="c1"># Does NOT print
+</span></code></pre></div></div>
+
+<h3 id="23-what-are-iterators-and-iterables">23. What are iterators and iterables?</h3>
+
+<ul>
+  <li><strong>Iterable:</strong> An object capable of returning its members one at a time (e.g., list, string). Has <code class="language-plaintext highlighter-rouge">__iter__()</code>.</li>
+  <li><strong>Iterator:</strong> An object representing a stream of data. Has <code class="language-plaintext highlighter-rouge">__next__()</code> and <code class="language-plaintext highlighter-rouge">__iter__()</code>.</li>
+</ul>
+
+<h3 id="24-what-is-list-comprehension">24. What is List Comprehension?</h3>
+
+<p>A concise way to create lists.
+Syntax: <code class="language-plaintext highlighter-rouge">[expression for item in iterable if condition]</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="25-what-is-the-ternary-operator-in-python">25. What is the ternary operator in Python?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">[on_true] if [expression] else [on_false]</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">status</span> <span class="o">=</span> <span class="sh">"</span><span class="s">Even</span><span class="sh">"</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="sh">"</span><span class="s">Odd</span><span class="sh">"</span>
+</code></pre></div></div>
+
+<h3 id="26-how-does-enumerate-work">26. How does <code class="language-plaintext highlighter-rouge">enumerate()</code> work?</h3>
+
+<p>It adds a counter to an iterable and returns it as an enumerate object (iterator of tuples).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="sh">"</span><span class="s">Alice</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">Bob</span><span class="sh">"</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="c1"># Output:
+# 1: Alice
+# 2: Bob
+</span></code></pre></div></div>
+
+<h3 id="27-what-is-zip">27. What is <code class="language-plaintext highlighter-rouge">zip()</code>?</h3>
+
+<p>Aggregates elements from two or more iterables. Returns an iterator of tuples.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="sh">"</span><span class="s">Alice</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">Bob</span><span class="sh">"</span><span class="p">]</span>
+<span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="nf">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">ages</span><span class="p">)))</span> <span class="c1"># [('Alice', 25), ('Bob', 30)]
+</span></code></pre></div></div>
+
+<h3 id="28-what-happens-if-zipped-lists-are-different-lengths">28. What happens if <code class="language-plaintext highlighter-rouge">zip</code>ped lists are different lengths?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">zip()</code> stops at the shortest list. To fill missing values, use <code class="language-plaintext highlighter-rouge">itertools.zip_longest()</code>.</p>
+
+<h3 id="29-how-do-you-swap-two-variables-in-one-line">29. How do you swap two variables in one line?</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+</code></pre></div></div>
+
+<h3 id="30-what-is-the-with-statement">30. What is the <code class="language-plaintext highlighter-rouge">with</code> statement?</h3>
+
+<p>It is used for <strong>Context Management</strong>. It ensures that resources (like file streams) are properly cleaned up (closed) even if exceptions occur.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">'</span><span class="s">file.txt</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">r</span><span class="sh">'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span>
+<span class="c1"># f is automatically closed here
+</span></code></pre></div></div>
+
+<h3 id="31-explain-the-if-__name__--__main__-block">31. Explain the <code class="language-plaintext highlighter-rouge">if __name__ == "__main__":</code> block.</h3>
+
+<p>It checks if the script is being run directly (not imported as a module). If imported, <code class="language-plaintext highlighter-rouge">__name__</code> is the module name; if run directly, <code class="language-plaintext highlighter-rouge">__name__</code> is <code class="language-plaintext highlighter-rouge">"__main__"</code>.</p>
+
+<h3 id="32-what-is-dictget-vs-dict">32. What is <code class="language-plaintext highlighter-rouge">dict.get()</code> vs <code class="language-plaintext highlighter-rouge">dict[]</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">dict[key]</code>: Raises <code class="language-plaintext highlighter-rouge">KeyError</code> if key is missing.</li>
+  <li><code class="language-plaintext highlighter-rouge">dict.get(key, default)</code>: Returns <code class="language-plaintext highlighter-rouge">None</code> (or specified default) if key is missing. Safer.</li>
+</ul>
+
+<h3 id="33-how-to-check-if-a-key-exists-in-a-dictionary">33. How to check if a key exists in a dictionary?</h3>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">in</code> operator.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="sh">"</span><span class="s">key</span><span class="sh">"</span> <span class="ow">in</span> <span class="n">my_dict</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Exists</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="34-what-is-the-difference-between-for-loop-and-while-loop">34. What is the difference between <code class="language-plaintext highlighter-rouge">for</code> loop and <code class="language-plaintext highlighter-rouge">while</code> loop?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">for</code>: Iterates over a sequence (known number of times).</li>
+  <li><code class="language-plaintext highlighter-rouge">while</code>: Repeats as long as a condition is true (unknown number of times).</li>
+</ul>
+
+<h3 id="35-how-to-flatten-a-list-of-lists">35. How to flatten a list of lists?</h3>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: List Comprehension.</strong>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">l</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Path B: <code class="language-plaintext highlighter-rouge">itertools.chain</code>.</strong>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">itertools</span>
+<span class="n">flat</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">itertools</span><span class="p">.</span><span class="nf">chain</span><span class="p">(</span><span class="o">*</span><span class="n">l</span><span class="p">))</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="part-3-functions--functional-programming-36-50">Part 3: Functions &amp; Functional Programming (36-50)</h2>
+
+<h3 id="36-what-is-the-difference-between-args-and-kwargs">36. What is the difference between <code class="language-plaintext highlighter-rouge">*args</code> and <code class="language-plaintext highlighter-rouge">**kwargs</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">*args</code>: Allows passing a variable number of <em>positional</em> arguments (tuple).</li>
+  <li><code class="language-plaintext highlighter-rouge">**kwargs</code>: Allows passing a variable number of <em>keyword</em> arguments (dictionary).</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>   <span class="c1"># (1, 2)
+</span>    <span class="nf">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="c1"># {'a': 3}
+</span>
+<span class="nf">func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="37-what-are-lambda-functions">37. What are lambda functions?</h3>
+
+<p>Anonymous, small functions defined with the <code class="language-plaintext highlighter-rouge">lambda</code> keyword. They can have any number of arguments but only one expression.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c1"># 5
+</span></code></pre></div></div>
+
+<h3 id="38-explain-map-filter-and-reduce">38. Explain <code class="language-plaintext highlighter-rouge">map()</code>, <code class="language-plaintext highlighter-rouge">filter()</code>, and <code class="language-plaintext highlighter-rouge">reduce()</code>.</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">map(func, iter)</code>: Applies <code class="language-plaintext highlighter-rouge">func</code> to all items in <code class="language-plaintext highlighter-rouge">iter</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">filter(func, iter)</code>: Creates a list of elements for which <code class="language-plaintext highlighter-rouge">func</code> returns true.</li>
+  <li><code class="language-plaintext highlighter-rouge">reduce(func, iter)</code>: Applies a rolling computation to sequential pairs of values (requires <code class="language-plaintext highlighter-rouge">functools</code>).</li>
+</ul>
+
+<h3 id="39-what-is-a-first-class-function">39. What is a “First Class Function”?</h3>
+
+<p>Functions are treated like any other variable. They can be:</p>
+<ol>
+  <li>Passed as arguments to other functions.</li>
+  <li>Returned from other functions.</li>
+  <li>Assigned to variables.</li>
+</ol>
+
+<h3 id="40-what-is-scope-resolution-legb-rule">40. What is Scope Resolution (LEGB Rule)?</h3>
+
+<p>Python searches for variables in this order:</p>
+<ol>
+  <li><strong>L</strong>ocal (Inside function)</li>
+  <li><strong>E</strong>nclosing (Nested function globals)</li>
+  <li><strong>G</strong>lobal (Module level)</li>
+  <li><strong>B</strong>uilt-in (Python keywords)</li>
+</ol>
+
+<h3 id="41-what-is-a-closure">41. What is a Closure?</h3>
+
+<p>A function object that remembers values in enclosing scopes even if they are not present in memory.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">outer</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="c1"># Remembers x
+</span>    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="n">add5</span> <span class="o">=</span> <span class="nf">outer</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">add5</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># 15
+</span></code></pre></div></div>
+
+<h3 id="42-what-is-the-global-keyword">42. What is the <code class="language-plaintext highlighter-rouge">global</code> keyword?</h3>
+
+<p>Allows you to modify a global variable inside a local scope (function).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">def</span> <span class="nf">change</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">x</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">20</span>
+</code></pre></div></div>
+
+<h3 id="43-what-is-the-nonlocal-keyword">43. What is the <code class="language-plaintext highlighter-rouge">nonlocal</code> keyword?</h3>
+
+<p>Allows you to modify a variable in the <em>nearest enclosing scope</em> (not global). Used in nested functions.</p>
+
+<h3 id="44-default-argument-values-gotcha">44. Default Argument Values Gotcha.</h3>
+
+<p><strong>Question:</strong> What is the output?</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">extend_list</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">list</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="nb">list</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">list</span>
+
+<span class="n">list1</span> <span class="o">=</span> <span class="nf">extend_list</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">list2</span> <span class="o">=</span> <span class="nf">extend_list</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="p">[])</span>
+<span class="n">list3</span> <span class="o">=</span> <span class="nf">extend_list</span><span class="p">(</span><span class="sh">'</span><span class="s">a</span><span class="sh">'</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">list3</span><span class="p">)</span>
+</code></pre></div></div>
+<p><strong>Answer:</strong>
+<code class="language-plaintext highlighter-rouge">[10, 'a']</code> and <code class="language-plaintext highlighter-rouge">[10, 'a']</code>.
+Default arguments are evaluated <em>once</em> at function definition time, so the list is shared across calls.</p>
+
+<h3 id="45-what-is-currying">45. What is Currying?</h3>
+
+<p>Decomposing a function that takes multiple arguments into a sequence of functions that each take a single argument. (Not native to Python syntax but achievable with closures or <code class="language-plaintext highlighter-rouge">functools.partial</code>).</p>
+
+<h3 id="46-what-is-a-higher-order-function">46. What is a Higher-Order Function?</h3>
+
+<p>A function that takes another function as an argument or returns a function. (e.g., <code class="language-plaintext highlighter-rouge">map</code>, <code class="language-plaintext highlighter-rouge">decorator</code>).</p>
+
+<h3 id="47-difference-between-parameters-and-arguments">47. Difference between parameters and arguments?</h3>
+
+<ul>
+  <li><strong>Parameters:</strong> Variables listed in the function definition.</li>
+  <li><strong>Arguments:</strong> Actual values passed to the function when called.</li>
+</ul>
+
+<h3 id="48-can-you-force-keyword-only-arguments">48. Can you force Keyword-Only arguments?</h3>
+
+<p>Yes, by placing a <code class="language-plaintext highlighter-rouge">*</code> in the parameter list.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nf">func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># OK
+</span><span class="nf">func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># Error
+</span></code></pre></div></div>
+
+<h3 id="49-what-is-introspection-or-reflection">49. What is introspection (or reflection)?</h3>
+
+<p>The ability of a program to examine the type or properties of an object at runtime.
+Examples: <code class="language-plaintext highlighter-rouge">type()</code>, <code class="language-plaintext highlighter-rouge">id()</code>, <code class="language-plaintext highlighter-rouge">dir()</code>, <code class="language-plaintext highlighter-rouge">getattr()</code>, <code class="language-plaintext highlighter-rouge">hasattr()</code>.</p>
+
+<h3 id="50-how-to-create-a-function-generator">50. How to create a function generator?</h3>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">yield</code> keyword instead of <code class="language-plaintext highlighter-rouge">return</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">count_up_to</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">count</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">count</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<h2 id="part-4-data-structures-51-65">Part 4: Data Structures (51-65)</h2>
+
+<h3 id="51-what-is-the-time-complexity-of-looking-up-a-key-in-a-dictionary">51. What is the time complexity of looking up a key in a Dictionary?</h3>
+
+<p>O(1) on average (Constant time) because it uses a Hash Table.
+O(n) in worst case (Hash collisions, though rare).</p>
+
+<h3 id="52-how-does-a-hash-table-work">52. How does a Hash Table work?</h3>
+
+<p>It uses a hash function to compute an index into an array of buckets or slots, from which the desired value can be found.</p>
+
+<p><strong>Diagram: Hash Table</strong></p>
+<pre><code class="language-mermaid">graph LR
+    Key["Key: 'Apple'"] --&gt; HashFunc[Hash Function]
+    HashFunc --&gt; Index["Index: 3"]
+    Index --&gt; Bucket[Bucket 3: Value]
+</code></pre>
+
+<h3 id="53-what-is-the-difference-between-append-and-extend">53. What is the difference between <code class="language-plaintext highlighter-rouge">append()</code> and <code class="language-plaintext highlighter-rouge">extend()</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">append(x)</code>: Adds <code class="language-plaintext highlighter-rouge">x</code> as a single element to the end of the list.</li>
+  <li><code class="language-plaintext highlighter-rouge">extend(iterable)</code>: Appends all items from the iterable to the end.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">x</span><span class="p">.</span><span class="nf">append</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="c1"># [1, 2, [3, 4]]
+</span><span class="n">x</span><span class="p">.</span><span class="nf">extend</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="c1"># [1, 2, [3, 4], 3, 4]
+</span></code></pre></div></div>
+
+<h3 id="54-what-is-collectionsdefaultdict">54. What is <code class="language-plaintext highlighter-rouge">collections.defaultdict</code>?</h3>
+
+<p>A dictionary subclass that calls a factory function to supply missing values, avoiding <code class="language-plaintext highlighter-rouge">KeyError</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="n">d</span> <span class="o">=</span> <span class="nf">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">d</span><span class="p">[</span><span class="sh">'</span><span class="s">a</span><span class="sh">'</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># 'a' is initialized to 0, then incremented
+</span></code></pre></div></div>
+
+<h3 id="55-what-is-collectionscounter">55. What is <code class="language-plaintext highlighter-rouge">collections.Counter</code>?</h3>
+
+<p>A dict subclass for counting hashable objects.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nc">Counter</span><span class="p">(</span><span class="sh">'</span><span class="s">gallahad</span><span class="sh">'</span><span class="p">)</span>
+<span class="c1"># {'a': 3, 'l': 2, 'g': 1, 'h': 1, 'd': 1}
+</span></code></pre></div></div>
+
+<h3 id="56-what-is-collectionsnamedtuple">56. What is <code class="language-plaintext highlighter-rouge">collections.namedtuple</code>?</h3>
+
+<p>Factory function for creating tuple subclasses with named fields. Makes code more readable than accessing tuples by index.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="n">Point</span> <span class="o">=</span> <span class="nf">namedtuple</span><span class="p">(</span><span class="sh">'</span><span class="s">Point</span><span class="sh">'</span><span class="p">,</span> <span class="p">[</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">y</span><span class="sh">'</span><span class="p">])</span>
+<span class="n">p</span> <span class="o">=</span> <span class="nc">Point</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="c1"># 11
+</span></code></pre></div></div>
+
+<h3 id="57-what-is-a-deque">57. What is a Deque?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">collections.deque</code> (Double-Ended Queue). Thread-safe, memory efficient appends and pops from either side of the deque with approx O(1) performance. Lists are O(n) for pop(0).</p>
+
+<h3 id="58-how-are-lists-implemented-in-python">58. How are Lists implemented in Python?</h3>
+
+<p>Dynamic Arrays.
+They store pointers to objects. When the array is full, it doubles in size (over-allocation) to achieve amortized O(1) appends.</p>
+
+<h3 id="59-how-are-sets-implemented">59. How are Sets implemented?</h3>
+
+<p>Hash Tables (similar to Dictionaries, but with dummy values). This is why set elements must be hashable.</p>
+
+<h3 id="60-what-is-heapq">60. What is <code class="language-plaintext highlighter-rouge">heapq</code>?</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">heapq</code> module provides an implementation of the <strong>Heap queue</strong> algorithm (Priority Queue). It maintains the smallest element at index 0 (Min Heap).</p>
+
+<h3 id="61-how-to-merge-two-dictionaries">61. How to merge two dictionaries?</h3>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Old method.</strong> <code class="language-plaintext highlighter-rouge">z = x.copy(); z.update(y)</code></li>
+  <li><strong>Path B: Python 3.5+.</strong> <code class="language-plaintext highlighter-rouge">z = {**x, **y}</code></li>
+  <li><strong>Path C: Python 3.9+.</strong> <code class="language-plaintext highlighter-rouge">z = x | y</code> (Union operator).</li>
+</ul>
+
+<h3 id="62-how-to-remove-duplicates-from-a-list-while-preserving-order">62. How to remove duplicates from a list while preserving order?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">list(set(l))</code> destroys order.
+<strong>Solution:</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">seen</span> <span class="o">=</span> <span class="nf">set</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">l</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">seen</span> <span class="ow">or</span> <span class="n">seen</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">))]</span>
+</code></pre></div></div>
+<p><em>(Note: <code class="language-plaintext highlighter-rouge">seen.add(x)</code> returns None, which is Falsy)</em>.</p>
+
+<h3 id="63-what-is-frozenset">63. What is <code class="language-plaintext highlighter-rouge">frozenset</code>?</h3>
+
+<p>An immutable version of a Python set. Because it is immutable, it is hashable and can be used as a dictionary key or an element of another set.</p>
+
+<h3 id="64-what-is-a-weak-reference">64. What is a Weak Reference?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">weakref</code> module allows the programmer to create references to objects that do not increase the reference count. Useful for caching/caches to avoid memory leaks (holding objects in cache preventing GC).</p>
+
+<h3 id="65-difference-between-sort-and-sorted">65. Difference between <code class="language-plaintext highlighter-rouge">sort()</code> and <code class="language-plaintext highlighter-rouge">sorted()</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">list.sort()</code>: Sorts the list <strong>in-place</strong>. Returns <code class="language-plaintext highlighter-rouge">None</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">sorted(iterable)</code>: Returns a <strong>new sorted list</strong>. Original is unchanged.</li>
+</ul>
+
+<h2 id="part-5-object-oriented-programming-66-80">Part 5: Object-Oriented Programming (66-80)</h2>
+
+<h3 id="66-how-do-you-create-a-class">66. How do you create a Class?</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
+    <span class="n">species</span> <span class="o">=</span> <span class="sh">"</span><span class="s">Canis familiaris</span><span class="sh">"</span> <span class="c1"># Class Attribute
+</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="c1"># Instance Attribute
+</span>
+    <span class="k">def</span> <span class="nf">bark</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">name</span><span class="si">}</span><span class="s"> says Woof!</span><span class="sh">"</span>
+</code></pre></div></div>
+
+<h3 id="67-explain-inheritance">67. Explain Inheritance.</h3>
+
+<p>Allows a class (Child) to derive attributes and methods from another class (Parent).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Puppy</span><span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">bark</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sh">"</span><span class="s">Yap!</span><span class="sh">"</span>
+</code></pre></div></div>
+
+<h3 id="68-what-is-super">68. What is <code class="language-plaintext highlighter-rouge">super()</code>?</h3>
+
+<p>A built-in function that returns a proxy object (temporary object of the superclass) that allows you to access methods of the base class.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Puppy</span><span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="nf">super</span><span class="p">().</span><span class="nf">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+</code></pre></div></div>
+
+<h3 id="69-multiple-inheritance-in-python">69. Multiple Inheritance in Python?</h3>
+
+<p>Yes, Python supports it.
+<code class="language-plaintext highlighter-rouge">class C(A, B): pass</code></p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions Diamond Problem.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How does Python resolve method resolution order in the Diamond Problem?”</li>
+      <li><em>Answer:</em> It uses the C3 Linearization algorithm (MRO).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="70-what-is-mro-method-resolution-order">70. What is MRO (Method Resolution Order)?</h3>
+
+<p>The order in which Python looks for a method in a hierarchy of classes.
+Viewable via <code class="language-plaintext highlighter-rouge">ClassName.__mro__</code> or <code class="language-plaintext highlighter-rouge">ClassName.mro()</code>.</p>
+
+<h3 id="71-what-are-magic-methods-dunder-methods">71. What are Magic Methods (Dunder Methods)?</h3>
+
+<p>Special methods surrounded by double underscores. They allow instances of your classes to interact with built-in operators and functions.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">__init__</code>: Constructor.</li>
+  <li><code class="language-plaintext highlighter-rouge">__str__</code>: Readable string representation (for users).</li>
+  <li><code class="language-plaintext highlighter-rouge">__repr__</code>: Unambiguous string representation (for devs).</li>
+  <li><code class="language-plaintext highlighter-rouge">__len__</code>: for <code class="language-plaintext highlighter-rouge">len()</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">__add__</code>: for <code class="language-plaintext highlighter-rouge">+</code>.</li>
+</ul>
+
+<h3 id="72-difference-between-__str__-and-__repr__">72. Difference between <code class="language-plaintext highlighter-rouge">__str__</code> and <code class="language-plaintext highlighter-rouge">__repr__</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">__str__</code>: Called by <code class="language-plaintext highlighter-rouge">str(object)</code> and <code class="language-plaintext highlighter-rouge">print</code>. Intended to be readable.</li>
+  <li><code class="language-plaintext highlighter-rouge">__repr__</code>: Called by <code class="language-plaintext highlighter-rouge">repr(object)</code>. Intended to be unambiguous. Ideally <code class="language-plaintext highlighter-rouge">eval(repr(obj)) == obj</code>.</li>
+</ul>
+
+<h3 id="73-what-are-class-methods-and-static-methods">73. What are Class Methods and Static Methods?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">@classmethod</code>: Takes <code class="language-plaintext highlighter-rouge">cls</code> as first argument. Can access class state. Factory methods.</li>
+  <li><code class="language-plaintext highlighter-rouge">@staticmethod</code>: No implicit first argument. Just a function inside a class namespace.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyClass</span><span class="p">:</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_string</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nf">cls</span><span class="p">(...)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<h3 id="74-what-is-encapsulation">74. What is Encapsulation?</h3>
+
+<p>Restricting access to methods and variables.
+In Python, we use <code class="language-plaintext highlighter-rouge">_single_leading_underscore</code> (convention: protected) and <code class="language-plaintext highlighter-rouge">__double_leading_underscore</code> (name mangling: private).</p>
+
+<h3 id="75-what-is-name-mangling">75. What is Name Mangling?</h3>
+
+<p>When using <code class="language-plaintext highlighter-rouge">__var</code> inside a class, Python changes the name to <code class="language-plaintext highlighter-rouge">_ClassName__var</code> to prevent subclasses from accidentally overriding it.</p>
+
+<h3 id="76-what-is-polymorphism">76. What is Polymorphism?</h3>
+
+<p>The ability to present the same interface for different underlying forms (data types).
+<em>Example:</em> <code class="language-plaintext highlighter-rouge">len()</code> works on strings, lists, and dicts. <code class="language-plaintext highlighter-rouge">+</code> adds numbers but concatenates strings.</p>
+
+<h3 id="77-what-is-an-abstract-base-class-abc">77. What is an Abstract Base Class (ABC)?</h3>
+
+<p>A class that cannot be instantiated and requires subclasses to implement specific methods.
+Used to define interfaces.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="k">class</span> <span class="nc">Shape</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+</code></pre></div></div>
+
+<h3 id="78-what-is-__slots__">78. What is <code class="language-plaintext highlighter-rouge">__slots__</code>?</h3>
+
+<p>A mechanism to optimize memory usage by telling Python not to use a <code class="language-plaintext highlighter-rouge">__dict__</code> for instances, but instead allocate space for a fixed set of attributes.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
+    <span class="n">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">y</span><span class="sh">'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="79-what-is-duck-typing">79. What is Duck Typing?</h3>
+
+<p>“If it looks like a duck and quacks like a duck, it’s a duck.”
+Python doesn’t check types; it checks for the presence of methods/attributes at runtime.</p>
+
+<h3 id="80-what-is-a-metaclass">80. What is a Metaclass?</h3>
+
+<p>A class of a class. A class defines how an instance behaves; a metaclass defines how a class behaves.
+Everything in Python is an object, including classes. The default metaclass is <code class="language-plaintext highlighter-rouge">type</code>.
+Used for: Frameworks, API registration, singleton patterns.</p>
+
+<h2 id="part-6-advanced-topics--internals-81-100">Part 6: Advanced Topics &amp; Internals (81-100)</h2>
+
+<h3 id="81-what-is-a-decorator">81. What is a Decorator?</h3>
+
+<p>A design pattern that allows a user to add new functionality to an existing object without modifying its structure. In Python, it is a function that takes another function as an argument.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">my_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Before</span><span class="sh">"</span><span class="p">)</span>
+        <span class="nf">func</span><span class="p">()</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">After</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nd">@my_decorator</span>
+<span class="k">def</span> <span class="nf">say_hello</span><span class="p">():</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Hello!</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="82-how-do-you-create-a-decorator-with-arguments">82. How do you create a decorator with arguments?</h3>
+
+<p>You need three levels of nested functions.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">repeat</span><span class="p">(</span><span class="n">num_times</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">decorator_repeat</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">num_times</span><span class="p">):</span>
+                <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">decorator_repeat</span>
+
+<span class="nd">@repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="83-what-is-functoolswraps">83. What is <code class="language-plaintext highlighter-rouge">functools.wraps</code>?</h3>
+
+<p>A decorator used when defining a decorator. It copies the metadata (name, docstring) of the original function to the wrapper function. Without it, debugging is hard (function name becomes <code class="language-plaintext highlighter-rouge">wrapper</code>).</p>
+
+<h3 id="84-what-is-a-generator">84. What is a Generator?</h3>
+
+<p>A function that returns an iterator. It looks like a normal function except that it contains <code class="language-plaintext highlighter-rouge">yield</code> expressions.
+It generates a series of values over time, pausing execution and saving state between each <code class="language-plaintext highlighter-rouge">yield</code>.</p>
+
+<h3 id="85-generator-vs-iterator">85. Generator vs Iterator?</h3>
+
+<ul>
+  <li>Every generator is an iterator, but not vice versa.</li>
+  <li>Generators are easier to write (auto <code class="language-plaintext highlighter-rouge">__iter__</code> and <code class="language-plaintext highlighter-rouge">__next__</code>).</li>
+</ul>
+
+<h3 id="86-what-is-a-context-manager">86. What is a Context Manager?</h3>
+
+<p>An object that defines the runtime context to be established when executing a <code class="language-plaintext highlighter-rouge">with</code> statement.
+Must implement <code class="language-plaintext highlighter-rouge">__enter__</code> and <code class="language-plaintext highlighter-rouge">__exit__</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">FileManager</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="nb">file</span> <span class="o">=</span> <span class="nf">open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="nb">file</span>
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="nb">file</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="87-what-is-the-contextlib-module">87. What is the <code class="language-plaintext highlighter-rouge">contextlib</code> module?</h3>
+
+<p>Utilities for creating context managers.
+<code class="language-plaintext highlighter-rouge">@contextlib.contextmanager</code> decorator allows creating a context manager using a generator function (yield separates enter and exit logic).</p>
+
+<h3 id="88-explain-async-and-await-asyncio">88. Explain <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code> (Asyncio).</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">async def</code>: Defines a coroutine.</li>
+  <li><code class="language-plaintext highlighter-rouge">await</code>: Pauses execution of the coroutine until the awaitable (IO operation) completes.
+Used for concurrency (single-threaded cooperative multitasking), best for IO-bound tasks.</li>
+</ul>
+
+<h3 id="89-threading-vs-multiprocessing">89. Threading vs Multiprocessing?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">Threading</th>
+      <th style="text-align: left">Multiprocessing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Memory</strong></td>
+      <td style="text-align: left">Shared</td>
+      <td style="text-align: left">Separate</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>GIL</strong></td>
+      <td style="text-align: left">Yes (limits CPU parallelism)</td>
+      <td style="text-align: left">No (Bypasses GIL)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Use Case</strong></td>
+      <td style="text-align: left">I/O Bound (Network, Disk)</td>
+      <td style="text-align: left">CPU Bound (Calculations)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Overhead</strong></td>
+      <td style="text-align: left">Low</td>
+      <td style="text-align: left">High (Process creation)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="90-what-is-a-descriptor">90. What is a descriptor?</h3>
+
+<p>An object attribute with “binding behavior”, one whose attribute access has been overridden by methods in the descriptor protocol: <code class="language-plaintext highlighter-rouge">__get__</code>, <code class="language-plaintext highlighter-rouge">__set__</code>, and <code class="language-plaintext highlighter-rouge">__delete__</code>.
+Underlies properties, methods, static methods, class methods, and <code class="language-plaintext highlighter-rouge">super()</code>.</p>
+
+<h3 id="91-what-is-the-property-decorator">91. What is the <code class="language-plaintext highlighter-rouge">property</code> decorator?</h3>
+
+<p>A built-in descriptor that turns a method into a read-only attribute (getter), and allows defining setters and deleters.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">_x</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">_x</span>
+    <span class="nd">@x.setter</span>
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">_x</span> <span class="o">=</span> <span class="n">value</span>
+</code></pre></div></div>
+
+<h3 id="92-how-does-python-handle-circular-imports">92. How does Python handle circular imports?</h3>
+
+<p>If module A imports B, and B imports A, it can cause an <code class="language-plaintext highlighter-rouge">ImportError</code>.
+<strong>Solutions:</strong></p>
+<ol>
+  <li>Import inside the function/method (defer import).</li>
+  <li>Restructure code to remove circular dependency.</li>
+</ol>
+
+<h3 id="93-what-is-the-__call__-method">93. What is the <code class="language-plaintext highlighter-rouge">__call__</code> method?</h3>
+
+<p>Allows an instance of a class to be called as a function.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Adder</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="n">add</span> <span class="o">=</span> <span class="nc">Adder</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c1"># 5
+</span></code></pre></div></div>
+
+<h3 id="94-what-is-pickling-and-unpickling">94. What is Pickling and Unpickling?</h3>
+
+<ul>
+  <li><strong>Pickling:</strong> Serializing a Python object structure into a byte stream.</li>
+  <li><strong>Unpickling:</strong> Deserializing the byte stream back into an object.</li>
+  <li><strong>Security Risk:</strong> Never unpickle data received from an untrusted source (can execute arbitrary code).</li>
+</ul>
+
+<h3 id="95-what-is-the-difference-between-__new__-and-__init__">95. What is the difference between <code class="language-plaintext highlighter-rouge">__new__</code> and <code class="language-plaintext highlighter-rouge">__init__</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">__new__</code>: Static method. Creates the instance. Returns the instance.</li>
+  <li><code class="language-plaintext highlighter-rouge">__init__</code>: Instance method. Initializes the instance. Returns None.
+Use <code class="language-plaintext highlighter-rouge">__new__</code> when subclassing immutable types like tuple or str.</li>
+</ul>
+
+<h3 id="96-what-is-monkey-patching">96. What is Monkey Patching?</h3>
+
+<p>Dynamically changing a piece of code (class or module) at runtime.
+Useful for testing (mocking), but dangerous in production code.</p>
+
+<h3 id="97-what-is-the-purpose-of-__future__-module">97. What is the purpose of <code class="language-plaintext highlighter-rouge">__future__</code> module?</h3>
+
+<p>To allow using features from future Python versions in the current version.
+e.g., <code class="language-plaintext highlighter-rouge">from __future__ import print_function</code> in Python 2.</p>
+
+<h3 id="98-how-do-you-profile-python-code">98. How do you profile Python code?</h3>
+
+<ul>
+  <li><strong>cProfile:</strong> Deterministic profiling of Python programs.</li>
+  <li><strong>timeit:</strong> Measure execution time of small code snippets.</li>
+</ul>
+
+<h3 id="99-what-are-type-hints">99. What are Type Hints?</h3>
+
+<p>Introduced in Python 3.5 (PEP 484). Syntax to declare the type of a variable/parameter.
+Python runtime ignores them, but static analysis tools (mypy) use them.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sh">'</span><span class="s">Hello </span><span class="sh">'</span> <span class="o">+</span> <span class="n">name</span>
+</code></pre></div></div>
+
+<h3 id="100-what-is-the-walrus-operator-">100. What is the Walrus Operator <code class="language-plaintext highlighter-rouge">:=</code>?</h3>
+
+<p>Introduced in Python 3.8. Assignment expressions.
+Allows you to assign a value to a variable as part of an expression.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">if </span><span class="p">(</span><span class="n">n</span> <span class="p">:</span><span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">List is too long (</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s"> elements)</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+<p><strong>End of Interview Questions</strong></p>
+
+<h2 id="study-guide">Study Guide</h2>
+
+<p>To deepen your understanding of these concepts, check out the following resources:</p>
+
+<ul>
+  <li><strong>Official Documentation</strong>: <a href="https://docs.python.org/3/">Python Docs</a></li>
+  <li><strong>Internal Style Guide</strong>: <a href="../style_guides/python/python_style_guide.md">Python Style Guide</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

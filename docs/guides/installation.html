@@ -2,21 +2,21 @@
 <html lang="en" class="palette-1"><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Inkorporated Homelab Documentation | Comprehensive documentation for the Inkorporated homelab project.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Installation | Inkorporated Homelab Documentation</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Inkorporated Homelab Documentation" />
+<meta property="og:title" content="Installation" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Comprehensive documentation for the Inkorporated homelab project." />
-<meta property="og:description" content="Comprehensive documentation for the Inkorporated homelab project." />
+<meta name="description" content="Installation for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="Installation for Inkorporated." />
 <link rel="canonical" href="https://toxicoder.github.io/inkorporated/guides/installation.html" />
 <meta property="og:url" content="https://toxicoder.github.io/inkorporated/guides/installation.html" />
 <meta property="og:site_name" content="Inkorporated Homelab Documentation" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Inkorporated Homelab Documentation" />
+<meta name="twitter:title" content="Installation" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Comprehensive documentation for the Inkorporated homelab project.","headline":"Inkorporated Homelab Documentation","url":"https://toxicoder.github.io/inkorporated/guides/installation.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Installation for Inkorporated.","headline":"Installation","url":"https://toxicoder.github.io/inkorporated/guides/installation.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/inkorporated/assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -521,11 +521,32 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title"></h1>
+    <h1 class="post-title">Installation</h1>
   </header>
 
   <div class="post-content">
     <h1 id="implementation-phases">Implementation Phases</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Documentation for this infrastructure topic.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<h2 id="install-phases">Install phases</h2>
+
+<pre><code class="language-mermaid">flowchart TD
+  p1[Inventory and secrets] --&gt; p2[Terraform foundation]
+  p2 --&gt; p3[Ansible k3s]
+  p3 --&gt; p4[GitOps bootstrap]
+  p4 --&gt; p5[Verify observability]
+</code></pre>
+
+<ul>
+  <li>Operators can deploy and operate Inkorporated systems confidently.</li>
+</ul>
 
 <h2 id="phase-1-foundation--preparation">Phase 1: Foundation &amp; Preparation</h2>
 

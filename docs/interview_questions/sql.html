@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>SQL Interview Questions &amp; Answers (100+) | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="SQL Interview Questions &amp; Answers (100+)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="SQL Interview Questions &amp; Answers (100+) for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="SQL Interview Questions &amp; Answers (100+) for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/interview_questions/sql.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/interview_questions/sql.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SQL Interview Questions &amp; Answers (100+)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"SQL Interview Questions &amp; Answers (100+) for Inkorporated.","headline":"SQL Interview Questions &amp; Answers (100+)","url":"https://toxicoder.github.io/inkorporated/interview_questions/sql.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">SQL Interview Questions &amp; Answers (100+)</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="sql-interview-questions--answers-100">SQL Interview Questions &amp; Answers (100+)</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This guide contains 100+ SQL interview questions, ranging from basic to advanced. Each question includes a model answer and potential follow-up paths based on the candidate’s response.</p>
+
+<h2 id="part-1-basic-sql-concepts-1-20">Part 1: Basic SQL Concepts (1-20)</h2>
+
+<h3 id="1-what-is-the-difference-between-delete-truncate-and-drop">1. What is the difference between <code class="language-plaintext highlighter-rouge">DELETE</code>, <code class="language-plaintext highlighter-rouge">TRUNCATE</code>, and <code class="language-plaintext highlighter-rouge">DROP</code>?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Command</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Rollback?</th>
+      <th style="text-align: left">Performance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">DELETE</code></td>
+      <td style="text-align: left">DML</td>
+      <td style="text-align: left">Removes specific rows based on a WHERE clause.</td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">Slower (logs per row)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">TRUNCATE</code></td>
+      <td style="text-align: left">DDL</td>
+      <td style="text-align: left">Removes all rows from a table. Resets identity.</td>
+      <td style="text-align: left">No (usually)</td>
+      <td style="text-align: left">Faster (minimal logging)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">DROP</code></td>
+      <td style="text-align: left">DDL</td>
+      <td style="text-align: left">Removes the entire table structure and data.</td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">Fast</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions transaction logs.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Why does <code class="language-plaintext highlighter-rouge">TRUNCATE</code> generate less log volume than <code class="language-plaintext highlighter-rouge">DELETE</code>?”</li>
+      <li><em>Answer:</em> <code class="language-plaintext highlighter-rouge">TRUNCATE</code> logs the deallocation of data pages, while <code class="language-plaintext highlighter-rouge">DELETE</code> logs the deletion of individual rows.</li>
+    </ul>
+  </li>
+  <li><strong>Path B: Candidate focuses on the <code class="language-plaintext highlighter-rouge">WHERE</code> clause.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Can you use <code class="language-plaintext highlighter-rouge">TRUNCATE</code> with a <code class="language-plaintext highlighter-rouge">WHERE</code> clause?”</li>
+      <li><em>Answer:</em> No, <code class="language-plaintext highlighter-rouge">TRUNCATE</code> is all-or-nothing for the table data.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-explain-the-order-of-execution-in-a-sql-query">2. Explain the order of execution in a SQL query.</h3>
+
+<p>Most candidates write SQL in the order <code class="language-plaintext highlighter-rouge">SELECT</code> -&gt; <code class="language-plaintext highlighter-rouge">FROM</code> -&gt; <code class="language-plaintext highlighter-rouge">WHERE</code>. However, the engine executes them differently.</p>
+
+<pre><code class="language-mermaid">graph LR
+    A[FROM/JOIN] --&gt; B[WHERE]
+    B --&gt; C[GROUP BY]
+    C --&gt; D[HAVING]
+    D --&gt; E[SELECT]
+    E --&gt; F[ORDER BY]
+    F --&gt; G[LIMIT]
+</code></pre>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate gets it right.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Since <code class="language-plaintext highlighter-rouge">SELECT</code> is executed after <code class="language-plaintext highlighter-rouge">WHERE</code>, can I use a column alias defined in <code class="language-plaintext highlighter-rouge">SELECT</code> inside the <code class="language-plaintext highlighter-rouge">WHERE</code> clause?”</li>
+      <li><em>Answer:</em> No, because the <code class="language-plaintext highlighter-rouge">WHERE</code> clause is evaluated before the <code class="language-plaintext highlighter-rouge">SELECT</code> clause generates the alias.</li>
+    </ul>
+  </li>
+  <li><strong>Path B: Candidate forgets <code class="language-plaintext highlighter-rouge">HAVING</code>.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Where does <code class="language-plaintext highlighter-rouge">HAVING</code> fit in? Before or after <code class="language-plaintext highlighter-rouge">GROUP BY</code>?”</li>
+      <li><em>Answer:</em> After <code class="language-plaintext highlighter-rouge">GROUP BY</code>, as it filters the aggregated groups.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="3-what-is-a-primary-key">3. What is a Primary Key?</h3>
+
+<p>A <strong>Primary Key</strong> is a column (or set of columns) that uniquely identifies each row in a table. It must contain UNIQUE values and cannot be NULL.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions ‘Composite Keys’.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “When would you use a composite primary key over a surrogate key (like an auto-incrementing ID)?”</li>
+      <li><em>Answer:</em> When there is a natural unique combination of data (e.g., <code class="language-plaintext highlighter-rouge">StudentId</code> + <code class="language-plaintext highlighter-rouge">CourseId</code> in an enrollment table) and you want to enforce that uniqueness strictly without an extra ID column.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="4-what-is-the-difference-between-where-and-having">4. What is the difference between <code class="language-plaintext highlighter-rouge">WHERE</code> and <code class="language-plaintext highlighter-rouge">HAVING</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">WHERE</code>: Filters rows <strong>before</strong> aggregation.</li>
+  <li><code class="language-plaintext highlighter-rouge">HAVING</code>: Filters groups <strong>after</strong> aggregation.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate is unsure.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Can I use <code class="language-plaintext highlighter-rouge">count(*)</code> in a <code class="language-plaintext highlighter-rouge">WHERE</code> clause?”</li>
+      <li><em>Answer:</em> No, aggregate functions cannot be used in <code class="language-plaintext highlighter-rouge">WHERE</code>. They must be used in <code class="language-plaintext highlighter-rouge">HAVING</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="5-what-are-the-different-types-of-normalization">5. What are the different types of Normalization?</h3>
+
+<p>Normalization organizes data to reduce redundancy and improve data integrity.</p>
+
+<ul>
+  <li><strong>1NF:</strong> Atomic values (no repeating groups).</li>
+  <li><strong>2NF:</strong> 1NF + No partial dependency (all non-key attributes depend on the <em>whole</em> primary key).</li>
+  <li><strong>3NF:</strong> 2NF + No transitive dependency (non-key attributes depend <em>only</em> on the primary key).</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions Denormalization.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Why would we ever want to denormalize a database?”</li>
+      <li><em>Answer:</em> For read performance. Reducing joins by keeping redundant data can speed up complex queries (e.g., in Data Warehousing).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="6-what-is-a-foreign-key">6. What is a Foreign Key?</h3>
+
+<p>A Foreign Key is a field (or collection of fields) in one table, that refers to the Primary Key in another table. It enforces <strong>Referential Integrity</strong>.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions ‘Cascading’.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What does <code class="language-plaintext highlighter-rouge">ON DELETE CASCADE</code> do?”</li>
+      <li><em>Answer:</em> If the parent record is deleted, all child records referencing it are automatically deleted.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="7-what-is-union-vs-union-all">7. What is <code class="language-plaintext highlighter-rouge">UNION</code> vs <code class="language-plaintext highlighter-rouge">UNION ALL</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">UNION</code>: Combines result sets of two or more SELECT statements and <strong>removes duplicates</strong>.</li>
+  <li><code class="language-plaintext highlighter-rouge">UNION ALL</code>: Combines result sets and <strong>keeps duplicates</strong>.</li>
+</ul>
+
+<p><strong>Chart: Performance Comparison</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Operation</th>
+      <th style="text-align: left">Sorts Data?</th>
+      <th style="text-align: left">Removes Duplicates?</th>
+      <th style="text-align: left">Speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">UNION</code></td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">Slower</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">UNION ALL</code></td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">Faster</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate focuses on performance.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “If you know your datasets have no overlapping data, which one should you use?”</li>
+      <li><em>Answer:</em> <code class="language-plaintext highlighter-rouge">UNION ALL</code>, to save the cost of the duplicate check/sort.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="8-explain-null-values-in-sql">8. Explain <code class="language-plaintext highlighter-rouge">NULL</code> values in SQL.</h3>
+
+<p><code class="language-plaintext highlighter-rouge">NULL</code> represents missing or undefined data. It is not equal to 0 or an empty string <code class="language-plaintext highlighter-rouge">""</code>.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Handling NULLs.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What is the result of <code class="language-plaintext highlighter-rouge">SELECT * FROM Table WHERE Column &lt;&gt; NULL</code>?”</li>
+      <li><em>Answer:</em> It returns nothing. Comparison with NULL always results in <code class="language-plaintext highlighter-rouge">UNKNOWN</code>. You must use <code class="language-plaintext highlighter-rouge">IS NOT NULL</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="9-what-is-a-wildcard">9. What is a wildcard?</h3>
+
+<p>Wildcards are special characters used with the <code class="language-plaintext highlighter-rouge">LIKE</code> operator to search patterns.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">%</code> - Represents zero or more characters.</li>
+  <li><code class="language-plaintext highlighter-rouge">_</code> - Represents a single character.</li>
+</ul>
+
+<h3 id="10-what-is-an-alias-in-sql">10. What is an Alias in SQL?</h3>
+
+<p>An alias is a temporary name given to a table or column for the duration of a specific query.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">first_name</span> <span class="k">AS</span> <span class="n">Name</span>
+<span class="k">FROM</span> <span class="n">employees</span> <span class="k">AS</span> <span class="n">e</span>
+</code></pre></div></div>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Code readability.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Can aliases be used in the <code class="language-plaintext highlighter-rouge">WHERE</code> clause?”</li>
+      <li><em>Answer:</em> No (standard SQL), because <code class="language-plaintext highlighter-rouge">WHERE</code> executes before <code class="language-plaintext highlighter-rouge">SELECT</code> where the alias is assigned.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="11-what-is-the-distinct-keyword-used-for">11. What is the <code class="language-plaintext highlighter-rouge">DISTINCT</code> keyword used for?</h3>
+
+<p>It is used to return only distinct (different) values.</p>
+
+<h3 id="12-what-are-sql-constraints">12. What are SQL Constraints?</h3>
+
+<p>Rules applied to data columns.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">NOT NULL</code></li>
+  <li><code class="language-plaintext highlighter-rouge">UNIQUE</code></li>
+  <li><code class="language-plaintext highlighter-rouge">PRIMARY KEY</code></li>
+  <li><code class="language-plaintext highlighter-rouge">FOREIGN KEY</code></li>
+  <li><code class="language-plaintext highlighter-rouge">CHECK</code></li>
+  <li><code class="language-plaintext highlighter-rouge">DEFAULT</code></li>
+</ul>
+
+<h3 id="13-what-is-a-view">13. What is a View?</h3>
+
+<p>A virtual table based on the result-set of an SQL statement. It contains rows and columns, just like a real table.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions security.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How do Views improve security?”</li>
+      <li><em>Answer:</em> They can restrict access to specific columns or rows without giving users access to the underlying full tables.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="14-what-is-an-index">14. What is an Index?</h3>
+
+<p>A data structure that improves the speed of data retrieval operations on a database table.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate says ‘makes everything faster’.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Does an index make <code class="language-plaintext highlighter-rouge">INSERT</code> or <code class="language-plaintext highlighter-rouge">UPDATE</code> statements faster?”</li>
+      <li><em>Answer:</em> No, it usually slows them down because the index must also be updated.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="15-what-is-the-difference-between-char-and-varchar">15. What is the difference between <code class="language-plaintext highlighter-rouge">CHAR</code> and <code class="language-plaintext highlighter-rouge">VARCHAR</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CHAR(n)</code>: Fixed length. Pads with spaces. Faster for fixed-length data.</li>
+  <li><code class="language-plaintext highlighter-rouge">VARCHAR(n)</code>: Variable length. Stores only characters used + length info. Space efficient.</li>
+</ul>
+
+<h3 id="16-what-is-the-between-operator">16. What is the <code class="language-plaintext highlighter-rouge">BETWEEN</code> operator?</h3>
+
+<p>Selects values within a given range. The values can be numbers, text, or dates. It is inclusive: <code class="language-plaintext highlighter-rouge">begin</code> and <code class="language-plaintext highlighter-rouge">end</code> values are included.</p>
+
+<h3 id="17-what-is-the-in-operator">17. What is the <code class="language-plaintext highlighter-rouge">IN</code> operator?</h3>
+
+<p>Allows you to specify multiple values in a <code class="language-plaintext highlighter-rouge">WHERE</code> clause. It is essentially a shorthand for multiple <code class="language-plaintext highlighter-rouge">OR</code> conditions.</p>
+
+<h3 id="18-what-acts-as-a-placeholder-for-a-missing-value">18. What acts as a placeholder for a missing value?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">NULL</code>.</p>
+
+<h3 id="19-how-do-you-select-all-columns-from-a-table-named-users">19. How do you select all columns from a table named <code class="language-plaintext highlighter-rouge">Users</code>?</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Users</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="20-how-do-you-return-the-number-of-records-that-have-non-null-values-in-the-price-column">20. How do you return the number of records that have non-null values in the <code class="language-plaintext highlighter-rouge">Price</code> column?</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">Price</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">Products</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><em>(Note: <code class="language-plaintext highlighter-rouge">COUNT(*)</code> counts rows including nulls, <code class="language-plaintext highlighter-rouge">COUNT(column)</code> counts non-nulls).</em></p>
+
+<h2 id="part-2-joins--set-operations-21-40">Part 2: Joins &amp; Set Operations (21-40)</h2>
+
+<h3 id="21-explain-the-different-types-of-joins">21. Explain the different types of JOINs.</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Join Type</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Diagram Representation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">INNER JOIN</code></td>
+      <td style="text-align: left">Returns records that have matching values in both tables.</td>
+      <td style="text-align: left">Intersection (A ∩ B)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">LEFT JOIN</code></td>
+      <td style="text-align: left">Returns all records from the left table, and the matched records from the right table.</td>
+      <td style="text-align: left">Left Circle (A)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RIGHT JOIN</code></td>
+      <td style="text-align: left">Returns all records from the right table, and the matched records from the left table.</td>
+      <td style="text-align: left">Right Circle (B)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">FULL JOIN</code></td>
+      <td style="text-align: left">Returns all records when there is a match in either left or right table.</td>
+      <td style="text-align: left">Union (A ∪ B)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions Cross Join.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What is a CROSS JOIN and when is it dangerous?”</li>
+      <li><em>Answer:</em> Cartesian product. It matches every row of A with every row of B. Dangerous on large tables as it returns N*M rows.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="22-what-is-a-self-join">22. What is a Self-Join?</h3>
+
+<p>A self-join is a regular join, but the table is joined with itself. It requires using table aliases to distinguish the two instances.</p>
+
+<p><em>Example Scenario:</em> Finding employees and their managers in a single <code class="language-plaintext highlighter-rouge">Employees</code> table.</p>
+
+<h3 id="23-what-is-a-cross-join">23. What is a Cross Join?</h3>
+
+<p>Produces a Cartesian product of the two tables.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">TableA</span> <span class="k">CROSS</span> <span class="k">JOIN</span> <span class="n">TableB</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>If TableA has 5 rows and TableB has 10 rows, the result has 50 rows.</p>
+
+<h3 id="24-how-do-you-find-records-in-table-a-that-are-not-in-table-b">24. How do you find records in Table A that are NOT in Table B?</h3>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Using <code class="language-plaintext highlighter-rouge">LEFT JOIN</code>.</strong>
+    <ul>
+      <li><em>Answer:</em>
+        <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">A</span><span class="p">.</span><span class="n">id</span> <span class="k">FROM</span> <span class="n">A</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">B</span> <span class="k">ON</span> <span class="n">A</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">id</span>
+<span class="k">WHERE</span> <span class="n">B</span><span class="p">.</span><span class="n">id</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Path B: Using <code class="language-plaintext highlighter-rouge">NOT IN</code>.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What is the risk of using <code class="language-plaintext highlighter-rouge">NOT IN</code> if Table B contains NULLs?”</li>
+      <li><em>Answer:</em> If the subquery returns ANY <code class="language-plaintext highlighter-rouge">NULL</code>, <code class="language-plaintext highlighter-rouge">NOT IN</code> will return an empty set. <code class="language-plaintext highlighter-rouge">LEFT JOIN</code> or <code class="language-plaintext highlighter-rouge">NOT EXISTS</code> is safer.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="25-what-is-the-difference-between-join-and-union">25. What is the difference between <code class="language-plaintext highlighter-rouge">JOIN</code> and <code class="language-plaintext highlighter-rouge">UNION</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JOIN</code>: Combines columns from two tables based on a related column. (Horizontal growth)</li>
+  <li><code class="language-plaintext highlighter-rouge">UNION</code>: Combines rows from two queries. (Vertical growth)</li>
+</ul>
+
+<h3 id="26-can-you-join-a-table-to-itself-without-using-a-self-join-syntax">26. Can you join a table to itself without using a Self-Join syntax?</h3>
+
+<p>Technically, no. A “Self-Join” isn’t a unique keyword, it is a concept. You use standard <code class="language-plaintext highlighter-rouge">INNER</code> or <code class="language-plaintext highlighter-rouge">LEFT</code> join syntax but reference the same table twice with aliases.</p>
+
+<h3 id="27-what-happens-if-you-join-two-tables-on-a-column-that-has-null-values">27. What happens if you join two tables on a column that has NULL values?</h3>
+
+<p>NULL values never match other NULL values in standard SQL (unless <code class="language-plaintext highlighter-rouge">ANSI_NULLS</code> is off, which is rare).
+So, rows with NULL in the joining column will typically be excluded from an <code class="language-plaintext highlighter-rouge">INNER JOIN</code>.</p>
+
+<h3 id="28-what-is-a-natural-join">28. What is a Natural Join?</h3>
+
+<p>A <code class="language-plaintext highlighter-rouge">NATURAL JOIN</code> automatically joins tables based on columns with the same name and data types.
+<em>Risk:</em> If a new column with a matching name is added to one table later, the query logic might silently change or break.</p>
+
+<h3 id="29-write-a-query-to-find-the-second-highest-salary">29. Write a query to find the second highest salary.</h3>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Using <code class="language-plaintext highlighter-rouge">LIMIT/OFFSET</code>.</strong>
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">Salary</span> <span class="k">FROM</span> <span class="n">Employees</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">Salary</span> <span class="k">DESC</span> <span class="k">LIMIT</span> <span class="mi">1</span> <span class="k">OFFSET</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Path B: Using Subquery <code class="language-plaintext highlighter-rouge">MAX</code>.</strong>
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">Salary</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">Employees</span> <span class="k">WHERE</span> <span class="n">Salary</span> <span class="o">&lt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">Salary</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">Employees</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="30-how-do-you-perform-a-running-total">30. How do you perform a “Running Total”?</h3>
+
+<p>Using a Window Function (best practice) or a Self-Join (legacy).</p>
+
+<p><strong>Best Practice:</strong></p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="nb">Date</span><span class="p">,</span> <span class="n">Amount</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">Amount</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">Date</span><span class="p">)</span> <span class="k">as</span> <span class="n">RunningTotal</span>
+<span class="k">FROM</span> <span class="n">Sales</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="31-what-is-a-fan-out-trap-in-joins">31. What is a “Fan-out” trap in Joins?</h3>
+
+<p>When joining two tables with a 1-to-many relationship, and then joining a third table with a 1-to-many relationship, the intermediate result explodes, causing incorrect aggregate calculations (e.g., SUM counts rows multiple times).</p>
+
+<h3 id="32-what-is-a-semi-join">32. What is a <code class="language-plaintext highlighter-rouge">SEMI JOIN</code>?</h3>
+
+<p>Returns rows from the first table where one or more matches exist in the second table. Often implemented with <code class="language-plaintext highlighter-rouge">EXISTS</code>. Unlike a join, it doesn’t duplicate rows from the first table if multiple matches exist in the second.</p>
+
+<h3 id="33-what-is-an-anti-join">33. What is an <code class="language-plaintext highlighter-rouge">ANTI JOIN</code>?</h3>
+
+<p>Returns rows from the first table where NO matches exist in the second table. Often implemented with <code class="language-plaintext highlighter-rouge">NOT EXISTS</code>.</p>
+
+<h3 id="34-explain-the-difference-between-inner-join-and-where-clause-for-filtering">34. Explain the difference between <code class="language-plaintext highlighter-rouge">INNER JOIN</code> and <code class="language-plaintext highlighter-rouge">WHERE</code> clause for filtering.</h3>
+
+<p>Functionally similar for Inner Joins.
+However, for <code class="language-plaintext highlighter-rouge">LEFT JOIN</code>, placing a condition in the <code class="language-plaintext highlighter-rouge">ON</code> clause vs the <code class="language-plaintext highlighter-rouge">WHERE</code> clause is critical.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ON</code>: Filters the join before it happens (preserves left rows).</li>
+  <li><code class="language-plaintext highlighter-rouge">WHERE</code>: Filters the result <em>after</em> the join (turns a Left Join into an Inner Join if filtering on the right table).</li>
+</ul>
+
+<h3 id="35-what-is-a-composite-key-join">35. What is a composite key join?</h3>
+
+<p>Joining on multiple columns.</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span> <span class="n">TableA</span> <span class="n">a</span>
+<span class="k">JOIN</span> <span class="n">TableB</span> <span class="n">b</span> <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">col1</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">col1</span> <span class="k">AND</span> <span class="n">a</span><span class="p">.</span><span class="n">col2</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">col2</span>
+</code></pre></div></div>
+
+<h3 id="36-how-to-select-random-rows-from-a-table">36. How to select random rows from a table?</h3>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: MySQL.</strong> <code class="language-plaintext highlighter-rouge">ORDER BY RAND() LIMIT 1</code> (Slow on large tables).</li>
+  <li><strong>Path B: SQL Server.</strong> <code class="language-plaintext highlighter-rouge">ORDER BY NEWID()</code>.</li>
+  <li><strong>Path C: PostgreSQL.</strong> <code class="language-plaintext highlighter-rouge">ORDER BY RANDOM()</code>.</li>
+</ul>
+
+<h3 id="37-difference-between-intersect-and-minus-or-except">37. Difference between <code class="language-plaintext highlighter-rouge">INTERSECT</code> and <code class="language-plaintext highlighter-rouge">MINUS</code> (or <code class="language-plaintext highlighter-rouge">EXCEPT</code>)?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">INTERSECT</code>: Returns rows common to both query results.</li>
+  <li><code class="language-plaintext highlighter-rouge">MINUS</code>/<code class="language-plaintext highlighter-rouge">EXCEPT</code>: Returns rows in the first result but not the second.</li>
+</ul>
+
+<h3 id="38-how-to-find-duplicate-records-in-a-table">38. How to find duplicate records in a table?</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">ColumnA</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="k">Table</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">ColumnA</span>
+<span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="39-how-do-you-delete-duplicate-rows-but-keep-one">39. How do you delete duplicate rows but keep one?</h3>
+
+<p><strong>Using CTE (Common Table Expressions) and <code class="language-plaintext highlighter-rouge">ROW_NUMBER()</code>:</strong></p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">WITH</span> <span class="n">CTE</span> <span class="k">AS</span> <span class="p">(</span>
+    <span class="k">SELECT</span> <span class="o">*</span><span class="p">,</span> <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">PARTITION</span> <span class="k">BY</span> <span class="n">ID</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">ID</span><span class="p">)</span> <span class="k">as</span> <span class="n">rn</span>
+    <span class="k">FROM</span> <span class="k">Table</span>
+<span class="p">)</span>
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">CTE</span> <span class="k">WHERE</span> <span class="n">rn</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="40-what-is-a-recursive-cte">40. What is a recursive CTE?</h3>
+
+<p>A CTE that references itself. Useful for hierarchical data (e.g., Organization Charts, Bill of Materials).</p>
+
+<pre><code class="language-mermaid">graph TD
+    A[Root] --&gt; B[Child 1]
+    A --&gt; C[Child 2]
+    B --&gt; D[Grandchild 1]
+</code></pre>
+
+<h2 id="part-3-aggregation--grouping-41-60">Part 3: Aggregation &amp; Grouping (41-60)</h2>
+
+<h3 id="41-what-is-the-difference-between-count-and-countcolumn_name">41. What is the difference between <code class="language-plaintext highlighter-rouge">COUNT(*)</code> and <code class="language-plaintext highlighter-rouge">COUNT(column_name)</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">COUNT(*)</code>: Counts all rows in the result set, including those with NULL values.</li>
+  <li><code class="language-plaintext highlighter-rouge">COUNT(column_name)</code>: Counts only rows where <code class="language-plaintext highlighter-rouge">column_name</code> is NOT NULL.</li>
+</ul>
+
+<h3 id="42-can-you-group-by-a-column-that-is-not-selected">42. Can you group by a column that is not selected?</h3>
+
+<p>Yes, standard SQL allows grouping by a column that is not in the <code class="language-plaintext highlighter-rouge">SELECT</code> list. However, you cannot select a non-aggregated column that is not in the <code class="language-plaintext highlighter-rouge">GROUP BY</code> list (unless using MySQL with specific settings or functional dependencies).</p>
+
+<h3 id="43-how-does-group-by-interact-with-null-values">43. How does <code class="language-plaintext highlighter-rouge">GROUP BY</code> interact with NULL values?</h3>
+
+<p>SQL considers all NULLs to be equal for grouping purposes. Therefore, all NULL values are grouped into a single bucket.</p>
+
+<h3 id="44-write-a-query-to-find-the-department-with-the-highest-average-salary">44. Write a query to find the department with the highest average salary.</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">DepartmentID</span><span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">Salary</span><span class="p">)</span> <span class="k">as</span> <span class="n">AvgSalary</span>
+<span class="k">FROM</span> <span class="n">Employees</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">DepartmentID</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">AvgSalary</span> <span class="k">DESC</span>
+<span class="k">LIMIT</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Using CTE.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “If there is a tie, how do you return both?”</li>
+      <li><em>Answer:</em> Use <code class="language-plaintext highlighter-rouge">RANK()</code> or <code class="language-plaintext highlighter-rouge">DENSE_RANK()</code> in a CTE/Subquery and filter where rank = 1.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="45-what-is-the-having-clause">45. What is the <code class="language-plaintext highlighter-rouge">HAVING</code> clause?</h3>
+
+<p>(Already covered briefly in #4, but deeper dive)
+It filters records that summarize the group.
+<em>Example:</em> <code class="language-plaintext highlighter-rouge">SELECT Dept, SUM(Sal) FROM Emp GROUP BY Dept HAVING SUM(Sal) &gt; 10000</code>.</p>
+
+<h3 id="46-can-you-use-an-alias-in-the-having-clause">46. Can you use an alias in the <code class="language-plaintext highlighter-rouge">HAVING</code> clause?</h3>
+
+<p>It depends on the SQL dialect.</p>
+<ul>
+  <li><strong>MySQL:</strong> Yes.</li>
+  <li><strong>SQL Server/Standard SQL:</strong> Generally No (because <code class="language-plaintext highlighter-rouge">HAVING</code> is evaluated before <code class="language-plaintext highlighter-rouge">SELECT</code>). You must repeat the aggregate function.</li>
+</ul>
+
+<h3 id="47-what-is-rollup">47. What is <code class="language-plaintext highlighter-rouge">ROLLUP</code>?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">ROLLUP</code> is an extension of the <code class="language-plaintext highlighter-rouge">GROUP BY</code> clause that produces sub-totals and a grand total.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">Region</span><span class="p">,</span> <span class="n">Country</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">Sales</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">Orders</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="k">ROLLUP</span> <span class="p">(</span><span class="n">Region</span><span class="p">,</span> <span class="n">Country</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="48-what-is-cube">48. What is <code class="language-plaintext highlighter-rouge">CUBE</code>?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">CUBE</code> generates sub-totals for <em>all possible combinations</em> of the grouping columns. It produces more rows than <code class="language-plaintext highlighter-rouge">ROLLUP</code>.</p>
+
+<p><strong>Table: ROLLUP vs CUBE</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Group By (A, B)</th>
+      <th style="text-align: left">Resulting Groupings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ROLLUP(A, B)</code></td>
+      <td style="text-align: left">(A, B), (A), ()</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CUBE(A, B)</code></td>
+      <td style="text-align: left">(A, B), (A), (B), ()</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="49-what-is-grouping-sets">49. What is <code class="language-plaintext highlighter-rouge">GROUPING SETS</code>?</h3>
+
+<p>It allows you to specify exactly which groupings you want to compute, rather than all combinations (CUBE) or hierarchical ones (ROLLUP). It is more efficient if you only need specific aggregates.</p>
+
+<h3 id="50-how-do-you-pivot-data-in-sql">50. How do you pivot data in SQL?</h3>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: <code class="language-plaintext highlighter-rouge">CASE WHEN</code>.</strong> (Universal standard)
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>
+  <span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span> <span class="k">WHEN</span> <span class="nb">Year</span> <span class="o">=</span> <span class="mi">2020</span> <span class="k">THEN</span> <span class="n">Revenue</span> <span class="k">END</span><span class="p">)</span> <span class="k">as</span> <span class="n">Rev2020</span><span class="p">,</span>
+  <span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span> <span class="k">WHEN</span> <span class="nb">Year</span> <span class="o">=</span> <span class="mi">2021</span> <span class="k">THEN</span> <span class="n">Revenue</span> <span class="k">END</span><span class="p">)</span> <span class="k">as</span> <span class="n">Rev2021</span>
+<span class="k">FROM</span> <span class="n">Sales</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Path B: <code class="language-plaintext highlighter-rouge">PIVOT</code> operator.</strong> (SQL Server / Oracle)</li>
+</ul>
+
+<h3 id="51-how-do-you-unpivot-data">51. How do you unpivot data?</h3>
+
+<p>Converting columns back into rows.</p>
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">UNION ALL</code>.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">UNPIVOT</code> operator (SQL Server/Oracle).</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">CROSS APPLY</code> with <code class="language-plaintext highlighter-rouge">VALUES</code> (SQL Server).</li>
+</ul>
+
+<h3 id="52-what-is-the-difference-between-where-and-on-in-a-specific-aggregation-context">52. What is the difference between <code class="language-plaintext highlighter-rouge">WHERE</code> and <code class="language-plaintext highlighter-rouge">ON</code> in a specific aggregation context?</h3>
+
+<p>If filtering before aggregation, use <code class="language-plaintext highlighter-rouge">WHERE</code>. If filtering the joined rows before aggregation, use <code class="language-plaintext highlighter-rouge">ON</code>.
+<em>Important:</em> Filtering in <code class="language-plaintext highlighter-rouge">WHERE</code> on a <code class="language-plaintext highlighter-rouge">LEFT JOIN</code>ed table turns it into an <code class="language-plaintext highlighter-rouge">INNER JOIN</code>.</p>
+
+<h3 id="53-how-to-find-the-top-3-categories-by-sales">53. How to find the top 3 categories by sales?</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">Category</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">Sales</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">Orders</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">Category</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="k">SUM</span><span class="p">(</span><span class="n">Sales</span><span class="p">)</span> <span class="k">DESC</span>
+<span class="k">LIMIT</span> <span class="mi">3</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="54-how-to-count-distinct-items-in-a-group">54. How to count distinct items in a group?</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">Department</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="n">EmployeeID</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">Employees</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">Department</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="55-what-aggregate-functions-return-a-different-data-type-than-the-input">55. What aggregate functions return a different data type than the input?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">COUNT()</code> always returns an Integer (or BigInt).</li>
+  <li><code class="language-plaintext highlighter-rouge">AVG()</code> usually returns a Float/Decimal, even if input is Integer.</li>
+</ul>
+
+<h3 id="56-can-you-nest-aggregate-functions">56. Can you nest aggregate functions?</h3>
+
+<p>No, you cannot do <code class="language-plaintext highlighter-rouge">MAX(SUM(Salary))</code>. You must use a subquery or CTE.
+<em>Step 1:</em> Calculate SUM(Salary) per group.
+<em>Step 2:</em> Calculate MAX() from that result.</p>
+
+<h3 id="57-what-is-the-impact-of-indexing-on-aggregation">57. What is the impact of indexing on aggregation?</h3>
+
+<p>Indexes can significantly speed up <code class="language-plaintext highlighter-rouge">MIN()</code>, <code class="language-plaintext highlighter-rouge">MAX()</code>, and <code class="language-plaintext highlighter-rouge">COUNT()</code> operations, especially if the index covers the column being aggregated. A “Covering Index” avoids accessing the table rows entirely.</p>
+
+<h3 id="58-calculate-the-percentage-contribution-of-each-row-to-the-total-sum">58. Calculate the percentage contribution of each row to the total sum.</h3>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Using Window Function.</strong>
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Amount</span><span class="p">,</span>
+       <span class="n">Amount</span> <span class="o">*</span> <span class="mi">100</span><span class="p">.</span><span class="mi">0</span> <span class="o">/</span> <span class="k">SUM</span><span class="p">(</span><span class="n">Amount</span><span class="p">)</span> <span class="n">OVER</span><span class="p">()</span> <span class="k">as</span> <span class="n">Pct</span>
+<span class="k">FROM</span> <span class="n">Sales</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Path B: Using Subquery.</strong>
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Amount</span><span class="p">,</span>
+       <span class="n">Amount</span> <span class="o">*</span> <span class="mi">100</span><span class="p">.</span><span class="mi">0</span> <span class="o">/</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">SUM</span><span class="p">(</span><span class="n">Amount</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">Sales</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">Sales</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="59-how-to-find-groups-that-have-at-least-two-specific-items">59. How to find groups that have <em>at least</em> two specific items?</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">OrderID</span>
+<span class="k">FROM</span> <span class="n">OrderDetails</span>
+<span class="k">WHERE</span> <span class="n">ProductID</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">'A'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">)</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">OrderID</span>
+<span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="n">ProductID</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="60-what-is-string_agg-or-group_concat">60. What is <code class="language-plaintext highlighter-rouge">string_agg</code> or <code class="language-plaintext highlighter-rouge">group_concat</code>?</h3>
+
+<p>It concatenates values from multiple rows into a single string per group.</p>
+<ul>
+  <li>MySQL: <code class="language-plaintext highlighter-rouge">GROUP_CONCAT(col)</code></li>
+  <li>PostgreSQL: <code class="language-plaintext highlighter-rouge">STRING_AGG(col, ',')</code></li>
+  <li>SQL Server: <code class="language-plaintext highlighter-rouge">STRING_AGG(col, ',')</code></li>
+</ul>
+
+<h2 id="part-4-advanced--window-functions-61-80">Part 4: Advanced &amp; Window Functions (61-80)</h2>
+
+<h3 id="61-what-is-a-window-function">61. What is a Window Function?</h3>
+
+<p>Window functions perform calculations across a set of table rows that are somehow related to the current row. Unlike aggregate functions, they do not cause rows to become grouped into a single output row.</p>
+
+<h3 id="62-difference-between-rank-dense_rank-and-row_number">62. Difference between <code class="language-plaintext highlighter-rouge">RANK()</code>, <code class="language-plaintext highlighter-rouge">DENSE_RANK()</code>, and <code class="language-plaintext highlighter-rouge">ROW_NUMBER()</code>?</h3>
+
+<p>Consider data: 10, 20, 20, 30</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Value</th>
+      <th style="text-align: left">ROW_NUMBER()</th>
+      <th style="text-align: left">RANK()</th>
+      <th style="text-align: left">DENSE_RANK()</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">20</td>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">20</td>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">30</td>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">3</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ROW_NUMBER</code>: Unique sequential number.</li>
+  <li><code class="language-plaintext highlighter-rouge">RANK</code>: Skips numbers after ties (1, 2, 2, 4).</li>
+  <li><code class="language-plaintext highlighter-rouge">DENSE_RANK</code>: No gaps after ties (1, 2, 2, 3).</li>
+</ul>
+
+<h3 id="63-what-is-the-partition-by-clause">63. What is the <code class="language-plaintext highlighter-rouge">PARTITION BY</code> clause?</h3>
+
+<p>It divides the result set into partitions (groups) to which the window function is applied.
+<em>Example:</em> <code class="language-plaintext highlighter-rouge">ROW_NUMBER() OVER (PARTITION BY Department ORDER BY Salary DESC)</code> resets the counter for each Department.</p>
+
+<h3 id="64-what-is-lead-and-lag">64. What is <code class="language-plaintext highlighter-rouge">LEAD</code> and <code class="language-plaintext highlighter-rouge">LAG</code>?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">LAG(col, n)</code>: Accesses data from a previous row (n rows back).</li>
+  <li><code class="language-plaintext highlighter-rouge">LEAD(col, n)</code>: Accesses data from a following row (n rows forward).</li>
+</ul>
+
+<p><strong>Use Case:</strong> Calculating Year-Over-Year growth.</p>
+
+<h3 id="65-calculate-the-difference-between-current-and-previous-rows-value">65. Calculate the difference between current and previous row’s value.</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="nb">Date</span><span class="p">,</span> <span class="n">Value</span><span class="p">,</span>
+       <span class="n">Value</span> <span class="o">-</span> <span class="n">LAG</span><span class="p">(</span><span class="n">Value</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">Date</span><span class="p">)</span> <span class="k">as</span> <span class="n">Diff</span>
+<span class="k">FROM</span> <span class="n">Metrics</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="66-what-is-ntilen">66. What is <code class="language-plaintext highlighter-rouge">NTILE(n)</code>?</h3>
+
+<p>Distributes rows of an ordered partition into a specified number of approximately equal groups (buckets).
+<em>Example:</em> <code class="language-plaintext highlighter-rouge">NTILE(4)</code> divides data into Quartiles.</p>
+
+<h3 id="67-explain-the-frame-clause-rows-between-">67. Explain the Frame clause (<code class="language-plaintext highlighter-rouge">ROWS BETWEEN ...</code>).</h3>
+
+<p>It defines the subset of rows within the partition to be considered for the calculation.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">UNBOUNDED PRECEDING</code>: Start at the first row of partition.</li>
+  <li><code class="language-plaintext highlighter-rouge">CURRENT ROW</code>: Stop at current row.</li>
+  <li><code class="language-plaintext highlighter-rouge">n PRECEDING / FOLLOWING</code>.</li>
+</ul>
+
+<p><strong>Example: Rolling 3-day Average</strong></p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">AVG</span><span class="p">(</span><span class="n">Val</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="nb">Date</span> <span class="k">ROWS</span> <span class="k">BETWEEN</span> <span class="mi">2</span> <span class="k">PRECEDING</span> <span class="k">AND</span> <span class="k">CURRENT</span> <span class="k">ROW</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="68-what-are-common-table-expressions-ctes">68. What are Common Table Expressions (CTEs)?</h3>
+
+<p>A temporary result set that you can reference within a SELECT, INSERT, UPDATE, or DELETE statement.
+Pros: Readability, recursion.
+Cons: Not indexed (usually), exists only for query duration.</p>
+
+<h3 id="69-cte-vs-subquery-vs-temp-table">69. CTE vs Subquery vs Temp Table?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">CTE</th>
+      <th style="text-align: left">Subquery</th>
+      <th style="text-align: left">Temp Table</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Scope</td>
+      <td style="text-align: left">Single Query</td>
+      <td style="text-align: left">Single Query</td>
+      <td style="text-align: left">Session</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Recursive?</td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">No</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Indexed?</td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">Yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Performance</td>
+      <td style="text-align: left">Optimized by engine</td>
+      <td style="text-align: left">Optimized by engine</td>
+      <td style="text-align: left">Overhead to create</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="70-how-to-update-a-table-based-on-values-from-another-table">70. How to update a table based on values from another table?</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">UPDATE</span> <span class="n">A</span>
+<span class="k">SET</span> <span class="n">A</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">Value</span>
+<span class="k">FROM</span> <span class="n">TableA</span> <span class="n">A</span>
+<span class="k">JOIN</span> <span class="n">TableB</span> <span class="n">B</span> <span class="k">ON</span> <span class="n">A</span><span class="p">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">ID</span><span class="p">;</span>
+</code></pre></div></div>
+<p><em>(Syntax varies by dialect: MySQL uses JOIN in update, SQL Server uses FROM).</em></p>
+
+<h3 id="71-what-is-merge-or-upsert">71. What is <code class="language-plaintext highlighter-rouge">MERGE</code> (or <code class="language-plaintext highlighter-rouge">UPSERT</code>)?</h3>
+
+<p>A single statement that performs <code class="language-plaintext highlighter-rouge">UPDATE</code> if a row exists, and <code class="language-plaintext highlighter-rouge">INSERT</code> if it does not.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MERGE</span> <span class="k">INTO</span> <span class="n">Target</span> <span class="n">T</span>
+<span class="k">USING</span> <span class="k">Source</span> <span class="n">S</span> <span class="k">ON</span> <span class="n">T</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">S</span><span class="p">.</span><span class="n">id</span>
+<span class="k">WHEN</span> <span class="n">MATCHED</span> <span class="k">THEN</span> <span class="k">UPDATE</span> <span class="k">SET</span> <span class="p">...</span>
+<span class="k">WHEN</span> <span class="k">NOT</span> <span class="n">MATCHED</span> <span class="k">THEN</span> <span class="k">INSERT</span> <span class="p">...;</span>
+</code></pre></div></div>
+
+<h3 id="72-explain-json-handling-in-modern-sql">72. Explain <code class="language-plaintext highlighter-rouge">JSON</code> handling in modern SQL.</h3>
+
+<p>Most modern DBs (Postgres, MySQL, SQL Server) support JSON types.</p>
+<ul>
+  <li><strong>Extract:</strong> <code class="language-plaintext highlighter-rouge">json_col -&gt;&gt; 'key'</code> (Postgres).</li>
+  <li><strong>Query:</strong> <code class="language-plaintext highlighter-rouge">WHERE json_col -&gt;&gt; 'tags' LIKE '%urgent%'</code>.</li>
+</ul>
+
+<h3 id="73-what-is-a-stored-procedure">73. What is a Stored Procedure?</h3>
+
+<p>A prepared SQL code that you can save, so the code can be reused over and over again. It can accept parameters.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Pros/Cons.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Why are they considered bad for version control?”</li>
+      <li><em>Answer:</em> Logic is hidden in the DB, harder to diff/review than application code.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="74-function-vs-stored-procedure">74. Function vs Stored Procedure?</h3>
+
+<ul>
+  <li><strong>Function:</strong> Must return a value. Cannot modify DB state (usually). Can be used in SELECT statements.</li>
+  <li><strong>Procedure:</strong> Can return zero or n values. Can modify DB state. Cannot be used in SELECT statements.</li>
+</ul>
+
+<h3 id="75-what-is-a-trigger">75. What is a Trigger?</h3>
+
+<p>A special type of stored procedure that automatically runs when an event occurs in the database server (INSERT, UPDATE, DELETE).
+<em>Risk:</em> Can create invisible logic chains (“Magic”) that are hard to debug.</p>
+
+<h3 id="76-how-to-find-gaps-in-sequential-ids">76. How to find gaps in sequential IDs?</h3>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Using LEAD.</strong>
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">id</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">as</span> <span class="n">StartGap</span><span class="p">,</span> <span class="n">next_id</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">as</span> <span class="n">EndGap</span>
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">LEAD</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">id</span><span class="p">)</span> <span class="k">as</span> <span class="n">next_id</span>
+    <span class="k">FROM</span> <span class="k">Table</span>
+<span class="p">)</span> <span class="n">T</span>
+<span class="k">WHERE</span> <span class="n">next_id</span> <span class="o">-</span> <span class="n">id</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="77-what-is-first_value-and-last_value">77. What is <code class="language-plaintext highlighter-rouge">first_value()</code> and <code class="language-plaintext highlighter-rouge">last_value()</code>?</h3>
+
+<p>Returns the first or last value in an ordered set of values.
+<em>Note:</em> <code class="language-plaintext highlighter-rouge">last_value</code> default frame is <code class="language-plaintext highlighter-rouge">RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</code>, so it often just returns the current row value unless you change the frame to <code class="language-plaintext highlighter-rouge">UNBOUNDED FOLLOWING</code>.</p>
+
+<h3 id="78-what-is-the-qualify-clause">78. What is the <code class="language-plaintext highlighter-rouge">QUALIFY</code> clause?</h3>
+
+<p>(Used in Snowflake/Teradata)
+Filters the results of window functions, similar to how <code class="language-plaintext highlighter-rouge">HAVING</code> filters <code class="language-plaintext highlighter-rouge">GROUP BY</code>.
+Avoids the need for a subquery to filter by <code class="language-plaintext highlighter-rouge">RANK()</code>.</p>
+
+<h3 id="79-how-do-you-handle-time-zones-in-sql">79. How do you handle Time Zones in SQL?</h3>
+
+<p>Always store in UTC (<code class="language-plaintext highlighter-rouge">TIMESTAMP WITH TIME ZONE</code> in Postgres). Convert to local time only at the presentation layer or reporting query.</p>
+
+<h3 id="80-identify-overlapping-date-ranges">80. Identify overlapping date ranges.</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">Bookings</span> <span class="n">A</span>
+<span class="k">JOIN</span> <span class="n">Bookings</span> <span class="n">B</span> <span class="k">ON</span> <span class="n">A</span><span class="p">.</span><span class="n">Room</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">Room</span> <span class="k">AND</span> <span class="n">A</span><span class="p">.</span><span class="n">ID</span> <span class="o">&lt;&gt;</span> <span class="n">B</span><span class="p">.</span><span class="n">ID</span>
+<span class="k">WHERE</span> <span class="n">A</span><span class="p">.</span><span class="k">Start</span> <span class="o">&lt;</span> <span class="n">B</span><span class="p">.</span><span class="k">End</span> <span class="k">AND</span> <span class="n">A</span><span class="p">.</span><span class="k">End</span> <span class="o">&gt;</span> <span class="n">B</span><span class="p">.</span><span class="k">Start</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="part-5-performance-design--acid-81-100">Part 5: Performance, Design &amp; ACID (81-100)</h2>
+
+<h3 id="81-explain-acid-properties">81. Explain ACID properties.</h3>
+
+<ul>
+  <li><strong>A - Atomicity:</strong> All or nothing. Transaction is a single unit.</li>
+  <li><strong>C - Consistency:</strong> Database remains in a valid state before and after transaction.</li>
+  <li><strong>I - Isolation:</strong> Transactions occur independently without interference.</li>
+  <li><strong>D - Durability:</strong> Once committed, changes are permanent (survive power loss).</li>
+</ul>
+
+<h3 id="82-what-are-the-isolation-levels">82. What are the Isolation Levels?</h3>
+
+<p>(Ordered from lowest isolation/highest concurrency to highest isolation/lowest concurrency)</p>
+
+<ol>
+  <li><strong>Read Uncommitted:</strong> Dirty reads allowed.</li>
+  <li><strong>Read Committed:</strong> No dirty reads. Phantom reads possible. (Default in many DBs).</li>
+  <li><strong>Repeatable Read:</strong> No non-repeatable reads. Phantom reads possible (prevented in some DBs like Postgres).</li>
+  <li><strong>Serializable:</strong> Strict sequential execution.</li>
+</ol>
+
+<h3 id="83-what-is-a-dirty-read">83. What is a “Dirty Read”?</h3>
+
+<p>Reading uncommitted data from another transaction. If that transaction rolls back, you read invalid data.</p>
+
+<h3 id="84-what-is-a-phantom-read">84. What is a “Phantom Read”?</h3>
+
+<p>A transaction executes a query returning a set of rows. Another transaction inserts a new row that matches the query. If the first transaction runs the query again, it sees the “phantom” row.</p>
+
+<h3 id="85-what-is-the-n1-problem">85. What is the N+1 problem?</h3>
+
+<p>A performance issue where the application executes 1 initial query (N=1) and then executes N additional queries to fetch related data for each row.
+<em>Fix:</em> Use <code class="language-plaintext highlighter-rouge">JOIN</code>s or batch fetching.</p>
+
+<h3 id="86-how-does-a-b-tree-index-work">86. How does a B-Tree Index work?</h3>
+
+<p>It is a balanced tree structure that keeps data sorted and allows searches, sequential access, insertions, and deletions in logarithmic time.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Clustered vs Non-Clustered.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How many clustered indexes can a table have?”</li>
+      <li><em>Answer:</em> Only one, because it dictates the physical order of data storage.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="87-what-is-database-sharding">87. What is Database Sharding?</h3>
+
+<p>Horizontal partitioning of data across multiple databases/servers (shards) to spread load.
+<em>Key Challenge:</em> Cross-shard joins are expensive or impossible.</p>
+
+<h3 id="88-what-is-partitioning">88. What is Partitioning?</h3>
+
+<p>Splitting a large table into smaller, more manageable pieces (e.g., by Year). The DB engine can skip scanning partitions that don’t match the query (<code class="language-plaintext highlighter-rouge">Partition Pruning</code>).</p>
+
+<h3 id="89-explain-explain-plan">89. Explain “Explain Plan”.</h3>
+
+<p>A visualization of how the SQL engine intends to execute a query.
+<em>Look for:</em> Table Scans (bad), Index Seek/Scan (good), Sort operations (expensive).</p>
+
+<h3 id="90-what-is-a-deadlock">90. What is a “Deadlock”?</h3>
+
+<p>Two transactions are waiting for each other to give up a lock. The DB engine usually kills one to save the other.</p>
+
+<h3 id="91-difference-between-oltp-and-olap">91. Difference between OLTP and OLAP?</h3>
+
+<ul>
+  <li><strong>OLTP (Online Transaction Processing):</strong> Fast, short transactions (INSERT, UPDATE). Normalized (3NF).</li>
+  <li><strong>OLAP (Online Analytical Processing):</strong> Complex queries, historical data. Denormalized (Star Schema).</li>
+</ul>
+
+<h3 id="92-what-is-a-star-schema">92. What is a Star Schema?</h3>
+
+<p>A data warehousing modeling technique with a central <strong>Fact Table</strong> (metrics) connected to multiple <strong>Dimension Tables</strong> (attributes).</p>
+
+<pre><code class="language-mermaid">graph TD
+    Fact[Fact Sales]
+    D1[Dim Date]
+    D2[Dim Product]
+    D3[Dim Customer]
+    Fact --- D1
+    Fact --- D2
+    Fact --- D3
+</code></pre>
+
+<h3 id="93-what-is-a-snowflake-schema">93. What is a Snowflake Schema?</h3>
+
+<p>A variation of Star Schema where dimension tables are normalized (split into sub-dimensions).</p>
+<ul>
+  <li><em>Pros:</em> Less space.</li>
+  <li><em>Cons:</em> More joins.</li>
+</ul>
+
+<h3 id="94-how-to-optimize-a-slow-query">94. How to optimize a slow query?</h3>
+
+<ol>
+  <li>Check <code class="language-plaintext highlighter-rouge">EXPLAIN</code> plan.</li>
+  <li>Add missing Indexes.</li>
+  <li>Remove unnecessary columns (<code class="language-plaintext highlighter-rouge">SELECT *</code>).</li>
+  <li>Check for Functions on columns in WHERE clause (sargability).</li>
+  <li>Update Statistics.</li>
+</ol>
+
+<h3 id="95-what-is-sargable">95. What is “SARGable”?</h3>
+
+<p><strong>Search ARGument ABLE</strong>.
+A query is sargable if it can take advantage of an index.</p>
+<ul>
+  <li><em>Bad:</em> <code class="language-plaintext highlighter-rouge">WHERE YEAR(date_col) = 2023</code> (Function on column blocks index).</li>
+  <li><em>Good:</em> <code class="language-plaintext highlighter-rouge">WHERE date_col &gt;= '2023-01-01' AND date_col &lt; '2024-01-01'</code>.</li>
+</ul>
+
+<h3 id="96-what-is-a-materialized-view">96. What is a Materialized View?</h3>
+
+<p>A view whose result is physically stored (cached) on disk and refreshed periodically. Good for expensive aggregations.</p>
+
+<h3 id="97-what-is-optimistic-vs-pessimistic-locking">97. What is optimistic vs pessimistic locking?</h3>
+
+<ul>
+  <li><strong>Pessimistic:</strong> Lock the record as soon as you select it for update.</li>
+  <li><strong>Optimistic:</strong> Don’t lock. Check version/timestamp on update. If changed by someone else, fail.</li>
+</ul>
+
+<h3 id="98-what-is-vertical-scaling-vs-horizontal-scaling">98. What is Vertical Scaling vs Horizontal Scaling?</h3>
+
+<ul>
+  <li><strong>Vertical:</strong> Bigger machine (more RAM/CPU). Easiest for SQL DBs.</li>
+  <li><strong>Horizontal:</strong> More machines (Read Replicas, Sharding). Harder for SQL DBs.</li>
+</ul>
+
+<h3 id="99-what-is-cap-theorem">99. What is CAP Theorem?</h3>
+
+<p>In a distributed system, you can only pick 2:</p>
+<ul>
+  <li><strong>C</strong>onsistency.</li>
+  <li><strong>A</strong>vailability.</li>
+  <li><strong>P</strong>artition Tolerance.</li>
+  <li>Traditional SQL DBs usually choose CA (single node) or CP (distributed).</li>
+</ul>
+
+<h3 id="100-write-a-query-to-find-the-3rd-highest-salary-without-using-limittop">100. Write a query to find the 3rd highest salary without using <code class="language-plaintext highlighter-rouge">LIMIT</code>/<code class="language-plaintext highlighter-rouge">TOP</code>.</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">Salary</span>
+<span class="k">FROM</span> <span class="n">Employees</span> <span class="n">e1</span>
+<span class="k">WHERE</span> <span class="mi">2</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="n">Salary</span><span class="p">)</span>
+    <span class="k">FROM</span> <span class="n">Employees</span> <span class="n">e2</span>
+    <span class="k">WHERE</span> <span class="n">e2</span><span class="p">.</span><span class="n">Salary</span> <span class="o">&gt;</span> <span class="n">e1</span><span class="p">.</span><span class="n">Salary</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+<p><strong>End of Interview Questions</strong></p>
+
+<h2 id="study-guide">Study Guide</h2>
+
+<p>To deepen your understanding of these concepts, check out the following resources:</p>
+
+<ul>
+  <li><strong>Official Documentation</strong>: <a href="https://www.postgresql.org/docs/">Sql Docs</a></li>
+  <li><strong>Internal Style Guide</strong>: <a href="../style_guides/sql/sql_style_guide.md">Sql Style Guide</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

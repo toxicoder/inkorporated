@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>TypeScript Interview Questions &amp; Answers (100+) | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="TypeScript Interview Questions &amp; Answers (100+)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="TypeScript Interview Questions &amp; Answers (100+) for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="TypeScript Interview Questions &amp; Answers (100+) for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/interview_questions/typescript.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/interview_questions/typescript.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="TypeScript Interview Questions &amp; Answers (100+)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"TypeScript Interview Questions &amp; Answers (100+) for Inkorporated.","headline":"TypeScript Interview Questions &amp; Answers (100+)","url":"https://toxicoder.github.io/inkorporated/interview_questions/typescript.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">TypeScript Interview Questions &amp; Answers (100+)</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="typescript-interview-questions--answers-100">TypeScript Interview Questions &amp; Answers (100+)</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This guide contains 100+ TypeScript interview questions, ranging from basic to advanced. Each question includes a model answer, code snippets, and potential follow-up paths based on the candidate’s response.</p>
+
+<h2 id="part-1-core-typescript-basics-1-15">Part 1: Core TypeScript Basics (1-15)</h2>
+
+<h3 id="1-what-is-typescript">1. What is TypeScript?</h3>
+
+<p>TypeScript is a superset of JavaScript developed by Microsoft that adds static typing and class-based object-oriented programming to the language. It compiles (transpiles) to plain JavaScript.</p>
+
+<p><strong>Key Features:</strong></p>
+<ul>
+  <li><strong>Static Typing:</strong> Checks types at compile time.</li>
+  <li><strong>Object-Oriented:</strong> Classes, Interfaces, Inheritance.</li>
+  <li><strong>ES6+ Support:</strong> Compiles modern JS down to older versions (ES5, ES3).</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions “Superset”.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What does it mean to be a superset? Can I run TypeScript directly in the browser?”</li>
+      <li><em>Answer:</em> No, browsers cannot execute TS directly. It must be transpiled to JS. “Superset” means any valid JS code is also valid TS code.</li>
+    </ul>
+  </li>
+  <li><strong>Path B: Candidate focuses on Types.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Is the typing strong or weak? Static or dynamic?”</li>
+      <li><em>Answer:</em> TypeScript is statically typed (checked at compile time), but the underlying JS is dynamically typed. It allows for “any” type which effectively opts out of type checking.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-what-are-the-primitive-types-in-typescript">2. What are the primitive types in TypeScript?</h3>
+
+<p>TypeScript supports the same primitives as JavaScript, plus a few more.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">number</code></td>
+      <td style="text-align: left">All numbers (integers, floats)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">let x: number = 10;</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td style="text-align: left">Text data</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">let s: string = "Hi";</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td style="text-align: left">True/False</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">let b: boolean = true;</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">null</code></td>
+      <td style="text-align: left">Intentional absence of value</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">let n: null = null;</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">undefined</code></td>
+      <td style="text-align: left">Uninitialized variable</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">let u: undefined = undefined;</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">symbol</code></td>
+      <td style="text-align: left">Unique identifier (ES6)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">let sym: symbol = Symbol();</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">bigint</code></td>
+      <td style="text-align: left">Large integers (ES2020)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">let big: bigint = 100n;</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="3-what-is-the-any-type">3. What is the <code class="language-plaintext highlighter-rouge">any</code> type?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">any</code> is a type that disables type checking for a variable. It allows you to assign any value to it and access any property or method on it without errors.</p>
+
+<p><strong>Use Cases:</strong></p>
+<ul>
+  <li>Migrating a JS project to TS incrementally.</li>
+  <li>Working with 3rd party libraries without type definitions.</li>
+</ul>
+
+<p><strong>Risk:</strong> It defeats the purpose of TypeScript. Overusing it leads to “Anyscript”.</p>
+
+<h3 id="4-what-is-void">4. What is <code class="language-plaintext highlighter-rouge">void</code>?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">void</code> represents the absence of a value. It is commonly used as the return type of functions that do not return a value.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">logMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate compares with <code class="language-plaintext highlighter-rouge">undefined</code>.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Can you assign <code class="language-plaintext highlighter-rouge">undefined</code> to a <code class="language-plaintext highlighter-rouge">void</code> variable?”</li>
+      <li><em>Answer:</em> Yes, because a function returning nothing actually returns <code class="language-plaintext highlighter-rouge">undefined</code> in JS.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="5-what-is-unknown-type">5. What is <code class="language-plaintext highlighter-rouge">unknown</code> type?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">unknown</code> is the type-safe counterpart of <code class="language-plaintext highlighter-rouge">any</code>. You can assign anything to <code class="language-plaintext highlighter-rouge">unknown</code>, but you <strong>cannot</strong> perform operations on it (like calling methods) without first asserting or narrowing its type.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">value</span><span class="p">:</span> <span class="nx">unknown</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">;</span>
+<span class="c1">// value.toUpperCase(); // Error: Object is of type 'unknown'.</span>
+
+<span class="k">if </span><span class="p">(</span><span class="k">typeof</span> <span class="nx">value</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nf">toUpperCase</span><span class="p">());</span> <span class="c1">// OK</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="6-what-is-never-type">6. What is <code class="language-plaintext highlighter-rouge">never</code> type?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">never</code> represents the type of values that never occur.
+Used for:</p>
+<ul>
+  <li>Functions that throw an exception.</li>
+  <li>Functions that have infinite loops.</li>
+  <li>Exhaustive type checking in switch statements.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">error</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">never</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="7-explain-type-inference">7. Explain Type Inference.</h3>
+
+<p>TypeScript can often infer the type of a variable when there is no explicit type annotation.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// Inferred as number</span>
+<span class="c1">// x = "hello"; // Error</span>
+</code></pre></div></div>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions “Best Common Type”.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “How does inference work for an array with mixed values like <code class="language-plaintext highlighter-rouge">[0, 1, null]</code>?”</li>
+      <li><em>Answer:</em> It tries to find a type that is a supertype of all candidates. <code class="language-plaintext highlighter-rouge">(number | null)[]</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="8-what-is-the-difference-between-let-const-and-var">8. What is the difference between <code class="language-plaintext highlighter-rouge">let</code>, <code class="language-plaintext highlighter-rouge">const</code>, and <code class="language-plaintext highlighter-rouge">var</code>?</h3>
+
+<p>(Same as JavaScript ES6)</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">var</code>: Function scoped, hoisted, can be redeclared.</li>
+  <li><code class="language-plaintext highlighter-rouge">let</code>: Block scoped, not hoisted (TDZ), cannot be redeclared in same scope.</li>
+  <li><code class="language-plaintext highlighter-rouge">const</code>: Block scoped, cannot be reassigned (immutable binding).</li>
+</ul>
+
+<h3 id="9-how-do-you-define-an-array-in-typescript">9. How do you define an Array in TypeScript?</h3>
+
+<p>Two syntaxes:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">type[]</code>: <code class="language-plaintext highlighter-rouge">let list: number[] = [1, 2, 3];</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Array&lt;type&gt;</code>: <code class="language-plaintext highlighter-rouge">let list: Array&lt;number&gt; = [1, 2, 3];</code> (Generic syntax)</li>
+</ol>
+
+<h3 id="10-what-is-a-tuple">10. What is a Tuple?</h3>
+
+<p>A tuple is an array with a fixed number of elements whose types are known, but need not be the same.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">x</span><span class="p">:</span> <span class="p">[</span><span class="kr">string</span><span class="p">,</span> <span class="kr">number</span><span class="p">];</span>
+<span class="nx">x</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">,</span> <span class="mi">10</span><span class="p">];</span> <span class="c1">// OK</span>
+<span class="c1">// x = [10, "hello"]; // Error</span>
+</code></pre></div></div>
+
+<h3 id="11-what-is-an-enum">11. What is an Enum?</h3>
+
+<p>Enums allow defining a set of named constants. TypeScript supports both numeric and string-based enums.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">enum</span> <span class="nx">Direction</span> <span class="p">{</span>
+    <span class="nx">Up</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">Down</span><span class="p">,</span>
+    <span class="nx">Left</span><span class="p">,</span>
+    <span class="nx">Right</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions Numeric vs String Enums.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What is a <code class="language-plaintext highlighter-rouge">const enum</code>?”</li>
+      <li><em>Answer:</em> Const enums are completely removed during compilation; usage is replaced by the literal values for performance.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="12-what-is-type-assertion">12. What is Type Assertion?</h3>
+
+<p>Type assertion allows you to tell the compiler “I know more about this type than you do.” It’s similar to type casting in other languages but performs no special checking or restructuring of data.</p>
+
+<p>Syntax:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">as</code> syntax: <code class="language-plaintext highlighter-rouge">let strLength: number = (someValue as string).length;</code></li>
+  <li>Angle-bracket syntax: <code class="language-plaintext highlighter-rouge">let strLength: number = (&lt;string&gt;someValue).length;</code> (Conflict with JSX).</li>
+</ol>
+
+<h3 id="13-what-is-the-null-vs-undefined-difference-in-ts">13. What is the <code class="language-plaintext highlighter-rouge">null</code> vs <code class="language-plaintext highlighter-rouge">undefined</code> difference in TS?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">undefined</code>: A variable that has been declared but not assigned a value.</li>
+  <li><code class="language-plaintext highlighter-rouge">null</code>: An assignment value that acts as a representation of “no value”.
+By default <code class="language-plaintext highlighter-rouge">null</code> and <code class="language-plaintext highlighter-rouge">undefined</code> are subtypes of all other types (unless <code class="language-plaintext highlighter-rouge">strictNullChecks</code> is on).</li>
+</ul>
+
+<h3 id="14-what-is-object-type">14. What is <code class="language-plaintext highlighter-rouge">object</code> type?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">object</code> is a type that represents the non-primitive type (i.e., anything that is not <code class="language-plaintext highlighter-rouge">number</code>, <code class="language-plaintext highlighter-rouge">string</code>, <code class="language-plaintext highlighter-rouge">boolean</code>, <code class="language-plaintext highlighter-rouge">symbol</code>, <code class="language-plaintext highlighter-rouge">null</code>, or <code class="language-plaintext highlighter-rouge">undefined</code>).</p>
+
+<h3 id="15-how-do-you-compile-a-typescript-file">15. How do you compile a TypeScript file?</h3>
+
+<p>Using the TypeScript Compiler (tsc).
+Command: <code class="language-plaintext highlighter-rouge">tsc filename.ts</code> -&gt; generates <code class="language-plaintext highlighter-rouge">filename.js</code>.</p>
+
+<p><strong>Compilation Process Flow:</strong></p>
+
+<pre><code class="language-mermaid">graph LR
+    TS[TypeScript Code .ts] --&gt;|tsc| Compiler[TS Compiler]
+    Compiler --&gt;|Type Check| Errors[Errors?]
+    Compiler --&gt;|Transpile| JS[JavaScript Code .js]
+    JS --&gt;|Run| Browser[Browser / Node.js]
+</code></pre>
+
+<h2 id="part-2-interfaces--types-16-30">Part 2: Interfaces &amp; Types (16-30)</h2>
+
+<h3 id="16-interface-vs-type-alias">16. Interface vs Type Alias?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">Interface</th>
+      <th style="text-align: left">Type Alias</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Definition</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">interface User { ... }</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">type User = { ... }</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Extensibility</strong></td>
+      <td style="text-align: left">Can be merged (Declaration Merging)</td>
+      <td style="text-align: left">Cannot be merged</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Use Case</strong></td>
+      <td style="text-align: left">Defining shapes of objects/classes</td>
+      <td style="text-align: left">Unions, Primitives, Tuples, Objects</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Implementation</strong></td>
+      <td style="text-align: left">Can be implemented by classes</td>
+      <td style="text-align: left">Can be implemented by classes</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate prefers Interfaces.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “When MUST you use a Type Alias?”</li>
+      <li><em>Answer:</em> When defining Union types (<code class="language-plaintext highlighter-rouge">type Status = 'Success' | 'Fail'</code>) or Tuple types.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="17-how-to-define-optional-properties-in-an-interface">17. How to define optional properties in an Interface?</h3>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">?</code> symbol.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Car</span> <span class="p">{</span>
+    <span class="nl">make</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">model</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">// Optional</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="18-what-are-readonly-properties">18. What are Readonly properties?</h3>
+
+<p>Properties that can only be modified when an object is first created.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Point</span> <span class="p">{</span>
+    <span class="k">readonly</span> <span class="nx">x</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="k">readonly</span> <span class="nx">y</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="19-can-interfaces-extend-each-other">19. Can interfaces extend each other?</h3>
+
+<p>Yes, using the <code class="language-plaintext highlighter-rouge">extends</code> keyword. An interface can extend multiple interfaces.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Shape</span> <span class="p">{</span> <span class="nl">color</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="p">}</span>
+<span class="kr">interface</span> <span class="nx">Square</span> <span class="kd">extends</span> <span class="nx">Shape</span> <span class="p">{</span> <span class="nl">sideLength</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="20-index-signatures-in-interfaces">20. Index Signatures in Interfaces?</h3>
+
+<p>Used when you don’t know all the names of properties beforehand but you know the shape of the values.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">StringArray</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nx">index</span><span class="p">:</span> <span class="kr">number</span><span class="p">]:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="21-function-types-in-interfaces">21. Function Types in Interfaces?</h3>
+
+<p>Interfaces can describe function types.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">SearchFunc</span> <span class="p">{</span>
+    <span class="p">(</span><span class="nx">source</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">subString</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="22-hybrid-types">22. Hybrid Types?</h3>
+
+<p>An object that acts as both a function and an object, with additional properties.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Counter</span> <span class="p">{</span>
+    <span class="p">(</span><span class="nx">start</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">interval</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nf">reset</span><span class="p">():</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="23-explain-duck-typing-in-typescript-structural-typing">23. Explain “Duck Typing” in TypeScript (Structural Typing).</h3>
+
+<p>TypeScript uses structural typing. If object A has all the properties of type B, then A is compatible with B, regardless of whether A explicitly implements B.</p>
+
+<h3 id="24-what-is-literal-type">24. What is Literal Type?</h3>
+
+<p>A type that represents a specific value.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">Easing</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">ease-in</span><span class="dl">"</span> <span class="o">|</span> <span class="dl">"</span><span class="s2">ease-out</span><span class="dl">"</span> <span class="o">|</span> <span class="dl">"</span><span class="s2">ease-in-out</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="25-what-is-a-union-type">25. What is a Union Type?</h3>
+
+<p>A type formed from two or more other types, representing values that may be <em>any one</em> of those types.
+Operator: <code class="language-plaintext highlighter-rouge">|</code></p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">padLeft</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">padding</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="26-what-is-an-intersection-type">26. What is an Intersection Type?</h3>
+
+<p>Combines multiple types into one. The new type has <em>all</em> features of the combined types.
+Operator: <code class="language-plaintext highlighter-rouge">&amp;</code></p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">Draggable</span> <span class="o">=</span> <span class="nx">Drag</span> <span class="o">&amp;</span> <span class="nx">Drop</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="27-what-happens-when-you-extend-an-interface-with-conflicting-members">27. What happens when you extend an interface with conflicting members?</h3>
+
+<p>It causes a compilation error unless the types are compatible. If they are not (e.g., <code class="language-plaintext highlighter-rouge">x: number</code> vs <code class="language-plaintext highlighter-rouge">x: string</code>), TS will flag it.</p>
+
+<h3 id="28-how-to-describe-a-class-constructor-in-an-interface">28. How to describe a Class Constructor in an Interface?</h3>
+
+<p>You need to define a “new” signature. Note: You cannot implement this interface directly on the class; it describes the <em>static</em> side (constructor).</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">ClockConstructor</span> <span class="p">{</span>
+    <span class="k">new </span><span class="p">(</span><span class="nx">hour</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">minute</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="nx">ClockInterface</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="29-can-you-implement-an-interface-in-a-class">29. Can you implement an Interface in a Class?</h3>
+
+<p>Yes, using <code class="language-plaintext highlighter-rouge">implements</code>.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Car</span> <span class="k">implements</span> <span class="nx">Vehicle</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="30-what-is-declaration-merging">30. What is Declaration Merging?</h3>
+
+<p>If you define two interfaces with the same name, TypeScript automatically merges them into a single interface.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Box</span> <span class="p">{</span> <span class="nl">height</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span> <span class="p">}</span>
+<span class="kr">interface</span> <span class="nx">Box</span> <span class="p">{</span> <span class="nl">width</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span> <span class="p">}</span>
+<span class="c1">// Box now has both height and width</span>
+</code></pre></div></div>
+
+<h2 id="part-3-functions--generics-31-45">Part 3: Functions &amp; Generics (31-45)</h2>
+
+<h3 id="31-what-are-generics">31. What are Generics?</h3>
+
+<p>Generics provide a way to make components work with any data type and not restrict them to one data type. It creates Reusable Components.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">identity</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">arg</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="nx">T</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">arg</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="32-generic-constraints">32. Generic Constraints?</h3>
+
+<p>restricting the types that can be used with a generic by using <code class="language-plaintext highlighter-rouge">extends</code>.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Lengthwise</span> <span class="p">{</span> <span class="nl">length</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span> <span class="p">}</span>
+<span class="kd">function</span> <span class="nf">loggingIdentity</span><span class="o">&lt;</span><span class="nx">T</span> <span class="kd">extends</span> <span class="nx">Lengthwise</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">arg</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="nx">T</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">arg</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// OK</span>
+    <span class="k">return</span> <span class="nx">arg</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="33-what-is-keyof-operator">33. What is <code class="language-plaintext highlighter-rouge">keyof</code> operator?</h3>
+
+<p>Takes an object type and produces a string or numeric literal union of its keys.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Person</span> <span class="p">{</span> <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span> <span class="p">}</span>
+<span class="kd">type</span> <span class="nx">P</span> <span class="o">=</span> <span class="kr">keyof</span> <span class="nx">Person</span><span class="p">;</span> <span class="c1">// "name" | "age"</span>
+</code></pre></div></div>
+
+<h3 id="34-explain-generic-utility-types-partialt">34. Explain Generic Utility Types: <code class="language-plaintext highlighter-rouge">Partial&lt;T&gt;</code>.</h3>
+
+<p>Constructs a type with all properties of <code class="language-plaintext highlighter-rouge">T</code> set to optional.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">updateTodo</span><span class="p">(</span><span class="nx">todo</span><span class="p">:</span> <span class="nx">Todo</span><span class="p">,</span> <span class="nx">fieldsToUpdate</span><span class="p">:</span> <span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="35-explain-pickt-k">35. Explain <code class="language-plaintext highlighter-rouge">Pick&lt;T, K&gt;</code>.</h3>
+
+<p>Constructs a type by picking the set of properties <code class="language-plaintext highlighter-rouge">K</code> from <code class="language-plaintext highlighter-rouge">T</code>.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">TodoPreview</span> <span class="o">=</span> <span class="nb">Pick</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="p">,</span> <span class="dl">"</span><span class="s2">title</span><span class="dl">"</span> <span class="o">|</span> <span class="dl">"</span><span class="s2">completed</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="36-explain-omitt-k">36. Explain <code class="language-plaintext highlighter-rouge">Omit&lt;T, K&gt;</code>.</h3>
+
+<p>Constructs a type by picking all properties from <code class="language-plaintext highlighter-rouge">T</code> and then removing <code class="language-plaintext highlighter-rouge">K</code>.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">TodoPreview</span> <span class="o">=</span> <span class="nb">Omit</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="p">,</span> <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="37-explain-recordk-t">37. Explain <code class="language-plaintext highlighter-rouge">Record&lt;K, T&gt;</code>.</h3>
+
+<p>Constructs an object type whose property keys are <code class="language-plaintext highlighter-rouge">K</code> and whose property values are <code class="language-plaintext highlighter-rouge">T</code>.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">x</span><span class="p">:</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">number</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">:</span> <span class="mi">20</span> <span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="38-explain-returntypet">38. Explain <code class="language-plaintext highlighter-rouge">ReturnType&lt;T&gt;</code>.</h3>
+
+<p>Constructs a type consisting of the return type of function <code class="language-plaintext highlighter-rouge">T</code>.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">T0</span> <span class="o">=</span> <span class="nb">ReturnType</span><span class="o">&lt;</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="kr">string</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// string</span>
+</code></pre></div></div>
+
+<h3 id="39-function-overloading-in-typescript">39. Function Overloading in TypeScript?</h3>
+
+<p>You can provide multiple function signatures for the same function name. The implementation signature must be compatible with all overload signatures.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">add</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="kr">string</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nf">add</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">number</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nf">add</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">any</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">any</span><span class="p">):</span> <span class="kr">any</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="40-rest-parameters">40. Rest Parameters?</h3>
+
+<p>Allows a function to accept an indefinite number of arguments as an array.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">buildName</span><span class="p">(</span><span class="nx">firstName</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="p">...</span><span class="nx">restOfName</span><span class="p">:</span> <span class="kr">string</span><span class="p">[])</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="41-default-parameters">41. Default Parameters?</h3>
+
+<p>Parameters can have default values.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">buildName</span><span class="p">(</span><span class="nx">firstName</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">lastName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Smith</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="42-what-is-this-typing-in-functions">42. What is <code class="language-plaintext highlighter-rouge">this</code> typing in functions?</h3>
+
+<p>You can declare the type of <code class="language-plaintext highlighter-rouge">this</code> by adding a fake first parameter named <code class="language-plaintext highlighter-rouge">this</code> to the function.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">f</span><span class="p">(</span><span class="k">this</span><span class="p">:</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// make sure `this` is unusable in this standalone function</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="43-why-use-generics-over-any">43. Why use Generics over <code class="language-plaintext highlighter-rouge">any</code>?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">any</code> loses type safety. Generics preserve the type information. If you pass a <code class="language-plaintext highlighter-rouge">string</code> to a generic function, the compiler knows the return type is also <code class="language-plaintext highlighter-rouge">string</code>.</p>
+
+<h3 id="44-generic-classes">44. Generic Classes?</h3>
+
+<p>Classes can also be generic.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">GenericNumber</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="na">zeroValue</span><span class="p">:</span> <span class="nx">T</span><span class="p">;</span>
+    <span class="nl">add</span><span class="p">:</span> <span class="p">(</span><span class="na">x</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">T</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="45-using-class-types-in-generics">45. Using Class Types in Generics?</h3>
+
+<p>When creating factories in TypeScript using generics, it is necessary to refer to class types by their constructor functions.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">create</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">c</span><span class="p">:</span> <span class="p">{</span> <span class="k">new</span><span class="p">():</span> <span class="nx">T</span><span class="p">;</span> <span class="p">}):</span> <span class="nx">T</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">c</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="part-4-classes--oop-46-60">Part 4: Classes &amp; OOP (46-60)</h2>
+
+<h3 id="46-access-modifiers-in-typescript">46. Access Modifiers in TypeScript?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Modifier</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">public</code></td>
+      <td style="text-align: left">Accessible everywhere (Default).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">private</code></td>
+      <td style="text-align: left">Accessible only within the containing class.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">protected</code></td>
+      <td style="text-align: left">Accessible within the class and deriving classes.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="47-abstract-classes">47. Abstract Classes?</h3>
+
+<p>Classes that cannot be instantiated directly. They serve as base classes. Can contain implementation details and abstract methods (must be implemented by subclass).</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Department</span> <span class="p">{</span>
+    <span class="kd">abstract</span> <span class="nf">printMeeting</span><span class="p">():</span> <span class="k">void</span><span class="p">;</span> <span class="c1">// Must be implemented</span>
+    <span class="nf">printName</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Dept</span><span class="dl">"</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="48-parameter-properties">48. Parameter Properties?</h3>
+
+<p>A shorthand to create and initialize a member in one place.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Octopus</span> <span class="p">{</span>
+    <span class="nf">constructor</span><span class="p">(</span><span class="k">readonly</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Automatically creates a readonly property 'name' and assigns the arg</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="49-getters-and-setters-accessors">49. Getters and Setters (Accessors)?</h3>
+
+<p>Intercept access to a member of an object.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Employee</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">_fullName</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="kd">get</span> <span class="nf">fullName</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_fullName</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kd">set</span> <span class="nf">fullName</span><span class="p">(</span><span class="nx">newName</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">_fullName</span> <span class="o">=</span> <span class="nx">newName</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="50-static-properties">50. Static Properties?</h3>
+
+<p>Members that are visible on the class itself rather than on the instances.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Grid</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="nx">origin</span> <span class="o">=</span> <span class="p">{</span><span class="na">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">};</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">Grid</span><span class="p">.</span><span class="nx">origin</span><span class="p">.</span><span class="nx">x</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="51-readonly-modifier-in-classes">51. Readonly Modifier in Classes?</h3>
+
+<p>Prevents assignment to the field outside of the constructor.</p>
+
+<h3 id="52-inheritance-vs-composition">52. Inheritance vs Composition?</h3>
+
+<ul>
+  <li><strong>Inheritance:</strong> “Is-a” relationship (Dog is an Animal). Good for hierarchy.</li>
+  <li><strong>Composition:</strong> “Has-a” relationship (Car has an Engine). flexible, less coupling.
+TypeScript supports both.</li>
+</ul>
+
+<h3 id="53-how-to-check-if-a-class-implements-an-interface-at-runtime">53. How to check if a class implements an interface at runtime?</h3>
+
+<p>Interfaces do not exist at runtime (they are erased). You cannot check <code class="language-plaintext highlighter-rouge">obj instanceof MyInterface</code>. You must use Type Guards.</p>
+
+<h3 id="54-what-is-a-mixin">54. What is a Mixin?</h3>
+
+<p>A way to build up classes from reusable components by combining simpler partial classes. TypeScript doesn’t have a specific <code class="language-plaintext highlighter-rouge">mixin</code> keyword but supports the pattern.</p>
+
+<h3 id="55-method-overriding">55. Method Overriding?</h3>
+
+<p>A subclass can provide a specific implementation of a method that is already provided by its parent class.</p>
+
+<h3 id="56-super-keyword">56. <code class="language-plaintext highlighter-rouge">super</code> keyword?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">super()</code> calls the constructor of the parent class.</li>
+  <li><code class="language-plaintext highlighter-rouge">super.method()</code> calls a method on the parent class.</li>
+</ul>
+
+<h3 id="57-can-a-class-implement-multiple-interfaces">57. Can a class implement multiple interfaces?</h3>
+
+<p>Yes. <code class="language-plaintext highlighter-rouge">class C implements A, B { ... }</code></p>
+
+<h3 id="58-can-a-class-extend-multiple-classes">58. Can a class extend multiple classes?</h3>
+
+<p>No. TypeScript allows single inheritance only. Use Mixins for multiple inheritance behavior.</p>
+
+<h3 id="59-difference-between-private-and-private-js-private-fields">59. Difference between <code class="language-plaintext highlighter-rouge">private</code> and <code class="language-plaintext highlighter-rouge">#private</code> (JS private fields)?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">private</code>: TypeScript compile-time check. At runtime, it’s just a normal property.</li>
+  <li><code class="language-plaintext highlighter-rouge">#field</code>: Native JavaScript private field (ECMAScript feature). Truly private at runtime (hard privacy).</li>
+</ul>
+
+<h3 id="60-what-is-strictpropertyinitialization">60. What is <code class="language-plaintext highlighter-rouge">strictPropertyInitialization</code>?</h3>
+
+<p>A compiler flag. Ensures that class properties are initialized in the constructor or declared with a default value.</p>
+
+<h2 id="part-5-advanced-types--type-manipulation-61-80">Part 5: Advanced Types &amp; Type Manipulation (61-80)</h2>
+
+<h3 id="61-what-are-type-guards">61. What are Type Guards?</h3>
+
+<p>Techniques to narrow down the type of a variable within a conditional block.</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">typeof</code>: <code class="language-plaintext highlighter-rouge">if (typeof x === "string")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">instanceof</code>: <code class="language-plaintext highlighter-rouge">if (x instanceof Dog)</code></li>
+  <li><strong>User-Defined:</strong> Function returning <code class="language-plaintext highlighter-rouge">parameter is Type</code>.</li>
+</ol>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">isFish</span><span class="p">(</span><span class="nx">pet</span><span class="p">:</span> <span class="nx">Fish</span> <span class="o">|</span> <span class="nx">Bird</span><span class="p">):</span> <span class="nx">pet</span> <span class="k">is</span> <span class="nx">Fish</span> <span class="p">{</span>
+    <span class="k">return </span><span class="p">(</span><span class="nx">pet</span> <span class="kd">as </span><span class="nx">Fish</span><span class="p">).</span><span class="nx">swim</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="62-discriminated-unions">62. Discriminated Unions?</h3>
+
+<p>A pattern using a common literal property (the “tag”) to distinguish between variants of a union.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Circle</span> <span class="p">{</span> <span class="nl">kind</span><span class="p">:</span> <span class="dl">"</span><span class="s2">circle</span><span class="dl">"</span><span class="p">;</span> <span class="nl">radius</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span> <span class="p">}</span>
+<span class="kr">interface</span> <span class="nx">Square</span> <span class="p">{</span> <span class="nl">kind</span><span class="p">:</span> <span class="dl">"</span><span class="s2">square</span><span class="dl">"</span><span class="p">;</span> <span class="nl">side</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span> <span class="p">}</span>
+<span class="kd">type</span> <span class="nx">Shape</span> <span class="o">=</span> <span class="nx">Circle</span> <span class="o">|</span> <span class="nx">Square</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nf">getArea</span><span class="p">(</span><span class="nx">s</span><span class="p">:</span> <span class="nx">Shape</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">kind</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">circle</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span> <span class="c1">// TS knows s is Circle here</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Visual Logic Flow:</strong></p>
+
+<pre><code class="language-mermaid">graph TD
+    Input[Shape Union] --&gt; Check{Check 'kind' property}
+    Check --&gt;|circle| Circle[Access 'radius']
+    Check --&gt;|square| Square[Access 'side']
+    Circle --&gt; Area1[PI * r * r]
+    Square --&gt; Area2[side * side]
+</code></pre>
+
+<h3 id="63-mapped-types">63. Mapped Types?</h3>
+
+<p>Allow you to create new types based on old ones by transforming properties.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nb">Readonly</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="k">readonly</span> <span class="p">[</span><span class="nx">P</span> <span class="k">in</span> <span class="kr">keyof</span> <span class="nx">T</span><span class="p">]:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="64-conditional-types">64. Conditional Types?</h3>
+
+<p>Selects one of two types based on a condition expressed as a type relationship test.
+Syntax: <code class="language-plaintext highlighter-rouge">T extends U ? X : Y</code></p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">TypeName</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span>
+    <span class="nx">T</span> <span class="kd">extends</span> <span class="kr">string</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span> <span class="p">:</span>
+    <span class="nx">T</span> <span class="kd">extends</span> <span class="kr">number</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span> <span class="p">:</span>
+    <span class="dl">"</span><span class="s2">object</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="65-infer-keyword">65. <code class="language-plaintext highlighter-rouge">infer</code> keyword?</h3>
+
+<p>Used within conditional types to infer a type variable to be used in the true branch.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">Unpacked</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">T</span> <span class="nf">extends </span><span class="p">(</span><span class="nx">infer</span> <span class="nx">U</span><span class="p">)[]</span> <span class="p">?</span> <span class="nx">U</span> <span class="p">:</span> <span class="nx">T</span><span class="p">;</span>
+<span class="c1">// If T is an array, extract the element type U.</span>
+</code></pre></div></div>
+
+<h3 id="66-template-literal-types">66. Template Literal Types?</h3>
+
+<p>Build types using string literal syntax.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">World</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">world</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">type</span> <span class="nx">Greeting</span> <span class="o">=</span> <span class="s2">`hello </span><span class="p">${</span><span class="nx">World</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span> <span class="c1">// "hello world"</span>
+</code></pre></div></div>
+
+<h3 id="67-explain-typeof-as-a-type-operator">67. Explain <code class="language-plaintext highlighter-rouge">typeof</code> as a Type Operator.</h3>
+
+<p>Refers to the <em>type</em> of a variable or property.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">s</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">n</span><span class="p">:</span> <span class="k">typeof</span> <span class="nx">s</span><span class="p">;</span> <span class="c1">// string</span>
+</code></pre></div></div>
+
+<h3 id="68-non-null-assertion-operator-">68. Non-Null Assertion Operator (<code class="language-plaintext highlighter-rouge">!</code>)?</h3>
+
+<p>A post-fix expression operator that removes <code class="language-plaintext highlighter-rouge">null</code> and <code class="language-plaintext highlighter-rouge">undefined</code> from the type of an operand.
+<code class="language-plaintext highlighter-rouge">x!.toFixed()</code> tells TS “I know x is not null here”.</p>
+
+<h3 id="69-declare-keyword">69. <code class="language-plaintext highlighter-rouge">declare</code> keyword?</h3>
+
+<p>Used for ambient declarations. It tells the compiler “this variable exists, trust me”. Used for 3rd party libraries without types (<code class="language-plaintext highlighter-rouge">declare var $: any;</code>).</p>
+
+<h3 id="70-namespace-vs-module">70. Namespace vs Module?</h3>
+
+<ul>
+  <li><strong>Module:</strong> File-based scope (ES6 modules). Preferred for modern apps.</li>
+  <li><strong>Namespace:</strong> Internal organization of code (used to be called Internal Modules). <code class="language-plaintext highlighter-rouge">namespace MyMath { ... }</code>. Less common now.</li>
+</ul>
+
+<h3 id="71-ambient-context">71. Ambient Context?</h3>
+
+<p>Declarations found in <code class="language-plaintext highlighter-rouge">.d.ts</code> files. They don’t generate code but define types for existing JS code.</p>
+
+<h3 id="72-triple-slash-directives">72. Triple-Slash Directives?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">/// &lt;reference path="..." /&gt;</code>
+Used to include other files in the compilation context. mostly replaced by <code class="language-plaintext highlighter-rouge">import</code>/<code class="language-plaintext highlighter-rouge">export</code> and <code class="language-plaintext highlighter-rouge">tsconfig.json</code>.</p>
+
+<h3 id="73-global-module-augmentation">73. <code class="language-plaintext highlighter-rouge">global</code> module augmentation?</h3>
+
+<p>Adding properties to global objects like <code class="language-plaintext highlighter-rouge">Window</code>.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">declare</span> <span class="nb">global</span> <span class="p">{</span>
+    <span class="kr">interface</span> <span class="nx">Window</span> <span class="p">{</span>
+        <span class="nl">myCustomProp</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="74-recursive-types">74. Recursive Types?</h3>
+
+<p>Types that reference themselves.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">Json</span> <span class="o">=</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span> <span class="o">|</span> <span class="nx">boolean</span> <span class="o">|</span> <span class="kc">null</span> <span class="o">|</span> <span class="p">{</span> <span class="p">[</span><span class="na">property</span><span class="p">:</span> <span class="kr">string</span><span class="p">]:</span> <span class="nx">Json</span> <span class="p">}</span> <span class="o">|</span> <span class="nx">Json</span><span class="p">[];</span>
+</code></pre></div></div>
+
+<h3 id="75-covariance-vs-contravariance">75. Covariance vs Contravariance?</h3>
+
+<ul>
+  <li><strong>Covariance:</strong> A derived type is accepted where a base type is expected (Arrays, Return types).</li>
+  <li><strong>Contravariance:</strong> A base type is accepted where a derived type is expected (Function arguments).</li>
+</ul>
+
+<h3 id="76-const-assertions">76. <code class="language-plaintext highlighter-rouge">const</code> assertions?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">as const</code> allows you to create fully readonly, literal types.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span> <span class="kd">as const</span><span class="p">;</span> <span class="c1">// Type is "hello", not string</span>
+<span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span> <span class="kd">as const</span><span class="p">;</span> <span class="c1">// Type is readonly [10, 20]</span>
+</code></pre></div></div>
+
+<h3 id="77-import-type">77. <code class="language-plaintext highlighter-rouge">import type</code>?</h3>
+
+<p>Explicitly imports <em>only</em> type information. These imports are completely removed at runtime.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="kd">type</span> <span class="p">{</span> <span class="nx">User</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./user</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="78-what-is-this-parameter-in-callbacks">78. What is <code class="language-plaintext highlighter-rouge">this</code> parameter in callbacks?</h3>
+
+<p>If a library calls a callback with a specific <code class="language-plaintext highlighter-rouge">this</code> context, you can type it.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">UIElement</span> <span class="p">{</span>
+    <span class="nf">addClickListener</span><span class="p">(</span><span class="nx">onclick</span><span class="p">:</span> <span class="p">(</span><span class="k">this</span><span class="p">:</span> <span class="k">void</span><span class="p">,</span> <span class="nx">e</span><span class="p">:</span> <span class="nx">Event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">):</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="79-satisfies-operator">79. Satisfies operator?</h3>
+
+<p>(TS 4.9+) Validates that an expression matches a type, without changing the expression’s type (preserves narrowing).</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">palette</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">red</span><span class="p">:</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="na">green</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#00ff00</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">}</span> <span class="kd">satisfies </span><span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="c1">// palette.red is still number[], not string | number[]</span>
+</code></pre></div></div>
+
+<h3 id="80-awaited">80. Awaited<T>?</T></h3>
+
+<p>Unwraps Promises recursively.
+<code class="language-plaintext highlighter-rouge">Awaited&lt;Promise&lt;string&gt;&gt;</code> -&gt; <code class="language-plaintext highlighter-rouge">string</code>.</p>
+
+<h2 id="part-6-configuration--tooling-81-90">Part 6: Configuration &amp; Tooling (81-90)</h2>
+
+<h3 id="81-what-is-tsconfigjson">81. What is <code class="language-plaintext highlighter-rouge">tsconfig.json</code>?</h3>
+
+<p>The root of a TypeScript project. Configures the compiler options and specifies which files to include.</p>
+
+<h3 id="82-important-compiler-options">82. Important Compiler Options?</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">target</code>: JS version to output (ES5, ES6, ES2020).</li>
+  <li><code class="language-plaintext highlighter-rouge">module</code>: Module system (CommonJS, ESNext).</li>
+  <li><code class="language-plaintext highlighter-rouge">outDir</code>: Where to put compiled files.</li>
+  <li><code class="language-plaintext highlighter-rouge">strict</code>: Enables all strict type checking options.</li>
+</ul>
+
+<h3 id="83-what-is-strict-true">83. What is <code class="language-plaintext highlighter-rouge">strict: true</code>?</h3>
+
+<p>Enables:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">noImplicitAny</code></li>
+  <li><code class="language-plaintext highlighter-rouge">strictNullChecks</code></li>
+  <li><code class="language-plaintext highlighter-rouge">strictFunctionTypes</code></li>
+  <li><code class="language-plaintext highlighter-rouge">strictPropertyInitialization</code></li>
+  <li>etc.</li>
+</ul>
+
+<h3 id="84-noimplicitany">84. <code class="language-plaintext highlighter-rouge">noImplicitAny</code>?</h3>
+
+<p>Raises error on expressions and declarations with an implied <code class="language-plaintext highlighter-rouge">any</code> type.</p>
+
+<h3 id="85-sourcemap">85. <code class="language-plaintext highlighter-rouge">sourceMap</code>?</h3>
+
+<p>Generates <code class="language-plaintext highlighter-rouge">.map</code> files. Allows debugging the original TypeScript code in the browser/debugger instead of the compiled JS.</p>
+
+<h3 id="86-how-to-use-typescript-with-react">86. How to use TypeScript with React?</h3>
+
+<p>Use <code class="language-plaintext highlighter-rouge">.tsx</code> extension. Install <code class="language-plaintext highlighter-rouge">@types/react</code> and <code class="language-plaintext highlighter-rouge">@types/react-dom</code>.
+Generics in JSX might need a trailing comma to distinguish from tags: <code class="language-plaintext highlighter-rouge">&lt;T,&gt;(arg: T) =&gt; ...</code> or use <code class="language-plaintext highlighter-rouge">extends</code>: <code class="language-plaintext highlighter-rouge">&lt;T extends unknown&gt;</code>.</p>
+
+<h3 id="87-what-are-defintelytyped-and-types">87. What are DefintelyTyped and <code class="language-plaintext highlighter-rouge">@types</code>?</h3>
+
+<p>DefinitelyTyped is a repository of high-quality TypeScript type definitions.
+<code class="language-plaintext highlighter-rouge">@types/package</code> packages are installed to provide types for JS libraries.</p>
+
+<h3 id="88-how-to-handle-3rd-party-library-without-types">88. How to handle 3rd party library without types?</h3>
+
+<ol>
+  <li>Check for <code class="language-plaintext highlighter-rouge">@types/package</code>.</li>
+  <li>Create a <code class="language-plaintext highlighter-rouge">global.d.ts</code> and add <code class="language-plaintext highlighter-rouge">declare module 'package';</code>.</li>
+</ol>
+
+<h3 id="89-difference-between-dependencies-and-devdependencies-for-types">89. Difference between <code class="language-plaintext highlighter-rouge">dependencies</code> and <code class="language-plaintext highlighter-rouge">devDependencies</code> for types?</h3>
+
+<p>Types used only for development/testing (like <code class="language-plaintext highlighter-rouge">@types/jest</code>) go in <code class="language-plaintext highlighter-rouge">devDependencies</code>. Types required for the library consumers (if publishing a library) might belong in <code class="language-plaintext highlighter-rouge">dependencies</code>, though typically published libraries bundle their own types.</p>
+
+<h3 id="90-skiplibcheck">90. <code class="language-plaintext highlighter-rouge">skipLibCheck</code>?</h3>
+
+<p>Skips type checking of declaration files (<code class="language-plaintext highlighter-rouge">.d.ts</code>). Speeds up compilation.</p>
+
+<h2 id="part-7-ecosystem--best-practices-91-100">Part 7: Ecosystem &amp; Best Practices (91-100)</h2>
+
+<h3 id="91-typescript-vs-javascript-performance">91. TypeScript vs JavaScript performance?</h3>
+
+<p>Runtime performance is the same (TS compiles to JS).
+Dev time performance: TS adds a compilation step, but catches errors early, potentially saving debugging time.</p>
+
+<h3 id="92-when-not-to-use-typescript">92. When NOT to use TypeScript?</h3>
+
+<ul>
+  <li>Very small scripts.</li>
+  <li>Prototyping where speed of change &gt; safety.</li>
+  <li>Team completely unfamiliar with static typing (learning curve).</li>
+</ul>
+
+<h3 id="93-best-practice-for-migrating-to-ts">93. Best practice for migrating to TS?</h3>
+
+<ol>
+  <li>Enable <code class="language-plaintext highlighter-rouge">allowJs: true</code>.</li>
+  <li>Rename files <code class="language-plaintext highlighter-rouge">.js</code> -&gt; <code class="language-plaintext highlighter-rouge">.ts</code> one by one.</li>
+  <li>Fix strict errors.</li>
+  <li>Avoid <code class="language-plaintext highlighter-rouge">any</code>.</li>
+</ol>
+
+<h3 id="94-explain-type-erasure">94. Explain Type Erasure.</h3>
+
+<p>TypeScript types are erased during compilation. They leave no trace in the runtime JavaScript code. You cannot rely on TS types for runtime logic.</p>
+
+<h3 id="95-dependency-injection-in-ts">95. Dependency Injection in TS?</h3>
+
+<p>TS works well with DI patterns. In Angular/NestJS, constructor injection is heavily used with TS types as tokens.</p>
+
+<h3 id="96-formatting-and-linting">96. Formatting and Linting?</h3>
+
+<ul>
+  <li><strong>ESLint:</strong> Standard linter (TSLint is deprecated).</li>
+  <li><strong>Prettier:</strong> Code formatter.</li>
+</ul>
+
+<h3 id="97-project-references">97. Project References?</h3>
+
+<p>Allow structuring a TS program into smaller pieces. Improves build times by allowing incremental builds of components.</p>
+
+<h3 id="98-ts-with-nodejs">98. TS with Node.js?</h3>
+
+<p>Node cannot run TS natively. Use <code class="language-plaintext highlighter-rouge">ts-node</code> for dev, or compile with <code class="language-plaintext highlighter-rouge">tsc</code> and run <code class="language-plaintext highlighter-rouge">node dist/index.js</code> for production.</p>
+
+<h3 id="99-module-resolution-strategies">99. Module Resolution Strategies?</h3>
+
+<ul>
+  <li><strong>Classic:</strong> Old strategy.</li>
+  <li><strong>Node:</strong> Mimics Node.js resolution mechanism (looks in <code class="language-plaintext highlighter-rouge">node_modules</code>). Default for modern apps.</li>
+</ul>
+
+<h3 id="100-future-of-typescript">100. Future of TypeScript?</h3>
+
+<p>Continues to align with ECMAScript standards. Features often move from TS -&gt; Stage X ES Proposal -&gt; ES Standard. TS aims to “disappear” when compiled.</p>
+
+<hr />
+
+<p><strong>End of Interview Questions</strong></p>
+
+<h2 id="study-guide">Study Guide</h2>
+
+<p>To deepen your understanding of these concepts, check out the following resources:</p>
+
+<ul>
+  <li><strong>Official Documentation</strong>: <a href="https://www.typescriptlang.org/docs/">Typescript Docs</a></li>
+  <li><strong>Internal Style Guide</strong>: <a href="../style_guides/typescript/typescript_style_guide.md">Typescript Style Guide</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

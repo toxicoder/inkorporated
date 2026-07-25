@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>SQL Style Guide | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="SQL Style Guide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="SQL Style Guide for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="SQL Style Guide for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/style_guides/sql/sql_style_guide.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/style_guides/sql/sql_style_guide.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SQL Style Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"SQL Style Guide for Inkorporated.","headline":"SQL Style Guide","url":"https://toxicoder.github.io/inkorporated/style_guides/sql/sql_style_guide.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">SQL Style Guide</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="sql-style-guide">SQL Style Guide</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This document outlines the coding standards and best practices for SQL development within this project. Adhering to these guidelines ensures code consistency, readability, maintainability, and performance across different database systems (PostgreSQL, MySQL, BigQuery, etc.).</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+  <li><a href="#general-principles">General Principles</a></li>
+  <li><a href="#code-layout-and-formatting">Code Layout and Formatting</a></li>
+  <li><a href="#naming-conventions">Naming Conventions</a></li>
+  <li><a href="#syntax-and-language-features">Syntax and Language Features</a></li>
+  <li><a href="#data-integrity-and-schema-design">Data Integrity and Schema Design</a></li>
+  <li><a href="#performance-and-optimization">Performance and Optimization</a></li>
+  <li><a href="#security">Security</a></li>
+  <li><a href="#documentation-and-comments">Documentation and Comments</a></li>
+  <li><a href="#transaction-management">Transaction Management</a></li>
+  <li><a href="#recommended-tools">Recommended Tools</a></li>
+</ol>
+
+<h2 id="general-principles">General Principles</h2>
+
+<ul>
+  <li><strong>Readability First</strong>: Code is read much more often than it is written. Prioritize clarity over cleverness or brevity.</li>
+  <li><strong>Consistency</strong>: Be consistent with the existing codebase. If you edit a file, follow the existing style.</li>
+  <li><strong>Portability</strong>: Where possible, use standard ANSI SQL to ensure portability across different database systems. Avoid vendor-specific extensions unless necessary for performance or specific functionality.</li>
+  <li><strong>Explicit is Better</strong>: Avoid implicit behaviors. Explicitly define column names in <code class="language-plaintext highlighter-rouge">SELECT</code> and <code class="language-plaintext highlighter-rouge">INSERT</code> statements.</li>
+  <li><strong>Performance Aware</strong>: Write queries that are performant and scalable. Understand the cost of operations.</li>
+</ul>
+
+<h2 id="code-layout-and-formatting">Code Layout and Formatting</h2>
+
+<ul>
+  <li><strong>Indentation</strong>: Use 2 or 4 spaces (consistent with project preferences) for indentation. Do not use tabs.</li>
+  <li><strong>Keywords</strong>: Use <code class="language-plaintext highlighter-rouge">UPPERCASE</code> for all SQL keywords (e.g., <code class="language-plaintext highlighter-rouge">SELECT</code>, <code class="language-plaintext highlighter-rouge">FROM</code>, <code class="language-plaintext highlighter-rouge">WHERE</code>, <code class="language-plaintext highlighter-rouge">AS</code>, <code class="language-plaintext highlighter-rouge">CASE</code>).</li>
+  <li><strong>Identifiers</strong>: Use <code class="language-plaintext highlighter-rouge">snake_case</code> for all identifiers (tables, columns, aliases).</li>
+  <li><strong>Line Length</strong>: Soft limit of 80-100 characters per line.</li>
+  <li><strong>Clauses</strong>: Place primary clauses (<code class="language-plaintext highlighter-rouge">SELECT</code>, <code class="language-plaintext highlighter-rouge">FROM</code>, <code class="language-plaintext highlighter-rouge">WHERE</code>, <code class="language-plaintext highlighter-rouge">GROUP BY</code>, etc.) on their own lines.</li>
+  <li><strong>Joins</strong>: Align <code class="language-plaintext highlighter-rouge">JOIN</code> keywords with the <code class="language-plaintext highlighter-rouge">FROM</code> keyword. Place <code class="language-plaintext highlighter-rouge">ON</code> conditions on a new line, indented.</li>
+  <li><strong>Lists</strong>: When selecting multiple columns, place each column on a new line, indented.</li>
+  <li><strong>Commas</strong>: Use trailing commas.</li>
+  <li><strong>Parentheses</strong>: Use parentheses to group conditions and improve readability, even if operator precedence makes them optional.</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Good</span>
+<span class="k">SELECT</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">username</span><span class="p">,</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">email</span><span class="p">,</span>
+    <span class="k">COUNT</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">id</span><span class="p">)</span> <span class="k">AS</span> <span class="n">total_orders</span>
+<span class="k">FROM</span>
+    <span class="n">users</span> <span class="k">AS</span> <span class="n">u</span>
+    <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">orders</span> <span class="k">AS</span> <span class="n">o</span>
+        <span class="k">ON</span> <span class="n">u</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">o</span><span class="p">.</span><span class="n">user_id</span>
+<span class="k">WHERE</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">'active'</span>
+    <span class="k">AND</span> <span class="n">u</span><span class="p">.</span><span class="n">created_at</span> <span class="o">&gt;=</span> <span class="s1">'2023-01-01'</span>
+<span class="k">GROUP</span> <span class="k">BY</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">username</span><span class="p">,</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">email</span>
+<span class="k">ORDER</span> <span class="k">BY</span>
+    <span class="n">total_orders</span> <span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="naming-conventions">Naming Conventions</h2>
+
+<ul>
+  <li><strong>Tables</strong>: Use <code class="language-plaintext highlighter-rouge">snake_case</code>. Use plural names for tables (e.g., <code class="language-plaintext highlighter-rouge">users</code>, <code class="language-plaintext highlighter-rouge">orders</code>, <code class="language-plaintext highlighter-rouge">order_items</code>) to represent a collection of records.</li>
+  <li><strong>Columns</strong>: Use <code class="language-plaintext highlighter-rouge">snake_case</code>. Names should be descriptive.
+    <ul>
+      <li>Booleans: Prefix with <code class="language-plaintext highlighter-rouge">is_</code>, <code class="language-plaintext highlighter-rouge">has_</code>, or <code class="language-plaintext highlighter-rouge">can_</code> (e.g., <code class="language-plaintext highlighter-rouge">is_active</code>, <code class="language-plaintext highlighter-rouge">has_permission</code>).</li>
+      <li>Dates/Times: Suffix with <code class="language-plaintext highlighter-rouge">_at</code> for timestamps (e.g., <code class="language-plaintext highlighter-rouge">created_at</code>) or <code class="language-plaintext highlighter-rouge">_date</code> for dates (e.g., <code class="language-plaintext highlighter-rouge">birth_date</code>).</li>
+    </ul>
+  </li>
+  <li><strong>Primary Keys</strong>: Prefer <code class="language-plaintext highlighter-rouge">id</code> as the primary key name for simplicity, or <code class="language-plaintext highlighter-rouge">table_name_id</code> if using natural keys or requiring global uniqueness context.</li>
+  <li><strong>Foreign Keys</strong>: Use <code class="language-plaintext highlighter-rouge">referenced_table_singular_id</code> (e.g., <code class="language-plaintext highlighter-rouge">user_id</code> in the <code class="language-plaintext highlighter-rouge">orders</code> table).</li>
+  <li><strong>Aliases</strong>: Use short, meaningful abbreviations.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">users</code> -&gt; <code class="language-plaintext highlighter-rouge">u</code></li>
+      <li><code class="language-plaintext highlighter-rouge">orders</code> -&gt; <code class="language-plaintext highlighter-rouge">o</code></li>
+      <li>Avoid <code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">b</code>, <code class="language-plaintext highlighter-rouge">c</code> unless in a very abstract subquery.</li>
+      <li>Always use <code class="language-plaintext highlighter-rouge">AS</code> for aliases (e.g., <code class="language-plaintext highlighter-rouge">SELECT col AS alias</code>).</li>
+    </ul>
+  </li>
+  <li><strong>Indexes</strong>: <code class="language-plaintext highlighter-rouge">idx_tablename_columns</code> (e.g., <code class="language-plaintext highlighter-rouge">idx_users_email</code>).</li>
+  <li><strong>Constraints</strong>:
+    <ul>
+      <li>Primary Key: <code class="language-plaintext highlighter-rouge">pk_tablename</code></li>
+      <li>Foreign Key: <code class="language-plaintext highlighter-rouge">fk_tablename_referencedtable</code></li>
+      <li>Unique: <code class="language-plaintext highlighter-rouge">uq_tablename_columns</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="syntax-and-language-features">Syntax and Language Features</h2>
+
+<ul>
+  <li><em>*Select **</em>: Avoid <code class="language-plaintext highlighter-rouge">SELECT *</code>. Always explicitly list columns. This prevents breakage when schema changes and reduces network overhead.</li>
+  <li><strong>Joins</strong>: Always use explicit ANSI join syntax (<code class="language-plaintext highlighter-rouge">JOIN</code>, <code class="language-plaintext highlighter-rouge">LEFT JOIN</code>) instead of implicit joins in the <code class="language-plaintext highlighter-rouge">WHERE</code> clause.</li>
+  <li><strong>CTEs vs Subqueries</strong>: Prefer Common Table Expressions (CTEs) using <code class="language-plaintext highlighter-rouge">WITH</code> clauses over nested subqueries for readability and logic separation.</li>
+  <li><strong>NULL Handling</strong>:
+    <ul>
+      <li>Use <code class="language-plaintext highlighter-rouge">IS NULL</code> or <code class="language-plaintext highlighter-rouge">IS NOT NULL</code> checks.</li>
+      <li>Use <code class="language-plaintext highlighter-rouge">COALESCE</code> to handle potential NULL values in calculations or display.</li>
+      <li>Be aware of how aggregate functions handle NULLs (usually ignored).</li>
+    </ul>
+  </li>
+  <li><strong>Data Types</strong>: Choose the appropriate data type for the data.
+    <ul>
+      <li>Use <code class="language-plaintext highlighter-rouge">TEXT</code> or <code class="language-plaintext highlighter-rouge">VARCHAR</code> for strings.</li>
+      <li>Use <code class="language-plaintext highlighter-rouge">TIMESTAMP WITH TIME ZONE</code> (or equivalent) for time data to avoid timezone confusion.</li>
+      <li>Use <code class="language-plaintext highlighter-rouge">DECIMAL</code> or <code class="language-plaintext highlighter-rouge">NUMERIC</code> for financial data to avoid floating-point errors.</li>
+    </ul>
+  </li>
+  <li><strong>Window Functions</strong>: Use window functions (<code class="language-plaintext highlighter-rouge">ROW_NUMBER</code>, <code class="language-plaintext highlighter-rouge">RANK</code>, <code class="language-plaintext highlighter-rouge">LEAD</code>, <code class="language-plaintext highlighter-rouge">LAG</code>) for analytical queries instead of complex self-joins.</li>
+  <li><strong>Semicolons</strong>: Always terminate statements with a semicolon <code class="language-plaintext highlighter-rouge">;</code>.</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Good: Using CTEs</span>
+<span class="k">WITH</span> <span class="n">recent_orders</span> <span class="k">AS</span> <span class="p">(</span>
+    <span class="k">SELECT</span>
+        <span class="n">user_id</span><span class="p">,</span>
+        <span class="k">MAX</span><span class="p">(</span><span class="n">created_at</span><span class="p">)</span> <span class="k">AS</span> <span class="n">last_order_date</span>
+    <span class="k">FROM</span>
+        <span class="n">orders</span>
+    <span class="k">GROUP</span> <span class="k">BY</span>
+        <span class="n">user_id</span>
+<span class="p">)</span>
+<span class="k">SELECT</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">username</span><span class="p">,</span>
+    <span class="n">ro</span><span class="p">.</span><span class="n">last_order_date</span>
+<span class="k">FROM</span>
+    <span class="n">users</span> <span class="k">AS</span> <span class="n">u</span>
+    <span class="k">JOIN</span> <span class="n">recent_orders</span> <span class="k">AS</span> <span class="n">ro</span>
+        <span class="k">ON</span> <span class="n">u</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">ro</span><span class="p">.</span><span class="n">user_id</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="data-integrity-and-schema-design">Data Integrity and Schema Design</h2>
+
+<ul>
+  <li><strong>Normalization</strong>: Aim for 3rd Normal Form (3NF) for transactional databases to reduce redundancy and anomalies. Denormalize only for proven performance needs in analytical workloads.</li>
+  <li><strong>Constraints</strong>: Enforce integrity at the database level.
+    <ul>
+      <li><strong>NOT NULL</strong>: Default to <code class="language-plaintext highlighter-rouge">NOT NULL</code> unless a value is optional.</li>
+      <li><strong>Foreign Keys</strong>: Always define FK constraints to ensure referential integrity.</li>
+      <li><strong>Unique</strong>: Use unique constraints to prevent duplicate data.</li>
+      <li><strong>Check</strong>: Use check constraints for data validation (e.g., <code class="language-plaintext highlighter-rouge">price &gt;= 0</code>).</li>
+    </ul>
+  </li>
+  <li><strong>Default Values</strong>: Use default values where appropriate (e.g., <code class="language-plaintext highlighter-rouge">created_at DEFAULT CURRENT_TIMESTAMP</code>).</li>
+  <li><strong>Migrations</strong>: All schema changes must be versioned and reversible (where possible).</li>
+</ul>
+
+<h2 id="performance-and-optimization">Performance and Optimization</h2>
+
+<ul>
+  <li><strong>Indexing</strong>:
+    <ul>
+      <li>Index columns used in <code class="language-plaintext highlighter-rouge">WHERE</code>, <code class="language-plaintext highlighter-rouge">JOIN</code>, <code class="language-plaintext highlighter-rouge">ORDER BY</code>, and <code class="language-plaintext highlighter-rouge">GROUP BY</code> clauses.</li>
+      <li>Avoid over-indexing; every index adds overhead to writes.</li>
+      <li>Use composite indexes for queries filtering on multiple columns (order matters: equality first, then range).</li>
+    </ul>
+  </li>
+  <li><strong>SARGable Queries</strong>: Write Search ARGumentable queries.
+    <ul>
+      <li>Avoid functions on indexed columns in the <code class="language-plaintext highlighter-rouge">WHERE</code> clause (e.g., <code class="language-plaintext highlighter-rouge">WHERE YEAR(date_col) = 2023</code>). Instead use range checks (<code class="language-plaintext highlighter-rouge">WHERE date_col &gt;= '2023-01-01' AND date_col &lt; '2024-01-01'</code>).</li>
+      <li>Avoid leading wildcards in <code class="language-plaintext highlighter-rouge">LIKE</code> (<code class="language-plaintext highlighter-rouge">'%value'</code>).</li>
+    </ul>
+  </li>
+  <li><strong>Set-Based Operations</strong>: Think in sets, not loops. Avoid cursors and procedural loops whenever possible.</li>
+  <li><strong>Explain Plan</strong>: Always check the execution plan (<code class="language-plaintext highlighter-rouge">EXPLAIN</code> or <code class="language-plaintext highlighter-rouge">EXPLAIN ANALYZE</code>) for complex or slow-running queries.</li>
+  <li><strong>Limit</strong>: Use <code class="language-plaintext highlighter-rouge">LIMIT</code> when you only need a sample or top-N results.</li>
+</ul>
+
+<h2 id="security">Security</h2>
+
+<ul>
+  <li><strong>SQL Injection</strong>: NEVER concatenate user input directly into SQL strings.
+    <ul>
+      <li>Use prepared statements / parameterized queries provided by your client library.</li>
+    </ul>
+  </li>
+  <li><strong>Least Privilege</strong>: Application users/roles should only have the permissions necessary (e.g., <code class="language-plaintext highlighter-rouge">CONNECT</code>, <code class="language-plaintext highlighter-rouge">SELECT</code>, <code class="language-plaintext highlighter-rouge">INSERT</code>, <code class="language-plaintext highlighter-rouge">UPDATE</code>).
+    <ul>
+      <li>Do not use the <code class="language-plaintext highlighter-rouge">root</code> or <code class="language-plaintext highlighter-rouge">postgres</code> superuser for applications.</li>
+      <li>Restrict access to DDL commands (<code class="language-plaintext highlighter-rouge">CREATE</code>, <code class="language-plaintext highlighter-rouge">DROP</code>, <code class="language-plaintext highlighter-rouge">ALTER</code>).</li>
+    </ul>
+  </li>
+  <li><strong>Sensitive Data</strong>: Encrypt sensitive data (PII, passwords) at rest and in transit. Hashing (e.g., bcrypt, argon2) is mandatory for passwords.</li>
+</ul>
+
+<h2 id="documentation-and-comments">Documentation and Comments</h2>
+
+<ul>
+  <li><strong>Header Comments</strong>: For complex stored procedures or views, include a header comment explaining the purpose, author, and parameters.</li>
+  <li><strong>Inline Comments</strong>: Use <code class="language-plaintext highlighter-rouge">--</code> for inline comments. Explain <em>why</em> complex logic is used.</li>
+  <li><strong>Schema Documentation</strong>: Use the database’s comment feature (<code class="language-plaintext highlighter-rouge">COMMENT ON TABLE</code>, <code class="language-plaintext highlighter-rouge">COMMENT ON COLUMN</code>) to document the schema itself.</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">COMMENT</span> <span class="k">ON</span> <span class="k">TABLE</span> <span class="n">users</span> <span class="k">IS</span> <span class="s1">'Stores registered user accounts'</span><span class="p">;</span>
+<span class="k">COMMENT</span> <span class="k">ON</span> <span class="k">COLUMN</span> <span class="n">users</span><span class="p">.</span><span class="n">status</span> <span class="k">IS</span> <span class="s1">'Current state of the user account (active, suspended, deleted)'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="transaction-management">Transaction Management</h2>
+
+<ul>
+  <li><strong>ACID</strong>: Ensure operations that modify multiple tables are wrapped in a transaction to maintain Atomicity, Consistency, Isolation, and Durability.</li>
+  <li><strong>Explicit Transactions</strong>: Use <code class="language-plaintext highlighter-rouge">BEGIN</code>, <code class="language-plaintext highlighter-rouge">COMMIT</code>, and <code class="language-plaintext highlighter-rouge">ROLLBACK</code> explicitly when logic requires it.</li>
+  <li><strong>Locking</strong>: Be aware of locking behavior. keep transactions short to avoid blocking other operations.</li>
+  <li><strong>Error Handling</strong>: Implement proper error handling in stored procedures or application code to rollback transactions on failure.</li>
+</ul>
+
+<h2 id="recommended-tools">Recommended Tools</h2>
+
+<ul>
+  <li><strong>Linter</strong>: <code class="language-plaintext highlighter-rouge">sqlfluff</code> - A modular SQL linter and auto-formatter.</li>
+  <li><strong>Formatter</strong>: <code class="language-plaintext highlighter-rouge">sql-formatter</code> or <code class="language-plaintext highlighter-rouge">pgFormatter</code>.</li>
+  <li><strong>Migration Tools</strong>: <code class="language-plaintext highlighter-rouge">Flyway</code>, <code class="language-plaintext highlighter-rouge">Liquibase</code>, or language-specific tools like <code class="language-plaintext highlighter-rouge">alembic</code> (Python), <code class="language-plaintext highlighter-rouge">golang-migrate</code> (Go).</li>
+  <li><strong>GUI Clients</strong>: <code class="language-plaintext highlighter-rouge">DBeaver</code>, <code class="language-plaintext highlighter-rouge">DataGrip</code>, or <code class="language-plaintext highlighter-rouge">Postico</code> for safe database exploration.</li>
+</ul>
+
+<h2 id="related-interview-questions">Related Interview Questions</h2>
+
+<ul>
+  <li><strong><a href="../../interview_questions/sql.md">Practice Questions</a></strong>: Test your knowledge of Sql concepts.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

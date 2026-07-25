@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en" class="palette-1"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Data Science Interview Questions &amp; Answers (100+) | Inkorporated Homelab Documentation</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Data Science Interview Questions &amp; Answers (100+)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Data Science Interview Questions &amp; Answers (100+) for Inkorporated." />
+<meta name="twitter:description" property="og:description" content="Data Science Interview Questions &amp; Answers (100+) for Inkorporated." />
+<link rel="canonical" href="https://toxicoder.github.io/inkorporated/interview_questions/data_science.html" />
+<meta property="og:url" content="https://toxicoder.github.io/inkorporated/interview_questions/data_science.html" />
+<meta property="og:site_name" content="Inkorporated Homelab Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Data Science Interview Questions &amp; Answers (100+)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Data Science Interview Questions &amp; Answers (100+) for Inkorporated.","headline":"Data Science Interview Questions &amp; Answers (100+)","url":"https://toxicoder.github.io/inkorporated/interview_questions/data_science.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/inkorporated/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://toxicoder.github.io/inkorporated/feed.xml" title="Inkorporated Homelab Documentation" /><script>
+    window.searchUrl = "/inkorporated/search.json";
+  </script>
+</head>
+<!-- Extra CSS -->
+  
+
+  <body><header class="app-bar">
+  <button id="menu-toggle" class="btn btn-outlined" style="margin-right: 16px; display: none;" aria-label="Toggle navigation">
+    <span style="font-size: 20px;">☰</span>
+  </button>
+  <div class="title">
+    <a href="/inkorporated/" style="color: inherit;">Inkorporated Homelab Documentation</a>
+  </div>
+  <div style="flex: 1;"></div>
+  <div class="nav-controls">
+    
+    <button id="theme-settings-btn" class="icon-btn outlined" aria-label="Theme Settings" style="margin-left: 8px;">
+      <span style="font-size: 20px;">🎨</span>
+    </button>
+    <div id="theme-dialog" class="dialog modal" style="display: none; opacity: 0; transition: opacity 0.2s; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100;">
+  <h3 class="dialog-headline">Theme Settings</h3>
+  <div class="dialog-content">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <span style="font-size: 16px; font-weight: 500;">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-switch">
+        <span class="slider-track"></span>
+      </label>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+      <span style="font-size: 16px; font-weight: 500; display: block; margin-bottom: 12px;">Color Palette</span>
+      <div class="palette-grid">
+        
+          <button class="palette-swatch" data-palette-id="palette-1" aria-label="Purple" title="Purple" style="background-color: #4B11E3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-2" aria-label="Red 2" title="Red 2" style="background-color: #DB5E83;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-3" aria-label="Red 3" title="Red 3" style="background-color: #A62952;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-4" aria-label="Red 4" title="Red 4" style="background-color: #CF0B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-5" aria-label="Orange 5" title="Orange 5" style="background-color: #AA4909;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-6" aria-label="Gold" title="Gold" style="background-color: #6D5906;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-7" aria-label="Green 7" title="Green 7" style="background-color: #4E6105;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-8" aria-label="Green 8" title="Green 8" style="background-color: #0C8F08;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-9" aria-label="Teal" title="Teal" style="background-color: #06695A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-10" aria-label="Cyan 10" title="Cyan 10" style="background-color: #06636E;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-11" aria-label="Blue 11" title="Blue 11" style="background-color: #07618C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-12" aria-label="Blue 12" title="Blue 12" style="background-color: #0A54C5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-13" aria-label="Blue 13" title="Blue 13" style="background-color: #3824C1;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-14" aria-label="Purple 14" title="Purple 14" style="background-color: #912AAA;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-15" aria-label="Red 15" title="Red 15" style="background-color: #C70B3D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-16" aria-label="Red" title="Red" style="background-color: #CE120B;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-17" aria-label="Red 17" title="Red 17" style="background-color: #BD2A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-18" aria-label="Orange 18" title="Orange 18" style="background-color: #8D4A07;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-19" aria-label="Orange 19" title="Orange 19" style="background-color: #755606;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-20" aria-label="Yellow 20" title="Yellow 20" style="background-color: #5B5D05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-21" aria-label="Green 21" title="Green 21" style="background-color: #447806;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-22" aria-label="Cyan 22" title="Cyan 22" style="background-color: #056839;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-23" aria-label="Cyan 23" title="Cyan 23" style="background-color: #056761;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-24" aria-label="Blue 24" title="Blue 24" style="background-color: #07627D;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-25" aria-label="Deep Blue" title="Deep Blue" style="background-color: #0A60B7;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-26" aria-label="Blue 26" title="Blue 26" style="background-color: #0C30E5;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-27" aria-label="Blue 27" title="Blue 27" style="background-color: #540EE3;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-28" aria-label="Purple 28" title="Purple 28" style="background-color: #A214C8;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-29" aria-label="Pink 29" title="Pink 29" style="background-color: #D10B79;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-30" aria-label="Pink" title="Pink" style="background-color: #D30B3A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-31" aria-label="Red 31" title="Red 31" style="background-color: #B60A13;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-32" aria-label="Red 32" title="Red 32" style="background-color: #B02609;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-33" aria-label="Orange 33" title="Orange 33" style="background-color: #9A4108;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-34" aria-label="Orange 34" title="Orange 34" style="background-color: #805107;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-35" aria-label="Yellow 35" title="Yellow 35" style="background-color: #655C05;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-36" aria-label="Green 36" title="Green 36" style="background-color: #4A6205;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-37" aria-label="Green 37" title="Green 37" style="background-color: #286705;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-38" aria-label="Green 38" title="Green 38" style="background-color: #05682F;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-39" aria-label="Cyan 39" title="Cyan 39" style="background-color: #056751;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-40" aria-label="Cyan 40" title="Cyan 40" style="background-color: #06646C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-41" aria-label="Blue 41" title="Blue 41" style="background-color: #076189;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-42" aria-label="Blue 42" title="Blue 42" style="background-color: #0B50D0;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-43" aria-label="Blue 43" title="Blue 43" style="background-color: #181DDD;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-44" aria-label="Purple 44" title="Purple 44" style="background-color: #6E19C9;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-45" aria-label="Pink 45" title="Pink 45" style="background-color: #C0109C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-46" aria-label="Red 46" title="Red 46" style="background-color: #D50B4C;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-47" aria-label="Red 47" title="Red 47" style="background-color: #DB0C16;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-48" aria-label="Red 48" title="Red 48" style="background-color: #C31A0A;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-49" aria-label="Orange 49" title="Orange 49" style="background-color: #954608;">
+          </button>
+        
+          <button class="palette-swatch" data-palette-id="palette-50" aria-label="Orange 50" title="Orange 50" style="background-color: #775506;">
+          </button>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="dialog-actions">
+    <button class="btn btn-text" id="close-theme-dialog">Close</button>
+  </div>
+</div>
+<!-- Backdrop -->
+<div id="theme-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); z-index: 99; opacity: 0; transition: opacity 0.2s;"></div>
+
+  </div>
+</header>
+<div class="main-container"><nav class="sidebar">
+  <div class="sidebar-header" style="padding-bottom: 16px;">
+    <strong>Navigation</strong>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrapper">
+      <div class="search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="search-input" placeholder="Search..." aria-label="Search documentation">
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  
+    <ul class="nav-list">
+      
+        
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/">
+      Home
+    </a>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Core Concepts
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/overview.html">
+      Project Overview
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/index.html">
+      Architecture
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/network.html">
+      Network Topology
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/technical_design.html">
+      Technical Design
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Guides
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/installation.html">
+      Installation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/configuration.html">
+      Configuration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/environments.html">
+      Environments
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/deployment.html">
+      Deployment & Ops
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/security.html">
+      Security
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/observability.html">
+      Observability
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/backups.html">
+      Backups
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/guides/troubleshooting.html">
+      Troubleshooting
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Reference
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/reference/services.html">
+      Service Catalog
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+        
+
+<li class="nav-item">
+  
+    <details >
+      <summary class="nav-link">
+        Status & Reports
+        <svg class="nav-arrow" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+        </svg>
+      </summary>
+      <ul class="nav-list nested">
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/discovery_summary.html">
+      Discovery Summary
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/dgx_integration_summary.html">
+      DGX Integration
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/status/infrastructure_validation_report.html">
+      Infrastructure Validation
+    </a>
+  
+</li>
+
+        
+          
+
+<li class="nav-item">
+  
+    <a class="nav-link " href="/inkorporated/architecture/dgx_integration_plan.html">
+      DGX Plan
+    </a>
+  
+</li>
+
+        
+      </ul>
+    </details>
+  
+</li>
+
+      
+    </ul>
+  
+</nav>
+<main class="content" aria-label="Content">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Data Science Interview Questions &amp; Answers (100+)</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="data-science-interview-questions--answers-100">Data Science Interview Questions &amp; Answers (100+)</h1>
+
+<p><strong>What’s on this page</strong></p>
+
+<ul>
+  <li>Core content for this topic in the Inkorporated enterprise OS.</li>
+  <li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+
+<p><strong>What this enables</strong></p>
+
+<ul>
+  <li>Consistent enterprise operations and decision-making.</li>
+  <li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+
+<p>This guide contains 100+ Data Science interview questions, ranging from statistics and machine learning to SQL and model deployment. Each question includes a model answer, visual aids, and potential follow-up paths based on the candidate’s response.</p>
+
+<h2 id="part-1-statistics--probability-1-20">Part 1: Statistics &amp; Probability (1-20)</h2>
+
+<h3 id="1-explain-the-central-limit-theorem-clt">1. Explain the Central Limit Theorem (CLT).</h3>
+
+<p>The Central Limit Theorem states that the sampling distribution of the sample mean approaches a <strong>Normal Distribution</strong> as the sample size gets larger, regardless of the shape of the population distribution, provided the samples are independent and identically distributed (i.i.d).</p>
+
+<p><strong>Key Condition:</strong> Sample size $n \geq 30$ is often used as a rule of thumb.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions “Sample Mean”.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Does CLT apply if the population distribution is highly skewed?”</li>
+      <li><em>Answer:</em> Yes, but it may require a larger sample size ($n &gt; 30$) to converge to normality.</li>
+    </ul>
+  </li>
+  <li><strong>Path B: Candidate focuses on “Normal Distribution”.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Why is this important for hypothesis testing?”</li>
+      <li><em>Answer:</em> It justifies the use of parametric tests (Z-test, t-test) even when the underlying data isn’t perfectly normal.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-what-is-a-p-value">2. What is a P-value?</h3>
+
+<p>The P-value is the probability of observing test results at least as extreme as the results actually observed, assuming that the <strong>Null Hypothesis ($H_0$)</strong> is true.</p>
+
+<ul>
+  <li><strong>Low P-value ($\leq 0.05$):</strong> Reject $H_0$ (Statistically Significant).</li>
+  <li><strong>High P-value ($&gt; 0.05$):</strong> Fail to reject $H_0$.</li>
+</ul>
+
+<p><strong>Diagram: P-value Visualization</strong></p>
+
+<pre><code class="language-mermaid">graph TD
+    Data[Observed Data] --&gt; Calculate[Calculate Test Statistic]
+    Calculate --&gt; Compare[Compare to Null Distribution]
+    Compare --&gt; Prob{Probability}
+    Prob -- "Very Low (e.g., 0.01)" --&gt; Reject[Reject Null Hypothesis]
+    Prob -- "High (e.g., 0.20)" --&gt; Fail[Fail to Reject]
+</code></pre>
+
+<h3 id="3-type-i-vs-type-ii-error">3. Type I vs Type II Error?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Error Type</th>
+      <th style="text-align: left">Definition</th>
+      <th style="text-align: left">Symbol</th>
+      <th style="text-align: left">Also Known As</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Type I</strong></td>
+      <td style="text-align: left">Rejecting $H_0$ when it is True</td>
+      <td style="text-align: left">$\alpha$</td>
+      <td style="text-align: left">False Positive</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Type II</strong></td>
+      <td style="text-align: left">Failing to reject $H_0$ when it is False</td>
+      <td style="text-align: left">$\beta$</td>
+      <td style="text-align: left">False Negative</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate confuses them.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Think of a fire alarm. What is a Type I error?”</li>
+      <li><em>Answer:</em> The alarm goes off (Reject Null) but there is no fire (Null is True) = False Alarm.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="4-what-is-power-of-a-test">4. What is Power of a Test?</h3>
+
+<p>Power ($1 - \beta$) is the probability of correctly rejecting the Null Hypothesis when it is false. It represents the test’s ability to detect an effect if one actually exists.</p>
+
+<p>Factors increasing Power:</p>
+<ol>
+  <li>Larger Sample Size.</li>
+  <li>Larger Effect Size.</li>
+  <li>Higher Significance Level ($\alpha$).</li>
+</ol>
+
+<h3 id="5-explain-bias-vs-variance">5. Explain Bias vs Variance.</h3>
+
+<ul>
+  <li><strong>Bias:</strong> Error from erroneous assumptions in the learning algorithm. High bias causes <strong>Underfitting</strong>.</li>
+  <li><strong>Variance:</strong> Error from sensitivity to small fluctuations in the training set. High variance causes <strong>Overfitting</strong>.</li>
+</ul>
+
+<p><strong>Diagram: Bias-Variance Tradeoff</strong></p>
+
+<pre><code class="language-mermaid">graph LR
+    ModelComplex[Model Complexity]
+    Error[Total Error]
+    Bias[Bias^2]
+    Var[Variance]
+
+    ModelComplex -- Increases --&gt; Var
+    ModelComplex -- Decreases --&gt; Bias
+    Bias &amp; Var --&gt; Error
+</code></pre>
+
+<h3 id="6-what-is-the-difference-between-covariance-and-correlation">6. What is the difference between Covariance and Correlation?</h3>
+
+<ul>
+  <li><strong>Covariance:</strong> Measures the direction of the linear relationship between two variables. Range: $(-\infty, \infty)$.</li>
+  <li><strong>Correlation (Pearson):</strong> Normalized version of covariance. Measures both strength and direction. Range: $[-1, 1]$.</li>
+</ul>
+
+\[Correlation(X, Y) = \frac{Covariance(X, Y)}{\sigma_X \sigma_Y}\]
+
+<h3 id="7-what-is-bayes-theorem">7. What is Bayes’ Theorem?</h3>
+
+<p>Describes the probability of an event, based on prior knowledge of conditions that might be related to the event.</p>
+
+\[P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}\]
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>$P(A</td>
+          <td>B)$: Posterior</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>$P(B</td>
+          <td>A)$: Likelihood</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>$P(A)$: Prior</li>
+  <li>$P(B)$: Evidence</li>
+</ul>
+
+<h3 id="8-what-is-ab-testing">8. What is A/B Testing?</h3>
+
+<p>A randomized control experiment to compare two versions (A and B) of a single variable to determine which one performs better.</p>
+
+<p><strong>Steps:</strong></p>
+<ol>
+  <li>Define Metric (e.g., Conversion Rate).</li>
+  <li>Split Traffic Randomly.</li>
+  <li>Run Test.</li>
+  <li>Analyze Results (Z-test/t-test).</li>
+</ol>
+
+<h3 id="9-when-should-you-use-a-t-test-vs-a-z-test">9. When should you use a t-test vs a Z-test?</h3>
+
+<ul>
+  <li><strong>Z-test:</strong> Population variance ($\sigma^2$) is <strong>known</strong> OR Sample size is large ($n &gt; 30$).</li>
+  <li><strong>t-test:</strong> Population variance is <strong>unknown</strong> AND Sample size is small ($n &lt; 30$).</li>
+</ul>
+
+<h3 id="10-what-is-r-squared-r2">10. What is R-squared ($R^2$)?</h3>
+
+<p>The proportion of the variance in the dependent variable that is predictable from the independent variable(s).</p>
+<ul>
+  <li>$R^2 = 1$: Perfect fit.</li>
+  <li>$R^2 = 0$: Model explains none of the variability.</li>
+</ul>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate praises high $R^2$.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “Does a high $R^2$ imply causation or a good model?”</li>
+      <li><em>Answer:</em> No. It could be overfitting, or a spurious correlation. Adjusted $R^2$ is often better as it penalizes adding useless predictors.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="11-what-is-the-law-of-large-numbers">11. What is the Law of Large Numbers?</h3>
+<p>As a sample size grows, its mean gets closer to the average of the whole population.</p>
+
+<h3 id="12-explain-poisson-distribution">12. Explain Poisson Distribution.</h3>
+<p>Models the number of events occurring within a fixed interval of time or space.</p>
+<ul>
+  <li><em>Example:</em> Number of emails received per hour.</li>
+  <li>Parameter: $\lambda$ (average rate).</li>
+</ul>
+
+<h3 id="13-what-is-sampling-bias">13. What is Sampling Bias?</h3>
+<p>Occurs when the sample is not representative of the population (e.g., surveying only landline users for a tech product).</p>
+
+<h3 id="14-mean-vs-median">14. Mean vs Median?</h3>
+<ul>
+  <li><strong>Mean:</strong> Average. Sensitive to outliers.</li>
+  <li><strong>Median:</strong> Middle value. Robust to outliers.</li>
+  <li><em>Use Median</em> for skewed distributions (e.g., Income).</li>
+</ul>
+
+<h3 id="15-what-is-standard-deviation">15. What is Standard Deviation?</h3>
+<p>Measure of the amount of variation or dispersion of a set of values. Square root of Variance.</p>
+
+<h3 id="16-what-is-confidence-interval">16. What is Confidence Interval?</h3>
+<p>A range of values so defined that there is a specified probability that the value of a parameter lies within it.
+“We are 95% confident that the true mean lies between X and Y.”</p>
+
+<h3 id="17-geometric-vs-arithmetic-mean">17. Geometric vs Arithmetic Mean?</h3>
+<ul>
+  <li><strong>Arithmetic:</strong> $(a+b)/2$. Used for sums/counts.</li>
+  <li><strong>Geometric:</strong> $\sqrt{a \cdot b}$. Used for growth rates/percentages.</li>
+</ul>
+
+<h3 id="18-what-is-prior-and-posterior-probability">18. What is Prior and Posterior Probability?</h3>
+<ul>
+  <li><strong>Prior:</strong> Probability distribution before seeing data.</li>
+  <li><strong>Posterior:</strong> Conditional probability distribution after seeing data.</li>
+</ul>
+
+<h3 id="19-explain-maximum-likelihood-estimation-mle">19. Explain Maximum Likelihood Estimation (MLE).</h3>
+<p>A method for estimating the parameters of a probability distribution by maximizing a likelihood function, so that under the assumed statistical model, the observed data is most probable.</p>
+
+<h3 id="20-parametric-vs-non-parametric-tests">20. Parametric vs Non-Parametric Tests?</h3>
+<ul>
+  <li><strong>Parametric:</strong> Assume underlying distribution (e.g., Normal). More powerful if assumptions hold. (t-test, ANOVA).</li>
+  <li><strong>Non-Parametric:</strong> No distributional assumptions. (Mann-Whitney U, Kruskal-Wallis).</li>
+</ul>
+
+<h2 id="part-2-machine-learning-algorithms-21-40">Part 2: Machine Learning Algorithms (21-40)</h2>
+
+<h3 id="21-supervised-vs-unsupervised-learning">21. Supervised vs Unsupervised Learning?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">Supervised</th>
+      <th style="text-align: left">Unsupervised</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Data</strong></td>
+      <td style="text-align: left">Labeled (Input-Output pairs)</td>
+      <td style="text-align: left">Unlabeled (Input only)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Goal</strong></td>
+      <td style="text-align: left">Prediction / Classification</td>
+      <td style="text-align: left">Pattern Discovery / Clustering</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Examples</strong></td>
+      <td style="text-align: left">Regression, SVM, Random Forest</td>
+      <td style="text-align: left">K-Means, PCA, Apriori</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="22-what-is-linear-regression">22. What is Linear Regression?</h3>
+<p>Models the relationship between two variables by fitting a linear equation ($Y = mX + b$) to observed data.
+<strong>Assumptions:</strong> Linearity, Independence, Homoscedasticity, Normality of residuals.</p>
+
+<h3 id="23-what-is-logistic-regression">23. What is Logistic Regression?</h3>
+<p>Used for binary classification. Estimates the probability that an instance belongs to a particular class using the <strong>Sigmoid</strong> function.</p>
+
+\[\sigma(z) = \frac{1}{1 + e^{-z}}\]
+
+<h3 id="24-explain-decision-trees">24. Explain Decision Trees.</h3>
+<p>A flowchart-like structure where an internal node represents a “test” on an attribute (e.g., is Age &gt; 18?), each branch represents the outcome of the test, and each leaf node represents a class label.</p>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions Splitting Criteria.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “What metrics are used to split?”</li>
+      <li><em>Answer:</em> Gini Impurity (CART) or Information Gain/Entropy (ID3).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="25-what-is-random-forest">25. What is Random Forest?</h3>
+<p>An ensemble method that operates by constructing a multitude of decision trees at training time.</p>
+<ul>
+  <li><strong>Bagging:</strong> Uses Bootstrap Aggregating (random samples with replacement).</li>
+  <li><strong>Feature Randomness:</strong> Each split considers only a random subset of features.</li>
+</ul>
+
+<h3 id="26-what-is-the-curse-of-dimensionality">26. What is the Curse of Dimensionality?</h3>
+<p>As the number of features (dimensions) increases, the amount of data needed to generalize accurately grows exponentially. Data becomes sparse, and distance metrics (like Euclidean) become less meaningful.</p>
+
+<h3 id="27-explain-k-means-clustering">27. Explain K-Means Clustering.</h3>
+<ol>
+  <li>Initialize $K$ centroids randomly.</li>
+  <li>Assign each point to the nearest centroid.</li>
+  <li>Recompute centroids (mean of points).</li>
+  <li>Repeat until convergence.</li>
+</ol>
+
+<h3 id="28-what-is-the-elbow-method">28. What is the Elbow Method?</h3>
+<p>Used to determine the optimal number of clusters ($K$) in K-Means. Plot Sum of Squared Errors (SSE) vs $K$. The “elbow” point represents the best trade-off between error and complexity.</p>
+
+<h3 id="29-what-is-svm-support-vector-machine">29. What is SVM (Support Vector Machine)?</h3>
+<p>Finds the hyperplane that best separates the classes with the <strong>maximum margin</strong>.</p>
+<ul>
+  <li><strong>Support Vectors:</strong> The data points closest to the hyperplane.</li>
+  <li><strong>Kernel Trick:</strong> Projects data into higher dimensions to separate non-linear data.</li>
+</ul>
+
+<h3 id="30-explain-gradient-descent">30. Explain Gradient Descent.</h3>
+<p>Optimization algorithm to minimize a cost function. Iteratively moves in the direction of steepest descent (negative gradient).</p>
+
+<p><strong>Types:</strong></p>
+<ul>
+  <li><strong>Batch:</strong> Uses all data per step (Slow, stable).</li>
+  <li><strong>Stochastic (SGD):</strong> Uses 1 sample per step (Fast, noisy).</li>
+  <li><strong>Mini-Batch:</strong> Uses $n$ samples (Balance).</li>
+</ul>
+
+<h3 id="31-what-is-xgboost">31. What is XGBoost?</h3>
+<p>Extreme Gradient Boosting. An optimized distributed gradient boosting library.</p>
+<ul>
+  <li><strong>Pros:</strong> High speed, performance, regularization ($L1$/$L2$), handles missing values.</li>
+</ul>
+
+<h3 id="32-l1-vs-l2-regularization">32. L1 vs L2 Regularization?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature</th>
+      <th style="text-align: left">L1 (Lasso)</th>
+      <th style="text-align: left">L2 (Ridge)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Penalty</strong></td>
+      <td style="text-align: left">Absolute value of magnitude</td>
+      <td style="text-align: left">Square of magnitude</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Effect</strong></td>
+      <td style="text-align: left">Can shrink coefficients to <strong>Zero</strong> (Feature Selection)</td>
+      <td style="text-align: left">Shrinks to near zero (prevents large weights)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Use Case</strong></td>
+      <td style="text-align: left">Sparse data, feature selection</td>
+      <td style="text-align: left">Multicollinearity prevention</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="33-what-is-pca-principal-component-analysis">33. What is PCA (Principal Component Analysis)?</h3>
+<p>Dimensionality reduction technique. Projects data onto orthogonal vectors (Principal Components) that maximize variance.</p>
+
+<h3 id="34-what-is-cross-validation">34. What is Cross-Validation?</h3>
+<p>Partitioning the data into subsets to evaluate the model.
+<strong>K-Fold CV:</strong> Split into $K$ folds. Train on $K-1$, test on 1. Repeat $K$ times. Average the score.</p>
+
+<h3 id="35-explain-naive-bayes">35. Explain Naive Bayes.</h3>
+<p>Probabilistic classifier based on Bayes’ Theorem with the “naive” assumption of independence between features. Very fast, good for text classification.</p>
+
+<h3 id="36-what-is-knn-k-nearest-neighbors">36. What is KNN (K-Nearest Neighbors)?</h3>
+<p>Instance-based learning. Classifies a new point based on the majority class of its $K$ nearest neighbors.</p>
+<ul>
+  <li>Non-parametric.</li>
+  <li>Lazy learner (no training phase).</li>
+</ul>
+
+<h3 id="37-what-is-ensemble-learning">37. What is Ensemble Learning?</h3>
+<p>Combining multiple models to improve performance.</p>
+<ul>
+  <li><strong>Bagging:</strong> Parallel models (Random Forest).</li>
+  <li><strong>Boosting:</strong> Sequential models (AdaBoost, XGBoost).</li>
+  <li><strong>Stacking:</strong> Meta-model learns from base models.</li>
+</ul>
+
+<h3 id="38-how-to-handle-imbalanced-datasets">38. How to handle Imbalanced Datasets?</h3>
+<ol>
+  <li><strong>Resampling:</strong> Oversample minority (SMOTE) or Undersample majority.</li>
+  <li><strong>Metric Choice:</strong> Use F1-Score, AUC-ROC instead of Accuracy.</li>
+  <li><strong>Algorithmic:</strong> Class weights (penalize errors on minority class).</li>
+</ol>
+
+<h3 id="39-what-is-homoscedasticity">39. What is Homoscedasticity?</h3>
+<p>Assumption in linear regression that the variance of error terms (residuals) is constant across all values of the independent variables. (Opposite: Heteroscedasticity).</p>
+
+<h3 id="40-linear-regression-vs-logistic-regression">40. Linear Regression vs Logistic Regression?</h3>
+<ul>
+  <li><strong>Linear:</strong> Continuous target. minimizes Mean Squared Error.</li>
+  <li><strong>Logistic:</strong> Categorical/Probability target. Maximizes Likelihood (minimizes Log Loss).</li>
+</ul>
+
+<h2 id="part-3-deep-learning--nlp-41-60">Part 3: Deep Learning &amp; NLP (41-60)</h2>
+
+<h3 id="41-what-is-a-perceptron">41. What is a Perceptron?</h3>
+<p>The simplest neural network unit.
+$Output = Activation(\sum (Weight \cdot Input) + Bias)$</p>
+
+<h3 id="42-explain-activation-functions">42. Explain Activation Functions.</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Function</th>
+      <th style="text-align: left">Range</th>
+      <th style="text-align: left">Pros</th>
+      <th style="text-align: left">Cons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Sigmoid</strong></td>
+      <td style="text-align: left">$(0, 1)$</td>
+      <td style="text-align: left">Probability output</td>
+      <td style="text-align: left">Vanishing gradient</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>ReLU</strong></td>
+      <td style="text-align: left">$[0, \infty)$</td>
+      <td style="text-align: left">Fast, solves vanishing grad</td>
+      <td style="text-align: left">Dead ReLU (negative inputs die)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Tanh</strong></td>
+      <td style="text-align: left">$(-1, 1)$</td>
+      <td style="text-align: left">Zero-centered</td>
+      <td style="text-align: left">Vanishing gradient</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Softmax</strong></td>
+      <td style="text-align: left">$(0, 1)$</td>
+      <td style="text-align: left">Multi-class probs</td>
+      <td style="text-align: left">Computationally expensive</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="43-what-is-backpropagation">43. What is Backpropagation?</h3>
+<p>Algorithm to train neural networks. Calculates the gradient of the loss function with respect to weights using the <strong>Chain Rule</strong>, moving backward from output to input layer.</p>
+
+<h3 id="44-explain-cnn-convolutional-neural-network">44. Explain CNN (Convolutional Neural Network).</h3>
+<p>Specialized for Grid data (Images).</p>
+<ul>
+  <li><strong>Convolution Layer:</strong> Detects features (edges, textures) using filters.</li>
+  <li><strong>Pooling Layer:</strong> Reduces dimensionality (Max Pooling).</li>
+  <li><strong>Fully Connected Layer:</strong> Classification.</li>
+</ul>
+
+<h3 id="45-what-is-dropout">45. What is Dropout?</h3>
+<p>Regularization technique. Randomly sets a fraction of input units to 0 at each update during training to prevent overfitting.</p>
+
+<h3 id="46-what-is-rnn-recurrent-neural-network">46. What is RNN (Recurrent Neural Network)?</h3>
+<p>Designed for sequential data (Time series, Text). Output from the previous step is fed as input to the current step.</p>
+<ul>
+  <li><strong>Issue:</strong> Vanishing Gradient problem for long sequences.</li>
+</ul>
+
+<h3 id="47-lstm-vs-gru">47. LSTM vs GRU?</h3>
+<ul>
+  <li><strong>LSTM (Long Short-Term Memory):</strong> Has 3 gates (Input, Forget, Output). Maintains a cell state to remember long-term dependencies.</li>
+  <li><strong>GRU (Gated Recurrent Unit):</strong> Simplified LSTM with 2 gates (Update, Reset). Faster, often comparable performance.</li>
+</ul>
+
+<h3 id="48-what-is-a-transformer">48. What is a Transformer?</h3>
+<p>Architecture based entirely on <strong>Self-Attention</strong> mechanisms, discarding RNNs. Allows parallelization. (Basis for BERT, GPT).</p>
+
+<p><strong>Diagram: Transformer Block</strong></p>
+
+<pre><code class="language-mermaid">graph TD
+    Input --&gt; Embed[Embedding + Positional Encoding]
+    Embed --&gt; Attn[Multi-Head Attention]
+    Attn --&gt; Norm1[Add &amp; Norm]
+    Norm1 --&gt; FF[Feed Forward]
+    FF --&gt; Norm2[Add &amp; Norm]
+    Norm2 --&gt; Output
+</code></pre>
+
+<h3 id="49-what-is-bert">49. What is BERT?</h3>
+<p><strong>B</strong>idirectional <strong>E</strong>ncoder <strong>R</strong>epresentations from <strong>T</strong>ransformers.</p>
+<ul>
+  <li>Pre-trained on Masked LM and Next Sentence Prediction.</li>
+  <li>Contextual embeddings (reads left-to-right and right-to-left simultaneously).</li>
+</ul>
+
+<h3 id="50-tokenization-in-nlp">50. Tokenization in NLP?</h3>
+<p>Splitting text into smaller units (tokens).</p>
+<ul>
+  <li><strong>Word-level:</strong> “Hello”, “World”.</li>
+  <li><strong>Subword-level (BPE/WordPiece):</strong> “un”, “friend”, “ly”. Handles out-of-vocabulary words better.</li>
+</ul>
+
+<h3 id="51-what-is-word2vec">51. What is Word2Vec?</h3>
+<p>Technique to map words to vectors of real numbers.</p>
+<ul>
+  <li><strong>CBOW:</strong> Predict word from context.</li>
+  <li><strong>Skip-gram:</strong> Predict context from word.</li>
+</ul>
+
+<h3 id="52-what-is-tf-idf">52. What is TF-IDF?</h3>
+<p><strong>Term Frequency - Inverse Document Frequency</strong>.
+Reflects how important a word is to a document in a collection.</p>
+<ul>
+  <li>Increases with count in document.</li>
+  <li>Decreases if word is common in all documents (e.g., “the”).</li>
+</ul>
+
+<h3 id="53-explain-vanishing-gradient-problem">53. Explain Vanishing Gradient Problem.</h3>
+<p>In deep networks with sigmoid/tanh, gradients become very small during backprop, causing early layers to stop learning.
+<strong>Solution:</strong> ReLU, Residual Connections (ResNet), Batch Normalization.</p>
+
+<h3 id="54-what-is-batch-normalization">54. What is Batch Normalization?</h3>
+<p>Normalizes the inputs of each layer to have mean 0 and variance 1. Stabilizes learning and allows higher learning rates.</p>
+
+<h3 id="55-what-is-an-autoencoder">55. What is an Autoencoder?</h3>
+<p>Unsupervised NN that learns to compress input into a latent-space representation (Encoder) and reconstruct it (Decoder). Used for dimensionality reduction and denoising.</p>
+
+<h3 id="56-what-is-gan-generative-adversarial-network">56. What is GAN (Generative Adversarial Network)?</h3>
+<p>Two networks competing:</p>
+<ol>
+  <li><strong>Generator:</strong> Creates fake data.</li>
+  <li><strong>Discriminator:</strong> Tries to distinguish fake from real.
+Result: Generator creates realistic data.</li>
+</ol>
+
+<h3 id="57-what-is-transfer-learning">57. What is Transfer Learning?</h3>
+<p>Taking a pre-trained model (e.g., ResNet trained on ImageNet) and fine-tuning it for a specific task with less data.</p>
+
+<h3 id="58-stemming-vs-lemmatization">58. Stemming vs Lemmatization?</h3>
+<ul>
+  <li><strong>Stemming:</strong> Heuristic chopping of ends (running -&gt; run, ponies -&gt; poni). Fast, crude.</li>
+  <li><strong>Lemmatization:</strong> Uses vocabulary/morphology to return base root (ponies -&gt; pony, better -&gt; good). Accurate, slower.</li>
+</ul>
+
+<h3 id="59-what-is-attention-mechanism">59. What is Attention Mechanism?</h3>
+<p>Allows the model to focus on specific parts of the input sequence when generating output, rather than relying on a fixed-length vector.</p>
+
+<h3 id="60-what-is-explainable-ai-xai">60. What is Explainable AI (XAI)?</h3>
+<p>Techniques to interpret ML models.</p>
+<ul>
+  <li><strong>SHAP (Shapley Additive Explanations):</strong> Game theoretic approach.</li>
+  <li><strong>LIME:</strong> Local approximation.</li>
+</ul>
+
+<h2 id="part-4-data-manipulation--sql-61-80">Part 4: Data Manipulation &amp; SQL (61-80)</h2>
+
+<h3 id="61-order-of-execution-in-sql">61. Order of Execution in SQL?</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">FROM</code> / <code class="language-plaintext highlighter-rouge">JOIN</code></li>
+  <li><code class="language-plaintext highlighter-rouge">WHERE</code></li>
+  <li><code class="language-plaintext highlighter-rouge">GROUP BY</code></li>
+  <li><code class="language-plaintext highlighter-rouge">HAVING</code></li>
+  <li><code class="language-plaintext highlighter-rouge">SELECT</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ORDER BY</code></li>
+  <li><code class="language-plaintext highlighter-rouge">LIMIT</code></li>
+</ol>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Candidate mentions SELECT first.</strong>
+    <ul>
+      <li><em>Follow-up:</em> “If SELECT is first, can I use an alias defined in SELECT inside the WHERE clause?”</li>
+      <li><em>Answer:</em> No, because WHERE executes before SELECT.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="62-inner-vs-left-vs-full-join">62. Inner vs Left vs Full Join?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Join Type</th>
+      <th style="text-align: left">Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Inner</strong></td>
+      <td style="text-align: left">Matching rows in both tables</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Left</strong></td>
+      <td style="text-align: left">All rows from Left, matches from Right (NULL if no match)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Right</strong></td>
+      <td style="text-align: left">All rows from Right, matches from Left</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Full Outer</strong></td>
+      <td style="text-align: left">All rows when there is a match in either</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="63-what-are-window-functions">63. What are Window Functions?</h3>
+<p>Perform calculations across a set of table rows that are somehow related to the current row. Unlike <code class="language-plaintext highlighter-rouge">GROUP BY</code>, they do not collapse rows.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">RANK()</code>, <code class="language-plaintext highlighter-rouge">LEAD()</code>, <code class="language-plaintext highlighter-rouge">LAG()</code>, <code class="language-plaintext highlighter-rouge">ROW_NUMBER()</code>.</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">name</span><span class="p">,</span> <span class="n">salary</span><span class="p">,</span>
+       <span class="n">RANK</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">salary</span> <span class="k">DESC</span><span class="p">)</span> <span class="k">as</span> <span class="n">rank</span>
+<span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="64-where-vs-having">64. <code class="language-plaintext highlighter-rouge">WHERE</code> vs <code class="language-plaintext highlighter-rouge">HAVING</code>?</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">WHERE</code>: Filters rows <strong>before</strong> grouping.</li>
+  <li><code class="language-plaintext highlighter-rouge">HAVING</code>: Filters groups <strong>after</strong> grouping (used with aggregates).</li>
+</ul>
+
+<h3 id="65-union-vs-union-all">65. <code class="language-plaintext highlighter-rouge">UNION</code> vs <code class="language-plaintext highlighter-rouge">UNION ALL</code>?</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">UNION</code>: Removes duplicates. Slower.</li>
+  <li><code class="language-plaintext highlighter-rouge">UNION ALL</code>: Keeps duplicates. Faster.</li>
+</ul>
+
+<h3 id="66-how-to-find-the-second-highest-salary">66. How to find the second highest salary?</h3>
+
+<p><strong>Candidate Response Paths:</strong></p>
+
+<ul>
+  <li><strong>Path A: Subquery.</strong>
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">salary</span> <span class="o">&lt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Path B: LIMIT/OFFSET.</strong>
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">salary</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">salary</span> <span class="k">DESC</span> <span class="k">LIMIT</span> <span class="mi">1</span> <span class="k">OFFSET</span> <span class="mi">1</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Path C: Dense Rank (Best for ties).</strong>
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> <span class="n">salary</span><span class="p">,</span> <span class="n">DENSE_RANK</span><span class="p">()</span> <span class="n">OVER</span><span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">salary</span> <span class="k">DESC</span><span class="p">)</span> <span class="k">as</span> <span class="n">rnk</span> <span class="k">FROM</span> <span class="n">emp</span>
+<span class="p">)</span> <span class="k">WHERE</span> <span class="n">rnk</span> <span class="o">=</span> <span class="mi">2</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="67-explain-normalization">67. Explain Normalization.</h3>
+<p>Organizing data to reduce redundancy.</p>
+<ul>
+  <li><strong>1NF:</strong> Atomic values.</li>
+  <li><strong>2NF:</strong> 1NF + No partial dependency.</li>
+  <li><strong>3NF:</strong> 2NF + No transitive dependency.</li>
+</ul>
+
+<h3 id="68-what-is-a-primary-key-vs-foreign-key">68. What is a Primary Key vs Foreign Key?</h3>
+<ul>
+  <li><strong>Primary Key:</strong> Unique identifier for a record. Cannot be NULL.</li>
+  <li><strong>Foreign Key:</strong> Field that links to the Primary Key of another table.</li>
+</ul>
+
+<h3 id="69-pandas-loc-vs-iloc">69. Pandas: <code class="language-plaintext highlighter-rouge">loc</code> vs <code class="language-plaintext highlighter-rouge">iloc</code>?</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">loc</code>: Label-based indexing (<code class="language-plaintext highlighter-rouge">df.loc['row_name', 'col_name']</code>).</li>
+  <li><code class="language-plaintext highlighter-rouge">iloc</code>: Integer-position based indexing (<code class="language-plaintext highlighter-rouge">df.iloc[0, 1]</code>).</li>
+</ul>
+
+<h3 id="70-how-to-handle-missing-values-in-pandas">70. How to handle missing values in Pandas?</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">df.dropna()</code>: Drop rows/cols.</li>
+  <li><code class="language-plaintext highlighter-rouge">df.fillna(value)</code>: Fill with constant or mean/median.</li>
+  <li><code class="language-plaintext highlighter-rouge">df.interpolate()</code>: Linear interpolation.</li>
+</ul>
+
+<h3 id="71-merge-vs-concat-in-pandas">71. <code class="language-plaintext highlighter-rouge">merge</code> vs <code class="language-plaintext highlighter-rouge">concat</code> in Pandas?</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">merge</code>: Join based on keys (like SQL JOIN).</li>
+  <li><code class="language-plaintext highlighter-rouge">concat</code>: Stack dataframes vertically or horizontally (like SQL UNION).</li>
+</ul>
+
+<h3 id="72-what-is-one-hot-encoding">72. What is One-Hot Encoding?</h3>
+<p>Converting categorical variables into binary columns (0/1).
+“Red, Green, Blue” -&gt; <code class="language-plaintext highlighter-rouge">[1,0,0], [0,1,0], [0,0,1]</code>.</p>
+<ul>
+  <li><strong>Note:</strong> Use <code class="language-plaintext highlighter-rouge">drop_first=True</code> to avoid Dummy Variable Trap (Multicollinearity).</li>
+</ul>
+
+<h3 id="73-apply-vs-map-vs-applymap">73. <code class="language-plaintext highlighter-rouge">apply()</code> vs <code class="language-plaintext highlighter-rouge">map()</code> vs <code class="language-plaintext highlighter-rouge">applymap()</code>?</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">map()</code>: Series element-wise (dict or function).</li>
+  <li><code class="language-plaintext highlighter-rouge">apply()</code>: DataFrame axis-wise (row/col) or Series element-wise.</li>
+  <li><code class="language-plaintext highlighter-rouge">applymap()</code>: DataFrame element-wise.</li>
+</ul>
+
+<h3 id="74-what-is-groupby-in-pandas">74. What is GroupBy in Pandas?</h3>
+<p>Split-Apply-Combine strategy.</p>
+<ol>
+  <li><strong>Split</strong> data into groups based on criteria.</li>
+  <li><strong>Apply</strong> function (sum, mean) to each group.</li>
+  <li><strong>Combine</strong> results.</li>
+</ol>
+
+<h3 id="75-difference-between-delete-truncate-drop">75. Difference between DELETE, TRUNCATE, DROP?</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">DELETE</code>: DML. Deletes rows. Can use WHERE. Rollback possible.</li>
+  <li><code class="language-plaintext highlighter-rouge">TRUNCATE</code>: DDL. Resets table. Faster. No WHERE. Cannot rollback (usually).</li>
+  <li><code class="language-plaintext highlighter-rouge">DROP</code>: DDL. Removes table schema and data entirely.</li>
+</ul>
+
+<h3 id="76-what-is-an-index-in-sql">76. What is an Index in SQL?</h3>
+<p>Data structure (B-Tree) that improves speed of data retrieval operations at the cost of slower writes/updates and storage space.</p>
+
+<h3 id="77-how-to-optimize-a-slow-query">77. How to optimize a slow query?</h3>
+<ol>
+  <li>Check <code class="language-plaintext highlighter-rouge">EXPLAIN</code> plan.</li>
+  <li>Add Indexes on join/filter columns.</li>
+  <li>Avoid <code class="language-plaintext highlighter-rouge">SELECT *</code>.</li>
+  <li>Remove functions on indexed columns in WHERE clause.</li>
+</ol>
+
+<h3 id="78-pandas-deep-vs-shallow-copy">78. Pandas: Deep vs Shallow Copy?</h3>
+<p>Same as Python lists.
+<code class="language-plaintext highlighter-rouge">df2 = df</code> is a reference. <code class="language-plaintext highlighter-rouge">df2 = df.copy()</code> is a deep copy (data is duplicated).</p>
+
+<h3 id="79-what-is-a-cte-common-table-expression">79. What is a CTE (Common Table Expression)?</h3>
+<p>Temporary result set defined within the execution scope of a single statement. <code class="language-plaintext highlighter-rouge">WITH cte AS (...)</code>. Readable alternative to subqueries.</p>
+
+<h3 id="80-acid-properties">80. ACID properties?</h3>
+<ul>
+  <li><strong>Atomicity:</strong> All or nothing.</li>
+  <li><strong>Consistency:</strong> DB remains in valid state.</li>
+  <li><strong>Isolation:</strong> Transactions don’t interfere.</li>
+  <li><strong>Durability:</strong> Saved permanently.</li>
+</ul>
+
+<h2 id="part-5-model-evaluation--metrics-81-100">Part 5: Model Evaluation &amp; Metrics (81-100)</h2>
+
+<h3 id="81-precision-vs-recall">81. Precision vs Recall?</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Metric</th>
+      <th style="text-align: left">Formula</th>
+      <th style="text-align: left">Focus</th>
+      <th style="text-align: left">Use Case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Precision</strong></td>
+      <td style="text-align: left">$TP / (TP + FP)$</td>
+      <td style="text-align: left">Accuracy of positive predictions</td>
+      <td style="text-align: left">Spam Filter (Don’t block good mail)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Recall</strong></td>
+      <td style="text-align: left">$TP / (TP + FN)$</td>
+      <td style="text-align: left">Coverage of actual positives</td>
+      <td style="text-align: left">Cancer Detection (Don’t miss a case)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="82-what-is-the-f1-score">82. What is the F1-Score?</h3>
+<p>Harmonic mean of Precision and Recall.
+\(F1 = 2 \cdot \frac{Precision \cdot Recall}{Precision + Recall}\)
+Used when you need a balance between Precision and Recall.</p>
+
+<h3 id="83-explain-confusion-matrix">83. Explain Confusion Matrix.</h3>
+
+<p><strong>Diagram: Confusion Matrix</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: center">Predicted Positive</th>
+      <th style="text-align: center">Predicted Negative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Actual Positive</strong></td>
+      <td style="text-align: center"><strong>True Positive (TP)</strong></td>
+      <td style="text-align: center">False Negative (FN) Type II</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Actual Negative</strong></td>
+      <td style="text-align: center">False Positive (FP) Type I</td>
+      <td style="text-align: center"><strong>True Negative (TN)</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="84-what-is-roc-auc">84. What is ROC-AUC?</h3>
+<ul>
+  <li><strong>ROC Curve:</strong> Plot of TPR (Recall) vs FPR (1-Specificity) at various thresholds.</li>
+  <li><strong>AUC:</strong> Area Under Curve. Represents probability that the model ranks a random positive example higher than a random negative one. 0.5 = Random, 1.0 = Perfect.</li>
+</ul>
+
+<h3 id="85-accuracy-paradox">85. Accuracy Paradox?</h3>
+<p>In imbalanced datasets (e.g., 99% benign, 1% fraud), a model predicting “All Benign” has 99% accuracy but is useless. This is why we use F1 or AUC.</p>
+
+<h3 id="86-mse-vs-mae">86. MSE vs MAE?</h3>
+<ul>
+  <li><strong>MSE (Mean Squared Error):</strong> Penalizes large errors heavily (Square). Differentiable.</li>
+  <li><strong>MAE (Mean Absolute Error):</strong> Linear penalty. More robust to outliers.</li>
+</ul>
+
+<h3 id="87-what-is-r-squared-vs-adjusted-r-squared">87. What is R-Squared vs Adjusted R-Squared?</h3>
+<ul>
+  <li>$R^2$ increases with every new feature added.</li>
+  <li>Adjusted $R^2$ penalizes adding non-significant features.</li>
+</ul>
+
+<h3 id="88-explain-log-loss-binary-cross-entropy">88. Explain Log Loss (Binary Cross-Entropy).</h3>
+<p>Measures the performance of a classification model where the prediction input is a probability value between 0 and 1. Heavily penalizes confident wrong predictions.</p>
+
+<h3 id="89-what-is-specificity">89. What is Specificity?</h3>
+<p>True Negative Rate. $TN / (TN + FP)$.
+Ability to find all the negative samples.</p>
+
+<h3 id="90-evaluation-for-clustering">90. Evaluation for Clustering?</h3>
+<ul>
+  <li><strong>Silhouette Score:</strong> How similar an object is to its own cluster (cohesion) compared to other clusters (separation). Range $[-1, 1]$.</li>
+  <li><strong>Davies-Bouldin Index:</strong> Lower is better.</li>
+</ul>
+
+<h3 id="91-what-is-ab-testing-significance-level">91. What is A/B Testing Significance Level?</h3>
+<p>Usually $\alpha = 0.05$. It means we accept a 5% risk of concluding a difference exists when there is no actual difference.</p>
+
+<h3 id="92-lift-chart--gain-chart">92. Lift Chart / Gain Chart?</h3>
+<p>Measures how much better the model is at predicting positives than a random guess. Used in marketing.</p>
+
+<h3 id="93-what-is-root-mean-squared-log-error-rmsle">93. What is Root Mean Squared Log Error (RMSLE)?</h3>
+<p>Used when target variable spans a wide range (e.g., house prices). Penalizes under-prediction more than over-prediction.</p>
+
+<h3 id="94-how-to-detect-data-drift">94. How to detect Data Drift?</h3>
+<p>Monitoring the statistical properties of input data over time. If the distribution changes ($P(X)$ changes), the model may degrade.</p>
+<ul>
+  <li><strong>Solution:</strong> Retrain model.</li>
+</ul>
+
+<h3 id="95-model-deployment-strategies">95. Model Deployment Strategies?</h3>
+<ul>
+  <li><strong>Shadow Mode:</strong> Run new model alongside old, but don’t serve predictions. Compare.</li>
+  <li><strong>Canary Deployment:</strong> Roll out to small % of users.</li>
+  <li><strong>Blue/Green:</strong> Switch traffic from old (Blue) to new (Green) environment.</li>
+</ul>
+
+<h3 id="96-what-is-a-pickled-model">96. What is a Pickled Model?</h3>
+<p>Serialized version of a trained model object (e.g., sklearn model). Saved to file for loading in production.</p>
+
+<h3 id="97-what-is-the-difference-between-model-parameters-and-hyperparameters">97. What is the difference between Model Parameters and Hyperparameters?</h3>
+<ul>
+  <li><strong>Parameters:</strong> Learned internal variables (Weights, Biases).</li>
+  <li><strong>Hyperparameters:</strong> External configurations set before training (Learning Rate, K in KNN, Depth of Tree).</li>
+</ul>
+
+<h3 id="98-grid-search-vs-random-search">98. Grid Search vs Random Search?</h3>
+<ul>
+  <li><strong>Grid Search:</strong> Exhuastive search over specified parameter values. Slow.</li>
+  <li><strong>Random Search:</strong> Randomly samples parameter space. Often finds good models faster.</li>
+</ul>
+
+<h3 id="99-what-is-k-fold-cross-validation">99. What is K-Fold Cross Validation?</h3>
+<p>Splitting data into K parts. Training on K-1, testing on 1. Rotating until all parts have been used as test set. Reduces variance in performance estimate.</p>
+
+<h3 id="100-how-do-you-explain-a-complex-model-to-a-non-technical-stakeholder">100. How do you explain a complex model to a non-technical stakeholder?</h3>
+<ul>
+  <li>Focus on <strong>Input -&gt; Output</strong>.</li>
+  <li>Use analogies (e.g., “Think of the model as a committee of experts” for Random Forest).</li>
+  <li>Focus on Business Impact (ROI, Efficiency) rather than AUC/LogLoss.</li>
+</ul>
+
+<hr />
+<p><strong>End of Interview Questions</strong></p>
+
+  </div>
+
+</article>
+
+      </main>
+    </div><footer class="footer">
+  <div class="wrapper">
+    <p>Inkorporated Homelab Documentation &copy; 2026</p>
+  </div>
+</footer>
+<script src="/inkorporated/assets/js/main.js"></script>
+    <script src="/inkorporated/assets/js/search.js"></script>
+
+    <!-- Extra JS -->
+    
+      
+        <script src="/inkorporated/assets/js/mermaid-support.js"></script>
+      
+    
+
+  </body>
+
+</html>

@@ -1,8 +1,30 @@
 ---
-layout: doc
+title: Installation
+description: Installation for Inkorporated.
+tags: [infrastructure]
 ---
 
 # Implementation Phases
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+
+## Install phases
+
+```mermaid
+flowchart TD
+  p1[Inventory and secrets] --> p2[Terraform foundation]
+  p2 --> p3[Ansible k3s]
+  p3 --> p4[GitOps bootstrap]
+  p4 --> p5[Verify observability]
+```
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 ## Phase 1: Foundation & Preparation
 

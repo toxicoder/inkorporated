@@ -1,8 +1,38 @@
 ---
-layout: doc
+title: Security
+description: Security for Inkorporated.
+tags: [infrastructure]
 ---
 
 # Security Implementation
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+
+## Zero-trust access path
+
+```mermaid
+sequenceDiagram
+  participant U as User
+  participant CF as Cloudflare
+  participant T as Tunnel
+  participant TR as Traefik
+  participant A as Authentik
+  participant App as App
+  U->>CF: HTTPS
+  CF->>T: Authenticated edge
+  T->>TR: Forward
+  TR->>A: Forward auth
+  A-->>TR: Allow
+  TR->>App: Request
+```
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 ## Authentication & Authorization
 - **Authentik**: Central identity provider with OIDC + 2FA enforcement

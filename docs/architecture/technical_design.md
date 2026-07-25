@@ -1,8 +1,19 @@
 ---
-layout: doc
+title: Technical Design
+description: Technical Design for Inkorporated.
+tags: [infrastructure]
 ---
 
 # Inkorporated Homelab Technical Design Document – Final Version
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 **Project Name:** Inkorporated  
 **Purpose:** This is the definitive technical design for **Inkorporated**, a fully self-hosted, open-source internal work environment. Every component is free and open source (FOSS), self-hosted on a single k3s cluster, and integrated to feel like one cohesive platform. All services are protected by centralized authentication (Authentik SSO/OIDC where supported, forward-auth fallback), routed through Traefik with unique subdomains (`service.example.com` or env-specific), and backed by shared infrastructure (Longhorn storage, CloudNativePG PostgreSQL, MinIO backups).

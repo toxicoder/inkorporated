@@ -1,8 +1,19 @@
 ---
-layout: doc
+title: Index
+description: Index for Inkorporated.
+tags: [infrastructure]
 ---
 
 # Hybrid Cloud Architecture
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 ## Overview
 

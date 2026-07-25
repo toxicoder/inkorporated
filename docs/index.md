@@ -1,41 +1,73 @@
 ---
-layout: doc
-title: Home
+title: Inkorporated documentation
+description: Enterprise operating system and hybrid-cloud infrastructure docs for Inkorporated.
+tags: [home]
 ---
 
-# Inkorporated Homelab Documentation
+# Inkorporated
 
-Welcome to the comprehensive documentation for the Inkorporated homelab project.
+**What's on this page**
 
-## Core Documentation
+- Dual identity: enterprise OS + hybrid-cloud homelab/corplab
+- Entry points for organization, roles, cyborgs, and infrastructure
+- Links to contributing and conventions
 
-*   [Project Overview](guides/overview.html): Executive summary and key features.
-*   [Architecture](architecture/index.html): High-level architectural design and diagrams.
-*   [Network Topology](architecture/network.html): Detailed network zones and security layers.
-*   [Technical Design](architecture/technical_design.html): In-depth technical specifications.
+**What this enables**
 
-## Guides & Handbooks
 
-*   [Installation Guide](guides/installation.html): Step-by-step implementation phases.
-*   [Configuration Guide](guides/configuration.html): Detailed configuration references.
-*   [Environment Guide](guides/environments.html): Managing dev, staging, and prod environments.
-*   [Deployment & Operations](guides/deployment.html): GitOps workflows and maintenance.
-*   [Security Handbook](guides/security.html): Authentication, authorization, and data protection.
-*   [Observability Guide](guides/observability.html): Monitoring, logging, and alerting.
-*   [Backup & Recovery](guides/backups.html): Disaster recovery strategies.
-*   [Troubleshooting](guides/troubleshooting.html): Common issues and debugging.
+## Mental model
 
-## Reference
+```mermaid
+flowchart TB
+  home[Docs home]
+  home --> ent[Enterprise OS]
+  home --> infra[Infrastructure]
+  ent --> org[Organization]
+  ent --> roles[Job roles]
+  ent --> cy[Cyborg roster]
+  ent --> pol[Policies]
+  infra --> arch[Architecture]
+  infra --> guides[Guides]
+  infra --> ref[Service catalog]
+```
 
-*   [Service Catalog](reference/services.html): Detailed specifications for all deployed services.
-*   [Repository Structure](guides/overview.html#repository-structure): Codebase organization.
+- One monorepo to understand how the company is designed *and* how the platform is run
+- Fast onboarding for humans and AI agents
 
-## Status & Reports
+Inkorporated is a **one-stop shop to spin up a full-blown global enterprise**: corporate strategy, org design, job roles, policies, interview loops, and AI **cyborg** personas — on top of production-minded hybrid infrastructure (Proxmox + AWS/GCP, k3s, ArgoCD, Bazel).
 
-*   [Discovery Summary](status/discovery_summary.html): Consolidated documentation overview.
-*   [Infrastructure Validation](status/infrastructure_validation_report.html): Validation report for the infrastructure.
-*   [DGX Integration Summary](status/dgx_integration_summary.html): Status of NVIDIA DGX integration.
+## Enterprise operating system
 
-## Contributing
+| Area | Start here |
+| --- | --- |
+| Organization & org charts | [Organization system](organization/index.md) |
+| Corporate strategy | [Mission, vision & values](corporate_strategy/mission_vision_values.md) |
+| Job roles | [Job role catalog](job_roles/job_role_organization.md) |
+| Cyborg AI personas | [Cyborgs](cyborgs/index.md) |
+| Engineering standards | [Engineering principles](engineering_standards/engineering_principles.md) |
+| Policies | [Code of conduct](policies/code_of_conduct.md) |
 
-This project is open-source and welcomes contributions. Please see the [README](https://github.com/toxicoder/inkorporated/blob/main/README.md) for more information.
+## Infrastructure & operations
+
+| Area | Start here |
+| --- | --- |
+| Overview | [Project overview](guides/overview.md) |
+| Architecture | [Architecture index](architecture/index.md) |
+| Install | [Installation](guides/installation.md) |
+| Security | [Security handbook](guides/security.md) |
+| Observability | [Observability](guides/observability.md) |
+| Services | [Service catalog](reference/services.md) |
+
+## Contribute
+
+- [Project conventions](project-conventions.md)
+- [Contributing to docs](CONTRIBUTING.md)
+- [Git workflow](guides/git_workflow.md)
+- Root [CONTRIBUTING.md](https://github.com/toxicoder/inkorporated/blob/main/CONTRIBUTING.md) · [SECURITY.md](https://github.com/toxicoder/inkorporated/blob/main/SECURITY.md)
+
+## Multi-version docs
+
+When published via mike:
+
+- **latest** — from `main`
+- **development** — from `development`

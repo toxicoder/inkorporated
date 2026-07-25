@@ -1,0 +1,1715 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><script>(function(){try{var orig=window.fetch;if(typeof orig==="function"){window.fetch=function(i,init){var u=(typeof i==="string")?i:(i&&typeof i.url==="string"?i.url:"");if(u.indexOf("api.github.com/repos/toxicoder/inkorporated")!==-1){return Promise.resolve(new Response("{}", {status:200,headers:{"Content-Type":"application/json"}}));}return orig.apply(this,arguments);};}}catch(e){}try{var XHR=window.XMLHttpRequest;if(XHR&&XHR.prototype){var p=XHR.prototype,open=p.open;p.open=function(m,u){if(typeof u==="string"&&u.indexOf("api.github.com/repos/toxicoder/inkorporated")!==-1){var self=this;Object.defineProperty(self,"responseText",{get:function(){return"{}"},configurable:!0});Object.defineProperty(self,"status",{get:function(){return 200},configurable:!0});Object.defineProperty(self,"readyState",{get:function(){return 4},configurable:!0});self.send=function(){setTimeout(function(){try{if(typeof self.onreadystatechange==="function")self.onreadystatechange.call(self);}catch(_){}try{if(typeof self.onload==="function")self.onload.call(self);}catch(_){}},0);};return;}return open.apply(this,arguments);};}}catch(e){}})();</script>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Performance Review Policy for Inkorporated.">
+      
+      
+      
+        <link rel="canonical" href="https://toxicoder.github.io/inkorporated/development/policies/performance_review_policy/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Performance Review Policy - Inkorporated</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/cyborgs.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"><div class="ink-docs-dev-banner" role="status"><strong>Development docs</strong> — this site version tracks the <code>development</code> branch and may change without a release tag. Prefer <a href="../latest/">latest</a> for production-ready guidance.</div>
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nexus-evaluation-framework-nef" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Inkorporated" class="md-header__button md-logo" aria-label="Inkorporated" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Inkorporated
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Performance Review Policy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/toxicoder/inkorporated" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/overview/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../organization/" class="md-tabs__link">
+          
+  
+  
+  Organization
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../corporate_strategy/mission_vision_values/" class="md-tabs__link">
+          
+  
+  
+  Corporate Strategy
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../job_roles/job_role_organization/" class="md-tabs__link">
+          
+  
+  
+  Job Roles
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cyborgs/" class="md-tabs__link">
+          
+  
+  
+  Cyborgs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../engineering_standards/engineering_principles/" class="md-tabs__link">
+          
+  
+  
+  Engineering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../code_of_conduct/" class="md-tabs__link">
+          
+  
+  
+  Policies
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../architecture/" class="md-tabs__link">
+          
+  
+  
+  Infrastructure
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../project-conventions/" class="md-tabs__link">
+          
+  
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../status/discovery_summary/" class="md-tabs__link">
+          
+  
+  
+  Status
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Inkorporated" class="md-nav__button md-logo" aria-label="Inkorporated" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Inkorporated
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/toxicoder/inkorporated" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../guides/overview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../organization/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organization
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../corporate_strategy/mission_vision_values/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Corporate Strategy
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../job_roles/job_role_organization/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Job Roles
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../cyborgs/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyborgs
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../engineering_standards/engineering_principles/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../code_of_conduct/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policies
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../architecture/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../project-conventions/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../status/discovery_summary/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#nexus-evaluation-framework-nef" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nexus Evaluation Framework (NEF)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction &amp; Philosophy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-core-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Core Principles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-roles-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Roles &amp; Responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-the-nef-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. The NEF Process
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. The NEF Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-automated-alignment-quarter-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1: Automated Alignment (Quarter Start)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-continuous-automated-tracking-ongoing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2: Continuous Automated Tracking (Ongoing)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-algorithmic-evaluation-quarter-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3: Algorithmic Evaluation (Quarter End)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4-outcomes-post-quarter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4: Outcomes (Post-Quarter)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-implementation-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Implementation Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-violations-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Violations &amp; Exceptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-technical-metric-calculation-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Technical Metric Calculation &amp; Logic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Technical Metric Calculation &amp; Logic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-metric-source-feature-store-companyfeaturesv1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Metric Source: Feature Store (company.features.v1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-calculation-logic-user-engagement-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Calculation Logic: User Engagement Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-calculation-logic-financial-impact-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Calculation Logic: Financial Impact Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-normalization-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Normalization Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-attribution-strategy-the-impact-cascade-model-icm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Attribution Strategy: The Impact Cascade Model (ICM)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Attribution Strategy: The Impact Cascade Model (ICM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-technical-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Technical Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-attribution-mechanisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Attribution Mechanisms
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.2 Attribution Mechanisms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-direct-attribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Direct Attribution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-propagated-attribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Propagated Attribution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-incentivization-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Incentivization Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-time-decayed-valuation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 Time-Decayed Valuation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-revision-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Revision History
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Performance Review Policy</h1>
+
+<h2 id="nexus-evaluation-framework-nef">Nexus Evaluation Framework (NEF)<a class="headerlink" href="#nexus-evaluation-framework-nef" title="Permanent link">¶</a></h2>
+<h2 id="1-introduction-philosophy">1. Introduction &amp; Philosophy<a class="headerlink" href="#1-introduction-philosophy" title="Permanent link">¶</a></h2>
+<p>The Nexus Evaluation Framework (NEF) is a <strong>mostly automated</strong> performance review
+system designed to eliminate subjectivity through data-driven precision. By
+integrating real-time data streams, AI-driven bias mitigation, and <strong>predefined
+metrics</strong>, NEF operates on a continuous "nexus" model where individual, team,
+and company performance intersect in a dynamic, verifiable ecosystem. Human
+intervention is minimized and reserved primarily for coaching and exception
+handling, ensuring that 90%+ of the evaluation is derived directly from
+verifiable code and data.</p>
+<h2 id="2-scope">2. Scope<a class="headerlink" href="#2-scope" title="Permanent link">¶</a></h2>
+<p>This policy applies to all employees across the organization. The specific
+metrics and weights vary by role but are standardized within each Job Role Code
+(e.g., <code>SWEN1002</code>).</p>
+<h2 id="3-core-principles">3. Core Principles<a class="headerlink" href="#3-core-principles" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Logic</strong>: Evaluations are algorithmic, rooted in verifiable data from the
+  Company Feature Store (<code>company.features.v1</code>).</li>
+<li><strong>Effectiveness</strong>: Automated interventions boost productivity in real-time.</li>
+<li><strong>Fairness</strong>: Demographic-blind scoring and automated equity checks prevent
+  discrimination.</li>
+<li><strong>Clarity</strong>: All metrics are predefined in the codebase; no "surprise"
+  criteria.</li>
+<li><strong>Consistency</strong>: Standardized SQL pipelines enforce uniform calculation globally.</li>
+</ul>
+<h2 id="4-roles-responsibilities">4. Roles &amp; Responsibilities<a class="headerlink" href="#4-roles-responsibilities" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Employees</strong>: Select relevant metrics from the Predefined Metric Library and
+  monitor their automated dashboard.</li>
+<li><strong>Managers</strong>: Review automated scores, handle exceptions, and provide
+  qualitative coaching.</li>
+<li><strong>AI Equity Auditors</strong>: Automated systems that flag statistical anomalies in
+  real-time.</li>
+<li><strong>Data Engineering</strong>: Maintain the integrity of the Feature Store pipelines.</li>
+</ul>
+<h2 id="5-the-nef-process">5. The NEF Process<a class="headerlink" href="#5-the-nef-process" title="Permanent link">¶</a></h2>
+<h3 id="phase-1-automated-alignment-quarter-start">Phase 1: Automated Alignment (Quarter Start)<a class="headerlink" href="#phase-1-automated-alignment-quarter-start" title="Permanent link">¶</a></h3>
+<p><strong>Objective</strong>: Establish clear, interconnected goals based on hard data.</p>
+<ul>
+<li><strong>Metric Selection</strong>: Employees do not "write" goals. Instead, they select 3-5
+  <strong>Predefined Metrics</strong> from the <code>FeatureMetadata</code> library (e.g.,
+  <code>UserEngagement.sessions_last_7d</code>, <code>Finance.mrr_contribution</code>).</li>
+<li><strong>Automated Weighting</strong>: The system automatically assigns weights based on Role
+  Code (e.g., <code>SWEN1002</code> defaults to 50% Technical Output, 30% Team, 20%
+  Company).</li>
+<li><strong>Baseline Ledger</strong>: Initial metrics are recorded on the immutable ledger.</li>
+</ul>
+<h3 id="phase-2-continuous-automated-tracking-ongoing">Phase 2: Continuous Automated Tracking (Ongoing)<a class="headerlink" href="#phase-2-continuous-automated-tracking-ongoing" title="Permanent link">¶</a></h3>
+<p><strong>Objective</strong>: Real-time monitoring via automated data ingestion.</p>
+<ul>
+<li><strong>Data Streams</strong>: The system continuously ingests data into the
+  <code>company.features.v1</code> tables via SQL pipelines (e.g.,
+  <code>pipelines/features/sql/</code>).</li>
+<li><strong>Engineering</strong>: Commits, PR reviews, Test coverage (via CI/CD logs).</li>
+<li><strong>Product</strong>: User engagement segments (via <code>engagement.sql</code>).</li>
+<li><strong>Sales</strong>: MRR contribution (via <code>monthly_recurring_revenue.sql</code>).</li>
+<li><strong>Feedback Nexus</strong>: Structured micro-feedback is quantified and aggregated
+  automatically.</li>
+</ul>
+<h3 id="phase-3-algorithmic-evaluation-quarter-end">Phase 3: Algorithmic Evaluation (Quarter End)<a class="headerlink" href="#phase-3-algorithmic-evaluation-quarter-end" title="Permanent link">¶</a></h3>
+<p><strong>Objective</strong>: Synthesize data into a holistic Score (0-100).</p>
+<ul>
+<li><strong>Scoring Algorithm</strong>: Raw feature values are normalized and weighted to
+  produce the Final Score.</li>
+<li><strong>Calibration</strong>: Automated statistical analysis compares scores across cohorts
+  to detect and correct distribution anomalies.</li>
+</ul>
+<h3 id="phase-4-outcomes-post-quarter">Phase 4: Outcomes (Post-Quarter)<a class="headerlink" href="#phase-4-outcomes-post-quarter" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Rewards</strong>: Compensation adjustments are programmatically determined by the
+  Final Score.</li>
+<li><strong>Development Nexus</strong>: AI generates a personalized "Growth Map" with mandatory
+  and optional actions (e.g., mentorship pairings).</li>
+<li><strong>Carry-Forward</strong>: Unresolved goals may roll over with partial credit to
+  prevent cliff-edge failures.</li>
+<li><strong>Process Audit</strong>: Anonymous surveys and AI analysis review the quarter's NEF
+  execution for consistency, feeding improvements into the next cycle.</li>
+</ul>
+<h2 id="6-implementation-requirements">6. Implementation Requirements<a class="headerlink" href="#6-implementation-requirements" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Tech Stack</strong>:</li>
+<li><strong>Feature Store</strong>: Google BigQuery (<code>company.features.v1</code>).</li>
+<li><strong>Orchestrator</strong>: Automated pipelines (e.g., Airflow/Spark) running SQL transformations.</li>
+<li><strong>Ledger</strong>: Immutable audit log of all score calculations.</li>
+</ul>
+<h2 id="7-violations-exceptions">7. Violations &amp; Exceptions<a class="headerlink" href="#7-violations-exceptions" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Data Manipulation</strong>: Attempting to artificially inflate metrics (e.g.,
+  "gaming" commit counts) is a violation of the Code of Conduct.</li>
+</ul>
+<h2 id="8-technical-metric-calculation-logic">8. Technical Metric Calculation &amp; Logic<a class="headerlink" href="#8-technical-metric-calculation-logic" title="Permanent link">¶</a></h2>
+<p>All NEF metrics are derived from the <strong>Company Feature Store</strong>, defined in
+Protocol Buffers and calculated via standardized SQL pipelines.</p>
+<h3 id="81-metric-source-feature-store-companyfeaturesv1">8.1 Metric Source: Feature Store (<code>company.features.v1</code>)<a class="headerlink" href="#81-metric-source-feature-store-companyfeaturesv1" title="Permanent link">¶</a></h3>
+<p>Metrics are strictly typed and defined in <code>.proto</code> files to ensure consistency.</p>
+<ul>
+<li><strong>Domain</strong>: <code>company.features.v1</code></li>
+<li><strong>Storage</strong>: BigQuery Tables (e.g., <code>derived.sessions</code>, <code>raw.auth_logs</code>)</li>
+</ul>
+<h3 id="82-calculation-logic-user-engagement-example">8.2 Calculation Logic: User Engagement Example<a class="headerlink" href="#82-calculation-logic-user-engagement-example" title="Permanent link">¶</a></h3>
+<p>For roles tied to product performance, the <strong>Engagement Score</strong> is calculated
+using the <code>calculate_frequency_segment</code> SQL function found in
+<code>pipelines/features/sql/user/engagement.sql</code>.</p>
+<p><strong>SQL Logic</strong>:</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="n">TEMP</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">calculate_frequency_segment</span><span class="p">(</span><span class="n">sessions_last_7d</span><span class="w"> </span><span class="n">INT64</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">RETURNS</span><span class="w"> </span><span class="n">STRING</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">CASE</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sessions_last_7d</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'Daily'</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sessions_last_7d</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'Weekly'</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">'Sporadic'</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">END</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">);</span>
+</span></code></pre></div>
+<p><strong>Scoring Conversion</strong>:</p>
+<ul>
+<li><strong>Daily</strong>: 100 Points</li>
+<li><strong>Weekly</strong>: 75 Points</li>
+<li><strong>Sporadic</strong>: 25 Points</li>
+</ul>
+<h3 id="83-calculation-logic-financial-impact-example">8.3 Calculation Logic: Financial Impact Example<a class="headerlink" href="#83-calculation-logic-financial-impact-example" title="Permanent link">¶</a></h3>
+<p>For revenue-generating roles, impact is measured using the
+<code>micros_to_dollars</code> conversion to ensure precision.</p>
+<p><strong>Standardization</strong>:</p>
+<ul>
+<li><strong>Input</strong>: Integer micros (from <code>company.finance.v1.PayrollRecord</code> or Sales
+  Ledger).</li>
+<li><strong>Transformation</strong>: <code>CAST(amount_micros AS FLOAT64) / 1000000.0</code></li>
+<li><strong>Score</strong>: <code>(Actual Revenue / Target Revenue) * 100</code> (Capped at 120%).</li>
+</ul>
+<h3 id="84-normalization-algorithm">8.4 Normalization Algorithm<a class="headerlink" href="#84-normalization-algorithm" title="Permanent link">¶</a></h3>
+<p>To ensure fairness across different metric types (e.g., Dollars vs. Commits),
+all raw values are normalized before weighting.</p>
+<p><strong>Formula</strong>:
+<code>NormalizedScore = (RawValue - MinThreshold) / (MaxTarget - MinThreshold) * 100</code></p>
+<ul>
+<li><strong>MinThreshold</strong>: Defined per role in <code>docs/job_roles/</code> (e.g., Minimum
+  expected commits).</li>
+<li><strong>MaxTarget</strong>: Stretch goal defined in the Baseline Ledger.</li>
+</ul>
+<h2 id="9-attribution-strategy-the-impact-cascade-model-icm">9. Attribution Strategy: The Impact Cascade Model (ICM)<a class="headerlink" href="#9-attribution-strategy-the-impact-cascade-model-icm" title="Permanent link">¶</a></h2>
+<p>The Impact Cascade Model (ICM) is a graph-based extension of NEF designed to
+quantitatively value "invisible" or indirect work (e.g., tech debt, frameworks)
+by tracing contributions to downstream organizational outcomes.</p>
+<h3 id="91-technical-architecture">9.1 Technical Architecture<a class="headerlink" href="#91-technical-architecture" title="Permanent link">¶</a></h3>
+<p>ICM extends the <code>company.features.v1</code> schema with graph structures in BigQuery.</p>
+<ul>
+<li><strong>Graph Tables</strong>:</li>
+<li><code>impact_graph</code>: Nodes (Tasks, Features, Outcomes).</li>
+<li><code>edges</code>: Relationships (e.g., <code>depends_on</code>, <code>enables</code>) inferred from Git
+    and Jira.</li>
+<li><code>contributions</code>: Log of individual inputs (Employee ID, Node ID, Effort).</li>
+<li><strong>Compute</strong>: BigQuery ML performs graph traversals and predictive modeling.</li>
+</ul>
+<h3 id="92-attribution-mechanisms">9.2 Attribution Mechanisms<a class="headerlink" href="#92-attribution-mechanisms" title="Permanent link">¶</a></h3>
+<p>ICM employs a hybrid scoring model: <code>TotalScore = Direct + Sum(Propagated)</code>.</p>
+<h4 id="1-direct-attribution">1. Direct Attribution<a class="headerlink" href="#1-direct-attribution" title="Permanent link">¶</a></h4>
+<p>Measures immediate, verifiable contributions.</p>
+<ul>
+<li><strong>Formula</strong>: <code>DirectScore = Effort * Quality * Relevance</code></li>
+<li><strong>SQL Example</strong>:</li>
+</ul>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">SELECT</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="n">employee_id</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="k">SUM</span><span class="p">(</span><span class="n">commit_lines</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">bug_rate</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">DirectScore</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">FROM</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="o">`</span><span class="n">company</span><span class="p">.</span><span class="n">features</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">git_commits</span><span class="o">`</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">WHERE</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="k">timestamp</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">TIMESTAMP_SUB</span><span class="p">(</span><span class="k">CURRENT_TIMESTAMP</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="k">DAY</span><span class="p">)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">employee_id</span><span class="p">;</span>
+</span></code></pre></div>
+<h4 id="2-propagated-attribution">2. Propagated Attribution<a class="headerlink" href="#2-propagated-attribution" title="Permanent link">¶</a></h4>
+<p>Cascades credit along dependency paths using a <strong>Decayed DFS Algorithm</strong>.</p>
+<ul>
+<li><strong>Logic</strong>: Value propagates from the source node to downstream outcomes.</li>
+<li><strong>Formula</strong>: <code>PropagatedValue = EdgeWeight * DecayFactor^HopCount</code></li>
+<li><strong>EdgeWeight</strong>: Probabilistic impact (e.g., 0.5 for shared contribution).</li>
+<li><strong>DecayFactor</strong>: 0.8 per hop (prioritizes near-term impact).</li>
+</ul>
+<h3 id="93-incentivization-examples">9.3 Incentivization Examples<a class="headerlink" href="#93-incentivization-examples" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Tech Debt Cleanup</strong>:</li>
+<li><strong>Metric</strong>: Pre/Post system health delta (e.g., Error Rate).</li>
+<li><strong>Propagation</strong>: If cleanup improves stability for dependent features,
+    credit flows back to the refactorer.</li>
+<li><strong>Framework Building</strong>:</li>
+<li><strong>Metric</strong>: Adoption Rate (# of imports) and ROI (Time Savings).</li>
+<li><strong>Propagation</strong>: A fraction of the velocity score from every team using the
+    framework is attributed to the builder.</li>
+</ul>
+<h3 id="94-time-decayed-valuation">9.4 Time-Decayed Valuation<a class="headerlink" href="#94-time-decayed-valuation" title="Permanent link">¶</a></h3>
+<p>Long-term impacts are valued using an exponential decay model to balance
+historical contribution with current relevance.</p>
+<ul>
+<li><strong>Formula</strong>: <code>TimeAdjustedValue = InitialValue * e^(-λ * t)</code></li>
+<li><strong>λ (Lambda)</strong>: 0.05 (Monthly decay rate).</li>
+<li><strong>t</strong>: Months since contribution.</li>
+</ul>
+<h2 id="10-revision-history">10. Revision History<a class="headerlink" href="#10-revision-history" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Version 1.2</strong>: Added the Impact Cascade Model (ICM) for attribution.</li>
+<li><strong>Version 1.1</strong>: Updated to emphasize automation and technical metric
+  definitions.</li>
+<li><strong>Version 1.0</strong>: Initial release.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/toxicoder/inkorporated" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.top", "navigation.prune", "navigation.instant", "navigation.tracking", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../assets/javascripts/cyborg-filter.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

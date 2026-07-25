@@ -1,0 +1,3017 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><script>(function(){try{var orig=window.fetch;if(typeof orig==="function"){window.fetch=function(i,init){var u=(typeof i==="string")?i:(i&&typeof i.url==="string"?i.url:"");if(u.indexOf("api.github.com/repos/toxicoder/inkorporated")!==-1){return Promise.resolve(new Response("{}", {status:200,headers:{"Content-Type":"application/json"}}));}return orig.apply(this,arguments);};}}catch(e){}try{var XHR=window.XMLHttpRequest;if(XHR&&XHR.prototype){var p=XHR.prototype,open=p.open;p.open=function(m,u){if(typeof u==="string"&&u.indexOf("api.github.com/repos/toxicoder/inkorporated")!==-1){var self=this;Object.defineProperty(self,"responseText",{get:function(){return"{}"},configurable:!0});Object.defineProperty(self,"status",{get:function(){return 200},configurable:!0});Object.defineProperty(self,"readyState",{get:function(){return 4},configurable:!0});self.send=function(){setTimeout(function(){try{if(typeof self.onreadystatechange==="function")self.onreadystatechange.call(self);}catch(_){}try{if(typeof self.onload==="function")self.onload.call(self);}catch(_){}},0);};return;}return open.apply(this,arguments);};}}catch(e){}})();</script>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Software Engineering Interview Questions &amp; Answers (100+) for Inkorporated.">
+      
+      
+      
+        <link rel="canonical" href="https://toxicoder.github.io/inkorporated/development/interview_questions/software_engineering/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Software Engineering Interview Questions &amp; Answers (100+) - Inkorporated</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/cyborgs.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"><div class="ink-docs-dev-banner" role="status"><strong>Development docs</strong> — this site version tracks the <code>development</code> branch and may change without a release tag. Prefer <a href="../latest/">latest</a> for production-ready guidance.</div>
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#software-engineering-interview-questions-answers-100" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Inkorporated" class="md-header__button md-logo" aria-label="Inkorporated" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Inkorporated
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Software Engineering Interview Questions &amp; Answers (100+)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/toxicoder/inkorporated" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/overview/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../organization/" class="md-tabs__link">
+          
+  
+  
+  Organization
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../corporate_strategy/mission_vision_values/" class="md-tabs__link">
+          
+  
+  
+  Corporate Strategy
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../job_roles/job_role_organization/" class="md-tabs__link">
+          
+  
+  
+  Job Roles
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cyborgs/" class="md-tabs__link">
+          
+  
+  
+  Cyborgs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../engineering_standards/engineering_principles/" class="md-tabs__link">
+          
+  
+  
+  Engineering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../policies/code_of_conduct/" class="md-tabs__link">
+          
+  
+  
+  Policies
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../architecture/" class="md-tabs__link">
+          
+  
+  
+  Infrastructure
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../project-conventions/" class="md-tabs__link">
+          
+  
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../status/discovery_summary/" class="md-tabs__link">
+          
+  
+  
+  Status
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Inkorporated" class="md-nav__button md-logo" aria-label="Inkorporated" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Inkorporated
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/toxicoder/inkorporated" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../guides/overview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../organization/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organization
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../corporate_strategy/mission_vision_values/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Corporate Strategy
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../job_roles/job_role_organization/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Job Roles
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../cyborgs/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyborgs
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../engineering_standards/engineering_principles/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../policies/code_of_conduct/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policies
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../architecture/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../project-conventions/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../status/discovery_summary/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#part-1-algorithms-data-structures-1-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Algorithms &amp; Data Structures (1-20)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Algorithms &amp; Data Structures (1-20)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-explain-big-o-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Explain Big O Notation.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-array-vs-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Array vs. Linked List?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-what-is-a-hash-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. What is a Hash Table?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-stack-vs-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Stack vs. Queue?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-explain-binary-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Explain Binary Search.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-what-is-a-binary-search-tree-bst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. What is a Binary Search Tree (BST)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-bfs-vs-dfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. BFS vs. DFS?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-explain-quicksort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Explain QuickSort.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-explain-merge-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Explain Merge Sort.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-what-is-dynamic-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. What is Dynamic Programming?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-what-is-a-priority-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. What is a Priority Queue?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-min-heap-vs-max-heap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Min-Heap vs. Max-Heap?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-what-is-recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. What is Recursion?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-invert-a-binary-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Invert a Binary Tree.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-detect-a-cycle-in-a-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Detect a cycle in a Linked List.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-what-is-the-difference-between-a-graph-and-a-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. What is the difference between a Graph and a Tree?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-explain-greedy-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Explain 'Greedy' Algorithms.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-how-to-find-duplicates-in-an-array-in-on-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. How to find duplicates in an array in $O(n)$ time?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-what-is-a-trie-prefix-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. What is a Trie (Prefix Tree)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-string-immutability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. String Immutability.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-system-design-architecture-21-40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: System Design &amp; Architecture (21-40)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: System Design &amp; Architecture (21-40)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-vertical-vs-horizontal-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        21. Vertical vs. Horizontal Scaling?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-what-is-a-load-balancer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        22. What is a Load Balancer?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-explain-cap-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        23. Explain CAP Theorem.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-monolithic-vs-microservices-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        24. Monolithic vs. Microservices Architecture?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-what-is-database-sharding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        25. What is Database Sharding?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-what-is-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        26. What is Caching?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-cache-eviction-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        27. Cache Eviction Policies?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-what-is-a-cdn-content-delivery-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        28. What is a CDN (Content Delivery Network)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-sql-vs-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        29. SQL vs. NoSQL?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#30-what-is-consistent-hashing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        30. What is Consistent Hashing?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-what-is-a-reverse-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        31. What is a Reverse Proxy?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-rate-limiting-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        32. Rate Limiting algorithms.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-what-is-a-message-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        33. What is a Message Queue?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-throughput-vs-latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        34. Throughput vs. Latency?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-explain-backpressure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        35. Explain "Backpressure".
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-polling-vs-websockets-vs-server-sent-events-sse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        36. Polling vs. WebSockets vs. Server-Sent Events (SSE)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-what-is-database-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        37. What is Database Replication?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-single-point-of-failure-spof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        38. Single Point of Failure (SPOF).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-idempotency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        39. Idempotency.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#40-design-a-url-shortener-tinyurl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        40. Design a URL Shortener (TinyURL).
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-operating-systems-low-level-41-60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Operating Systems &amp; Low Level (41-60)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Operating Systems &amp; Low Level (41-60)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-process-vs-thread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        41. Process vs. Thread?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-what-is-concurrency-vs-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        42. What is Concurrency vs. Parallelism?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-what-is-a-deadlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        43. What is a Deadlock?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-what-is-a-semaphore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        44. What is a Semaphore?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-explain-virtual-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        45. Explain Virtual Memory.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-stack-vs-heap-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        46. Stack vs. Heap Memory?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-what-is-a-context-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        47. What is a Context Switch?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48-what-is-a-race-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        48. What is a Race Condition?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#49-static-vs-dynamic-linking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        49. Static vs. Dynamic Linking?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#50-what-is-a-system-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        50. What is a System Call?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#51-compiler-vs-interpreter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        51. Compiler vs. Interpreter?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-what-is-garbage-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        52. What is Garbage Collection?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-big-endian-vs-little-endian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        53. Big Endian vs. Little Endian?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-what-is-thrashing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        54. What is Thrashing?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-what-is-an-inode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        55. What is an Inode?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-what-happens-when-you-type-a-url-in-the-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        56. What happens when you type a URL in the browser?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-tcp-vs-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        57. TCP vs. UDP?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-explain-the-osi-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        58. Explain the OSI Model.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59-what-is-a-zombie-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        59. What is a Zombie Process?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#60-hard-link-vs-soft-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        60. Hard Link vs. Soft Link?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-networking-web-databases-61-80" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Networking, Web &amp; Databases (61-80)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Networking, Web &amp; Databases (61-80)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-http-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        61. HTTP Methods.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-http-status-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        62. HTTP Status Codes.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-https-vs-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        63. HTTPS vs. HTTP.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-rest-vs-graphql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        64. REST vs. GraphQL?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-what-is-a-cookie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        65. What is a Cookie?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66-session-vs-token-jwt-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        66. Session vs. Token (JWT) Authentication?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#67-what-is-cors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        67. What is CORS?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#68-localstorage-vs-sessionstorage-vs-cookies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        68. LocalStorage vs. SessionStorage vs. Cookies?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#69-what-is-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        69. What is DNS?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#70-what-is-sql-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        70. What is SQL Injection?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#71-what-is-xss-cross-site-scripting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        71. What is XSS (Cross-Site Scripting)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-what-is-csrf-cross-site-request-forgery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        72. What is CSRF (Cross-Site Request Forgery)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-what-is-a-webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        73. What is a Webhook?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-tcp-3-way-handshake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        74. TCP 3-Way Handshake.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-explain-keep-alive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        75. Explain 'Keep-Alive'.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-forward-proxy-vs-reverse-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        76. Forward Proxy vs. Reverse Proxy?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77-what-is-a-subnet-mask" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        77. What is a Subnet Mask?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#78-what-is-localhost-and-127001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        78. What is 'localhost' and 127.0.0.1?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#79-what-is-dependency-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        79. What is dependency injection?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#80-explain-stateless-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        80. Explain 'Stateless' protocol.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-soft-skills-methodologies-devops-81-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 5: Soft Skills, Methodologies &amp; DevOps (81-100)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Soft Skills, Methodologies &amp; DevOps (81-100)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-explain-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        81. Explain CI/CD.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-what-is-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        82. What is Git?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-merge-vs-rebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        83. Merge vs. Rebase?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-what-is-agile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        84. What is Agile?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85-scrum-vs-kanban" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        85. Scrum vs. Kanban?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#86-what-is-tdd-test-driven-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        86. What is TDD (Test Driven Development)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#87-docker-vs-virtual-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        87. Docker vs. Virtual Machine?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#88-what-is-kubernetes-k8s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        88. What is Kubernetes (K8s)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#89-explain-solid-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        89. Explain SOLID principles.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#90-what-is-technical-debt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        90. What is Technical Debt?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#91-how-do-you-handle-a-disagreement-with-a-team-member" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        91. How do you handle a disagreement with a team member?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-describe-a-challenging-bug-you-fixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        92. Describe a challenging bug you fixed.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-what-is-code-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        93. What is Code Review?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-what-is-bluegreen-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        94. What is "Blue/Green Deployment"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95-what-is-canary-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        95. What is "Canary Deployment"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#96-what-is-infrastructure-as-code-iac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        96. What is Infrastructure as Code (IaC)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#97-pair-programming-proscons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        97. Pair Programming pros/cons?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#98-how-do-you-stay-updated-with-technology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        98. How do you stay updated with technology?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#99-explain-the-bus-factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        99. Explain the "Bus Factor".
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#100-what-happens-when-you-type-ls-l-in-a-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        100. What happens when you type ls -l in a shell?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="software-engineering-interview-questions-answers-100">Software Engineering Interview Questions &amp; Answers (100+)<a class="headerlink" href="#software-engineering-interview-questions-answers-100" title="Permanent link">¶</a></h1>
+<p><strong>What's on this page</strong></p>
+<ul>
+<li>Core content for this topic in the Inkorporated enterprise OS.</li>
+<li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+<p><strong>What this enables</strong></p>
+<ul>
+<li>Consistent enterprise operations and decision-making.</li>
+<li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+<p>This guide contains 100+ Software Engineering interview questions, covering Algorithms, System Design, OS, Networking, and Soft Skills. Each question includes a model answer and potential follow-up paths.</p>
+<h2 id="part-1-algorithms-data-structures-1-20">Part 1: Algorithms &amp; Data Structures (1-20)<a class="headerlink" href="#part-1-algorithms-data-structures-1-20" title="Permanent link">¶</a></h2>
+<h3 id="1-explain-big-o-notation">1. Explain Big O Notation.<a class="headerlink" href="#1-explain-big-o-notation" title="Permanent link">¶</a></h3>
+<p>Big O notation describes the <strong>worst-case</strong> performance or complexity of an algorithm. It characterizes the execution time or space used as the input size ($n$) grows.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Notation</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Example Algorithm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$O(1)$</td>
+<td style="text-align: left;">Constant</td>
+<td style="text-align: left;">Accessing array index</td>
+</tr>
+<tr>
+<td style="text-align: left;">$O(\log n)$</td>
+<td style="text-align: left;">Logarithmic</td>
+<td style="text-align: left;">Binary Search</td>
+</tr>
+<tr>
+<td style="text-align: left;">$O(n)$</td>
+<td style="text-align: left;">Linear</td>
+<td style="text-align: left;">Linear Search</td>
+</tr>
+<tr>
+<td style="text-align: left;">$O(n \log n)$</td>
+<td style="text-align: left;">Linearithmic</td>
+<td style="text-align: left;">Merge Sort</td>
+</tr>
+<tr>
+<td style="text-align: left;">$O(n^2)$</td>
+<td style="text-align: left;">Quadratic</td>
+<td style="text-align: left;">Bubble Sort</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Candidate mentions Space Complexity.</strong><ul>
+<li><em>Follow-up:</em> "What is the space complexity of a recursive Fibonacci function without memoization?"</li>
+<li><em>Answer:</em> $O(n)$ (stack depth).</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-array-vs-linked-list">2. Array vs. Linked List?<a class="headerlink" href="#2-array-vs-linked-list" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Array:</strong> Contiguous memory. $O(1)$ access. $O(n)$ insertion/deletion (shifting). Fixed size (usually).</li>
+<li><strong>Linked List:</strong> Non-contiguous. $O(n)$ access. $O(1)$ insertion/deletion (if pointer known). Dynamic size.</li>
+</ul>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Cache Locality.</strong><ul>
+<li><em>Follow-up:</em> "Why are Arrays generally faster for iteration than Linked Lists?"</li>
+<li><em>Answer:</em> Spatial locality / CPU caching. Arrays are contiguous blocks.</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-what-is-a-hash-table">3. What is a Hash Table?<a class="headerlink" href="#3-what-is-a-hash-table" title="Permanent link">¶</a></h3>
+<p>A data structure that implements an associative array abstract data type, a structure that can map keys to values. It uses a hash function to compute an index into an array of buckets or slots.</p>
+<pre class="mermaid"><code>graph LR
+    Key --&gt; HashFunction
+    HashFunction --&gt; Index
+    Index --&gt; Bucket[Bucket / Storage]</code></pre>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Collisions.</strong><ul>
+<li><em>Follow-up:</em> "How do you handle collisions?"</li>
+<li><em>Answer:</em> Chaining (Linked Lists in buckets) or Open Addressing (Probing).</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-stack-vs-queue">4. Stack vs. Queue?<a class="headerlink" href="#4-stack-vs-queue" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Stack:</strong> LIFO (Last In, First Out). Operations: <code>push</code>, <code>pop</code>. Used in recursion, undo mechanisms.</li>
+<li><strong>Queue:</strong> FIFO (First In, First Out). Operations: <code>enqueue</code>, <code>dequeue</code>. Used in job scheduling, BFS.</li>
+</ul>
+<h3 id="5-explain-binary-search">5. Explain Binary Search.<a class="headerlink" href="#5-explain-binary-search" title="Permanent link">¶</a></h3>
+<p>An efficient algorithm for finding an item from a <strong>sorted</strong> list of items. It works by repeatedly dividing in half the portion of the list that could contain the item.</p>
+<p><strong>Time Complexity:</strong> $O(\log n)$</p>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Pre-requisites.</strong><ul>
+<li><em>Follow-up:</em> "What happens if the array is not sorted?"</li>
+<li><em>Answer:</em> Binary search fails. You must sort first ($O(n \log n)$) or use Linear Search ($O(n)$).</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-what-is-a-binary-search-tree-bst">6. What is a Binary Search Tree (BST)?<a class="headerlink" href="#6-what-is-a-binary-search-tree-bst" title="Permanent link">¶</a></h3>
+<p>A node-based binary tree data structure which has the following properties:
+*   The left subtree of a node contains only nodes with keys lesser than the node’s key.
+*   The right subtree of a node contains only nodes with keys greater than the node’s key.</p>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Balancing.</strong><ul>
+<li><em>Follow-up:</em> "What is the worst-case search time in a BST?"</li>
+<li><em>Answer:</em> $O(n)$ if the tree becomes a skewed line. Balanced trees (AVL, Red-Black) guarantee $O(\log n)$.</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-bfs-vs-dfs">7. BFS vs. DFS?<a class="headerlink" href="#7-bfs-vs-dfs" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>BFS (Breadth-First Search):</strong> Explores neighbor nodes first. Uses a <strong>Queue</strong>. Good for finding shortest path in unweighted graphs.</li>
+<li><strong>DFS (Depth-First Search):</strong> Explores as far as possible along each branch before backtracking. Uses a <strong>Stack</strong> (recursion). Good for puzzles, topological sort.</li>
+</ul>
+<h3 id="8-explain-quicksort">8. Explain QuickSort.<a class="headerlink" href="#8-explain-quicksort" title="Permanent link">¶</a></h3>
+<p>A divide-and-conquer algorithm. It picks an element as a <strong>pivot</strong> and partitions the given array around the picked pivot.</p>
+<ul>
+<li><strong>Best/Avg:</strong> $O(n \log n)$</li>
+<li><strong>Worst:</strong> $O(n^2)$ (if pivot is always smallest/largest)</li>
+</ul>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Pivot Selection.</strong><ul>
+<li><em>Follow-up:</em> "How can you avoid the worst-case scenario?"</li>
+<li><em>Answer:</em> Pick a random pivot or median-of-three.</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-explain-merge-sort">9. Explain Merge Sort.<a class="headerlink" href="#9-explain-merge-sort" title="Permanent link">¶</a></h3>
+<p>A divide-and-conquer algorithm that divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves.</p>
+<ul>
+<li><strong>Complexity:</strong> Always $O(n \log n)$.</li>
+<li><strong>Stability:</strong> Stable sort (maintains relative order of equal elements).</li>
+</ul>
+<h3 id="10-what-is-dynamic-programming">10. What is Dynamic Programming?<a class="headerlink" href="#10-what-is-dynamic-programming" title="Permanent link">¶</a></h3>
+<p>A method for solving complex problems by breaking them down into simpler subproblems. It is applicable to problems exhibiting <strong>overlapping subproblems</strong> and <strong>optimal substructure</strong>.</p>
+<p><strong>Two approaches:</strong>
+1.  <strong>Memoization (Top-Down):</strong> Cache results of recursive calls.
+2.  <strong>Tabulation (Bottom-Up):</strong> Fill a table iteratively.</p>
+<h3 id="11-what-is-a-priority-queue">11. What is a Priority Queue?<a class="headerlink" href="#11-what-is-a-priority-queue" title="Permanent link">¶</a></h3>
+<p>A generic data structure where each element has a "priority" associated with it. Elements with high priority are served before elements with low priority. Usually implemented with a <strong>Heap</strong>.</p>
+<h3 id="12-min-heap-vs-max-heap">12. Min-Heap vs. Max-Heap?<a class="headerlink" href="#12-min-heap-vs-max-heap" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Min-Heap:</strong> The key at the root must be minimum among all keys present in the Binary Heap. This property must be recursively true for all nodes.</li>
+<li><strong>Max-Heap:</strong> The key at the root must be maximum.</li>
+</ul>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Complexity.</strong><ul>
+<li><em>Follow-up:</em> "Time complexity to insert or extract min/max?"</li>
+<li><em>Answer:</em> $O(\log n)$ to maintain the heap property.</li>
+</ul>
+</li>
+</ul>
+<h3 id="13-what-is-recursion">13. What is Recursion?<a class="headerlink" href="#13-what-is-recursion" title="Permanent link">¶</a></h3>
+<p>A process where a function calls itself as a subroutine.
+Must have:
+1.  <strong>Base Case:</strong> To stop the recursion.
+2.  <strong>Recursive Step:</strong> To move closer to the base case.</p>
+<h3 id="14-invert-a-binary-tree">14. Invert a Binary Tree.<a class="headerlink" href="#14-invert-a-binary-tree" title="Permanent link">¶</a></h3>
+<p>Swap the left and right children of every node.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">invertTree</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">invertTree</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">),</span> <span class="n">invertTree</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="k">return</span> <span class="n">root</span>
+</span></code></pre></div>
+<h3 id="15-detect-a-cycle-in-a-linked-list">15. Detect a cycle in a Linked List.<a class="headerlink" href="#15-detect-a-cycle-in-a-linked-list" title="Permanent link">¶</a></h3>
+<p><strong>Floyd’s Cycle-Finding Algorithm (Tortoise and Hare):</strong>
+Use two pointers. One moves 1 step, the other moves 2 steps. If they meet, there is a cycle.</p>
+<h3 id="16-what-is-the-difference-between-a-graph-and-a-tree">16. What is the difference between a Graph and a Tree?<a class="headerlink" href="#16-what-is-the-difference-between-a-graph-and-a-tree" title="Permanent link">¶</a></h3>
+<p>A <strong>Tree</strong> is a special kind of <strong>Graph</strong> that is:
+1.  Connected.
+2.  Acyclic (No cycles).
+3.  Has $N$ nodes and $N-1$ edges.</p>
+<h3 id="17-explain-greedy-algorithms">17. Explain 'Greedy' Algorithms.<a class="headerlink" href="#17-explain-greedy-algorithms" title="Permanent link">¶</a></h3>
+<p>An algorithmic paradigm that follows the problem-solving heuristic of making the locally optimal choice at each stage with the hope of finding a global optimum.
+<em>Example:</em> Dijkstra's Algorithm, Huffman Coding.</p>
+<h3 id="18-how-to-find-duplicates-in-an-array-in-on-time">18. How to find duplicates in an array in $O(n)$ time?<a class="headerlink" href="#18-how-to-find-duplicates-in-an-array-in-on-time" title="Permanent link">¶</a></h3>
+<p>Use a <strong>HashSet</strong> or a <strong>Frequency Map</strong>. Iterate through the array; if the element is already in the set, it's a duplicate.</p>
+<h3 id="19-what-is-a-trie-prefix-tree">19. What is a Trie (Prefix Tree)?<a class="headerlink" href="#19-what-is-a-trie-prefix-tree" title="Permanent link">¶</a></h3>
+<p>A tree-like data structure used to store a dynamic set of strings where the keys are usually strings.
+<strong>Use Case:</strong> Autocomplete systems.</p>
+<h3 id="20-string-immutability">20. String Immutability.<a class="headerlink" href="#20-string-immutability" title="Permanent link">¶</a></h3>
+<p>In many languages (Java, Python, C#), strings are immutable. You cannot change characters in place; you create a new string.
+<strong>Reason:</strong> Security, Thread-safety, String Pool optimization.</p>
+<h2 id="part-2-system-design-architecture-21-40">Part 2: System Design &amp; Architecture (21-40)<a class="headerlink" href="#part-2-system-design-architecture-21-40" title="Permanent link">¶</a></h2>
+<h3 id="21-vertical-vs-horizontal-scaling">21. Vertical vs. Horizontal Scaling?<a class="headerlink" href="#21-vertical-vs-horizontal-scaling" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Vertical (Scale Up)</th>
+<th style="text-align: left;">Horizontal (Scale Out)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Definition</strong></td>
+<td style="text-align: left;">Add more power (CPU, RAM) to existing machine.</td>
+<td style="text-align: left;">Add more machines to the pool.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Downtime</strong></td>
+<td style="text-align: left;">Usually requires downtime to upgrade.</td>
+<td style="text-align: left;">No downtime (add nodes dynamically).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Limit</strong></td>
+<td style="text-align: left;">Hard hardware limits.</td>
+<td style="text-align: left;">Infinite (theoretical).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cost</strong></td>
+<td style="text-align: left;">Exponentially expensive for high-end hardware.</td>
+<td style="text-align: left;">Linear cost (commodity hardware).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-what-is-a-load-balancer">22. What is a Load Balancer?<a class="headerlink" href="#22-what-is-a-load-balancer" title="Permanent link">¶</a></h3>
+<p>A device that acts as a reverse proxy and distributes network or application traffic across a number of servers.
+*   <strong>Layer 4 (Transport):</strong> Based on IP/Port.
+*   <strong>Layer 7 (Application):</strong> Based on URL, Cookies, Headers.</p>
+<h3 id="23-explain-cap-theorem">23. Explain CAP Theorem.<a class="headerlink" href="#23-explain-cap-theorem" title="Permanent link">¶</a></h3>
+<p>In a distributed data store, you can only guarantee 2 out of 3:
+1.  <strong>Consistency:</strong> Every read receives the most recent write or an error.
+2.  <strong>Availability:</strong> Every request receives a (non-error) response, without the guarantee that it contains the most recent write.
+3.  <strong>Partition Tolerance:</strong> The system continues to operate despite an arbitrary number of messages being dropped or delayed by the network.</p>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Real world.</strong><ul>
+<li><em>Follow-up:</em> "Can you sacrifice P?"</li>
+<li><em>Answer:</em> No, network partitions are inevitable. You must choose between CP (Mongo, Redis) and AP (Cassandra, Dynamo).</li>
+</ul>
+</li>
+</ul>
+<h3 id="24-monolithic-vs-microservices-architecture">24. Monolithic vs. Microservices Architecture?<a class="headerlink" href="#24-monolithic-vs-microservices-architecture" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Monolith:</strong> Single codebase, single build, single deployment. Simple to start, hard to scale teams.</li>
+<li><strong>Microservices:</strong> Collection of loosely coupled services. Independent deployment, scalable, complex to manage (network latency, consistency).</li>
+</ul>
+<h3 id="25-what-is-database-sharding">25. What is Database Sharding?<a class="headerlink" href="#25-what-is-database-sharding" title="Permanent link">¶</a></h3>
+<p>A type of database partitioning that separates very large databases the into smaller, faster, more easily managed parts called data shards.
+*   <em>Key:</em> Shard Key selection is critical to avoid "hot shards".</p>
+<h3 id="26-what-is-caching">26. What is Caching?<a class="headerlink" href="#26-what-is-caching" title="Permanent link">¶</a></h3>
+<p>Storing copies of data in a temporary storage location (cache) so that future requests for that data can be served faster.
+*   <strong>Types:</strong> Browser, CDN, <abbr title="Application Programming Interface">API</abbr> Gateway, Application (Memcached/Redis), Database.</p>
+<h3 id="27-cache-eviction-policies">27. Cache Eviction Policies?<a class="headerlink" href="#27-cache-eviction-policies" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>LRU (Least Recently Used):</strong> Discard items not used for the longest time.</li>
+<li><strong>LFU (Least Frequently Used):</strong> Discard items used least often.</li>
+<li><strong>FIFO (First In, First Out).</strong></li>
+</ul>
+<h3 id="28-what-is-a-cdn-content-delivery-network">28. What is a CDN (Content Delivery Network)?<a class="headerlink" href="#28-what-is-a-cdn-content-delivery-network" title="Permanent link">¶</a></h3>
+<p>A geographically distributed group of servers which work together to provide fast delivery of Internet content. It caches static assets (images, CSS, JS) closer to the user.</p>
+<h3 id="29-sql-vs-nosql">29. SQL vs. NoSQL?<a class="headerlink" href="#29-sql-vs-nosql" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>SQL (Relational):</strong> Structured, Schema-based, ACID, Vertical Scaling. (MySQL, Postgres).</li>
+<li><strong>NoSQL (Non-Relational):</strong> Unstructured/Semi-structured, Schema-less, BASE, Horizontal Scaling. (MongoDB, Cassandra).</li>
+</ul>
+<h3 id="30-what-is-consistent-hashing">30. What is Consistent Hashing?<a class="headerlink" href="#30-what-is-consistent-hashing" title="Permanent link">¶</a></h3>
+<p>A distributed hashing scheme that operates independently of the number of servers or objects in a distributed hash table. It minimizes reorganization of keys when a server is added or removed.</p>
+<h3 id="31-what-is-a-reverse-proxy">31. What is a Reverse Proxy?<a class="headerlink" href="#31-what-is-a-reverse-proxy" title="Permanent link">¶</a></h3>
+<p>A server that sits in front of web servers and forwards client (e.g. browser) requests to those web servers.
+<strong>Benefits:</strong> Load Balancing, Security, Caching, SSL Termination.</p>
+<h3 id="32-rate-limiting-algorithms">32. Rate Limiting algorithms.<a class="headerlink" href="#32-rate-limiting-algorithms" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Token Bucket:</strong> Tokens are added at a fixed rate. Request consumes a token.</li>
+<li><strong>Leaky Bucket:</strong> Requests enter a queue and are processed at a constant rate.</li>
+<li><strong>Fixed Window:</strong> Count requests per minute.</li>
+<li><strong>Sliding Window:</strong> More smooth than fixed window.</li>
+</ul>
+<h3 id="33-what-is-a-message-queue">33. What is a Message Queue?<a class="headerlink" href="#33-what-is-a-message-queue" title="Permanent link">¶</a></h3>
+<p>A form of asynchronous service-to-service communication used in serverless and microservices architectures. (RabbitMQ, Kafka, SQS).
+<strong>Benefit:</strong> Decoupling, Buffering, Reliability.</p>
+<h3 id="34-throughput-vs-latency">34. Throughput vs. Latency?<a class="headerlink" href="#34-throughput-vs-latency" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Latency:</strong> Time taken to process a single request (Speed).</li>
+<li><strong>Throughput:</strong> Number of requests processed per second (Capacity).</li>
+</ul>
+<h3 id="35-explain-backpressure">35. Explain "Backpressure".<a class="headerlink" href="#35-explain-backpressure" title="Permanent link">¶</a></h3>
+<p>When a system is overwhelmed by data/requests, it pushes back against the producer to slow down, preventing the system from crashing.</p>
+<h3 id="36-polling-vs-websockets-vs-server-sent-events-sse">36. Polling vs. WebSockets vs. Server-Sent Events (SSE)?<a class="headerlink" href="#36-polling-vs-websockets-vs-server-sent-events-sse" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Polling:</strong> Client asks server "New data?" periodically. (Inefficient).</li>
+<li><strong>Long Polling:</strong> Client asks, server holds connection open until data is available.</li>
+<li><strong>WebSockets:</strong> Full-duplex (two-way) communication over single TCP connection.</li>
+<li><strong>SSE:</strong> One-way (Server to Client) streaming.</li>
+</ul>
+<h3 id="37-what-is-database-replication">37. What is Database Replication?<a class="headerlink" href="#37-what-is-database-replication" title="Permanent link">¶</a></h3>
+<p>Copying data from one database server (primary) to others (replicas).
+*   <strong>Master-Slave:</strong> Write to Master, Read from Slaves.
+*   <strong>Master-Master:</strong> Write to any node (Complex conflict resolution).</p>
+<h3 id="38-single-point-of-failure-spof">38. Single Point of Failure (SPOF).<a class="headerlink" href="#38-single-point-of-failure-spof" title="Permanent link">¶</a></h3>
+<p>A part of a system that, if it fails, will stop the entire system from working.
+<strong>Solution:</strong> Redundancy (Backup servers, Clusters).</p>
+<h3 id="39-idempotency">39. Idempotency.<a class="headerlink" href="#39-idempotency" title="Permanent link">¶</a></h3>
+<p>An operation is idempotent if applying it multiple times has the same effect as applying it once.
+*   <em>GET/PUT/DELETE</em> are idempotent.
+*   <em>POST</em> is generally not.</p>
+<h3 id="40-design-a-url-shortener-tinyurl">40. Design a URL Shortener (TinyURL).<a class="headerlink" href="#40-design-a-url-shortener-tinyurl" title="Permanent link">¶</a></h3>
+<p><strong>Key Components:</strong>
+1.  <strong><abbr title="Application Programming Interface">API</abbr>:</strong> <code>create(long_url) -&gt; short_url</code>, <code>get(short_url) -&gt; long_url</code> (redirect).
+2.  <strong>Algorithm:</strong> Base62 encoding of a unique ID.
+3.  <strong>Storage:</strong> Key-Value store (fast lookups).</p>
+<h2 id="part-3-operating-systems-low-level-41-60">Part 3: Operating Systems &amp; Low Level (41-60)<a class="headerlink" href="#part-3-operating-systems-low-level-41-60" title="Permanent link">¶</a></h2>
+<h3 id="41-process-vs-thread">41. Process vs. Thread?<a class="headerlink" href="#41-process-vs-thread" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Process</th>
+<th style="text-align: left;">Thread</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Definition</strong></td>
+<td style="text-align: left;">An instance of a program in execution.</td>
+<td style="text-align: left;">A sequence of instructions within a process.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Memory</strong></td>
+<td style="text-align: left;">Isolated memory space.</td>
+<td style="text-align: left;">Shared memory (Heap) within process.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Overhead</strong></td>
+<td style="text-align: left;">High (Context switch is slow).</td>
+<td style="text-align: left;">Low (Lightweight context switch).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Communication</strong></td>
+<td style="text-align: left;">IPC (Pipes, Sockets).</td>
+<td style="text-align: left;">Direct memory access.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-what-is-concurrency-vs-parallelism">42. What is Concurrency vs. Parallelism?<a class="headerlink" href="#42-what-is-concurrency-vs-parallelism" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Concurrency:</strong> Handling multiple tasks at once (interleaving execution). Structure of the program.</li>
+<li><strong>Parallelism:</strong> Doing multiple tasks at once (simultaneous execution). Hardware execution.</li>
+</ul>
+<h3 id="43-what-is-a-deadlock">43. What is a Deadlock?<a class="headerlink" href="#43-what-is-a-deadlock" title="Permanent link">¶</a></h3>
+<p>A situation where a set of processes are blocked because each process is holding a resource and waiting for another resource acquired by some other process.</p>
+<p><strong>Necessary Conditions (Coffman Conditions):</strong>
+1.  Mutual Exclusion.
+2.  Hold and Wait.
+3.  No Preemption.
+4.  Circular Wait.</p>
+<h3 id="44-what-is-a-semaphore">44. What is a Semaphore?<a class="headerlink" href="#44-what-is-a-semaphore" title="Permanent link">¶</a></h3>
+<p>A variable or abstract data type used to control access to a common resource by multiple processes in a concurrent system such as a multitasking operating system.
+*   <strong>Binary Semaphore (Mutex):</strong> 0 or 1.
+*   <strong>Counting Semaphore:</strong> Allow $N$ accessors.</p>
+<h3 id="45-explain-virtual-memory">45. Explain Virtual Memory.<a class="headerlink" href="#45-explain-virtual-memory" title="Permanent link">¶</a></h3>
+<p>A memory management technique that provides an "idealized abstraction" of the storage resources that are actually available on a given machine. It maps memory addresses used by a program, called virtual addresses, into physical addresses in computer memory.</p>
+<p><strong>Benefit:</strong> Process isolation, ability to use more memory than physically available (Paging/Swapping).</p>
+<h3 id="46-stack-vs-heap-memory">46. Stack vs. Heap Memory?<a class="headerlink" href="#46-stack-vs-heap-memory" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Stack:</strong> Static memory allocation. Stores local variables, function calls. Fast access. Automatic deallocation when function returns.</li>
+<li><strong>Heap:</strong> Dynamic memory allocation. Stores objects. Slower access. Manual (C++) or Garbage Collected (Java/Python) deallocation.</li>
+</ul>
+<h3 id="47-what-is-a-context-switch">47. What is a Context Switch?<a class="headerlink" href="#47-what-is-a-context-switch" title="Permanent link">¶</a></h3>
+<p>The process of storing the state of a process or thread, so that it can be restored and resume execution later. This allows multiple processes to share a single CPU. It is computationally expensive.</p>
+<h3 id="48-what-is-a-race-condition">48. What is a Race Condition?<a class="headerlink" href="#48-what-is-a-race-condition" title="Permanent link">¶</a></h3>
+<p>A condition where the system's substantive behavior is dependent on the sequence or timing of other uncontrollable events. Occurs when two threads access shared data and try to change it at the same time.</p>
+<h3 id="49-static-vs-dynamic-linking">49. Static vs. Dynamic Linking?<a class="headerlink" href="#49-static-vs-dynamic-linking" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Static:</strong> Libraries are copied into the executable at compile time. Larger binary, no dependency issues.</li>
+<li><strong>Dynamic:</strong> Libraries are loaded at runtime. Smaller binary, shared memory efficiency, "DLL Hell" potential.</li>
+</ul>
+<h3 id="50-what-is-a-system-call">50. What is a System Call?<a class="headerlink" href="#50-what-is-a-system-call" title="Permanent link">¶</a></h3>
+<p>The programmatic way in which a computer program requests a service from the kernel of the operating system (e.g., File I/O, process creation).</p>
+<h3 id="51-compiler-vs-interpreter">51. Compiler vs. Interpreter?<a class="headerlink" href="#51-compiler-vs-interpreter" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Compiler:</strong> Translates entire source code into machine code <em>before</em> execution. (C++, Go). Faster execution.</li>
+<li><strong>Interpreter:</strong> Translates source code line-by-line <em>during</em> execution. (Python, Ruby). Faster development cycle.</li>
+</ul>
+<h3 id="52-what-is-garbage-collection">52. What is Garbage Collection?<a class="headerlink" href="#52-what-is-garbage-collection" title="Permanent link">¶</a></h3>
+<p>A form of automatic memory management. The garbage collector attempts to reclaim memory which was allocated by the program, but is no longer referenced.</p>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: How it works.</strong><ul>
+<li><em>Follow-up:</em> "What is 'Stop the World'?"</li>
+<li><em>Answer:</em> A pause in application execution while the GC runs.</li>
+</ul>
+</li>
+</ul>
+<h3 id="53-big-endian-vs-little-endian">53. Big Endian vs. Little Endian?<a class="headerlink" href="#53-big-endian-vs-little-endian" title="Permanent link">¶</a></h3>
+<p>Order of bytes.
+*   <strong>Big Endian:</strong> Most significant byte first (at lowest address). (Networking protocols).
+*   <strong>Little Endian:</strong> Least significant byte first. (x86 architecture).</p>
+<h3 id="54-what-is-thrashing">54. What is Thrashing?<a class="headerlink" href="#54-what-is-thrashing" title="Permanent link">¶</a></h3>
+<p>When the computer's virtual memory subsystem is in a constant state of paging (swapping data between RAM and Disk), rapidly exchanging data for data on disk, to the exclusion of most application-level processing.</p>
+<h3 id="55-what-is-an-inode">55. What is an Inode?<a class="headerlink" href="#55-what-is-an-inode" title="Permanent link">¶</a></h3>
+<p>A data structure in a Unix-style file system that describes a file-system object like a file or a directory. It stores attributes (permissions, owner, size) and disk block locations, but <em>not</em> the filename.</p>
+<h3 id="56-what-happens-when-you-type-a-url-in-the-browser">56. What happens when you type a URL in the browser?<a class="headerlink" href="#56-what-happens-when-you-type-a-url-in-the-browser" title="Permanent link">¶</a></h3>
+<ol>
+<li>DNS Lookup (Domain -&gt; IP).</li>
+<li>TCP Handshake (SYN, SYN-ACK, ACK).</li>
+<li>SSL/TLS Handshake (if HTTPS).</li>
+<li>HTTP GET Request.</li>
+<li>Server processes and sends HTTP Response.</li>
+<li>Browser renders content.</li>
+</ol>
+<h3 id="57-tcp-vs-udp">57. TCP vs. UDP?<a class="headerlink" href="#57-tcp-vs-udp" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>TCP (Transmission Control Protocol):</strong> Connection-oriented, reliable, ordered, flow control. (Web, Email).</li>
+<li><strong>UDP (User Datagram Protocol):</strong> Connectionless, unreliable, no ordering, fast. (Streaming, Gaming).</li>
+</ul>
+<h3 id="58-explain-the-osi-model">58. Explain the OSI Model.<a class="headerlink" href="#58-explain-the-osi-model" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Physical</strong> (Cables)</li>
+<li><strong>Data Link</strong> (MAC, Switches)</li>
+<li><strong>Network</strong> (IP, Routers)</li>
+<li><strong>Transport</strong> (TCP/UDP)</li>
+<li><strong>Session</strong></li>
+<li><strong>Presentation</strong> (Encryption)</li>
+<li><strong>Application</strong> (HTTP, FTP)</li>
+</ol>
+<h3 id="59-what-is-a-zombie-process">59. What is a Zombie Process?<a class="headerlink" href="#59-what-is-a-zombie-process" title="Permanent link">¶</a></h3>
+<p>A process that has completed execution but still has an entry in the process table. This occurs for child processes that have stayed alive but their parent has not yet waited for them (called <code>wait()</code>).</p>
+<h3 id="60-hard-link-vs-soft-link">60. Hard Link vs. Soft Link?<a class="headerlink" href="#60-hard-link-vs-soft-link" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Hard Link:</strong> Direct pointer to the inode. Deleting original file doesn't affect hard link. Cannot cross file systems.</li>
+<li><strong>Soft (Symbolic) Link:</strong> Pointer to the file name/path. If original is deleted, link is broken. Can cross file systems.</li>
+</ul>
+<h2 id="part-4-networking-web-databases-61-80">Part 4: Networking, Web &amp; Databases (61-80)<a class="headerlink" href="#part-4-networking-web-databases-61-80" title="Permanent link">¶</a></h2>
+<h3 id="61-http-methods">61. HTTP Methods.<a class="headerlink" href="#61-http-methods" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>GET:</strong> Retrieve data.</li>
+<li><strong>POST:</strong> Submit data (create).</li>
+<li><strong>PUT:</strong> Update data (replace entirely).</li>
+<li><strong>PATCH:</strong> Partial update.</li>
+<li><strong>DELETE:</strong> Remove data.</li>
+</ul>
+<h3 id="62-http-status-codes">62. HTTP Status Codes.<a class="headerlink" href="#62-http-status-codes" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>2xx:</strong> Success (200 OK, 201 Created).</li>
+<li><strong>3xx:</strong> Redirection (301 Moved Permanently, 304 Not Modified).</li>
+<li><strong>4xx:</strong> Client Error (400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found).</li>
+<li><strong>5xx:</strong> Server Error (500 Internal Server Error, 502 Bad Gateway).</li>
+</ul>
+<h3 id="63-https-vs-http">63. HTTPS vs. HTTP.<a class="headerlink" href="#63-https-vs-http" title="Permanent link">¶</a></h3>
+<p>HTTPS is HTTP over <strong>SSL/TLS</strong>. It encrypts communication using Public Key Infrastructure (PKI) to ensure confidentiality, integrity, and authentication.</p>
+<h3 id="64-rest-vs-graphql">64. REST vs. GraphQL?<a class="headerlink" href="#64-rest-vs-graphql" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>REST:</strong> Resource-based. Multiple endpoints (<code>/users</code>, <code>/posts</code>). Over-fetching/Under-fetching common.</li>
+<li><strong>GraphQL:</strong> Query language. Single endpoint. Client asks for exactly what it needs.</li>
+</ul>
+<h3 id="65-what-is-a-cookie">65. What is a Cookie?<a class="headerlink" href="#65-what-is-a-cookie" title="Permanent link">¶</a></h3>
+<p>Small piece of data sent from a website and stored on the user's computer by the user's web browser while the user is browsing. Used for Session management, Personalization, Tracking.</p>
+<h3 id="66-session-vs-token-jwt-authentication">66. Session vs. Token (JWT) Authentication?<a class="headerlink" href="#66-session-vs-token-jwt-authentication" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Session:</strong> Server stores session data in memory/DB. Client sends SessionID cookie. Stateful.</li>
+<li><strong>Token (JWT):</strong> Server signs a token with data. Client stores token. Server validates signature. Stateless.</li>
+</ul>
+<h3 id="67-what-is-cors">67. What is CORS?<a class="headerlink" href="#67-what-is-cors" title="Permanent link">¶</a></h3>
+<p><strong>Cross-Origin Resource Sharing</strong>. A security feature where a browser blocks a web page from making requests to a different domain than the one that served the web page, unless the server explicitly allows it (via Headers like <code>Access-Control-Allow-Origin</code>).</p>
+<h3 id="68-localstorage-vs-sessionstorage-vs-cookies">68. LocalStorage vs. SessionStorage vs. Cookies?<a class="headerlink" href="#68-localstorage-vs-sessionstorage-vs-cookies" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Cookie</th>
+<th style="text-align: left;">LocalStorage</th>
+<th style="text-align: left;">SessionStorage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Capacity</strong></td>
+<td style="text-align: left;">4KB</td>
+<td style="text-align: left;">5-10MB</td>
+<td style="text-align: left;">5-10MB</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Expiry</strong></td>
+<td style="text-align: left;">Manual</td>
+<td style="text-align: left;">Never</td>
+<td style="text-align: left;">On Tab Close</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sent to Server</strong></td>
+<td style="text-align: left;">Yes (Every Request)</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="69-what-is-dns">69. What is DNS?<a class="headerlink" href="#69-what-is-dns" title="Permanent link">¶</a></h3>
+<p><strong>Domain Name System</strong>. The phonebook of the internet. Translates human-readable domain names (<code>google.com</code>) to IP addresses (<code>142.250.190.46</code>).</p>
+<h3 id="70-what-is-sql-injection">70. What is SQL Injection?<a class="headerlink" href="#70-what-is-sql-injection" title="Permanent link">¶</a></h3>
+<p>A code injection technique where an attacker executes malicious SQL statements that control a web application's database server.
+<strong>Prevention:</strong> Prepared Statements (Parameterized Queries).</p>
+<h3 id="71-what-is-xss-cross-site-scripting">71. What is XSS (Cross-Site Scripting)?<a class="headerlink" href="#71-what-is-xss-cross-site-scripting" title="Permanent link">¶</a></h3>
+<p>A vulnerability where an attacker injects malicious scripts into content from otherwise trusted websites.
+<strong>Prevention:</strong> Content Security Policy (CSP), Escaping/Sanitizing inputs.</p>
+<h3 id="72-what-is-csrf-cross-site-request-forgery">72. What is CSRF (Cross-Site Request Forgery)?<a class="headerlink" href="#72-what-is-csrf-cross-site-request-forgery" title="Permanent link">¶</a></h3>
+<p>An attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated.
+<strong>Prevention:</strong> Anti-CSRF Tokens.</p>
+<h3 id="73-what-is-a-webhook">73. What is a Webhook?<a class="headerlink" href="#73-what-is-a-webhook" title="Permanent link">¶</a></h3>
+<p>A way for an app to provide other applications with real-time information. A "user-defined HTTP callback".</p>
+<h3 id="74-tcp-3-way-handshake">74. TCP 3-Way Handshake.<a class="headerlink" href="#74-tcp-3-way-handshake" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>SYN:</strong> Client sends SYN to Server ("I want to connect").</li>
+<li><strong>SYN-ACK:</strong> Server replies with SYN-ACK ("I acknowledge, let's connect").</li>
+<li><strong>ACK:</strong> Client sends ACK ("Connection established").</li>
+</ol>
+<h3 id="75-explain-keep-alive">75. Explain 'Keep-Alive'.<a class="headerlink" href="#75-explain-keep-alive" title="Permanent link">¶</a></h3>
+<p>An instruction that allows a single TCP connection to remain open for multiple HTTP requests/responses, reducing latency (avoiding repeated handshakes).</p>
+<h3 id="76-forward-proxy-vs-reverse-proxy">76. Forward Proxy vs. Reverse Proxy?<a class="headerlink" href="#76-forward-proxy-vs-reverse-proxy" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Forward:</strong> Sits before the client. Hides client identity. (e.g., VPN, bypassing firewalls).</li>
+<li><strong>Reverse:</strong> Sits before the server. Hides server identity. (e.g., Load Balancer).</li>
+</ul>
+<h3 id="77-what-is-a-subnet-mask">77. What is a Subnet Mask?<a class="headerlink" href="#77-what-is-a-subnet-mask" title="Permanent link">¶</a></h3>
+<p>A 32-bit number that masks an IP address, and divides the IP address into network address and host address.</p>
+<h3 id="78-what-is-localhost-and-127001">78. What is 'localhost' and 127.0.0.1?<a class="headerlink" href="#78-what-is-localhost-and-127001" title="Permanent link">¶</a></h3>
+<p>The loopback address. It points back to the computer you are currently using.</p>
+<h3 id="79-what-is-dependency-injection">79. What is dependency injection?<a class="headerlink" href="#79-what-is-dependency-injection" title="Permanent link">¶</a></h3>
+<p>A design pattern in which a class requests dependencies from external sources rather than creating them.
+<strong>Benefit:</strong> Decoupling, easier testing (mocking).</p>
+<h3 id="80-explain-stateless-protocol">80. Explain 'Stateless' protocol.<a class="headerlink" href="#80-explain-stateless-protocol" title="Permanent link">¶</a></h3>
+<p>A protocol where each request is treated as an independent transaction that is unrelated to any previous request. HTTP is stateless.</p>
+<h2 id="part-5-soft-skills-methodologies-devops-81-100">Part 5: Soft Skills, Methodologies &amp; DevOps (81-100)<a class="headerlink" href="#part-5-soft-skills-methodologies-devops-81-100" title="Permanent link">¶</a></h2>
+<h3 id="81-explain-cicd">81. Explain CI/CD.<a class="headerlink" href="#81-explain-cicd" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>CI (Continuous Integration):</strong> Developers merge their changes back to the main branch as often as possible. Automated builds and tests run.</li>
+<li><strong>CD (Continuous Delivery/Deployment):</strong> Automatically releasing code changes to a repository or production.</li>
+</ul>
+<h3 id="82-what-is-git">82. What is Git?<a class="headerlink" href="#82-what-is-git" title="Permanent link">¶</a></h3>
+<p>A distributed version control system for tracking changes in source code during software development.</p>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Git vs SVN.</strong><ul>
+<li><em>Follow-up:</em> "What does 'distributed' mean?"</li>
+<li><em>Answer:</em> Every developer has a full copy of the repository history.</li>
+</ul>
+</li>
+</ul>
+<h3 id="83-merge-vs-rebase">83. Merge vs. Rebase?<a class="headerlink" href="#83-merge-vs-rebase" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Merge:</strong> Creates a new commit, preserves history structure. Non-destructive.</li>
+<li><strong>Rebase:</strong> Moves the entire feature branch to begin on the tip of the master branch. Cleaner history (linear), but destructive (rewrites history).</li>
+</ul>
+<h3 id="84-what-is-agile">84. What is Agile?<a class="headerlink" href="#84-what-is-agile" title="Permanent link">¶</a></h3>
+<p>A project management methodology characterized by the division of tasks into short phases of work and frequent reassessment and adaptation of plans.</p>
+<h3 id="85-scrum-vs-kanban">85. Scrum vs. Kanban?<a class="headerlink" href="#85-scrum-vs-kanban" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Scrum:</strong> Fixed sprints (e.g., 2 weeks). Roles (Scrum Master, PO). Ceremonies.</li>
+<li><strong>Kanban:</strong> Continuous flow. Visualize work. Limit WIP (Work In Progress). No fixed sprints.</li>
+</ul>
+<h3 id="86-what-is-tdd-test-driven-development">86. What is TDD (Test Driven Development)?<a class="headerlink" href="#86-what-is-tdd-test-driven-development" title="Permanent link">¶</a></h3>
+<p>Process:
+1.  Write a failing test.
+2.  Write just enough code to pass the test.
+3.  Refactor.</p>
+<h3 id="87-docker-vs-virtual-machine">87. Docker vs. Virtual Machine?<a class="headerlink" href="#87-docker-vs-virtual-machine" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>VM:</strong> Virtualizes hardware. Heavy. Includes full OS.</li>
+<li><strong>Docker (Container):</strong> Virtualizes OS. Lightweight. Shares Host OS kernel.</li>
+</ul>
+<h3 id="88-what-is-kubernetes-k8s">88. What is Kubernetes (K8s)?<a class="headerlink" href="#88-what-is-kubernetes-k8s" title="Permanent link">¶</a></h3>
+<p>An open-source system for automating deployment, scaling, and management of containerized applications (Orchestration).</p>
+<h3 id="89-explain-solid-principles">89. Explain SOLID principles.<a class="headerlink" href="#89-explain-solid-principles" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>S:</strong> Single Responsibility Principle.</li>
+<li><strong>O:</strong> Open/Closed Principle.</li>
+<li><strong>L:</strong> Liskov Substitution Principle.</li>
+<li><strong>I:</strong> Interface Segregation Principle.</li>
+<li><strong>D:</strong> Dependency Inversion Principle.</li>
+</ul>
+<h3 id="90-what-is-technical-debt">90. What is Technical Debt?<a class="headerlink" href="#90-what-is-technical-debt" title="Permanent link">¶</a></h3>
+<p>The implied cost of additional rework caused by choosing an easy (limited) solution now instead of using a better approach that would take longer.</p>
+<h3 id="91-how-do-you-handle-a-disagreement-with-a-team-member">91. How do you handle a disagreement with a team member?<a class="headerlink" href="#91-how-do-you-handle-a-disagreement-with-a-team-member" title="Permanent link">¶</a></h3>
+<p><strong>STAR Method:</strong>
+*   <strong>S/T:</strong> Situation/Task (Disagreement on <abbr title="Application Programming Interface">API</abbr> design).
+*   <strong>A:</strong> Action (Listened, understood their view, proposed compromise or data-driven decision).
+*   <strong>R:</strong> Result (Reached consensus, improved relationship).</p>
+<h3 id="92-describe-a-challenging-bug-you-fixed">92. Describe a challenging bug you fixed.<a class="headerlink" href="#92-describe-a-challenging-bug-you-fixed" title="Permanent link">¶</a></h3>
+<p><em>Look for:</em> Process of debugging. Logging, reproducing, isolating, fixing, adding regression test.</p>
+<h3 id="93-what-is-code-review">93. What is Code Review?<a class="headerlink" href="#93-what-is-code-review" title="Permanent link">¶</a></h3>
+<p>A systematic examination of computer source code.
+<strong>Goals:</strong> Find bugs, improve quality, knowledge sharing, consistency.</p>
+<h3 id="94-what-is-bluegreen-deployment">94. What is "Blue/Green Deployment"?<a class="headerlink" href="#94-what-is-bluegreen-deployment" title="Permanent link">¶</a></h3>
+<p>A technique that reduces downtime and risk by running two identical production environments called Blue and Green.
+At any time, one is live (Blue). You deploy to Green. Once tested, you switch the router to Green.</p>
+<h3 id="95-what-is-canary-deployment">95. What is "Canary Deployment"?<a class="headerlink" href="#95-what-is-canary-deployment" title="Permanent link">¶</a></h3>
+<p>Rolling out a new version to a small subset of users (canaries) before rolling it out to the entire infrastructure.</p>
+<h3 id="96-what-is-infrastructure-as-code-iac">96. What is Infrastructure as Code (<abbr title="Infrastructure as Code">IaC</abbr>)?<a class="headerlink" href="#96-what-is-infrastructure-as-code-iac" title="Permanent link">¶</a></h3>
+<p>Managing and provisioning computer data centers through machine-readable definition files, rather than physical hardware configuration or interactive configuration tools. (Terraform, CloudFormation).</p>
+<h3 id="97-pair-programming-proscons">97. Pair Programming pros/cons?<a class="headerlink" href="#97-pair-programming-proscons" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Pros:</strong> Fewer bugs, knowledge sharing, focus.</li>
+<li><strong>Cons:</strong> Exhausting, personality clashes, short-term velocity drop.</li>
+</ul>
+<h3 id="98-how-do-you-stay-updated-with-technology">98. How do you stay updated with technology?<a class="headerlink" href="#98-how-do-you-stay-updated-with-technology" title="Permanent link">¶</a></h3>
+<p>Blogs (HackerNews), Conferences, Side Projects, Reading Docs, Twitter/X.</p>
+<h3 id="99-explain-the-bus-factor">99. Explain the "Bus Factor".<a class="headerlink" href="#99-explain-the-bus-factor" title="Permanent link">¶</a></h3>
+<p>The minimum number of team members that have to disappear from a project before the project stalls due to lack of knowledgeable or competent personnel.
+<strong>Goal:</strong> Increase Bus Factor (Knowledge Sharing).</p>
+<h3 id="100-what-happens-when-you-type-ls-l-in-a-shell">100. What happens when you type <code>ls -l</code> in a shell?<a class="headerlink" href="#100-what-happens-when-you-type-ls-l-in-a-shell" title="Permanent link">¶</a></h3>
+<ol>
+<li>Shell reads input.</li>
+<li>Parses tokens.</li>
+<li>Checks aliases/functions.</li>
+<li>Checks <code>PATH</code> for executable.</li>
+<li><code>fork()</code> to create child process.</li>
+<li><code>exec()</code> to run <code>ls</code>.</li>
+<li><code>ls</code> reads directory entries and prints formatted output.</li>
+<li>Parent process <code>wait()</code>s for child to finish.</li>
+<li>Shell prints prompt.</li>
+</ol>
+<hr>
+<p><strong>End of Questions</strong></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/toxicoder/inkorporated" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.top", "navigation.prune", "navigation.instant", "navigation.tracking", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../assets/javascripts/cyborg-filter.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

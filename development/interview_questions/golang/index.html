@@ -1,0 +1,3106 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><script>(function(){try{var orig=window.fetch;if(typeof orig==="function"){window.fetch=function(i,init){var u=(typeof i==="string")?i:(i&&typeof i.url==="string"?i.url:"");if(u.indexOf("api.github.com/repos/toxicoder/inkorporated")!==-1){return Promise.resolve(new Response("{}", {status:200,headers:{"Content-Type":"application/json"}}));}return orig.apply(this,arguments);};}}catch(e){}try{var XHR=window.XMLHttpRequest;if(XHR&&XHR.prototype){var p=XHR.prototype,open=p.open;p.open=function(m,u){if(typeof u==="string"&&u.indexOf("api.github.com/repos/toxicoder/inkorporated")!==-1){var self=this;Object.defineProperty(self,"responseText",{get:function(){return"{}"},configurable:!0});Object.defineProperty(self,"status",{get:function(){return 200},configurable:!0});Object.defineProperty(self,"readyState",{get:function(){return 4},configurable:!0});self.send=function(){setTimeout(function(){try{if(typeof self.onreadystatechange==="function")self.onreadystatechange.call(self);}catch(_){}try{if(typeof self.onload==="function")self.onload.call(self);}catch(_){}},0);};return;}return open.apply(this,arguments);};}}catch(e){}})();</script>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Golang Interview Questions &amp; Answers (100+) for Inkorporated.">
+      
+      
+      
+        <link rel="canonical" href="https://toxicoder.github.io/inkorporated/development/interview_questions/golang/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Golang Interview Questions &amp; Answers (100+) - Inkorporated</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Open Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/cyborgs.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"><div class="ink-docs-dev-banner" role="status"><strong>Development docs</strong> — this site version tracks the <code>development</code> branch and may change without a release tag. Prefer <a href="../latest/">latest</a> for production-ready guidance.</div>
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#golang-interview-questions-answers-100" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Inkorporated" class="md-header__button md-logo" aria-label="Inkorporated" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Inkorporated
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Golang Interview Questions &amp; Answers (100+)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/toxicoder/inkorporated" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guides/overview/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../organization/" class="md-tabs__link">
+          
+  
+  
+  Organization
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../corporate_strategy/mission_vision_values/" class="md-tabs__link">
+          
+  
+  
+  Corporate Strategy
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../job_roles/job_role_organization/" class="md-tabs__link">
+          
+  
+  
+  Job Roles
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cyborgs/" class="md-tabs__link">
+          
+  
+  
+  Cyborgs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../engineering_standards/engineering_principles/" class="md-tabs__link">
+          
+  
+  
+  Engineering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../policies/code_of_conduct/" class="md-tabs__link">
+          
+  
+  
+  Policies
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../architecture/" class="md-tabs__link">
+          
+  
+  
+  Infrastructure
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../project-conventions/" class="md-tabs__link">
+          
+  
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../status/discovery_summary/" class="md-tabs__link">
+          
+  
+  
+  Status
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Inkorporated" class="md-nav__button md-logo" aria-label="Inkorporated" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Inkorporated
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/toxicoder/inkorporated" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../guides/overview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../organization/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organization
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../corporate_strategy/mission_vision_values/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Corporate Strategy
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../job_roles/job_role_organization/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Job Roles
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../cyborgs/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyborgs
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../engineering_standards/engineering_principles/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../policies/code_of_conduct/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policies
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../architecture/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../project-conventions/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../status/discovery_summary/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#part-1-basic-go-concepts-1-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Basic Go Concepts (1-20)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Basic Go Concepts (1-20)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-what-is-go-and-what-are-its-main-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What is Go and what are its main characteristics?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-what-is-the-difference-between-gopath-and-go-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. What is the difference between GOPATH and Go Modules?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-how-do-you-define-public-exported-vs-private-unexported-symbols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. How do you define public (exported) vs private (unexported) symbols?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-what-are-the-basic-data-types-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. What are the basic data types in Go?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-what-are-pointers-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. What are pointers in Go?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-explain-the-difference-between-arrays-and-slices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Explain the difference between Arrays and Slices.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-what-is-a-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. What is a Map?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-what-is-a-struct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. What is a Struct?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-difference-between-functions-and-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Difference between Functions and Methods?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-what-is-defer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. What is defer?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-what-is-panic-and-recover" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. What is panic and recover?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-difference-between-make-and-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Difference between make and new?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-what-is-the-init-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. What is the init() function?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-what-is-the-blank-identifier-_" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. What is the Blank Identifier _?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-what-are-type-assertions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. What are Type Assertions?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-what-is-a-type-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. What is a Type Switch?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-how-do-constants-work-iota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. How do Constants work (iota)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-is-go-pass-by-value-or-pass-by-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Is Go pass-by-value or pass-by-reference?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-how-are-strings-handled-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. How are Strings handled in Go?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-explain-the-for-loop-variations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Explain the for loop variations.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-concurrency-channels-21-40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Concurrency &amp; Channels (21-40)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Concurrency &amp; Channels (21-40)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-what-is-a-goroutine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        21. What is a Goroutine?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-how-do-goroutines-differ-from-os-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        22. How do Goroutines differ from OS threads?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-what-is-a-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        23. What is a Channel?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-difference-between-buffered-and-unbuffered-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        24. Difference between Buffered and Unbuffered Channels?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-what-happens-if-you-send-to-a-closed-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        25. What happens if you send to a closed channel?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-what-happens-if-you-read-from-a-closed-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        26. What happens if you read from a closed channel?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-what-is-the-select-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        27. What is the select statement?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-what-is-syncwaitgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        28. What is sync.WaitGroup?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-what-is-syncmutex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        29. What is sync.Mutex?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#30-difference-between-mutex-and-rwmutex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        30. Difference between Mutex and RWMutex?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-what-is-a-data-race" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        31. What is a Data Race?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-how-to-detect-data-races-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        32. How to detect data races in Go?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-what-is-a-deadlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        33. What is a Deadlock?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-explain-the-fan-in-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        34. Explain the "Fan-in" pattern.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-what-is-the-context-package-used-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        35. What is the context package used for?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-difference-between-contextbackground-and-contexttodo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        36. Difference between context.Background() and context.TODO()?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-how-to-stop-a-goroutine-cancellation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        37. How to stop a goroutine (cancellation)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-what-is-synconce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        38. What is sync.Once?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-what-is-syncpool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        39. What is sync.Pool?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#40-what-is-syncmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        40. What is sync.Map?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-data-structures-interfaces-41-60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Data Structures &amp; Interfaces (41-60)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Data Structures &amp; Interfaces (41-60)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-what-is-an-interface-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        41. What is an Interface in Go?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-what-is-the-empty-interface-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        42. What is the Empty Interface interface{}?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-explain-struct-embedding-composition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        43. Explain Struct Embedding (Composition).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-how-does-go-implement-interfaces-implicitly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        44. How does Go implement interfaces implicitly?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-explain-the-internals-of-a-slice-len-vs-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        45. Explain the internals of a Slice: len vs cap.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-what-are-common-slice-tricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        46. What are common "Slice Tricks"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-how-do-maps-work-internally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        47. How do Maps work internally?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48-what-are-struct-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        48. What are Struct Tags?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#49-how-does-json-marshaling-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        49. How does JSON Marshaling work?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#50-what-types-are-comparable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        50. What types are Comparable?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#51-explain-the-interface-nil-vs-typed-nil-gotcha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        51. Explain the "Interface nil" vs "Typed nil" gotcha.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-what-is-the-functional-options-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        52. What is the Functional Options Pattern?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-how-do-generics-work-in-go-type-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        53. How do Generics work in Go (Type Parameters)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-what-is-the-comparable-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        54. What is the comparable constraint?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-what-are-slice-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        55. What are Slice Expressions?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-what-does-the-copy-function-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        56. What does the copy function do?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-are-maps-safe-for-concurrent-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        57. Are Maps safe for concurrent use?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-explain-method-sets-pointer-vs-value-receivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        58. Explain Method Sets (Pointer vs Value Receivers).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59-what-is-interface-composition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        59. What is Interface Composition?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#60-difference-between-type-definition-and-type-alias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        60. Difference between Type Definition and Type Alias?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-error-handling-testing-61-80" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Error Handling &amp; Testing (61-80)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Error Handling &amp; Testing (61-80)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-how-does-go-handle-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        61. How does Go handle errors?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-how-do-you-define-a-custom-error-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        62. How do you define a custom error type?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-what-is-error-wrapping-go-113" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        63. What is Error Wrapping (Go 1.13+)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-what-are-errorsis-and-errorsas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        64. What are errors.Is and errors.As?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-how-do-you-run-tests-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        65. How do you run tests in Go?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66-what-is-table-driven-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        66. What is Table-Driven Testing?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#67-how-do-you-write-a-benchmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        67. How do you write a Benchmark?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#68-what-are-testable-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        68. What are Testable Examples?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#69-what-is-fuzzing-go-118" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        69. What is Fuzzing (Go 1.18+)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#70-what-is-testmain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        70. What is TestMain?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#71-how-do-you-run-subtests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        71. How do you run subtests?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-how-do-you-run-tests-in-parallel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        72. How do you run tests in parallel?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-difference-between-mocks-and-stubs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        73. Difference between Mocks and Stubs?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-how-to-handle-dependency-injection-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        74. How to handle Dependency Injection in Go?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-how-do-you-check-test-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        75. How do you check test coverage?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-what-is-the-race-detector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        76. What is the Race Detector?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77-what-is-go-vet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        77. What is go vet?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#78-when-should-you-panic-instead-of-returning-an-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        78. When should you panic instead of returning an error?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#79-log-package-vs-structured-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        79. Log package vs Structured Logging?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#80-how-to-handle-http-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        80. How to handle HTTP errors?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-advanced-tooling-81-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 5: Advanced &amp; Tooling (81-100)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Advanced &amp; Tooling (81-100)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-how-does-the-garbage-collector-work-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        81. How does the Garbage Collector work in Go?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-what-is-escape-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        82. What is Escape Analysis?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-what-is-inlining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        83. What is Inlining?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-what-is-pprof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        84. What is pprof?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85-what-is-go-tool-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        85. What is go tool trace?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#86-what-are-build-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        86. What are Build Tags?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#87-what-is-cgo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        87. What is CGo?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#88-explain-the-memory-layout-stack-vs-heap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        88. Explain the Memory Layout (Stack vs Heap).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#89-what-is-gomaxprocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        89. What is GOMAXPROCS?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#90-how-does-reflection-work-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        90. How does Reflection work in Go?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#91-what-is-the-unsafe-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        91. What is the unsafe package?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-what-are-go-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        92. What are Go Plugins?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-what-is-the-vendor-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        93. What is the vendor directory?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-what-is-the-go-1-compatibility-guarantee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        94. What is the Go 1 Compatibility Guarantee?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95-what-are-internal-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        95. What are Internal Packages?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#96-common-go-mod-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        96. Common go mod commands?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#97-how-do-you-cross-compile-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        97. How do you Cross-Compile in Go?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#98-what-is-the-embed-package-go-116" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        98. What is the embed package (Go 1.16+)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#99-implement-singleton-pattern-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        99. Implement Singleton Pattern in Go.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#100-implement-factory-pattern-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        100. Implement Factory Pattern in Go.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#study-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Study Guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="golang-interview-questions-answers-100">Golang Interview Questions &amp; Answers (100+)<a class="headerlink" href="#golang-interview-questions-answers-100" title="Permanent link">¶</a></h1>
+<p><strong>What's on this page</strong></p>
+<ul>
+<li>Core content for this topic in the Inkorporated enterprise OS.</li>
+<li>Practical guidance, roles, or standards as applicable.</li>
+</ul>
+<p><strong>What this enables</strong></p>
+<ul>
+<li>Consistent enterprise operations and decision-making.</li>
+<li>Shared language for humans and cyborg AI agents.</li>
+</ul>
+<p>This guide contains 100+ Go (Golang) interview questions, ranging from basic syntax to advanced concurrency and runtime internals. Each question includes a model answer and potential follow-up paths based on the candidate's response.</p>
+<h2 id="part-1-basic-go-concepts-1-20">Part 1: Basic Go Concepts (1-20)<a class="headerlink" href="#part-1-basic-go-concepts-1-20" title="Permanent link">¶</a></h2>
+<h3 id="1-what-is-go-and-what-are-its-main-characteristics">1. What is Go and what are its main characteristics?<a class="headerlink" href="#1-what-is-go-and-what-are-its-main-characteristics" title="Permanent link">¶</a></h3>
+<p>Go is an open-source programming language created at Google. It is statically typed, compiled, and designed for simplicity, concurrency, and performance.</p>
+<p><strong>Key Characteristics:</strong>
+*   <strong>Simple Syntax:</strong> Easy to learn and read.
+*   <strong>Static Typing:</strong> Catches errors at compile time.
+*   <strong>Concurrency Primitives:</strong> Built-in support for concurrent execution (Goroutines, Channels).
+*   <strong>Garbage Collection:</strong> Automatic memory management.
+*   <strong>Fast Compilation:</strong> Fast build times.</p>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Candidate mentions 'Object-Oriented'.</strong><ul>
+<li><em>Follow-up:</em> "Is Go an Object-Oriented language?"</li>
+<li><em>Answer:</em> Go has some OO features (methods, interfaces), but it lacks inheritance and type hierarchy. It prefers composition over inheritance.</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-what-is-the-difference-between-gopath-and-go-modules">2. What is the difference between <code>GOPATH</code> and Go Modules?<a class="headerlink" href="#2-what-is-the-difference-between-gopath-and-go-modules" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>GOPATH:</strong> The legacy way of managing workspace. Code must live inside <code>$GOPATH/src</code>. No built-in versioning.</li>
+<li><strong>Go Modules (go.mod):</strong> The modern dependency management system (introduced in Go 1.11). Allows code to live anywhere. Supports semantic versioning.</li>
+</ul>
+<p><strong>Chart: Comparison</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">GOPATH</th>
+<th style="text-align: left;">Go Modules</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Workspace</td>
+<td style="text-align: left;">Strict (<code>$GOPATH/src</code>)</td>
+<td style="text-align: left;">Flexible (Anywhere)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Versioning</td>
+<td style="text-align: left;">No (relied on master)</td>
+<td style="text-align: left;">Yes (Semantic Versioning)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Dependency Loc</td>
+<td style="text-align: left;">Global (<code>$GOPATH/pkg</code>)</td>
+<td style="text-align: left;">Local cache + <code>go.sum</code> verification</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-how-do-you-define-public-exported-vs-private-unexported-symbols">3. How do you define public (exported) vs private (unexported) symbols?<a class="headerlink" href="#3-how-do-you-define-public-exported-vs-private-unexported-symbols" title="Permanent link">¶</a></h3>
+<p>In Go, visibility is controlled by the case of the first letter of the identifier.
+*   <strong>Uppercase (e.g., <code>User</code>):</strong> Public/Exported. Visible to other packages.
+*   <strong>Lowercase (e.g., <code>user</code>):</strong> Private/Unexported. Visible only within the same package.</p>
+<h3 id="4-what-are-the-basic-data-types-in-go">4. What are the basic data types in Go?<a class="headerlink" href="#4-what-are-the-basic-data-types-in-go" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Boolean:</strong> <code>bool</code></li>
+<li><strong>Numeric:</strong> <code>int</code>, <code>int8</code>, <code>int16</code>, <code>int32</code>, <code>int64</code>, <code>uint</code>, <code>float32</code>, <code>float64</code>, <code>complex64</code>, <code>complex128</code>.</li>
+<li><strong>String:</strong> <code>string</code> (immutable).</li>
+<li><strong>Byte:</strong> <code>byte</code> (alias for <code>uint8</code>).</li>
+<li><strong>Rune:</strong> <code>rune</code> (alias for <code>int32</code>, represents a Unicode code point).</li>
+</ul>
+<h3 id="5-what-are-pointers-in-go">5. What are pointers in Go?<a class="headerlink" href="#5-what-are-pointers-in-go" title="Permanent link">¶</a></h3>
+<p>A pointer holds the memory address of a value.
+*   <code>&amp;</code> operator generates a pointer to its operand.
+*   <code>*</code> operator dereferences a pointer (accesses the value).</p>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Comparison with C.</strong><ul>
+<li><em>Follow-up:</em> "Does Go support pointer arithmetic?"</li>
+<li><em>Answer:</em> No, Go does not support pointer arithmetic (like <code>ptr++</code>) by default, to ensure safety. You can use <code>unsafe</code> package if absolutely necessary.</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-explain-the-difference-between-arrays-and-slices">6. Explain the difference between Arrays and Slices.<a class="headerlink" href="#6-explain-the-difference-between-arrays-and-slices" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Array</th>
+<th style="text-align: left;">Slice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Size</td>
+<td style="text-align: left;">Fixed length (<code>[5]int</code>)</td>
+<td style="text-align: left;">Dynamic length (<code>[]int</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Value/Ref</td>
+<td style="text-align: left;">Value type (copying copies whole array)</td>
+<td style="text-align: left;">Reference type (points to underlying array)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Flexibility</td>
+<td style="text-align: left;">Rigid</td>
+<td style="text-align: left;">Flexible</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Slice internals.</strong><ul>
+<li><em>Follow-up:</em> "What are the three components of a slice?"</li>
+<li><em>Answer:</em> Pointer to underlying array, Length (<code>len</code>), and Capacity (<code>cap</code>).</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-what-is-a-map">7. What is a Map?<a class="headerlink" href="#7-what-is-a-map" title="Permanent link">¶</a></h3>
+<p>A built-in data structure that associates keys with values (Hash Table).
+*   Syntax: <code>map[KeyType]ValueType</code>.
+*   KeyType must be comparable (supports <code>==</code>).</p>
+<h3 id="8-what-is-a-struct">8. What is a Struct?<a class="headerlink" href="#8-what-is-a-struct" title="Permanent link">¶</a></h3>
+<p>A typed collection of fields. It is the closest thing to a "class" in Go, used to group data.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nx">Age</span><span class="w">  </span><span class="kt">int</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="9-difference-between-functions-and-methods">9. Difference between Functions and Methods?<a class="headerlink" href="#9-difference-between-functions-and-methods" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Function:</strong> Standalone code block. <code>func Add(a, b int) int</code>.</li>
+<li><strong>Method:</strong> A function attached to a specific type (receiver). <code>func (p Person) Greet()</code>.</li>
+</ul>
+<h3 id="10-what-is-defer">10. What is <code>defer</code>?<a class="headerlink" href="#10-what-is-defer" title="Permanent link">¶</a></h3>
+<p>A keyword used to schedule a function call to be run after the function completes.
+Commonly used for cleanup (closing files, unlocking mutexes).
+Executed in LIFO (Last-In-First-Out) order.</p>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Evaluation time.</strong><ul>
+<li><em>Follow-up:</em> "When are the arguments to a deferred function evaluated?"</li>
+<li><em>Answer:</em> They are evaluated immediately when the <code>defer</code> statement is executed, not when the function runs.</li>
+</ul>
+</li>
+</ul>
+<h3 id="11-what-is-panic-and-recover">11. What is <code>panic</code> and <code>recover</code>?<a class="headerlink" href="#11-what-is-panic-and-recover" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Panic:</strong> Stops normal execution. Similar to throwing an exception.</li>
+<li><strong>Recover:</strong> Used inside a deferred function to regain control of a panicking goroutine.</li>
+</ul>
+<h3 id="12-difference-between-make-and-new">12. Difference between <code>make</code> and <code>new</code>?<a class="headerlink" href="#12-difference-between-make-and-new" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>new(T)</code>: Allocates zeroed storage for a new item of type <code>T</code> and returns its address <code>*T</code>. Used for all types.</li>
+<li><code>make(T, args)</code>: Creates slices, maps, and channels only. Returns an initialized <code>T</code> (not a pointer).</li>
+</ul>
+<h3 id="13-what-is-the-init-function">13. What is the <code>init()</code> function?<a class="headerlink" href="#13-what-is-the-init-function" title="Permanent link">¶</a></h3>
+<p>A special function that executes before <code>main()</code>. It is used for package initialization.
+*   Can have multiple <code>init()</code> functions per package (and per file).
+*   Cannot be called explicitly.</p>
+<h3 id="14-what-is-the-blank-identifier-_">14. What is the Blank Identifier <code>_</code>?<a class="headerlink" href="#14-what-is-the-blank-identifier-_" title="Permanent link">¶</a></h3>
+<p>It is a write-only variable used to discard values.
+<em>Example:</em> <code>_, err := os.Open("file.txt")</code> (if you don't care about the file handle).</p>
+<h3 id="15-what-are-type-assertions">15. What are Type Assertions?<a class="headerlink" href="#15-what-are-type-assertions" title="Permanent link">¶</a></h3>
+<p>Used to extract the underlying value of a specific type from an interface.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="kd">interface</span><span class="p">{}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">"hello"</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">i</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="c1">// panic if not string</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">i</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="c1">// safe check</span>
+</span></code></pre></div>
+<h3 id="16-what-is-a-type-switch">16. What is a Type Switch?<a class="headerlink" href="#16-what-is-a-type-switch" title="Permanent link">¶</a></h3>
+<p>A switch statement that compares types rather than values.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">switch</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">i</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">case</span><span class="w"> </span><span class="kt">int</span><span class="p">:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"Integer"</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">case</span><span class="w"> </span><span class="kt">string</span><span class="p">:</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"String"</span><span class="p">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="17-how-do-constants-work-iota">17. How do Constants work (iota)?<a class="headerlink" href="#17-how-do-constants-work-iota" title="Permanent link">¶</a></h3>
+<p>Constants are immutable values known at compile time.
+<code>iota</code> is a counter used to create enumerated constants.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">const</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nx">Red</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">iota</span><span class="w"> </span><span class="c1">// 0</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">Blue</span><span class="w">       </span><span class="c1">// 1</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nx">Green</span><span class="w">      </span><span class="c1">// 2</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="18-is-go-pass-by-value-or-pass-by-reference">18. Is Go pass-by-value or pass-by-reference?<a class="headerlink" href="#18-is-go-pass-by-value-or-pass-by-reference" title="Permanent link">¶</a></h3>
+<p>Go is strictly <strong>pass-by-value</strong>.
+When passing a pointer, a copy of the pointer address is passed.
+When passing a slice, a copy of the slice header (ptr, len, cap) is passed, so modifications to elements affect the original array, but <code>append</code> might not.</p>
+<h3 id="19-how-are-strings-handled-in-go">19. How are Strings handled in Go?<a class="headerlink" href="#19-how-are-strings-handled-in-go" title="Permanent link">¶</a></h3>
+<p>Strings are immutable sequences of bytes (UTF-8 encoded).
+*   Backticks (<code>`</code>) create raw string literals (multiline).
+*   Double quotes (<code>""</code>) create interpreted string literals.</p>
+<h3 id="20-explain-the-for-loop-variations">20. Explain the <code>for</code> loop variations.<a class="headerlink" href="#20-explain-the-for-loop-variations" title="Permanent link">¶</a></h3>
+<p>Go has only one looping keyword: <code>for</code>.</p>
+<ol>
+<li><strong>C-style:</strong> <code>for i := 0; i &lt; 10; i++ {}</code></li>
+<li><strong>While-style:</strong> <code>for i &lt; 10 {}</code></li>
+<li><strong>Infinite:</strong> <code>for {}</code></li>
+<li><strong>Range:</strong> <code>for index, value := range slice {}</code></li>
+</ol>
+<h2 id="part-2-concurrency-channels-21-40">Part 2: Concurrency &amp; Channels (21-40)<a class="headerlink" href="#part-2-concurrency-channels-21-40" title="Permanent link">¶</a></h2>
+<h3 id="21-what-is-a-goroutine">21. What is a Goroutine?<a class="headerlink" href="#21-what-is-a-goroutine" title="Permanent link">¶</a></h3>
+<p>A goroutine is a lightweight thread of execution managed by the Go runtime.
+*   Started with the <code>go</code> keyword.
+*   Very cheap start-up cost (few KB of stack).</p>
+<h3 id="22-how-do-goroutines-differ-from-os-threads">22. How do Goroutines differ from OS threads?<a class="headerlink" href="#22-how-do-goroutines-differ-from-os-threads" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Goroutine</th>
+<th style="text-align: left;">OS Thread</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Stack Size</td>
+<td style="text-align: left;">Growable (starts ~2KB)</td>
+<td style="text-align: left;">Fixed (usually ~1MB)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Scheduling</td>
+<td style="text-align: left;">M:N Model (Go Runtime)</td>
+<td style="text-align: left;">Kernel Managed</td>
+</tr>
+<tr>
+<td style="text-align: left;">Switch Cost</td>
+<td style="text-align: left;">Low (user space)</td>
+<td style="text-align: left;">High (kernel context switch)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-what-is-a-channel">23. What is a Channel?<a class="headerlink" href="#23-what-is-a-channel" title="Permanent link">¶</a></h3>
+<p>A typed conduit through which goroutines communicate and synchronize.
+*   <strong>Send:</strong> <code>ch &lt;- v</code>
+*   <strong>Receive:</strong> <code>v := &lt;-ch</code></p>
+<h3 id="24-difference-between-buffered-and-unbuffered-channels">24. Difference between Buffered and Unbuffered Channels?<a class="headerlink" href="#24-difference-between-buffered-and-unbuffered-channels" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Unbuffered:</strong> <code>make(chan int)</code>. Sender blocks until receiver is ready. Guarantees synchronization.</li>
+<li><strong>Buffered:</strong> <code>make(chan int, 5)</code>. Sender only blocks if buffer is full. Receiver blocks if buffer is empty.</li>
+</ul>
+<h3 id="25-what-happens-if-you-send-to-a-closed-channel">25. What happens if you send to a closed channel?<a class="headerlink" href="#25-what-happens-if-you-send-to-a-closed-channel" title="Permanent link">¶</a></h3>
+<p>It causes a <strong>panic</strong>.</p>
+<h3 id="26-what-happens-if-you-read-from-a-closed-channel">26. What happens if you read from a closed channel?<a class="headerlink" href="#26-what-happens-if-you-read-from-a-closed-channel" title="Permanent link">¶</a></h3>
+<ul>
+<li>It returns the <strong>zero value</strong> of the channel's type immediately (does not block).</li>
+<li>The second return value (boolean) indicates if the channel is open: <code>val, ok := &lt;-ch</code>. <code>ok</code> will be <code>false</code>.</li>
+</ul>
+<h3 id="27-what-is-the-select-statement">27. What is the <code>select</code> statement?<a class="headerlink" href="#27-what-is-the-select-statement" title="Permanent link">¶</a></h3>
+<p>The <code>select</code> statement lets a goroutine wait on multiple communication operations. It blocks until one of its cases can run, then it executes that case. If multiple are ready, it chooses one at random.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">select</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">case</span><span class="w"> </span><span class="nx">msg1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">c1</span><span class="p">:</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"received"</span><span class="p">,</span><span class="w"> </span><span class="nx">msg1</span><span class="p">)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">case</span><span class="w"> </span><span class="nx">msg2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">c2</span><span class="p">:</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"received"</span><span class="p">,</span><span class="w"> </span><span class="nx">msg2</span><span class="p">)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">default</span><span class="p">:</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"no message received"</span><span class="p">)</span><span class="w"> </span><span class="c1">// Non-blocking</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="28-what-is-syncwaitgroup">28. What is <code>sync.WaitGroup</code>?<a class="headerlink" href="#28-what-is-syncwaitgroup" title="Permanent link">¶</a></h3>
+<p>It waits for a collection of goroutines to finish.
+*   <code>Add(n)</code>: Increases counter.
+*   <code>Done()</code>: Decrements counter.
+*   <code>Wait()</code>: Blocks until counter is 0.</p>
+<h3 id="29-what-is-syncmutex">29. What is <code>sync.Mutex</code>?<a class="headerlink" href="#29-what-is-syncmutex" title="Permanent link">¶</a></h3>
+<p>A mutual exclusion lock. Used to protect shared memory (critical sections) from concurrent access.
+*   <code>Lock()</code>
+*   <code>Unlock()</code></p>
+<h3 id="30-difference-between-mutex-and-rwmutex">30. Difference between <code>Mutex</code> and <code>RWMutex</code>?<a class="headerlink" href="#30-difference-between-mutex-and-rwmutex" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Mutex:</strong> Exclusive lock. Only one goroutine can read or write at a time.</li>
+<li><strong>RWMutex:</strong> Reader/Writer lock. Allows multiple readers (shared lock) OR one writer (exclusive lock). Better performance for read-heavy workloads.</li>
+</ul>
+<h3 id="31-what-is-a-data-race">31. What is a Data Race?<a class="headerlink" href="#31-what-is-a-data-race" title="Permanent link">¶</a></h3>
+<p>When two goroutines access the same variable concurrently, and at least one of the accesses is a write.</p>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Undefined behavior.</strong><ul>
+<li><em>Follow-up:</em> "What happens to the program during a data race?"</li>
+<li><em>Answer:</em> The behavior is undefined. It might crash, corrupt data, or act unpredictably.</li>
+</ul>
+</li>
+</ul>
+<h3 id="32-how-to-detect-data-races-in-go">32. How to detect data races in Go?<a class="headerlink" href="#32-how-to-detect-data-races-in-go" title="Permanent link">¶</a></h3>
+<p>Use the built-in race detector:
+<code>go run -race main.go</code> or <code>go test -race ./...</code></p>
+<h3 id="33-what-is-a-deadlock">33. What is a Deadlock?<a class="headerlink" href="#33-what-is-a-deadlock" title="Permanent link">¶</a></h3>
+<p>A state where a group of goroutines are waiting for each other to release resources, and none can proceed.
+Common case: Channel full and sender blocks, but receiver is waiting on something else.</p>
+<h3 id="34-explain-the-fan-in-pattern">34. Explain the "Fan-in" pattern.<a class="headerlink" href="#34-explain-the-fan-in-pattern" title="Permanent link">¶</a></h3>
+<p>Merging multiple input channels into a single output channel.</p>
+<pre class="mermaid"><code>graph LR
+    A[Source 1] --&gt;|Chan A| M(Merge)
+    B[Source 2] --&gt;|Chan B| M
+    M --&gt;|Chan Out| C[Consumer]</code></pre>
+<h3 id="35-what-is-the-context-package-used-for">35. What is the <code>context</code> package used for?<a class="headerlink" href="#35-what-is-the-context-package-used-for" title="Permanent link">¶</a></h3>
+<p>It carries deadlines, cancellation signals, and request-scoped values across <abbr title="Application Programming Interface">API</abbr> boundaries and between goroutines.</p>
+<h3 id="36-difference-between-contextbackground-and-contexttodo">36. Difference between <code>context.Background()</code> and <code>context.TODO()</code>?<a class="headerlink" href="#36-difference-between-contextbackground-and-contexttodo" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>Background()</code>: Standard root context. Used in main, init, and tests.</li>
+<li><code>TODO()</code>: Placeholder when you intend to use a context but haven't structured the code yet. (Functionally identical to Background).</li>
+</ul>
+<h3 id="37-how-to-stop-a-goroutine-cancellation">37. How to stop a goroutine (cancellation)?<a class="headerlink" href="#37-how-to-stop-a-goroutine-cancellation" title="Permanent link">¶</a></h3>
+<p>You cannot "kill" a goroutine from the outside. You must signal it to stop using a <strong>Context</strong> or a <strong>Done Channel</strong>.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithCancel</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">():</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="c1">// Return to exit</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">}()</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nx">cancel</span><span class="p">()</span><span class="w"> </span><span class="c1">// Send signal</span>
+</span></code></pre></div>
+<h3 id="38-what-is-synconce">38. What is <code>sync.Once</code>?<a class="headerlink" href="#38-what-is-synconce" title="Permanent link">¶</a></h3>
+<p>It ensures that a piece of code is executed <strong>exactly once</strong>, regardless of how many goroutines call it.
+Commonly used for singleton initialization.</p>
+<h3 id="39-what-is-syncpool">39. What is <code>sync.Pool</code>?<a class="headerlink" href="#39-what-is-syncpool" title="Permanent link">¶</a></h3>
+<p>A set of temporary objects that may be individually saved and retrieved.
+*   Used to reduce GC pressure by reusing allocated objects (e.g., buffers).
+*   Items in the pool can be removed by GC at any time.</p>
+<h3 id="40-what-is-syncmap">40. What is <code>sync.Map</code>?<a class="headerlink" href="#40-what-is-syncmap" title="Permanent link">¶</a></h3>
+<p>A concurrent-safe map implementation.
+*   Unlike <code>map</code> + <code>Mutex</code>, <code>sync.Map</code> is optimized for cases where keys are only written once but read many times (e.g., caches).
+*   Methods: <code>Load</code>, <code>Store</code>, <code>LoadOrStore</code>, <code>Delete</code>.</p>
+<h2 id="part-3-data-structures-interfaces-41-60">Part 3: Data Structures &amp; Interfaces (41-60)<a class="headerlink" href="#part-3-data-structures-interfaces-41-60" title="Permanent link">¶</a></h2>
+<h3 id="41-what-is-an-interface-in-go">41. What is an Interface in Go?<a class="headerlink" href="#41-what-is-an-interface-in-go" title="Permanent link">¶</a></h3>
+<p>An interface is a type that defines a set of method signatures.
+*   <strong>Implicit Implementation:</strong> A type implements an interface by implementing its methods. No <code>implements</code> keyword.
+*   Enables polymorphism.</p>
+<h3 id="42-what-is-the-empty-interface-interface">42. What is the Empty Interface <code>interface{}</code>?<a class="headerlink" href="#42-what-is-the-empty-interface-interface" title="Permanent link">¶</a></h3>
+<p>An interface with zero methods.
+*   Every type satisfies the empty interface.
+*   Used to handle values of unknown type (similar to <code>Object</code> in Java/C#, or <code>any</code> in TS).
+*   Go 1.18+ introduced the alias <code>any</code> for <code>interface{}</code>.</p>
+<h3 id="43-explain-struct-embedding-composition">43. Explain Struct Embedding (Composition).<a class="headerlink" href="#43-explain-struct-embedding-composition" title="Permanent link">¶</a></h3>
+<p>Go allows you to embed one struct into another. The inner struct's fields and methods are promoted to the outer struct.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Base</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="nx">ID</span><span class="w"> </span><span class="kt">int</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">}</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nx">Base</span><span class="w"> </span><span class="c1">// Embedding</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">}</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1">// u.ID is accessible directly</span>
+</span></code></pre></div>
+<h3 id="44-how-does-go-implement-interfaces-implicitly">44. How does Go implement interfaces implicitly?<a class="headerlink" href="#44-how-does-go-implement-interfaces-implicitly" title="Permanent link">¶</a></h3>
+<p>If a concrete type has all the methods that an interface requires, it automatically implements that interface. This decouples the definition of the interface from the implementation.</p>
+<h3 id="45-explain-the-internals-of-a-slice-len-vs-cap">45. Explain the internals of a Slice: <code>len</code> vs <code>cap</code>.<a class="headerlink" href="#45-explain-the-internals-of-a-slice-len-vs-cap" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Length (<code>len</code>):</strong> The number of elements referred to by the slice.</li>
+<li><strong>Capacity (<code>cap</code>):</strong> The number of elements in the underlying array (beginning at the element referred to by the slice pointer).</li>
+<li><code>append</code> doubles capacity when full (up to a certain threshold), then grows by a smaller factor.</li>
+</ul>
+<h3 id="46-what-are-common-slice-tricks">46. What are common "Slice Tricks"?<a class="headerlink" href="#46-what-are-common-slice-tricks" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Copy:</strong> <code>b = make([]T, len(a)); copy(b, a)</code></li>
+<li><strong>Cut:</strong> <code>a = append(a[:i], a[j:]...)</code></li>
+<li><strong>Delete:</strong> <code>a = append(a[:i], a[i+1:]...)</code></li>
+<li><strong>Pop:</strong> <code>x, a = a[len(a)-1], a[:len(a)-1]</code></li>
+</ul>
+<h3 id="47-how-do-maps-work-internally">47. How do Maps work internally?<a class="headerlink" href="#47-how-do-maps-work-internally" title="Permanent link">¶</a></h3>
+<p>Go maps are implemented as <strong>Hash Tables</strong>.
+*   They use buckets to store key/value pairs.
+*   Collision resolution is done via chaining (overflow buckets).
+*   Access time is O(1) on average.</p>
+<h3 id="48-what-are-struct-tags">48. What are Struct Tags?<a class="headerlink" href="#48-what-are-struct-tags" title="Permanent link">¶</a></h3>
+<p>Metadata attached to struct fields.
+*   Accessed via Reflection (<code>reflect</code> package).
+*   Commonly used for JSON serialization, ORM mapping, and validation.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"name" validate:"required"`</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="49-how-does-json-marshaling-work">49. How does JSON Marshaling work?<a class="headerlink" href="#49-how-does-json-marshaling-work" title="Permanent link">¶</a></h3>
+<p>The <code>encoding/json</code> package uses reflection to inspect struct fields and map them to JSON keys.
+*   Only <strong>exported</strong> (public) fields are marshaled.
+*   Fields with <code>json:"-"</code> are ignored.</p>
+<h3 id="50-what-types-are-comparable">50. What types are Comparable?<a class="headerlink" href="#50-what-types-are-comparable" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Comparable:</strong> Booleans, Numbers, Strings, Pointers, Channels, Interfaces (if dynamic type is comparable), Structs/Arrays (if all fields/elements are comparable).</li>
+<li><strong>Not Comparable:</strong> Slices, Maps, Functions.</li>
+</ul>
+<h3 id="51-explain-the-interface-nil-vs-typed-nil-gotcha">51. Explain the "Interface nil" vs "Typed nil" gotcha.<a class="headerlink" href="#51-explain-the-interface-nil-vs-typed-nil-gotcha" title="Permanent link">¶</a></h3>
+<p>An interface value is <code>nil</code> only if both its <strong>value</strong> and <strong>concrete type</strong> are <code>nil</code>.
+If an interface holds a <code>nil</code> pointer of a concrete type, the interface itself is <strong>not nil</strong>.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="kt">int</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">nil</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="kd">interface</span><span class="p">{}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">p</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"> </span><span class="c1">// False!</span>
+</span></code></pre></div>
+<h3 id="52-what-is-the-functional-options-pattern">52. What is the Functional Options Pattern?<a class="headerlink" href="#52-what-is-the-functional-options-pattern" title="Permanent link">¶</a></h3>
+<p>A design pattern for constructing complex structs with optional parameters.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">NewServer</span><span class="p">(</span><span class="nx">addr</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Server</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Candidate Response Paths:</strong></p>
+<ul>
+<li><strong>Path A: Builder Pattern.</strong><ul>
+<li><em>Follow-up:</em> "Why choose Functional Options over the Builder Pattern?"</li>
+<li><em>Answer:</em> Functional options are often more idiomatic in Go and don't require a separate Builder struct.</li>
+</ul>
+</li>
+</ul>
+<h3 id="53-how-do-generics-work-in-go-type-parameters">53. How do Generics work in Go (Type Parameters)?<a class="headerlink" href="#53-how-do-generics-work-in-go-type-parameters" title="Permanent link">¶</a></h3>
+<p>Introduced in Go 1.18. Allows writing functions and data structures that work with any type.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">Map</span><span class="p">[</span><span class="nx">T</span><span class="w"> </span><span class="kt">any</span><span class="p">,</span><span class="w"> </span><span class="nx">R</span><span class="w"> </span><span class="kt">any</span><span class="p">](</span><span class="nx">s</span><span class="w"> </span><span class="p">[]</span><span class="nx">T</span><span class="p">,</span><span class="w"> </span><span class="nx">f</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="nx">R</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="nx">R</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="54-what-is-the-comparable-constraint">54. What is the <code>comparable</code> constraint?<a class="headerlink" href="#54-what-is-the-comparable-constraint" title="Permanent link">¶</a></h3>
+<p>A pre-declared identifier in generics constraints that denotes the set of all types that can be compared using <code>==</code> and <code>!=</code>. Required for map keys.</p>
+<h3 id="55-what-are-slice-expressions">55. What are Slice Expressions?<a class="headerlink" href="#55-what-are-slice-expressions" title="Permanent link">¶</a></h3>
+<p>Constructing a new slice from an existing slice/array.
+*   <code>a[low : high]</code>
+*   <code>a[low : high : max]</code> (Controls capacity)</p>
+<h3 id="56-what-does-the-copy-function-do">56. What does the <code>copy</code> function do?<a class="headerlink" href="#56-what-does-the-copy-function-do" title="Permanent link">¶</a></h3>
+<p>Copies elements from a source slice into a destination slice.
+*   Returns the number of elements copied (min of <code>len(src)</code> and <code>len(dst)</code>).
+*   Handles overlapping slices correctly.</p>
+<h3 id="57-are-maps-safe-for-concurrent-use">57. Are Maps safe for concurrent use?<a class="headerlink" href="#57-are-maps-safe-for-concurrent-use" title="Permanent link">¶</a></h3>
+<p><strong>No.</strong> Maps are not thread-safe.
+Concurrent reads are safe. Concurrent read/write or write/write causes a <strong>fatal error</strong>.
+Use <code>sync.RWMutex</code> or <code>sync.Map</code>.</p>
+<h3 id="58-explain-method-sets-pointer-vs-value-receivers">58. Explain Method Sets (Pointer vs Value Receivers).<a class="headerlink" href="#58-explain-method-sets-pointer-vs-value-receivers" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Value Receiver (<code>func (t T)</code>):</strong> Can be called on both value and pointer. Operates on a copy.</li>
+<li><strong>Pointer Receiver (<code>func (t *T)</code>):</strong> Can be called on both value (if addressable) and pointer. Can modify the original struct.</li>
+<li><em>Rule:</em> If you want to modify the receiver, or if the struct is large, use a pointer receiver.</li>
+</ul>
+<p><strong>Table: Interface Implementation</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Method Receiver</th>
+<th style="text-align: left;">Interface requires</th>
+<th style="text-align: left;">Implemented by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>(t T)</code></td>
+<td style="text-align: left;"><code>(t T)</code></td>
+<td style="text-align: left;"><code>T</code> and <code>*T</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>(t *T)</code></td>
+<td style="text-align: left;"><code>(t *T)</code></td>
+<td style="text-align: left;"><code>*T</code> only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="59-what-is-interface-composition">59. What is Interface Composition?<a class="headerlink" href="#59-what-is-interface-composition" title="Permanent link">¶</a></h3>
+<p>Embedding interfaces within other interfaces.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Reader</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Read</span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="p">[]</span><span class="kt">byte</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Writer</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Write</span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="p">[]</span><span class="kt">byte</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kd">type</span><span class="w"> </span><span class="nx">ReadWriter</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="nx">Reader</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="nx">Writer</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="60-difference-between-type-definition-and-type-alias">60. Difference between Type Definition and Type Alias?<a class="headerlink" href="#60-difference-between-type-definition-and-type-alias" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Type Definition:</strong> <code>type MyInt int</code>. Creates a <em>new</em> type. <code>MyInt</code> and <code>int</code> are distinct.</li>
+<li><strong>Type Alias:</strong> <code>type MyInt = int</code>. <code>MyInt</code> and <code>int</code> are the <em>same</em> type. Used for refactoring/compatibility.</li>
+</ul>
+<h2 id="part-4-error-handling-testing-61-80">Part 4: Error Handling &amp; Testing (61-80)<a class="headerlink" href="#part-4-error-handling-testing-61-80" title="Permanent link">¶</a></h2>
+<h3 id="61-how-does-go-handle-errors">61. How does Go handle errors?<a class="headerlink" href="#61-how-does-go-handle-errors" title="Permanent link">¶</a></h3>
+<p>Go treats errors as values. Functions return an <code>error</code> interface as the last return value.
+There are no exceptions (in the traditional sense).</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nx">f</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">"filename.ext"</span><span class="p">)</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="62-how-do-you-define-a-custom-error-type">62. How do you define a custom error type?<a class="headerlink" href="#62-how-do-you-define-a-custom-error-type" title="Permanent link">¶</a></h3>
+<p>Any type that implements the <code>Error() string</code> method satisfies the <code>error</code> interface.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">MyError</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="nx">Msg</span><span class="w"> </span><span class="kt">string</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="nx">Code</span><span class="w"> </span><span class="kt">int</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">}</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">MyError</span><span class="p">)</span><span class="w"> </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"%d: %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">Code</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">Msg</span><span class="p">)</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="63-what-is-error-wrapping-go-113">63. What is Error Wrapping (Go 1.13+)?<a class="headerlink" href="#63-what-is-error-wrapping-go-113" title="Permanent link">¶</a></h3>
+<p>Wrapping an error with additional context while preserving the original error for inspection.
+*   Use <code>%w</code> verb in <code>fmt.Errorf</code>.
+*   <code>fmt.Errorf("access denied: %w", err)</code></p>
+<h3 id="64-what-are-errorsis-and-errorsas">64. What are <code>errors.Is</code> and <code>errors.As</code>?<a class="headerlink" href="#64-what-are-errorsis-and-errorsas" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>errors.Is(err, target)</code>: Checks if an error (or any error in its chain) matches a specific sentinel error value.</li>
+<li><code>errors.As(err, &amp;target)</code>: Checks if an error (or any error in its chain) matches a specific type, and if so, assigns it to the target.</li>
+</ul>
+<h3 id="65-how-do-you-run-tests-in-go">65. How do you run tests in Go?<a class="headerlink" href="#65-how-do-you-run-tests-in-go" title="Permanent link">¶</a></h3>
+<p>Using the <code>go test</code> command.
+It looks for files ending in <code>_test.go</code> and executes functions starting with <code>Test</code>.</p>
+<h3 id="66-what-is-table-driven-testing">66. What is Table-Driven Testing?<a class="headerlink" href="#66-what-is-table-driven-testing" title="Permanent link">¶</a></h3>
+<p>A pattern where test inputs and expected outputs are defined in a slice of structs (the "table"), and a single test loop iterates over them.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Input</th>
+<th style="text-align: left;">Expected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">"Positive"</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">true</td>
+</tr>
+<tr>
+<td style="text-align: left;">"Negative"</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: left;">false</td>
+</tr>
+</tbody>
+</table>
+<h3 id="67-how-do-you-write-a-benchmark">67. How do you write a Benchmark?<a class="headerlink" href="#67-how-do-you-write-a-benchmark" title="Permanent link">¶</a></h3>
+<ul>
+<li>Function signature: <code>func BenchmarkName(b *testing.B)</code></li>
+<li>Loop <code>b.N</code> times.</li>
+<li>Run with <code>go test -bench .</code></li>
+</ul>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">BenchmarkRand</span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">N</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">        </span><span class="nx">rand</span><span class="p">.</span><span class="nx">Int</span><span class="p">()</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="68-what-are-testable-examples">68. What are Testable Examples?<a class="headerlink" href="#68-what-are-testable-examples" title="Permanent link">¶</a></h3>
+<p>Functions starting with <code>Example</code> in test files. They serve as documentation and tests.
+The output is verified against a comment at the end of the function.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">ExampleHello</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="c1">// Output: Hello</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="69-what-is-fuzzing-go-118">69. What is Fuzzing (Go 1.18+)?<a class="headerlink" href="#69-what-is-fuzzing-go-118" title="Permanent link">¶</a></h3>
+<p>Automated testing that provides random invalid/unexpected inputs to find bugs/crashes.
+*   <code>func FuzzName(f *testing.F)</code></p>
+<h3 id="70-what-is-testmain">70. What is <code>TestMain</code>?<a class="headerlink" href="#70-what-is-testmain" title="Permanent link">¶</a></h3>
+<p>A function that allows setup and teardown code to run before and after all tests in a package.
+Must call <code>m.Run()</code> to execute tests.</p>
+<h3 id="71-how-do-you-run-subtests">71. How do you run subtests?<a class="headerlink" href="#71-how-do-you-run-subtests" title="Permanent link">¶</a></h3>
+<p>Using <code>t.Run("name", func(t *testing.T) { ... })</code>.
+Allows hierarchical test reporting and specific filtering.</p>
+<h3 id="72-how-do-you-run-tests-in-parallel">72. How do you run tests in parallel?<a class="headerlink" href="#72-how-do-you-run-tests-in-parallel" title="Permanent link">¶</a></h3>
+<p>Call <code>t.Parallel()</code> inside the test function (and subtests).</p>
+<h3 id="73-difference-between-mocks-and-stubs">73. Difference between Mocks and Stubs?<a class="headerlink" href="#73-difference-between-mocks-and-stubs" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Stub:</strong> Returns hardcoded data.</li>
+<li><strong>Mock:</strong> Verifies behavior (e.g., "was this method called X times with Y arguments?").</li>
+<li>Go has no built-in mocking framework, but interfaces make it easy to write manual mocks or use tools like <code>gomock</code>.</li>
+</ul>
+<h3 id="74-how-to-handle-dependency-injection-in-go">74. How to handle Dependency Injection in Go?<a class="headerlink" href="#74-how-to-handle-dependency-injection-in-go" title="Permanent link">¶</a></h3>
+<p>Pass dependencies (usually interfaces) to the constructor or method.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Service</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="nx">db</span><span class="w"> </span><span class="nx">Database</span><span class="w"> </span><span class="c1">// interface</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">}</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="kd">func</span><span class="w"> </span><span class="nx">NewService</span><span class="p">(</span><span class="nx">db</span><span class="w"> </span><span class="nx">Database</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Service</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Service</span><span class="p">{</span><span class="nx">db</span><span class="p">:</span><span class="w"> </span><span class="nx">db</span><span class="p">}</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="75-how-do-you-check-test-coverage">75. How do you check test coverage?<a class="headerlink" href="#75-how-do-you-check-test-coverage" title="Permanent link">¶</a></h3>
+<p><code>go test -coverprofile=coverage.out</code>
+<code>go tool cover -html=coverage.out</code> (Visualizes coverage)</p>
+<h3 id="76-what-is-the-race-detector">76. What is the Race Detector?<a class="headerlink" href="#76-what-is-the-race-detector" title="Permanent link">¶</a></h3>
+<p>(Covered in Part 2, but relevant here).
+It detects concurrent access to shared memory.
+Always run CI with <code>-race</code>.</p>
+<h3 id="77-what-is-go-vet">77. What is <code>go vet</code>?<a class="headerlink" href="#77-what-is-go-vet" title="Permanent link">¶</a></h3>
+<p>A static analysis tool that examines Go source code and reports suspicious constructs (e.g., printf arguments mismatch, unreachable code).</p>
+<h3 id="78-when-should-you-panic-instead-of-returning-an-error">78. When should you panic instead of returning an error?<a class="headerlink" href="#78-when-should-you-panic-instead-of-returning-an-error" title="Permanent link">¶</a></h3>
+<p>Only for <strong>unrecoverable</strong> errors that indicate a programmer error (e.g., nil pointer dereference, index out of bounds) or during initialization (<code>init()</code>) if the app cannot start (e.g., bad config).
+For all other cases, return <code>error</code>.</p>
+<h3 id="79-log-package-vs-structured-logging">79. Log package vs Structured Logging?<a class="headerlink" href="#79-log-package-vs-structured-logging" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Standard <code>log</code>:</strong> Simple text output. Hard to parse by machines.</li>
+<li><strong>Structured Logging (<code>slog</code> - Go 1.21+):</strong> Outputs logs as JSON/Key-Value pairs. Better for observability stacks (ELK, Datadog).</li>
+</ul>
+<h3 id="80-how-to-handle-http-errors">80. How to handle HTTP errors?<a class="headerlink" href="#80-how-to-handle-http-errors" title="Permanent link">¶</a></h3>
+<p>Check the status code.
+*   <code>resp, err := client.Get(url)</code> checks connection errors.
+*   <code>if resp.StatusCode != http.StatusOK</code> checks application errors.</p>
+<h2 id="part-5-advanced-tooling-81-100">Part 5: Advanced &amp; Tooling (81-100)<a class="headerlink" href="#part-5-advanced-tooling-81-100" title="Permanent link">¶</a></h2>
+<h3 id="81-how-does-the-garbage-collector-work-in-go">81. How does the Garbage Collector work in Go?<a class="headerlink" href="#81-how-does-the-garbage-collector-work-in-go" title="Permanent link">¶</a></h3>
+<p>Go uses a <strong>Concurrent Mark-and-Sweep (CMS)</strong> garbage collector (Tri-color marking).
+*   <strong>Concurrent:</strong> Runs alongside the application code.
+*   <strong>Low Latency:</strong> Designed to minimize "Stop the World" (STW) pauses.
+*   <strong>Write Barrier:</strong> Ensures data consistency during concurrent marking.</p>
+<h3 id="82-what-is-escape-analysis">82. What is Escape Analysis?<a class="headerlink" href="#82-what-is-escape-analysis" title="Permanent link">¶</a></h3>
+<p>A compiler optimization technique that determines whether a variable can be allocated on the stack or must "escape" to the heap.
+*   <strong>Stack:</strong> Fast, automatic cleanup.
+*   <strong>Heap:</strong> Slower, requires GC.
+*   Command: <code>go build -gcflags="-m"</code></p>
+<h3 id="83-what-is-inlining">83. What is Inlining?<a class="headerlink" href="#83-what-is-inlining" title="Permanent link">¶</a></h3>
+<p>The compiler replaces a function call with the function body itself to save the overhead of the function call (stack setup, jumps).
+*   Only small, simple functions are inlined.</p>
+<h3 id="84-what-is-pprof">84. What is <code>pprof</code>?<a class="headerlink" href="#84-what-is-pprof" title="Permanent link">¶</a></h3>
+<p>A tool for visualization and analysis of profiling data.
+*   <strong>CPU Profile:</strong> Where CPU time is spent.
+*   <strong>Memory Profile:</strong> Heap allocations.
+*   <strong>Block Profile:</strong> Blocking on synchronization primitives.</p>
+<h3 id="85-what-is-go-tool-trace">85. What is <code>go tool trace</code>?<a class="headerlink" href="#85-what-is-go-tool-trace" title="Permanent link">¶</a></h3>
+<p>A tool to visualize the execution trace of the Go runtime.
+*   Shows goroutine scheduling, GC pauses, and network blocking events over time.</p>
+<h3 id="86-what-are-build-tags">86. What are Build Tags?<a class="headerlink" href="#86-what-are-build-tags" title="Permanent link">¶</a></h3>
+<p>Comments that control which files are included in the build.
+*   <code>//go:build linux</code>
+*   <code>// +build linux</code> (Legacy)
+*   Used for platform-specific code or integration tests.</p>
+<h3 id="87-what-is-cgo">87. What is CGo?<a class="headerlink" href="#87-what-is-cgo" title="Permanent link">¶</a></h3>
+<p>A mechanism that allows Go packages to call C code.
+*   Uses <code>import "C"</code>.
+*   <strong>Performance cost:</strong> High overhead due to stack switching (Goroutine stack vs C stack).
+*   <strong>Drawback:</strong> Makes cross-compilation harder and disables some Go tools.</p>
+<h3 id="88-explain-the-memory-layout-stack-vs-heap">88. Explain the Memory Layout (Stack vs Heap).<a class="headerlink" href="#88-explain-the-memory-layout-stack-vs-heap" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Stack:</strong> Per-goroutine. LIFO. Stores local variables, arguments. Grows dynamically.</li>
+<li><strong>Heap:</strong> Global. Stores objects referenced across boundaries, large objects, or those that outlive the function scope (determined by Escape Analysis).</li>
+</ul>
+<h3 id="89-what-is-gomaxprocs">89. What is <code>GOMAXPROCS</code>?<a class="headerlink" href="#89-what-is-gomaxprocs" title="Permanent link">¶</a></h3>
+<p>An environment variable (and runtime function) that limits the number of operating system threads that can execute user-level Go code simultaneously.
+*   Default: Number of CPU cores.</p>
+<h3 id="90-how-does-reflection-work-in-go">90. How does Reflection work in Go?<a class="headerlink" href="#90-how-does-reflection-work-in-go" title="Permanent link">¶</a></h3>
+<p>The <code>reflect</code> package allows inspecting type and value information at runtime.
+*   <code>reflect.TypeOf()</code>
+*   <code>reflect.ValueOf()</code>
+*   <strong>Cons:</strong> Slower than direct access, not type-safe at compile time.</p>
+<h3 id="91-what-is-the-unsafe-package">91. What is the <code>unsafe</code> package?<a class="headerlink" href="#91-what-is-the-unsafe-package" title="Permanent link">¶</a></h3>
+<p>Bypasses Go's type safety and memory security.
+*   Allows pointer arithmetic.
+*   Allows converting between arbitrary types.
+*   <strong>Risk:</strong> Can cause crashes and memory corruption.</p>
+<h3 id="92-what-are-go-plugins">92. What are Go Plugins?<a class="headerlink" href="#92-what-are-go-plugins" title="Permanent link">¶</a></h3>
+<p>Allows loading shared libraries (<code>.so</code> files) at runtime.
+*   Limited support (Linux/macOS primarily).
+*   Strict versioning requirements between main app and plugin.</p>
+<h3 id="93-what-is-the-vendor-directory">93. What is the <code>vendor</code> directory?<a class="headerlink" href="#93-what-is-the-vendor-directory" title="Permanent link">¶</a></h3>
+<p>A directory that contains copies of all dependency packages.
+*   Ensures reproducible builds without relying on external sources.
+*   <code>go mod vendor</code> creates it.</p>
+<h3 id="94-what-is-the-go-1-compatibility-guarantee">94. What is the Go 1 Compatibility Guarantee?<a class="headerlink" href="#94-what-is-the-go-1-compatibility-guarantee" title="Permanent link">¶</a></h3>
+<p>A promise that code written for Go 1.0 will continue to compile and run with all future Go 1.x versions.
+(Exceptions: Security fixes, undefined behaviors).</p>
+<h3 id="95-what-are-internal-packages">95. What are Internal Packages?<a class="headerlink" href="#95-what-are-internal-packages" title="Permanent link">¶</a></h3>
+<p>Packages inside a directory named <code>internal</code>.
+*   They can only be imported by the direct parent package and its subdirectories.
+*   Enforces encapsulation at the module level.</p>
+<h3 id="96-common-go-mod-commands">96. Common <code>go mod</code> commands?<a class="headerlink" href="#96-common-go-mod-commands" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>go mod init</code>: Initialize module.</li>
+<li><code>go mod tidy</code>: Add missing and remove unused dependencies.</li>
+<li><code>go mod download</code>: Download dependencies to cache.</li>
+<li><code>go mod graph</code>: Print module requirement graph.</li>
+</ul>
+<h3 id="97-how-do-you-cross-compile-in-go">97. How do you Cross-Compile in Go?<a class="headerlink" href="#97-how-do-you-cross-compile-in-go" title="Permanent link">¶</a></h3>
+<p>Set <code>GOOS</code> and <code>GOARCH</code> environment variables.
+*   <code>GOOS=linux GOARCH=arm64 go build main.go</code>
+*   Go makes this incredibly easy compared to C/C++.</p>
+<h3 id="98-what-is-the-embed-package-go-116">98. What is the <code>embed</code> package (Go 1.16+)?<a class="headerlink" href="#98-what-is-the-embed-package-go-116" title="Permanent link">¶</a></h3>
+<p>Allows embedding static files (HTML, images, config) directly into the compiled Go binary.</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">//go:embed static/*</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">content</span><span class="w"> </span><span class="nx">embed</span><span class="p">.</span><span class="nx">FS</span>
+</span></code></pre></div>
+<h3 id="99-implement-singleton-pattern-in-go">99. Implement Singleton Pattern in Go.<a class="headerlink" href="#99-implement-singleton-pattern-in-go" title="Permanent link">¶</a></h3>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kd">var</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="nx">instance</span><span class="w"> </span><span class="o">*</span><span class="nx">Singleton</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="nx">once</span><span class="w">     </span><span class="nx">sync</span><span class="p">.</span><span class="nx">Once</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">)</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="kd">func</span><span class="w"> </span><span class="nx">GetInstance</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">Singleton</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">    </span><span class="nx">once</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">        </span><span class="nx">instance</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Singleton</span><span class="p">{}</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">    </span><span class="p">})</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">instance</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="100-implement-factory-pattern-in-go">100. Implement Factory Pattern in Go.<a class="headerlink" href="#100-implement-factory-pattern-in-go" title="Permanent link">¶</a></h3>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Animal</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Speak</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Dog</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">d</span><span class="w"> </span><span class="nx">Dog</span><span class="p">)</span><span class="w"> </span><span class="nx">Speak</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">"Woof"</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="kd">func</span><span class="w"> </span><span class="nx">NewAnimal</span><span class="p">(</span><span class="kd">type</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="nx">Animal</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"dog"</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">Dog</span><span class="p">{}</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<hr>
+<p><strong>End of Interview Questions</strong></p>
+<h2 id="study-guide">Study Guide<a class="headerlink" href="#study-guide" title="Permanent link">¶</a></h2>
+<p>To deepen your understanding of these concepts, check out the following resources:</p>
+<ul>
+<li><strong>Official Documentation</strong>: <a href="https://go.dev/doc/">Golang Docs</a></li>
+<li><strong>Internal Style Guide</strong>: <a href="../../style_guides/golang/golang_style_guide/">Golang Style Guide</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/toxicoder/inkorporated" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.top", "navigation.prune", "navigation.instant", "navigation.tracking", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../assets/javascripts/cyborg-filter.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

@@ -1,7 +1,11 @@
 name: Deploy Documentation
 
-# Publish after content lands on a long-lived branch, or via workflow_dispatch.
-# PR validation is CI (docs build only); public site uses mike → gh-pages.
+# Publish MkDocs Material via mike to gh-pages (versioned aliases).
+# - main/master  → alias "latest" (default site)
+# - development  → alias "development"
+#
+# GitHub Pages must publish from branch gh-pages with path "/" (repo root),
+# not "/docs", or /latest/ and /development/ will 404.
 on:
   push:
     branches: [main, master, development]
@@ -9,6 +13,7 @@ on:
       - "docs/**"
       - "mkdocs.yml"
       - "docs/requirements.txt"
+      - "cyborgs/**"
       - ".github/workflows/deploy-docs.yml"
   workflow_dispatch:
 
@@ -16,16 +21,19 @@ permissions:
   contents: write
 
 concurrency:
-  group: "pages"
+  group: docs-deploy
   cancel-in-progress: false
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # Required so subsequent git push (mike) authenticates as GITHUB_TOKEN.
+          persist-credentials: true
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -39,28 +47,54 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r docs/requirements.txt
 
+      - name: Configure git identity for mike
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Ensure origin uses the Actions token for push to gh-pages.
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fetch existing gh-pages (if any)
+        run: |
+          git fetch origin gh-pages:gh-pages || true
+
       - name: Build documentation (strict)
         env:
           INK_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
           MIKE_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
         run: |
+          chmod +x docs/manage-docs.sh docs/setup-docs.sh
           ./docs/manage-docs.sh build --strict
-
-      - name: Configure git identity for mike
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # mike rebuilds site/; keep stamps consistent and ensure no Jekyll processing.
+          touch site/.nojekyll
 
       - name: Deploy with mike (versioned)
         env:
           INK_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
           MIKE_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          # mike publishes the contents of site/ built above
           if [[ "${{ github.ref_name }}" == "development" ]]; then
             mike deploy --push --update-aliases development -F mkdocs.yml
           else
             mike deploy --push --update-aliases latest -F mkdocs.yml
             mike set-default --push latest -F mkdocs.yml
+          fi
+
+      - name: Verify gh-pages layout
+        run: |
+          set -euo pipefail
+          git fetch origin gh-pages
+          # versions.json must exist at branch root for multi-version mike sites.
+          git show origin/gh-pages:versions.json >/tmp/versions.json
+          echo "versions.json:"
+          cat /tmp/versions.json
+          git ls-tree --name-only origin/gh-pages | head -30
+          # Expect version dirs and/or aliases at root (not only legacy docs/).
+          if ! git ls-tree --name-only origin/gh-pages | grep -E '^(latest|development|versions\.json)$' >/dev/null; then
+            echo "ERROR: gh-pages root missing mike version artifacts" >&2
+            exit 1
           fi

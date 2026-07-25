@@ -1,8 +1,31 @@
 ---
-layout: doc
+title: Configuration
+description: Configuration for Inkorporated.
+tags: [infrastructure]
 ---
 
 # Configuration Management Guide
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+
+## Config load model
+
+```mermaid
+flowchart TB
+  example[.env.example] -.-> local[.env local]
+  settings[settings JSON]
+  local --> runtime[Runtime]
+  settings --> runtime
+  overlays[config/environments] --> runtime
+```
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 ## Overview
 

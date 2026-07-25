@@ -1,8 +1,31 @@
 ---
-layout: doc
+title: Deployment
+description: Deployment for Inkorporated.
+tags: [infrastructure]
 ---
 
 # Deployment & Operations
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+
+## GitOps deploy path
+
+```mermaid
+flowchart LR
+  code[apps/ manifests] --> git[Git]
+  git --> argo[ArgoCD]
+  argo --> dev[dev]
+  argo --> stg[staging]
+  argo --> prod[prod]
+```
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 ## Deployment Process
 1. **Terraform** → **Ansible bootstrap** (including pfSense VM)

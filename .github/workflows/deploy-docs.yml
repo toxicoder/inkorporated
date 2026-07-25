@@ -1,0 +1,66 @@
+name: Deploy Documentation
+
+# Publish after content lands on a long-lived branch, or via workflow_dispatch.
+# PR validation is CI (docs build only); public site uses mike → gh-pages.
+on:
+  push:
+    branches: [main, master, development]
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "docs/requirements.txt"
+      - ".github/workflows/deploy-docs.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: docs/requirements.txt
+
+      - name: Install docs dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r docs/requirements.txt
+
+      - name: Build documentation (strict)
+        env:
+          INK_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
+          MIKE_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
+        run: |
+          ./docs/manage-docs.sh build --strict
+
+      - name: Configure git identity for mike
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Deploy with mike (versioned)
+        env:
+          INK_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
+          MIKE_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
+        run: |
+          set -euo pipefail
+          # mike publishes the contents of site/ built above
+          if [[ "${{ github.ref_name }}" == "development" ]]; then
+            mike deploy --push --update-aliases development -F mkdocs.yml
+          else
+            mike deploy --push --update-aliases latest -F mkdocs.yml
+            mike set-default --push latest -F mkdocs.yml
+          fi

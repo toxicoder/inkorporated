@@ -1,8 +1,19 @@
 ---
-layout: doc
+title: Architecture
+description: Architecture for Inkorporated.
+tags: [infrastructure]
 ---
 
 # Inkorporated Homelab Architecture
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 ## High-Level Architecture
 

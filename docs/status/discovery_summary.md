@@ -1,8 +1,19 @@
 ---
-layout: doc
+title: Discovery Summary
+description: Discovery Summary for Inkorporated.
+tags: [infrastructure]
 ---
 
 # Inkorporated Homelab - Documentation Discovery and Summary
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 ## Project Overview
 
@@ -196,7 +207,7 @@ The documentation leverages rich Markdown formatting capabilities including:
 This comprehensive documentation approach ensures that the entire codebase and infrastructure are thoroughly documented with proper formatting and rich content that enhances understanding and maintainability.
 
 ## Documentation Navigation
-- [Project Overview](PROJECT_OVERVIEW.md) - Executive summary and key features
-- [Complete Architecture](COMPREHENSIVE_PROJECT_DOCUMENTATION.md) - Full technical documentation
-- [Service Specifications](SERVICE_SPECIFIC_DOCUMENTATION.md) - Detailed service configurations
-- [Implementation Status](IMPLEMENTATION_STATUS_TRACKING.md) - Current progress tracking
+- [Project Overview](../guides/overview.md) - Executive summary and key features
+- [Complete Architecture](../guides/overview.md) - Full technical documentation
+- [Service Specifications](../reference/services.md) - Detailed service configurations
+- [Implementation Status](discovery_summary.md) - Current progress tracking

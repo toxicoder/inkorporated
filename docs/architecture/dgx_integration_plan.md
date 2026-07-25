@@ -1,8 +1,19 @@
 ---
-layout: doc
+title: Dgx Integration Plan
+description: Dgx Integration Plan for Inkorporated.
+tags: [infrastructure]
 ---
 
 # NVIDIA DGX Spark Integration Plan
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 ## Overview
 This document outlines the technical implementation plan for integrating two NVIDIA DGX Spark systems into the Inkorporated homelab infrastructure. The DGX Spark systems, equipped with NVIDIA Grace CPU and Blackwell GPU architecture, will be added as dedicated GPU-accelerated worker nodes to the existing k3s Kubernetes cluster.

@@ -37,3 +37,12 @@ coverage
 
 # Astro
 *.astro.swp
+# MkDocs generated output and docs venv
+/site/
+.venv-docs/
+__pycache__/
+docs/__pycache__/
+
+# Local pre-commit / tooling
+.mypy_cache/
+.ruff_cache/

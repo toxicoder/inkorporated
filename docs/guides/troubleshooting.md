@@ -1,8 +1,19 @@
 ---
-layout: doc
+title: Troubleshooting
+description: Troubleshooting for Inkorporated.
+tags: [infrastructure]
 ---
 
 # Troubleshooting Guide
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 ## Common Issues
 1. **Cloudflared Tunnel Issues**

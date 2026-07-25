@@ -1,8 +1,19 @@
 ---
-layout: doc
+title: Services
+description: Services for Inkorporated.
+tags: [infrastructure]
 ---
 
 # Service-Specific Documentation
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 This document provides detailed documentation for each service in the Inkorporated homelab infrastructure, organized by service type and including technical specifications, configuration details, and integration information.
 
@@ -1222,7 +1233,7 @@ kubectl get pvc -A
 5. Documentation updates
 
 ## Documentation Navigation
-- [Project Overview](PROJECT_OVERVIEW.md) - Executive summary and key features
-- [Complete Architecture](COMPREHENSIVE_PROJECT_DOCUMENTATION.md) - Full technical documentation
-- [Implementation Status](IMPLEMENTATION_STATUS_TRACKING.md) - Current progress tracking
-- [Discovery Summary](DISCOVERY_AND_DOCUMENTATION_SUMMARY.md) - Consolidated documentation overview
+- [Project Overview](../guides/overview.md) - Executive summary and key features
+- [Complete Architecture](../guides/overview.md) - Full technical documentation
+- [Implementation Status](../status/discovery_summary.md) - Current progress tracking
+- [Discovery Summary](../status/discovery_summary.md) - Consolidated documentation overview

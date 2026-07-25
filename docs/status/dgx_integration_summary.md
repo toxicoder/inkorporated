@@ -1,8 +1,19 @@
 ---
-layout: doc
+title: Dgx Integration Summary
+description: Dgx Integration Summary for Inkorporated.
+tags: [infrastructure]
 ---
 
 # NVIDIA DGX Spark Integration - Summary
+
+
+**What's on this page**
+
+- Documentation for this infrastructure topic.
+
+**What this enables**
+
+- Operators can deploy and operate Inkorporated systems confidently.
 
 ## Overview
 This document provides a comprehensive summary of the NVIDIA DGX Spark integration plan for the Inkorporated homelab infrastructure. The integration will add two NVIDIA DGX Spark systems as dedicated GPU-accelerated worker nodes to the existing k3s Kubernetes cluster.

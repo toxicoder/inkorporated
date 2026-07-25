@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master, development]
+  pull_request:
+    branches: [main, master, development]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      docs: ${{ steps.filter.outputs.docs }}
+      infra: ${{ steps.filter.outputs.infra }}
+      always: ${{ steps.filter.outputs.always }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            docs:
+              - 'docs/**'
+              - 'mkdocs.yml'
+              - 'cyborgs/**'
+            infra:
+              - 'infrastructure/**'
+              - 'apps/**'
+              - 'config/**'
+              - 'tests/**'
+              - 'WORKSPACE.bazel'
+              - 'BUILD.bazel'
+              - '*.sh'
+            always:
+              - '.github/workflows/**'
+
+  docs:
+    needs: changes
+    if: needs.changes.outputs.docs == 'true' || needs.changes.outputs.always == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: docs/requirements.txt
+      - name: Install docs dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r docs/requirements.txt
+      - name: Strict MkDocs build
+        run: ./docs/manage-docs.sh build --strict
+
+  domain-validation:
+    needs: changes
+    if: needs.changes.outputs.infra == 'true' || needs.changes.outputs.always == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate domain configuration
+        run: chmod +x validate_domain_config.sh && ./validate_domain_config.sh
+
+  bazel-tests:
+    needs: changes
+    if: needs.changes.outputs.infra == 'true' || needs.changes.outputs.always == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Bazelisk
+        uses: bazelbuild/setup-bazelisk@v3
+      - name: Run Bazel tests
+        run: bazel test //:all_tests //tests/config:config_security_scan --test_output=errors
+        continue-on-error: true
+      - name: Cache Bazel artifacts
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/bazel
+          key: ${{ runner.os }}-bazel-${{ hashFiles('**/WORKSPACE.bazel') }}

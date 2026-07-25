@@ -1,0 +1,45 @@
+# Local hooks use trusted CLI tools from PATH when installed.
+# Install: pip install --user pre-commit && pre-commit install
+# Run all: pre-commit run --all-files
+
+repos:
+  - repo: local
+    hooks:
+      - id: buildifier
+        name: buildifier (Bazel BUILD/.bzl)
+        entry: >-
+          bash -c 'if ! command -v buildifier >/dev/null; then echo "buildifier not installed; skip"; exit 0; fi;
+          find . -type f \( -name BUILD -o -name BUILD.bazel -o -name "*.bzl" -o -name MODULE.bazel -o -name WORKSPACE -o -name WORKSPACE.bazel \)
+          ! -path "*/bazel-*/*" ! -path "./site/*" ! -path "./.venv*" ! -path "./node_modules/*"
+          -print0 | xargs -0 -r buildifier -mode=check'
+        language: system
+        files: (BUILD(\..*)?|.*\.bzl|WORKSPACE(\..*)?)$
+        pass_filenames: false
+
+      - id: shfmt
+        name: shfmt (shell format check)
+        entry: bash -c 'if ! command -v shfmt >/dev/null; then echo "shfmt not installed; skip"; exit 0; fi; shfmt -d -s -i 2 -ci "$@"' --
+        language: system
+        types: [shell]
+        exclude: ^(bazel-|site/|\.venv|node_modules/)
+
+      - id: shellcheck
+        name: shellcheck
+        entry: bash -c 'if ! command -v shellcheck >/dev/null; then echo "shellcheck not installed; skip"; exit 0; fi; shellcheck -x --severity=warning "$@"' --
+        language: system
+        types: [shell]
+        exclude: ^(bazel-|site/|\.venv|node_modules/)
+
+      - id: prettier-yaml
+        name: prettier (YAML format)
+        entry: bash -c 'if ! command -v prettier >/dev/null; then echo "prettier not installed; skip"; exit 0; fi; prettier --write "$@"' --
+        language: system
+        types: [yaml]
+        exclude: (^bazel-|/bazel-|^site/|\.venv|node_modules/|\.ya?ml\.j2$)
+
+      - id: yamllint
+        name: yamllint
+        entry: bash -c 'if ! command -v yamllint >/dev/null; then echo "yamllint not installed; skip"; exit 0; fi; yamllint -c .yamllint.yml "$@"' --
+        language: system
+        files: \.(ya?ml)$
+        exclude: (^bazel-|/bazel-|^site/|\.venv|node_modules/|\.ya?ml\.j2$)

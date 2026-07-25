@@ -1,88 +1,217 @@
 # Inkorporated - Eazy Homelab <> Corp IaC
 
+[![Docs](https://img.shields.io/badge/docs-MkDocs%20Material-indigo?style=for-the-badge&logo=materialformkdocs&logoColor=white)](https://toxicoder.github.io/inkorporated/latest/)
+[![License](https://img.shields.io/github/license/toxicoder/inkorporated?style=for-the-badge)](LICENSE)
+[![Bazel](https://img.shields.io/badge/build-Bazel-green?style=for-the-badge&logo=bazel&logoColor=white)](WORKSPACE.bazel)
+
 [![Inkorporated banner](static/images/inkorporated-globe-banner.jpg)]()
 
 ## Overview
 
-This repository contains the complete infrastructure-as-code for the Inkorporated homelab/corplab, a comprehensive self-hosted, open-source internal work environment designed for homelab deployments. It provides a complete, integrated solution that combines infrastructure automation, GitOps deployment, and a rich set of productivity and collaboration tools.
+Inkorporated is a **one-stop shop to spin up a full enterprise**: hybrid-cloud infrastructure-as-code *and* an enterprise operating system (org design, job roles, policies, interview loops, and AI **cyborg** personas).
 
-This project aims to provide robust, scalable infrastructure suitable for organizations of all sizes, with a specific focus on production ready practices offering an easy onramp to the cloud for those big ideas that turn into big demand 🚀.
+**Start here:** [docs](docs/index.md) (MkDocs) · [CONTRIBUTING.md](CONTRIBUTING.md) · [project conventions](docs/project-conventions.md) · [cyborg roster](docs/cyborgs/generated/index.md)
+
+The following diagram shows the two halves of the monorepo and how they connect for operators and AI agents.
+
+```mermaid
+flowchart LR
+  subgraph EnterpriseOS["Enterprise OS"]
+    ORG[Org charts and roles]
+    POL[Policies and standards]
+    CYB[Cyborg personas YAML]
+  end
+
+  subgraph HybridInfra["Hybrid infrastructure"]
+    TF[Terraform]
+    ANS[Ansible]
+    K3S[k3s + GitOps]
+  end
+
+  HUM[Humans and agents]
+  HUM --> EnterpriseOS
+  HUM --> HybridInfra
+  CYB --> HUM
+  K3S --> HUM
+```
+
+This repository provides a production-minded path from homelab to corplab to cloud burst capacity—declarative infra, GitOps, zero-trust access, and the org/process docs needed to run like a global company.
 
 ## Architecture
 
-Inkorporated now supports a **Hybrid Cloud** architecture, enabling workloads to run on both on-premises Proxmox clusters and public cloud providers (AWS, GCP).
+Inkorporated uses a **hybrid cloud** model: Proxmox hosts the persistent control plane; AWS/GCP provide ephemeral burst capacity. Clusters run **k3s**, exposed through zero-trust edge access.
 
-*   **Proxmox**: Hosts the core control plane and persistent workloads.
-*   **Public Cloud (AWS/GCP)**: Used for burst capacity and temporary workloads.
-*   **Networking**: Hybrid nodes are connected via VPN (Tailscale/Wireguard - *implementation detail*).
-*   **Storage**:
-    *   On-Prem: Longhorn / NFS
-    *   Cloud: Cloud-native storage (e.g., gp2/standard)
+```mermaid
+flowchart TB
+  users[Users and operators]
+  cf[Cloudflare edge]
+  tun[cloudflared tunnel]
+  traefik[Traefik ingress]
+  auth[Authentik SSO]
 
-See [docs/architecture/ARCHITECTURE.md](docs/architecture/ARCHITECTURE.md) for detailed diagrams and topology.
+  subgraph OnPrem["On-prem Proxmox"]
+    pfsense[pfSense / VPN]
+    k3s_onprem[k3s control plane]
+    longhorn[Longhorn / NFS]
+  end
+
+  subgraph Cloud["Public cloud burst"]
+    k3s_cloud[k3s workers AWS/GCP]
+    cloud_disk[Cloud disks]
+  end
+
+  users --> cf --> tun --> traefik --> auth
+  traefik --> k3s_onprem
+  pfsense --> k3s_onprem
+  pfsense -.->|VPN mesh| k3s_cloud
+  k3s_onprem --> longhorn
+  k3s_cloud --> cloud_disk
+```
+
+| Layer | Role |
+| --- | --- |
+| **Proxmox** | Control plane and persistent workloads |
+| **AWS / GCP** | Burst and temporary capacity |
+| **VPN** | Secure hybrid node connectivity |
+| **Storage** | Longhorn / NFS on-prem; cloud-native disks in cloud |
+
+Deeper topology: [docs/architecture/ARCHITECTURE.md](docs/architecture/ARCHITECTURE.md).
 
 ## Project Structure
 
-The Inkorporated project is organized into several key areas:
+Top-level layout for developers landing in the repo:
 
-- **Infrastructure as Code**:
-    - `infrastructure/terraform`: Modular Terraform for Hybrid Cloud provisioning (Proxmox, AWS, GCP).
-    - `infrastructure/ansible`: Ansible roles for hybrid k3s setup (LXC, VMs, Cloud).
-- **GitOps Deployment**: ArgoCD for declarative infrastructure and application management using ApplicationSets.
-- **Zero-trust Access**: Cloudflare Tunnel for secure external access
-- **Centralized Authentication**: Authentik SSO/OIDC integration
-- **Observability**: Prometheus, Grafana, and Loki stack
-- **Storage Solutions**: Longhorn and NFS CSI driver
-- **Backup & Recovery**: Velero with MinIO
-- **Service Mesh**: Traefik with forward-auth middleware
-- **Version Control**: Gitea instance for GitOps workflow
-- **CI/CD**: Gitea runners for automated deployments
+```mermaid
+flowchart TB
+  root[inkorporated]
+  root --> apps[apps/ GitOps]
+  root --> infra[infrastructure/ TF + Ansible]
+  root --> config[config/ environments]
+  root --> docs[docs/ MkDocs site]
+  root --> cyborgs[cyborgs/ agent YAML]
+  root --> tests[tests/ validation]
+  root --> devc[.devcontainer/]
+```
+
+| Path | Purpose |
+| --- | --- |
+| `infrastructure/terraform` | Hybrid cloud provisioning (Proxmox, AWS, GCP) |
+| `infrastructure/ansible` | k3s and host configuration |
+| `apps/` | ArgoCD Applications / ApplicationSets |
+| `config/` | Environment configuration |
+| `docs/` | MkDocs documentation site |
+| `cyborgs/` | Machine-readable AI persona specs |
+| `tests/` | Bazel / script validation |
+
+Other platform pieces: Cloudflare Tunnel, Authentik, Prometheus/Grafana/Loki, Longhorn, Velero/MinIO, Traefik, Gitea, and more (see service catalog in docs).
 
 ## Deployment Patterns
 
-All services follow a consistent deployment pattern:
-1. Create Namespace
-2. Create Core Deployment with appropriate resources
-3. Create Service
-4. Create PodDisruptionBudget (where applicable)
-5. Create ConfigMap (where applicable)
-6. Create Ingress (where applicable)
-7. Create Secrets (where applicable)
+Services follow a consistent Kubernetes shape. The flow below is the mental model for every app manifest.
+
+```mermaid
+flowchart LR
+  ns[Namespace] --> dep[Deployment]
+  dep --> svc[Service]
+  dep --> pdb[PDB optional]
+  dep --> cm[ConfigMap optional]
+  svc --> ing[Ingress optional]
+  dep --> sec[Secrets optional]
+```
+
+GitOps path from a change in git to a live environment:
+
+```mermaid
+flowchart LR
+  dev[Developer commit]
+  git[Git remote]
+  argo[ArgoCD]
+  env[Target env namespace]
+  dev --> git --> argo --> env
+```
 
 ## Configuration Management
 
-The project implements a centralized configuration management system that separates sensitive credentials from main settings:
+Sensitive credentials never live next to non-secret settings.
 
-- **Main Settings File**: `cline_mcp_settings.json` - Contains server configurations and settings (no sensitive data)
-- **Configuration File**: `.devcontainer/.env` - Contains sensitive credentials and environment-specific settings (not version controlled)
-- **Environment-Specific Configurations**: Different files for different environments (`.devcontainer/.env.dev`, `.devcontainer/.env.staging`, `.devcontainer/.env.prod`)
+```mermaid
+flowchart TB
+  subgraph gitSafe["Committed to git"]
+    mcp[cline_mcp_settings.json]
+    ex[.env.example keys only]
+    appscfg[apps/ and config/ templates]
+  end
+
+  subgraph localOnly["Local only - mode 600"]
+    envf[.devcontainer/.env]
+  end
+
+  runtime[Runtime process]
+  mcp --> runtime
+  envf --> runtime
+  appscfg --> runtime
+```
+
+| File | Contains |
+| --- | --- |
+| `cline_mcp_settings.json` | Non-secret server/settings |
+| `.devcontainer/.env` | Secrets (gitignored, `chmod 600`) |
+| Env overlays | Per-environment non-secret config under `config/environments/` |
 
 ## Environment Structure
 
-The repository now supports multiple environments with dedicated configuration directories:
+Configuration and app overlays are split by environment:
 
-- `config/environments/` - Environment-specific configurations
-- `apps/environments/` - Environment-specific application overrides
+```mermaid
+flowchart LR
+  dev[dev] --> staging[staging]
+  staging --> autopush[autopush]
+  autopush --> uat[uat]
+  uat --> canary[canary]
+  canary --> prod[prod]
+  priv[priv sensitive]
+```
 
-### Supported Environments
-1. **dev** - Development environment
-2. **staging** - Staging environment
-3. **autopush** - Autopush environment
-4. **uat** - User Acceptance Testing environment
-5. **canary** - Canary environment for feature testing
-6. **prod** - Production environment
-7. **priv** - Private environment for sensitive services
+| Env | Intent |
+| --- | --- |
+| `dev` | Development |
+| `staging` | Pre-prod integration |
+| `autopush` | Continuous push validation |
+| `uat` | User acceptance |
+| `canary` | Limited production exposure |
+| `prod` | Production |
+| `priv` | Sensitive / restricted services |
+
+Paths: `config/environments/`, `apps/environments/`.
+
+## Humans and cyborgs
+
+Role documentation and machine personas stay aligned so AI agents and people share the same org model.
+
+```mermaid
+flowchart LR
+  role[docs/job_roles]
+  yaml[cyborgs/*.yaml]
+  roster[Generated cyborg roster]
+  ops[Operators / agents]
+  role <--> yaml
+  yaml --> roster
+  roster --> ops
+  role --> ops
+```
+
+Browse the visual roster (cards, chips, security coloring) in the docs site after build: [Cyborg roster](docs/cyborgs/generated/index.md).
 
 ## Security Approach
 
-The configuration system follows security best practices:
-1. **Separation of Concerns**: Sensitive credentials are separated from settings
-2. **Version Control Safety**: No sensitive data is committed to version control
-3. **File Permissions**: Config files are secured with restrictive permissions (600)
-4. **Environment Variables**: Configuration loaded at runtime
-5. **Zero-trust Architecture**: Cloudflare Tunnel for external access
-6. **Centralized Authentication**: Authentik for SSO
-7. **Network Segmentation**: pfSense firewall with VLANs
+1. **Separation of concerns** — secrets vs settings  
+2. **No secrets in git**  
+3. **Restrictive file modes** (`600` on local env)  
+4. **Runtime env loading**  
+5. **Zero-trust edge** — Cloudflare Tunnel  
+6. **Central SSO** — Authentik  
+7. **Network segmentation** — pfSense / VLANs  
+8. **Cyborg HITL** — CRITICAL personas require human approval
 
 ## Infrastructure Components
 

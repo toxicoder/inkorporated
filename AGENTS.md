@@ -1,93 +1,143 @@
 # Inkorporated Repository Agent Guide
 
-This document outlines the authoritative rules, conventions, and operational procedures for agents (human and AI) working on the **Inkorporated** repository.
+This document is the **AI agent workflow** guide for the Inkorporated monorepo.
 
-## 1. Project Overview
+**Shared conventions** (naming, formatting, safety, docs, testing, change discipline) live in [docs/project-conventions.md](docs/project-conventions.md). Read that document first. Human contribution hub: [CONTRIBUTING.md](CONTRIBUTING.md).
 
-*   **Name:** `inkorporated` (or `toxicoder/inkorporated`).
-*   **Architecture:** Hybrid Cloud.
-    *   **Proxmox:** Persistent on-premises control plane.
-    *   **AWS/GCP:** Ephemeral burst capacity.
-*   **Core Tech Stack:** Bazel, Terraform, Ansible, Kubernetes (k3s), ArgoCD, Jekyll.
+---
 
-## 2. Environment Setup & Configuration
+## 1. Project overview
 
-*   **Dev Container:** The project relies on the `.devcontainer` configuration.
-*   **Secrets & Settings:**
-    *   **Source of Truth:** `.devcontainer/.env`.
-    *   **Security:** File permissions **MUST** be set to `600` (`chmod 600 .devcontainer/.env`).
-    *   **Validation:** `validate_config.sh` checks for permissions and required MCP variables (e.g., `GH_TOKEN`, `PERPLEXITY_API_KEY`).
-    *   **Setup:** Copy `.devcontainer/.env.example` to `.devcontainer/.env`.
-*   **Environments:**
-    *   Configuration is split by environment (dev, staging, prod) in `config/environments/`.
-    *   Application overrides are in `apps/environments/`.
+*   **Name:** `inkorporated` (toxicoder/inkorporated)
+*   **Identity:** Hybrid-cloud infrastructure **and** enterprise operating system documentation (roles, policies, cyborgs, org design)
+*   **Architecture:** Proxmox control plane + AWS/GCP burst; k3s; ArgoCD; Bazel; MkDocs Material docs
+*   **Core stacks:** Terraform, Ansible, Kubernetes (k3s), ArgoCD, Jekyll legacy retired in favor of **MkDocs**
 
-## 3. Directory Structure
+---
 
-*   `apps/`: GitOps manifests (ArgoCD Applications, ApplicationSets).
-    *   `apps/shared/`: Base manifests.
-    *   `apps/environments/`: Environment-specific overlays.
-*   `config/`: Global and environment-specific configuration files.
-*   `docs/`: Jekyll-based documentation.
-*   `infrastructure/`:
-    *   `terraform/`: Infrastructure provisioning (Proxmox, AWS, GCP).
-    *   `ansible/`: Configuration management (k3s installation).
-*   `tests/`: Validation scripts and Bazel test targets.
+## 2. Branching, commits, PRs (agents)
 
-## 4. Build System (Bazel)
+Full rules: [CONTRIBUTING.md](CONTRIBUTING.md).
 
-*   **Mode:** Workspace enabled (`common --enable_workspace`), Bzlmod disabled (`common --noenable_bzlmod`).
-*   **Rules:**
-    *   Use `rules_sh` for shell tests (defined in `WORKSPACE.bazel`).
-    *   Load from specific files: `load("@rules_sh//shell:sh_test.bzl", "sh_test")`.
-*   **Data Attributes:**
-    *   Use direct labels (e.g., `//config:all_configs`).
-    *   **No `glob()`** in `data` attributes.
-    *   Use `allow_empty=True` for `glob()` in `srcs` where files might be missing.
+| Branch | Purpose |
+| --- | --- |
+| `development` | Primary integration — land work here |
+| `main` | Production after deliberate promotion |
 
-## 5. Infrastructure as Code
+- Create short-lived branches: `feature/`, `fix/`, `chore/`, `docs/`, `hotfix/` (hotfixes from `main`)
+- Conventional-style commits: `type: imperative summary`
+- **Never force-push** `development` or `main`
+- **Do not `git push`, open PRs, or create tags** unless the user **explicitly** asks
+- Prefer local commits the user can review
+
+---
+
+## 3. Environment setup
+
+*   **Dev container:** `.devcontainer/`
+*   **Secrets SoT (local):** `.devcontainer/.env` — **MUST** be mode `600`; never commit
+*   **Template:** copy `.devcontainer/.env.example` → `.devcontainer/.env`
+*   **Validate:** `./validate_config.sh`, `./validate_domain_config.sh`
+
+Environments: `config/environments/`, `apps/environments/`.
+
+---
+
+## 4. Directory structure
+
+| Path | Purpose |
+| --- | --- |
+| `apps/` | GitOps manifests |
+| `config/` | Global and env configuration |
+| `docs/` | MkDocs site content |
+| `cyborgs/` | Machine agent persona YAML |
+| `infrastructure/terraform/` | Provisioning |
+| `infrastructure/ansible/` | Configuration management |
+| `tests/` | Validation scripts / Bazel tests |
+| `mkdocs.yml` | Docs site navigation and theme |
+
+---
+
+## 5. Build system (Bazel)
+
+*   Workspace enabled (`--enable_workspace`); Bzlmod disabled (`--noenable_bzlmod`)
+*   Shell tests: `load("@rules_sh//shell:sh_test.bzl", "sh_test")`
+*   **No `glob()`** in `data` attributes; use direct labels
+*   `allow_empty=True` for `glob()` in `srcs` when files may be missing
+
+---
+
+## 6. Infrastructure as Code
 
 ### Terraform
-*   **Location:** `infrastructure/terraform/`.
-*   **State:** Use `moved` blocks in `main.tf` for refactoring.
-*   **Validation:** Run via `validate_terraform.sh`.
+
+*   Location: `infrastructure/terraform/`
+*   Use `moved` blocks when refactoring
+*   Validate via repo terraform validation targets / scripts
 
 ### Ansible
-*   **Location:** `infrastructure/ansible/`.
-*   **Linting:** `ansible_lint_wrapper.sh` (skips if binary missing).
 
-## 6. GitOps & Applications
+*   Location: `infrastructure/ansible/`
+*   Lint: `ansible_lint_wrapper.sh` (skips if binary missing)
 
-*   **Manifests:** Located in `apps/`.
-*   **Domains:**
-    *   **NEVER** hardcode domains (e.g., `example.com`) in Ingress manifests.
-    *   Use templated references: `{{ .Env.DOMAIN_BASE }}`.
-    *   Validation: `validate_domain_config.sh` enforces this.
+---
 
-## 7. Documentation
+## 7. GitOps & applications
 
-*   **Location:** `docs/`.
-*   **Structure:**
-    *   `docs/guides/`: User handbooks and runbooks.
-    *   `docs/architecture/`: Design documents and decisions.
-    *   `docs/reference/`: Service reference documentation.
-    *   `docs/status/`: Reports and implementation status.
-*   **Config:** `_config.yml` uses `toxicoder/materialistic-jekyll` theme.
-*   **Links:**
-    *   Internal links must be **relative** to the current file.
-    *   Target `.html` files, not `.md` (e.g., `../guides/overview.html`).
-*   **Diagrams:** Use Mermaid (`.language-mermaid`).
+*   Manifests in `apps/`
+*   **NEVER** hardcode domains in Ingress — use templated domain config / `{{DOMAIN_BASE}}`
+*   Enforced by `./validate_domain_config.sh`
 
-## 8. Verification & Testing
+---
 
-Before submitting changes, run:
+## 8. Documentation (MkDocs)
 
-1.  **`./validate_config.sh`**: Verifies `.env` setup.
-2.  **`./validate_domain_config.sh`**: Checks for hardcoded domains.
-3.  **`./run_all_tests.sh`**: Runs the full suite (Bazel tests, infrastructure validation).
+*   Engine: **MkDocs Material** + **mike** multi-version (`latest` / `development`)
+*   Local: `./docs/manage-docs.sh serve` | `build --strict`
+*   Every page: YAML frontmatter + **What's on this page** / **What this enables**
+*   Mermaid via pymdownx fences
+*   Links inside docs: relative `.md` paths
+*   New user-facing pages must be added to `mkdocs.yml` `nav`
+*   Full rules: [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)
 
-## 9. MCP & AI Integration
+Enterprise OS trees include `organization/`, `corporate_strategy/`, `job_roles/`, `cyborgs/`, `policies/`, `engineering_standards/`, interviews, training, etc.
 
-*   This repository is designed to work with MCP (Model Context Protocol).
-*   **Configuration:** MCP settings are in `cline_mcp_settings.json` (general) and `.devcontainer/.env` (secrets).
-*   **Security:** `scan_secrets.sh` is used to prevent secret leakage. Run `//tests/config:config_security_scan`.
+---
+
+## 9. Cyborgs (agent personas)
+
+*   Machine specs: `cyborgs/<JOB_ID>.yaml`
+*   Schema: [docs/cyborgs/schema.md](docs/cyborgs/schema.md)
+*   CRITICAL / Family Office personas: human approval + restricted invokers
+*   Keep job role pages and YAML in sync when editing prompts
+
+---
+
+## 10. Verification
+
+Before considering a task done:
+
+```bash
+./validate_config.sh          # when env/config touched
+./validate_domain_config.sh   # when apps/ingress touched
+./run_all_tests.sh            # full suite when feasible
+./docs/manage-docs.sh build --strict   # when docs touched
+```
+
+---
+
+## 11. MCP & AI integration
+
+*   MCP settings: `cline_mcp_settings.json` (non-secret) + `.devcontainer/.env` (secrets)
+*   Security scan: `//tests/config:config_security_scan`
+*   Never commit API keys or agent auth state
+
+---
+
+## 12. Safety invariants (non-negotiable)
+
+1. No secrets in git  
+2. No hardcoded customer domains  
+3. No push/PR/tag without explicit user request  
+4. Cyborg CRITICAL side effects need human approval  
+5. Do not disable domain or secret scanners without design review  

@@ -1,0 +1,214 @@
+site_name: "Inkorporated"
+site_description: "Enterprise operating system and hybrid-cloud infrastructure documentation"
+site_url: "https://toxicoder.github.io/inkorporated"
+repo_url: "https://github.com/toxicoder/inkorporated"
+# Default edit target; docs/hooks.py on_config stamps this from INK_DOCS_VERSION
+edit_uri: "edit/main/docs/"
+
+# Multi-version (latest = main, development = development branch) via mike.
+# Local single-version builds ignore missing versions.json.
+
+theme:
+  name: material
+  font:
+    text: Open Sans
+    code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.path
+    - navigation.top
+    - navigation.prune
+    - navigation.instant
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Overview: guides/overview.md
+      - Installation: guides/installation.md
+      - Configuration: guides/configuration.md
+      - Environments: guides/environments.md
+      - Git workflow: guides/git_workflow.md
+  - Organization:
+      - Overview: organization/index.md
+      - Master org chart: organization/org_chart_master.md
+      - Matrix model: organization/matrix_model.md
+      - Leveling framework: organization/leveling_framework.md
+      - Headcount model: organization/headcount_model.md
+      - RACI & decision rights: organization/raci_decision_rights.md
+      - Cyborg deployment map: organization/cyborg_deployment_map.md
+      - Coverage matrix: organization/coverage_matrix.md
+      - Template variables: organization/template_variables.md
+      - Research bibliography: organization/research_bibliography.md
+  - Corporate Strategy:
+      - Mission, vision & values: corporate_strategy/mission_vision_values.md
+      - Organizational structure: corporate_strategy/organizational_structure.md
+      - Corporate structuring: corporate_strategy/corporate_structuring.md
+      - Financial strategy: corporate_strategy/financial_strategy.md
+      - Tax strategy: corporate_strategy/tax_strategy.md
+      - Board governance: corporate_strategy/board_governance.md
+      - Family office strategy: corporate_strategy/family_office_strategy.md
+      - AI operating model: corporate_strategy/ai_operating_model.md
+      - Global expansion: corporate_strategy/global_expansion_playbook.md
+      - People strategy: corporate_strategy/people_strategy.md
+      - Risk & compliance: corporate_strategy/risk_and_compliance_strategy.md
+      - Go-to-market strategy: corporate_strategy/go_to_market_strategy.md
+      - Product strategy: corporate_strategy/product_strategy.md
+  - Job Roles:
+      - Catalog overview: job_roles/job_role_organization.md
+      - Board & governance: job_roles/governance_board/index.md
+      - Executive leadership: job_roles/executive_leadership/index.md
+      - Engineering & technology: job_roles/engineering_technology/index.md
+      - Security & risk: job_roles/security_risk/index.md
+      - Product & design: job_roles/product_design/index.md
+      - Go-to-market: job_roles/go_to_market_sales_marketing/index.md
+      - Customer experience: job_roles/customer_experience/index.md
+      - G&A: job_roles/ga_general_administrative/index.md
+      - Corporate IT: job_roles/corporate_it/index.md
+      - Regional operations: job_roles/regional_operations/index.md
+      - Family office: job_roles/personal_staff/index.md
+      - Specialized squads: job_roles/specialized_squads_cross_functional_teams/index.md
+  - Cyborgs:
+      - Overview: cyborgs/index.md
+      - Roster: cyborgs/generated/index.md
+      - By namespace: cyborgs/generated/by_namespace.md
+      - By security: cyborgs/generated/by_security.md
+      - Org graph: cyborgs/generated/org_graph.md
+      - Schema: cyborgs/schema.md
+      - Quality standard: cyborgs/prompt_quality_standard.md
+      - Catalog: cyborgs/catalog.md
+      - Operating model: cyborgs/operating_model.md
+  - Engineering:
+      - Principles: engineering_standards/engineering_principles.md
+      - Code review: engineering_standards/code_review_guidelines.md
+      - Testing: engineering_standards/testing_standards.md
+      - Incident management: engineering_standards/incident_management.md
+      - Post-mortems: engineering_standards/post_mortem_guide.md
+      - Release process: engineering_standards/release_process.md
+      - On-call: engineering_standards/on_call_guide.md
+  - Policies:
+      - Code of conduct: policies/code_of_conduct.md
+      - Acceptable use: policies/acceptable_use_policy.md
+      - Information security: policies/information_security_policy.md
+      - Data privacy: policies/data_privacy_policy.md
+      - Incident response: policies/incident_response_plan.md
+  - Infrastructure:
+      - Architecture: architecture/index.md
+      - High-level architecture: architecture/ARCHITECTURE.md
+      - Network: architecture/network.md
+      - Technical design: architecture/technical_design.md
+      - Deployment: guides/deployment.md
+      - Security: guides/security.md
+      - Observability: guides/observability.md
+      - Backups: guides/backups.md
+      - Troubleshooting: guides/troubleshooting.md
+      - Service catalog: reference/services.md
+  - Contributing:
+      - Project conventions: project-conventions.md
+      - Contributing to docs: CONTRIBUTING.md
+      - Style guides index: style_guides/index.md
+  - Status:
+      - Discovery summary: status/discovery_summary.md
+      - Infrastructure validation: status/infrastructure_validation_report.md
+      - DGX integration: status/dgx_integration_summary.md
+
+plugins:
+  - search
+  - glightbox
+
+hooks:
+  - docs/hooks.py
+
+extra_css:
+  - assets/stylesheets/extra.css
+  - assets/stylesheets/cyborgs.css
+
+extra_javascript:
+  - assets/javascripts/cyborg-filter.js
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      base_path:
+        - .
+        - docs
+      auto_append:
+        - docs/includes/abbreviations.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: "https://github.com/toxicoder/inkorporated"
+  version:
+    provider: mike
+    default: latest
+
+watch:
+  - docs/includes
+
+exclude_docs: |
+  README.md
+  **/README.md
+  **/*.sh
+  **/BUILD.bazel
+  **/requirements.txt
+  **/setup-docs.sh
+  **/manage-docs.sh
+  **/hooks.py
+  **/generate_cyborg_docs.py
+  **/_stats.json
+  includes/**
+  includes/abbreviations.md
+  Gemfile
+  _config.yml
+  _data/**
+  assets/js/**

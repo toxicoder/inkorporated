@@ -1,9 +1,9 @@
 name: Domain Validation
 on:
   push:
-    branches: [ main ]
+    branches: [ main, development ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, development ]
 jobs:
   validate-domain:
     runs-on: ubuntu-latest

@@ -77,7 +77,7 @@ jobs:
         run: bazel test //:all_tests //tests/config:config_security_scan --test_output=errors
         continue-on-error: true
       - name: Cache Bazel artifacts
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.cache/bazel
           key: ${{ runner.os }}-bazel-${{ hashFiles('**/WORKSPACE.bazel') }}

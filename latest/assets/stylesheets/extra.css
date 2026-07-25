@@ -1,0 +1,21 @@
+/* Inkorporated docs extras */
+@import url("cyborgs.css");
+
+.ink-docs-dev-banner {
+  background: #4527a0;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.ink-docs-dev-banner a {
+  color: #e1bee7;
+  text-decoration: underline;
+}
+
+.ink-docs-dev-banner code {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+}

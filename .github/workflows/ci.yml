@@ -18,7 +18,7 @@ jobs:
       infra: ${{ steps.filter.outputs.infra }}
       always: ${{ steps.filter.outputs.always }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: dorny/paths-filter@v3
         id: filter
         with:
@@ -43,7 +43,7 @@ jobs:
     if: needs.changes.outputs.docs == 'true' || needs.changes.outputs.always == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -61,7 +61,7 @@ jobs:
     if: needs.changes.outputs.infra == 'true' || needs.changes.outputs.always == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Validate domain configuration
         run: chmod +x validate_domain_config.sh && ./validate_domain_config.sh
 
@@ -70,7 +70,7 @@ jobs:
     if: needs.changes.outputs.infra == 'true' || needs.changes.outputs.always == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Setup Bazelisk
         uses: bazelbuild/setup-bazelisk@v3
       - name: Run Bazel tests

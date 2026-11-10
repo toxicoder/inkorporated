@@ -79,6 +79,7 @@ repo_sh_test(
         ":tf_sources",
     ],
     tags = ["gate", "terraform", "slow"],
+    timeout = "short",
     strict = True,
 )
 

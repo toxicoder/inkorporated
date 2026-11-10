@@ -1,0 +1,31 @@
+# Integration-lane tests: what the cluster is asked to run against what the
+# cluster actually runs. Everything here needs a reachable API server, so the
+# lane is host + manual and is run by name, never by //:gate.
+
+load("//build:defs.bzl", "repo_sh_test")
+
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "scripts",
+    srcs = [
+        "test_authentik.sh",
+    ],
+)
+
+# strict: kubectl absent is fatal and prints its install command, and an
+# unreachable cluster fails the target too, so this test cannot report
+# success without having asked the cluster.
+repo_sh_test(
+    name = "test_authentik",
+    srcs = ["test_authentik.sh"],
+    strict = True,
+    data = [
+        "//apps:manifests",
+    ],
+    tags = [
+        "host",
+        "manual",
+    ],
+    timeout = "moderate",
+)

@@ -1,0 +1,25 @@
+# Security-lane tests: what the checkout is allowed to carry. This package
+# asks about the repository itself (tracked files, the local secrets file), so
+# like the //tools/bazel/sh wrappers it resolves the real checkout from the
+# runfiles symlink rather than from a sandbox subset.
+
+load("//build:defs.bzl", "repo_sh_test")
+
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "scripts",
+    srcs = [
+        "test_permissions.sh",
+    ],
+)
+
+# No data dependency on purpose: .devcontainer/.env is a local secret and must
+# never become a build input. The script reads its mode, never its contents,
+# and only through the resolved checkout.
+repo_sh_test(
+    name = "test_permissions",
+    srcs = ["test_permissions.sh"],
+    tags = ["gate"],
+    timeout = "short",
+)

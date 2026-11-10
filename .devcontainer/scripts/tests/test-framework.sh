@@ -149,9 +149,9 @@ for index in "${!TEST_SCRIPTS[@]}"; do
         ok "${script} does not rewrite tracked files"
     fi
 
-    if grep -qE 'rm[[:space:]]+-rf[[:space:]]+"\$\{?WORKDIR' "$path" \
+    if grep -qE 'rm[[:space:]]+-rf[[:space:]]+"?\$\{?WORKDIR\}?"?[[:space:]]*$' "$path" \
         && ! grep -qE 'trap .*EXIT' "$path"; then
-        fail "${script} deletes a temp tree without a cleanup trap"
+        fail "${script} deletes its temp tree outside a cleanup trap"
     else
         ok "${script} cleans its temp tree up on exit"
     fi

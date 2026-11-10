@@ -237,6 +237,15 @@ fi
 #    come from features, and every feature needs its place in the install order
 #    or the container builds them in an arbitrary sequence.
 # ---------------------------------------------------------------------------
+if ! jq -e . "$DEVCONTAINER_JSON" >/dev/null 2>&1; then
+    fail "devcontainer.json is not valid JSON" \
+        "the devcontainer CLI refuses the file, so no container starts at all"
+    echo "FAILURE: ${failures} tool-census assertion(s) failed" >&2
+    echo "re-run with: ${TARGET}" >&2
+    exit 1
+fi
+ok "devcontainer.json parses as JSON"
+
 feature_count="$(jq '.features | length' "$DEVCONTAINER_JSON")"
 if [ "$feature_count" -ge 3 ]; then
     ok "devcontainer.json requests ${feature_count} features"
@@ -271,7 +280,8 @@ unordered="$(
         . as $root
         | [ .features | keys[]
             | . as $f
-            | ([ $root.overrideFeatureInstallOrder[]? | select($f | startswith(.)) ] | length) as $hits
+            | ([ $root.overrideFeatureInstallOrder[]? as $o
+                 | select($f | startswith($o)) ] | length) as $hits
             | select($hits == 0)
             | $f ]
         | join(" ")

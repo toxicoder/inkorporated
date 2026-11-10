@@ -255,6 +255,12 @@ done
 # 4. The container mounts the operator env directory read-only at the path the
 #    loader documents.
 # ---------------------------------------------------------------------------
+if ! jq -e . "$DEVCONTAINER_JSON" >/dev/null 2>&1; then
+    echo "FAIL - devcontainer.json is not valid JSON" >&2
+    echo "       the devcontainer CLI refuses the file; re-run with: ${TARGET}" >&2
+    exit 1
+fi
+
 mount_count="$(
     jq '[.mounts[]? | select(.type == "bind"
             and (.source | endswith("Code/devcontainers/config/env"))

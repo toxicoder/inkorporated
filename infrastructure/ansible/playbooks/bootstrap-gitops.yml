@@ -4,11 +4,11 @@
 ---
 - name: Bootstrap GitOps environment
   hosts: control_plane
-  become: yes
+  become: true
   vars:
     k3s_config_dir: "/etc/rancher/k3s"
-    environment: "{{ lookup('env', 'ENVIRONMENT') | default('dev') }}"
-  
+    deploy_environment: "{{ lookup('env', 'ENVIRONMENT') | default('dev') }}"
+
   tasks:
     - name: Install required packages
       apt:
@@ -37,7 +37,7 @@
 
     - name: Run Gitea Runner installation role
       include_role:
-        name: gitea-runner
+        name: gitea_runner
 
     - name: Configure GitOps workflow
       command: k3s kubectl apply -f {{ k3s_config_dir }}/gitops/gitops-config.yaml
@@ -65,4 +65,4 @@
 
     - name: Set environment variable for deployment
       set_fact:
-        environment: "{{ environment }}"
+        deploy_environment: "{{ deploy_environment }}"

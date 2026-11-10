@@ -28,18 +28,19 @@ repo_sh_test(
     name = "ansible_lint",
     srcs = ["ansible_lint_wrapper.sh"],
     data = [
+        ".ansible-lint",
         "ansible.cfg",
         ":inventory",
         ":playbooks",
         ":roles",
     ],
     args = ["--strict", "--force-color"],
-    # ansible resolves a bare role name against $CWD/roles, and a test runs at
-    # the runfiles root, so the package's roles/ has to be named explicitly or
-    # syntax-check reports roles that are right there in the tree.
-    env = {"ANSIBLE_ROLES_PATH": "infrastructure/ansible/roles"},
+    # The wrapper cds into this package's runfiles directory and points
+    # ANSIBLE_ROLES_PATH at roles/ there, which is what lets ansible resolve a
+    # bare role name, ansible.cfg, and .ansible-lint from one place.
     tags = ["gate", "ansible", "lint", "slow"],
     strict = True,
+    timeout = "short",
 )
 
 

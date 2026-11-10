@@ -4,11 +4,11 @@
 ---
 - name: Configure k3s cluster post-setup
   hosts: control_plane
-  become: yes
+  become: true
   vars:
     k3s_config_dir: "/etc/rancher/k3s"
     k3s_data_dir: "/var/lib/rancher/k3s"
-  
+
   tasks:
     - name: Create k3s config directory
       file:

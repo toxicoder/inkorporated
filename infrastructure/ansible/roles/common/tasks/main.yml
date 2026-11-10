@@ -4,7 +4,7 @@
 ---
 - name: Update system packages
   apt:
-    update_cache: yes
+    update_cache: true
     cache_valid_time: 3600
   when: ansible_os_family == "Debian"
 
@@ -29,18 +29,18 @@
     path: /etc/ssh/sshd_config
     regexp: '^#?PermitRootLogin'
     line: 'PermitRootLogin no'
-    backup: yes
+    backup: true
   notify: restart ssh
 
 - name: Configure firewall
   ufw:
     state: enabled
     default: deny
-    logging: on
+    logging: true
   when: ansible_os_family == "Debian"
 
 - name: Configure sysctl settings
-  sysctl:
+  ansible.posix.sysctl:
     name: "{{ item.name }}"
     value: "{{ item.value }}"
     sysctl_file: /etc/sysctl.conf

@@ -8,3 +8,7 @@
 collections:
   - name: community.general
     version: ">=9.0.0"
+  # roles/common configures kernel parameters with ansible.posix.sysctl; the
+  # module left community.general in 5.0, so the two collections travel together.
+  - name: ansible.posix
+    version: ">=1.5.0"

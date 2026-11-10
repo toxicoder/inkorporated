@@ -8,13 +8,30 @@
 # Usage: bazelisk test //docs:generated_render_current
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
-if [[ ! -x "${REPO_ROOT}/.venv-docs/bin/python" ]]; then
-  real_script_dir="$(readlink -f "${SCRIPT_DIR}" 2>/dev/null || true)"
-  if [[ -n "${real_script_dir}" && -x "${real_script_dir}/../.venv-docs/bin/python" ]]; then
-    REPO_ROOT="$(cd "${real_script_dir}/.." && pwd)"
+SCRIPT_SRC="${BASH_SOURCE[0]}"
+# The runfiles directory is a tree of symlinks into the checkout, so resolving
+# the *directory* stays inside bazel-out and never reaches the repository. The
+# venv, cyborgs/ and the committed render all live in the checkout, so walk up
+# from the script's own resolved path until the git directory appears -- the
+# same route the gate checkers use.
+resolve_repo_root() {
+  local self dir
+  self="$(readlink -f "${SCRIPT_SRC}" 2>/dev/null || printf '%s' "${SCRIPT_SRC}")"
+  dir="$(dirname "${self}")"
+  while [[ "${dir}" != "/" && ! -d "${dir}/.git" ]]; do
+    dir="$(dirname "${dir}")"
+  done
+  if [[ -d "${dir}/.git" ]]; then
+    printf '%s' "${dir}"
   fi
+}
+
+REPO_ROOT="${BUILD_WORKSPACE_DIRECTORY:-}"
+if [[ -z "${REPO_ROOT}" || ! -d "${REPO_ROOT}" ]]; then
+  REPO_ROOT="$(resolve_repo_root)"
+fi
+if [[ -z "${REPO_ROOT}" ]]; then
+  REPO_ROOT="$(cd "$(dirname "${SCRIPT_SRC}")/.." && pwd)"
 fi
 
 PYTHON="${REPO_ROOT}/.venv-docs/bin/python"

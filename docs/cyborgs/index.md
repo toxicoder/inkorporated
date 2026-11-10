@@ -54,9 +54,9 @@ flowchart LR
 ## Regenerating
 
 ```bash
-./docs/manage-docs.sh build --strict
-# or
-python docs/generate_cyborg_docs.py
+bazelisk test //docs:build
+# serve regenerates the roster too:
+bazelisk run //docs:manage-docs -- serve
 ```
 
 Do **not** hand-edit `docs/cyborgs/generated/`.

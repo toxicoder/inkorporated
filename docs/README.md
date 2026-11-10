@@ -21,8 +21,8 @@ tags: [documentation]
 From the repository root:
 
 ```bash
-./docs/manage-docs.sh serve
-./docs/manage-docs.sh build --strict
+bazelisk run //docs:manage-docs -- serve
+bazelisk test //docs:build
 ```
 
 Site config: [`mkdocs.yml`](https://github.com/toxicoder/inkorporated/blob/main/mkdocs.yml) at the repo root.

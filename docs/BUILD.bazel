@@ -64,7 +64,10 @@ repo_sh_test(
         "requirements.txt",
     ],
     local = True,
-    tags = ["docs", "host", "slow"],
+    # manual keeps `bazel test //docs/...` from racing this writer against
+    # //docs:generated_render_current, which reads the same render out of the
+    # checkout. Both are host lanes; each is named explicitly by its caller.
+    tags = ["docs", "host", "manual", "slow"],
     timeout = "long",
 )
 

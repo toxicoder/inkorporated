@@ -18,7 +18,7 @@ tags: [cyborgs, generated]
 - Single pipeline from YAML source of truth to human docs
 
 !!! tip "Source of truth"
-    Edit `cyborgs/<JOB_ID>.yaml`, then run `./docs/manage-docs.sh build` (generator runs automatically). Do **not** hand-edit files under `docs/cyborgs/generated/`.
+    Edit `cyborgs/<JOB_ID>.yaml`, then run `bazelisk test //docs:build` (the generator runs automatically). Do **not** hand-edit files under `docs/cyborgs/generated/`.
 
 <div class="cyborg-stats"><span class="chip chip-jobid">202 personas</span><span class="chip chip-tag">34 namespaces</span><span class="chip chip-security-critical">54 CRITICAL</span><span class="chip chip-security-high">122 HIGH</span></div>
 

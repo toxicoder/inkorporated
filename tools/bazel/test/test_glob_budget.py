@@ -5,7 +5,7 @@ Runs the checker against throwaway git repositories built in a temporary
 directory, so the file walking exercises `git ls-files` for real, and asserts
 on the exit code and the captured output.
 
-    python3 tools/bazel/test/test_glob_budget.py
+    bazelisk test //tools/bazel/sh:coverage --test_arg=--only=test_glob_budget
 """
 
 import contextlib

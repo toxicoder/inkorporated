@@ -52,15 +52,19 @@ INVOKE_RE = re.compile(
     re.VERBOSE | re.MULTILINE,
 )
 
-# `bazel test //...` reads fine until someone runs it without Bazelisk and
-# gets a Bazel the repository never pinned.
+# An unpinned `<binary> test //...` reads fine until someone runs it without
+# Bazelisk and gets a Bazel the repository never pinned.
 BAZEL_CMD_RE = re.compile(r"(?<![\w-])bazel\s+(test|run|build|query|cquery|aquery|mod)\b")
 
 LABEL_RE = re.compile(r"(?<![:\w./-])//[\w.+-]+(?:/[\w.+-]+)*(?::[\w.+-]+)?")
 SKIP_TOKENS = ("//visibility:public", "//visibility:private")
+# Go compiler directives are comments that happen to look like a Bazel label.
+SKIP_PREFIXES = ("//go:",)
 
 GUARD_RE = re.compile(r"^\s*(?:if|elif|while)\s+(?:!\s*)?command\s+-v\s+[\"']?([\w.+-]+)")
 STRICT_RE = re.compile(r"REQUIRE_LINT_TOOLS|(?<![\w/])CI\b")
+# A guard that exits non-zero when the binary is absent cannot pass vacuously.
+HARD_FAIL_RE = re.compile(r"\bexit\s+[1-9]\d*\b")
 CENSUS_RE = re.compile(r"^\s*\"([\w.+-]+):")
 
 POLICY_RE = re.compile(r"#\s*gate-policy\s*:\s*(\S.*?)$", re.I)
@@ -167,15 +171,28 @@ def bazel_binary_findings(rel, lines):
 
 
 def collect_labels(root, files):
-    """Every //pkg:target cited in markdown, with where it was cited."""
+    """Every //pkg:target cited in markdown, with where it was cited.
+
+    Fenced code blocks are skipped: inside a fence an author is showing syntax,
+    not pointing a reader at a lane. Rule A stays fence-blind, because a command
+    line a person is meant to type is exactly what must name a target.
+    """
     cited = {}
     for rel in files:
         if not rel.endswith(DOC_SUFFIXES):
             continue
+        in_fence = False
         for index, line in enumerate(read_lines(root, rel)):
+            if line.lstrip().startswith("```") or line.lstrip().startswith("~~~"):
+                in_fence = not in_fence
+                continue
+            if in_fence:
+                continue
             for match in LABEL_RE.finditer(line):
                 label = match.group(0)
                 if "..." in label or label in SKIP_TOKENS:
+                    continue
+                if label.startswith(SKIP_PREFIXES):
                     continue
                 cited.setdefault(label, []).append({"file": rel, "line": index + 1})
     return cited
@@ -263,6 +280,10 @@ def check_tool_guards(root, files, census):
             if not exempt:
                 window = "\n".join(lines[index:index + GUARD_WINDOW])
                 if STRICT_RE.search(window):
+                    pass
+                elif HARD_FAIL_RE.search(window):
+                    # The guard already stops on a missing binary, which is
+                    # stricter than the strict lane asks for.
                     pass
                 elif "else" in window and "exit 0" not in window:
                     pass  # a real fallback branch, not a silent skip

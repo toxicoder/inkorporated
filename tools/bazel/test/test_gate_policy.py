@@ -5,7 +5,7 @@ Every rule (A script paths, B dangling labels, C optional-binary guards) is
 exercised in isolation against throwaway repositories, together with the three
 escape hatches, the label mapper, and the printed and JSON report shapes.
 
-    python3 tools/bazel/test/test_gate_policy.py
+    bazelisk test //tools/bazel/sh:coverage --test_arg=--only=test_gate_policy
 """
 
 import contextlib
@@ -26,6 +26,9 @@ REAL_RUN = subprocess.run
 REPO_ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                           os.pardir, os.pardir, os.pardir))
 DOCTOR = os.path.join("tools", "bazel", "sh", "doctor.sh")
+
+# Split so this file does not itself trip the rule it exercises.
+BAZEL_CMD_LITERAL = "bazel" + " test"
 
 
 def make_repo(root, files):
@@ -230,10 +233,10 @@ class GatePolicyTestCase(unittest.TestCase):
 
     def test_bazel_binary_findings_flags_the_unpinned_binary(self):
         findings = gate_policy.bazel_binary_findings(
-            "docs/page.md", ["    bazel test //...   # fast"])
+            "docs/page.md", ["    " + BAZEL_CMD_LITERAL + " //...   # fast"])
         self.assertEqual(len(findings), 1)
         self.assertEqual(findings[0]["rule"], "A")
-        self.assertEqual(findings[0]["text"], "bazel test")
+        self.assertEqual(findings[0]["text"], BAZEL_CMD_LITERAL)
 
     def test_bazel_binary_findings_accepts_bazelisk_and_prose(self):
         lines = ["bazelisk test //...", "the bazel-tests job", "bazelize it"]
@@ -256,6 +259,52 @@ class GatePolicyTestCase(unittest.TestCase):
             root, ["docs/a.md", "docs/b.md", "scripts/a.sh"])
         self.assertEqual(sorted(cited), ["//pkg:target"])
         self.assertEqual(len(cited["//pkg:target"]), 2)
+
+    def test_collect_labels_skips_a_label_inside_a_fenced_code_block(self):
+        # Inside a fence an author is showing syntax, not pointing a reader at a
+        # lane, so a label there is not a citation and must not be checked. The
+        # label outside the same fence still is: a fence that swallowed the rest
+        # of the page would silence rule B wholesale.
+        root = self.repo({
+            "docs/a.md": "cite //pkg:before\n"
+                         "```bash\n"
+                         "bazelisk query //pkg:inside-the-backtick-fence\n"
+                         "```\n"
+                         "cite //pkg:between\n"
+                         "~~~\n"
+                         "bazelisk query //pkg:inside-the-tilde-fence\n"
+                         "~~~\n"
+                         "cite //pkg:after\n",
+        })
+        cited = gate_policy.collect_labels(root, ["docs/a.md"])
+        self.assertEqual(sorted(cited), ["//pkg:after", "//pkg:before",
+                                         "//pkg:between"])
+        self.assertEqual([hit["line"] for hit in cited["//pkg:after"]], [9])
+
+    def test_collect_labels_skips_an_indented_fence_and_reopens_after_it(self):
+        # CommonMark allows an indented fence; a startswith("```") test would
+        # miss it, leave the flag stuck on, and drop every label below it.
+        root = self.repo({
+            "docs/a.md": "1. a list item that shows a command::\n"
+                         "\n"
+                         "      ```\n"
+                         "      bazelisk query //pkg:indented-fence\n"
+                         "      ```\n"
+                         "\n"
+                         "cite //pkg:after-the-indented-fence\n",
+        })
+        cited = gate_policy.collect_labels(root, ["docs/a.md"])
+        self.assertEqual(sorted(cited), ["//pkg:after-the-indented-fence"])
+
+    def test_collect_labels_skips_a_go_directive_cited_as_a_label(self):
+        # `//go:` is a compiler directive that happens to look like a Bazel
+        # label; a doc that quotes one must not be asked to resolve it.
+        root = self.repo({
+            "docs/codegen.md": "the generator runs on a //go:generate directive\n"
+                               "and the lane is //tools/bazel:gate_policy_check\n",
+        })
+        cited = gate_policy.collect_labels(root, ["docs/codegen.md"])
+        self.assertEqual(sorted(cited), ["//tools/bazel:gate_policy_check"])
 
     def test_resolvable_labels_keeps_only_workspace_labels(self):
         with self.patch_bazelisk(["//pkg:target", "  //pkg:other  ",
@@ -333,6 +382,34 @@ class GatePolicyTestCase(unittest.TestCase):
         self.assertEqual(
             gate_policy.check_tool_guards(root, ["scripts/gate.sh"], {"yamllint"}),
             [])
+
+    def test_rule_c_accepts_a_guard_that_exits_non_zero_when_the_tool_is_gone(self):
+        # A probe that stops the script when the binary is absent is already
+        # stricter than the strict lane asks for, so it needs no
+        # REQUIRE_LINT_TOOLS/CI marker to pass.
+        root = self.guards_root(
+            "if ! command -v protoc >/dev/null 2>&1; then\n"
+            "  echo 'protoc is needed to render the stubs' >&2\n"
+            "  exit 3\n"
+            "fi\n")
+        self.assertEqual(
+            gate_policy.check_tool_guards(root, ["scripts/gate.sh"], {"protoc"}),
+            [])
+
+    def test_rule_c_flags_the_same_guard_when_its_failure_is_only_an_exit_zero(self):
+        # The one character that separates the two fixtures is the whole rule:
+        # `exit 0` turns a missing binary into a green run.
+        root = self.guards_root(
+            "if ! command -v protoc >/dev/null 2>&1; then\n"
+            "  echo 'protoc is missing' >&2\n"
+            "  exit 0\n"
+            "fi\n")
+        findings = gate_policy.check_tool_guards(root, ["scripts/gate.sh"],
+                                                 {"protoc"})
+        self.assertEqual([f["text"] for f in findings],
+                         ["probes protoc without honoring REQUIRE_LINT_TOOLS/CI"])
+        self.assertEqual(findings[0]["line"], 1)
+        self.assertEqual(findings[0]["rule"], "C")
 
     def test_rule_c_flags_a_guard_that_skips_silently(self):
         root = self.guards_root(
@@ -420,14 +497,14 @@ class GatePolicyTestCase(unittest.TestCase):
         self.assertIn("POLICY A docs/a.md:1  [A] ./scripts/tool.sh", out)
 
     def test_main_json_reports_violations(self):
-        root = self.repo({"docs/a.md": "run bazel test //...\n"})
+        root = self.repo({"docs/a.md": "run " + BAZEL_CMD_LITERAL + " //...\n"})
         with self.patch_bazelisk([]):
             code, out, _ = self.run_main(root, "--json", "--skip-rule", "C")
         self.assertEqual(code, 1)
         payload = json.loads(out)
         self.assertEqual(payload["checked"], 1)
         self.assertEqual(payload["violations"][0]["rule"], "A")
-        self.assertEqual(payload["violations"][0]["text"], "bazel test")
+        self.assertEqual(payload["violations"][0]["text"], BAZEL_CMD_LITERAL)
 
     def test_main_can_skip_each_rule(self):
         root = self.repo({

@@ -24,13 +24,14 @@ REQUIRED_TOOLS=(
   "shellcheck://lints:all shell style lane and //:verify_fix"
   "yamllint://lints:all YAML style lane"
   "ansible-lint://infrastructure/ansible:ansible_lint"
+  "ansible://bootstrap/init_hybrid.sh (the hybrid bootstrap drives ansible directly)"
   "ansible-doc://infrastructure/ansible:ansible_lint (proves community.general is installed)"
   "terraform://infrastructure/terraform:terraform_fmt"
 )
 
 OPTIONAL_TOOLS=(
-  "kubectl://tests/kubernetes:manifests and :resource_quotas"
-  "helm://tests/deployment:helm"
+  "kubectl://tests/integration:test_authentik (live cluster branch only)"
+  "helm://tests/deployment:test_helm (renders the charts under apps/)"
   "mkdocs://docs:build (lives in .venv-docs, created by //docs:setup-docs)"
   "python://the docs generators prefer the venv python over python3"
   "nvidia-smi://.devcontainer/scripts/tests:framework (gpu-detect.sh)"
@@ -71,6 +72,7 @@ fi
 
 if [[ -f "${REPO_ROOT}/.bazelversion" ]]; then
   pinned="$(tr -d '[:space:]' <"${REPO_ROOT}/.bazelversion")"
+  # gate-policy: tool-guard exempt bazelisk is reported by this block itself
   if command -v bazelisk >/dev/null 2>&1; then
     actual="$(bazelisk --version 2>/dev/null | awk '{print $2}')"
   else

@@ -5,7 +5,7 @@ Repositories are real throwaway `git init` trees so `git ls-files` is
 exercised for real; only the `bazelisk query` shelling out is faked, because a
 nested Bazel invocation would make the unit test depend on a warm output base.
 
-    python3 tools/bazel/test/test_owned_files_check.py
+    bazelisk test //tools/bazel/sh:coverage --test_arg=--only=test_owned_files_check
 """
 
 import contextlib
@@ -117,6 +117,29 @@ class OwnedFilesCheckTestCase(unittest.TestCase):
     def test_is_control_plane_rejects_an_ordinary_file(self):
         for path in ("pkg/data.json", "BUILD.md", "MODULES.txt", "README"):
             self.assertFalse(owned_files_check.is_control_plane(path), path)
+
+    def test_is_control_plane_names_the_branch_that_decides_each_path(self):
+        # One assertion per decision in is_control_plane, so a reordering that
+        # drops one of them fails here instead of quietly asking for a ledger
+        # entry per Bazel control-plane file.
+        cases = (
+            # (path, expected, which decision answers for it)
+            ("MODULE.bazel", True, "listed in CONTROL_PLANE"),
+            ("sub/REPO.bazel", True, "basename listed in CONTROL_PLANE"),
+            ("pkg/BUILD.bazel", True, "a package's own build file"),
+            ("pkg/BUILD", True, "the unqualified build file name"),
+            ("pkg/WORKSPACE.generated", True, "basename starts with WORKSPACE"),
+            ("pkg/WORKSPACE.bazel.rej", True, "basename starts with WORKSPACE"),
+            ("pkg/MODULE.bazel.rej", True, "basename starts with MODULE.bazel"),
+            ("team/IDE.bazelproject", True, "the CONTROL_PLANE_SUFFIX"),
+            ("pkg/rules.bzl", False, "an ordinary loaded file"),
+            ("pkg/notes-workspace.md", False, "a doc whose name only contains the word"),
+            ("docs/module.bazel.md", False, "a doc, and the prefix is case-sensitive"),
+            ("pkg/bazelproject", False, "the suffix without its dot"),
+        )
+        for path, expected, why in cases:
+            self.assertEqual(owned_files_check.is_control_plane(path), expected,
+                             "%s: %s" % (path, why))
 
     # -- read_ledger --------------------------------------------------------
 

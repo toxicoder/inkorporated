@@ -87,6 +87,52 @@ else
     check "the checker wrappers pass startup and command options separately (${missing# })" 1
 fi
 
+# 5. run_coverage.sh must not print a floor it never measured. It re-executes
+#    itself under xtrace before it does any work, so no other test ever runs
+#    that bootstrap; and it asks python3 to answer, so a PATH without python3 is
+#    the host condition in which the driver has nothing to report. The withheld
+#    PATH is built from every directory the caller has, so the only thing the
+#    driver can be missing is the interpreter.
+no_python_dir="${WORKDIR}/no-python/bin"
+mkdir -p "$no_python_dir"
+IFS=: read -ra path_dirs <<< "$PATH"
+for dir in "${path_dirs[@]}"; do
+    [ -d "$dir" ] || continue
+    for tool in "${dir}"/*; do
+        [ -x "$tool" ] && [ ! -d "$tool" ] || continue
+        name="$(basename "$tool")"
+        case "$name" in
+            python3 | python3.* | python) continue ;;
+        esac
+        [ -e "${no_python_dir}/${name}" ] || ln -s "$tool" "${no_python_dir}/${name}"
+    done
+done
+if PATH="$no_python_dir" command -v python3 >/dev/null 2>&1; then
+    # The driver would run the whole lane instead of failing, so stop here: this
+    # is a broken fixture, not a passing test.
+    check "the withheld PATH really withholds python3" 1
+else
+    check "the withheld PATH really withholds python3" 0
+    status=0
+    out="$(env -u COVERAGE_TRACED -u COVERAGE_TRACE_FILE -u COVERAGE_REPO_ROOT \
+        -u COVERAGE_SH_DIR PATH="$no_python_dir" \
+        bash -x "${SH_DIR}/run_coverage.sh" 2>&1)" || status=$?
+    check "the coverage driver exits 127 when the checker cannot run" \
+        "$([ "$status" -eq 127 ] && echo 0 || echo "1 (exit ${status})")"
+    status=0
+    printf '%s\n' "$out" | grep -q 'python3: command not found' || status=$?
+    check "the driver says which binary it could not run" "$status"
+    status=0
+    printf '%s\n' "$out" | grep -q 'gate_lib\.sh.*python3: command not found' ||
+        status=$?
+    check "the failure comes from the library that runs the checker" "$status"
+    status=0
+    if printf '%s\n' "$out" | grep -q 'summary: .*floor'; then
+        status=1
+    fi
+    check "the driver reports no coverage summary it did not measure" "$status"
+fi
+
 if [ "$failures" -ne 0 ]; then
     echo "FAILURE: ${failures} wrapper assertion(s) failed" >&2
     exit 1

@@ -23,7 +23,18 @@ check() {
 [ -f "$GATE_LIB" ] || { echo "FATAL: ${GATE_LIB} is missing" >&2; exit 1; }
 
 WORKDIR="$(mktemp -d)"
-trap 'rm -rf "$WORKDIR"' EXIT
+# Only test 7 needs a scratch tree outside WORKDIR, and only when WORKDIR's own
+# ancestors hold a checkout, which would make the walk succeed for the wrong
+# reason.
+ORPHAN=""
+cleanup() {
+    rm -rf "$WORKDIR"
+    if [ -n "$ORPHAN" ]; then
+        rm -rf "$ORPHAN"
+    fi
+    return 0
+}
+trap cleanup EXIT
 
 # 1. --output_base is a startup option and --lockfile_mode is a command option.
 #    Bazel rejects either in the other's position with "Unknown startup
@@ -93,6 +104,89 @@ CALLER
 status=0
 bash "${WORKDIR}/orphan/pkg/caller.sh" >/dev/null 2>&1 || status=$?
 check "resolve_repo_root fails loudly outside a checkout" "$([ "$status" -ne 0 ] && echo 0 || echo 1)"
+
+# 5. Inside a test action the nested base is the per-action scratch directory,
+#    which Bazel creates and deletes, so two actions cannot share one base.
+status=0
+(
+    set -eu
+    export TEST_TMPDIR="${WORKDIR}/action-scratch"
+    # shellcheck source=../gate_lib.sh
+    source "$GATE_LIB"
+    [ "${BAZEL_META[0]}" = "--output_base=${TEST_TMPDIR}/bazel-meta" ]
+) || status=$?
+check "a test action gets a nested base under TEST_TMPDIR" "$status"
+
+# 6. Sourced by hand -- no TEST_TMPDIR, which is every run a person makes from
+#    their own shell -- the base falls back to one per uid. A fixed shared path
+#    would make two people on one host serialise on each other's workspace lock,
+#    and Bazel holds that lock for the whole invocation.
+status=0
+# Each case sources the library in its own subshell, so the value read below is
+# the one that subshell just computed, not the one test 2 exported into its own.
+# shellcheck disable=SC2031
+(
+    set -eu
+    unset TEST_TMPDIR
+    # shellcheck source=../gate_lib.sh
+    source "$GATE_LIB"
+    uid="$(id -u)"
+    [ "${BAZEL_META_OUTPUT_BASE}" = "/tmp/inkorporated-bazel-meta-${uid}" ]
+    [ "${BAZEL_META[0]}" = "--output_base=/tmp/inkorporated-bazel-meta-${uid}" ]
+    case "${BAZEL_META_OUTPUT_BASE}" in
+        *"${uid}"*) ;;
+        *) exit 1 ;;
+    esac
+) || status=$?
+check "a hand-run source falls back to a per-uid output base" "$status"
+
+# 7. resolve_repo_root refuses to guess, and names the path it started the walk
+#    from. The scratch tree has to sit outside every checkout -- and the library
+#    has to come from the checkout, not a copy -- because a copy's failure path
+#    says nothing about the file the lane measures.
+no_checkout_above() {
+    local dir="$1"
+    while [ "$dir" != "/" ]; do
+        if [ -d "${dir}/.git" ]; then
+            return 1
+        fi
+        dir="$(dirname "$dir")"
+    done
+    [ -d "/.git" ] && return 1
+    return 0
+}
+
+orphan="${WORKDIR}/no-checkout"
+mkdir -p "$orphan"
+if ! no_checkout_above "$orphan"; then
+    # TMPDIR itself is inside a checkout on this host: build the orphan
+    # somewhere that is not, or the walk would succeed and prove nothing.
+    orphan="/var/tmp/inkorporated-gate-lib-orphan-$$"
+    mkdir -p "$orphan"
+    ORPHAN="$orphan"
+    no_checkout_above "$orphan" || {
+        echo "FATAL: no scratch parent outside a checkout (checked /var/tmp too)" >&2
+        exit 1
+    }
+fi
+cat >"${orphan}/caller.sh" <<CALLER
+#!/bin/bash
+set -eu
+# Source the shipped library in place: the walk has to fail in the file that
+# ships, not in a copy of it laid down in the scratch tree.
+source "${GATE_LIB}"
+resolve_repo_root
+printf '%s\n' "\$REPO_ROOT"
+CALLER
+status=0
+stderr="$(bash "${orphan}/caller.sh" 2>&1 >/dev/null)" || status=$?
+check "resolve_repo_root exits 1 with no checkout above it" \
+    "$([ "$status" -eq 1 ] && echo 0 || echo 1)"
+started_from="$(readlink -f "${orphan}/caller.sh")"
+status=0
+printf '%s\n' "$stderr" | grep -qF \
+    "could not locate the repository root from ${started_from}" || status=$?
+check "the failure names the path the walk started from" "$status"
 
 if [ "$failures" -ne 0 ]; then
     echo "FAILURE: ${failures} gate_lib assertion(s) failed" >&2

@@ -3,3 +3,5 @@
 # --strict-ledger fails an entry that matches nothing.
 
 tools/bazel/sh/run_suite.sh:*	measured by //:gate itself. Running it from a coverage test would nest a third Bazel invocation inside the gate that is already measuring it, so it is exercised by the umbrella rather than by this lane.
+
+tools/bazel/sh/run_coverage.sh:65	the line that arms the tracer cannot appear in the trace it arms: bash writes a command trace record before running the command, so the line that enables xtrace has no record of its own, and the nested bootstrap run in wrappers_test.sh loses its records at line 56 where the driver re-points fd 9 at its own scratch file. The lane still runs the line on every pass; only the record is unobservable.

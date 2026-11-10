@@ -5,13 +5,14 @@ The runner is pointed at scratch trees it builds itself: a small Python module
 plus the unittest that covers it, and a small shell script plus the script that
 runs it under xtrace. Nothing here touches the repository.
 
-    python3 tools/bazel/test/test_coverage_report.py
+    bazelisk test //tools/bazel/sh:coverage --test_arg=--only=coverage_report
 """
 
 import contextlib
 import io
 import json
 import os
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -88,6 +89,93 @@ bash -x helper.sh >/dev/null
 FAILING_SH_TEST = '''#!/usr/bin/env bash
 exit 3
 '''
+
+# One script that holds every shape the scanner has an opinion about, written so
+# that a plain `bash script` executes every line of it. The scanner's set and the
+# set `bash -x` reports must be equal, and both must be this literal set: an
+# expectation read off bash rather than off the scanner is the only way the test
+# can catch a scanner that agrees with itself and disagrees with the shell.
+SHAPES = [
+    "#!/usr/bin/env bash",                      #  1 shebang: never tagged
+    "# a leading comment",                      #  2 comment: never tagged
+    "",                                         #  3 blank: never tagged
+    "GREETING=hello",                           #  4 assignment: tagged here
+    "printf '%s\\n' one \\",                    #  5 continuation: tagged once
+    "  two",                                    #  6 continuation: no tag of its own
+    "ITEMS=(",                                  #  7 array head
+    "  alpha",                                  #  8 array element
+    "  beta",                                   #  9 array element
+    ")",                                        # 10 array: tagged where it ends
+    "cat <<'LITERAL'",                          # 11 heredoc with a quoted delimiter
+    "$GREETING stays literal",                  # 12 payload: never tagged
+    "LITERAL",                                  # 13 delimiter: never tagged
+    "cat <<-INDENTED",                          # 14 heredoc that strips tabs
+    "\tbody padded",                            # 15 payload: never tagged
+    "\tINDENTED",                               # 16 tab-indented delimiter
+    "read -r pair <<< 'a b'",                   # 17 a herestring is not a heredoc
+    "printf '%s\\n' \"hash # inside quotes\" # a comment with <<EOF in it",
+                                                # 18 only the trailing comment is code
+    "joined=\"$(printf '%s\\n' \\",             # 19 assignment with a $( ) inside
+    "  left \\",                                # 20
+    "  right",                                  # 21
+    ")\"",                                      # 22 tagged where the value ends
+    "show() {",                                 # 23 function head: never tagged
+    "  local label=\"$1\"",                     # 24
+    "  printf '%s\\n' \"${label}\"",            # 25
+    "}",                                        # 26 lone brace: never tagged
+    "show called",                              # 27 the call is the command
+    "for letter in a b; do",                    # 28
+    "  printf '%s\\n' \"loop ${letter}\"",      # 29
+    "done",                                     # 30 lone done: never tagged
+    "for mode in yes no; do",                   # 31
+    "  if [[ \"${mode}\" == yes ]]; then",      # 32
+    "    then_ran=\"${mode}\"",                 # 33 runs on the first turn
+    "  else",                                   # 34 lone else: never tagged
+    "    else_ran=\"${mode}\"",                 # 35 runs on the second turn
+    "  fi",                                     # 36 lone fi: never tagged
+    "done",                                     # 37
+    "case \"${mode}\" in",                      # 38
+    "  no)",                                    # 39 case pattern: not a command
+    "    printf '%s\\n' \"case arm\"",          # 40
+    "    ;;",                                   # 41 clause word: never tagged
+    "  *)",                                     # 42 pattern of an arm that does not run
+    "    ;;",                                   # 43
+    "esac",                                     # 44 lone esac: never tagged
+    "\\printf '%s\\n' escaped-command-word",    # 45 an escaped first character
+    "printf unquoted\\ escaped\\ spaces",       # 46 an escape inside a word
+    "printf '%s\\n' \"${then_ran}${else_ran}${joined}${pair}\"",
+                                                # 47
+]
+SHAPES_SCRIPT = "\n".join(SHAPES) + "\n"
+
+# What `bash -x` with PS4='+|${BASH_SOURCE}|${LINENO}|' names for SHAPES.
+SHAPES_TRACED = {4, 5, 10, 11, 14, 17, 18, 22, 24, 25, 27, 28, 29, 31, 32, 33,
+                 35, 38, 40, 45, 46, 47}
+
+# A test file that hands back the tracer run_python_tests installs, so the
+# tracer itself can be driven with frames of our own: the interpreter does not
+# trace a trace function's own frame, so nothing else ever runs those lines.
+CAPTURE_TEMPLATE = '''import sys
+import unittest
+
+import {module}
+
+CAPTURED = []
+
+
+class CaptureTracerTest(unittest.TestCase):
+    def test_capture_the_installed_tracer(self):
+        CAPTURED.append(sys.gettrace())
+        self.assertEqual({module}.used(1), 2)
+'''
+
+
+class _Frame(object):
+    """Stand-in for a stack frame: the tracer reads only these two attributes."""
+
+    def __init__(self, filename, lineno):
+        self.f_code = type("Code", (object,), {"co_filename": filename})()
+        self.f_lineno = lineno
 
 
 @contextlib.contextmanager
@@ -175,6 +263,27 @@ class CoverageReportTestCase(unittest.TestCase):
                 "--sh-scope", "cov/sh-scope.txt",
                 "--exclusions", "cov/exclusions.txt"] + list(argv)
 
+    def trace_lines(self, script):
+        """Run a script under xtrace and return the lines bash names for it.
+
+        The same wiring run_shell_tests uses: PS4 carries the file and the line,
+        BASH_XTRACEFD points the trace at a file of our own, and SHELLOPTS is
+        what turns the option on in the child.
+        """
+        fd, log = tempfile.mkstemp(prefix="probe-", suffix=".trace")
+        self.addCleanup(os.unlink, log)
+        env = dict(os.environ, PS4=coverage_report.PS4, SHELLOPTS="xtrace",
+                   BASH_XTRACEFD=str(fd))
+        try:
+            proc = subprocess.run(["bash", script], cwd=self.root, env=env,
+                                  capture_output=True, text=True, pass_fds=(fd,))
+        finally:
+            os.close(fd)
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        real = os.path.realpath(script)
+        hits = coverage_report.collect_shell_trace(log, {real: real}, {})
+        return hits.get(real, set())
+
     def run_main(self, *argv):
         out, err = io.StringIO(), io.StringIO()
         with self.in_root(), tracing_preserved():
@@ -200,6 +309,25 @@ class CoverageReportTestCase(unittest.TestCase):
                          [("tools/a.py", "a reason"),
                           ("tools/b.py", "another reason"),
                           ("tools/c.py", "")])
+
+    # -- rpath --------------------------------------------------------------
+
+    def test_rpath_of_an_unresolvable_path_is_the_path_it_was_given(self):
+        # The tracer runs inside a sandbox where realpath can fail; a checker
+        # must not die over a path it cannot canonicalise.
+        exotic = os.path.join(self.root, "unresolvable", "mod.py")
+        with mock.patch.object(os.path, "realpath",
+                               side_effect=OSError("no such file or directory")):
+            self.assertEqual(coverage_report.rpath(exotic), exotic)
+
+    def test_rpath_answers_from_the_cache_after_the_first_call(self):
+        target = self.write("cached.py", "x = 1\n")
+        with mock.patch.object(os.path, "realpath",
+                               side_effect=os.path.realpath) as real:
+            first = coverage_report.rpath(target)
+            second = coverage_report.rpath(target)
+        self.assertEqual(first, second)
+        self.assertEqual(real.call_count, 1)
 
     # -- tree / expand ------------------------------------------------------
 
@@ -236,11 +364,11 @@ class CoverageReportTestCase(unittest.TestCase):
 
     def test_shell_executable_lines_skips_structure_and_comments(self):
         path = self.write("shape.sh",
-                          "#!/usr/bin/env bash\n"   # 1 shebang counts
+                          "#!/usr/bin/env bash\n"   # 1 shebang: a comment to bash
                           "# a comment\n"           # 2 skipped
                           "\n"                      # 3 blank
-                          "run() {\n"               # 4
-                          "  local x=1\n"           # 5 local is skipped
+                          "run() {\n"               # 4 a definition is not a command
+                          "  local x=1\n"           # 5 bash traces this one
                           "  echo hi\n"             # 6
                           "}\n"                     # 7 brace skipped
                           "for a in 1; do\n"        # 8
@@ -251,8 +379,202 @@ class CoverageReportTestCase(unittest.TestCase):
                           "fi\n"                    # 13 skipped
                           "case x in\n"             # 14
                           "esac\n")                 # 15 skipped
+        # The denominator is what `bash -x` can name: the shebang, the
+        # function-definition head, and the bare clause keywords never produce a
+        # trace line, so a script could never cover them.
         self.assertEqual(coverage_report.shell_executable_lines(path),
-                         {1, 4, 6, 8, 9, 11, 12, 14})
+                         {5, 6, 8, 9, 11, 12, 14})
+
+    # -- shell scanner: the bash -x contract --------------------------------
+
+    def test_shell_executable_lines_is_exactly_the_traced_set(self):
+        # The invariant the whole shell half rests on: a line is in the
+        # denominator if and only if bash can name it. Ask bash, not the scanner.
+        path = self.write("shapes.sh", SHAPES_SCRIPT)
+        traced = self.trace_lines(path)
+        self.assertEqual(traced, SHAPES_TRACED)
+        self.assertEqual(coverage_report.shell_executable_lines(path),
+                         SHAPES_TRACED)
+
+    def test_shell_executable_lines_names_the_continuation_once_at_its_head(self):
+        # A command spread over lines is one command: bash names its first line,
+        # so the tail lines must not join the denominator or they are forever
+        # reported uncovered.
+        path = self.write("continued.sh", "printf '%s\\n' a \\\n  b \\\n  c\n")
+        self.assertEqual(self.trace_lines(path), {1})
+        self.assertEqual(coverage_report.shell_executable_lines(path), {1})
+
+    def test_shell_executable_lines_puts_a_multiline_array_on_its_last_line(self):
+        # A statement of assignments alone has no command word, so bash names
+        # the line its last value ends on instead of the line it opens on.
+        path = self.write("array.sh", "NAME=(\n  one\n  two\n)\n")
+        self.assertEqual(self.trace_lines(path), {4})
+        self.assertEqual(coverage_report.shell_executable_lines(path), {4})
+
+    def test_shell_executable_lines_ignores_a_heredoc_whole(self):
+        # Only the command that opens the here-document is a command; the
+        # payload and its delimiter line are stdin, and no trace names them.
+        path = self.write("docs.sh",
+                          "cat <<'EOF'\nnot a command\nEOF\necho after\n")
+        self.assertEqual(self.trace_lines(path), {1, 4})
+        self.assertEqual(coverage_report.shell_executable_lines(path), {1, 4})
+
+    def test_shell_executable_lines_keeps_a_herestring_and_a_hashed_comment(self):
+        # `<<<` is a herestring: its right side is a word, not a document, so
+        # the line is a command. And a `<<EOF` inside a comment must not make
+        # the scanner swallow the lines below it.
+        path = self.write("strings.sh",
+                          "read -r x <<< 'a b'\n"
+                          "echo done # shaped like <<EOF but it is a comment\n"
+                          "echo last\n")
+        self.assertEqual(self.trace_lines(path), {1, 2, 3})
+        self.assertEqual(coverage_report.shell_executable_lines(path), {1, 2, 3})
+
+    def test_shell_executable_lines_puts_an_escaped_quote_inside_the_value(self):
+        # The shape //tools/bazel/sh/doctor.sh writes: a double-quoted value
+        # holding \" and a command substitution spread over lines. An escaped
+        # quote is not the end of the word, so the statement is still a bare
+        # assignment and bash names the line the value ends on. Read the
+        # backslash as a closing quote and the statement splits at the next
+        # space, looks like a command, and asks this script to cover a line no
+        # trace ever reports.
+        path = self.write("json.sh",
+                          'x=1\n'
+                          'json_rows="{\\"a\\":\\"$( \n'
+                          '  [[ "1" == "1" ]] && echo present || echo MISSING\n'
+                          '  )\\",\\"b\\":\\"pin ${x}\\"}"\n'
+                          'echo done\n')
+        traced = self.trace_lines(path)
+        self.assertEqual(traced, {1, 4, 5})
+        self.assertEqual(coverage_report.shell_executable_lines(path), traced)
+
+    def test_shell_executable_lines_counts_an_escaped_command_word_once(self):
+        # A command word can be introduced by an escaped character, which is
+        # where the scanner appends to the statement without seeing a token
+        # start; the line is still exactly one command.
+        path = self.write("escaped.sh", "\\ls -l\nprintf '%s' a\\\n b\n")
+        traced = self.trace_lines(path)
+        self.assertEqual(coverage_report.shell_executable_lines(path), traced)
+        self.assertEqual(traced, {1, 2})
+
+    # -- _quote_state -------------------------------------------------------
+
+    def test_quote_state_closes_only_the_quote_it_opened(self):
+        self.assertEqual(coverage_report._quote_state(False, False, ""),
+                         (False, False))
+        self.assertEqual(coverage_report._quote_state(False, False, "it's"),
+                         (True, False))
+        self.assertEqual(coverage_report._quote_state(False, False, 'say "hi"'),
+                         (False, False))
+        self.assertEqual(coverage_report._quote_state(False, False, 'say "hi'),
+                         (False, True))
+        self.assertEqual(coverage_report._quote_state(True, False, "still open"),
+                         (True, False))
+        self.assertEqual(coverage_report._quote_state(False, True, "still open"),
+                         (False, True))
+        # A double quote closes a word that was already open in one.
+        self.assertEqual(coverage_report._quote_state(False, True, 'still "open'),
+                         (False, False))
+
+    def test_quote_state_treats_a_nested_quote_as_literal(self):
+        # An apostrophe inside double quotes does not open a single-quoted word,
+        # and a double quote inside single quotes does not open a double one.
+        self.assertEqual(coverage_report._quote_state(False, False, '"a\'b"'),
+                         (False, False))
+        self.assertEqual(coverage_report._quote_state(False, False, "'a\"b'"),
+                         (False, False))
+
+    def test_quote_state_honours_a_backslash_escape(self):
+        # Outside single quotes a backslash hides the next character, which is
+        # what keeps \" from closing a double-quoted word.
+        self.assertEqual(coverage_report._quote_state(False, False, 'a\\"b'),
+                         (False, False))
+        self.assertEqual(coverage_report._quote_state(False, False, '"a\\"b"'),
+                         (False, False))
+        # Inside single quotes a backslash is literal, so the quote still closes.
+        self.assertEqual(coverage_report._quote_state(False, False, r"'a\'b'"),
+                         (True, False))
+
+    # -- _code_part ---------------------------------------------------------
+
+    def test_code_part_cuts_a_trailing_comment_but_not_a_quoted_hash(self):
+        self.assertEqual(coverage_report._code_part("echo hi # note", False, False),
+                         ("echo hi ", False, False))
+        self.assertEqual(coverage_report._code_part("echo 'a # b'", False, False),
+                         ("echo 'a # b'", False, False))
+        self.assertEqual(coverage_report._code_part('echo "a # b" # cut',
+                                                    False, False),
+                         ('echo "a # b" ', False, False))
+        self.assertEqual(coverage_report._code_part("echo a#b", False, False),
+                         ("echo a#b", False, False))
+        self.assertEqual(coverage_report._code_part("# whole line", False, False),
+                         ("", False, False))
+
+    def test_code_part_walks_past_an_escaped_character(self):
+        # A backslash hides the next character, so the quote state after the
+        # line is the state the shell is really in.
+        self.assertEqual(coverage_report._code_part(r"echo a\ b # cut", False, False),
+                         (r"echo a\ b ", False, False))
+        # An escaped quote is not a quote, so the hash after it still opens a
+        # comment instead of hiding inside a word.
+        self.assertEqual(coverage_report._code_part(r'echo \" # cut', False, False),
+                         (r'echo \" ', False, False))
+        self.assertEqual(coverage_report._code_part('echo "a\\" # still quoted',
+                                                    False, False),
+                         ('echo "a\\" # still quoted', False, True))
+
+    def test_code_part_reports_an_open_quote_so_the_next_line_continues_it(self):
+        self.assertEqual(coverage_report._code_part("echo 'open", False, False),
+                         ("echo 'open", True, False))
+
+    # -- heredoc_body_lines -------------------------------------------------
+
+    def test_heredoc_body_lines_marks_the_payload_and_its_delimiter(self):
+        text = "\n".join([
+            "cat <<'LITERAL'",         # 1  the command, not part of the body
+            "$value stays literal",    # 2  body
+            "LITERAL",                 # 3  delimiter
+            "cat <<-TABS",             # 4
+            "\tbody padded",           # 5  body, tab-indented
+            "\tTABS",                  # 6  delimiter, tab-indented
+            "read x <<< 'a b'",        # 7  a herestring is not a heredoc
+            "echo hi # shaped like <<EOF",  # 8 a comment is not a command
+            "echo end",                # 9
+            "",
+        ])
+        self.assertEqual(coverage_report.heredoc_body_lines(text),
+                         {2, 3, 5, 6})
+
+    def test_heredoc_body_lines_of_an_unterminated_document_runs_to_the_end(self):
+        # A script that falls off the end without its delimiter has no commands
+        # below the opener either; the scan must stop rather than wander.
+        self.assertEqual(coverage_report.heredoc_body_lines("cat <<EOF\none\ntwo\n"),
+                         {2, 3, 4})
+
+    def test_heredoc_body_lines_of_a_script_without_heredocs_is_empty(self):
+        self.assertEqual(coverage_report.heredoc_body_lines("echo one\necho two\n"),
+                         set())
+
+    # -- _bare_assignment ---------------------------------------------------
+
+    def test_bare_assignment_accepts_a_statement_of_assignments_only(self):
+        for statement in ("A=1", "A=1 B=2", "A=1 ", "count+=1",
+                          "A='a b'", 'B="c d"', "A=(\n  x\n  y\n)",
+                          "A=((nested))", "A=x B=(\n y\n)",
+                          # The value carries escaped quotes and a space, so a
+                          # scanner that reads \" as the end of the word splits
+                          # the statement and calls the tail a command.
+                          'json="{\\"a\\":\\"b c\\"}"',
+                          'rows="{\\"k\\":\\"$( \n echo hi\n )\\"}"'):
+            self.assertTrue(coverage_report._bare_assignment(statement), statement)
+
+    def test_bare_assignment_rejects_anything_with_a_command_in_it(self):
+        for statement in ("", "echo hi", "A=1 echo hi", "1A=x", "A",
+                          "A=(unterminated", "A=1 (subshell)",
+                          # A space the backslash does not protect still splits
+                          # the word, and the tail is a command word.
+                          'A=1 \\ echo'):
+            self.assertFalse(coverage_report._bare_assignment(statement), statement)
 
     # -- exclusion_lines ----------------------------------------------------
 
@@ -308,6 +630,36 @@ class CoverageReportTestCase(unittest.TestCase):
             hits = coverage_report.run_python_tests(self.root, [absolute], [])
         self.assertEqual(hits, {})
 
+    def test_the_installed_tracer_records_only_instrumented_frames(self):
+        # Nothing else ever runs the tracer's own body: the interpreter does not
+        # trace a trace function's frame while it is installed. Capture it from
+        # inside the suite it is tracing and drive it with frames of our own.
+        module = self.make_project()
+        capture = "cov_test_capture_%d.py" % self._serial
+        self.write(capture, CAPTURE_TEMPLATE.format(module=module))
+        target = os.path.join(self.root, module + ".py")
+        with tracing_preserved():
+            hits = coverage_report.run_python_tests(self.root, [capture], [target])
+        captured = sys.modules[capture[:-3]].CAPTURED
+        self.assertEqual(len(captured), 1)
+        tracer = captured[0]
+        real = os.path.realpath(target)
+        before = set(hits[real])
+
+        # A frame of an instrumented file is recorded, and the tracer returns
+        # itself so every later event in that frame keeps being reported.
+        self.assertIs(tracer(_Frame(real, 999), "line", None), tracer)
+        self.assertEqual(hits[real] - before, {999})
+        # A frame that has not reached a statement yet has no line to record.
+        tracer(_Frame(real, 0), "line", None)
+        self.assertEqual(hits[real], before | {999})
+        # A frame of anything else is not instrumented and must not appear.
+        tracer(_Frame(os.path.join(self.root, "elsewhere.py"), 7), "call", None)
+        self.assertEqual(list(hits), [real])
+        # An event that is neither a call nor a line is not a statement.
+        tracer(_Frame(real, 998), "return", None)
+        self.assertNotIn(998, hits[real])
+
     # -- _load_suite --------------------------------------------------------
 
     def test_load_suite_reuses_the_sys_path_entry(self):
@@ -322,6 +674,36 @@ class CoverageReportTestCase(unittest.TestCase):
         path = self.write(".py", "import unittest\n")
         suite = coverage_report._load_suite(path)
         self.assertEqual(suite.countTestCases(), 0)
+
+    # -- collect_shell_trace ------------------------------------------------
+
+    def test_collect_shell_trace_ignores_lines_that_are_not_a_trace(self):
+        # A script that writes to stderr while xtrace points at the same file
+        # (BASH_XTRACEFD unset, which is how a person runs it by hand) fills the
+        # log with prose. Only a well-formed trace line may count.
+        self.make_project()
+        path = self.write("driver.trace",
+                          "some script said this\n"
+                          "++|script.sh|3|\n"
+                          "|script.sh|4|\n"
+                          "+|script.sh|not-a-line|\n"
+                          "+|script.sh|5|echo hi\n")
+        wanted = coverage_report.wanted_map([os.path.join(self.root, "script.sh")])
+        real = os.path.realpath(os.path.join(self.root, "script.sh"))
+        hits = coverage_report.collect_shell_trace(path, wanted, {}, self.root)
+        self.assertEqual(hits, {real: {3, 5}})
+
+    def test_collect_shell_trace_keeps_only_the_scripts_in_scope(self):
+        # $BASH_SOURCE is whatever path the shell was handed: a relative name
+        # resolves against the test's cwd, a path from elsewhere is dropped.
+        self.make_project()
+        path = self.write("driver.trace",
+                          "+|/elsewhere/helper.sh|3|\n"
+                          "+|helper.sh|4|\n")
+        wanted = coverage_report.wanted_map([os.path.join(self.root, "helper.sh")])
+        real = os.path.realpath(os.path.join(self.root, "helper.sh"))
+        hits = coverage_report.collect_shell_trace(path, wanted, {}, self.root)
+        self.assertEqual(hits, {real: {4}})
 
     # -- run_shell_tests ----------------------------------------------------
 
@@ -342,6 +724,23 @@ class CoverageReportTestCase(unittest.TestCase):
                 self.assertIsNone(coverage_report.run_shell_tests(
                     self.root, ["gone.sh"], []))
         self.assertIn("error: shell test not found: gone.sh", err.getvalue())
+
+    def test_run_shell_tests_writes_the_trace_where_the_caller_asks(self):
+        # --sh-trace hands the runner a file a driver already opened; the runner
+        # has to create the parent directory and reuse the path instead of
+        # inventing a temporary one the driver cannot reach.
+        self.make_project()
+        trace = os.path.join(self.root, "cov", "deeper", "driver.trace")
+        with self.in_root(), tracing_preserved():
+            hits = coverage_report.run_shell_tests(
+                self.root, ["cov_test_all.sh"],
+                [os.path.join(self.root, "script.sh")], trace_path=trace)
+        real = os.path.realpath(os.path.join(self.root, "script.sh"))
+        self.assertEqual(hits[real], {2, 3, 4, 5})
+        self.assertTrue(os.path.isfile(trace), "the trace was not left at " + trace)
+        with open(trace, encoding="utf-8") as handle:
+            body = handle.read()
+        self.assertIn("+|script.sh|4|", body)
 
     def test_run_shell_tests_of_a_failing_script_is_an_error(self):
         self.write("cov_test_broken.sh", FAILING_SH_TEST)
@@ -461,7 +860,11 @@ class CoverageReportTestCase(unittest.TestCase):
 
     def test_main_flags_a_module_below_the_floor(self):
         self.make_project()
-        self.ledger("py-scope.txt", (self.module + ".py", "partly tested"))
+        # A module the test file never imports: it is in scope with not one
+        # line executed, so the run has to fail the floor instead of reporting
+        # a clean 100%.
+        self.write("never_imported.py", MOD_TEMPLATE)
+        self.ledger("py-scope.txt", ("never_imported.py", "no test imports it"))
         code, out, _ = self.run_main("--test", self.test_arg,
                                      "--sh-test", "cov_test_all.sh")
         self.assertEqual(code, 1, out)
@@ -478,6 +881,32 @@ class CoverageReportTestCase(unittest.TestCase):
         self.assertNotIn("script.sh", out)
         self.assertIn("helper.sh", out)
         self.assertIn("summary: 1 modules | 1/1 lines", out)
+
+    def test_main_folds_a_supplied_shell_trace_into_the_measure(self):
+        # The coverage wrapper cannot be its own shell test: it is the thing
+        # running. It hands its own xtrace over with --sh-trace, and lines that
+        # no unit test executed have to count from that file alone.
+        self.make_project()
+        self.write("later.sh", SCRIPT)
+        self.ledger("sh-scope.txt", ("script.sh", "the script"),
+                    ("helper.sh", "the helper"),
+                    ("later.sh", "traced by the driver, not by a test"))
+        self.ledger("exclusions.txt", ("script.sh:1", "shebang"),
+                    ("helper.sh:1", "shebang"), ("later.sh:1", "shebang"))
+        self.write("driver.trace",
+                   "".join("+|later.sh|%d|\n" % n for n in (2, 3, 4, 5)))
+
+        code, out, _ = self.run_main("--test", self.test_arg,
+                                     "--sh-test", "cov_test_all.sh")
+        self.assertEqual(code, 1, out)
+        self.assertIn("LOW", out)
+
+        code, out, _ = self.run_main("--test", self.test_arg,
+                                     "--sh-test", "cov_test_all.sh",
+                                     "--sh-trace", "driver.trace")
+        self.assertEqual(code, 0, out)
+        self.assertIn("OK  later.sh", out)
+        self.assertIn("summary: 4 modules | 11/11 lines", out)
 
     def test_main_lists_stale_scope_entries_when_the_ledger_is_strict(self):
         self.make_project()
@@ -514,6 +943,17 @@ class CoverageReportTestCase(unittest.TestCase):
                                      "--sh-test", "no_such_test.sh")
         self.assertEqual(code, 2)
         self.assertIn("shell test not found", err)
+
+    def test_main_exits_two_when_a_supplied_shell_trace_is_missing(self):
+        # A driver that died before it wrote its trace must not leave the lane
+        # measuring nothing and calling it complete.
+        self.make_project()
+        code, _, err = self.run_main("--test", self.test_arg,
+                                     "--sh-test", "cov_test_all.sh",
+                                     "--sh-trace",
+                                     os.path.join(self.root, "gone.trace"))
+        self.assertEqual(code, 2)
+        self.assertIn("shell trace not found", err)
 
     def test_main_exits_two_when_a_test_fails(self):
         self.make_project()

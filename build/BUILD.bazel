@@ -1,0 +1,9 @@
+# Shared Bazel macros and gate payloads for the Inkorporated repository.
+
+exports_files(["defs.bzl"])
+
+filegroup(
+    name = "macros",
+    srcs = ["defs.bzl"],
+    visibility = ["//visibility:public"],
+)

@@ -1,4 +1,16 @@
-# Disable Bzlmod to continue using WORKSPACE.bazel
-common --noenable_bzlmod
-# Explicitly enable WORKSPACE as it might be disabled by default in newer Bazel versions (8.0+)
-common --enable_workspace
+# Bazelisk-first configuration for the Inkorporated monorepo.
+# The toolchain version is pinned in .bazelversion; do not rely on a host Bazel.
+
+# Hermetic shell rules come from @rules_shell (see MODULE.bazel).
+common --enable_bzlmod
+
+# Keep build and test output free of network-dependent surprises.
+common --enable_workspace=false
+
+# Reproducible output roots and a stable cache location.
+build --experimental_repo_remote_exec=false
+build --show_progress_rate_limit=5
+
+# Test defaults: fail loudly, keep logs for the gate report.
+test --test_output=errors
+test --test_verbose_timeout_warnings

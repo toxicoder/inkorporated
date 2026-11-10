@@ -1,0 +1,13 @@
+"""Bzlmod module definition for the Inkorporated monorepo.
+
+Bazel 9 removed the WORKSPACE repository rule, so external rule sets are
+declared here and fetched by Bazelisk. Every gate in this repository loads
+shell tests from @rules_shell.
+"""
+
+module(
+    name = "inkorporated",
+    version = "1.0.0",
+)
+
+bazel_dep(name = "rules_shell", version = "0.8.0")

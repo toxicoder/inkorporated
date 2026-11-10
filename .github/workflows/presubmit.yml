@@ -4,35 +4,33 @@ on:
   pull_request:
     branches: [main]
 
+# The quick lane, so a PR gets an early answer. CI.yml runs the whole gate on
+# the same event; this job runs //:fast, which is that lane without the slow
+# targets, and installs the same host tools the lanes demand.
 jobs:
-  bazel-tests:
+  fast:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Bazelisk
         uses: bazelbuild/setup-bazelisk@v3
-        
-      - name: Run Terraform Validation
-        run: bazel test //infrastructure/terraform:terraform_validate
-        
-      - name: Run Terraform Format Check
-        run: bazel test //infrastructure/terraform:terraform_fmt
-        
-      - name: Run Ansible Linting
-        run: bazel test //infrastructure/ansible:ansible_lint
-        
-      - name: Run Configuration Validation
-        run: bazel test //tests/config:validate_infrastructure
-        
-      - name: Run Configuration Security Scan
-        run: bazel test //tests/config:config_security_scan
-        
-      - name: Run All Tests
-        run: bazel test //:all_tests
-        
+
+      - name: Install the tools the strict lane demands
+        run: |
+          python -m pip install --upgrade pip
+          pip install ansible-lint yamllint pyyaml
+          ansible-galaxy collection install -r infrastructure/ansible/requirements.yml
+          curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+      - name: Report the host toolchain
+        run: bazelisk run //:doctor
+
+      - name: Run the fast lane
+        run: bazelisk test //:fast --test_output=errors --nocache_test_results
+
       - name: Cache Bazel artifacts
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/bazel
-          key: ${{ runner.os }}-bazel-${{ hashFiles('**/WORKSPACE.bazel') }}
+          key: ${{ runner.os }}-bazel-${{ hashFiles('MODULE.bazel', 'MODULE.bazel.lock', '**/BUILD.bazel', '**/*.bzl') }}

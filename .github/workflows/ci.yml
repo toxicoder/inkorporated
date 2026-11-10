@@ -32,9 +32,15 @@ jobs:
               - 'apps/**'
               - 'config/**'
               - 'tests/**'
-              - 'WORKSPACE.bazel'
-              - 'BUILD.bazel'
-              - '*.sh'
+              - 'tools/**'
+              - 'build/**'
+              - 'MODULE.bazel'
+              - 'MODULE.bazel.lock'
+              - '.bazelrc'
+              - '.bazelversion'
+              - '**/BUILD.bazel'
+              - '**/*.bzl'
+              - '**/*.sh'
             always:
               - '.github/workflows/**'
 
@@ -49,12 +55,12 @@ jobs:
           python-version: "3.11"
           cache: pip
           cache-dependency-path: docs/requirements.txt
-      - name: Install docs dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r docs/requirements.txt
+      - name: Setup Bazelisk
+        uses: bazelbuild/setup-bazelisk@v3
+      - name: Prepare the docs virtualenv
+        run: bazelisk run //docs:setup-docs
       - name: Strict MkDocs build
-        run: ./docs/manage-docs.sh build --strict
+        run: bazelisk test //docs:build --test_output=errors
 
   domain-validation:
     needs: changes
@@ -62,8 +68,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Setup Bazelisk
+        uses: bazelbuild/setup-bazelisk@v3
       - name: Validate domain configuration
-        run: chmod +x validate_domain_config.sh && ./validate_domain_config.sh
+        run: bazelisk test //:validate_domain_config --test_output=errors
 
   bazel-tests:
     needs: changes
@@ -73,11 +81,19 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Bazelisk
         uses: bazelbuild/setup-bazelisk@v3
-      - name: Run Bazel tests
-        run: bazel test //:all_tests //tests/config:config_security_scan --test_output=errors
-        continue-on-error: true
+      - name: Install the tools the strict lane demands
+        run: |
+          python -m pip install --upgrade pip
+          pip install ansible-lint yamllint pyyaml
+          ansible-galaxy collection install -r infrastructure/ansible/requirements.yml
+          curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+          kubectl version --client || true
+      - name: Report the host toolchain
+        run: bazelisk run //:doctor
+      - name: Run the gate
+        run: bazelisk test //:gate --test_output=errors --nocache_test_results
       - name: Cache Bazel artifacts
         uses: actions/cache@v4
         with:
           path: ~/.cache/bazel
-          key: ${{ runner.os }}-bazel-${{ hashFiles('**/WORKSPACE.bazel') }}
+          key: ${{ runner.os }}-bazel-${{ hashFiles('MODULE.bazel', 'MODULE.bazel.lock', '**/BUILD.bazel', '**/*.bzl') }}

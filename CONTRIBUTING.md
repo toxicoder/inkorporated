@@ -7,7 +7,7 @@ Thank you for helping improve Inkorporated — the hybrid-cloud infrastructure a
 1. Prefer the [devcontainer](.devcontainer/) when available.
 2. Read [docs/project-conventions.md](docs/project-conventions.md) for naming, formatting, safety, docs, and testing.
 3. Read [docs/guides/overview.md](docs/guides/overview.md) for product context.
-4. For documentation site work: `./docs/manage-docs.sh serve` (see [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)).
+4. For documentation site work: `bazelisk run //docs:manage-docs -- serve` (see [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)).
 
 ## Branching, commits, PRs, and promotion
 
@@ -74,7 +74,7 @@ One or two sentences: *what* and *why*.
 - Or: “No safety impact.”
 
 ## Test plan
-- Commands run (e.g. `./run_all_tests.sh`, `./docs/manage-docs.sh build --strict`)
+- Commands run (e.g. `bazelisk test //:gate`, `bazelisk test //docs:build`)
 
 ## Checklist
 - [ ] Tests / validation pass

@@ -46,7 +46,7 @@ def repo_sh_binary(name, srcs, **kwargs):
     )
 
 # Bazel 9 removed the native test_suite rule and left a stub that expands to
-# nothing: `bazel test //pkg:all_tests` reports "Found 0 test targets". The
+# nothing: a test request on //pkg:all_tests reports "Found 0 test targets". The
 # successor module is not published to the Bazel Central Registry yet, so the
 # umbrella is a real test that runs the suite in a nested invocation. A nested
 # Bazel has to use its own output base, because this invocation still holds the
@@ -56,7 +56,7 @@ def repo_umbrella(name, suites, tag_filters = [], runner = "run_suite.sh", lib =
 
     Declare this in the repository root so that `bazelisk test //:gate` is a
     real test target: an alias to a test is not itself a test, and Bazel answers
-    "No test targets were found" to `bazel test` on an alias.
+    "No test targets were found" to a test request on an alias.
 
     Args:
       name: the target everyone documents, typically `gate`.

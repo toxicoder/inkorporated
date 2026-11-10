@@ -234,47 +234,21 @@ echo "✅ Security permission tests completed"
 ## Test Automation Script
 
 ### run_all_tests.sh
+
+`run_all_tests.sh` predates Bazel. It is a shim that forwards to the gate, so
+muscle memory and any external automation land on the same answer:
+
 ```bash
-#!/bin/bash
-# Run all tests in the project
-
-echo "=================================="
-echo "Running Comprehensive Test Suite"
-echo "=================================="
-
-# Set exit on error
-set -e
-
-# Run configuration tests
-echo ""
-echo "1. Running Configuration Tests..."
-./tests/config/test_config_validation.sh
-./tests/config/test_env_vars.sh
-
-# Run security tests
-echo ""
-echo "2. Running Security Tests..."
-./tests/security/test_permissions.sh
-
-# Run Kubernetes tests
-echo ""
-echo "3. Running Kubernetes Tests..."
-./tests/kubernetes/test_manifests.sh
-
-# Run integration tests
-echo ""
-echo "4. Running Integration Tests..."
-./tests/integration/test_authentik.sh
-
-echo ""
-echo "=================================="
-echo "All Tests Completed Successfully!"
-echo "=================================="
+exec bazelisk test //:gate --test_output=errors
 ```
+
+The suite itself is a set of `repo_sh_test` targets and there is no list of
+scripts to keep in sync: `//:gate` expands the lanes and runs them in one
+nested invocation that uses its own output base.
 
 ## Continuous Integration Setup
 
-### .github/workflows/test.yml
+### The gate job in .github/workflows/ci.yml
 ```yaml
 name: Test Suite
 on:
@@ -287,22 +261,29 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Setup Environment
+    - uses: actions/checkout@v4
+
+    - name: Setup Bazelisk
+      uses: bazelbuild/setup-bazelisk@v3
+
+    - name: Install the tools the strict lane demands
       run: |
-        chmod +x ./validate_config.sh
-        chmod +x ./tests/**/*.sh
-        chmod +x ./run_all_tests.sh
-    
-    - name: Run Configuration Validation
-      run: |
-        ./validate_config.sh
-    
-    - name: Run All Tests
-      run: |
-        ./run_all_tests.sh
+        python -m pip install --upgrade pip
+        pip install ansible-lint yamllint pyyaml
+        ansible-galaxy collection install -r infrastructure/ansible/requirements.yml
+        curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+    - name: Report the host toolchain
+      run: bazelisk run //:doctor
+
+    - name: Run the gate
+      run: bazelisk test //:gate --test_output=errors --nocache_test_results
 ```
+
+The fragment mirrors the `bazel-tests` job of `.github/workflows/ci.yml`, which
+is the workflow that actually runs. Nothing chmods a script and nothing calls a
+script by path: Bazel sets the executable bit from the source file, and a lane
+is chosen by its target name.
 
 ## Test Coverage Requirements
 
@@ -323,15 +304,14 @@ jobs:
 
 ```bash
 # Run all tests
-./run_all_tests.sh
+bazelisk test //:gate
 
 # Run specific test category
-./tests/config/test_config_validation.sh
-./tests/security/test_permissions.sh
+bazelisk test //tests/config:test_config_validation
+bazelisk test //tests/security:test_permissions
 
 # Run individual test
-chmod +x tests/config/test_config_validation.sh
-./tests/config/test_config_validation.sh
+bazelisk test //tests/config:test_config_validation
 ```
 
 ## Test Maintenance

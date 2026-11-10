@@ -5,7 +5,7 @@
 # Usage:
 #   bazelisk test //:validate_config             # your .devcontainer/.env
 #   bazelisk test //:validate_config_template    # the committed template
-#   bazelisk run //:run_all_tests                # forwards to //:gate
+#   bazelisk test //:gate                        # the whole hermetic lane
 
 echo " validating Cline MCP configuration..."
 echo "================================================"

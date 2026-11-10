@@ -64,7 +64,7 @@ filegroup(
 repo_sh_test(
     name = "validate_config",
     srcs = ["validate_config.sh"],
-    tags = ["host"],
+    tags = ["host", "manual"],
 )
 
 # The same validator against the committed template: every required key present,
@@ -83,6 +83,7 @@ repo_sh_test(
         "//tools/bazel:secrets_allowlist",
     ],
     tags = ["gate"],
+    timeout = "short",
 )
 
 repo_sh_test(
@@ -93,6 +94,7 @@ repo_sh_test(
         "//config:all_configs",
     ],
     tags = ["gate"],
+    timeout = "short",
 )
 
 repo_sh_test(
@@ -101,12 +103,14 @@ repo_sh_test(
     data = ["//.devcontainer/scripts/utilities:utilities"],
     strict = True,
     tags = ["gate"],
+    timeout = "short",
 )
 
 repo_sh_test(
     name = "test_env_loader",
     srcs = ["test_env_loader.sh"],
     data = ["//.devcontainer/scripts/utilities:utilities"],
+    timeout = "short",
     tags = ["gate"],
 )
 
@@ -149,9 +153,11 @@ alias(
 )
 
 # run_all_tests.sh predates Bazel and forwards to //:gate so that one command
-# keeps working for people and scripts that still call it.
+# keeps working for people and scripts that still call it. It is an entry point
+# rather than a lane: manual keeps a wildcard from ever selecting a target that
+# starts the gate itself.
 repo_sh_binary(
     name = "run_all_tests",
     srcs = ["run_all_tests.sh"],
-    tags = ["gate"],
+    tags = ["manual"],
 )

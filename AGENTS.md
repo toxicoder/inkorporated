@@ -37,7 +37,9 @@ Full rules: [CONTRIBUTING.md](CONTRIBUTING.md).
 *   **Dev container:** `.devcontainer/`
 *   **Secrets SoT (local):** `.devcontainer/.env` — **MUST** be mode `600`; never commit
 *   **Template:** copy `.devcontainer/.env.example` → `.devcontainer/.env`
-*   **Validate:** `./validate_config.sh`, `./validate_domain_config.sh`
+*   **Validate:** `bazelisk test //:validate_config_template` (against the
+    committed template) and `bazelisk test //:validate_domain_config`.
+    `//:validate_config` checks the operator's own `.env` and is a host lane.
 
 Environments: `config/environments/`, `apps/environments/`.
 
@@ -60,10 +62,15 @@ Environments: `config/environments/`, `apps/environments/`.
 
 ## 5. Build system (Bazel)
 
-*   Workspace enabled (`--enable_workspace`); Bzlmod disabled (`--noenable_bzlmod`)
-*   Shell tests: `load("@rules_sh//shell:sh_test.bzl", "sh_test")`
+*   Bzlmod (`MODULE.bazel`) with the version pinned in `.bazelversion`; Bazel 9
+    has no WORKSPACE, so `common --enable_workspace=false`
+*   Shell tests: `load("//build:defs.bzl", "repo_sh_test")`, which wraps
+    `@rules_shell//shell:sh_test.bzl` (Bazel 9 removed native `sh_test` and
+    left `test_suite` as a no-op stub)
 *   **No `glob()`** in `data` attributes; use direct labels
-*   `allow_empty=True` for `glob()` in `srcs` when files may be missing
+*   A surviving `glob()` in `srcs` carries an inline `# glob-policy: <reason>`
+    and stays inside the budget `//tools/bazel/sh:glob_budget` enforces
+*   One entry point: `bazelisk test //:gate` (see §10)
 
 ---
 
@@ -78,7 +85,10 @@ Environments: `config/environments/`, `apps/environments/`.
 ### Ansible
 
 *   Location: `infrastructure/ansible/`
-*   Lint: `ansible_lint_wrapper.sh` (skips if binary missing)
+*   Lint: `bazelisk test //infrastructure/ansible:ansible_lint` — fails under
+    `REQUIRE_LINT_TOOLS=1` when `ansible-lint`, `yamllint` or the
+    `community.general` collection is missing; install the collection with
+    `ansible-galaxy collection install -r infrastructure/ansible/requirements.yml`
 
 ---
 
@@ -86,14 +96,14 @@ Environments: `config/environments/`, `apps/environments/`.
 
 *   Manifests in `apps/`
 *   **NEVER** hardcode domains in Ingress — use templated domain config / `{{DOMAIN_BASE}}`
-*   Enforced by `./validate_domain_config.sh`
+*   Enforced by `bazelisk test //:validate_domain_config`
 
 ---
 
 ## 8. Documentation (MkDocs)
 
 *   Engine: **MkDocs Material** + **mike** multi-version (`latest` / `development`)
-*   Local: `./docs/manage-docs.sh serve` | `build --strict`
+*   Local: `bazelisk run //docs:manage-docs -- serve` | `-- build --strict`
 *   Every page: YAML frontmatter + **What's on this page** / **What this enables**
 *   Mermaid via pymdownx fences
 *   Links inside docs: relative `.md` paths
@@ -118,10 +128,14 @@ Enterprise OS trees include `organization/`, `corporate_strategy/`, `job_roles/`
 Before considering a task done:
 
 ```bash
-./validate_config.sh          # when env/config touched
-./validate_domain_config.sh   # when apps/ingress touched
-./run_all_tests.sh            # full suite when feasible
-./docs/manage-docs.sh build --strict   # when docs touched
+bazelisk test //:gate                          # the whole hermetic lane; the
+                                               # answer to "is this repo green?"
+bazelisk test //:fast                          # the same lanes minus the slow
+                                               # checks, while you iterate
+bazelisk run  //:doctor                        # which host tools the gates need
+bazelisk test //:validate_config_template      # when env/config touched
+bazelisk test //:validate_domain_config        # when apps/ingress touched
+bazelisk test //docs:build                     # when docs touched (host lane)
 ```
 
 ---

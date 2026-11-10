@@ -3,9 +3,8 @@
 # gate. This script exists so that muscle memory, editor tasks, and any external
 # automation that still calls it land on the same answer.
 #
-# Usage:
-#   bazelisk run //:run_all_tests
-#   bazelisk test //:gate            # the target this script forwards to
+# Usage: call this script directly, or use the target it forwards to:
+#   bazelisk test //:gate            # the one command that answers the question
 set -e
 
 echo "run_all_tests.sh is a shim for the Bazel gate."

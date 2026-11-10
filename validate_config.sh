@@ -14,9 +14,25 @@ CONFIG_FILE=".devcontainer/.env"
 TEMPLATE_MODE=false
 ALLOWLIST="tools/bazel/secrets-allowlist.txt"
 
+usage() {
+    echo "Usage: validate_config.sh [--config-file PATH] [--template] [--allowlist PATH]"
+}
+
+# A value-taking flag has to be given a value. Reading $2 when it is absent and
+# then shifting twice leaves the loop looking at the same argument forever, so a
+# truncated command line hangs instead of failing.
+require_value() {
+    if [ "$1" -lt 2 ]; then
+        echo "error: $2 requires a value"
+        usage
+        exit 2
+    fi
+}
+
 while [ $# -gt 0 ]; do
     case "$1" in
         --config-file)
+            require_value $# "--config-file"
             CONFIG_FILE="$2"
             shift 2
             ;;
@@ -25,12 +41,13 @@ while [ $# -gt 0 ]; do
             shift
             ;;
         --allowlist)
+            require_value $# "--allowlist"
             ALLOWLIST="$2"
             shift 2
             ;;
         *)
             echo "Unknown argument: $1"
-            echo "Usage: validate_config.sh [--config-file PATH] [--template] [--allowlist PATH]"
+            usage
             exit 2
             ;;
     esac

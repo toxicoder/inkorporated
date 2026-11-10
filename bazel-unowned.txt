@@ -1,0 +1,30 @@
+# Bazel exclusion ledger
+#
+# Tracked files that no Bazel target owns, each with the reason it does not
+# need one. This is where an honest exception goes; it is not where a file goes
+# to hide.
+#
+# Format: one entry per line, `pattern<TAB>reason`, separated by a tab or two
+# spaces. Blank lines and `#` comments are ignored. `*` and `?` work as globs.
+#
+# Enforced by //tools/bazel/sh:owned_files_check, which fails when
+#   - a tracked file matches no target and no entry here,
+#   - an entry here carries no reason,
+#   - with --strict-ledger, an entry here matches nothing (so a deletion cannot
+#     leave a claim behind).
+#
+# Bazel's own control plane (.bazelrc, .bazelversion, .bazelignore,
+# MODULE.bazel, MODULE.bazel.lock, every BUILD file) is exempt in code: no rule
+# can be its owner.
+
+AGENTS.md	agent workflow guide; read by humans and agents, by nothing at build time
+CHANGELOG.md	release notes; prose only, no build meaning
+CONTRIBUTING.md	human-facing prose, read by nobody at build time
+LICENSE	MIT licence text; distributors copy it out of the checkout
+MCP_CONFIGURATION_FIX_SUMMARY.md	historical note kept for archaeology; no build meaning
+README.md	repository front page, read by people before they ever run a build
+SECURITY.md	vulnerability reporting policy; prose only
+TODO.md	tracking notes; prose only
+config_management.md	prose describing the configuration model the //config payloads implement
+inkorporated.code-workspace	editor convenience; no build meaning
+.gitignore	git reads it before Bazel exists, so no target can be its owner

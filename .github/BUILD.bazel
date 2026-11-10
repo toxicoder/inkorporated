@@ -1,0 +1,19 @@
+# GitHub-side payloads: the Actions workflows CI runs and the repository files
+# GitHub itself reads.
+
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "workflows",
+    srcs = glob(["workflows/*.yml"]),  # glob-policy: GitHub reads these directly and Bazel only claims them so a new workflow never lands unowned; the set grows as pipelines are added.
+)
+
+# Explicit list: a new template or bot config is a review-worthy change, not a
+# tree that grows by design.
+filegroup(
+    name = "templates",
+    srcs = [
+        "dependabot.yml",
+        "PULL_REQUEST_TEMPLATE.md",
+    ],
+)

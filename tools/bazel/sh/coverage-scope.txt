@@ -1,0 +1,15 @@
+# Coverage scope for the shell side of the gate: the wrappers and the doctor.
+#
+# Measured with `bash -x`, so the denominator is the union of the scripts these
+# tests execute. Adding a wrapper means covering it; a lowered floor nobody
+# noticed is the failure this lane exists to catch.
+#
+# One entry per line, `pattern<TAB>reason`.
+
+tools/bazel/sh/doctor.sh	the host report every strict lane depends on; a wrong census makes a skipped lane look like a passing one
+tools/bazel/sh/gate_lib.sh	repo-root resolution and the nested-query flags every wrapper shares
+tools/bazel/sh/run_coverage.sh	runs the coverage lane; a broken wrapper reports a green floor it never measured
+tools/bazel/sh/run_gate_policy.sh	runs the target-naming lane
+tools/bazel/sh/run_glob_budget.sh	runs the glob ratchet
+tools/bazel/sh/run_owned_files_check.sh	runs the file-ownership lane
+tools/bazel/sh/run_suite.sh	implements //:gate and //:fast; if it drops a lane the umbrella still reports green

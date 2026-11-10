@@ -1,0 +1,10 @@
+---
+# Collections the roles in this package need. ansible-lint treats an
+# unresolvable module as a fatal syntax error, so the lint lane cannot pass
+# without these; //infrastructure/ansible:ansible_lint says so and names this
+# file. Install with:
+#
+#   ansible-galaxy collection install -r infrastructure/ansible/requirements.yml
+collections:
+  - name: community.general
+    version: ">=9.0.0"

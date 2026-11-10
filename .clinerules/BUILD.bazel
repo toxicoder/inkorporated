@@ -1,0 +1,10 @@
+# Agent rule payloads: the standing rules and slash-command workflows the
+# coding agent loads out of .clinerules/. Nothing in the build reads them; the
+# target exists so the tree is owned rather than unaccounted for.
+
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "rules",
+    srcs = glob(["**/*.md"]),  # glob-policy: one markdown file per rule and per slash workflow, and new workflows are added by design without a BUILD edit.
+)

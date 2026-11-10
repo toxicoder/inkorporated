@@ -1,0 +1,5 @@
+# Coverage exclusions: lines and modules the 100% floor does not measure, each
+# with a reason. Same discipline as bazel-unowned.txt: no reason, no exemption;
+# --strict-ledger fails an entry that matches nothing.
+
+tools/bazel/sh/run_suite.sh:*	measured by //:gate itself. Running it from a coverage test would nest a third Bazel invocation inside the gate that is already measuring it, so it is exercised by the umbrella rather than by this lane.

@@ -46,3 +46,9 @@ docs/__pycache__/
 # Local pre-commit / tooling
 .mypy_cache/
 .ruff_cache/
+
+# Bazel workspace links written next to the checkout
+/bazel-bin
+/bazel-out
+/bazel-testlogs
+/bazel-inkorporated

@@ -1,0 +1,11 @@
+# Global configuration plus the per-environment overlays that
+# validate_config.sh and the secret scanner read.
+
+package(default_visibility = ["//visibility:public"])
+
+# Name is fixed by the Bazel-first contract: //tests/config:config_security_scan
+# and the root validation gates already point at //config:all_configs.
+filegroup(
+    name = "all_configs",
+    srcs = glob(["**/*"]),  # glob-policy: config/environments/<env>/ overlays are added one per environment by design, and each one is input to the config gates and the secret scan.
+)

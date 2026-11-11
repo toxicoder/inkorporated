@@ -1566,7 +1566,7 @@
 <li>Allocate a stable <code>job_id</code> (see <a href="../../project-conventions/">project conventions</a>).</li>
 <li>Add <code>docs/job_roles/...</code> with an AI Agent Profile when applicable.</li>
 <li>Add <code>cyborgs/&lt;job_id&gt;.yaml</code> with full schema fields (<a href="../schema/">schema</a>).</li>
-<li>Run <code>./docs/manage-docs.sh build</code> (or <code>python docs/generate_cyborg_docs.py</code>).</li>
+<li>Run <code>bazelisk run //docs:manage-docs -- build</code> (the generator runs automatically).</li>
 <li>Review the new card on the <a href="../generated/">roster</a> and the detail page under <code>generated/personas/</code>.</li>
 </ol>
 <pre class="mermaid"><code>flowchart TD

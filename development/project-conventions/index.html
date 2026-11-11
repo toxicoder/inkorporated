@@ -1766,8 +1766,8 @@
 <td>MkDocs strict builds; enterprise OS + infra in one site</td>
 </tr>
 <tr>
-<td><strong>Bazel-friendly</strong></td>
-<td>Prefer Bazel targets for tests; WORKSPACE mode (not bzlmod)</td>
+<td><strong>Bazel-first</strong></td>
+<td>Every tracked file owned by a target or a reasoned ledger entry; Bzlmod, version pinned in <code>.bazelversion</code></td>
 </tr>
 <tr>
 <td><strong>Least privilege agents</strong></td>
@@ -1866,14 +1866,26 @@
 <p><code>BOARD</code>, <code>EXEC</code>, <code>SWEN</code>, <code>SREL</code>, <code>DATA</code>, <code>PROD</code>, <code>DESN</code>, <code>RSCH</code>, <code>SALE</code>, <code>MKTG</code>, <code>COMM</code>, <code>CSM</code>, <code>FINC</code>, <code>PEOP</code>, <code>LEGL</code>, <code>OPS</code>, <code>REAL</code>, <code>POLI</code>, <code>PERS</code>, <code>ITOP</code>, <code>CUST</code>, <code>REGN</code>, <code>SQAD</code>, <code>TPGM</code>.</p>
 <hr>
 <h2 id="4-bazel-and-validation-entrypoints">4. Bazel and validation entrypoints<a class="headerlink" href="#4-bazel-and-validation-entrypoints" title="Permanent link">¶</a></h2>
-<p>Workspace mode: <code>common --enable_workspace</code>, bzlmod disabled (see <code>.bazelrc</code> / <code>AGENTS.md</code>).</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./run_all_tests.sh
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>./validate_config.sh
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>./validate_domain_config.sh
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>bazel<span class="w"> </span><span class="nb">test</span><span class="w"> </span>//:all_tests
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>./docs/manage-docs.sh<span class="w"> </span>build<span class="w"> </span>--strict
+<p>Bzlmod is on and WORKSPACE is off (<code>common --enable_bzlmod</code> and
+<code>common --enable_workspace=false</code> in <code>.bazelrc</code>). The version is pinned in
+<code>.bazelversion</code> and every command runs through <code>bazelisk</code>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bazelisk<span class="w"> </span><span class="nb">test</span><span class="w"> </span>//:gate<span class="w">                       </span><span class="c1"># the one command that answers</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">                                            </span><span class="c1"># "is this repo green?"</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>bazelisk<span class="w"> </span><span class="nb">test</span><span class="w"> </span>//:fast<span class="w">                       </span><span class="c1"># the same lanes minus the slow ones</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>bazelisk<span class="w"> </span>run<span class="w">  </span>//:doctor<span class="w">                     </span><span class="c1"># which host tools the gates need</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>bazelisk<span class="w"> </span><span class="nb">test</span><span class="w"> </span>//:validate_config_template<span class="w">   </span><span class="c1"># env/config changes</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>bazelisk<span class="w"> </span><span class="nb">test</span><span class="w"> </span>//:validate_domain_config<span class="w">     </span><span class="c1"># apps/ingress changes</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>bazelisk<span class="w"> </span><span class="nb">test</span><span class="w"> </span>//docs:build<span class="w">                  </span><span class="c1"># docs changes (host lane)</span>
 </span></code></pre></div>
-<p>Prefer adding new checks as Bazel <code>sh_test</code> targets with <strong>direct labels</strong> in <code>data</code> (no <code>glob()</code> in data).</p>
+<p>Prefer adding new checks as <code>repo_sh_test</code> targets loaded from
+<code>//build:defs.bzl</code>, with <strong>direct labels</strong> in <code>data</code> (no <code>glob()</code> in data).
+Bazel 9 removed the native <code>sh_test</code> and left <code>test_suite</code> as a no-op stub, so
+shell lanes come from <code>@rules_shell</code> through the macro and the umbrella is a
+real test rather than a suite. Every test carries a lane tag: <code>gate</code> for the
+hermetic lane that <code>//:gate</code> runs, or <code>host</code> plus <code>manual</code> when it needs a real
+Proxmox node, a live cluster, the operator's <code>.env</code>, network egress, or the docs
+virtualenv. A lane that cannot run stays tagged and named, never silently
+skipped.</p>
 <hr>
 <h2 id="5-formatting-and-linting">5. Formatting and linting<a class="headerlink" href="#5-formatting-and-linting" title="Permanent link">¶</a></h2>
 <table>
@@ -1898,7 +1910,7 @@
 </tr>
 <tr>
 <td>Ansible</td>
-<td><code>ansible-lint</code> via wrapper</td>
+<td><code>bazelisk test //infrastructure/ansible:ansible_lint</code></td>
 </tr>
 <tr>
 <td>Bazel</td>
@@ -1924,14 +1936,23 @@
 <ul>
 <li>Modules under <code>infrastructure/terraform/</code></li>
 <li>Use <code>moved</code> blocks when refactoring addresses</li>
-<li>Validate via <code>validate_terraform.sh</code> / Bazel targets</li>
+<li>Validate via <code>bazelisk test //infrastructure/terraform:terraform_fmt</code>; the
+  <code>:terraform_validate</code> lane is tagged <code>manual</code> until the Proxmox provider
+  choice is made (see the comment on that target)</li>
 <li>Never commit backend credentials</li>
 </ul>
 <hr>
 <h2 id="8-ansible">8. Ansible<a class="headerlink" href="#8-ansible" title="Permanent link">¶</a></h2>
 <ul>
 <li>Roles and playbooks under <code>infrastructure/ansible/</code></li>
-<li>Use <code>ansible_lint_wrapper.sh</code> (skips if binary missing)</li>
+<li>Lint through <code>bazelisk test //infrastructure/ansible:ansible_lint</code>; under
+  <code>REQUIRE_LINT_TOOLS=1</code> a missing <code>ansible-lint</code>, <code>yamllint</code> or
+  <code>community.general</code> collection fails the lane instead of skipping it</li>
+<li>The linters are pinned in <code>tools/bazel/lint-requirements.txt</code> and install
+  into a prefix with its own interpreter, so a lane runs the same release on a
+  laptop and on a runner. <code>bazelisk run //:doctor</code> is the census: a required
+  tool that is on PATH but cannot answer <code>--version</code> is BROKEN, and the doctor
+  exits non-zero</li>
 <li>Inventory secrets stay local / example-only in git</li>
 </ul>
 <hr>
@@ -1946,7 +1967,7 @@
 <h2 id="10-config-and-secrets">10. Config and secrets<a class="headerlink" href="#10-config-and-secrets" title="Permanent link">¶</a></h2>
 <ul>
 <li>Sensitive values: <code>.devcontainer/.env</code> (gitignored), mode <code>600</code></li>
-<li>Validate with <code>validate_config.sh</code></li>
+<li>Validate with <code>bazelisk test //:validate_config</code></li>
 <li>Run security scan tests (<code>//tests/config:config_security_scan</code>) when touching config paths</li>
 </ul>
 <hr>
@@ -2002,7 +2023,7 @@
 <h2 id="12-testing">12. Testing<a class="headerlink" href="#12-testing" title="Permanent link">¶</a></h2>
 <ul>
 <li>Prefer hermetic script tests</li>
-<li>Bazel <code>sh_test</code> for wrappers</li>
+<li>Shell lanes are <code>repo_sh_test</code> targets from <code>//build:defs.bzl</code></li>
 <li>Domain validation on every PR that touches apps/config</li>
 <li>Docs strict build on docs changes</li>
 </ul>

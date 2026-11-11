@@ -1346,7 +1346,7 @@
 </ul>
 <h2 id="syntax-and-language-features">Syntax and Language Features<a class="headerlink" href="#syntax-and-language-features" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Select </strong>*: Avoid <code>SELECT *</code>. Always explicitly list columns. This prevents breakage when schema changes and reduces network overhead.</li>
+<li>**Select ***: Avoid <code>SELECT *</code>. Always explicitly list columns. This prevents breakage when schema changes and reduces network overhead.</li>
 <li><strong>Joins</strong>: Always use explicit ANSI join syntax (<code>JOIN</code>, <code>LEFT JOIN</code>) instead of implicit joins in the <code>WHERE</code> clause.</li>
 <li><strong>CTEs vs Subqueries</strong>: Prefer Common Table Expressions (CTEs) using <code>WITH</code> clauses over nested subqueries for readability and logic separation.</li>
 <li><strong>NULL Handling</strong>:<ul>

@@ -1524,10 +1524,10 @@
 </ul>
 <p>For code, <abbr title="Git-based continuous delivery and operations">GitOps</abbr>, Terraform, and Ansible conventions see <a href="../project-conventions/">project-conventions.md</a>. Root <a href="https://github.com/toxicoder/inkorporated/blob/development/CONTRIBUTING.md">CONTRIBUTING.md</a> covers branching and PRs.</p>
 <h2 id="quick-start">Quick start<a class="headerlink" href="#quick-start" title="Permanent link">¶</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./docs/manage-docs.sh<span class="w"> </span>serve<span class="w">                    </span><span class="c1"># live preview</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>./docs/manage-docs.sh<span class="w"> </span>build<span class="w"> </span>--strict<span class="w">           </span><span class="c1"># production build</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>./docs/manage-docs.sh<span class="w"> </span>preview<span class="w">                  </span><span class="c1"># strict build + static serve</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>./docs/manage-docs.sh<span class="w"> </span>status
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bazelisk<span class="w"> </span>run<span class="w"> </span>//docs:manage-docs<span class="w"> </span>--<span class="w"> </span>serve<span class="w">          </span><span class="c1"># live preview</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>bazelisk<span class="w"> </span><span class="nb">test</span><span class="w"> </span>//docs:build<span class="w">            </span><span class="c1"># production build</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>bazelisk<span class="w"> </span>run<span class="w"> </span>//docs:manage-docs<span class="w"> </span>--<span class="w"> </span>preview<span class="w">        </span><span class="c1"># strict build + static serve</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>bazelisk<span class="w"> </span>run<span class="w"> </span>//docs:manage-docs<span class="w"> </span>--<span class="w"> </span>status
 </span></code></pre></div>
 <p>Requires Python 3.11+ (venv auto-created under <code>.venv-docs/</code>).</p>
 <h2 id="information-architecture">Information architecture<a class="headerlink" href="#information-architecture" title="Permanent link">¶</a></h2>
@@ -1575,10 +1575,9 @@
 <p>Local builds do not require mike. Env stamps: <code>INK_DOCS_VERSION</code>, <code>MIKE_DOCS_VERSION</code>.</p>
 <h2 id="cyborg-roster-auto-generated">Cyborg roster (auto-generated)<a class="headerlink" href="#cyborg-roster-auto-generated" title="Permanent link">¶</a></h2>
 <p>The visual cyborg catalog is <strong>generated</strong> from <code>cyborgs/*.yaml</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>docs/generate_cyborg_docs.py
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># or automatically via:</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>./docs/manage-docs.sh<span class="w"> </span>serve
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>./docs/manage-docs.sh<span class="w"> </span>build<span class="w"> </span>--strict
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># The generator runs automatically inside serve and build:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>bazelisk<span class="w"> </span>run<span class="w"> </span>//docs:manage-docs<span class="w"> </span>--<span class="w"> </span>serve
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>bazelisk<span class="w"> </span><span class="nb">test</span><span class="w"> </span>//docs:build
 </span></code></pre></div>
 <p>Outputs land in <code>docs/cyborgs/generated/</code> (cards, chips, persona pages). <strong>Do not hand-edit</strong> that tree. Prefer Mermaid diagrams in hand-written pages; the generator also emits org/stats graphs.</p>
 <h2 id="mermaid">Mermaid<a class="headerlink" href="#mermaid" title="Permanent link">¶</a></h2>
@@ -1609,12 +1608,12 @@
 </table>
 <p>At build time, <code>docs/hooks.py</code> rewrites GitHub <code>main</code>/<code>development</code> to the active docs git ref (<code>INK_DOCS_VERSION</code> / <code>MIKE_DOCS_VERSION</code>). Intra-docs relative links stay inside the current version alias automatically.</p>
 <p>Validate:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>docs/validate_docs_links.py<span class="w"> </span>--strict
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>./docs/manage-docs.sh<span class="w"> </span>build<span class="w"> </span>--strict
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Runs docs/validate_docs_links.py --strict, then the MkDocs strict build:</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>bazelisk<span class="w"> </span><span class="nb">test</span><span class="w"> </span>//docs:build
 </span></code></pre></div>
 <h2 id="before-submitting-a-docs-pr">Before submitting a docs PR<a class="headerlink" href="#before-submitting-a-docs-pr" title="Permanent link">¶</a></h2>
 <ul>
-<li>[ ] <code>./docs/manage-docs.sh build --strict</code> passes</li>
+<li>[ ] <code>bazelisk test //docs:build</code> passes</li>
 <li>[ ] New pages added to <code>mkdocs.yml</code> nav when user-facing</li>
 <li>[ ] Cyborg YAML changes regenerate cleanly</li>
 <li>[ ] No secrets; template vars used in legal/policy where appropriate</li>

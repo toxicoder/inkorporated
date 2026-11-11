@@ -1631,9 +1631,9 @@
 </tbody>
 </table>
 <h2 id="regenerating">Regenerating<a class="headerlink" href="#regenerating" title="Permanent link">¶</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./docs/manage-docs.sh<span class="w"> </span>build<span class="w"> </span>--strict
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># or</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>python<span class="w"> </span>docs/generate_cyborg_docs.py
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bazelisk<span class="w"> </span><span class="nb">test</span><span class="w"> </span>//docs:build
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># serve regenerates the roster too:</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>bazelisk<span class="w"> </span>run<span class="w"> </span>//docs:manage-docs<span class="w"> </span>--<span class="w"> </span>serve
 </span></code></pre></div>
 <p>Do <strong>not</strong> hand-edit <code>docs/cyborgs/generated/</code>.</p>
 

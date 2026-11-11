@@ -19,6 +19,21 @@ check() {
     fi
 }
 
+# link_tool <src> <dir> populates a shadow PATH directory. The guard looks for
+# the link itself as well as the file: test -e follows a symlink, so a dangling
+# link left by an earlier PATH directory reads as absent, ln then fails with
+# "Already exists", and the real tool behind that link stays shadowed on the
+# PATH -- which is how a census test starts reporting a tool that is installed.
+link_tool() {
+    local src="$1" dir="$2" name dst
+    name="$(basename "$src")"
+    dst="${dir}/${name}"
+    if [ -e "$dst" ] || [ -L "$dst" ]; then
+        return 0
+    fi
+    ln -s "$src" "$dst"
+}
+
 [ -x "$DOCTOR" ] || { echo "FATAL: ${DOCTOR} is missing or not executable" >&2; exit 1; }
 
 WORKDIR="$(mktemp -d)"
@@ -39,6 +54,25 @@ else
         check "every census entry is tool:reason (${bad} malformed)" 1
     fi
 fi
+
+# 1b. link_tool keeps a dangling link instead of tripping over it. This is the
+#     shape that failed on a runner whose PATH had the same tool name in two
+#     directories: the guard saw no file, ln refused the existing link, and the
+#     tool the second directory really has was never reachable.
+stub_root="${WORKDIR}/stub-dirs"
+mkdir -p "${stub_root}/first" "${stub_root}/second" "${stub_root}/libexec"
+printf '#!/bin/sh\necho first\n' >"${stub_root}/libexec/gate_stub_tool"
+chmod +x "${stub_root}/libexec/gate_stub_tool"
+link_tool "${stub_root}/libexec/gate_stub_tool" "${stub_root}/first"
+rm -f "${stub_root}/libexec/gate_stub_tool"
+printf '#!/bin/sh\necho second\n' >"${stub_root}/second/gate_stub_tool"
+chmod +x "${stub_root}/second/gate_stub_tool"
+status=0
+link_tool "${stub_root}/second/gate_stub_tool" "${stub_root}/first" || status=$?
+check "a dangling link does not make the shadow PATH fail to add a tool" "$status"
+status=0
+[ -L "${stub_root}/first/gate_stub_tool" ] || status=1
+check "the shadow PATH still names the tool, so nothing is shadowed" "$status"
 
 # 2. --json emits an object the caller can parse, with the counters a CI step
 #    would gate on.
@@ -70,7 +104,7 @@ for dir in /usr/local/bin /usr/bin /bin; do
                 terraform | bazelisk | kubectl | helm | mkdocs | mike | \
                 nvidia-smi | aws | docker) continue ;;
         esac
-        [ -e "${WORKDIR}/bin/$name" ] || ln -s "$tool" "${WORKDIR}/bin/$name"
+        link_tool "$tool" "${WORKDIR}/bin"
     done
 done
 status=0
@@ -115,7 +149,7 @@ for dir in "${path_dirs[@]}"; do
         [ -x "$tool" ] && [ ! -d "$tool" ] || continue
         name="$(basename "$tool")"
         [ "$name" = bazelisk ] && continue
-        [ -e "${nobazel_dir}/${name}" ] || ln -s "$tool" "${nobazel_dir}/${name}"
+        link_tool "$tool" "$nobazel_dir"
     done
 done
 

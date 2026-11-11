@@ -104,7 +104,11 @@ for dir in "${path_dirs[@]}"; do
         case "$name" in
             python3 | python3.* | python) continue ;;
         esac
-        [ -e "${no_python_dir}/${name}" ] || ln -s "$tool" "${no_python_dir}/${name}"
+        # A dangling link reads as absent to -e, so the guard has to see
+        # the link itself or the tool is shadowed on the withheld PATH.
+        { [ -e "${no_python_dir}/${name}" ] ||
+          [ -L "${no_python_dir}/${name}" ]; } ||
+            ln -s "$tool" "${no_python_dir}/${name}"
     done
 done
 if PATH="$no_python_dir" command -v python3 >/dev/null 2>&1; then

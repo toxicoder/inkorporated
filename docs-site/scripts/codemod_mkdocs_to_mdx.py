@@ -558,6 +558,48 @@ def _transform_card_grids(lines: list[str]) -> list[str]:
     return out
 
 
+def _split_frontmatter(text: str) -> tuple[str, str]:
+    """Split a document into its YAML frontmatter block and its body.
+
+    The frontmatter is parsed as YAML by the source loader and never reaches the MDX
+    compiler, so its braces and angle brackets are data: escaping ``{{TITLE}}`` there
+    produces ``"\\{\\{TITLE\\}\\}"``, which is not a valid YAML double-quoted escape and
+    takes the whole page down at load time.  Only the body is MDX.
+
+    Args:
+        text: Markdown source.
+
+    Returns:
+        ``(frontmatter, body)`` with the delimiters kept in ``frontmatter``; an empty
+        first element when the document does not open with a frontmatter block.
+    """
+    if not text.startswith("---\n") and not text.startswith("---\r\n"):
+        return "", text
+    lines = text.split("\n")
+    for index in range(1, len(lines)):
+        if lines[index].rstrip("\r") in ("---", "..."):
+            head = "\n".join(lines[: index + 1])
+            if index + 1 < len(lines):
+                head += "\n"
+            return head, "\n".join(lines[index + 1 :])
+    return "", text
+
+
+def _mask_frontmatter(text: str) -> str:
+    """Blank out a frontmatter block while keeping every later line numbered the same.
+
+    Args:
+        text: Markdown source.
+
+    Returns:
+        The document with its frontmatter replaced by empty lines.
+    """
+    head, body = _split_frontmatter(text)
+    if not head:
+        return text
+    return "\n" * head.count("\n") + body
+
+
 def transform_text(text: str) -> str:
     """Apply every MkDocs-to-MDX mapping to one document.
 
@@ -565,14 +607,16 @@ def transform_text(text: str) -> str:
         text: Raw markdown source.
 
     Returns:
-        Markdown with MkDocs-only syntax replaced by MDX components.
+        Markdown with MkDocs-only syntax replaced by MDX components.  The frontmatter
+        block is returned untouched.
     """
+    head, text = _split_frontmatter(text)
     lines = text.split("\n")
     lines = _transform_snippets(lines)
     lines = _transform_admonitions(lines)
     lines = _transform_tabs(lines)
     lines = _transform_card_grids(lines)
-    return "\n".join(lines)
+    return head + "\n".join(lines)
 
 
 #: Tags the codemod emits.  They are real MDX elements, so their markup must survive
@@ -741,7 +785,8 @@ def to_mdx(text: str) -> str:
         return "\n".join(lines)
 
     out: list[str] = []
-    for is_code, chunk in _split_code_and_prose(text):
+    head, body = _split_frontmatter(text)
+    for is_code, chunk in _split_code_and_prose(body):
         if is_code:
             out.append(chunk)
             continue
@@ -759,7 +804,7 @@ def to_mdx(text: str) -> str:
         for index, comment in enumerate(comments):
             chunk = chunk.replace(f"{_COMMENT_TOKEN}{index}{_COMMENT_TOKEN}", comment)
         out.append(chunk)
-    return "\n".join(out)
+    return head + "\n".join(out)
 
 
 def mdx_hazards(text: str) -> list[tuple[int, str]]:
@@ -773,7 +818,9 @@ def mdx_hazards(text: str) -> list[tuple[int, str]]:
     """
     hazards: list[tuple[int, str]] = []
     offset = 0
-    for is_code, chunk in _split_code_and_prose(text):
+    # The frontmatter is YAML the loader consumes before MDX sees the page, so its braces
+    # are data. Masked rather than dropped, so the reported line numbers stay true.
+    for is_code, chunk in _split_code_and_prose(_mask_frontmatter(text)):
         if not is_code:
             for delta, line in enumerate(chunk.split("\n")):
                 if _EMITTED_TAG_RE.match(line):
@@ -801,7 +848,7 @@ def requires_mdx(text: str) -> bool:
     """
     if transform_text(text) != text:
         return True
-    for is_code, chunk in _split_code_and_prose(text):
+    for is_code, chunk in _split_code_and_prose(_mask_frontmatter(text)):
         if is_code:
             continue
         for line in chunk.split("\n"):

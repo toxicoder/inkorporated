@@ -335,6 +335,53 @@ class MdxSafetyTests(unittest.TestCase):
         self.assertFalse(codemod.requires_mdx("# Plain\n\nJust prose.\n"))
 
 
+class FrontmatterTests(unittest.TestCase):
+    """The YAML frontmatter is data the loader reads, not MDX the compiler reads."""
+
+    TEMPLATE = (
+        '---\ntitle: "{{ADR_NUMBER}} - {{TITLE}}"\ndescription: "Docs for <team>"\n'
+        "tags: [infrastructure]\n---\n\n# {{ADR_NUMBER}}\n\nSet {this} up, then run <node-ip>.\n"
+    )
+
+    def test_to_mdx_leaves_the_frontmatter_block_untouched(self) -> None:
+        """An escaped brace in a double-quoted scalar is not valid YAML."""
+        updated = codemod.to_mdx(self.TEMPLATE)
+        head = updated.split("---\n", 2)[1]
+        self.assertIn("{{ADR_NUMBER}}", head)
+        self.assertNotIn("\\{", head)
+        self.assertNotIn("\\<", head)
+
+    def test_the_body_is_still_escaped(self) -> None:
+        """Skipping the frontmatter must not skip the page."""
+        updated = codemod.to_mdx(self.TEMPLATE)
+        self.assertIn(r"\{\{ADR_NUMBER\}\}", updated)
+        # Only the opener needs escaping: a bare `>` is not JSX syntax.
+        self.assertIn(r"\<node-ip>", updated)
+
+    def test_transform_text_leaves_the_frontmatter_block_untouched(self) -> None:
+        source = '---\ntitle: "T"\n---\n\n!!! note "Heads up"\n\n    Body.\n'
+        updated = codemod.transform_text(source)
+        self.assertTrue(updated.startswith('---\ntitle: "T"\n---\n'))
+        self.assertIn('<Callout type="info" title="Heads up">', updated)
+
+    def test_a_rule_is_not_mistaken_for_frontmatter(self) -> None:
+        """Only a block that opens the document is frontmatter."""
+        source = "Intro\n\n---\n\nMore {this} to read.\n"
+        self.assertIn("\\{this\\}", codemod.to_mdx(source))
+
+    def test_frontmatter_braces_are_not_reported_as_hazards(self) -> None:
+        """The loader strips the block before MDX parses, so its braces are harmless."""
+        hits = codemod.mdx_hazards(self.TEMPLATE)
+        self.assertEqual([], [hit for hit in hits if hit[0] <= 4])
+        self.assertTrue(any(number > 4 for number, _ in hits))
+        # A body hazard keeps the line number a person would type into an editor.
+        other = codemod.mdx_hazards('---\ntitle: "{{X}}"\n---\n\nSet {this} up.\n')
+        self.assertEqual([5], [number for number, _ in other])
+
+    def test_a_page_that_needs_no_jsx_stays_markdown(self) -> None:
+        self.assertFalse(codemod.requires_mdx(self.TEMPLATE))
+
+
 class MdxNamingTests(unittest.TestCase):
     """``mdx_filename`` renames exactly the pages that need JSX."""
 

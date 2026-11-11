@@ -7,7 +7,7 @@ Thank you for helping improve Inkorporated — the hybrid-cloud infrastructure a
 1. Prefer the [devcontainer](.devcontainer/) when available.
 2. Read [docs/project-conventions.md](docs/project-conventions.md) for naming, formatting, safety, docs, and testing.
 3. Read [docs/guides/overview.md](docs/guides/overview.md) for product context.
-4. For documentation site work: `bazelisk run //docs:manage-docs -- serve` (see [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)).
+4. For documentation site work: `bazelisk run //docs:serve` (see [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)).
 
 ## Branching, commits, PRs, and promotion
 
@@ -103,7 +103,9 @@ One or two sentences: *what* and *why*.
 
 ## Documentation
 
-- Site engine: **MkDocs Material** with multi-version **mike** (`latest` / `development`).
+- Site engine: **Fumadocs** on Next.js (App Router). Content lives in `docs/`; the site app lives in `docs-site/`.
+- Preview from the repo root: `bazelisk run //docs:serve` (hot reload, port `3005`, `PORT=` to override). The static export lands in `docs-site/out/` via `bazelisk run //docs:docs`; the strict gate is `bazelisk test //docs:build`.
+- Multi-version publishing keeps two aliases: `latest` from `main` and `development` from `development`, published by `.github/workflows/deploy-docs.yml`.
 - Page standards: [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) and [docs/project-conventions.md](docs/project-conventions.md).
 - Enterprise content (roles, policies, cyborgs) lives under `docs/`; machine cyborg specs under `cyborgs/`.
 

@@ -29,7 +29,7 @@ tags: [research, bibliography]
 | Reliability | Google SRE book themes (error budgets, toil) — high level |
 | SaaS finance | Rule of 40; LTV/CAC; payback period practices |
 | Org design | Matrix org; dual-track IC ladders; DACI/RACI |
-| Docs-as-code | MkDocs Material; mike multi-version publishing |
+| Docs-as-code | Fumadocs on Next.js; GitHub Pages alias publishing |
 | Commits / PRs | Conventional Commits; linear history practices |
 
 !!! warning "Not certification"

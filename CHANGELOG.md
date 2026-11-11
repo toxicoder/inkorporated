@@ -9,7 +9,8 @@ and this project aims to adhere to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- MkDocs Material documentation system with mike multi-version deploy workflow
+- Fumadocs (Next.js) documentation site in `docs-site/`, publishing the `docs/` tree to the
+  `latest` and `development` GitHub Pages aliases
 - Enterprise operating system documentation ported from devset (strategy, roles, policies, interviews, standards, style guides, playbooks, onboarding, training, support)
 - Organization system: master org chart, matrix, leveling, headcount, RACI, cyborg deployment map, coverage matrix
 - Cyborg machine catalog (`cyborgs/*.yaml`) converted from cyborg-conductor-core (69) plus initial enterprise expansion roles
@@ -18,5 +19,6 @@ and this project aims to adhere to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
-- Documentation engine target migrated from Jekyll-primary to MkDocs Material
+- Documentation engine target migrated from Jekyll-primary to MkDocs Material, then to the
+  Fumadocs site in `docs-site/`
 - AGENTS.md rewritten as agent workflow guide pointing at project conventions

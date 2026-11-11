@@ -1,45 +1,55 @@
 ---
 title: Contributing to the documentation
-description: MkDocs page standards, local serve/build, and PR checklist for Inkorporated docs.
-tags: [documentation, contributing, mkdocs]
+description: Fumadocs page standards, local preview and build, navigation, and the docs PR checklist.
+tags: [documentation, contributing, fumadocs]
 ---
 
 # Contributing to the documentation
 
 **What's on this page**
 
-- How to preview and build the MkDocs site
-- Required frontmatter and page structure
-- Link and Mermaid rules for strict builds
+- **Quick start** - the commands you run and the toolchains they need
+- **Authoring** - frontmatter, the scan list, Markdown vs MDX, callouts, Mermaid, abbreviations
+- **Navigation** - the generated sidebar and how a new page reaches it
+- **Links and publishing** - branch-aware links, the `latest` and `development` aliases
+- **Gates** - what CI runs on a docs change
 
 **What this enables**
 
-- Docs-as-code quality matching the DGX lab gold standard
-- Consistent enterprise OS and infrastructure documentation
+- **Previewing** a page locally before you push it
+- **Writing** pages the site renders without a translation step
+- **Landing** a new page where readers can find it
+- **Passing** the docs gates on the first CI run
 
-For code, GitOps, Terraform, and Ansible conventions see [project-conventions.md](project-conventions.md). Root [CONTRIBUTING.md](https://github.com/toxicoder/inkorporated/blob/main/CONTRIBUTING.md) covers branching and PRs.
+For code, GitOps, Terraform, and Ansible conventions see [project-conventions.md](project-conventions.md);
+root [CONTRIBUTING.md](https://github.com/toxicoder/inkorporated/blob/main/CONTRIBUTING.md) covers
+branching and PRs.
 
 ## Quick start
 
+Every docs command runs from the repository root:
+
 ```bash
-bazelisk run //docs:manage-docs -- serve          # live preview
-bazelisk test //docs:build            # production build
-bazelisk run //docs:manage-docs -- preview        # strict build + static serve
-bazelisk run //docs:manage-docs -- status
+bazelisk run //docs:serve           # live dev server with hot reload (port 3005, PORT= to override)
+bazelisk run //docs:docs            # regenerate derived pages, then the static export in docs-site/out/
+bazelisk run //docs:generate        # the page generators only (no npm install, no export)
+bazelisk run //docs:preview         # strict build, then serve the static export
+bazelisk run //docs:status          # report toolchain, nav file, and export state
+bazelisk run //docs:clean           # remove local build artifacts
+bazelisk run //docs-site:install    # npm ci from the pinned docs-site/package-lock.json
 ```
 
-Requires Python 3.11+ (venv auto-created under `.venv-docs/`).
+The only toolchains are `python3` for the generators and Node.js 22+ with npm for the site; nothing
+installs a docs virtualenv any more. `bazelisk run //:doctor` reports what the gates need from your
+host.
 
 ## Information architecture
 
-- **Home / Getting Started** — new operators
-- **Organization / Strategy / Roles / Cyborgs** — enterprise OS
-- **Engineering / Policies** — how we work
-- **Infrastructure** — hybrid cloud, GitOps, services
-- **Contributing** — conventions and docs rules
-- **Status** — reports
-
-Every major section should have a solid index page. Keep `mkdocs.yml` `nav` in sync when adding pages.
+Home and Getting Started serve new operators; Organization, Strategy, Roles and Cyborgs carry the
+enterprise OS; Engineering and Policies say how we work; Infrastructure covers hybrid cloud, GitOps
+and services; Contributing holds these rules; Status carries reports. Every major section should
+have a solid index page. The menu itself is one generated file, `docs-site/lib/nav.json`
+(see [Navigation](#navigation)).
 
 ## Frontmatter (required)
 
@@ -51,75 +61,105 @@ tags: [enterprise, infrastructure]
 ---
 ```
 
-## Content guidelines
+Frontmatter is exactly `title`, `description`, and `tags`, and it must be valid YAML - quote a value
+that contains a colon.
 
-Every page should open with:
+## Page structure
 
-**What's on this page**
+Every page opens with the scan list the site folds into a styled brief: a bold **What's on this
+page** line, its bullet list, then **What this enables** and a second bullet list. Keep the pair in
+that order and do not restyle it as a fence, an admonition, or a card grid.
 
-- Bullets for sections, diagrams, tables
+- Lead with the outcome and the commands; theory comes later.
+- Every fenced code block names a language (`bash`, `yaml`, `text`, `json`, ...).
+- AI-assisted drafts must be human-reviewed before merge.
 
-**What this enables**
+## Markdown or MDX
 
-- Reader outcomes
+A page authored as plain markdown stays `.md`. A page that needs a JSX component, or that carries
+raw HTML that must survive rendering, is authored as `.mdx` and must be well-formed JSX: void
+elements self-closed, every tag closed, and literal braces escaped as `\{ \}`.
 
-Additional rules:
+## Callouts, diagrams, abbreviations
 
-- Prefer admonitions (`!!! note`, `!!! warning`) and tabs for alternatives
-- All fenced code blocks must specify a language (`bash`, `yaml`, `text`, `mermaid`, …)
-- Use Mermaid for architecture and org diagrams
-- Links inside `docs/`: relative `.md` paths
-- Links to repo-root files outside `docs/`: full GitHub URLs (strict builds reject many `../` escapes)
-- AI-assisted drafts must be human-reviewed before merge
+- **Callouts** use the admonition syntax - `!!! warning "Cyborg CRITICAL actions"` followed by an
+  indented body - and render as the site's Callout component.
+- **Mermaid** diagrams are ordinary `mermaid` fences and render client-side. Keep graphs small and
+  labeled; put the detail in prose.
+- **Abbreviations** come from `docs/includes/abbreviations.md`
+  (`*[API]: Application Programming Interface`) and become tooltips site-wide.
 
-## Multi-version publishing
+## Navigation
 
-CI/deploy uses **mike**:
-
-- `main` → alias `latest` (default)
-- `development` → alias `development`
-
-Local builds do not require mike. Env stamps: `INK_DOCS_VERSION`, `MIKE_DOCS_VERSION`.
-
-## Cyborg roster (auto-generated)
-
-The visual cyborg catalog is **generated** from `cyborgs/*.yaml`:
+The sidebar is `docs-site/lib/nav.json`. It is generated, so you regenerate it and review the result
+as a diff:
 
 ```bash
-# The generator runs automatically inside serve and build:
-bazelisk run //docs:manage-docs -- serve
-bazelisk test //docs:build
+python3 docs-site/scripts/gen_nav.py    # rewrite the nav file from the tree
+bazelisk test //docs-site:nav_test      # verify the committed file matches
 ```
 
-Outputs land in `docs/cyborgs/generated/` (cards, chips, persona pages). **Do not hand-edit** that tree. Prefer Mermaid diagrams in hand-written pages; the generator also emits org/stats graphs.
+A page that is not in the navigation is reachable by URL but invisible in the menu, so a new page
+must land in the nav.
 
-## Mermaid
+## Adding a page
 
-Use fenced `mermaid` blocks for architecture, flows, and org sketches. Keep graphs small and labeled; put detail in prose.
+1. Author it under `docs/` as `.md` (or `.mdx`, above) with the frontmatter and the scan list.
+2. Link it from the index page of its section.
+3. Run `python3 docs-site/scripts/gen_nav.py` and review the nav diff.
+4. Preview with `bazelisk run //docs:serve`, then run the gates below.
 
-## Links (multi-version / branch-aware)
-
-Docs deploy with **mike** under version aliases (`latest` from `main`, `development` from `development`). Linking rules:
+## Links (branch-aware)
 
 | Target | How to link |
 | --- | --- |
-| Another docs page | **Relative** path to the `.md` file, e.g. `[Overview](../guides/overview.md)` |
-| Repo file outside `docs/` (e.g. `cyborgs/*.yaml`) | Full GitHub URL with branch **`main`**: `https://github.com/toxicoder/inkorporated/blob/main/...` |
-| Do not | Hardcode `blob/development`, absolute `github.io/inkorporated/...` without `/latest/` or `/development/`, or HTML `href="page.md"` in generated UI |
+| Another docs page | **Relative** path to the `.md` file, e.g. `[Org chart](organization/org_chart_master.md)`; from a nested page, walk up with `../`. The site resolves it to the published route, so links are not rewritten during the migration. |
+| Repo file outside `docs/` (for example `cyborgs/*.yaml`) | Full GitHub URL with branch **`main`**: `https://github.com/toxicoder/inkorporated/blob/main/...` |
+| Do not | Hardcode `blob/development`, or an absolute `github.io/inkorporated/...` URL without `/latest/` or `/development/` |
 
-At build time, `docs/hooks.py` rewrites GitHub `main`/`development` to the active docs git ref (`INK_DOCS_VERSION` / `MIKE_DOCS_VERSION`). Intra-docs relative links stay inside the current version alias automatically.
+Edit-this-page links follow the alias ref, driven by `INK_DOCS_VERSION` / `INK_DOCS_GIT_REF`. Check
+relative links with `bazelisk test //docs:validate_links`.
 
-Validate:
+## Multi-version publishing
+
+`.github/workflows/deploy-docs.yml` keeps the two aliases: **`latest`** from `main`, published at
+https://toxicoder.github.io/inkorporated/latest/, and **`development`** from `development`, published
+at https://toxicoder.github.io/inkorporated/development/.
+
+Build one alias locally with `bazelisk run //docs-site:build-latest` or
+`bazelisk run //docs-site:build-development`; `bazelisk run //docs-site:build` is the plain static
+export and `bazelisk run //docs-site:dev` is the Next dev server.
+
+## Cyborg roster (auto-generated)
+
+The visual cyborg catalog is generated from `cyborgs/*.yaml`:
 
 ```bash
-# Runs docs/validate_docs_links.py --strict, then the MkDocs strict build:
-bazelisk test //docs:build
+bazelisk run //docs:generate_cyborgs   # the cyborg roster generator only
+bazelisk run //docs:generate           # every page generator, the roster included
 ```
+
+Outputs land in `docs/cyborgs/generated/` (cards, chips, persona pages). **Do not hand-edit** that
+tree; prefer Mermaid diagrams in hand-written pages.
+`bazelisk test //docs:generated_render_current` fails when the committed render no longer matches
+`cyborgs/*.yaml`, so regenerate and commit in the same change.
+
+## Gates
+
+| Command | What it checks |
+| --- | --- |
+| `bazelisk test //docs:build` | the strict docs gate: regenerates, validates links, builds (host lane) |
+| `bazelisk test //docs:validate_links` | branch-aware relative-link check |
+| `bazelisk test //docs:generated_render_current` | committed cyborg render matches `cyborgs/*.yaml` |
+| `bazelisk test //docs:test_docs_site_render` | frontmatter, navigation, and static-export render checks |
+| `bazelisk test //docs-site:suite` | typecheck, unit, nav, codemod, and hazard-audit gates |
+| `bazelisk test //:gate` / `//:fast` | the whole hermetic lane / the same lanes minus the slow checks |
 
 ## Before submitting a docs PR
 
-- [ ] `bazelisk test //docs:build` passes
-- [ ] New pages added to `mkdocs.yml` nav when user-facing
+- [ ] `bazelisk test //docs:build` and `bazelisk test //docs-site:suite` pass
+- [ ] New pages are in `docs-site/lib/nav.json` (regenerate, then review the diff)
+- [ ] Frontmatter is `title`, `description`, `tags` only, and parses as YAML
 - [ ] Cyborg YAML changes regenerate cleanly
 - [ ] No secrets; template vars used in legal/policy where appropriate
-- [ ] Org/role/cyborg cross-links updated if catalog changed
+- [ ] Org/role/cyborg cross-links updated if the catalog changed

@@ -43,7 +43,7 @@ This is the **canonical human reference**. AI agents should also read root [AGEN
 | **No hardcoded domains** | Use config / `{{DOMAIN_BASE}}` templates |
 | **Secrets out of git** | `.env` examples only; chmod 600 local secrets |
 | **Hermetic tests** | Validation runs without a live cluster when possible |
-| **Docs as code** | MkDocs strict builds; enterprise OS + infra in one site |
+| **Docs as code** | Strict docs gate (`bazelisk test //docs:build`); enterprise OS + infra in one site |
 | **Bazel-first** | Every tracked file owned by a target or a reasoned ledger entry; Bzlmod, version pinned in `.bazelversion` |
 | **Least privilege agents** | Cyborg tools allowlisted; CRITICAL requires HITL |
 
@@ -60,7 +60,7 @@ This is the **canonical human reference**. AI agents should also read root [AGEN
 | `.devcontainer/.env.example` | Documented secret *keys* (not values) |
 | `docs/` | Human documentation site content |
 | `cyborgs/*.yaml` | Machine agent persona specs |
-| `mkdocs.yml` | Docs navigation and site config |
+| `docs-site/lib/nav.json` | Docs navigation (generated; reviewed as a diff) |
 
 ---
 
@@ -103,8 +103,8 @@ Bazel 9 removed the native `sh_test` and left `test_suite` as a no-op stub, so
 shell lanes come from `@rules_shell` through the macro and the umbrella is a
 real test rather than a suite. Every test carries a lane tag: `gate` for the
 hermetic lane that `//:gate` runs, or `host` plus `manual` when it needs a real
-Proxmox node, a live cluster, the operator's `.env`, network egress, or the docs
-virtualenv. A lane that cannot run stays tagged and named, never silently
+Proxmox node, a live cluster, the operator's `.env`, network egress, or the docs site's
+pinned npm tree. A lane that cannot run stays tagged and named, never silently
 skipped.
 
 ---
@@ -118,7 +118,7 @@ skipped.
 | Terraform | `terraform fmt` / repo validate targets |
 | Ansible | `bazelisk test //infrastructure/ansible:ansible_lint` |
 | Bazel | `buildifier` |
-| Markdown docs | language fences; MkDocs strict |
+| Markdown / MDX docs | language fences; `bazelisk test //docs:build` (strict) |
 
 Pre-commit config: `.pre-commit-config.yaml` (optional local install).
 
@@ -186,17 +186,18 @@ Pre-commit config: `.pre-commit-config.yaml` (optional local install).
 | Ansible | Clear task names; role README |
 | YAML GitOps | Top-of-file purpose when non-obvious |
 | Cyborg YAML | Full schema; system_prompt required |
-| Markdown (`docs/`) | Frontmatter + “What's on this page” / “What this enables”; listed in `mkdocs.yml` nav when user-facing |
+| Markdown / MDX (`docs/`) | Frontmatter (`title`, `description`, `tags`) + the **What's on this page** / **What this enables** scan list; listed in `docs-site/lib/nav.json` when user-facing |
 
-Docs engine: **MkDocs Material** + **mike** versioning. See [docs/CONTRIBUTING.md](CONTRIBUTING.md).
+Docs engine: **Fumadocs** on Next.js (App Router), published under the `latest` and `development`
+aliases. See [docs/CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Docs linking (branch-aware)
 
-- **Between docs pages:** relative `.md` links only (never hardcode `https://toxicoder.github.io/inkorporated/...` for in-site navigation).
-- **Repo paths outside `docs/`:** GitHub URLs using branch **`main`** as the canonical form; `docs/hooks.py` stamps `main` → `development` when building the development docs alias.
-- **Do not** commit `blob/development` / `tree/development` source links; use `main` and let the hook bind the branch.
-- Generated HTML (cyborg roster) must use directory URLs (`personas/ID/`), not `.md` hrefs.
-- Checker: `docs/validate_docs_links.py`.
+- **Between docs pages:** relative `.md` links only (never hardcode `https://toxicoder.github.io/inkorporated/...` for in-site navigation); the site resolves a relative link to the published route.
+- **Repo paths outside `docs/`:** GitHub URLs using branch **`main`** as the canonical form; the published alias stamps the ref it serves (`INK_DOCS_VERSION` / `INK_DOCS_GIT_REF`).
+- **Do not** commit `blob/development` / `tree/development` source links; use `main` and let the build bind the branch.
+- The cyborg roster pages are generated from `cyborgs/*.yaml`; regenerate them, never hand-edit them.
+- Checker: `bazelisk test //docs:validate_links`.
 
 ---
 
@@ -205,7 +206,7 @@ Docs engine: **MkDocs Material** + **mike** versioning. See [docs/CONTRIBUTING.m
 - Prefer hermetic script tests
 - Shell lanes are `repo_sh_test` targets from `//build:defs.bzl`
 - Domain validation on every PR that touches apps/config
-- Docs strict build on docs changes
+- Docs gate `bazelisk test //docs:build` on docs changes
 
 ---
 

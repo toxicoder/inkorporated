@@ -124,18 +124,20 @@ class TabsTests(unittest.TestCase):
 
 
 class SnippetTests(unittest.TestCase):
-    """``--8<--`` directives become the component that owns that content."""
+    """``--8<--`` directives survive the rewrite for a human, and are reported."""
 
-    def test_cluster_config_include_becomes_panel(self) -> None:
-        result = codemod.transform_text('intro\n--8<-- "docs/includes/cluster-config.md"\nafter\n')
-        self.assertIn("<ClusterConfigPanel />", result)
-        self.assertNotIn("--8<--", result)
-        self.assertIn("intro", result)
-        self.assertIn("after", result)
+    def test_include_directive_is_left_for_a_human(self) -> None:
+        """MDX has no include primitive, so the codemod must not invent a component."""
+        source = 'intro\n--8<-- "docs/includes/cluster-config.md"\nafter\n'
+        self.assertEqual(source, codemod.transform_text(source))
 
-    def test_unknown_include_is_preserved_for_review(self) -> None:
-        source = '--8<-- "docs/includes/mystery.md"\n'
-        self.assertIn("--8<--", codemod.transform_text(source))
+    def test_include_directive_is_reported_as_a_hazard(self) -> None:
+        hits = codemod.mdx_hazards('intro\n--8<-- "docs/includes/cluster-config.md"\n')
+        self.assertEqual([2], [number for number, _ in hits])
+
+    def test_include_directive_inside_a_fence_is_not_a_hazard(self) -> None:
+        hits = codemod.mdx_hazards('```text\n--8<-- "docs/includes/mystery.md"\n```\n')
+        self.assertEqual([], hits)
 
 
 class CardGridTests(unittest.TestCase):

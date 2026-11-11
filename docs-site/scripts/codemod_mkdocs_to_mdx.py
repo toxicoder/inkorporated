@@ -2,10 +2,12 @@
 """Codemod: rewrite MkDocs-only markdown syntax to MDX components, in place.
 
 The docs site moved from Material for MkDocs to Fumadocs (Next.js). Fumadocs renders plain
-markdown plus MDX, so the four MkDocs extension syntaxes have no parser and are mapped to
-components instead:
+markdown plus MDX, so the four MkDocs extension syntaxes have no parser. Three are mapped to
+components; the fourth has no MDX equivalent to map onto:
 
-- ``--8<-- "path"`` (pymdownx.snippets)             -> ``<ClusterConfigPanel />``
+- ``--8<-- "path"`` (pymdownx.snippets)             -> left literal: MDX has no include
+  primitive, so :func:`mdx_hazards` reports the line for a human instead. No authored page
+  uses the directive.
 - ``!!! type "Title"`` + indented body (admonition) -> ``<Callout type=".." title="..">``
 - ``=== "Tab"`` + indented body (pymdownx.tabbed)   -> ``<Tabs>`` / ``<Tab>``
 - ``<div class="grid cards" markdown>`` (md_in_html) -> ``<Cards>`` / ``<Card>``
@@ -15,6 +17,8 @@ the document (markup removed, whitespace collapsed) and refuses to write a file 
 changed, so ``git diff`` shows markup lines and nothing else.
 
 Usage:
+    # gate-policy: allow-script-path one-shot migration utility: it rewrites pages under
+    # docs/ in place, so it has no gate target; bazelisk test //docs-site:codemod_test pins it.
     python3 docs-site/scripts/codemod_mkdocs_to_mdx.py [--check] [--verbose] [path ...]
 
 Options:
@@ -419,31 +423,6 @@ def _render_card_grid(lines: list[str], start: int, end: int) -> list[str] | Non
     return out
 
 
-def _transform_snippets(lines: list[str]) -> list[str]:
-    """Replace ``--8<--`` snippet directives with the component they include.
-
-    Args:
-        lines: Source lines.
-
-    Returns:
-        Lines with snippet directives replaced.
-    """
-    fenced = _fenced_ranges(lines)
-    out: list[str] = []
-    for index, line in enumerate(lines):
-        match = _SNIPPET_RE.match(line)
-        if match is None or _in_fenced(fenced, index):
-            out.append(line)
-            continue
-        indent = line[: _leading(line)]
-        target = match.group("path")
-        if target.endswith("cluster-config.md"):
-            out.append(f"{indent}<ClusterConfigPanel />")
-        else:
-            out.append(line)
-    return out
-
-
 def _transform_admonitions(lines: list[str]) -> list[str]:
     """Convert every top-level ``!!!`` admonition block to a ``<Callout>``.
 
@@ -612,7 +591,6 @@ def transform_text(text: str) -> str:
     """
     head, text = _split_frontmatter(text)
     lines = text.split("\n")
-    lines = _transform_snippets(lines)
     lines = _transform_admonitions(lines)
     lines = _transform_tabs(lines)
     lines = _transform_card_grids(lines)

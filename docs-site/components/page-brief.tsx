@@ -15,7 +15,9 @@ const CHECK_SVG = (
 /**
  * Two-column scan card for the required What's on this page / What this enables lists.
  *
- * Children are the original four markdown nodes (two strong paragraphs + two lists).
+ * Children are the original four markdown nodes (two strong paragraphs + two lists). The
+ * title slot holds a whole paragraph, so the row is a div: a p inside a p is invalid HTML
+ * and the browser reparents it before React hydrates, which costs a full client rerender.
  */
 export function PageBrief({ children }: { children: ReactNode }) {
   const items = Array.isArray(children) ? children : [children];
@@ -26,17 +28,17 @@ export function PageBrief({ children }: { children: ReactNode }) {
   return (
     <div className="ez-page-brief">
       <div className="ez-page-brief__col ez-page-brief__on-page">
-        <p className="ez-page-brief__title">
+        <div className="ez-page-brief__title">
           {LIST_SVG}
           <span className="ez-page-brief__label">{onPageTitle}</span>
-        </p>
+        </div>
         {onPageList}
       </div>
       <div className="ez-page-brief__col ez-page-brief__enables">
-        <p className="ez-page-brief__title">
+        <div className="ez-page-brief__title">
           {CHECK_SVG}
           <span className="ez-page-brief__label">{enablesTitle}</span>
-        </p>
+        </div>
         {enablesList}
       </div>
     </div>

@@ -395,6 +395,14 @@ article table:not([class]) {
   line-height: 1.3;
 }
 
+/* The label is the page's own bold paragraph, so a prose paragraph lands inside this
+   flex row. Strip its box so the row keeps the spacing the card was designed with. */
+.ez-page-brief__title p {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 .ez-page-brief__on-page .ez-page-brief__title {
   color: var(--color-fd-primary);
 }

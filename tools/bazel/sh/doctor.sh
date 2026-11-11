@@ -27,10 +27,14 @@ REQUIRED_TOOLS=(
   "ansible://bootstrap/init_hybrid.sh (the hybrid bootstrap drives ansible directly)"
   "ansible-doc://infrastructure/ansible:ansible_lint (proves community.general is installed)"
   "terraform://infrastructure/terraform:terraform_fmt"
-  "node://docs-site:build (the Fumadocs site export; needs node 22 or newer)"
-  "npm://docs-site:install (npm ci from the pinned docs-site/package-lock.json)"
 )
 
+# node and npm sit here rather than above because the Fumadocs lanes are host
+# lanes: //docs-site:* and //docs:build are tagged host/manual, named by CI, and
+# the hermetic gate runs without them. node also lives outside the default PATH
+# on images that install it under /opt, so a required row would redden the doctor
+# for a lane the operator never runs. The version floor below still reports a
+# stale node as MISMATCH.
 OPTIONAL_TOOLS=(
   "kubectl://tests/integration:test_authentik (live cluster branch only)"
   "helm://tests/deployment:test_helm (renders the charts under apps/)"
@@ -38,6 +42,8 @@ OPTIONAL_TOOLS=(
   "nvidia-smi://.devcontainer/scripts/tests:framework (gpu-detect.sh)"
   "aws://the cloud burst scripts under cloud/"
   "docker://a container build lane, if one is added"
+  "node://docs-site:build (the Fumadocs site export; needs node 22 or newer)"
+  "npm://docs-site:install (npm ci from the pinned docs-site/package-lock.json)"
 )
 
 MODE="text"
@@ -103,15 +109,17 @@ report_tool() {
     status="BROKEN"
     missing=$((missing + 1))
     broken=$((broken + 1))
-  elif [[ "${kind}" == "required" && -n "${min}" ]] &&
+  elif [[ -n "${min}" ]] && tool_answers "${name}" &&
     ! version_at_least "${name}" "${min}"; then
     # On a runtime older than the lane pins, the name resolves and answers
     # --version, so the gate dies later on something that reads like a syntax
     # error. The Next export in docs-site/ needs node 22; say it here instead.
+    # The floor is reported for an optional tool too, so a host that runs the
+    # docs lane from CI sees why it failed, but only a required one reddens.
     major="$(tool_major "${name}")"
     status="MISMATCH"
     why="${why} (found ${major:-unknown}, needs ${min} or newer)"
-    missing=$((missing + 1))
+    if [[ "${kind}" == "required" ]]; then missing=$((missing + 1)); fi
   else
     status="present"
     if [[ "${kind}" == "required" ]]; then present=$((present + 1)); fi

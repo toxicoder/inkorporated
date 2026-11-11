@@ -15,6 +15,11 @@ check() {
         echo "ok   - ${label}"
     else
         echo "FAIL - ${label} (exit ${status})" >&2
+        # The doctor's own report is what names the tool the assertion tripped
+        # over; without it a sandbox-only failure has nothing to read.
+        if [ -n "${out:-}" ]; then
+            printf '%s\n' "$out" | sed 's/^/    | /' >&2
+        fi
         failures=$((failures + 1))
     fi
 }
@@ -342,10 +347,13 @@ assert report["required_broken"] >= 1, report
 ' >/dev/null 2>&1 || status=$?
 check "--json counts the broken tool and names its status" "$status"
 
-# 12. A required tool that runs but sits below the version floor the lane pins
-#     is MISMATCH, not present: the name resolves and answers --version, so the
+# 12. A tool that runs but sits below the version floor the lane pins is
+#     MISMATCH, not present: the name resolves and answers --version, so the
 #     gate finds it and then dies inside the Next export in docs-site/, which
 #     reports an older node as a syntax error nobody traces back to the host.
+#     node is an optional row, so the report says MISMATCH and the doctor still
+#     exits 0: the hermetic gate does not need node, and CI's docs lane is the
+#     one that cannot run without it.
 old_dir="${WORKDIR}/old-node/bin"
 mkdir -p "$old_dir"
 for dir in /bin /usr/bin /usr/local/bin; do
@@ -358,8 +366,8 @@ FAKE
 chmod +x "${old_dir}/node"
 status=0
 out="$(env -u BAZEL_META_OUTPUT_BASE PATH="$old_dir" "$DOCTOR" 2>&1)" || status=$?
-check "a node below the floor fails the doctor" \
-    "$([ "$status" -eq 1 ] && echo 0 || echo "1 (exit ${status})")"
+check "a stale optional node leaves the doctor green" \
+    "$([ "$status" -eq 0 ] && echo 0 || echo "1 (exit ${status})")"
 status=0
 printf '%s\n' "$out" | grep -q "node.*MISMATCH" || status=$?
 check "text mode names the stale node MISMATCH, not present" "$status"
@@ -374,9 +382,10 @@ report = json.loads(sys.stdin.read())
 rows = [row for row in report["tools"] if row["tool"] == "node"]
 assert rows, "the census dropped node"
 assert rows[0]["status"] == "MISMATCH", rows[0]
-assert report["required_missing"] >= 1, report
+assert rows[0]["kind"] == "optional", rows[0]
+assert report["required_missing"] == 0, report
 ' >/dev/null 2>&1 || status=$?
-check "--json counts the stale node among the missing required tools" "$status"
+check "--json calls the stale node MISMATCH without counting a required tool missing" "$status"
 
 # 12b. The control for the case above: a node on the floor is present, so the
 #      MISMATCH cannot be reached by a report that only ever says MISMATCH.
@@ -399,8 +408,9 @@ assert rows[0]["status"] == "present", rows[0]
 ' >/dev/null 2>&1 || status=$?
 check "a node on the floor is reported present" "$status"
 
-# 12c. npm is required by the census as well, so a host without it is a red
-#      doctor rather than an npm ci that fails halfway through the docs lane.
+# 12c. npm is in the census too, so a host without it is told which lane wants
+#      it. It is an optional row: the docs lanes are host lanes, and a runner
+#      that never builds the site still gets a green doctor.
 status=0
 printf '%s\n' "$census_rows" | grep -qE '^\s+"npm:' || status=$?
 check "the census lists npm with the lane that needs it" "$status"
@@ -411,9 +421,10 @@ import json, sys
 report = json.loads(sys.stdin.read())
 rows = [row for row in report["tools"] if row["tool"] == "npm"]
 assert rows, "the census dropped npm"
-assert rows[0]["kind"] == "required", rows[0]
+assert rows[0]["kind"] == "optional", rows[0]
+assert "docs-site" in rows[0]["needed_by"], rows[0]
 ' >/dev/null 2>&1 || status=$?
-check "--json carries npm as a required tool" "$status"
+check "--json carries npm as an optional tool and names its lane" "$status"
 
 if [ "$failures" -ne 0 ]; then
     echo "FAILURE: ${failures} doctor assertion(s) failed" >&2

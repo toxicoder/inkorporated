@@ -1,4 +1,7 @@
-site/
+docs-site/node_modules/
+docs-site/.next/
+docs-site/out/
+docs-site/.source/
 .venv-docs/
 node_modules/
 __pycache__/

@@ -1,19 +1,30 @@
 name: Deploy Documentation
 
-# Publish MkDocs Material via mike to gh-pages (versioned aliases).
-# - main/master  → alias "latest" (default site)
-# - development  → alias "development"
+# Publish Fumadocs static exports to gh-pages (versioned aliases).
+# - main / master  -> alias "latest" (default site)
+# - development    -> alias "development"
 #
-# GitHub Pages must publish from branch gh-pages with path "/" (repo root),
-# not "/docs", or /latest/ and /development/ will 404.
+# Each run builds ONE alias - the branch that triggered it - and carries the other
+# alias over from the live gh-pages tree. Two full Next exports of ~870 pages in one
+# job OOM the 7 GB GitHub-hosted runner, so one webpack export per run with
+# --max-old-space-size=5120 is the cap that fits.
+#
+# URL compatibility: the MkDocs site published these two aliases through mike, at
+# /latest/ and /development/. A static root index.html forwards bare
+# /inkorporated/ traffic to /latest/, which is what mike's default alias did.
+#
+# GitHub Pages must publish from branch gh-pages at path "/" (the repo root).
+#
+# PR docs validation lives in ci.yml; this workflow runs only on push to a long-lived
+# branch, or on workflow_dispatch.
 on:
   push:
     branches: [main, master, development]
     paths:
       - "docs/**"
-      - "mkdocs.yml"
-      - "docs/requirements.txt"
+      - "docs-site/**"
       - "cyborgs/**"
+      - "docs/requirements.txt"
       - ".github/workflows/deploy-docs.yml"
   workflow_dispatch:
 
@@ -27,76 +38,155 @@ concurrency:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      NODE_OPTIONS: "--max-old-space-size=5120"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # Required so subsequent git push (mike) authenticates as GITHUB_TOKEN.
+          # Required so the later git push to gh-pages authenticates as GITHUB_TOKEN.
           persist-credentials: true
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-          cache: pip
-          cache-dependency-path: docs/requirements.txt
+          python-version: "3.12"
 
-      - name: Install docs dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r docs/requirements.txt
-
-      - name: Configure git identity for mike
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Ensure origin uses the Actions token for push to gh-pages.
-          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Fetch existing gh-pages (if any)
-        run: |
-          git fetch origin gh-pages:gh-pages || true
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: docs-site/package-lock.json
 
       - name: Setup Bazelisk
         uses: bazelbuild/setup-bazelisk@v3
 
-      - name: Build documentation (strict)
-        env:
-          INK_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
-          MIKE_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
-        run: |
-          bazelisk test //docs:build --test_output=errors
-          # mike rebuilds site/; keep stamps consistent and ensure no Jekyll processing.
-          touch site/.nojekyll
+      - name: Install the docs toolchain
+        # `run`, not `test`: //docs:setup-docs is an sh_binary that installs the pinned
+        # npm tree from docs-site/package-lock.json and the PyYAML the roster generator
+        # imports. The runner cd's into the real checkout, so node_modules lands beside it.
+        run: bazelisk run //docs:setup-docs
 
-      - name: Deploy with mike (versioned)
+      - name: Cache Next compile
+        uses: actions/cache@v4
+        with:
+          path: docs-site/.next/cache
+          key: next-${{ runner.os }}-${{ hashFiles('docs-site/package-lock.json', 'docs-site/next.config.ts', 'docs-site/source.config.ts') }}
+          restore-keys: |
+            next-${{ runner.os }}-
+
+      - name: Stamp the publish time
+        # The site renders "published" from this stamp so every page of one alias carries
+        # the same timestamp instead of the time each page happened to compile.
+        run: echo "INK_DOCS_PUBLISHED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
+
+      - name: Build and assemble the Pages tree
         env:
           INK_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
-          MIKE_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
+          DOCS_ALIAS: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
+          INK_DOCS_GIT_REF: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          alias="${DOCS_ALIAS}"
+          case "${alias}" in
+            latest | development) ;;
+            *)
+              echo "deploy-docs: DOCS_ALIAS must be latest or development, got ${alias}" >&2
+              exit 1
+              ;;
+          esac
+
+          tree="${RUNNER_TEMP}/pages-tree"
+          rm -rf "${tree}"
+          mkdir -p "${tree}"
+
+          # Keep the alias this run does not build, so /latest/ and /development/ stay
+          # published side by side across two separate runs.
+          git fetch origin gh-pages || true
+          other=development
+          [[ "${alias}" == development ]] && other=latest
+          if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
+            git archive origin/gh-pages "${other}" 2>/dev/null | tar -x -C "${tree}" || true
+          fi
+
+          rm -rf "_site"
+          rm -rf "${tree:?}/${alias}"
+          mkdir -p "${tree}/${alias}"
+          # Deliberate concession: this export runs raw npm rather than a Bazel target.
+          # bazelisk keeps a JVM resident next to the webpack export, and that pairing is
+          # what OOMs the 7 GB runner (header above).
+          (cd docs-site && npm run "build:${alias}")
+          if [[ ! -f docs-site/out/index.html ]]; then
+            echo "deploy-docs: docs-site/out/index.html missing - the export did not run" >&2
+            exit 1
+          fi
+          cp -r docs-site/out/. "${tree}/${alias}/"
+
+          # .nojekyll keeps Pages from running Jekyll over the export, which is what
+          # would otherwise strip the leading-underscore asset directories Next emits.
+          touch "${tree}/.nojekyll"
+          cp docs-site/pages-root-index.html "${tree}/index.html"
+          echo "PAGES_TREE=${tree}" >> "$GITHUB_ENV"
+          echo "PAGES_ALIAS=${alias}" >> "$GITHUB_ENV"
+
+      - name: Publish to the gh-pages branch
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          if [[ "${{ github.ref_name }}" == "development" ]]; then
-            mike deploy --push --update-aliases development -F mkdocs.yml
+          tree="${PAGES_TREE:?run the assemble step first}"
+          alias="${PAGES_ALIAS:?run the assemble step first}"
+          deploy="${RUNNER_TEMP}/gh-pages-deploy"
+          remote="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Publish from a throwaway clone: gh-pages is derived content, and a working
+          # checkout that still holds the source tree would drag every tracked source file
+          # onto the branch.
+          rm -rf "${deploy}"
+          git init -q "${deploy}"
+          git -C "${deploy}" remote add origin "${remote}"
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
+            git -C "${deploy}" fetch -q --depth 1 origin gh-pages
+            git -C "${deploy}" checkout -q -B gh-pages FETCH_HEAD
+            git -C "${deploy}" rm -r -q --ignore-unmatch .
           else
-            mike deploy --push --update-aliases latest -F mkdocs.yml
-            mike set-default --push latest -F mkdocs.yml
+            git -C "${deploy}" checkout -q --orphan gh-pages
           fi
+
+          # Replace the branch contents wholesale: a file the export no longer emits has
+          # to disappear, or Pages keeps serving it.
+          cp -r "${tree}/." "${deploy}/"
+          git -C "${deploy}" add -A
+          git -C "${deploy}" commit -q -m "docs: publish ${alias} from ${GITHUB_SHA}"
+          git -C "${deploy}" push -f -q origin HEAD:gh-pages
 
       - name: Verify gh-pages layout
         run: |
           set -euo pipefail
-          git fetch origin gh-pages
-          # versions.json must exist at branch root for multi-version mike sites.
-          git show origin/gh-pages:versions.json >/tmp/versions.json
-          echo "versions.json:"
-          cat /tmp/versions.json
+          git fetch -f origin gh-pages
+          for path in index.html .nojekyll latest/index.html development/index.html; do
+            if ! git cat-file -e "origin/gh-pages:${path}" 2>/dev/null; then
+              echo "ERROR: gh-pages is missing ${path}" >&2
+              git ls-tree --name-only origin/gh-pages | head -30 >&2
+              exit 1
+            fi
+          done
           git ls-tree --name-only origin/gh-pages | head -30
-          # Expect version dirs and/or aliases at root (not only legacy docs/).
-          if ! git ls-tree --name-only origin/gh-pages | grep -E '^(latest|development|versions\.json)$' >/dev/null; then
-            echo "ERROR: gh-pages root missing mike version artifacts" >&2
-            exit 1
-          fi
+
+      - name: Report the published URLs
+        run: |
+          {
+            echo "## Documentation published"
+            echo ""
+            echo "| Alias | URL |"
+            echo "| --- | --- |"
+            echo "| latest | https://toxicoder.github.io/inkorporated/latest/ |"
+            echo "| development | https://toxicoder.github.io/inkorporated/development/ |"
+          } >> "$GITHUB_STEP_SUMMARY"

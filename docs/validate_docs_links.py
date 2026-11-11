@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
-"""Validate docs link conventions for multi-version (mike) deployments.
+"""Validate docs link conventions for the two-alias (latest / development) site.
 
 Policy:
-- Intra-docs links: relative .md paths (enforced loosely; MkDocs --strict is primary).
+- Intra-docs links: relative .md paths (enforced loosely; the strict docs export,
+  ``bazelisk run //docs:manage-docs -- build --strict``, is primary). A relative .md
+  link stays valid when the file on disk is its .mdx twin, because that is how
+  docs-site/lib/href.ts resolves links at render time.
 - Repo-root / non-docs files: GitHub URLs must use branch ``main`` (or master) as the
-  canonical source form; docs/hooks.py stamps main|development at build time.
+  canonical source form; the published alias picks its own ref at build time.
 - Do not hardcode ``blob/development`` or ``tree/development`` in docs sources.
-- Generated HTML must not use ``href="...*.md"`` (directory URLs on publish).
+- Generated HTML must not use ``href="...*.md"`` or ``href="...*.mdx"`` (directory
+  URLs on publish).
 """
 
 from __future__ import annotations
@@ -19,16 +23,21 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 
+# A page is markdown or MDX; the site renders both from the same content tree.
+PAGE_SUFFIXES = {".md", ".mdx"}
+
 # Hardcoded development branch in GitHub source links (authors should use main).
 _DEV_BRANCH_GH = re.compile(
     r"https://github\.com/toxicoder/inkorporated/(?:blob|tree)/development/"
 )
-# Absolute site URLs without a mike version alias.
+# Absolute site URLs without a published version alias.
 _SITE_NO_VERSION = re.compile(
     r"https://toxicoder\.github\.io/inkorporated/(?!latest/|development/)[a-zA-Z]"
 )
-# HTML hrefs ending in .md (breaks use_directory_urls deploys).
-_HTML_MD_HREF = re.compile(r"""href=["'][^"']+\.md(?:#[^"']*)?["']""", re.I)
+# HTML hrefs to a page file (breaks use_directory_urls deploys).
+_HTML_MD_HREF = re.compile(
+    r"""href=["'][^"']+\.(?:md|mdx)(?:#[^"']*)?["']""", re.I
+)
 
 SKIP_NAME_PARTS = {
     "validate_docs_links.py",
@@ -41,7 +50,7 @@ def iter_doc_files() -> list[Path]:
     for p in DOCS.rglob("*"):
         if not p.is_file():
             continue
-        if p.suffix not in {".md", ".html", ".py", ".js", ".css", ".yml", ".yaml"}:
+        if p.suffix not in PAGE_SUFFIXES | {".html", ".py", ".js", ".css", ".yml", ".yaml"}:
             continue
         # Skip pure binary-ish
         if "node_modules" in p.parts or ".venv" in p.parts:
@@ -76,26 +85,27 @@ def main() -> int:
             line = text[: m.start()].count("\n") + 1
             failures.append(f"{rel}:{line}: hardcoded GitHub development branch URL")
 
-        if path.suffix == ".md":
+        if path.suffix in PAGE_SUFFIXES:
             for m in _SITE_NO_VERSION.finditer(text):
                 line = text[: m.start()].count("\n") + 1
                 warnings.append(
                     f"{rel}:{line}: absolute site URL without /latest/ or /development/"
                 )
 
-        # Focus HTML .md hrefs on generated roster content
+        # Focus page-file hrefs in generated HTML on the roster content.
         if "cyborgs/generated" in rel.replace("\\", "/") or path.name.endswith(".html"):
             for m in _HTML_MD_HREF.finditer(text):
                 line = text[: m.start()].count("\n") + 1
                 failures.append(
-                    f"{rel}:{line}: HTML href to .md (use directory URL trailing slash)"
+                    f"{rel}:{line}: HTML href to a .md/.mdx page "
+                    "(use directory URL trailing slash)"
                 )
 
-        # Also flag .md hrefs in any file that contains cyborg-card HTML
+        # Also flag page-file hrefs in any file that contains cyborg-card HTML
         if "cyborg-card" in text or "data-cyborg-roster" in text:
             for m in _HTML_MD_HREF.finditer(text):
                 line = text[: m.start()].count("\n") + 1
-                msg = f"{rel}:{line}: roster HTML href to .md"
+                msg = f"{rel}:{line}: roster HTML href to a .md/.mdx page"
                 if msg not in failures:
                     failures.append(msg)
 

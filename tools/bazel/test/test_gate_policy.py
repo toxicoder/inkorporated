@@ -345,7 +345,8 @@ class GatePolicyTestCase(unittest.TestCase):
         census = gate_policy.doctor_census(REPO_ROOT)
         self.assertIn("git", census)
         self.assertIn("ansible-lint", census)
-        self.assertIn("mkdocs", census)
+        self.assertIn("node", census)    # required: the Fumadocs site build
+        self.assertIn("helm", census)    # optional array: the chart render lane
 
     def test_doctor_census_of_a_missing_doctor_is_empty(self):
         self.assertEqual(gate_policy.doctor_census(self._tmp.name), set())

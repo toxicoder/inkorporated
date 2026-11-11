@@ -105,7 +105,7 @@ mkdir -p "${WORKDIR}/bin"
 # the test proves the doctor reports those missing and not simply that a stripped
 # PATH breaks the script.
 withheld=(shellcheck yamllint ansible-lint ansible ansible-doc terraform
-    bazelisk kubectl helm mkdocs mike nvidia-smi aws docker)
+    bazelisk kubectl helm node npm nvidia-smi aws docker)
 for dir in /bin /usr/bin /usr/local/bin; do
     shadow_path_dir "$dir" "${WORKDIR}/bin"
 done
@@ -267,23 +267,35 @@ assert report["devcontainer_env_mode"] == "640", report["devcontainer_env_mode"]
 ' >/dev/null 2>&1 || status=$?
 check "the reported mode follows the file, so it is a stat and not a constant" "$status"
 
-# 10. The docs-virtualenv row is the state of the tree the doctor was pointed
-#     at, in both directions. Without a fixture for each branch the coverage
-#     lane only reaches its floor on a host that happens to have run
+# 10. The two docs rows are the state of the tree the doctor was pointed at, in
+#     both directions: the python venv the page generators import, and the npm
+#     tree the Fumadocs export runs from. Without a fixture for each branch the
+#     coverage lane only reaches its floor on a host that happens to have run
 #     //docs:setup-docs, which is a property of the machine and not of this
 #     script, and a clean CI runner would lose the row it never executed.
 venv_tree="${WORKDIR}/venv-checkout"
 mkdir -p "${venv_tree}/.git" "${venv_tree}/.venv-docs/bin"
-: >"${venv_tree}/.venv-docs/bin/mkdocs"
-chmod +x "${venv_tree}/.venv-docs/bin/mkdocs"
+mkdir -p "${venv_tree}/docs-site/node_modules/.bin"
+: >"${venv_tree}/.venv-docs/bin/python"
+chmod +x "${venv_tree}/.venv-docs/bin/python"
+: >"${venv_tree}/docs-site/node_modules/.bin/next"
+chmod +x "${venv_tree}/docs-site/node_modules/.bin/next"
 json="$(env BUILD_WORKSPACE_DIRECTORY="$venv_tree" "$DOCTOR" --json 2>/dev/null)" || true
 status=0
 printf '%s\n' "$json" | python3 -c '
 import json, sys
 report = json.loads(sys.stdin.read())
 assert report["docs_venv"] == "ready", report["docs_venv"]
+assert report["docs_site_install"] == "ready", report["docs_site_install"]
 ' >/dev/null 2>&1 || status=$?
-check "--json reports the docs virtualenv ready when the tree has one" "$status"
+check "--json reports both docs trees ready when the checkout has them" "$status"
+
+status=0
+out="$(env BUILD_WORKSPACE_DIRECTORY="$venv_tree" "$DOCTOR" 2>&1)" || true
+if ! printf '%s\n' "$out" | grep -qE '^  docs-site install +ready$'; then
+    status=1
+fi
+check "text mode prints the docs-site install row of the tree it was pointed at" "$status"
 
 json="$(env BUILD_WORKSPACE_DIRECTORY="$env_tree" "$DOCTOR" --json 2>/dev/null)" || true
 status=0
@@ -291,8 +303,9 @@ printf '%s\n' "$json" | python3 -c '
 import json, sys
 report = json.loads(sys.stdin.read())
 assert report["docs_venv"] != "ready", report["docs_venv"]
+assert report["docs_site_install"] != "ready", report["docs_site_install"]
 ' >/dev/null 2>&1 || status=$?
-check "--json says the docs virtualenv is missing when the tree has none" "$status"
+check "--json says both docs trees are missing when the checkout has neither" "$status"
 
 # 11. A required binary that is on PATH and cannot run is BROKEN, not present.
 #     This is the shape a runner produced when pip put the linters in the job's
@@ -328,6 +341,79 @@ assert rows[0]["status"] == "BROKEN", rows[0]
 assert report["required_broken"] >= 1, report
 ' >/dev/null 2>&1 || status=$?
 check "--json counts the broken tool and names its status" "$status"
+
+# 12. A required tool that runs but sits below the version floor the lane pins
+#     is MISMATCH, not present: the name resolves and answers --version, so the
+#     gate finds it and then dies inside the Next export in docs-site/, which
+#     reports an older node as a syntax error nobody traces back to the host.
+old_dir="${WORKDIR}/old-node/bin"
+mkdir -p "$old_dir"
+for dir in /bin /usr/bin /usr/local/bin; do
+    shadow_path_dir "$dir" "$old_dir"
+done
+cat >"${old_dir}/node" <<'FAKE'
+#!/bin/sh
+echo 'v20.19.0'
+FAKE
+chmod +x "${old_dir}/node"
+status=0
+out="$(env -u BAZEL_META_OUTPUT_BASE PATH="$old_dir" "$DOCTOR" 2>&1)" || status=$?
+check "a node below the floor fails the doctor" \
+    "$([ "$status" -eq 1 ] && echo 0 || echo "1 (exit ${status})")"
+status=0
+printf '%s\n' "$out" | grep -q "node.*MISMATCH" || status=$?
+check "text mode names the stale node MISMATCH, not present" "$status"
+status=0
+printf '%s\n' "$out" | grep -q "found 20, needs 22 or newer" || status=$?
+check "the MISMATCH line names the version found and the floor it missed" "$status"
+status=0
+json="$(env -u BAZEL_META_OUTPUT_BASE PATH="$old_dir" "$DOCTOR" --json 2>/dev/null)" || true
+printf '%s\n' "$json" | python3 -c '
+import json, sys
+report = json.loads(sys.stdin.read())
+rows = [row for row in report["tools"] if row["tool"] == "node"]
+assert rows, "the census dropped node"
+assert rows[0]["status"] == "MISMATCH", rows[0]
+assert report["required_missing"] >= 1, report
+' >/dev/null 2>&1 || status=$?
+check "--json counts the stale node among the missing required tools" "$status"
+
+# 12b. The control for the case above: a node on the floor is present, so the
+#      MISMATCH cannot be reached by a report that only ever says MISMATCH.
+floor_dir="${WORKDIR}/floor-node/bin"
+mkdir -p "$floor_dir"
+cat >"${floor_dir}/node" <<'FAKE'
+#!/bin/sh
+echo 'v22.0.0'
+FAKE
+chmod +x "${floor_dir}/node"
+json="$(env -u BAZEL_META_OUTPUT_BASE PATH="${floor_dir}:${PATH}" \
+    "$DOCTOR" --json 2>/dev/null)" || true
+status=0
+printf '%s\n' "$json" | python3 -c '
+import json, sys
+report = json.loads(sys.stdin.read())
+rows = [row for row in report["tools"] if row["tool"] == "node"]
+assert rows, "the census dropped node"
+assert rows[0]["status"] == "present", rows[0]
+' >/dev/null 2>&1 || status=$?
+check "a node on the floor is reported present" "$status"
+
+# 12c. npm is required by the census as well, so a host without it is a red
+#      doctor rather than an npm ci that fails halfway through the docs lane.
+status=0
+printf '%s\n' "$census_rows" | grep -qE '^\s+"npm:' || status=$?
+check "the census lists npm with the lane that needs it" "$status"
+status=0
+json="$(env -u BAZEL_META_OUTPUT_BASE PATH="$old_dir" "$DOCTOR" --json 2>/dev/null)" || true
+printf '%s\n' "$json" | python3 -c '
+import json, sys
+report = json.loads(sys.stdin.read())
+rows = [row for row in report["tools"] if row["tool"] == "npm"]
+assert rows, "the census dropped npm"
+assert rows[0]["kind"] == "required", rows[0]
+' >/dev/null 2>&1 || status=$?
+check "--json carries npm as a required tool" "$status"
 
 if [ "$failures" -ne 0 ]; then
     echo "FAILURE: ${failures} doctor assertion(s) failed" >&2

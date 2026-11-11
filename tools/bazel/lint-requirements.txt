@@ -1,10 +1,16 @@
 # The Python tools the strict lane demands, pinned so a lane means the same
 # thing on a laptop and on a runner.
 #
-# Install them into their own prefix, which is also how CI does it:
+# Install them into their own prefix from the interpreter they support, which is
+# also how CI does it:
 #
-#   python3 -m venv /opt/gate-tools
+#   python3.12 -m venv /opt/gate-tools
 #   /opt/gate-tools/bin/pip install -r tools/bazel/lint-requirements.txt
+#
+# The interpreter is part of the pin. ansible-core 2.16 predates Python 3.14 and
+# ansible-compat refuses to run it there, so a 3.14 interpreter installs these
+# wheels and then cannot import them; CI builds the prefix from 3.12 for the same
+# reason a person should.
 #
 # The prefix matters as much as the pins. A Bazel test action is handed Bazel's
 # own PATH (/usr/local/bin:/usr/bin:/bin) and a throwaway HOME, so a linter that

@@ -81,6 +81,13 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Bazelisk
         uses: bazelbuild/setup-bazelisk@v3
+      - name: Choose the interpreter the lint pins support
+        # The pins in tools/bazel/lint-requirements.txt are the releases this tree was
+        # cleared against, and that release of ansible predates the image default.
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
       - name: Install the tools the strict lane demands
         run: |
           # A Bazel test action is handed Bazel's own PATH (/usr/local/bin:/usr/bin:/bin)
@@ -90,14 +97,19 @@ jobs:
           # missing, and the probe in the step after this one reproduces a test action
           # rather than trusting the job shell.
           sudo apt-get update -qq
-          sudo apt-get install -y -qq python3-venv python3-yaml
+          sudo apt-get install -y -qq python3-yaml
           curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
           kubectl version --client || true
-          # The Python linters get their own prefix with its own interpreter, from the
-          # pins a person installs locally; that file says why the versions are fixed.
+          # The prefix is built from the interpreter the pins support rather than the
+          # image default: ansible-compat refuses to run ansible-core 2.16 on Python
+          # 3.14, so an image-default interpreter installs the wheels and then cannot
+          # import them. The version assertion is what turns a silently wrong
+          # interpreter into a named failure at install time.
           sudo mkdir -p /opt/gate-tools
           sudo chown "$(id -u):$(id -g)" /opt/gate-tools
-          python3 -m venv /opt/gate-tools
+          python_binary="$(python3 -c 'import sys; print(sys.executable)')"
+          "$python_binary" -c 'import sys; assert sys.version_info[:2] == (3, 12), sys.version'
+          "$python_binary" -m venv /opt/gate-tools
           /opt/gate-tools/bin/pip install --quiet --upgrade pip
           /opt/gate-tools/bin/pip install --quiet -r tools/bazel/lint-requirements.txt
           /opt/gate-tools/bin/ansible-galaxy collection install \

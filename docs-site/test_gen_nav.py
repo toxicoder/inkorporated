@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for the nav transcriber (docs-site/scripts/gen_nav.py).
 
-Run: bash docs-site/run_python_test.sh test_gen_nav.py   (or, from docs-site/:
+Run: bazelisk test //docs-site:nav_test   (or, from docs-site/:
      python3 -m unittest -v test_gen_nav.py)
 
 The transcriber turns the retired ``mkdocs.yml`` ``nav:`` block plus the ``docs/`` tree into

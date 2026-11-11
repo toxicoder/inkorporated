@@ -4,7 +4,7 @@
 # (the nav transcriber, the MkDocs->MDX codemod, the MDX hazard audit, and the golden
 # pipeline guards).
 #
-# Usage (from a bazel run):
+# Usage (from a bazelisk run):
 #   run_python_test.sh <test_module.py> [--cov=<module path>] [runner args...]
 #
 # Without --cov the module runs under unittest, exactly as it always has. With
@@ -75,7 +75,7 @@ if [[ -n ${COV_MODULE} ]]; then
   # it imports. Measuring one module is the point: --cov over a directory would score the
   # unimported siblings at 0% and report the wrong total.
   COV_TARGET="$(basename "${COV_MODULE}" .py)"
-  # A bazel test sandbox is read-only outside TEST_TMPDIR, so neither the coverage data file
+  # A bazelisk test sandbox is read-only outside TEST_TMPDIR, so neither the coverage data file
   # nor pytest's cache may land in the runfiles tree.
   export COVERAGE_FILE="${TEST_TMPDIR:-.}/.coverage"
   # The suites are unittest.TestCase-based, which pytest collects without changes.

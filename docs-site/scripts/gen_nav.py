@@ -19,6 +19,11 @@ While ``mkdocs.yml`` exists the tree is transcribed from it. Once it is gone the
 ``nav.json`` is the source of truth and ``--check`` verifies it against the files on disk.
 
 Usage:
+    bazelisk run //docs:manage-docs -- build   # regenerate the committed nav.json
+    bazelisk test //docs-site:nav_test         # the transcriber's own lane
+
+    # gate-policy: allow-script-path --check and --print are read-only inspection an
+    # operator runs against a checkout; the write path above is the lane that owns them.
     python3 docs-site/scripts/gen_nav.py [--check] [--print]
 
 Options:

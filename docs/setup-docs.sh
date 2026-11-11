@@ -4,6 +4,8 @@
 # Idempotent setup for the documentation site and its generators.
 #
 #   bazelisk run //docs:setup-docs
+#   # gate-policy: allow-script-path documented direct fallback for //docs:serve, which
+#   # sources this file and calls the functions before any target is involved.
 #   QUIET=true ./docs/setup-docs.sh    # direct fallback; //docs:serve calls it
 #
 # Two toolchains, because the site and the generators are separate:
@@ -65,6 +67,8 @@ docs_install_site_deps() {
     error "setup-docs: docs-site/package.json not found"
     return 1
   fi
+  # gate-policy: tool-guard exempt this is the installer, not a gate: a missing npm returns 1
+  # and the caller exits 1, so there is no silent-skip path for REQUIRE_LINT_TOOLS to harden.
   if ! command -v npm >/dev/null 2>&1; then
     error "setup-docs: npm is required (Node.js 22+)"
     return 1
@@ -91,6 +95,8 @@ docs_install_site_deps() {
 #   0 when the imports resolve; 1 otherwise
 #######################################
 docs_install_python_deps() {
+  # gate-policy: tool-guard exempt same reason as the npm probe above: the installer fails
+  # loudly when python3 is absent, and python3 is a required row in the doctor census.
   if ! command -v python3 >/dev/null 2>&1; then
     error "setup-docs: python3 is required"
     return 1

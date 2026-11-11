@@ -2,17 +2,17 @@
 #
 # Bazel entry point wrapper for docs-site npm scripts.
 # Lets users do:
-#   bazel run //docs-site:install
-#   bazel run //docs-site:dev
-#   bazel run //docs-site:build
-#   bazel run //docs-site:typecheck
-#   bazel run //docs-site:unit
+#   bazelisk run //docs-site:install
+#   bazelisk run //docs-site:dev
+#   bazelisk run //docs-site:build
+#   bazelisk run //docs-site:typecheck
+#   bazelisk run //docs-site:unit
 #
 # All arguments after -- are passed through to the underlying npm command.
 set -euo pipefail
 
 # Robustly locate the docs-site package directory.
-# When invoked via `bazel run`, prefer BUILD_WORKSPACE_DIRECTORY so we run from the real
+# When invoked via `bazelisk run`, prefer BUILD_WORKSPACE_DIRECTORY so we run from the real
 # source tree (not bazel-bin symlinks): the Next build reads content from the sibling
 # docs/ directory and Playwright globs tests from disk, neither of which works reliably
 # through the runfiles sandbox.
@@ -32,7 +32,7 @@ if [[ $SUBCMD == "run_npm.sh" || $SUBCMD == "npm" ]] && [[ $# -gt 0 ]]; then
   shift
 fi
 
-# bazel run //docs-site:build invokes "build build" - drop the duplicated subcommand arg.
+# bazelisk run //docs-site:build invokes "build build" - drop the duplicated subcommand arg.
 if [[ $# -gt 0 && $1 == "$SUBCMD" ]]; then
   shift
 fi
@@ -94,7 +94,7 @@ case "$SUBCMD" in
     ;;
 esac
 
-# Fallback / generic escape hatch: bazel run //docs-site:npm -- <any npm args>
+# Fallback / generic escape hatch: bazelisk run //docs-site:npm -- <any npm args>
 if [[ $# -gt 0 ]]; then
   exec $CMD "$@"
 fi

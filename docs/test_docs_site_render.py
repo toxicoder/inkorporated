@@ -8,7 +8,7 @@ the files that produce the pages, and always runs. The export checks in ``Export
 with a printed note when ``docs-site/out/`` has not been built.
 
 Usage:
-    python3 docs/test_docs_site_render.py
+    bazelisk test //docs:test_docs_site_render
 
 Exit status is 0 when every test passed or skipped.
 """
@@ -104,7 +104,8 @@ def load_nav_tree() -> list[dict[str, object]]:
         AssertionError: ``nav.json`` is missing, or is not a list of sections.
     """
     if not NAV_JSON.is_file():
-        raise AssertionError(f"{NAV_JSON} is missing; run python3 docs-site/scripts/gen_nav.py")
+        raise AssertionError(f"{NAV_JSON} is missing; regenerate it with "
+                             f"bazelisk run //docs:manage-docs -- build")
     tree = json.loads(NAV_JSON.read_text(encoding="utf-8"))
     if not isinstance(tree, list):
         raise AssertionError(f"{NAV_JSON} must hold a list of sections, got {type(tree).__name__}")
@@ -170,7 +171,8 @@ def load_nav_pages() -> list[str]:
     pages: list[str] = []
     for tab in load_nav_tree():
         pages.extend(_flatten_nav(tab.get("pages")))
-    assert pages, f"{NAV_JSON} lists no pages; run python3 docs-site/scripts/gen_nav.py"
+    assert pages, (f"{NAV_JSON} lists no pages; regenerate it with "
+                   f"bazelisk run //docs:manage-docs -- build")
     return pages
 
 

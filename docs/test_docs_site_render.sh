@@ -12,4 +12,6 @@ else
   cd "${SCRIPT_DIR}/.."
 fi
 
+# gate-policy: allow-script-path this is the lane's own entry point; //docs:test_docs_site_render
+# runs it, and the python file it execs is the test body, not a command for a person to type.
 exec python3 docs/test_docs_site_render.py "$@"

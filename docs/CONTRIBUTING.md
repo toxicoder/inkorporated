@@ -95,8 +95,8 @@ The sidebar is `docs-site/lib/nav.json`. It is generated, so you regenerate it a
 as a diff:
 
 ```bash
-python3 docs-site/scripts/gen_nav.py    # rewrite the nav file from the tree
-bazelisk test //docs-site:nav_test      # verify the committed file matches
+bazelisk run //docs:manage-docs -- build   # regenerates docs-site/lib/nav.json from the tree
+bazelisk test //docs-site:nav_test         # verify the committed file matches
 ```
 
 A page that is not in the navigation is reachable by URL but invisible in the menu, so a new page
@@ -106,7 +106,7 @@ must land in the nav.
 
 1. Author it under `docs/` as `.md` (or `.mdx`, above) with the frontmatter and the scan list.
 2. Link it from the index page of its section.
-3. Run `python3 docs-site/scripts/gen_nav.py` and review the nav diff.
+3. Run `bazelisk run //docs:manage-docs -- build` and review the nav diff.
 4. Preview with `bazelisk run //docs:serve`, then run the gates below.
 
 ## Links (branch-aware)

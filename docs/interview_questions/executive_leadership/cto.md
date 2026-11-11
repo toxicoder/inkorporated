@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: CTO (ROLE)
-description: Interview Questions: CTO (ROLE) for Inkorporated.
+title: "Interview Questions: CTO (ROLE)"
+description: "Interview Questions: CTO (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

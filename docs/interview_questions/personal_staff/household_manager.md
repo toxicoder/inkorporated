@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: household_manager (ROLE)
-description: Interview Questions: household_manager (ROLE) for Inkorporated.
+title: "Interview Questions: household_manager (ROLE)"
+description: "Interview Questions: household_manager (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

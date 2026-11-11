@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: CPO (ROLE)
-description: Interview Questions: CPO (ROLE) for Inkorporated.
+title: "Interview Questions: CPO (ROLE)"
+description: "Interview Questions: CPO (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

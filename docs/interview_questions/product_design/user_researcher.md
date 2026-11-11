@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: User Researcher (ROLE)
-description: Interview Questions: User Researcher (ROLE) for Inkorporated.
+title: "Interview Questions: User Researcher (ROLE)"
+description: "Interview Questions: User Researcher (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

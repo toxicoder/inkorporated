@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Accessibility (A11y) (ROLE)
-description: Interview Questions: Accessibility (A11y) (ROLE) for Inkorporated.
+title: "Interview Questions: Accessibility (A11y) (ROLE)"
+description: "Interview Questions: Accessibility (A11y) (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

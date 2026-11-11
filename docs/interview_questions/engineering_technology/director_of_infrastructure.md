@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Director of Infrastructure (ROLE)
-description: Interview Questions: Director of Infrastructure (ROLE) for Inkorporated.
+title: "Interview Questions: Director of Infrastructure (ROLE)"
+description: "Interview Questions: Director of Infrastructure (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

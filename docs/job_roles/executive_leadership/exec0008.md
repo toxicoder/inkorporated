@@ -1,5 +1,5 @@
 ---
-title: CISO: Chief Information Security Officer
+title: "CISO: Chief Information Security Officer"
 description: "CISO: Chief Information Security Officer (EXEC0008) role, responsibilities, and AI agent profile at Inkorporated."
 tags: [job-role, enterprise, exec]
 ---

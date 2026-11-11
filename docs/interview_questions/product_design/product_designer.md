@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Product Designer (ROLE)
-description: Interview Questions: Product Designer (ROLE) for Inkorporated.
+title: "Interview Questions: Product Designer (ROLE)"
+description: "Interview Questions: Product Designer (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

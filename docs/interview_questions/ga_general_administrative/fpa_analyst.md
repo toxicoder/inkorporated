@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: FP&A Analyst (ROLE)
-description: Interview Questions: FP&A Analyst (ROLE) for Inkorporated.
+title: "Interview Questions: FP&A Analyst (ROLE)"
+description: "Interview Questions: FP&A Analyst (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Director of Product (ROLE)
-description: Interview Questions: Director of Product (ROLE) for Inkorporated.
+title: "Interview Questions: Director of Product (ROLE)"
+description: "Interview Questions: Director of Product (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

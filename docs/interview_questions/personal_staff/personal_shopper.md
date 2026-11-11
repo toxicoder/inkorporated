@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: personal_shopper (ROLE)
-description: Interview Questions: personal_shopper (ROLE) for Inkorporated.
+title: "Interview Questions: personal_shopper (ROLE)"
+description: "Interview Questions: personal_shopper (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

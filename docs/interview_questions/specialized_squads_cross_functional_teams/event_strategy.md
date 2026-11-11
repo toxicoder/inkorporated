@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Event Strategy (ROLE)
-description: Interview Questions: Event Strategy (ROLE) for Inkorporated.
+title: "Interview Questions: Event Strategy (ROLE)"
+description: "Interview Questions: Event Strategy (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

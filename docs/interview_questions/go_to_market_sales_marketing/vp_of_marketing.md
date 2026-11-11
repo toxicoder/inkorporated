@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: VP of Marketing (ROLE)
-description: Interview Questions: VP of Marketing (ROLE) for Inkorporated.
+title: "Interview Questions: VP of Marketing (ROLE)"
+description: "Interview Questions: VP of Marketing (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

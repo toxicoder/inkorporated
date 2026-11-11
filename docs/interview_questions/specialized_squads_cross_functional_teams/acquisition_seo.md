@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Acquisition (SEO) (ROLE)
-description: Interview Questions: Acquisition (SEO) (ROLE) for Inkorporated.
+title: "Interview Questions: Acquisition (SEO) (ROLE)"
+description: "Interview Questions: Acquisition (SEO) (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

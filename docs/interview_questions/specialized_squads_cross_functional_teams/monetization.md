@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Monetization (ROLE)
-description: Interview Questions: Monetization (ROLE) for Inkorporated.
+title: "Interview Questions: Monetization (ROLE)"
+description: "Interview Questions: Monetization (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

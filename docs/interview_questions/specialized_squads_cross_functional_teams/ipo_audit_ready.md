@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: IPO Audit Ready (ROLE)
-description: Interview Questions: IPO Audit Ready (ROLE) for Inkorporated.
+title: "Interview Questions: IPO Audit Ready (ROLE)"
+description: "Interview Questions: IPO Audit Ready (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

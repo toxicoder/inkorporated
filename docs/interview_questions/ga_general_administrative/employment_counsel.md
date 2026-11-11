@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Employment Counsel (ROLE)
-description: Interview Questions: Employment Counsel (ROLE) for Inkorporated.
+title: "Interview Questions: Employment Counsel (ROLE)"
+description: "Interview Questions: Employment Counsel (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

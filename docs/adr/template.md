@@ -1,6 +1,6 @@
 ---
-title: {{ADR_NUMBER}} - {{TITLE}}
-description: {{ADR_NUMBER}} - {{TITLE}} for Inkorporated.
+title: "{{ADR_NUMBER}} - {{TITLE}}"
+description: "{{ADR_NUMBER}} - {{TITLE}} for Inkorporated."
 tags: [infrastructure]
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: personal_trainer (ROLE)
-description: Interview Questions: personal_trainer (ROLE) for Inkorporated.
+title: "Interview Questions: personal_trainer (ROLE)"
+description: "Interview Questions: personal_trainer (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

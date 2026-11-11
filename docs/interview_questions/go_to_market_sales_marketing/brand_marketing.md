@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Brand Marketing (ROLE)
-description: Interview Questions: Brand Marketing (ROLE) for Inkorporated.
+title: "Interview Questions: Brand Marketing (ROLE)"
+description: "Interview Questions: Brand Marketing (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

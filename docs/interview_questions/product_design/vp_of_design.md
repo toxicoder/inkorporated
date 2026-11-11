@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: VP of Design (ROLE)
-description: Interview Questions: VP of Design (ROLE) for Inkorporated.
+title: "Interview Questions: VP of Design (ROLE)"
+description: "Interview Questions: VP of Design (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

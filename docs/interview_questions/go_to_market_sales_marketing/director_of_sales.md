@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Director of Sales (ROLE)
-description: Interview Questions: Director of Sales (ROLE) for Inkorporated.
+title: "Interview Questions: Director of Sales (ROLE)"
+description: "Interview Questions: Director of Sales (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

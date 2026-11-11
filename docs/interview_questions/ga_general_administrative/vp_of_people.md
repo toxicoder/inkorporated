@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: VP of People (ROLE)
-description: Interview Questions: VP of People (ROLE) for Inkorporated.
+title: "Interview Questions: VP of People (ROLE)"
+description: "Interview Questions: VP of People (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

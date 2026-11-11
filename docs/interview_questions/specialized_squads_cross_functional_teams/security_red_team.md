@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Security Red Team (ROLE)
-description: Interview Questions: Security Red Team (ROLE) for Inkorporated.
+title: "Interview Questions: Security Red Team (ROLE)"
+description: "Interview Questions: Security Red Team (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

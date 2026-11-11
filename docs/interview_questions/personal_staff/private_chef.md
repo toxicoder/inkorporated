@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: private_chef (ROLE)
-description: Interview Questions: private_chef (ROLE) for Inkorporated.
+title: "Interview Questions: private_chef (ROLE)"
+description: "Interview Questions: private_chef (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

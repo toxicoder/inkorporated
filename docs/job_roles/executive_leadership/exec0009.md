@@ -1,5 +1,5 @@
 ---
-title: CDO: Chief Data Officer
+title: "CDO: Chief Data Officer"
 description: "CDO: Chief Data Officer (EXEC0009) role, responsibilities, and AI agent profile at Inkorporated."
 tags: [job-role, enterprise, exec]
 ---

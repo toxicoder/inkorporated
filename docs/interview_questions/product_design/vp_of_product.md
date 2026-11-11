@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: VP of Product (ROLE)
-description: Interview Questions: VP of Product (ROLE) for Inkorporated.
+title: "Interview Questions: VP of Product (ROLE)"
+description: "Interview Questions: VP of Product (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

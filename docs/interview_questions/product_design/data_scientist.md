@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Data Scientist (ROLE)
-description: Interview Questions: Data Scientist (ROLE) for Inkorporated.
+title: "Interview Questions: Data Scientist (ROLE)"
+description: "Interview Questions: Data Scientist (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Frontend Engineer (ROLE)
-description: Interview Questions: Frontend Engineer (ROLE) for Inkorporated.
+title: "Interview Questions: Frontend Engineer (ROLE)"
+description: "Interview Questions: Frontend Engineer (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

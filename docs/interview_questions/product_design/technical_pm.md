@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Technical PM (ROLE)
-description: Interview Questions: Technical PM (ROLE) for Inkorporated.
+title: "Interview Questions: Technical PM (ROLE)"
+description: "Interview Questions: Technical PM (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

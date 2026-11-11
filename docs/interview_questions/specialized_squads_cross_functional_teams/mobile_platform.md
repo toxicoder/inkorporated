@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Mobile Platform (ROLE)
-description: Interview Questions: Mobile Platform (ROLE) for Inkorporated.
+title: "Interview Questions: Mobile Platform (ROLE)"
+description: "Interview Questions: Mobile Platform (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

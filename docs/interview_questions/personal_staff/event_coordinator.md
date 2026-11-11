@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: event_coordinator (ROLE)
-description: Interview Questions: event_coordinator (ROLE) for Inkorporated.
+title: "Interview Questions: event_coordinator (ROLE)"
+description: "Interview Questions: event_coordinator (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

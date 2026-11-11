@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: VP of Engineering (ROLE)
-description: Interview Questions: VP of Engineering (ROLE) for Inkorporated.
+title: "Interview Questions: VP of Engineering (ROLE)"
+description: "Interview Questions: VP of Engineering (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

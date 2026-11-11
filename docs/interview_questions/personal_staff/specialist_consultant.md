@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Specialist Consultant (PERS)
-description: Interview Questions: Specialist Consultant (PERS) for Inkorporated.
+title: "Interview Questions: Specialist Consultant (PERS)"
+description: "Interview Questions: Specialist Consultant (PERS) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

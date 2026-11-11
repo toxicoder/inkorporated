@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Sales Manager (ROLE)
-description: Interview Questions: Sales Manager (ROLE) for Inkorporated.
+title: "Interview Questions: Sales Manager (ROLE)"
+description: "Interview Questions: Sales Manager (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

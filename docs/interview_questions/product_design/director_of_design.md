@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Director of Design (ROLE)
-description: Interview Questions: Director of Design (ROLE) for Inkorporated.
+title: "Interview Questions: Director of Design (ROLE)"
+description: "Interview Questions: Director of Design (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

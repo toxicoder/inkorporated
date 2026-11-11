@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: HR Partner (ROLE)
-description: Interview Questions: HR Partner (ROLE) for Inkorporated.
+title: "Interview Questions: HR Partner (ROLE)"
+description: "Interview Questions: HR Partner (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

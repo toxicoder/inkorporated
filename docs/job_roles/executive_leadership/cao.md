@@ -1,5 +1,5 @@
 ---
-title: CAO: Chief Administrative Officer
+title: "CAO: Chief Administrative Officer"
 description: "CAO: Chief Administrative Officer (EXEC0014) role, responsibilities, and AI agent profile at Inkorporated."
 tags: [job-role, enterprise, exec]
 ---

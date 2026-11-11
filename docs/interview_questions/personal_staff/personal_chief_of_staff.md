@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: personal_chief_of_staff (ROLE)
-description: Interview Questions: personal_chief_of_staff (ROLE) for Inkorporated.
+title: "Interview Questions: personal_chief_of_staff (ROLE)"
+description: "Interview Questions: personal_chief_of_staff (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Marketing Manager (ROLE)
-description: Interview Questions: Marketing Manager (ROLE) for Inkorporated.
+title: "Interview Questions: Marketing Manager (ROLE)"
+description: "Interview Questions: Marketing Manager (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

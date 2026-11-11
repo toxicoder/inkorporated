@@ -1,5 +1,5 @@
 ---
-title: COO: Chief Operating Officer
+title: "COO: Chief Operating Officer"
 description: "COO: Chief Operating Officer (EXEC0007) role, responsibilities, and AI agent profile at Inkorporated."
 tags: [job-role, enterprise, exec]
 ---

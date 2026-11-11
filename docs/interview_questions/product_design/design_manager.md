@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Design Manager (ROLE)
-description: Interview Questions: Design Manager (ROLE) for Inkorporated.
+title: "Interview Questions: Design Manager (ROLE)"
+description: "Interview Questions: Design Manager (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

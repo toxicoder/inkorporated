@@ -1,5 +1,5 @@
 ---
-title: CCO: Chief Compliance Officer
+title: "CCO: Chief Compliance Officer"
 description: "CCO: Chief Compliance Officer (EXEC0012) role, responsibilities, and AI agent profile at Inkorporated."
 tags: [job-role, enterprise, exec]
 ---

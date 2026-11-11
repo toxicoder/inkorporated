@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Engineering Manager (ROLE)
-description: Interview Questions: Engineering Manager (ROLE) for Inkorporated.
+title: "Interview Questions: Engineering Manager (ROLE)"
+description: "Interview Questions: Engineering Manager (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

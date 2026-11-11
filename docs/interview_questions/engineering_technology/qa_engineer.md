@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: QA Engineer (ROLE)
-description: Interview Questions: QA Engineer (ROLE) for Inkorporated.
+title: "Interview Questions: QA Engineer (ROLE)"
+description: "Interview Questions: QA Engineer (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

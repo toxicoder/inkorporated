@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: AI Ethics & Safety (ROLE)
-description: Interview Questions: AI Ethics & Safety (ROLE) for Inkorporated.
+title: "Interview Questions: AI Ethics & Safety (ROLE)"
+description: "Interview Questions: AI Ethics & Safety (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

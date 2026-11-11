@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Director of Marketing (ROLE)
-description: Interview Questions: Director of Marketing (ROLE) for Inkorporated.
+title: "Interview Questions: Director of Marketing (ROLE)"
+description: "Interview Questions: Director of Marketing (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

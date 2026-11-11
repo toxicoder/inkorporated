@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: CRO (ROLE)
-description: Interview Questions: CRO (ROLE) for Inkorporated.
+title: "Interview Questions: CRO (ROLE)"
+description: "Interview Questions: CRO (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

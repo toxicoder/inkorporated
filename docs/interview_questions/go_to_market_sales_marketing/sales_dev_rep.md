@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Sales Dev Rep (ROLE)
-description: Interview Questions: Sales Dev Rep (ROLE) for Inkorporated.
+title: "Interview Questions: Sales Dev Rep (ROLE)"
+description: "Interview Questions: Sales Dev Rep (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

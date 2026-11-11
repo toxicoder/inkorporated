@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Corp Counsel (ROLE)
-description: Interview Questions: Corp Counsel (ROLE) for Inkorporated.
+title: "Interview Questions: Corp Counsel (ROLE)"
+description: "Interview Questions: Corp Counsel (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

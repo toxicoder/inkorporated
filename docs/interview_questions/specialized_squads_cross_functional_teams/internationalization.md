@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Internationalization (ROLE)
-description: Interview Questions: Internationalization (ROLE) for Inkorporated.
+title: "Interview Questions: Internationalization (ROLE)"
+description: "Interview Questions: Internationalization (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

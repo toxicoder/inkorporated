@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Comms - PR (ROLE)
-description: Interview Questions: Comms - PR (ROLE) for Inkorporated.
+title: "Interview Questions: Comms - PR (ROLE)"
+description: "Interview Questions: Comms - PR (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

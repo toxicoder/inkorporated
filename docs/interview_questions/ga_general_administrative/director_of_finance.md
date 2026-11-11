@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Director of Finance (ROLE)
-description: Interview Questions: Director of Finance (ROLE) for Inkorporated.
+title: "Interview Questions: Director of Finance (ROLE)"
+description: "Interview Questions: Director of Finance (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

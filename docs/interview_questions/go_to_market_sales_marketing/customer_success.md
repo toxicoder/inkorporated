@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Customer Success (ROLE)
-description: Interview Questions: Customer Success (ROLE) for Inkorporated.
+title: "Interview Questions: Customer Success (ROLE)"
+description: "Interview Questions: Customer Success (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

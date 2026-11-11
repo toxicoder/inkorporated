@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Mobile Engineer (ROLE)
-description: Interview Questions: Mobile Engineer (ROLE) for Inkorporated.
+title: "Interview Questions: Mobile Engineer (ROLE)"
+description: "Interview Questions: Mobile Engineer (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

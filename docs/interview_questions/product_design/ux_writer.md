@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: UX Writer (ROLE)
-description: Interview Questions: UX Writer (ROLE) for Inkorporated.
+title: "Interview Questions: UX Writer (ROLE)"
+description: "Interview Questions: UX Writer (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

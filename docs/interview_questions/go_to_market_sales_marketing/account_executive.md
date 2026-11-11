@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Account Executive (ROLE)
-description: Interview Questions: Account Executive (ROLE) for Inkorporated.
+title: "Interview Questions: Account Executive (ROLE)"
+description: "Interview Questions: Account Executive (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

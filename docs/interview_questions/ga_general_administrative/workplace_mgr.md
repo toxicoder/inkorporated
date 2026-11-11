@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Workplace Mgr (ROLE)
-description: Interview Questions: Workplace Mgr (ROLE) for Inkorporated.
+title: "Interview Questions: Workplace Mgr (ROLE)"
+description: "Interview Questions: Workplace Mgr (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

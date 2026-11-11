@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Personal Assistant (PERS)
-description: Interview Questions: Personal Assistant (PERS) for Inkorporated.
+title: "Interview Questions: Personal Assistant (PERS)"
+description: "Interview Questions: Personal Assistant (PERS) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Group Product Manager (ROLE)
-description: Interview Questions: Group Product Manager (ROLE) for Inkorporated.
+title: "Interview Questions: Group Product Manager (ROLE)"
+description: "Interview Questions: Group Product Manager (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

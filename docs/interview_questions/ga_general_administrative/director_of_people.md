@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Director of People (ROLE)
-description: Interview Questions: Director of People (ROLE) for Inkorporated.
+title: "Interview Questions: Director of People (ROLE)"
+description: "Interview Questions: Director of People (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

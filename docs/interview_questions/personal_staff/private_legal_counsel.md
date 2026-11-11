@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Private Legal Counsel (PERS)
-description: Interview Questions: Private Legal Counsel (PERS) for Inkorporated.
+title: "Interview Questions: Private Legal Counsel (PERS)"
+description: "Interview Questions: Private Legal Counsel (PERS) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

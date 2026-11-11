@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Data Platform (ROLE)
-description: Interview Questions: Data Platform (ROLE) for Inkorporated.
+title: "Interview Questions: Data Platform (ROLE)"
+description: "Interview Questions: Data Platform (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

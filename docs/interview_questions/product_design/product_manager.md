@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Product Manager (ROLE)
-description: Interview Questions: Product Manager (ROLE) for Inkorporated.
+title: "Interview Questions: Product Manager (ROLE)"
+description: "Interview Questions: Product Manager (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

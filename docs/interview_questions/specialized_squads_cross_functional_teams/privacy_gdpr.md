@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Privacy (GDPR) (ROLE)
-description: Interview Questions: Privacy (GDPR) (ROLE) for Inkorporated.
+title: "Interview Questions: Privacy (GDPR) (ROLE)"
+description: "Interview Questions: Privacy (GDPR) (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Director of App Dev (ROLE)
-description: Interview Questions: Director of App Dev (ROLE) for Inkorporated.
+title: "Interview Questions: Director of App Dev (ROLE)"
+description: "Interview Questions: Director of App Dev (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

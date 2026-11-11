@@ -1,6 +1,6 @@
 ---
-title: CTO: Chief Technology Officer
-description: CTO: Chief Technology Officer at Inkorporated.
+title: "CTO: Chief Technology Officer"
+description: "CTO: Chief Technology Officer at Inkorporated."
 tags: [job-role, enterprise]
 ---
 

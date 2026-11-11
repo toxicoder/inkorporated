@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: CFO (ROLE)
-description: Interview Questions: CFO (ROLE) for Inkorporated.
+title: "Interview Questions: CFO (ROLE)"
+description: "Interview Questions: CFO (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: CMO: Chief Marketing Officer
+title: "CMO: Chief Marketing Officer"
 description: "CMO: Chief Marketing Officer (EXEC0011) role, responsibilities, and AI agent profile at Inkorporated."
 tags: [job-role, enterprise, exec]
 ---

@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Strategy & Ops (ROLE)
-description: Interview Questions: Strategy & Ops (ROLE) for Inkorporated.
+title: "Interview Questions: Strategy & Ops (ROLE)"
+description: "Interview Questions: Strategy & Ops (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

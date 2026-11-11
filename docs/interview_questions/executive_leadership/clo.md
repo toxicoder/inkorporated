@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: CLO (ROLE)
-description: Interview Questions: CLO (ROLE) for Inkorporated.
+title: "Interview Questions: CLO (ROLE)"
+description: "Interview Questions: CLO (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

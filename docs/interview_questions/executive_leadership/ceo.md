@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: CEO (ROLE)
-description: Interview Questions: CEO (ROLE) for Inkorporated.
+title: "Interview Questions: CEO (ROLE)"
+description: "Interview Questions: CEO (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

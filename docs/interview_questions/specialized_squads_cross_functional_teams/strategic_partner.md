@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Strategic Partner (ROLE)
-description: Interview Questions: Strategic Partner (ROLE) for Inkorporated.
+title: "Interview Questions: Strategic Partner (ROLE)"
+description: "Interview Questions: Strategic Partner (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

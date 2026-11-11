@@ -1,5 +1,5 @@
 ---
-title: CHRO: Chief Human Resources Officer
+title: "CHRO: Chief Human Resources Officer"
 description: "CHRO: Chief Human Resources Officer (EXEC0013) role, responsibilities, and AI agent profile at Inkorporated."
 tags: [job-role, enterprise, exec]
 ---

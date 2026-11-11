@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: private_security (ROLE)
-description: Interview Questions: private_security (ROLE) for Inkorporated.
+title: "Interview Questions: private_security (ROLE)"
+description: "Interview Questions: private_security (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 

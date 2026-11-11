@@ -36,8 +36,17 @@ fi
 
 PYTHON="${REPO_ROOT}/.venv-docs/bin/python"
 if [[ ! -x "${PYTHON}" ]]; then
-  echo "error: the docs virtualenv is missing; run bazelisk run //docs:setup-docs" >&2
-  exit 1
+  # The generator imports PyYAML and nothing else, so any interpreter that can
+  # import it renders the same bytes. The virtualenv stays the documented way
+  # to get one, and this fallback is what lets //:gate run the lane on a host
+  # that only has a system python.
+  if command -v python3 >/dev/null 2>&1 &&
+     python3 -c "import yaml" >/dev/null 2>&1; then
+    PYTHON="python3"
+  else
+    echo "error: neither ${PYTHON} nor a python3 with PyYAML is available; run bazelisk run //docs:setup-docs" >&2
+    exit 1
+  fi
 fi
 
 WORK="${TEST_TMPDIR:-$(mktemp -d)}/render"

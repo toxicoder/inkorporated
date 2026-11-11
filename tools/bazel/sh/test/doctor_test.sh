@@ -226,6 +226,33 @@ assert report["devcontainer_env_mode"] == "640", report["devcontainer_env_mode"]
 ' >/dev/null 2>&1 || status=$?
 check "the reported mode follows the file, so it is a stat and not a constant" "$status"
 
+# 10. The docs-virtualenv row is the state of the tree the doctor was pointed
+#     at, in both directions. Without a fixture for each branch the coverage
+#     lane only reaches its floor on a host that happens to have run
+#     //docs:setup-docs, which is a property of the machine and not of this
+#     script, and a clean CI runner would lose the row it never executed.
+venv_tree="${WORKDIR}/venv-checkout"
+mkdir -p "${venv_tree}/.git" "${venv_tree}/.venv-docs/bin"
+: >"${venv_tree}/.venv-docs/bin/mkdocs"
+chmod +x "${venv_tree}/.venv-docs/bin/mkdocs"
+json="$(env BUILD_WORKSPACE_DIRECTORY="$venv_tree" "$DOCTOR" --json 2>/dev/null)" || true
+status=0
+printf '%s\n' "$json" | python3 -c '
+import json, sys
+report = json.loads(sys.stdin.read())
+assert report["docs_venv"] == "ready", report["docs_venv"]
+' >/dev/null 2>&1 || status=$?
+check "--json reports the docs virtualenv ready when the tree has one" "$status"
+
+json="$(env BUILD_WORKSPACE_DIRECTORY="$env_tree" "$DOCTOR" --json 2>/dev/null)" || true
+status=0
+printf '%s\n' "$json" | python3 -c '
+import json, sys
+report = json.loads(sys.stdin.read())
+assert report["docs_venv"] != "ready", report["docs_venv"]
+' >/dev/null 2>&1 || status=$?
+check "--json says the docs virtualenv is missing when the tree has none" "$status"
+
 if [ "$failures" -ne 0 ]; then
     echo "FAILURE: ${failures} doctor assertion(s) failed" >&2
     exit 1

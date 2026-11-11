@@ -249,41 +249,31 @@ nested invocation that uses its own output base.
 ## Continuous Integration Setup
 
 ### The gate job in .github/workflows/ci.yml
-```yaml
-name: Test Suite
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
+The `bazel-tests` job of `.github/workflows/ci.yml` is the workflow that
+actually runs. In order, it:
 
-    - name: Setup Bazelisk
-      uses: bazelbuild/setup-bazelisk@v3
+1. checks the tree out and installs Bazelisk;
+2. installs what the strict lanes need from the host. The Python linters come
+   from the pins in `tools/bazel/lint-requirements.txt` and go into a prefix
+   with its own interpreter, because a Bazel test action is handed Bazel's own
+   PATH and a throwaway home directory, and a linter that lives in the job's
+   home answers `--version` in the job shell while the lane cannot import it;
+3. links those tools into `/usr/local/bin`, which is on the PATH a test action
+   sees, and then runs each one under an empty environment and a home directory
+   that does not exist, so an install that only works from the job shell fails
+   the job at install time rather than at gate time;
+4. installs the terraform formatter the terraform lane demands;
+5. `bazelisk run //:doctor`, which reports the host and fails when a required
+   binary is missing or cannot answer `--version`;
+6. `bazelisk test //tools/bazel/sh/test:doctor_test`, which asserts the same
+   census from inside a test sandbox, where the PATH and home are the lane's;
+7. `bazelisk test //:gate --test_output=errors --nocache_test_results`.
 
-    - name: Install the tools the strict lane demands
-      run: |
-        python -m pip install --upgrade pip
-        pip install ansible-lint yamllint pyyaml
-        ansible-galaxy collection install -r infrastructure/ansible/requirements.yml
-        curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
-
-    - name: Report the host toolchain
-      run: bazelisk run //:doctor
-
-    - name: Run the gate
-      run: bazelisk test //:gate --test_output=errors --nocache_test_results
-```
-
-The fragment mirrors the `bazel-tests` job of `.github/workflows/ci.yml`, which
-is the workflow that actually runs. Nothing chmods a script and nothing calls a
-script by path: Bazel sets the executable bit from the source file, and a lane
-is chosen by its target name.
+Nothing chmods a script and nothing calls a script by path: Bazel sets the
+executable bit from the source file, and a lane is chosen by its target name.
+`.github/workflows/presubmit.yml` runs the same install steps and then the
+quick lane, `//:fast`.
 
 ## Test Coverage Requirements
 

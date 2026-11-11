@@ -83,11 +83,25 @@ jobs:
         uses: bazelbuild/setup-bazelisk@v3
       - name: Install the tools the strict lane demands
         run: |
-          python -m pip install --upgrade pip
-          pip install ansible-lint yamllint pyyaml
-          ansible-galaxy collection install -r infrastructure/ansible/requirements.yml
+          # A Bazel test action is handed Bazel's own PATH (/usr/local/bin:/usr/bin:/bin)
+          # and a throwaway HOME, so a lane sees neither the job PATH nor the job's home
+          # directory. The tools have to sit where that PATH reaches and resolve their
+          # modules without a home to lean on. //:doctor names the gap when one is
+          # missing, and the probe in the step after this one reproduces a test action
+          # rather than trusting the job shell.
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq python3-venv python3-yaml
           curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
           kubectl version --client || true
+          # The Python linters get their own prefix with its own interpreter, from the
+          # pins a person installs locally; that file says why the versions are fixed.
+          sudo mkdir -p /opt/gate-tools
+          sudo chown "$(id -u):$(id -g)" /opt/gate-tools
+          python3 -m venv /opt/gate-tools
+          /opt/gate-tools/bin/pip install --quiet --upgrade pip
+          /opt/gate-tools/bin/pip install --quiet -r tools/bazel/lint-requirements.txt
+          /opt/gate-tools/bin/ansible-galaxy collection install \
+            -r infrastructure/ansible/requirements.yml
       - name: Install the terraform formatter
         uses: hashicorp/setup-terraform@v3
         with:
@@ -95,21 +109,33 @@ jobs:
           terraform_wrapper: false
       - name: Put the lane tools where a test action can see them
         run: |
-          # A Bazel test action gets Bazel's own PATH (/usr/local/bin:/usr/bin:/bin),
-          # not the job's, so a tool that lives in the setup-python or
-          # setup-terraform tool cache is missing to a lane even though the job
-          # shell can run it. //:doctor named the gap; the lanes then failed with
-          # "not found but REQUIRE_LINT_TOOLS/CI is set".
-          for tool in ansible ansible-doc ansible-lint yamllint terraform; do
-            src="$(command -v "${tool}")" || {
-              echo "not on the job PATH: ${tool}" >&2
+          # /usr/local/bin is on the PATH a Bazel test action is handed, so the lane
+          # tools are linked there rather than left in a tool cache or in a prefix only
+          # the job PATH knows about.
+          for tool in ansible ansible-doc ansible-lint yamllint; do
+            src="/opt/gate-tools/bin/${tool}"
+            [ -x "${src}" ] || {
+              echo "the prefix has no ${tool}; see tools/bazel/lint-requirements.txt" >&2
               exit 1
             }
             sudo ln -sfn "${src}" "/usr/local/bin/${tool}"
           done
-          /usr/local/bin/terraform version
-          /usr/local/bin/ansible-lint --version
-          /usr/local/bin/yamllint --version
+          src="$(command -v terraform)" || {
+            echo "the terraform step left nothing on the job PATH" >&2
+            exit 1
+          }
+          sudo ln -sfn "${src}" /usr/local/bin/terraform
+          # Then run each one the way a lane does: Bazel's PATH, an empty environment,
+          # and a home directory that does not exist. An install that only works from
+          # the job shell is the failure this step exists to catch.
+          probe_home="$(mktemp -d)"
+          for tool in ansible ansible-doc ansible-lint yamllint terraform; do
+            if ! env -i PATH=/usr/local/bin:/usr/bin:/bin HOME="${probe_home}" \
+                "/usr/local/bin/${tool}" --version >/dev/null; then
+              echo "${tool} cannot run the way a test action sees it" >&2
+              exit 1
+            fi
+          done
       - name: Report the host toolchain
         run: bazelisk run //:doctor
       - name: Prove the census from inside a test sandbox

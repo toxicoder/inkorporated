@@ -761,6 +761,47 @@ def export_state() -> str:
     return "unbuilt"
 
 
+def export_html_for(rel: str) -> Path:
+    """The export file a source page is rendered into.
+
+    A directory's index page is served at the directory root, so ``training/index.md``
+    lands on ``out/training/index.html`` and the home page on ``out/index.html``; every
+    other page gets a directory of its own with ``index.html`` inside.
+
+    Args:
+        rel: Page path relative to ``docs/``, with its ``.md`` or ``.mdx`` suffix.
+
+    Returns:
+        Path of the rendered file under ``docs-site/out/``.
+    """
+    stem = rel[: rel.rfind(".")]
+    if stem == "index":
+        return EXPORT_DIR / "index.html"
+    if stem.endswith("/index"):
+        stem = stem[: -len("/index")]
+    return EXPORT_DIR / stem / "index.html"
+
+
+class ExportPathTests(unittest.TestCase):
+    """Where each source page lands in the export, independent of whether it is built."""
+
+    def test_a_directory_index_page_is_served_at_the_directory_root(self) -> None:
+        """Fumadocs drops the index segment, so the check must not re-add it."""
+        self.assertEqual(EXPORT_DIR / "index.html", export_html_for("index.md"))
+        self.assertEqual(EXPORT_DIR / "training" / "index.html", export_html_for("training/index.md"))
+        self.assertEqual(
+            EXPORT_DIR / "cyborgs" / "generated" / "index.html", export_html_for("cyborgs/generated/index.mdx")
+        )
+
+    def test_an_ordinary_page_gets_a_directory_of_its_own(self) -> None:
+        """trailingSlash means every other page is a directory holding index.html."""
+        self.assertEqual(EXPORT_DIR / "guides" / "backups" / "index.html", export_html_for("guides/backups.md"))
+        self.assertEqual(
+            EXPORT_DIR / "job_roles" / "personal_staff" / "pers0011" / "index.html",
+            export_html_for("job_roles/personal_staff/pers0011.mdx"),
+        )
+
+
 class ExportTests(unittest.TestCase):
     """Optional checks against the built export in ``docs-site/out/``."""
 
@@ -803,8 +844,7 @@ class ExportTests(unittest.TestCase):
         leftovers = (TOC_RE, GRID_CARDS_RE, SNIPPET_RE, INCLUDE_RE, TAB_LINE_RE)
         problems: list[str] = []
         for rel in self._sample():
-            stem = rel[: rel.rfind(".")]
-            html = EXPORT_DIR / stem / "index.html"
+            html = export_html_for(rel)
             if not html.is_file():
                 problems.append(f"{rel}: no {html.relative_to(SITE_DIR)} in the export")
                 continue

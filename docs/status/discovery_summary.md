@@ -176,7 +176,7 @@ The project now has a comprehensive documentation system with the following key 
 
 ## Repository Structure
 
-```
+```text
 docs/
 ├── COMPREHENSIVE_PROJECT_DOCUMENTATION.md     # Complete project overview
 ├── SERVICE_SPECIFIC_DOCUMENTATION.md          # Detailed service specifications

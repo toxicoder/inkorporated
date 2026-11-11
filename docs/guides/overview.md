@@ -51,7 +51,7 @@ flowchart LR
 
 ### Project Directories
 
-```
+```text
 .
 ├── apps/                     # Application deployments
 │   └── shared/               # Shared applications

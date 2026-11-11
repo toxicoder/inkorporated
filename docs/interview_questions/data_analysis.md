@@ -179,7 +179,7 @@ A standardized way of displaying the distribution of data based on a five-number
 5.  Maximum
 
 **Chart: Box Plot Components**
-```
+```text
       |----[  Q1  |  Q3  ]----|
     Min        Median        Max
 ```

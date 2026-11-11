@@ -75,8 +75,11 @@ cd "$here"
 # keeps that true from whatever directory the test stub started in.
 export ANSIBLE_ROLES_PATH="$here/roles"
 
-# Run ansible-lint with common options
-echo "Running ansible-lint..."
+# Run ansible-lint with common options. The version goes into the log because
+# the rules this lane applies travel with the release: the pinned requirements
+# file fixes it, so a runner cannot lint against a stricter ruleset than the one
+# a person cleared locally.
+echo "Running ansible-lint $(ansible-lint --version 2>/dev/null | head -1)"
 ansible-lint --config-file "$here/.ansible-lint" \
     --exclude .git --exclude node_modules --exclude venv "$@"
 

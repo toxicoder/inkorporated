@@ -52,3 +52,7 @@ docs/__pycache__/
 /bazel-out
 /bazel-testlogs
 /bazel-inkorporated
+
+# ansible-compat writes this scratch tree beside the playbooks it lints, so the
+# ansible lane leaves it in the package directory it was run from
+.ansible/

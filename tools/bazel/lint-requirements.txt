@@ -1,0 +1,33 @@
+# The Python tools the strict lane demands, pinned so a lane means the same
+# thing on a laptop and on a runner.
+#
+# Install them into their own prefix, which is also how CI does it:
+#
+#   python3 -m venv /opt/gate-tools
+#   /opt/gate-tools/bin/pip install -r tools/bazel/lint-requirements.txt
+#
+# The prefix matters as much as the pins. A Bazel test action is handed Bazel's
+# own PATH (/usr/local/bin:/usr/bin:/bin) and a throwaway HOME, so a linter that
+# pip put in the job's home directory answers --version in the job shell and dies
+# with ModuleNotFoundError inside the lane. A prefix with its own interpreter
+# resolves its modules from its own directory tree, and //:doctor reports it the
+# same way it reports any other host tool.
+#
+# ansible-lint is pinned to the release this tree is clean against under the
+# profile in infrastructure/ansible/.ansible-lint. The current release added
+# var-naming[no-role-prefix], which reports the register and vars names this
+# package's roles have never prefixed, so an unpinned install turns a green lane
+# red without anything in the playbooks changing. Clearing that rule is the
+# follow-up the profile file already names.
+#
+# ansible-core travels with ansible-lint: the lane shells out to ansible,
+# ansible-doc and ansible-galaxy as well, and //:doctor censuses all four.
+# yamllint is pinned to the version the image ships, so the census row a person
+# sees locally is the row CI prints. ansible-compat is the release that resolved
+# beside these two when the lane was last cleared, so a runner cannot pull a
+# newer one and lint against rules nobody reviewed.
+ansible-lint==6.17.2
+ansible-core==2.16.3
+ansible-compat==26.6.0
+yamllint==1.33.0
+pyyaml==6.0.1

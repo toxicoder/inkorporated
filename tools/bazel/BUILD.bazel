@@ -25,6 +25,14 @@ filegroup(
     srcs = ["secrets-allowlist.txt"],
 )
 
+# The pinned host tools the strict lane demands. The CI jobs install from this
+# file, so a lane runs the same ansible-lint on a runner as on the laptop that
+# wrote the playbook, and //:doctor names the gap when a host has none of it.
+filegroup(
+    name = "lint_requirements",
+    srcs = ["lint-requirements.txt"],
+)
+
 filegroup(
     name = "coverage_ledgers",
     srcs = [

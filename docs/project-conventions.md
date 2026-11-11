@@ -150,6 +150,11 @@ Pre-commit config: `.pre-commit-config.yaml` (optional local install).
 - Lint through `bazelisk test //infrastructure/ansible:ansible_lint`; under
   `REQUIRE_LINT_TOOLS=1` a missing `ansible-lint`, `yamllint` or
   `community.general` collection fails the lane instead of skipping it
+- The linters are pinned in `tools/bazel/lint-requirements.txt` and install
+  into a prefix with its own interpreter, so a lane runs the same release on a
+  laptop and on a runner. `bazelisk run //:doctor` is the census: a required
+  tool that is on PATH but cannot answer `--version` is BROKEN, and the doctor
+  exits non-zero
 - Inventory secrets stay local / example-only in git
 
 ---

@@ -89,6 +89,10 @@ Environments: `config/environments/`, `apps/environments/`.
     `REQUIRE_LINT_TOOLS=1` when `ansible-lint`, `yamllint` or the
     `community.general` collection is missing; install the collection with
     `ansible-galaxy collection install -r infrastructure/ansible/requirements.yml`
+*   Linter versions are pinned in `tools/bazel/lint-requirements.txt` and
+    install into a prefix with its own interpreter, so the lane runs the same
+    release everywhere; `bazelisk run //:doctor` reports a tool that is on PATH
+    but cannot run as BROKEN and exits non-zero
 
 ---
 

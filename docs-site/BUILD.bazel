@@ -90,6 +90,7 @@ filegroup(
         "tests/unit/mermaid.test.ts",
         "tests/unit/nav.test.ts",
         "tests/unit/page-footer.test.ts",
+        "tests/unit/remark-abbreviations.test.ts",
         "tests/unit/search-index.test.ts",
         "tests/unit/site.test.ts",
         "tsconfig.json",

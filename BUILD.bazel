@@ -22,11 +22,6 @@ package(default_visibility = ["//visibility:public"])
 # ---------------------------------------------------------------------------
 
 filegroup(
-    name = "mkdocs_config",
-    srcs = ["mkdocs.yml"],
-)
-
-filegroup(
     name = "validate_config_sh",
     srcs = ["validate_config.sh"],
 )

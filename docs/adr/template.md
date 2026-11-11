@@ -4,7 +4,7 @@ description: "{{ADR_NUMBER}} - {{TITLE}} for Inkorporated."
 tags: [infrastructure]
 ---
 
-# {{ADR_NUMBER}} - {{TITLE}}
+# \{\{ADR_NUMBER\}\} - \{\{TITLE\}\}
 
 
 **What's on this page**
@@ -19,26 +19,26 @@ tags: [infrastructure]
 
 ## Status
 
-{{STATUS}}
+\{\{STATUS\}\}
 
 ## Context
 
-{{CONTEXT}}
+\{\{CONTEXT\}\}
 
 ## Decision
 
-{{DECISION}}
+\{\{DECISION\}\}
 
 ## Consequences
 
 ### Positive
 
-{{POSITIVE_CONSEQUENCES}}
+\{\{POSITIVE_CONSEQUENCES\}\}
 
 ### Negative
 
-{{NEGATIVE_CONSEQUENCES}}
+\{\{NEGATIVE_CONSEQUENCES\}\}
 
 ## References
 
-{{REFERENCES}}
+\{\{REFERENCES\}\}

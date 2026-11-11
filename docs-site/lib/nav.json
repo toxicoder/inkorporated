@@ -611,15 +611,15 @@
         "pages": [
           {
             "title": "CAO: Chief Administrative Officer",
-            "path": "job_roles/executive_leadership/cao.md"
+            "path": "job_roles/executive_leadership/cao.mdx"
           },
           {
             "title": "CCO: Chief Compliance Officer",
-            "path": "job_roles/executive_leadership/cco.md"
+            "path": "job_roles/executive_leadership/cco.mdx"
           },
           {
             "title": "CDO: Chief Data Officer",
-            "path": "job_roles/executive_leadership/cdo.md"
+            "path": "job_roles/executive_leadership/cdo.mdx"
           },
           {
             "title": "CEO: Chief Executive Officer",
@@ -627,31 +627,31 @@
           },
           {
             "title": "CFO",
-            "path": "job_roles/executive_leadership/cfo.md"
+            "path": "job_roles/executive_leadership/cfo.mdx"
           },
           {
             "title": "Chief of Staff (Corporate)",
-            "path": "job_roles/executive_leadership/chief_of_staff.md"
+            "path": "job_roles/executive_leadership/chief_of_staff.mdx"
           },
           {
             "title": "CHRO: Chief Human Resources Officer",
-            "path": "job_roles/executive_leadership/chro.md"
+            "path": "job_roles/executive_leadership/chro.mdx"
           },
           {
             "title": "CISO: Chief Information Security Officer",
-            "path": "job_roles/executive_leadership/ciso.md"
+            "path": "job_roles/executive_leadership/ciso.mdx"
           },
           {
             "title": "CLO",
-            "path": "job_roles/executive_leadership/clo.md"
+            "path": "job_roles/executive_leadership/clo.mdx"
           },
           {
             "title": "CMO: Chief Marketing Officer",
-            "path": "job_roles/executive_leadership/cmo.md"
+            "path": "job_roles/executive_leadership/cmo.mdx"
           },
           {
             "title": "COO: Chief Operating Officer",
-            "path": "job_roles/executive_leadership/coo.md"
+            "path": "job_roles/executive_leadership/coo.mdx"
           },
           {
             "title": "CPO: Chief Product Officer",
@@ -659,7 +659,7 @@
           },
           {
             "title": "CRO",
-            "path": "job_roles/executive_leadership/cro.md"
+            "path": "job_roles/executive_leadership/cro.mdx"
           },
           {
             "title": "CTO: Chief Technology Officer",
@@ -667,47 +667,47 @@
           },
           {
             "title": "CRO",
-            "path": "job_roles/executive_leadership/exec0004.md"
+            "path": "job_roles/executive_leadership/exec0004.mdx"
           },
           {
             "title": "CFO",
-            "path": "job_roles/executive_leadership/exec0005.md"
+            "path": "job_roles/executive_leadership/exec0005.mdx"
           },
           {
             "title": "CLO",
-            "path": "job_roles/executive_leadership/exec0006.md"
+            "path": "job_roles/executive_leadership/exec0006.mdx"
           },
           {
             "title": "COO: Chief Operating Officer",
-            "path": "job_roles/executive_leadership/exec0007.md"
+            "path": "job_roles/executive_leadership/exec0007.mdx"
           },
           {
             "title": "CISO: Chief Information Security Officer",
-            "path": "job_roles/executive_leadership/exec0008.md"
+            "path": "job_roles/executive_leadership/exec0008.mdx"
           },
           {
             "title": "CDO: Chief Data Officer",
-            "path": "job_roles/executive_leadership/exec0009.md"
+            "path": "job_roles/executive_leadership/exec0009.mdx"
           },
           {
             "title": "Chief of Staff (Corporate)",
-            "path": "job_roles/executive_leadership/exec0010.md"
+            "path": "job_roles/executive_leadership/exec0010.mdx"
           },
           {
             "title": "CMO: Chief Marketing Officer",
-            "path": "job_roles/executive_leadership/exec0011.md"
+            "path": "job_roles/executive_leadership/exec0011.mdx"
           },
           {
             "title": "CCO: Chief Compliance Officer",
-            "path": "job_roles/executive_leadership/exec0012.md"
+            "path": "job_roles/executive_leadership/exec0012.mdx"
           },
           {
             "title": "CHRO: Chief Human Resources Officer",
-            "path": "job_roles/executive_leadership/exec0013.md"
+            "path": "job_roles/executive_leadership/exec0013.mdx"
           },
           {
             "title": "CAO: Chief Administrative Officer",
-            "path": "job_roles/executive_leadership/exec0014.md"
+            "path": "job_roles/executive_leadership/exec0014.mdx"
           }
         ]
       },
@@ -716,11 +716,11 @@
         "pages": [
           {
             "title": "Accounts Payable Specialist",
-            "path": "job_roles/ga_general_administrative/ap_specialist.md"
+            "path": "job_roles/ga_general_administrative/ap_specialist.mdx"
           },
           {
             "title": "Accounts Receivable Specialist",
-            "path": "job_roles/ga_general_administrative/ar_specialist.md"
+            "path": "job_roles/ga_general_administrative/ar_specialist.mdx"
           },
           {
             "title": "Business Continuity Manager",
@@ -732,7 +732,7 @@
           },
           {
             "title": "Commercial Counsel",
-            "path": "job_roles/ga_general_administrative/commercial_counsel.md"
+            "path": "job_roles/ga_general_administrative/commercial_counsel.mdx"
           },
           {
             "title": "Compensation & Benefits Partner",
@@ -740,19 +740,19 @@
           },
           {
             "title": "Compliance Officer",
-            "path": "job_roles/ga_general_administrative/compliance_officer.md"
+            "path": "job_roles/ga_general_administrative/compliance_officer.mdx"
           },
           {
             "title": "Controller",
-            "path": "job_roles/ga_general_administrative/controller.md"
+            "path": "job_roles/ga_general_administrative/controller.mdx"
           },
           {
             "title": "Assistant Controller",
-            "path": "job_roles/ga_general_administrative/controller_assistant.md"
+            "path": "job_roles/ga_general_administrative/controller_assistant.mdx"
           },
           {
             "title": "Legal_Counsel",
-            "path": "job_roles/ga_general_administrative/corp_counsel.md"
+            "path": "job_roles/ga_general_administrative/corp_counsel.mdx"
           },
           {
             "title": "DEI Program Lead",
@@ -760,7 +760,7 @@
           },
           {
             "title": "DirFinance",
-            "path": "job_roles/ga_general_administrative/director_of_finance.md"
+            "path": "job_roles/ga_general_administrative/director_of_finance.mdx"
           },
           {
             "title": "DirPeople",
@@ -768,7 +768,7 @@
           },
           {
             "title": "Labor_Law_Bot",
-            "path": "job_roles/ga_general_administrative/employment_counsel.md"
+            "path": "job_roles/ga_general_administrative/employment_counsel.mdx"
           },
           {
             "title": "Employment Operations Specialist",
@@ -780,67 +780,67 @@
           },
           {
             "title": "VPFinance",
-            "path": "job_roles/ga_general_administrative/finc0001.md"
+            "path": "job_roles/ga_general_administrative/finc0001.mdx"
           },
           {
             "title": "DirFinance",
-            "path": "job_roles/ga_general_administrative/finc0002.md"
+            "path": "job_roles/ga_general_administrative/finc0002.mdx"
           },
           {
             "title": "Finance_Forecaster",
-            "path": "job_roles/ga_general_administrative/finc6001.md"
+            "path": "job_roles/ga_general_administrative/finc6001.mdx"
           },
           {
             "title": "Controller",
-            "path": "job_roles/ga_general_administrative/finc6002.md"
+            "path": "job_roles/ga_general_administrative/finc6002.mdx"
           },
           {
             "title": "Internal Auditor",
-            "path": "job_roles/ga_general_administrative/finc6010.md"
+            "path": "job_roles/ga_general_administrative/finc6010.mdx"
           },
           {
             "title": "Tax Director",
-            "path": "job_roles/ga_general_administrative/finc6011.md"
+            "path": "job_roles/ga_general_administrative/finc6011.mdx"
           },
           {
             "title": "Treasurer",
-            "path": "job_roles/ga_general_administrative/finc6012.md"
+            "path": "job_roles/ga_general_administrative/finc6012.mdx"
           },
           {
             "title": "Procurement Manager",
-            "path": "job_roles/ga_general_administrative/finc6013.md"
+            "path": "job_roles/ga_general_administrative/finc6013.mdx"
           },
           {
             "title": "Payroll Specialist",
-            "path": "job_roles/ga_general_administrative/finc6014.md"
+            "path": "job_roles/ga_general_administrative/finc6014.mdx"
           },
           {
             "title": "Accounts Payable Specialist",
-            "path": "job_roles/ga_general_administrative/finc6015.md"
+            "path": "job_roles/ga_general_administrative/finc6015.mdx"
           },
           {
             "title": "Accounts Receivable Specialist",
-            "path": "job_roles/ga_general_administrative/finc6016.md"
+            "path": "job_roles/ga_general_administrative/finc6016.mdx"
           },
           {
             "title": "Investor Relations Lead",
-            "path": "job_roles/ga_general_administrative/finc6017.md"
+            "path": "job_roles/ga_general_administrative/finc6017.mdx"
           },
           {
             "title": "FP&A Manager",
-            "path": "job_roles/ga_general_administrative/finc6018.md"
+            "path": "job_roles/ga_general_administrative/finc6018.mdx"
           },
           {
             "title": "Assistant Controller",
-            "path": "job_roles/ga_general_administrative/finc6019.md"
+            "path": "job_roles/ga_general_administrative/finc6019.mdx"
           },
           {
             "title": "Finance_Forecaster",
-            "path": "job_roles/ga_general_administrative/fpa_analyst.md"
+            "path": "job_roles/ga_general_administrative/fpa_analyst.mdx"
           },
           {
             "title": "FP&A Manager",
-            "path": "job_roles/ga_general_administrative/fpa_manager.md"
+            "path": "job_roles/ga_general_administrative/fpa_manager.mdx"
           },
           {
             "title": "HR_Partner",
@@ -848,15 +848,15 @@
           },
           {
             "title": "Internal Auditor",
-            "path": "job_roles/ga_general_administrative/internal_audit.md"
+            "path": "job_roles/ga_general_administrative/internal_audit.mdx"
           },
           {
             "title": "Investor Relations Lead",
-            "path": "job_roles/ga_general_administrative/investor_relations.md"
+            "path": "job_roles/ga_general_administrative/investor_relations.mdx"
           },
           {
             "title": "IP Counsel",
-            "path": "job_roles/ga_general_administrative/ip_counsel.md"
+            "path": "job_roles/ga_general_administrative/ip_counsel.mdx"
           },
           {
             "title": "Learning & Development Partner",
@@ -864,27 +864,27 @@
           },
           {
             "title": "Legal_Counsel",
-            "path": "job_roles/ga_general_administrative/legl7001.md"
+            "path": "job_roles/ga_general_administrative/legl7001.mdx"
           },
           {
             "title": "Labor_Law_Bot",
-            "path": "job_roles/ga_general_administrative/legl7003.md"
+            "path": "job_roles/ga_general_administrative/legl7003.mdx"
           },
           {
             "title": "Compliance Officer",
-            "path": "job_roles/ga_general_administrative/legl7010.md"
+            "path": "job_roles/ga_general_administrative/legl7010.mdx"
           },
           {
             "title": "Privacy Counsel",
-            "path": "job_roles/ga_general_administrative/legl7011.md"
+            "path": "job_roles/ga_general_administrative/legl7011.mdx"
           },
           {
             "title": "IP Counsel",
-            "path": "job_roles/ga_general_administrative/legl7012.md"
+            "path": "job_roles/ga_general_administrative/legl7012.mdx"
           },
           {
             "title": "Commercial Counsel",
-            "path": "job_roles/ga_general_administrative/legl7013.md"
+            "path": "job_roles/ga_general_administrative/legl7013.mdx"
           },
           {
             "title": "Ops_Strategist",
@@ -904,7 +904,7 @@
           },
           {
             "title": "Payroll Specialist",
-            "path": "job_roles/ga_general_administrative/payroll_specialist.md"
+            "path": "job_roles/ga_general_administrative/payroll_specialist.mdx"
           },
           {
             "title": "VPPeople",
@@ -960,11 +960,11 @@
           },
           {
             "title": "Privacy Counsel",
-            "path": "job_roles/ga_general_administrative/privacy_counsel.md"
+            "path": "job_roles/ga_general_administrative/privacy_counsel.mdx"
           },
           {
             "title": "Procurement Manager",
-            "path": "job_roles/ga_general_administrative/procurement_manager.md"
+            "path": "job_roles/ga_general_administrative/procurement_manager.mdx"
           },
           {
             "title": "Workplace_Mgr",
@@ -988,11 +988,11 @@
           },
           {
             "title": "Tax Director",
-            "path": "job_roles/ga_general_administrative/tax_director.md"
+            "path": "job_roles/ga_general_administrative/tax_director.mdx"
           },
           {
             "title": "Treasurer",
-            "path": "job_roles/ga_general_administrative/treasurer.md"
+            "path": "job_roles/ga_general_administrative/treasurer.mdx"
           },
           {
             "title": "Vendor Manager",
@@ -1000,7 +1000,7 @@
           },
           {
             "title": "VPFinance",
-            "path": "job_roles/ga_general_administrative/vp_of_finance.md"
+            "path": "job_roles/ga_general_administrative/vp_of_finance.mdx"
           },
           {
             "title": "VPPeople",
@@ -1258,51 +1258,51 @@
         "pages": [
           {
             "title": "Audit Committee Chair",
-            "path": "job_roles/governance_board/audit_committee_chair.md"
+            "path": "job_roles/governance_board/audit_committee_chair.mdx"
           },
           {
             "title": "Board Chair",
-            "path": "job_roles/governance_board/board0001.md"
+            "path": "job_roles/governance_board/board0001.mdx"
           },
           {
             "title": "Corporate Secretary",
-            "path": "job_roles/governance_board/board0002.md"
+            "path": "job_roles/governance_board/board0002.mdx"
           },
           {
             "title": "Audit Committee Chair",
-            "path": "job_roles/governance_board/board0003.md"
+            "path": "job_roles/governance_board/board0003.mdx"
           },
           {
             "title": "Compensation Committee Chair",
-            "path": "job_roles/governance_board/board0004.md"
+            "path": "job_roles/governance_board/board0004.mdx"
           },
           {
             "title": "Independent Director",
-            "path": "job_roles/governance_board/board0005.md"
+            "path": "job_roles/governance_board/board0005.mdx"
           },
           {
             "title": "Nominating & Governance Chair",
-            "path": "job_roles/governance_board/board0006.md"
+            "path": "job_roles/governance_board/board0006.mdx"
           },
           {
             "title": "Board Chair",
-            "path": "job_roles/governance_board/board_chair.md"
+            "path": "job_roles/governance_board/board_chair.mdx"
           },
           {
             "title": "Compensation Committee Chair",
-            "path": "job_roles/governance_board/comp_committee_chair.md"
+            "path": "job_roles/governance_board/comp_committee_chair.mdx"
           },
           {
             "title": "Corporate Secretary",
-            "path": "job_roles/governance_board/corporate_secretary.md"
+            "path": "job_roles/governance_board/corporate_secretary.mdx"
           },
           {
             "title": "Independent Director",
-            "path": "job_roles/governance_board/independent_director.md"
+            "path": "job_roles/governance_board/independent_director.mdx"
           },
           {
             "title": "Nominating & Governance Chair",
-            "path": "job_roles/governance_board/nomgov_chair.md"
+            "path": "job_roles/governance_board/nomgov_chair.mdx"
           }
         ]
       },
@@ -1311,115 +1311,115 @@
         "pages": [
           {
             "title": "Event",
-            "path": "job_roles/personal_staff/event_coordinator.md"
+            "path": "job_roles/personal_staff/event_coordinator.mdx"
           },
           {
             "title": "CFO_Personal",
-            "path": "job_roles/personal_staff/family_office_director.md"
+            "path": "job_roles/personal_staff/family_office_director.mdx"
           },
           {
             "title": "HouseMgr",
-            "path": "job_roles/personal_staff/household_manager.md"
+            "path": "job_roles/personal_staff/household_manager.mdx"
           },
           {
             "title": "Doctor",
-            "path": "job_roles/personal_staff/medical_director.md"
+            "path": "job_roles/personal_staff/medical_director.mdx"
           },
           {
             "title": "ChiefOfStaff",
-            "path": "job_roles/personal_staff/pers0001.md"
+            "path": "job_roles/personal_staff/pers0001.mdx"
           },
           {
             "title": "HouseMgr",
-            "path": "job_roles/personal_staff/pers0002.md"
+            "path": "job_roles/personal_staff/pers0002.mdx"
           },
           {
             "title": "Chef",
-            "path": "job_roles/personal_staff/pers0003.md"
+            "path": "job_roles/personal_staff/pers0003.mdx"
           },
           {
             "title": "Trainer",
-            "path": "job_roles/personal_staff/pers0004.md"
+            "path": "job_roles/personal_staff/pers0004.mdx"
           },
           {
             "title": "Travel",
-            "path": "job_roles/personal_staff/pers0005.md"
+            "path": "job_roles/personal_staff/pers0005.mdx"
           },
           {
             "title": "Event",
-            "path": "job_roles/personal_staff/pers0006.md"
+            "path": "job_roles/personal_staff/pers0006.mdx"
           },
           {
             "title": "Stylist",
-            "path": "job_roles/personal_staff/pers0007.md"
+            "path": "job_roles/personal_staff/pers0007.mdx"
           },
           {
             "title": "Tutor",
-            "path": "job_roles/personal_staff/pers0008.md"
+            "path": "job_roles/personal_staff/pers0008.mdx"
           },
           {
             "title": "Security",
-            "path": "job_roles/personal_staff/pers0009.md"
+            "path": "job_roles/personal_staff/pers0009.mdx"
           },
           {
             "title": "CFO_Personal",
-            "path": "job_roles/personal_staff/pers0010.md"
+            "path": "job_roles/personal_staff/pers0010.mdx"
           },
           {
             "title": "Legal_Personal",
-            "path": "job_roles/personal_staff/pers0011.md"
+            "path": "job_roles/personal_staff/pers0011.mdx"
           },
           {
             "title": "Doctor",
-            "path": "job_roles/personal_staff/pers0012.md"
+            "path": "job_roles/personal_staff/pers0012.mdx"
           },
           {
             "title": "PA_General",
-            "path": "job_roles/personal_staff/pers0013.md"
+            "path": "job_roles/personal_staff/pers0013.mdx"
           },
           {
             "title": "Specialist",
-            "path": "job_roles/personal_staff/pers0014.md"
+            "path": "job_roles/personal_staff/pers0014.mdx"
           },
           {
             "title": "PA_General",
-            "path": "job_roles/personal_staff/personal_assistant.md"
+            "path": "job_roles/personal_staff/personal_assistant.mdx"
           },
           {
             "title": "ChiefOfStaff",
-            "path": "job_roles/personal_staff/personal_chief_of_staff.md"
+            "path": "job_roles/personal_staff/personal_chief_of_staff.mdx"
           },
           {
             "title": "Stylist",
-            "path": "job_roles/personal_staff/personal_shopper.md"
+            "path": "job_roles/personal_staff/personal_shopper.mdx"
           },
           {
             "title": "Trainer",
-            "path": "job_roles/personal_staff/personal_trainer.md"
+            "path": "job_roles/personal_staff/personal_trainer.mdx"
           },
           {
             "title": "Chef",
-            "path": "job_roles/personal_staff/private_chef.md"
+            "path": "job_roles/personal_staff/private_chef.mdx"
           },
           {
             "title": "Legal_Personal",
-            "path": "job_roles/personal_staff/private_legal_counsel.md"
+            "path": "job_roles/personal_staff/private_legal_counsel.mdx"
           },
           {
             "title": "Security",
-            "path": "job_roles/personal_staff/private_security.md"
+            "path": "job_roles/personal_staff/private_security.mdx"
           },
           {
             "title": "Specialist",
-            "path": "job_roles/personal_staff/specialist_consultant.md"
+            "path": "job_roles/personal_staff/specialist_consultant.mdx"
           },
           {
             "title": "Travel",
-            "path": "job_roles/personal_staff/travel_concierge.md"
+            "path": "job_roles/personal_staff/travel_concierge.mdx"
           },
           {
             "title": "Tutor",
-            "path": "job_roles/personal_staff/tutor_education_liaison.md"
+            "path": "job_roles/personal_staff/tutor_education_liaison.mdx"
           }
         ]
       },

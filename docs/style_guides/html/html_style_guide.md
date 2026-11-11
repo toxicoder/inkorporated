@@ -196,8 +196,8 @@ This document outlines the coding standards and best practices for writing HTML 
 ## Comments
 
 - **Usage**: Use comments to explain complex structural blocks or directives.
-- **Format**: `<!-- Comment Text -->`
-- **Spacing**: Include a space after the opening `<!--` and before the closing `-->`.
+- **Format**: `{/* Comment Text */}`
+- **Spacing**: Include a space after the opening `{/* ` and before the closing ` */}`.
 - **Section Dividers**: Use comments to denote start and end of major sections.
 
 ```html

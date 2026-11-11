@@ -47,4 +47,4 @@ registry=https://artifactory.company.com/artifactory/api/npm/npm/
 
 *   **GitHub Enterprise**: `https://github.company.com`
 *   **Access**: SSO enabled.
-*   **SSH Keys**: Must be Ed25519. RSA keys < 4096 bits are rejected.
+*   **SSH Keys**: Must be Ed25519. RSA keys \< 4096 bits are rejected.

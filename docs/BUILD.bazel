@@ -1,36 +1,48 @@
-# MkDocs content tree: the site payload, its generation scripts, and the shell
-# entry points a person drives to preview and publish the docs.
+# Fumadocs content tree: the site payload the Next app compiles, the generators that write
+# parts of it, and the shell entry points a person drives to preview, validate, and publish
+# the documentation.
+#
+# The renderer lives in //docs-site; this package owns only the prose.  Keeping the two apart
+# means the cyborg generator keeps writing into docs/cyborgs/generated/ and reviewers keep
+# diffing the same files, whatever the site underneath looks like.
+#
+# Usage:
+#   bazelisk run //docs:manage-docs -- build        # strict build (generators + links + export)
+#   bazelisk run //docs:manage-docs -- serve        # dev server with hot reload
+#   bazelisk run //docs:manage-docs -- generate     # rewrite every generated render
+#   bazelisk run //docs:status                      # what is stale, what is missing
+#   bazelisk test  //docs:suite                     # the docs gates CI runs
 
 load("//build:defs.bzl", "repo_sh_binary", "repo_sh_test")
 
 package(default_visibility = ["//visibility:public"])
 
+# The site payload.  //docs-site names this in every npm runner's data, so a build compiles
+# exactly the tree a reviewer read rather than whatever the working directory held.
 filegroup(
-    name = "site_srcs",
-    srcs = glob(["**/*"]),  # glob-policy: MkDocs content tree grows by design; mkdocs.yml nav is the review surface.
+    name = "content",
+    srcs = glob(["**/*"]),  # glob-policy: the content tree grows by design; docs-site/lib/nav.json is the review surface.
 )
 
-# Every docs/*.py is carried as data rather than as its own target: all of them
-# resolve paths from REPO_ROOT (= Path(__file__).parents[1]), so they only work
-# mounted next to the tree; three of the four command-line tools import PyYAML
-# from docs/requirements.txt, and this repo has no rules_python dependency; and
-# the fourth (validate_docs_links.py) has no wrapper script to name as srcs, so
-# it runs inside //docs:build.
+# Every docs/*.py is carried as data rather than as its own target: all of them resolve paths
+# from REPO_ROOT (= Path(__file__).parents[1]), so they only work mounted next to the tree;
+# two of them import PyYAML from docs/requirements.txt, and this repo has no rules_python
+# dependency; and the link checker has no wrapper script to name as srcs, so it runs inside
+# the build and the //docs:validate_links lane.
 _DOCS_PY = [
     "enrich_personas.py",
     "generate_cyborg_docs.py",
-    "hooks.py",
+    "test_docs_site_render.py",
     "validate_docs_links.py",
     "validate_persona_quality.py",
 ]
 
-# What manage-docs.sh touches: mkdocs.yml at the repo root, the venv bootstrap
-# it execs, the requirements that venv installs, the generator and link checker
-# it runs per build, the cyborg YAML the generator reads, and the site tree.
+# What manage-docs.sh touches: the content tree, the cyborg YAML the roster generator reads,
+# the Fumadocs app it shells out to for the export, and the requirements bootstrap.
 _DOCS_RUNTIME = [
-    ":site_srcs",
-    "//:mkdocs_config",
+    ":content",
     "//cyborgs:personas",
+    "//docs-site:sources",
 ] + _DOCS_PY
 
 repo_sh_binary(
@@ -43,18 +55,96 @@ repo_sh_binary(
     tags = ["docs"],
 )
 
+# Installs the pinned npm tree for the site and the PyYAML the generators import.  Idempotent,
+# and manage-docs.sh calls it itself when the toolchain is missing.
 repo_sh_binary(
     name = "setup-docs",
     srcs = ["setup-docs.sh"],
-    data = ["requirements.txt"],
+    data = [
+        "requirements.txt",
+        "//docs-site:sources",
+    ],
     tags = ["docs"],
 )
 
-# The strict build is the docs gate: it regenerates the cyborg roster, validates
-# links, and builds with mkdocs --strict. It needs the docs virtualenv and
-# writes site/ and docs/cyborgs/generated/ into the checkout, so it runs
-# unsandboxed and outside //:gate, which stays free of network egress. The docs
-# CI job names it directly. Prose refers to it as `bazelisk test //docs:build`.
+repo_sh_binary(
+    name = "docs",
+    srcs = ["manage-docs.sh"],
+    args = ["build"],
+    data = _DOCS_RUNTIME + [
+        ":setup-docs",
+        "requirements.txt",
+    ],
+    tags = ["docs"],
+)
+
+repo_sh_binary(
+    name = "serve",
+    srcs = ["manage-docs.sh"],
+    args = ["serve"],
+    data = _DOCS_RUNTIME + [
+        ":setup-docs",
+        "requirements.txt",
+    ],
+    tags = ["docs"],
+)
+
+# Rewrite every generated page from its source of truth (cyborgs/*.yaml).  Commit the diff:
+# the tree is checked in so a reviewer reads the render instead of running a generator.
+repo_sh_binary(
+    name = "generate",
+    srcs = ["manage-docs.sh"],
+    args = ["generate"],
+    data = _DOCS_RUNTIME + [
+        ":setup-docs",
+        "requirements.txt",
+    ],
+    tags = ["docs"],
+)
+
+# One generator on its own, for a fast edit-rebuild loop on the cyborg roster.
+repo_sh_binary(
+    name = "generate_cyborgs",
+    srcs = ["manage-docs.sh"],
+    args = ["generate-one", "generate_cyborg_docs"],
+    data = _DOCS_RUNTIME + [
+        ":setup-docs",
+        "requirements.txt",
+    ],
+    tags = ["docs"],
+)
+
+repo_sh_binary(
+    name = "preview",
+    srcs = ["manage-docs.sh"],
+    args = ["preview"],
+    data = _DOCS_RUNTIME + [
+        ":setup-docs",
+        "requirements.txt",
+    ],
+    tags = ["docs"],
+)
+
+repo_sh_binary(
+    name = "status",
+    srcs = ["manage-docs.sh"],
+    args = ["status"],
+    data = _DOCS_RUNTIME,
+    tags = ["docs"],
+)
+
+repo_sh_binary(
+    name = "clean",
+    srcs = ["manage-docs.sh"],
+    args = ["clean"],
+    data = [":content"],
+    tags = ["docs"],
+)
+
+# The strict build is the docs lane a person runs before publishing: it regenerates the
+# roster, validates links, and exports the site with the strict flags.  It needs the npm tree
+# and writes docs-site/out/ and docs/cyborgs/generated/ into the checkout, so it runs
+# unsandboxed and outside //:gate, which stays free of network egress and of writers.
 repo_sh_test(
     name = "build",
     srcs = ["manage-docs.sh"],
@@ -65,25 +155,26 @@ repo_sh_test(
     ],
     local = True,
     # manual keeps `bazel test //docs/...` from racing this writer against
-    # //docs:generated_render_current, which reads the same render out of the
-    # checkout. Both are host lanes; each is named explicitly by its caller.
+    # //docs:generated_render_current, which reads the same render out of the checkout. Both
+    # are host lanes; each is named explicitly by its caller.
     tags = ["docs", "host", "manual", "slow"],
     timeout = "long",
 )
 
-# The branch-aware link checker on its own. It is stdlib-only, so this lane
-# runs hermetically and belongs in the default gate.
+# The branch-aware link checker on its own.  It is stdlib-only, so this lane runs hermetically
+# and belongs in the default gate.  Relative .md links stay valid when the file on disk is the
+# .mdx twin, because that is how docs-site/lib/href.ts resolves them at render time.
 repo_sh_test(
     name = "validate_links",
     srcs = ["manage-docs.sh"],
     args = ["validate-links"],
-    data = [":site_srcs"],
+    data = [":content"],
     tags = ["docs", "gate"],
     timeout = "short",
 )
 
-# Fails when the committed render under docs/cyborgs/generated/ no longer
-# matches what cyborgs/*.yaml says. Edit cyborgs/, never the render.
+# Fails when the committed render under docs/cyborgs/generated/ no longer matches what
+# cyborgs/*.yaml says.  Edit cyborgs/, never the render.
 repo_sh_test(
     name = "generated_render_current",
     srcs = ["check_generated_render.sh"],
@@ -93,3 +184,24 @@ repo_sh_test(
     timeout = "short",
 )
 
+# The source contract the Fumadocs site depends on: nav.json lists pages that exist, no page
+# still carries MkDocs-only syntax, frontmatter parses against the schema source.config.ts
+# declares, and the export settings that kept the build in memory are still in place.
+repo_sh_test(
+    name = "test_docs_site_render",
+    srcs = ["test_docs_site_render.sh"],
+    data = _DOCS_RUNTIME,
+    tags = ["docs", "gate"],
+    timeout = "short",
+)
+
+# The docs gates a reviewer expects to be run by name.  //docs:build stays out of this suite:
+# it is a host lane that writes into the checkout and needs the npm tree.
+test_suite(
+    name = "suite",
+    tests = [
+        ":generated_render_current",
+        ":test_docs_site_render",
+        ":validate_links",
+    ],
+)

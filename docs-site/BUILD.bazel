@@ -1,0 +1,252 @@
+# Package purpose: the Fumadocs (Next.js App Router) documentation site - npm runners,
+# typecheck, and the python gates for the nav transcriber, the MkDocs-to-MDX codemod, and
+# the MDX hazard audit.
+#
+# The site renders the markdown/MDX content that lives in the sibling //docs package, so the
+# content data dependency below comes from //docs:content.  Content stays out of this package
+# so the cyborg generator keeps writing into docs/cyborgs/generated/ and reviewers keep
+# diffing the same files.
+#
+# Usage:
+#   bazelisk run //docs-site:install       # npm ci from the pinned lockfile
+#   bazelisk run //docs-site:dev           # dev server with hot reload
+#   bazelisk run //docs-site:build         # static export into docs-site/out/
+#   bazelisk run //docs-site:build-latest  # export published at /inkorporated/latest/
+#   bazelisk run //docs-site:typecheck     # next typegen + tsc --noEmit
+#   bazelisk run //docs-site:unit          # Vitest widget and transform suite
+#   bazelisk test //docs-site:suite        # every docs-site gate, as CI runs them
+#   bazelisk run //docs-site:npm -- ci     # escape hatch for any npm invocation
+
+load("@rules_shell//shell:sh_binary.bzl", "sh_binary")
+load("//build:defs.bzl", "repo_sh_binary", "repo_sh_test")
+
+package(default_visibility = ["//visibility:private"])
+
+# npm runners need the Next app, the content tree it compiles, and the pinned
+# lockfile, which the sources filegroup carries so a runner never reads a
+# package.json that a reviewer did not see.
+_NPM_DATA = [
+    ":sources",
+    "//docs:content",
+]
+
+filegroup(
+    name = "sources",
+    srcs = [
+        "BUILD.bazel",
+        ".gitignore",
+        "app/[[...slug]]/page.tsx",
+        "app/api/search/route.ts",
+        "app/global.css",
+        "app/icon.svg",
+        "app/layout.tsx",
+        "app/not-found.tsx",
+        "app/styles/cyborgs.css",
+        "app/styles/extra.css",
+        "components/abbr.tsx",
+        "components/cyborg-roster.tsx",
+        "components/docs-heading.tsx",
+        "components/docs-toc-bar.tsx",
+        "components/docs-trail.tsx",
+        "components/mdx-components.ts",
+        "components/mermaid.tsx",
+        "components/page-brief.tsx",
+        "components/provider.tsx",
+        "components/published-chip.tsx",
+        "components/search-dialog.tsx",
+        "components/search-from.tsx",
+        "components/table-chrome.tsx",
+        "components/wordmark.tsx",
+        "lib/content.ts",
+        "lib/docs-bug.ts",
+        "lib/href.ts",
+        "lib/nav.json",
+        "lib/nav.ts",
+        "lib/published.ts",
+        "lib/remark-abbreviations.ts",
+        "lib/remark-git-ref.ts",
+        "lib/remark-page-brief.ts",
+        "lib/search-index.ts",
+        "lib/site.ts",
+        "lib/source.ts",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "pages-root-index.html",
+        "postcss.config.mjs",
+        "run_npm.sh",
+        "run_python_test.sh",
+        "scripts/audit_mdx_hazards.py",
+        "scripts/codemod_mkdocs_to_mdx.py",
+        "scripts/gen_nav.py",
+        "scripts/serve_static.mjs",
+        "source.config.ts",
+        "test_audit_hazards.py",
+        "test_codemod.py",
+        "test_gen_nav.py",
+        "tests/unit/docs-bug.test.ts",
+        "tests/unit/docs-toc-bar.test.ts",
+        "tests/unit/href.test.ts",
+        "tests/unit/mermaid.test.ts",
+        "tests/unit/nav.test.ts",
+        "tests/unit/page-footer.test.ts",
+        "tests/unit/search-index.test.ts",
+        "tests/unit/site.test.ts",
+        "tsconfig.json",
+        "vitest.config.ts",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+# Node installation is a host lane: it writes docs-site/node_modules/ beside the
+# checkout and reaches the registry, so it is named by the CI docs job rather
+# than by //:gate, which stays hermetic and offline.
+repo_sh_binary(
+    name = "install",
+    srcs = ["run_npm.sh"],
+    args = ["install"],
+    data = _NPM_DATA,
+    tags = ["docs", "host"],
+    visibility = ["//visibility:public"],
+)
+
+repo_sh_binary(
+    name = "dev",
+    srcs = ["run_npm.sh"],
+    args = ["dev"],
+    data = _NPM_DATA,
+    tags = ["docs", "host"],
+    visibility = ["//visibility:public"],
+)
+
+repo_sh_binary(
+    name = "build",
+    srcs = ["run_npm.sh"],
+    args = ["build"],
+    data = _NPM_DATA,
+    tags = ["docs", "host"],
+    visibility = ["//visibility:public"],
+)
+
+# The two published aliases keep the addresses the MkDocs site had:
+# /inkorporated/latest/ and /inkorporated/development/ are separate exports built
+# with DOCS_ALIAS set, so Next bakes the GitHub Pages project prefix into every
+# asset URL instead of serving them from the site root.
+repo_sh_binary(
+    name = "build-latest",
+    srcs = ["run_npm.sh"],
+    args = ["build-latest"],
+    data = _NPM_DATA,
+    tags = ["docs", "host"],
+    visibility = ["//visibility:public"],
+)
+
+repo_sh_binary(
+    name = "build-development",
+    srcs = ["run_npm.sh"],
+    args = ["build-development"],
+    data = _NPM_DATA,
+    tags = ["docs", "host"],
+    visibility = ["//visibility:public"],
+)
+
+repo_sh_binary(
+    name = "serve",
+    srcs = ["run_npm.sh"],
+    args = ["serve"],
+    data = [":sources"],
+    tags = ["docs", "host"],
+    visibility = ["//visibility:public"],
+)
+
+# Generic escape hatch: bazelisk run //docs-site:npm -- ci --force
+repo_sh_binary(
+    name = "npm",
+    srcs = ["run_npm.sh"],
+    data = _NPM_DATA,
+    tags = ["docs", "host"],
+    visibility = ["//visibility:public"],
+)
+
+# Typegen plus tsc --noEmit.  A type error in a component or a remark plugin is a
+# build failure on the runner, so this is the cheapest gate that proves the site
+# still compiles, and the docs CI job runs it before anything slower.
+repo_sh_test(
+    name = "typecheck",
+    size = "medium",
+    timeout = "moderate",
+    srcs = ["run_npm.sh"],
+    args = ["typecheck"],
+    data = _NPM_DATA,
+    tags = ["docs", "host", "manual"],
+    visibility = ["//visibility:public"],
+)
+
+# Widget and content-transform suite (Vitest): the nav tree builder, link
+# resolution, abbreviations, search weighting, and the published-at chip.  Needs
+# the installed npm tree, so it is a host lane named by //docs-site:suite.
+repo_sh_test(
+    name = "unit",
+    size = "medium",
+    timeout = "moderate",
+    srcs = ["run_npm.sh"],
+    args = ["unit"],
+    data = _NPM_DATA,
+    tags = ["docs", "host", "manual"],
+    visibility = ["//visibility:public"],
+)
+
+# Navigation transcriber: docs-site/lib/nav.json is the single source of truth for
+# the sidebar, so the script that writes it is measured by a suite of its own.
+repo_sh_test(
+    name = "nav_test",
+    size = "small",
+    timeout = "short",
+    srcs = ["run_python_test.sh"],
+    args = ["test_gen_nav.py"],
+    data = _NPM_DATA,
+    tags = ["docs", "host", "manual"],
+    visibility = ["//visibility:public"],
+)
+
+# Codemod tests: prove the MkDocs-to-MDX mapping is mechanical and never rewrites
+# prose, and that every hand-written page in the tree survives a re-run unchanged.
+repo_sh_test(
+    name = "codemod_test",
+    size = "small",
+    timeout = "short",
+    srcs = ["run_python_test.sh"],
+    args = ["test_codemod.py"],
+    data = _NPM_DATA,
+    tags = ["docs", "host", "manual"],
+    visibility = ["//visibility:public"],
+)
+
+# Hazard audit: a raw `<` or `{` left in prose is parsed as JSX by the MDX
+# compiler, so the auditor that lists them is itself under test.
+repo_sh_test(
+    name = "audit_hazards_test",
+    size = "small",
+    timeout = "short",
+    srcs = ["run_python_test.sh"],
+    args = ["test_audit_hazards.py"],
+    data = _NPM_DATA,
+    tags = ["docs", "host", "manual"],
+    visibility = ["//visibility:public"],
+)
+
+# Every docs-site gate that runs on a host with the pinned npm tree installed.
+# They are all host lanes because each needs node, npm, or a write into the
+# checkout, which is why none of them carries the gate tag and why //:gate stays
+# free of them.  The docs CI job names this suite directly.
+test_suite(
+    name = "suite",
+    tests = [
+        ":audit_hazards_test",
+        ":codemod_test",
+        ":nav_test",
+        ":typecheck",
+        ":unit",
+    ],
+    visibility = ["//visibility:public"],
+)

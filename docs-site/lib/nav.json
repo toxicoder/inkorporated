@@ -1,0 +1,3838 @@
+[
+  {
+    "title": "Home",
+    "pages": [
+      {
+        "title": "Home",
+        "path": "index.md"
+      }
+    ]
+  },
+  {
+    "title": "Getting Started",
+    "pages": [
+      {
+        "title": "Overview",
+        "path": "guides/overview.md"
+      },
+      {
+        "title": "Installation",
+        "path": "guides/installation.md"
+      },
+      {
+        "title": "Configuration",
+        "path": "guides/configuration.md"
+      },
+      {
+        "title": "Environments",
+        "path": "guides/environments.md"
+      },
+      {
+        "title": "Git workflow",
+        "path": "guides/git_workflow.md"
+      }
+    ]
+  },
+  {
+    "title": "Organization",
+    "pages": [
+      {
+        "title": "Overview",
+        "path": "organization/index.md"
+      },
+      {
+        "title": "Master org chart",
+        "path": "organization/org_chart_master.md"
+      },
+      {
+        "title": "Matrix model",
+        "path": "organization/matrix_model.md"
+      },
+      {
+        "title": "Leveling framework",
+        "path": "organization/leveling_framework.md"
+      },
+      {
+        "title": "Headcount model",
+        "path": "organization/headcount_model.md"
+      },
+      {
+        "title": "RACI & decision rights",
+        "path": "organization/raci_decision_rights.md"
+      },
+      {
+        "title": "Cyborg deployment map",
+        "path": "organization/cyborg_deployment_map.md"
+      },
+      {
+        "title": "Coverage matrix",
+        "path": "organization/coverage_matrix.md"
+      },
+      {
+        "title": "Template variables",
+        "path": "organization/template_variables.md"
+      },
+      {
+        "title": "Research bibliography",
+        "path": "organization/research_bibliography.md"
+      }
+    ]
+  },
+  {
+    "title": "Corporate Strategy",
+    "pages": [
+      {
+        "title": "Mission, vision & values",
+        "path": "corporate_strategy/mission_vision_values.md"
+      },
+      {
+        "title": "Organizational structure",
+        "path": "corporate_strategy/organizational_structure.md"
+      },
+      {
+        "title": "Corporate structuring",
+        "path": "corporate_strategy/corporate_structuring.md"
+      },
+      {
+        "title": "Financial strategy",
+        "path": "corporate_strategy/financial_strategy.md"
+      },
+      {
+        "title": "Tax strategy",
+        "path": "corporate_strategy/tax_strategy.md"
+      },
+      {
+        "title": "Board governance",
+        "path": "corporate_strategy/board_governance.md"
+      },
+      {
+        "title": "Family office strategy",
+        "path": "corporate_strategy/family_office_strategy.md"
+      },
+      {
+        "title": "AI operating model",
+        "path": "corporate_strategy/ai_operating_model.md"
+      },
+      {
+        "title": "Global expansion",
+        "path": "corporate_strategy/global_expansion_playbook.md"
+      },
+      {
+        "title": "People strategy",
+        "path": "corporate_strategy/people_strategy.md"
+      },
+      {
+        "title": "Risk & compliance",
+        "path": "corporate_strategy/risk_and_compliance_strategy.md"
+      },
+      {
+        "title": "Go-to-market strategy",
+        "path": "corporate_strategy/go_to_market_strategy.md"
+      },
+      {
+        "title": "Product strategy",
+        "path": "corporate_strategy/product_strategy.md"
+      }
+    ]
+  },
+  {
+    "title": "Job Roles",
+    "pages": [
+      {
+        "title": "Catalog overview",
+        "path": "job_roles/job_role_organization.md"
+      },
+      {
+        "title": "Board & governance",
+        "path": "job_roles/governance_board/index.md"
+      },
+      {
+        "title": "Executive leadership",
+        "path": "job_roles/executive_leadership/index.md"
+      },
+      {
+        "title": "Engineering & technology",
+        "path": "job_roles/engineering_technology/index.md"
+      },
+      {
+        "title": "Security & risk",
+        "path": "job_roles/security_risk/index.md"
+      },
+      {
+        "title": "Product & design",
+        "path": "job_roles/product_design/index.md"
+      },
+      {
+        "title": "Go-to-market",
+        "path": "job_roles/go_to_market_sales_marketing/index.md"
+      },
+      {
+        "title": "Customer experience",
+        "path": "job_roles/customer_experience/index.md"
+      },
+      {
+        "title": "G&A",
+        "path": "job_roles/ga_general_administrative/index.md"
+      },
+      {
+        "title": "Corporate IT",
+        "path": "job_roles/corporate_it/index.md"
+      },
+      {
+        "title": "Regional operations",
+        "path": "job_roles/regional_operations/index.md"
+      },
+      {
+        "title": "Family office",
+        "path": "job_roles/personal_staff/index.md"
+      },
+      {
+        "title": "Specialized squads",
+        "path": "job_roles/specialized_squads_cross_functional_teams/index.md"
+      },
+      {
+        "title": "Corporate IT",
+        "pages": [
+          {
+            "title": "Corporate Network Administrator",
+            "path": "job_roles/corporate_it/corp_network_admin.md"
+          },
+          {
+            "title": "Endpoint / MDM Administrator",
+            "path": "job_roles/corporate_it/endpoint_admin.md"
+          },
+          {
+            "title": "IT Support L2",
+            "path": "job_roles/corporate_it/helpdesk_l2.md"
+          },
+          {
+            "title": "Identity Administrator",
+            "path": "job_roles/corporate_it/identity_admin.md"
+          },
+          {
+            "title": "IT Helpdesk Analyst",
+            "path": "job_roles/corporate_it/it_helpdesk.md"
+          },
+          {
+            "title": "IT Manager",
+            "path": "job_roles/corporate_it/it_manager.md"
+          },
+          {
+            "title": "IT Helpdesk Analyst",
+            "path": "job_roles/corporate_it/itop0001.md"
+          },
+          {
+            "title": "Identity Administrator",
+            "path": "job_roles/corporate_it/itop0002.md"
+          },
+          {
+            "title": "Endpoint / MDM Administrator",
+            "path": "job_roles/corporate_it/itop0003.md"
+          },
+          {
+            "title": "ITSM Administrator",
+            "path": "job_roles/corporate_it/itop0004.md"
+          },
+          {
+            "title": "Corporate Network Administrator",
+            "path": "job_roles/corporate_it/itop0005.md"
+          },
+          {
+            "title": "IT Manager",
+            "path": "job_roles/corporate_it/itop0006.md"
+          },
+          {
+            "title": "IT Support L2",
+            "path": "job_roles/corporate_it/itop0007.md"
+          },
+          {
+            "title": "ITSM Administrator",
+            "path": "job_roles/corporate_it/itsm_admin.md"
+          }
+        ]
+      },
+      {
+        "title": "Customer experience",
+        "pages": [
+          {
+            "title": "Support Engineer L1",
+            "path": "job_roles/customer_experience/cust0001.md"
+          },
+          {
+            "title": "Support Engineer L2",
+            "path": "job_roles/customer_experience/cust0002.md"
+          },
+          {
+            "title": "Support Engineer L3",
+            "path": "job_roles/customer_experience/cust0003.md"
+          },
+          {
+            "title": "Technical Account Manager",
+            "path": "job_roles/customer_experience/cust0004.md"
+          },
+          {
+            "title": "Support Manager",
+            "path": "job_roles/customer_experience/cust0005.md"
+          },
+          {
+            "title": "Implementation Consultant",
+            "path": "job_roles/customer_experience/cust0006.md"
+          },
+          {
+            "title": "Professional Services Manager",
+            "path": "job_roles/customer_experience/cust0007.md"
+          },
+          {
+            "title": "Customer Support Operations",
+            "path": "job_roles/customer_experience/cust0008.md"
+          },
+          {
+            "title": "Customer Onboarding Specialist",
+            "path": "job_roles/customer_experience/cust0009.md"
+          },
+          {
+            "title": "Support Shift Lead",
+            "path": "job_roles/customer_experience/cust0010.md"
+          },
+          {
+            "title": "Customer Support Operations",
+            "path": "job_roles/customer_experience/customer_support_ops.md"
+          },
+          {
+            "title": "Implementation Consultant",
+            "path": "job_roles/customer_experience/implementation_consultant.md"
+          },
+          {
+            "title": "Customer Onboarding Specialist",
+            "path": "job_roles/customer_experience/onboarding_specialist.md"
+          },
+          {
+            "title": "Professional Services Manager",
+            "path": "job_roles/customer_experience/professional_services_manager.md"
+          },
+          {
+            "title": "Enterprise Customer Success Manager",
+            "path": "job_roles/customer_experience/success_manager_enterprise.md"
+          },
+          {
+            "title": "Support Engineer L1",
+            "path": "job_roles/customer_experience/support_l1.md"
+          },
+          {
+            "title": "Support Engineer L2",
+            "path": "job_roles/customer_experience/support_l2.md"
+          },
+          {
+            "title": "Support Engineer L3",
+            "path": "job_roles/customer_experience/support_l3.md"
+          },
+          {
+            "title": "Support Manager",
+            "path": "job_roles/customer_experience/support_manager.md"
+          },
+          {
+            "title": "Support Shift Lead",
+            "path": "job_roles/customer_experience/support_shift_lead.md"
+          },
+          {
+            "title": "Technical Account Manager",
+            "path": "job_roles/customer_experience/technical_account_manager.md"
+          }
+        ]
+      },
+      {
+        "title": "Data Analytics",
+        "pages": [
+          {
+            "title": "Data Analytics",
+            "path": "job_roles/data_analytics/index.md"
+          },
+          {
+            "title": "Analytics Engineer",
+            "path": "job_roles/data_analytics/analytics_engineer.md"
+          },
+          {
+            "title": "Analytics Manager",
+            "path": "job_roles/data_analytics/analytics_manager.md"
+          },
+          {
+            "title": "Business Intelligence Analyst",
+            "path": "job_roles/data_analytics/bi_analyst.md"
+          },
+          {
+            "title": "DataSci_Explorer",
+            "path": "job_roles/data_analytics/data4001.md"
+          },
+          {
+            "title": "Analytics Engineer",
+            "path": "job_roles/data_analytics/data4003.md"
+          },
+          {
+            "title": "Business Intelligence Analyst",
+            "path": "job_roles/data_analytics/data4004.md"
+          },
+          {
+            "title": "Data Governance Lead",
+            "path": "job_roles/data_analytics/data4005.md"
+          },
+          {
+            "title": "MLOps Engineer",
+            "path": "job_roles/data_analytics/data4006.md"
+          },
+          {
+            "title": "Experimentation Analyst",
+            "path": "job_roles/data_analytics/data4007.md"
+          },
+          {
+            "title": "Analytics Manager",
+            "path": "job_roles/data_analytics/data4008.md"
+          },
+          {
+            "title": "Data Governance Lead",
+            "path": "job_roles/data_analytics/data_governance_lead.md"
+          },
+          {
+            "title": "Experimentation Analyst",
+            "path": "job_roles/data_analytics/experimentation_analyst.md"
+          },
+          {
+            "title": "MLOps Engineer",
+            "path": "job_roles/data_analytics/mlops_engineer.md"
+          }
+        ]
+      },
+      {
+        "title": "Engineering & technology",
+        "pages": [
+          {
+            "title": "Android Engineer",
+            "path": "job_roles/engineering_technology/android_engineer.md"
+          },
+          {
+            "title": "Backend Engineer",
+            "path": "job_roles/engineering_technology/backend_engineer.md"
+          },
+          {
+            "title": "Staff Backend Engineer",
+            "path": "job_roles/engineering_technology/backend_staff_engineer.md"
+          },
+          {
+            "title": "Build Engineer",
+            "path": "job_roles/engineering_technology/build_engineer.md"
+          },
+          {
+            "title": "Cloud Architect",
+            "path": "job_roles/engineering_technology/cloud_architect.md"
+          },
+          {
+            "title": "Data Engineer",
+            "path": "job_roles/engineering_technology/data_engineer.md"
+          },
+          {
+            "title": "Database Administrator",
+            "path": "job_roles/engineering_technology/database_administrator.md"
+          },
+          {
+            "title": "Developer Advocate",
+            "path": "job_roles/engineering_technology/developer_advocate.md"
+          },
+          {
+            "title": "Developer Experience Engineer",
+            "path": "job_roles/engineering_technology/devex_engineer.md"
+          },
+          {
+            "title": "Director of Application Development",
+            "path": "job_roles/engineering_technology/director_of_app_dev.md"
+          },
+          {
+            "title": "Director of Infrastructure",
+            "path": "job_roles/engineering_technology/director_of_infrastructure.md"
+          },
+          {
+            "title": "Engineering Manager",
+            "path": "job_roles/engineering_technology/engineering_manager.md"
+          },
+          {
+            "title": "Frontend Engineer",
+            "path": "job_roles/engineering_technology/frontend_engineer.md"
+          },
+          {
+            "title": "Staff Frontend Engineer",
+            "path": "job_roles/engineering_technology/frontend_staff_engineer.md"
+          },
+          {
+            "title": "iOS Engineer",
+            "path": "job_roles/engineering_technology/ios_engineer.md"
+          },
+          {
+            "title": "ML Engineer",
+            "path": "job_roles/engineering_technology/ml_engineer.md"
+          },
+          {
+            "title": "Mobile Engineer",
+            "path": "job_roles/engineering_technology/mobile_engineer.md"
+          },
+          {
+            "title": "Network Engineer",
+            "path": "job_roles/engineering_technology/network_engineer.md"
+          },
+          {
+            "title": "Engineering & Technology Organization Chart",
+            "path": "job_roles/engineering_technology/organization_chart.md"
+          },
+          {
+            "title": "Platform Engineer",
+            "path": "job_roles/engineering_technology/platform_engineer.md"
+          },
+          {
+            "title": "Principal Engineer",
+            "path": "job_roles/engineering_technology/principal_engineer.md"
+          },
+          {
+            "title": "QA Automation Engineer",
+            "path": "job_roles/engineering_technology/qa_automation_engineer.md"
+          },
+          {
+            "title": "QA Engineer",
+            "path": "job_roles/engineering_technology/qa_engineer.md"
+          },
+          {
+            "title": "Release Engineer",
+            "path": "job_roles/engineering_technology/release_engineer.md"
+          },
+          {
+            "title": "Security Engineer",
+            "path": "job_roles/engineering_technology/security_engineer.md"
+          },
+          {
+            "title": "Site Reliability Engineer",
+            "path": "job_roles/engineering_technology/site_reliability_engineer.md"
+          },
+          {
+            "title": "Software Engineer",
+            "path": "job_roles/engineering_technology/software_engineer.md"
+          },
+          {
+            "title": "Solutions Architect",
+            "path": "job_roles/engineering_technology/solutions_architect.md"
+          },
+          {
+            "title": "SRE Manager",
+            "path": "job_roles/engineering_technology/sre_manager.md"
+          },
+          {
+            "title": "Staff Engineer",
+            "path": "job_roles/engineering_technology/staff_engineer.md"
+          },
+          {
+            "title": "Platform Engineer",
+            "path": "job_roles/engineering_technology/swen1007.md"
+          },
+          {
+            "title": "Staff Engineer",
+            "path": "job_roles/engineering_technology/swen1008.md"
+          },
+          {
+            "title": "ML Engineer",
+            "path": "job_roles/engineering_technology/swen1009.md"
+          },
+          {
+            "title": "Technical Writer",
+            "path": "job_roles/engineering_technology/swen1010.md"
+          },
+          {
+            "title": "Principal Engineer",
+            "path": "job_roles/engineering_technology/swen1011.md"
+          },
+          {
+            "title": "Developer Advocate",
+            "path": "job_roles/engineering_technology/swen1012.md"
+          },
+          {
+            "title": "Release Engineer",
+            "path": "job_roles/engineering_technology/swen1013.md"
+          },
+          {
+            "title": "Solutions Architect",
+            "path": "job_roles/engineering_technology/swen1014.md"
+          },
+          {
+            "title": "Cloud Architect",
+            "path": "job_roles/engineering_technology/swen1015.md"
+          },
+          {
+            "title": "iOS Engineer",
+            "path": "job_roles/engineering_technology/swen1016.md"
+          },
+          {
+            "title": "Android Engineer",
+            "path": "job_roles/engineering_technology/swen1017.md"
+          },
+          {
+            "title": "Developer Experience Engineer",
+            "path": "job_roles/engineering_technology/swen1018.md"
+          },
+          {
+            "title": "Network Engineer",
+            "path": "job_roles/engineering_technology/swen1019.md"
+          },
+          {
+            "title": "Database Administrator",
+            "path": "job_roles/engineering_technology/swen1020.md"
+          },
+          {
+            "title": "Build Engineer",
+            "path": "job_roles/engineering_technology/swen1021.md"
+          },
+          {
+            "title": "QA Automation Engineer",
+            "path": "job_roles/engineering_technology/swen1022.md"
+          },
+          {
+            "title": "Staff Frontend Engineer",
+            "path": "job_roles/engineering_technology/swen1023.md"
+          },
+          {
+            "title": "Staff Backend Engineer",
+            "path": "job_roles/engineering_technology/swen1024.md"
+          },
+          {
+            "title": "Technical Writer",
+            "path": "job_roles/engineering_technology/technical_writer.md"
+          },
+          {
+            "title": "VP of Engineering",
+            "path": "job_roles/engineering_technology/vp_of_engineering.md"
+          }
+        ]
+      },
+      {
+        "title": "Executive leadership",
+        "pages": [
+          {
+            "title": "CAO: Chief Administrative Officer",
+            "path": "job_roles/executive_leadership/cao.md"
+          },
+          {
+            "title": "CCO: Chief Compliance Officer",
+            "path": "job_roles/executive_leadership/cco.md"
+          },
+          {
+            "title": "CDO: Chief Data Officer",
+            "path": "job_roles/executive_leadership/cdo.md"
+          },
+          {
+            "title": "CEO: Chief Executive Officer",
+            "path": "job_roles/executive_leadership/ceo.md"
+          },
+          {
+            "title": "CFO",
+            "path": "job_roles/executive_leadership/cfo.md"
+          },
+          {
+            "title": "Chief of Staff (Corporate)",
+            "path": "job_roles/executive_leadership/chief_of_staff.md"
+          },
+          {
+            "title": "CHRO: Chief Human Resources Officer",
+            "path": "job_roles/executive_leadership/chro.md"
+          },
+          {
+            "title": "CISO: Chief Information Security Officer",
+            "path": "job_roles/executive_leadership/ciso.md"
+          },
+          {
+            "title": "CLO",
+            "path": "job_roles/executive_leadership/clo.md"
+          },
+          {
+            "title": "CMO: Chief Marketing Officer",
+            "path": "job_roles/executive_leadership/cmo.md"
+          },
+          {
+            "title": "COO: Chief Operating Officer",
+            "path": "job_roles/executive_leadership/coo.md"
+          },
+          {
+            "title": "CPO: Chief Product Officer",
+            "path": "job_roles/executive_leadership/cpo.md"
+          },
+          {
+            "title": "CRO",
+            "path": "job_roles/executive_leadership/cro.md"
+          },
+          {
+            "title": "CTO: Chief Technology Officer",
+            "path": "job_roles/executive_leadership/cto.md"
+          },
+          {
+            "title": "CRO",
+            "path": "job_roles/executive_leadership/exec0004.md"
+          },
+          {
+            "title": "CFO",
+            "path": "job_roles/executive_leadership/exec0005.md"
+          },
+          {
+            "title": "CLO",
+            "path": "job_roles/executive_leadership/exec0006.md"
+          },
+          {
+            "title": "COO: Chief Operating Officer",
+            "path": "job_roles/executive_leadership/exec0007.md"
+          },
+          {
+            "title": "CISO: Chief Information Security Officer",
+            "path": "job_roles/executive_leadership/exec0008.md"
+          },
+          {
+            "title": "CDO: Chief Data Officer",
+            "path": "job_roles/executive_leadership/exec0009.md"
+          },
+          {
+            "title": "Chief of Staff (Corporate)",
+            "path": "job_roles/executive_leadership/exec0010.md"
+          },
+          {
+            "title": "CMO: Chief Marketing Officer",
+            "path": "job_roles/executive_leadership/exec0011.md"
+          },
+          {
+            "title": "CCO: Chief Compliance Officer",
+            "path": "job_roles/executive_leadership/exec0012.md"
+          },
+          {
+            "title": "CHRO: Chief Human Resources Officer",
+            "path": "job_roles/executive_leadership/exec0013.md"
+          },
+          {
+            "title": "CAO: Chief Administrative Officer",
+            "path": "job_roles/executive_leadership/exec0014.md"
+          }
+        ]
+      },
+      {
+        "title": "G&A",
+        "pages": [
+          {
+            "title": "Accounts Payable Specialist",
+            "path": "job_roles/ga_general_administrative/ap_specialist.md"
+          },
+          {
+            "title": "Accounts Receivable Specialist",
+            "path": "job_roles/ga_general_administrative/ar_specialist.md"
+          },
+          {
+            "title": "Business Continuity Manager",
+            "path": "job_roles/ga_general_administrative/bcp_manager.md"
+          },
+          {
+            "title": "Benefits Administrator",
+            "path": "job_roles/ga_general_administrative/benefits_admin.md"
+          },
+          {
+            "title": "Commercial Counsel",
+            "path": "job_roles/ga_general_administrative/commercial_counsel.md"
+          },
+          {
+            "title": "Compensation & Benefits Partner",
+            "path": "job_roles/ga_general_administrative/comp_benefits.md"
+          },
+          {
+            "title": "Compliance Officer",
+            "path": "job_roles/ga_general_administrative/compliance_officer.md"
+          },
+          {
+            "title": "Controller",
+            "path": "job_roles/ga_general_administrative/controller.md"
+          },
+          {
+            "title": "Assistant Controller",
+            "path": "job_roles/ga_general_administrative/controller_assistant.md"
+          },
+          {
+            "title": "Legal_Counsel",
+            "path": "job_roles/ga_general_administrative/corp_counsel.md"
+          },
+          {
+            "title": "DEI Program Lead",
+            "path": "job_roles/ga_general_administrative/dei_lead.md"
+          },
+          {
+            "title": "DirFinance",
+            "path": "job_roles/ga_general_administrative/director_of_finance.md"
+          },
+          {
+            "title": "DirPeople",
+            "path": "job_roles/ga_general_administrative/director_of_people.md"
+          },
+          {
+            "title": "Labor_Law_Bot",
+            "path": "job_roles/ga_general_administrative/employment_counsel.md"
+          },
+          {
+            "title": "Employment Operations Specialist",
+            "path": "job_roles/ga_general_administrative/employment_ops.md"
+          },
+          {
+            "title": "Facilities Lead",
+            "path": "job_roles/ga_general_administrative/facilities_lead.md"
+          },
+          {
+            "title": "VPFinance",
+            "path": "job_roles/ga_general_administrative/finc0001.md"
+          },
+          {
+            "title": "DirFinance",
+            "path": "job_roles/ga_general_administrative/finc0002.md"
+          },
+          {
+            "title": "Finance_Forecaster",
+            "path": "job_roles/ga_general_administrative/finc6001.md"
+          },
+          {
+            "title": "Controller",
+            "path": "job_roles/ga_general_administrative/finc6002.md"
+          },
+          {
+            "title": "Internal Auditor",
+            "path": "job_roles/ga_general_administrative/finc6010.md"
+          },
+          {
+            "title": "Tax Director",
+            "path": "job_roles/ga_general_administrative/finc6011.md"
+          },
+          {
+            "title": "Treasurer",
+            "path": "job_roles/ga_general_administrative/finc6012.md"
+          },
+          {
+            "title": "Procurement Manager",
+            "path": "job_roles/ga_general_administrative/finc6013.md"
+          },
+          {
+            "title": "Payroll Specialist",
+            "path": "job_roles/ga_general_administrative/finc6014.md"
+          },
+          {
+            "title": "Accounts Payable Specialist",
+            "path": "job_roles/ga_general_administrative/finc6015.md"
+          },
+          {
+            "title": "Accounts Receivable Specialist",
+            "path": "job_roles/ga_general_administrative/finc6016.md"
+          },
+          {
+            "title": "Investor Relations Lead",
+            "path": "job_roles/ga_general_administrative/finc6017.md"
+          },
+          {
+            "title": "FP&A Manager",
+            "path": "job_roles/ga_general_administrative/finc6018.md"
+          },
+          {
+            "title": "Assistant Controller",
+            "path": "job_roles/ga_general_administrative/finc6019.md"
+          },
+          {
+            "title": "Finance_Forecaster",
+            "path": "job_roles/ga_general_administrative/fpa_analyst.md"
+          },
+          {
+            "title": "FP&A Manager",
+            "path": "job_roles/ga_general_administrative/fpa_manager.md"
+          },
+          {
+            "title": "HR_Partner",
+            "path": "job_roles/ga_general_administrative/hr_partner.md"
+          },
+          {
+            "title": "Internal Auditor",
+            "path": "job_roles/ga_general_administrative/internal_audit.md"
+          },
+          {
+            "title": "Investor Relations Lead",
+            "path": "job_roles/ga_general_administrative/investor_relations.md"
+          },
+          {
+            "title": "IP Counsel",
+            "path": "job_roles/ga_general_administrative/ip_counsel.md"
+          },
+          {
+            "title": "Learning & Development Partner",
+            "path": "job_roles/ga_general_administrative/learning_development.md"
+          },
+          {
+            "title": "Legal_Counsel",
+            "path": "job_roles/ga_general_administrative/legl7001.md"
+          },
+          {
+            "title": "Labor_Law_Bot",
+            "path": "job_roles/ga_general_administrative/legl7003.md"
+          },
+          {
+            "title": "Compliance Officer",
+            "path": "job_roles/ga_general_administrative/legl7010.md"
+          },
+          {
+            "title": "Privacy Counsel",
+            "path": "job_roles/ga_general_administrative/legl7011.md"
+          },
+          {
+            "title": "IP Counsel",
+            "path": "job_roles/ga_general_administrative/legl7012.md"
+          },
+          {
+            "title": "Commercial Counsel",
+            "path": "job_roles/ga_general_administrative/legl7013.md"
+          },
+          {
+            "title": "Ops_Strategist",
+            "path": "job_roles/ga_general_administrative/ops0001.md"
+          },
+          {
+            "title": "Vendor Manager",
+            "path": "job_roles/ga_general_administrative/ops0002.md"
+          },
+          {
+            "title": "Business Continuity Manager",
+            "path": "job_roles/ga_general_administrative/ops0003.md"
+          },
+          {
+            "title": "PMO / Portfolio Manager",
+            "path": "job_roles/ga_general_administrative/ops0004.md"
+          },
+          {
+            "title": "Payroll Specialist",
+            "path": "job_roles/ga_general_administrative/payroll_specialist.md"
+          },
+          {
+            "title": "VPPeople",
+            "path": "job_roles/ga_general_administrative/peop0001.md"
+          },
+          {
+            "title": "DirPeople",
+            "path": "job_roles/ga_general_administrative/peop0002.md"
+          },
+          {
+            "title": "HR_Partner",
+            "path": "job_roles/ga_general_administrative/peop8001.md"
+          },
+          {
+            "title": "Talent Acquisition Partner",
+            "path": "job_roles/ga_general_administrative/peop8010.md"
+          },
+          {
+            "title": "People Operations Specialist",
+            "path": "job_roles/ga_general_administrative/peop8011.md"
+          },
+          {
+            "title": "Learning & Development Partner",
+            "path": "job_roles/ga_general_administrative/peop8012.md"
+          },
+          {
+            "title": "Compensation & Benefits Partner",
+            "path": "job_roles/ga_general_administrative/peop8013.md"
+          },
+          {
+            "title": "DEI Program Lead",
+            "path": "job_roles/ga_general_administrative/peop8014.md"
+          },
+          {
+            "title": "Recruiter",
+            "path": "job_roles/ga_general_administrative/peop8015.md"
+          },
+          {
+            "title": "Employment Operations Specialist",
+            "path": "job_roles/ga_general_administrative/peop8016.md"
+          },
+          {
+            "title": "Benefits Administrator",
+            "path": "job_roles/ga_general_administrative/peop8017.md"
+          },
+          {
+            "title": "People Operations Specialist",
+            "path": "job_roles/ga_general_administrative/people_ops.md"
+          },
+          {
+            "title": "PMO / Portfolio Manager",
+            "path": "job_roles/ga_general_administrative/pmo_manager.md"
+          },
+          {
+            "title": "Privacy Counsel",
+            "path": "job_roles/ga_general_administrative/privacy_counsel.md"
+          },
+          {
+            "title": "Procurement Manager",
+            "path": "job_roles/ga_general_administrative/procurement_manager.md"
+          },
+          {
+            "title": "Workplace_Mgr",
+            "path": "job_roles/ga_general_administrative/real0002.md"
+          },
+          {
+            "title": "Facilities Lead",
+            "path": "job_roles/ga_general_administrative/real0003.md"
+          },
+          {
+            "title": "Recruiter",
+            "path": "job_roles/ga_general_administrative/recruiter.md"
+          },
+          {
+            "title": "Ops_Strategist",
+            "path": "job_roles/ga_general_administrative/strategy_ops.md"
+          },
+          {
+            "title": "Talent Acquisition Partner",
+            "path": "job_roles/ga_general_administrative/talent_acquisition.md"
+          },
+          {
+            "title": "Tax Director",
+            "path": "job_roles/ga_general_administrative/tax_director.md"
+          },
+          {
+            "title": "Treasurer",
+            "path": "job_roles/ga_general_administrative/treasurer.md"
+          },
+          {
+            "title": "Vendor Manager",
+            "path": "job_roles/ga_general_administrative/vendor_manager.md"
+          },
+          {
+            "title": "VPFinance",
+            "path": "job_roles/ga_general_administrative/vp_of_finance.md"
+          },
+          {
+            "title": "VPPeople",
+            "path": "job_roles/ga_general_administrative/vp_of_people.md"
+          },
+          {
+            "title": "Workplace_Mgr",
+            "path": "job_roles/ga_general_administrative/workplace_mgr.md"
+          }
+        ]
+      },
+      {
+        "title": "Go-to-market",
+        "pages": [
+          {
+            "title": "Sales_Closer",
+            "path": "job_roles/go_to_market_sales_marketing/account_executive.md"
+          },
+          {
+            "title": "Brand",
+            "path": "job_roles/go_to_market_sales_marketing/brand_marketing.md"
+          },
+          {
+            "title": "Channel Partner Manager",
+            "path": "job_roles/go_to_market_sales_marketing/channel_partner_manager.md"
+          },
+          {
+            "title": "PR_Comms_Bot",
+            "path": "job_roles/go_to_market_sales_marketing/comm9005.md"
+          },
+          {
+            "title": "PR_Comms_Bot",
+            "path": "job_roles/go_to_market_sales_marketing/comms_pr.md"
+          },
+          {
+            "title": "Content Marketing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/content_marketing.md"
+          },
+          {
+            "title": "Success_Guide",
+            "path": "job_roles/go_to_market_sales_marketing/csm9004.md"
+          },
+          {
+            "title": "Enterprise Customer Success Manager",
+            "path": "job_roles/go_to_market_sales_marketing/csm9005.md"
+          },
+          {
+            "title": "Customer Marketing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/customer_marketing.md"
+          },
+          {
+            "title": "Success_Guide",
+            "path": "job_roles/go_to_market_sales_marketing/customer_success.md"
+          },
+          {
+            "title": "Demand Generation Manager",
+            "path": "job_roles/go_to_market_sales_marketing/demand_generation.md"
+          },
+          {
+            "title": "DirMktg",
+            "path": "job_roles/go_to_market_sales_marketing/director_of_marketing.md"
+          },
+          {
+            "title": "DirSales",
+            "path": "job_roles/go_to_market_sales_marketing/director_of_sales.md"
+          },
+          {
+            "title": "Enterprise Account Executive",
+            "path": "job_roles/go_to_market_sales_marketing/enterprise_account_executive.md"
+          },
+          {
+            "title": "Field Marketing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/field_marketing.md"
+          },
+          {
+            "title": "Growth Marketing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/growth_marketing.md"
+          },
+          {
+            "title": "Lifecycle Marketing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/lifecycle_marketing.md"
+          },
+          {
+            "title": "MktgMgr",
+            "path": "job_roles/go_to_market_sales_marketing/marketing_manager.md"
+          },
+          {
+            "title": "Mid-Market Account Executive",
+            "path": "job_roles/go_to_market_sales_marketing/mid_market_ae.md"
+          },
+          {
+            "title": "VPMarketing",
+            "path": "job_roles/go_to_market_sales_marketing/mktg0001.md"
+          },
+          {
+            "title": "DirMktg",
+            "path": "job_roles/go_to_market_sales_marketing/mktg0002.md"
+          },
+          {
+            "title": "MktgMgr",
+            "path": "job_roles/go_to_market_sales_marketing/mktg0004.md"
+          },
+          {
+            "title": "Brand",
+            "path": "job_roles/go_to_market_sales_marketing/mktg9003.md"
+          },
+          {
+            "title": "Product Marketing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/mktg9010.md"
+          },
+          {
+            "title": "Demand Generation Manager",
+            "path": "job_roles/go_to_market_sales_marketing/mktg9011.md"
+          },
+          {
+            "title": "Content Marketing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/mktg9012.md"
+          },
+          {
+            "title": "Growth Marketing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/mktg9013.md"
+          },
+          {
+            "title": "Lifecycle Marketing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/mktg9014.md"
+          },
+          {
+            "title": "Field Marketing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/mktg9015.md"
+          },
+          {
+            "title": "Pricing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/mktg9016.md"
+          },
+          {
+            "title": "Partner Marketing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/mktg9017.md"
+          },
+          {
+            "title": "Customer Marketing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/mktg9018.md"
+          },
+          {
+            "title": "Partner Marketing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/partner_marketing.md"
+          },
+          {
+            "title": "Policy_Analyst",
+            "path": "job_roles/go_to_market_sales_marketing/poli7002.md"
+          },
+          {
+            "title": "Pricing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/pricing_manager.md"
+          },
+          {
+            "title": "Product Marketing Manager",
+            "path": "job_roles/go_to_market_sales_marketing/product_marketing.md"
+          },
+          {
+            "title": "Policy_Analyst",
+            "path": "job_roles/go_to_market_sales_marketing/public_policy_mgr.md"
+          },
+          {
+            "title": "Revenue Operations",
+            "path": "job_roles/go_to_market_sales_marketing/revenue_operations.md"
+          },
+          {
+            "title": "VPSales",
+            "path": "job_roles/go_to_market_sales_marketing/sale0001.md"
+          },
+          {
+            "title": "DirSales",
+            "path": "job_roles/go_to_market_sales_marketing/sale0002.md"
+          },
+          {
+            "title": "SalesMgr",
+            "path": "job_roles/go_to_market_sales_marketing/sale0003.md"
+          },
+          {
+            "title": "Sales_Closer",
+            "path": "job_roles/go_to_market_sales_marketing/sale9001.md"
+          },
+          {
+            "title": "Outbound_Hunter",
+            "path": "job_roles/go_to_market_sales_marketing/sale9002.md"
+          },
+          {
+            "title": "Solutions_Eng_Agent",
+            "path": "job_roles/go_to_market_sales_marketing/sale9003.md"
+          },
+          {
+            "title": "Enterprise Account Executive",
+            "path": "job_roles/go_to_market_sales_marketing/sale9004.md"
+          },
+          {
+            "title": "Channel Partner Manager",
+            "path": "job_roles/go_to_market_sales_marketing/sale9005.md"
+          },
+          {
+            "title": "Sales Operations Analyst",
+            "path": "job_roles/go_to_market_sales_marketing/sale9006.md"
+          },
+          {
+            "title": "Sales Enablement Manager",
+            "path": "job_roles/go_to_market_sales_marketing/sale9007.md"
+          },
+          {
+            "title": "Mid-Market Account Executive",
+            "path": "job_roles/go_to_market_sales_marketing/sale9008.md"
+          },
+          {
+            "title": "Sales Engineer II",
+            "path": "job_roles/go_to_market_sales_marketing/sale9009.md"
+          },
+          {
+            "title": "Revenue Operations",
+            "path": "job_roles/go_to_market_sales_marketing/sale9010.md"
+          },
+          {
+            "title": "Outbound_Hunter",
+            "path": "job_roles/go_to_market_sales_marketing/sales_dev_rep.md"
+          },
+          {
+            "title": "Sales Enablement Manager",
+            "path": "job_roles/go_to_market_sales_marketing/sales_enablement.md"
+          },
+          {
+            "title": "Sales Engineer II",
+            "path": "job_roles/go_to_market_sales_marketing/sales_engineer_ii.md"
+          },
+          {
+            "title": "SalesMgr",
+            "path": "job_roles/go_to_market_sales_marketing/sales_manager.md"
+          },
+          {
+            "title": "Sales Operations Analyst",
+            "path": "job_roles/go_to_market_sales_marketing/sales_ops.md"
+          },
+          {
+            "title": "Solutions_Eng_Agent",
+            "path": "job_roles/go_to_market_sales_marketing/solutions_eng.md"
+          },
+          {
+            "title": "VPMarketing",
+            "path": "job_roles/go_to_market_sales_marketing/vp_of_marketing.md"
+          },
+          {
+            "title": "VPSales",
+            "path": "job_roles/go_to_market_sales_marketing/vp_of_sales.md"
+          }
+        ]
+      },
+      {
+        "title": "Board & governance",
+        "pages": [
+          {
+            "title": "Audit Committee Chair",
+            "path": "job_roles/governance_board/audit_committee_chair.md"
+          },
+          {
+            "title": "Board Chair",
+            "path": "job_roles/governance_board/board0001.md"
+          },
+          {
+            "title": "Corporate Secretary",
+            "path": "job_roles/governance_board/board0002.md"
+          },
+          {
+            "title": "Audit Committee Chair",
+            "path": "job_roles/governance_board/board0003.md"
+          },
+          {
+            "title": "Compensation Committee Chair",
+            "path": "job_roles/governance_board/board0004.md"
+          },
+          {
+            "title": "Independent Director",
+            "path": "job_roles/governance_board/board0005.md"
+          },
+          {
+            "title": "Nominating & Governance Chair",
+            "path": "job_roles/governance_board/board0006.md"
+          },
+          {
+            "title": "Board Chair",
+            "path": "job_roles/governance_board/board_chair.md"
+          },
+          {
+            "title": "Compensation Committee Chair",
+            "path": "job_roles/governance_board/comp_committee_chair.md"
+          },
+          {
+            "title": "Corporate Secretary",
+            "path": "job_roles/governance_board/corporate_secretary.md"
+          },
+          {
+            "title": "Independent Director",
+            "path": "job_roles/governance_board/independent_director.md"
+          },
+          {
+            "title": "Nominating & Governance Chair",
+            "path": "job_roles/governance_board/nomgov_chair.md"
+          }
+        ]
+      },
+      {
+        "title": "Family office",
+        "pages": [
+          {
+            "title": "Event",
+            "path": "job_roles/personal_staff/event_coordinator.md"
+          },
+          {
+            "title": "CFO_Personal",
+            "path": "job_roles/personal_staff/family_office_director.md"
+          },
+          {
+            "title": "HouseMgr",
+            "path": "job_roles/personal_staff/household_manager.md"
+          },
+          {
+            "title": "Doctor",
+            "path": "job_roles/personal_staff/medical_director.md"
+          },
+          {
+            "title": "ChiefOfStaff",
+            "path": "job_roles/personal_staff/pers0001.md"
+          },
+          {
+            "title": "HouseMgr",
+            "path": "job_roles/personal_staff/pers0002.md"
+          },
+          {
+            "title": "Chef",
+            "path": "job_roles/personal_staff/pers0003.md"
+          },
+          {
+            "title": "Trainer",
+            "path": "job_roles/personal_staff/pers0004.md"
+          },
+          {
+            "title": "Travel",
+            "path": "job_roles/personal_staff/pers0005.md"
+          },
+          {
+            "title": "Event",
+            "path": "job_roles/personal_staff/pers0006.md"
+          },
+          {
+            "title": "Stylist",
+            "path": "job_roles/personal_staff/pers0007.md"
+          },
+          {
+            "title": "Tutor",
+            "path": "job_roles/personal_staff/pers0008.md"
+          },
+          {
+            "title": "Security",
+            "path": "job_roles/personal_staff/pers0009.md"
+          },
+          {
+            "title": "CFO_Personal",
+            "path": "job_roles/personal_staff/pers0010.md"
+          },
+          {
+            "title": "Legal_Personal",
+            "path": "job_roles/personal_staff/pers0011.md"
+          },
+          {
+            "title": "Doctor",
+            "path": "job_roles/personal_staff/pers0012.md"
+          },
+          {
+            "title": "PA_General",
+            "path": "job_roles/personal_staff/pers0013.md"
+          },
+          {
+            "title": "Specialist",
+            "path": "job_roles/personal_staff/pers0014.md"
+          },
+          {
+            "title": "PA_General",
+            "path": "job_roles/personal_staff/personal_assistant.md"
+          },
+          {
+            "title": "ChiefOfStaff",
+            "path": "job_roles/personal_staff/personal_chief_of_staff.md"
+          },
+          {
+            "title": "Stylist",
+            "path": "job_roles/personal_staff/personal_shopper.md"
+          },
+          {
+            "title": "Trainer",
+            "path": "job_roles/personal_staff/personal_trainer.md"
+          },
+          {
+            "title": "Chef",
+            "path": "job_roles/personal_staff/private_chef.md"
+          },
+          {
+            "title": "Legal_Personal",
+            "path": "job_roles/personal_staff/private_legal_counsel.md"
+          },
+          {
+            "title": "Security",
+            "path": "job_roles/personal_staff/private_security.md"
+          },
+          {
+            "title": "Specialist",
+            "path": "job_roles/personal_staff/specialist_consultant.md"
+          },
+          {
+            "title": "Travel",
+            "path": "job_roles/personal_staff/travel_concierge.md"
+          },
+          {
+            "title": "Tutor",
+            "path": "job_roles/personal_staff/tutor_education_liaison.md"
+          }
+        ]
+      },
+      {
+        "title": "Product & design",
+        "pages": [
+          {
+            "title": "Associate Product Manager",
+            "path": "job_roles/product_design/associate_product_manager.md"
+          },
+          {
+            "title": "Brand Designer",
+            "path": "job_roles/product_design/brand_designer.md"
+          },
+          {
+            "title": "Content Designer",
+            "path": "job_roles/product_design/content_designer.md"
+          },
+          {
+            "title": "DataSci_Explorer",
+            "path": "job_roles/product_design/data_scientist.md"
+          },
+          {
+            "title": "DesignMgr",
+            "path": "job_roles/product_design/design_manager.md"
+          },
+          {
+            "title": "Design Systems Designer",
+            "path": "job_roles/product_design/design_systems_designer.md"
+          },
+          {
+            "title": "VPDesign",
+            "path": "job_roles/product_design/desn0001.md"
+          },
+          {
+            "title": "DirDesign",
+            "path": "job_roles/product_design/desn0002.md"
+          },
+          {
+            "title": "DesignMgr",
+            "path": "job_roles/product_design/desn0003.md"
+          },
+          {
+            "title": "Designer",
+            "path": "job_roles/product_design/desn3001.md"
+          },
+          {
+            "title": "UX_Writer_Bot",
+            "path": "job_roles/product_design/desn3003.md"
+          },
+          {
+            "title": "Design Systems Designer",
+            "path": "job_roles/product_design/desn3004.md"
+          },
+          {
+            "title": "Brand Designer",
+            "path": "job_roles/product_design/desn3005.md"
+          },
+          {
+            "title": "Content Designer",
+            "path": "job_roles/product_design/desn3006.md"
+          },
+          {
+            "title": "DirDesign",
+            "path": "job_roles/product_design/director_of_design.md"
+          },
+          {
+            "title": "DirProduct",
+            "path": "job_roles/product_design/director_of_product.md"
+          },
+          {
+            "title": "GroupPM",
+            "path": "job_roles/product_design/group_product_manager.md"
+          },
+          {
+            "title": "Growth Product Manager",
+            "path": "job_roles/product_design/growth_product_manager.md"
+          },
+          {
+            "title": "Platform Product Manager",
+            "path": "job_roles/product_design/platform_product_manager.md"
+          },
+          {
+            "title": "VPProduct",
+            "path": "job_roles/product_design/prod0001.md"
+          },
+          {
+            "title": "DirProduct",
+            "path": "job_roles/product_design/prod0002.md"
+          },
+          {
+            "title": "GroupPM",
+            "path": "job_roles/product_design/prod0003.md"
+          },
+          {
+            "title": "Product_Visionary",
+            "path": "job_roles/product_design/prod2001.md"
+          },
+          {
+            "title": "Tech_PM",
+            "path": "job_roles/product_design/prod2002.md"
+          },
+          {
+            "title": "Growth Product Manager",
+            "path": "job_roles/product_design/prod2003.md"
+          },
+          {
+            "title": "Platform Product Manager",
+            "path": "job_roles/product_design/prod2004.md"
+          },
+          {
+            "title": "Associate Product Manager",
+            "path": "job_roles/product_design/prod2005.md"
+          },
+          {
+            "title": "Designer",
+            "path": "job_roles/product_design/product_designer.md"
+          },
+          {
+            "title": "Product_Visionary",
+            "path": "job_roles/product_design/product_manager.md"
+          },
+          {
+            "title": "Research Operations",
+            "path": "job_roles/product_design/research_ops.md"
+          },
+          {
+            "title": "User_Voice_Agent",
+            "path": "job_roles/product_design/rsch3002.md"
+          },
+          {
+            "title": "Research Operations",
+            "path": "job_roles/product_design/rsch3003.md"
+          },
+          {
+            "title": "Program_Conductor",
+            "path": "job_roles/product_design/technical_pgm.md"
+          },
+          {
+            "title": "Tech_PM",
+            "path": "job_roles/product_design/technical_pm.md"
+          },
+          {
+            "title": "Program_Conductor",
+            "path": "job_roles/product_design/tpgm5001.md"
+          },
+          {
+            "title": "User_Voice_Agent",
+            "path": "job_roles/product_design/user_researcher.md"
+          },
+          {
+            "title": "UX_Writer_Bot",
+            "path": "job_roles/product_design/ux_writer.md"
+          },
+          {
+            "title": "VPDesign",
+            "path": "job_roles/product_design/vp_of_design.md"
+          },
+          {
+            "title": "VPProduct",
+            "path": "job_roles/product_design/vp_of_product.md"
+          }
+        ]
+      },
+      {
+        "title": "Regional operations",
+        "pages": [
+          {
+            "title": "Country Operations Manager",
+            "path": "job_roles/regional_operations/country_ops_manager.md"
+          },
+          {
+            "title": "Localization Program Manager",
+            "path": "job_roles/regional_operations/localization_pm.md"
+          },
+          {
+            "title": "Regional Finance Partner",
+            "path": "job_roles/regional_operations/regional_finance_partner.md"
+          },
+          {
+            "title": "Regional GM, Americas",
+            "path": "job_roles/regional_operations/regional_gm_americas.md"
+          },
+          {
+            "title": "Regional GM, APAC",
+            "path": "job_roles/regional_operations/regional_gm_apac.md"
+          },
+          {
+            "title": "Regional GM, EMEA",
+            "path": "job_roles/regional_operations/regional_gm_emea.md"
+          },
+          {
+            "title": "Regional GM, Americas",
+            "path": "job_roles/regional_operations/regn0001.md"
+          },
+          {
+            "title": "Regional GM, EMEA",
+            "path": "job_roles/regional_operations/regn0002.md"
+          },
+          {
+            "title": "Regional GM, APAC",
+            "path": "job_roles/regional_operations/regn0003.md"
+          },
+          {
+            "title": "Country Operations Manager",
+            "path": "job_roles/regional_operations/regn0004.md"
+          },
+          {
+            "title": "Localization Program Manager",
+            "path": "job_roles/regional_operations/regn0005.md"
+          },
+          {
+            "title": "Regional Finance Partner",
+            "path": "job_roles/regional_operations/regn0006.md"
+          }
+        ]
+      },
+      {
+        "title": "Security & risk",
+        "pages": [
+          {
+            "title": "Application Security Engineer",
+            "path": "job_roles/security_risk/appsec_engineer.md"
+          },
+          {
+            "title": "Detection Engineer",
+            "path": "job_roles/security_risk/detection_engineer.md"
+          },
+          {
+            "title": "GRC Analyst",
+            "path": "job_roles/security_risk/grc_analyst.md"
+          },
+          {
+            "title": "IAM Engineer",
+            "path": "job_roles/security_risk/iam_engineer.md"
+          },
+          {
+            "title": "Privacy Engineer",
+            "path": "job_roles/security_risk/privacy_engineer.md"
+          },
+          {
+            "title": "Red Team Operator",
+            "path": "job_roles/security_risk/red_team_operator.md"
+          },
+          {
+            "title": "Security Architect",
+            "path": "job_roles/security_risk/security_architect.md"
+          },
+          {
+            "title": "SOC Analyst",
+            "path": "job_roles/security_risk/soc_analyst.md"
+          },
+          {
+            "title": "SOC Lead",
+            "path": "job_roles/security_risk/soc_lead.md"
+          },
+          {
+            "title": "SecOps_Guardian",
+            "path": "job_roles/security_risk/srel1004.md"
+          },
+          {
+            "title": "Application Security Engineer",
+            "path": "job_roles/security_risk/srel1005.md"
+          },
+          {
+            "title": "SOC Analyst",
+            "path": "job_roles/security_risk/srel1006.md"
+          },
+          {
+            "title": "GRC Analyst",
+            "path": "job_roles/security_risk/srel1007.md"
+          },
+          {
+            "title": "Security Architect",
+            "path": "job_roles/security_risk/srel1008.md"
+          },
+          {
+            "title": "IAM Engineer",
+            "path": "job_roles/security_risk/srel1009.md"
+          },
+          {
+            "title": "Threat Intelligence Analyst",
+            "path": "job_roles/security_risk/srel1010.md"
+          },
+          {
+            "title": "Privacy Engineer",
+            "path": "job_roles/security_risk/srel1011.md"
+          },
+          {
+            "title": "Red Team Operator",
+            "path": "job_roles/security_risk/srel1012.md"
+          },
+          {
+            "title": "SOC Lead",
+            "path": "job_roles/security_risk/srel1013.md"
+          },
+          {
+            "title": "Detection Engineer",
+            "path": "job_roles/security_risk/srel1014.md"
+          },
+          {
+            "title": "SRE Manager",
+            "path": "job_roles/security_risk/srel1015.md"
+          },
+          {
+            "title": "Threat Intelligence Analyst",
+            "path": "job_roles/security_risk/threat_intel_analyst.md"
+          }
+        ]
+      },
+      {
+        "title": "Specialized squads",
+        "pages": [
+          {
+            "title": "Accessibility (A11y)",
+            "path": "job_roles/specialized_squads_cross_functional_teams/accessibility.md"
+          },
+          {
+            "title": "Acquisition (SEO)",
+            "path": "job_roles/specialized_squads_cross_functional_teams/acquisition_seo.md"
+          },
+          {
+            "title": "AI Ethics & Safety",
+            "path": "job_roles/specialized_squads_cross_functional_teams/ai_ethics_safety.md"
+          },
+          {
+            "title": "AI Product Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/ai_product_squad.md"
+          },
+          {
+            "title": "Billing & Payments Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/billing_payments.md"
+          },
+          {
+            "title": "Cloud Migration Squad",
+            "path": "job_roles/specialized_squads_cross_functional_teams/cloud_migration_squad.md"
+          },
+          {
+            "title": "Data Platform",
+            "path": "job_roles/specialized_squads_cross_functional_teams/data_platform.md"
+          },
+          {
+            "title": "Data Platform Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/data_platform_squad_lead.md"
+          },
+          {
+            "title": "Developer Experience",
+            "path": "job_roles/specialized_squads_cross_functional_teams/developer_experience.md"
+          },
+          {
+            "title": "Enterprise Launch",
+            "path": "job_roles/specialized_squads_cross_functional_teams/enterprise_launch.md"
+          },
+          {
+            "title": "Enterprise Readiness Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/enterprise_readiness.md"
+          },
+          {
+            "title": "Event Strategy",
+            "path": "job_roles/specialized_squads_cross_functional_teams/event_strategy.md"
+          },
+          {
+            "title": "Incident Command Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/incident_command.md"
+          },
+          {
+            "title": "Internationalization",
+            "path": "job_roles/specialized_squads_cross_functional_teams/internationalization.md"
+          },
+          {
+            "title": "IPO / Audit Ready",
+            "path": "job_roles/specialized_squads_cross_functional_teams/ipo_audit_ready.md"
+          },
+          {
+            "title": "M&A Integration Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/ma_integration.md"
+          },
+          {
+            "title": "Mobile Platform",
+            "path": "job_roles/specialized_squads_cross_functional_teams/mobile_platform.md"
+          },
+          {
+            "title": "Monetization",
+            "path": "job_roles/specialized_squads_cross_functional_teams/monetization.md"
+          },
+          {
+            "title": "Open Source Program Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/ospo.md"
+          },
+          {
+            "title": "Platform Foundations Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/platform_foundations.md"
+          },
+          {
+            "title": "Privacy (GDPR)",
+            "path": "job_roles/specialized_squads_cross_functional_teams/privacy_gdpr.md"
+          },
+          {
+            "title": "Security Platform Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/security_platform_squad.md"
+          },
+          {
+            "title": "Security Red Team",
+            "path": "job_roles/specialized_squads_cross_functional_teams/security_red_team.md"
+          },
+          {
+            "title": "Incident Command Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/sqad0001.md"
+          },
+          {
+            "title": "Platform Foundations Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/sqad0002.md"
+          },
+          {
+            "title": "AI Product Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/sqad0003.md"
+          },
+          {
+            "title": "Billing & Payments Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/sqad0004.md"
+          },
+          {
+            "title": "Trust & Safety Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/sqad0005.md"
+          },
+          {
+            "title": "M&A Integration Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/sqad0006.md"
+          },
+          {
+            "title": "Open Source Program Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/sqad0007.md"
+          },
+          {
+            "title": "Security Platform Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/sqad0008.md"
+          },
+          {
+            "title": "Data Platform Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/sqad0009.md"
+          },
+          {
+            "title": "Enterprise Readiness Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/sqad0010.md"
+          },
+          {
+            "title": "Strategic Partner",
+            "path": "job_roles/specialized_squads_cross_functional_teams/strategic_partner.md"
+          },
+          {
+            "title": "Sustainability (ESG)",
+            "path": "job_roles/specialized_squads_cross_functional_teams/sustainability_esg.md"
+          },
+          {
+            "title": "Trust & Safety Squad Lead",
+            "path": "job_roles/specialized_squads_cross_functional_teams/trust_safety.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Cyborgs",
+    "pages": [
+      {
+        "title": "Overview",
+        "path": "cyborgs/index.md"
+      },
+      {
+        "title": "Roster",
+        "path": "cyborgs/generated/index.md"
+      },
+      {
+        "title": "By namespace",
+        "path": "cyborgs/generated/by_namespace.md"
+      },
+      {
+        "title": "By security",
+        "path": "cyborgs/generated/by_security.md"
+      },
+      {
+        "title": "Org graph",
+        "path": "cyborgs/generated/org_graph.md"
+      },
+      {
+        "title": "Schema",
+        "path": "cyborgs/schema.md"
+      },
+      {
+        "title": "Quality standard",
+        "path": "cyborgs/prompt_quality_standard.md"
+      },
+      {
+        "title": "Catalog",
+        "path": "cyborgs/catalog.md"
+      },
+      {
+        "title": "Operating model",
+        "path": "cyborgs/operating_model.md"
+      },
+      {
+        "title": "Personas",
+        "pages": [
+          {
+            "title": "Board (BOARD0001)",
+            "path": "cyborgs/generated/personas/BOARD0001.mdx"
+          },
+          {
+            "title": "Corporate (BOARD0002)",
+            "path": "cyborgs/generated/personas/BOARD0002.mdx"
+          },
+          {
+            "title": "BOARD0003 (BOARD0003)",
+            "path": "cyborgs/generated/personas/BOARD0003.mdx"
+          },
+          {
+            "title": "BOARD0004 (BOARD0004)",
+            "path": "cyborgs/generated/personas/BOARD0004.mdx"
+          },
+          {
+            "title": "BOARD0005 (BOARD0005)",
+            "path": "cyborgs/generated/personas/BOARD0005.mdx"
+          },
+          {
+            "title": "BOARD0006 (BOARD0006)",
+            "path": "cyborgs/generated/personas/BOARD0006.mdx"
+          },
+          {
+            "title": "PR_Comms_Bot (COMM9005)",
+            "path": "cyborgs/generated/personas/COMM9005.mdx"
+          },
+          {
+            "title": "Success_Guide (CSM9004)",
+            "path": "cyborgs/generated/personas/CSM9004.mdx"
+          },
+          {
+            "title": "CSM9005 (CSM9005)",
+            "path": "cyborgs/generated/personas/CSM9005.mdx"
+          },
+          {
+            "title": "CUST0001 (CUST0001)",
+            "path": "cyborgs/generated/personas/CUST0001.mdx"
+          },
+          {
+            "title": "Support (CUST0002)",
+            "path": "cyborgs/generated/personas/CUST0002.mdx"
+          },
+          {
+            "title": "CUST0003 (CUST0003)",
+            "path": "cyborgs/generated/personas/CUST0003.mdx"
+          },
+          {
+            "title": "Technical (CUST0004)",
+            "path": "cyborgs/generated/personas/CUST0004.mdx"
+          },
+          {
+            "title": "Support (CUST0005)",
+            "path": "cyborgs/generated/personas/CUST0005.mdx"
+          },
+          {
+            "title": "CUST0006 (CUST0006)",
+            "path": "cyborgs/generated/personas/CUST0006.mdx"
+          },
+          {
+            "title": "CUST0007 (CUST0007)",
+            "path": "cyborgs/generated/personas/CUST0007.mdx"
+          },
+          {
+            "title": "CUST0008 (CUST0008)",
+            "path": "cyborgs/generated/personas/CUST0008.mdx"
+          },
+          {
+            "title": "CUST0009 (CUST0009)",
+            "path": "cyborgs/generated/personas/CUST0009.mdx"
+          },
+          {
+            "title": "CUST0010 (CUST0010)",
+            "path": "cyborgs/generated/personas/CUST0010.mdx"
+          },
+          {
+            "title": "DataSci_Explorer (DATA4001)",
+            "path": "cyborgs/generated/personas/DATA4001.mdx"
+          },
+          {
+            "title": "DataPipe_Builder (DATA4002)",
+            "path": "cyborgs/generated/personas/DATA4002.mdx"
+          },
+          {
+            "title": "DATA4003 (DATA4003)",
+            "path": "cyborgs/generated/personas/DATA4003.mdx"
+          },
+          {
+            "title": "DATA4004 (DATA4004)",
+            "path": "cyborgs/generated/personas/DATA4004.mdx"
+          },
+          {
+            "title": "DATA4005 (DATA4005)",
+            "path": "cyborgs/generated/personas/DATA4005.mdx"
+          },
+          {
+            "title": "DATA4006 (DATA4006)",
+            "path": "cyborgs/generated/personas/DATA4006.mdx"
+          },
+          {
+            "title": "DATA4007 (DATA4007)",
+            "path": "cyborgs/generated/personas/DATA4007.mdx"
+          },
+          {
+            "title": "DATA4008 (DATA4008)",
+            "path": "cyborgs/generated/personas/DATA4008.mdx"
+          },
+          {
+            "title": "VPDesign (DESN0001)",
+            "path": "cyborgs/generated/personas/DESN0001.mdx"
+          },
+          {
+            "title": "DirDesign (DESN0002)",
+            "path": "cyborgs/generated/personas/DESN0002.mdx"
+          },
+          {
+            "title": "DesignMgr (DESN0003)",
+            "path": "cyborgs/generated/personas/DESN0003.mdx"
+          },
+          {
+            "title": "Designer (DESN3001)",
+            "path": "cyborgs/generated/personas/DESN3001.mdx"
+          },
+          {
+            "title": "UX_Writer_Bot (DESN3003)",
+            "path": "cyborgs/generated/personas/DESN3003.mdx"
+          },
+          {
+            "title": "DESN3004 (DESN3004)",
+            "path": "cyborgs/generated/personas/DESN3004.mdx"
+          },
+          {
+            "title": "DESN3005 (DESN3005)",
+            "path": "cyborgs/generated/personas/DESN3005.mdx"
+          },
+          {
+            "title": "DESN3006 (DESN3006)",
+            "path": "cyborgs/generated/personas/DESN3006.mdx"
+          },
+          {
+            "title": "CEO (EXEC0001)",
+            "path": "cyborgs/generated/personas/EXEC0001.mdx"
+          },
+          {
+            "title": "CTO (EXEC0002)",
+            "path": "cyborgs/generated/personas/EXEC0002.mdx"
+          },
+          {
+            "title": "CPO (EXEC0003)",
+            "path": "cyborgs/generated/personas/EXEC0003.mdx"
+          },
+          {
+            "title": "CRO (EXEC0004)",
+            "path": "cyborgs/generated/personas/EXEC0004.mdx"
+          },
+          {
+            "title": "CFO (EXEC0005)",
+            "path": "cyborgs/generated/personas/EXEC0005.mdx"
+          },
+          {
+            "title": "CLO (EXEC0006)",
+            "path": "cyborgs/generated/personas/EXEC0006.mdx"
+          },
+          {
+            "title": "COO (EXEC0007)",
+            "path": "cyborgs/generated/personas/EXEC0007.mdx"
+          },
+          {
+            "title": "CISO (EXEC0008)",
+            "path": "cyborgs/generated/personas/EXEC0008.mdx"
+          },
+          {
+            "title": "CDO (EXEC0009)",
+            "path": "cyborgs/generated/personas/EXEC0009.mdx"
+          },
+          {
+            "title": "Chief (EXEC0010)",
+            "path": "cyborgs/generated/personas/EXEC0010.mdx"
+          },
+          {
+            "title": "EXEC0011 (EXEC0011)",
+            "path": "cyborgs/generated/personas/EXEC0011.mdx"
+          },
+          {
+            "title": "EXEC0012 (EXEC0012)",
+            "path": "cyborgs/generated/personas/EXEC0012.mdx"
+          },
+          {
+            "title": "EXEC0013 (EXEC0013)",
+            "path": "cyborgs/generated/personas/EXEC0013.mdx"
+          },
+          {
+            "title": "EXEC0014 (EXEC0014)",
+            "path": "cyborgs/generated/personas/EXEC0014.mdx"
+          },
+          {
+            "title": "VPFinance (FINC0001)",
+            "path": "cyborgs/generated/personas/FINC0001.mdx"
+          },
+          {
+            "title": "DirFinance (FINC0002)",
+            "path": "cyborgs/generated/personas/FINC0002.mdx"
+          },
+          {
+            "title": "Finance_Forecaster (FINC6001)",
+            "path": "cyborgs/generated/personas/FINC6001.mdx"
+          },
+          {
+            "title": "Controller (FINC6002)",
+            "path": "cyborgs/generated/personas/FINC6002.mdx"
+          },
+          {
+            "title": "Internal (FINC6010)",
+            "path": "cyborgs/generated/personas/FINC6010.mdx"
+          },
+          {
+            "title": "FINC6011 (FINC6011)",
+            "path": "cyborgs/generated/personas/FINC6011.mdx"
+          },
+          {
+            "title": "FINC6012 (FINC6012)",
+            "path": "cyborgs/generated/personas/FINC6012.mdx"
+          },
+          {
+            "title": "FINC6013 (FINC6013)",
+            "path": "cyborgs/generated/personas/FINC6013.mdx"
+          },
+          {
+            "title": "FINC6014 (FINC6014)",
+            "path": "cyborgs/generated/personas/FINC6014.mdx"
+          },
+          {
+            "title": "FINC6015 (FINC6015)",
+            "path": "cyborgs/generated/personas/FINC6015.mdx"
+          },
+          {
+            "title": "FINC6016 (FINC6016)",
+            "path": "cyborgs/generated/personas/FINC6016.mdx"
+          },
+          {
+            "title": "FINC6017 (FINC6017)",
+            "path": "cyborgs/generated/personas/FINC6017.mdx"
+          },
+          {
+            "title": "FINC6018 (FINC6018)",
+            "path": "cyborgs/generated/personas/FINC6018.mdx"
+          },
+          {
+            "title": "FINC6019 (FINC6019)",
+            "path": "cyborgs/generated/personas/FINC6019.mdx"
+          },
+          {
+            "title": "IT (ITOP0001)",
+            "path": "cyborgs/generated/personas/ITOP0001.mdx"
+          },
+          {
+            "title": "Identity (ITOP0002)",
+            "path": "cyborgs/generated/personas/ITOP0002.mdx"
+          },
+          {
+            "title": "ITOP0003 (ITOP0003)",
+            "path": "cyborgs/generated/personas/ITOP0003.mdx"
+          },
+          {
+            "title": "ITOP0004 (ITOP0004)",
+            "path": "cyborgs/generated/personas/ITOP0004.mdx"
+          },
+          {
+            "title": "ITOP0005 (ITOP0005)",
+            "path": "cyborgs/generated/personas/ITOP0005.mdx"
+          },
+          {
+            "title": "ITOP0006 (ITOP0006)",
+            "path": "cyborgs/generated/personas/ITOP0006.mdx"
+          },
+          {
+            "title": "ITOP0007 (ITOP0007)",
+            "path": "cyborgs/generated/personas/ITOP0007.mdx"
+          },
+          {
+            "title": "Legal_Counsel (LEGL7001)",
+            "path": "cyborgs/generated/personas/LEGL7001.mdx"
+          },
+          {
+            "title": "Labor_Law_Bot (LEGL7003)",
+            "path": "cyborgs/generated/personas/LEGL7003.mdx"
+          },
+          {
+            "title": "Compliance (LEGL7010)",
+            "path": "cyborgs/generated/personas/LEGL7010.mdx"
+          },
+          {
+            "title": "Privacy (LEGL7011)",
+            "path": "cyborgs/generated/personas/LEGL7011.mdx"
+          },
+          {
+            "title": "LEGL7012 (LEGL7012)",
+            "path": "cyborgs/generated/personas/LEGL7012.mdx"
+          },
+          {
+            "title": "LEGL7013 (LEGL7013)",
+            "path": "cyborgs/generated/personas/LEGL7013.mdx"
+          },
+          {
+            "title": "VPMarketing (MKTG0001)",
+            "path": "cyborgs/generated/personas/MKTG0001.mdx"
+          },
+          {
+            "title": "DirMktg (MKTG0002)",
+            "path": "cyborgs/generated/personas/MKTG0002.mdx"
+          },
+          {
+            "title": "MktgMgr (MKTG0004)",
+            "path": "cyborgs/generated/personas/MKTG0004.mdx"
+          },
+          {
+            "title": "Brand (MKTG9003)",
+            "path": "cyborgs/generated/personas/MKTG9003.mdx"
+          },
+          {
+            "title": "Product (MKTG9010)",
+            "path": "cyborgs/generated/personas/MKTG9010.mdx"
+          },
+          {
+            "title": "Demand (MKTG9011)",
+            "path": "cyborgs/generated/personas/MKTG9011.mdx"
+          },
+          {
+            "title": "MKTG9012 (MKTG9012)",
+            "path": "cyborgs/generated/personas/MKTG9012.mdx"
+          },
+          {
+            "title": "MKTG9013 (MKTG9013)",
+            "path": "cyborgs/generated/personas/MKTG9013.mdx"
+          },
+          {
+            "title": "MKTG9014 (MKTG9014)",
+            "path": "cyborgs/generated/personas/MKTG9014.mdx"
+          },
+          {
+            "title": "MKTG9015 (MKTG9015)",
+            "path": "cyborgs/generated/personas/MKTG9015.mdx"
+          },
+          {
+            "title": "MKTG9016 (MKTG9016)",
+            "path": "cyborgs/generated/personas/MKTG9016.mdx"
+          },
+          {
+            "title": "MKTG9017 (MKTG9017)",
+            "path": "cyborgs/generated/personas/MKTG9017.mdx"
+          },
+          {
+            "title": "MKTG9018 (MKTG9018)",
+            "path": "cyborgs/generated/personas/MKTG9018.mdx"
+          },
+          {
+            "title": "Ops_Strategist (OPS0001)",
+            "path": "cyborgs/generated/personas/OPS0001.mdx"
+          },
+          {
+            "title": "OPS0002 (OPS0002)",
+            "path": "cyborgs/generated/personas/OPS0002.mdx"
+          },
+          {
+            "title": "OPS0003 (OPS0003)",
+            "path": "cyborgs/generated/personas/OPS0003.mdx"
+          },
+          {
+            "title": "OPS0004 (OPS0004)",
+            "path": "cyborgs/generated/personas/OPS0004.mdx"
+          },
+          {
+            "title": "VPPeople (PEOP0001)",
+            "path": "cyborgs/generated/personas/PEOP0001.mdx"
+          },
+          {
+            "title": "DirPeople (PEOP0002)",
+            "path": "cyborgs/generated/personas/PEOP0002.mdx"
+          },
+          {
+            "title": "HR_Partner (PEOP8001)",
+            "path": "cyborgs/generated/personas/PEOP8001.mdx"
+          },
+          {
+            "title": "Talent (PEOP8010)",
+            "path": "cyborgs/generated/personas/PEOP8010.mdx"
+          },
+          {
+            "title": "PEOP8011 (PEOP8011)",
+            "path": "cyborgs/generated/personas/PEOP8011.mdx"
+          },
+          {
+            "title": "PEOP8012 (PEOP8012)",
+            "path": "cyborgs/generated/personas/PEOP8012.mdx"
+          },
+          {
+            "title": "PEOP8013 (PEOP8013)",
+            "path": "cyborgs/generated/personas/PEOP8013.mdx"
+          },
+          {
+            "title": "PEOP8014 (PEOP8014)",
+            "path": "cyborgs/generated/personas/PEOP8014.mdx"
+          },
+          {
+            "title": "PEOP8015 (PEOP8015)",
+            "path": "cyborgs/generated/personas/PEOP8015.mdx"
+          },
+          {
+            "title": "PEOP8016 (PEOP8016)",
+            "path": "cyborgs/generated/personas/PEOP8016.mdx"
+          },
+          {
+            "title": "PEOP8017 (PEOP8017)",
+            "path": "cyborgs/generated/personas/PEOP8017.mdx"
+          },
+          {
+            "title": "ChiefOfStaff (PERS0001)",
+            "path": "cyborgs/generated/personas/PERS0001.mdx"
+          },
+          {
+            "title": "HouseMgr (PERS0002)",
+            "path": "cyborgs/generated/personas/PERS0002.mdx"
+          },
+          {
+            "title": "Chef (PERS0003)",
+            "path": "cyborgs/generated/personas/PERS0003.mdx"
+          },
+          {
+            "title": "Trainer (PERS0004)",
+            "path": "cyborgs/generated/personas/PERS0004.mdx"
+          },
+          {
+            "title": "Travel (PERS0005)",
+            "path": "cyborgs/generated/personas/PERS0005.mdx"
+          },
+          {
+            "title": "Event (PERS0006)",
+            "path": "cyborgs/generated/personas/PERS0006.mdx"
+          },
+          {
+            "title": "Stylist (PERS0007)",
+            "path": "cyborgs/generated/personas/PERS0007.mdx"
+          },
+          {
+            "title": "Tutor (PERS0008)",
+            "path": "cyborgs/generated/personas/PERS0008.mdx"
+          },
+          {
+            "title": "Security (PERS0009)",
+            "path": "cyborgs/generated/personas/PERS0009.mdx"
+          },
+          {
+            "title": "CFO_Personal (PERS0010)",
+            "path": "cyborgs/generated/personas/PERS0010.mdx"
+          },
+          {
+            "title": "Legal_Personal (PERS0011)",
+            "path": "cyborgs/generated/personas/PERS0011.mdx"
+          },
+          {
+            "title": "Doctor (PERS0012)",
+            "path": "cyborgs/generated/personas/PERS0012.mdx"
+          },
+          {
+            "title": "PA_General (PERS0013)",
+            "path": "cyborgs/generated/personas/PERS0013.mdx"
+          },
+          {
+            "title": "Specialist (PERS0014)",
+            "path": "cyborgs/generated/personas/PERS0014.mdx"
+          },
+          {
+            "title": "Policy_Analyst (POLI7002)",
+            "path": "cyborgs/generated/personas/POLI7002.mdx"
+          },
+          {
+            "title": "VPProduct (PROD0001)",
+            "path": "cyborgs/generated/personas/PROD0001.mdx"
+          },
+          {
+            "title": "DirProduct (PROD0002)",
+            "path": "cyborgs/generated/personas/PROD0002.mdx"
+          },
+          {
+            "title": "GroupPM (PROD0003)",
+            "path": "cyborgs/generated/personas/PROD0003.mdx"
+          },
+          {
+            "title": "Product_Visionary (PROD2001)",
+            "path": "cyborgs/generated/personas/PROD2001.mdx"
+          },
+          {
+            "title": "Tech_PM (PROD2002)",
+            "path": "cyborgs/generated/personas/PROD2002.mdx"
+          },
+          {
+            "title": "PROD2003 (PROD2003)",
+            "path": "cyborgs/generated/personas/PROD2003.mdx"
+          },
+          {
+            "title": "PROD2004 (PROD2004)",
+            "path": "cyborgs/generated/personas/PROD2004.mdx"
+          },
+          {
+            "title": "PROD2005 (PROD2005)",
+            "path": "cyborgs/generated/personas/PROD2005.mdx"
+          },
+          {
+            "title": "Workplace_Mgr (REAL0002)",
+            "path": "cyborgs/generated/personas/REAL0002.mdx"
+          },
+          {
+            "title": "REAL0003 (REAL0003)",
+            "path": "cyborgs/generated/personas/REAL0003.mdx"
+          },
+          {
+            "title": "Regional (REGN0001)",
+            "path": "cyborgs/generated/personas/REGN0001.mdx"
+          },
+          {
+            "title": "Regional (REGN0002)",
+            "path": "cyborgs/generated/personas/REGN0002.mdx"
+          },
+          {
+            "title": "Regional (REGN0003)",
+            "path": "cyborgs/generated/personas/REGN0003.mdx"
+          },
+          {
+            "title": "REGN0004 (REGN0004)",
+            "path": "cyborgs/generated/personas/REGN0004.mdx"
+          },
+          {
+            "title": "REGN0005 (REGN0005)",
+            "path": "cyborgs/generated/personas/REGN0005.mdx"
+          },
+          {
+            "title": "REGN0006 (REGN0006)",
+            "path": "cyborgs/generated/personas/REGN0006.mdx"
+          },
+          {
+            "title": "User_Voice_Agent (RSCH3002)",
+            "path": "cyborgs/generated/personas/RSCH3002.mdx"
+          },
+          {
+            "title": "RSCH3003 (RSCH3003)",
+            "path": "cyborgs/generated/personas/RSCH3003.mdx"
+          },
+          {
+            "title": "VPSales (SALE0001)",
+            "path": "cyborgs/generated/personas/SALE0001.mdx"
+          },
+          {
+            "title": "DirSales (SALE0002)",
+            "path": "cyborgs/generated/personas/SALE0002.mdx"
+          },
+          {
+            "title": "SalesMgr (SALE0003)",
+            "path": "cyborgs/generated/personas/SALE0003.mdx"
+          },
+          {
+            "title": "Sales_Closer (SALE9001)",
+            "path": "cyborgs/generated/personas/SALE9001.mdx"
+          },
+          {
+            "title": "Outbound_Hunter (SALE9002)",
+            "path": "cyborgs/generated/personas/SALE9002.mdx"
+          },
+          {
+            "title": "Solutions_Eng_Agent (SALE9003)",
+            "path": "cyborgs/generated/personas/SALE9003.mdx"
+          },
+          {
+            "title": "SALE9004 (SALE9004)",
+            "path": "cyborgs/generated/personas/SALE9004.mdx"
+          },
+          {
+            "title": "SALE9005 (SALE9005)",
+            "path": "cyborgs/generated/personas/SALE9005.mdx"
+          },
+          {
+            "title": "SALE9006 (SALE9006)",
+            "path": "cyborgs/generated/personas/SALE9006.mdx"
+          },
+          {
+            "title": "SALE9007 (SALE9007)",
+            "path": "cyborgs/generated/personas/SALE9007.mdx"
+          },
+          {
+            "title": "SALE9008 (SALE9008)",
+            "path": "cyborgs/generated/personas/SALE9008.mdx"
+          },
+          {
+            "title": "SALE9009 (SALE9009)",
+            "path": "cyborgs/generated/personas/SALE9009.mdx"
+          },
+          {
+            "title": "Revenue (SALE9010)",
+            "path": "cyborgs/generated/personas/SALE9010.mdx"
+          },
+          {
+            "title": "SQAD0001 (SQAD0001)",
+            "path": "cyborgs/generated/personas/SQAD0001.mdx"
+          },
+          {
+            "title": "SQAD0002 (SQAD0002)",
+            "path": "cyborgs/generated/personas/SQAD0002.mdx"
+          },
+          {
+            "title": "SQAD0003 (SQAD0003)",
+            "path": "cyborgs/generated/personas/SQAD0003.mdx"
+          },
+          {
+            "title": "SQAD0004 (SQAD0004)",
+            "path": "cyborgs/generated/personas/SQAD0004.mdx"
+          },
+          {
+            "title": "SQAD0005 (SQAD0005)",
+            "path": "cyborgs/generated/personas/SQAD0005.mdx"
+          },
+          {
+            "title": "SQAD0006 (SQAD0006)",
+            "path": "cyborgs/generated/personas/SQAD0006.mdx"
+          },
+          {
+            "title": "SQAD0007 (SQAD0007)",
+            "path": "cyborgs/generated/personas/SQAD0007.mdx"
+          },
+          {
+            "title": "SQAD0008 (SQAD0008)",
+            "path": "cyborgs/generated/personas/SQAD0008.mdx"
+          },
+          {
+            "title": "SQAD0009 (SQAD0009)",
+            "path": "cyborgs/generated/personas/SQAD0009.mdx"
+          },
+          {
+            "title": "SQAD0010 (SQAD0010)",
+            "path": "cyborgs/generated/personas/SQAD0010.mdx"
+          },
+          {
+            "title": "DirInfra (SREL0003)",
+            "path": "cyborgs/generated/personas/SREL0003.mdx"
+          },
+          {
+            "title": "SecOps_Guardian (SREL0004)",
+            "path": "cyborgs/generated/personas/SREL0004.mdx"
+          },
+          {
+            "title": "SRE_Commander (SREL1001)",
+            "path": "cyborgs/generated/personas/SREL1001.mdx"
+          },
+          {
+            "title": "SecOps_Guardian (SREL1004)",
+            "path": "cyborgs/generated/personas/SREL1004.mdx"
+          },
+          {
+            "title": "Application (SREL1005)",
+            "path": "cyborgs/generated/personas/SREL1005.mdx"
+          },
+          {
+            "title": "SOC (SREL1006)",
+            "path": "cyborgs/generated/personas/SREL1006.mdx"
+          },
+          {
+            "title": "GRC (SREL1007)",
+            "path": "cyborgs/generated/personas/SREL1007.mdx"
+          },
+          {
+            "title": "SREL1008 (SREL1008)",
+            "path": "cyborgs/generated/personas/SREL1008.mdx"
+          },
+          {
+            "title": "SREL1009 (SREL1009)",
+            "path": "cyborgs/generated/personas/SREL1009.mdx"
+          },
+          {
+            "title": "SREL1010 (SREL1010)",
+            "path": "cyborgs/generated/personas/SREL1010.mdx"
+          },
+          {
+            "title": "SREL1011 (SREL1011)",
+            "path": "cyborgs/generated/personas/SREL1011.mdx"
+          },
+          {
+            "title": "SREL1012 (SREL1012)",
+            "path": "cyborgs/generated/personas/SREL1012.mdx"
+          },
+          {
+            "title": "SREL1013 (SREL1013)",
+            "path": "cyborgs/generated/personas/SREL1013.mdx"
+          },
+          {
+            "title": "SREL1014 (SREL1014)",
+            "path": "cyborgs/generated/personas/SREL1014.mdx"
+          },
+          {
+            "title": "SREL1015 (SREL1015)",
+            "path": "cyborgs/generated/personas/SREL1015.mdx"
+          },
+          {
+            "title": "VPEng (SWEN0001)",
+            "path": "cyborgs/generated/personas/SWEN0001.mdx"
+          },
+          {
+            "title": "DirAppDev (SWEN0004)",
+            "path": "cyborgs/generated/personas/SWEN0004.mdx"
+          },
+          {
+            "title": "EngMgr (SWEN0005)",
+            "path": "cyborgs/generated/personas/SWEN0005.mdx"
+          },
+          {
+            "title": "CoreDev (SWEN1001)",
+            "path": "cyborgs/generated/personas/SWEN1001.mdx"
+          },
+          {
+            "title": "Backend_Architect (SWEN1002)",
+            "path": "cyborgs/generated/personas/SWEN1002.mdx"
+          },
+          {
+            "title": "Frontend_Builder (SWEN1003)",
+            "path": "cyborgs/generated/personas/SWEN1003.mdx"
+          },
+          {
+            "title": "Mobile_Dev (SWEN1004)",
+            "path": "cyborgs/generated/personas/SWEN1004.mdx"
+          },
+          {
+            "title": "Quality_Bot (SWEN1006)",
+            "path": "cyborgs/generated/personas/SWEN1006.mdx"
+          },
+          {
+            "title": "Platform (SWEN1007)",
+            "path": "cyborgs/generated/personas/SWEN1007.mdx"
+          },
+          {
+            "title": "Staff (SWEN1008)",
+            "path": "cyborgs/generated/personas/SWEN1008.mdx"
+          },
+          {
+            "title": "ML (SWEN1009)",
+            "path": "cyborgs/generated/personas/SWEN1009.mdx"
+          },
+          {
+            "title": "Technical (SWEN1010)",
+            "path": "cyborgs/generated/personas/SWEN1010.mdx"
+          },
+          {
+            "title": "SWEN1011 (SWEN1011)",
+            "path": "cyborgs/generated/personas/SWEN1011.mdx"
+          },
+          {
+            "title": "SWEN1012 (SWEN1012)",
+            "path": "cyborgs/generated/personas/SWEN1012.mdx"
+          },
+          {
+            "title": "SWEN1013 (SWEN1013)",
+            "path": "cyborgs/generated/personas/SWEN1013.mdx"
+          },
+          {
+            "title": "SWEN1014 (SWEN1014)",
+            "path": "cyborgs/generated/personas/SWEN1014.mdx"
+          },
+          {
+            "title": "SWEN1015 (SWEN1015)",
+            "path": "cyborgs/generated/personas/SWEN1015.mdx"
+          },
+          {
+            "title": "SWEN1016 (SWEN1016)",
+            "path": "cyborgs/generated/personas/SWEN1016.mdx"
+          },
+          {
+            "title": "SWEN1017 (SWEN1017)",
+            "path": "cyborgs/generated/personas/SWEN1017.mdx"
+          },
+          {
+            "title": "SWEN1018 (SWEN1018)",
+            "path": "cyborgs/generated/personas/SWEN1018.mdx"
+          },
+          {
+            "title": "SWEN1019 (SWEN1019)",
+            "path": "cyborgs/generated/personas/SWEN1019.mdx"
+          },
+          {
+            "title": "SWEN1020 (SWEN1020)",
+            "path": "cyborgs/generated/personas/SWEN1020.mdx"
+          },
+          {
+            "title": "SWEN1021 (SWEN1021)",
+            "path": "cyborgs/generated/personas/SWEN1021.mdx"
+          },
+          {
+            "title": "SWEN1022 (SWEN1022)",
+            "path": "cyborgs/generated/personas/SWEN1022.mdx"
+          },
+          {
+            "title": "SWEN1023 (SWEN1023)",
+            "path": "cyborgs/generated/personas/SWEN1023.mdx"
+          },
+          {
+            "title": "SWEN1024 (SWEN1024)",
+            "path": "cyborgs/generated/personas/SWEN1024.mdx"
+          },
+          {
+            "title": "Program_Conductor (TPGM5001)",
+            "path": "cyborgs/generated/personas/TPGM5001.mdx"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Engineering",
+    "pages": [
+      {
+        "title": "Principles",
+        "path": "engineering_standards/engineering_principles.md"
+      },
+      {
+        "title": "Code review",
+        "path": "engineering_standards/code_review_guidelines.md"
+      },
+      {
+        "title": "Testing",
+        "path": "engineering_standards/testing_standards.md"
+      },
+      {
+        "title": "Incident management",
+        "path": "engineering_standards/incident_management.md"
+      },
+      {
+        "title": "Post-mortems",
+        "path": "engineering_standards/post_mortem_guide.md"
+      },
+      {
+        "title": "Release process",
+        "path": "engineering_standards/release_process.md"
+      },
+      {
+        "title": "On-call",
+        "path": "engineering_standards/on_call_guide.md"
+      }
+    ]
+  },
+  {
+    "title": "Policies",
+    "pages": [
+      {
+        "title": "Code of conduct",
+        "path": "policies/code_of_conduct.md"
+      },
+      {
+        "title": "Acceptable use",
+        "path": "policies/acceptable_use_policy.md"
+      },
+      {
+        "title": "Information security",
+        "path": "policies/information_security_policy.md"
+      },
+      {
+        "title": "Data privacy",
+        "path": "policies/data_privacy_policy.md"
+      },
+      {
+        "title": "Incident response",
+        "path": "policies/incident_response_plan.md"
+      },
+      {
+        "title": "Policies",
+        "pages": [
+          {
+            "title": "Anti-Harassment and Non-Discrimination Policy",
+            "path": "policies/anti_harassment_policy.md"
+          },
+          {
+            "title": "Document Retention Policy",
+            "path": "policies/document_retention_policy.md"
+          },
+          {
+            "title": "Intellectual Property Policy",
+            "path": "policies/intellectual_property_policy.md"
+          },
+          {
+            "title": "Open Source Policy",
+            "path": "policies/open_source_policy.md"
+          },
+          {
+            "title": "Performance Review Policy",
+            "path": "policies/performance_review_policy.md"
+          },
+          {
+            "title": "Remote and Hybrid Work Policy",
+            "path": "policies/remote_work_policy.md"
+          },
+          {
+            "title": "Social Media Policy",
+            "path": "policies/social_media_policy.md"
+          },
+          {
+            "title": "Travel and Expense Policy",
+            "path": "policies/travel_expense_policy.md"
+          },
+          {
+            "title": "Whistleblower Policy",
+            "path": "policies/whistleblower_policy.md"
+          }
+        ]
+      },
+      {
+        "title": "Terms Of Service",
+        "pages": [
+          {
+            "title": "API Terms of Service",
+            "path": "policies/terms_of_service/api.md"
+          },
+          {
+            "title": "Marketplace Terms of Service",
+            "path": "policies/terms_of_service/marketplace.md"
+          },
+          {
+            "title": "SaaS Terms of Service",
+            "path": "policies/terms_of_service/saas.md"
+          },
+          {
+            "title": "Standard Terms of Service",
+            "path": "policies/terms_of_service/standard.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Infrastructure",
+    "pages": [
+      {
+        "title": "Architecture",
+        "path": "architecture/index.md"
+      },
+      {
+        "title": "High-level architecture",
+        "path": "architecture/ARCHITECTURE.md"
+      },
+      {
+        "title": "Network",
+        "path": "architecture/network.md"
+      },
+      {
+        "title": "Technical design",
+        "path": "architecture/technical_design.md"
+      },
+      {
+        "title": "Deployment",
+        "path": "guides/deployment.md"
+      },
+      {
+        "title": "Security",
+        "path": "guides/security.md"
+      },
+      {
+        "title": "Observability",
+        "path": "guides/observability.md"
+      },
+      {
+        "title": "Backups",
+        "path": "guides/backups.md"
+      },
+      {
+        "title": "Troubleshooting",
+        "path": "guides/troubleshooting.md"
+      },
+      {
+        "title": "Service catalog",
+        "path": "reference/services.md"
+      },
+      {
+        "title": "Adr",
+        "pages": [
+          {
+            "title": "0001 - Example Architecture Decision",
+            "path": "adr/0001-example-architecture-decision.md"
+          },
+          {
+            "title": "0001 - Example Architecture Decision",
+            "path": "adr/0001_example_architecture_decision.md"
+          },
+          {
+            "title": "{{ADR_NUMBER}} - {{TITLE}}",
+            "path": "adr/template.md"
+          }
+        ]
+      },
+      {
+        "title": "Architecture",
+        "pages": [
+          {
+            "title": "Dgx Integration Plan",
+            "path": "architecture/dgx_integration_plan.md"
+          }
+        ]
+      },
+      {
+        "title": "User Management",
+        "pages": [
+          {
+            "title": "User Management Group Hierarchy",
+            "path": "user_management/group_hierarchy.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Contributing",
+    "pages": [
+      {
+        "title": "Project conventions",
+        "path": "project-conventions.md"
+      },
+      {
+        "title": "Contributing to docs",
+        "path": "CONTRIBUTING.md"
+      },
+      {
+        "title": "Style guides index",
+        "path": "style_guides/index.md"
+      },
+      {
+        "title": "Bash",
+        "pages": [
+          {
+            "title": "Bash Style Guide",
+            "path": "style_guides/bash/bash_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Cpp",
+        "pages": [
+          {
+            "title": "C++ Style Guide",
+            "path": "style_guides/cpp/cpp_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Css",
+        "pages": [
+          {
+            "title": "CSS Style Guide",
+            "path": "style_guides/css/css_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Golang",
+        "pages": [
+          {
+            "title": "Golang Style Guide",
+            "path": "style_guides/golang/golang_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Html",
+        "pages": [
+          {
+            "title": "HTML Style Guide",
+            "path": "style_guides/html/html_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Java",
+        "pages": [
+          {
+            "title": "Java Style Guide",
+            "path": "style_guides/java/java_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Javascript",
+        "pages": [
+          {
+            "title": "JavaScript Style Guide",
+            "path": "style_guides/javascript/javascript_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Json",
+        "pages": [
+          {
+            "title": "JSON Style Guide",
+            "path": "style_guides/json/json_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Kotlin",
+        "pages": [
+          {
+            "title": "Kotlin Style Guide",
+            "path": "style_guides/kotlin/kotlin_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Markdown",
+        "pages": [
+          {
+            "title": "Markdown Style Guide",
+            "path": "style_guides/markdown/markdown_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Proto",
+        "pages": [
+          {
+            "title": "Protocol Buffers Style Guide",
+            "path": "style_guides/proto/proto_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Python",
+        "pages": [
+          {
+            "title": "Python Style Guide",
+            "path": "style_guides/python/python_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Rust",
+        "pages": [
+          {
+            "title": "Rust Style Guide",
+            "path": "style_guides/rust/rust_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Sql",
+        "pages": [
+          {
+            "title": "SQL Style Guide",
+            "path": "style_guides/sql/sql_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Starlark",
+        "pages": [
+          {
+            "title": "Starlark Style Guide",
+            "path": "style_guides/starlark/starlark_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Typescript",
+        "pages": [
+          {
+            "title": "TypeScript Style Guide",
+            "path": "style_guides/typescript/typescript_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Yaml",
+        "pages": [
+          {
+            "title": "YAML Style Guide",
+            "path": "style_guides/yaml/yaml_style_guide.md"
+          }
+        ]
+      },
+      {
+        "title": "Zsh",
+        "pages": [
+          {
+            "title": "Zsh Style Guide",
+            "path": "style_guides/zsh/zsh_style_guide.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Status",
+    "pages": [
+      {
+        "title": "Discovery summary",
+        "path": "status/discovery_summary.md"
+      },
+      {
+        "title": "Infrastructure validation",
+        "path": "status/infrastructure_validation_report.md"
+      },
+      {
+        "title": "DGX integration",
+        "path": "status/dgx_integration_summary.md"
+      }
+    ]
+  },
+  {
+    "title": "Onboarding",
+    "pages": [
+      {
+        "title": "Onboarding",
+        "pages": [
+          {
+            "title": "Employee Onboarding",
+            "path": "onboarding/index.md"
+          },
+          {
+            "title": "Onboarding Checklists",
+            "path": "onboarding/checklist.md"
+          },
+          {
+            "title": "Culture and Values",
+            "path": "onboarding/culture_and_values.md"
+          },
+          {
+            "title": "Engineering Bootcamp",
+            "path": "onboarding/engineering_bootcamp.md"
+          },
+          {
+            "title": "Tools and Access",
+            "path": "onboarding/tools_and_access.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Interview Questions",
+    "pages": [
+      {
+        "title": "Interview Questions",
+        "pages": [
+          {
+            "title": "Data Analysis Interview Questions & Answers (100+)",
+            "path": "interview_questions/data_analysis.md"
+          },
+          {
+            "title": "Data Engineering Interview Questions & Answers (100+)",
+            "path": "interview_questions/data_engineering.md"
+          },
+          {
+            "title": "Data Infrastructure Interview Questions & Answers (100+)",
+            "path": "interview_questions/data_infrastructure.md"
+          },
+          {
+            "title": "Data Science Interview Questions & Answers (100+)",
+            "path": "interview_questions/data_science.md"
+          },
+          {
+            "title": "Golang Interview Questions & Answers (100+)",
+            "path": "interview_questions/golang.md"
+          },
+          {
+            "title": "Java Interview Questions & Answers (100+)",
+            "path": "interview_questions/java.md"
+          },
+          {
+            "title": "JavaScript Interview Questions & Answers (100+)",
+            "path": "interview_questions/javascript.md"
+          },
+          {
+            "title": "Kotlin Interview Questions & Answers (100+)",
+            "path": "interview_questions/kotlin.md"
+          },
+          {
+            "title": "Protocol Buffers Interview Questions & Answers (100+)",
+            "path": "interview_questions/protocol_buffers.md"
+          },
+          {
+            "title": "Python Interview Questions & Answers (100+)",
+            "path": "interview_questions/python.md"
+          },
+          {
+            "title": "Software Engineering Interview Questions & Answers (100+)",
+            "path": "interview_questions/software_engineering.md"
+          },
+          {
+            "title": "SQL Interview Questions & Answers (100+)",
+            "path": "interview_questions/sql.md"
+          },
+          {
+            "title": "System Design Interview Questions & Answers (100+)",
+            "path": "interview_questions/system_design.md"
+          },
+          {
+            "title": "TypeScript Interview Questions & Answers (100+)",
+            "path": "interview_questions/typescript.md"
+          }
+        ]
+      },
+      {
+        "title": "Engineering Technology",
+        "pages": [
+          {
+            "title": "Interview Questions: Backend Engineer (ROLE)",
+            "path": "interview_questions/engineering_technology/backend_engineer.md"
+          },
+          {
+            "title": "Interview Questions: Data Engineer (ROLE)",
+            "path": "interview_questions/engineering_technology/data_engineer.md"
+          },
+          {
+            "title": "Interview Questions: Director of App Dev (ROLE)",
+            "path": "interview_questions/engineering_technology/director_of_app_dev.md"
+          },
+          {
+            "title": "Interview Questions: Director of Infrastructure (ROLE)",
+            "path": "interview_questions/engineering_technology/director_of_infrastructure.md"
+          },
+          {
+            "title": "Interview Questions: Engineering Manager (ROLE)",
+            "path": "interview_questions/engineering_technology/engineering_manager.md"
+          },
+          {
+            "title": "Interview Questions: Frontend Engineer (ROLE)",
+            "path": "interview_questions/engineering_technology/frontend_engineer.md"
+          },
+          {
+            "title": "Interview Questions: Mobile Engineer (ROLE)",
+            "path": "interview_questions/engineering_technology/mobile_engineer.md"
+          },
+          {
+            "title": "Interview Questions: QA Engineer (ROLE)",
+            "path": "interview_questions/engineering_technology/qa_engineer.md"
+          },
+          {
+            "title": "Interview Questions: Security Engineer (ROLE)",
+            "path": "interview_questions/engineering_technology/security_engineer.md"
+          },
+          {
+            "title": "Interview Questions: Site Reliability Eng (ROLE)",
+            "path": "interview_questions/engineering_technology/site_reliability_engineer.md"
+          },
+          {
+            "title": "Interview Questions: Software Engineer (ROLE)",
+            "path": "interview_questions/engineering_technology/software_engineer.md"
+          },
+          {
+            "title": "Interview Questions: VP of Engineering (ROLE)",
+            "path": "interview_questions/engineering_technology/vp_of_engineering.md"
+          }
+        ]
+      },
+      {
+        "title": "Executive Leadership",
+        "pages": [
+          {
+            "title": "Interview Questions: CEO (ROLE)",
+            "path": "interview_questions/executive_leadership/ceo.md"
+          },
+          {
+            "title": "Interview Questions: CFO (ROLE)",
+            "path": "interview_questions/executive_leadership/cfo.md"
+          },
+          {
+            "title": "Interview Questions: CLO (ROLE)",
+            "path": "interview_questions/executive_leadership/clo.md"
+          },
+          {
+            "title": "Interview Questions: CPO (ROLE)",
+            "path": "interview_questions/executive_leadership/cpo.md"
+          },
+          {
+            "title": "Interview Questions: CRO (ROLE)",
+            "path": "interview_questions/executive_leadership/cro.md"
+          },
+          {
+            "title": "Interview Questions: CTO (ROLE)",
+            "path": "interview_questions/executive_leadership/cto.md"
+          }
+        ]
+      },
+      {
+        "title": "Ga General Administrative",
+        "pages": [
+          {
+            "title": "Interview Questions: Controller (ROLE)",
+            "path": "interview_questions/ga_general_administrative/controller.md"
+          },
+          {
+            "title": "Interview Questions: Corp Counsel (ROLE)",
+            "path": "interview_questions/ga_general_administrative/corp_counsel.md"
+          },
+          {
+            "title": "Interview Questions: Director of Finance (ROLE)",
+            "path": "interview_questions/ga_general_administrative/director_of_finance.md"
+          },
+          {
+            "title": "Interview Questions: Director of People (ROLE)",
+            "path": "interview_questions/ga_general_administrative/director_of_people.md"
+          },
+          {
+            "title": "Interview Questions: Employment Counsel (ROLE)",
+            "path": "interview_questions/ga_general_administrative/employment_counsel.md"
+          },
+          {
+            "title": "Interview Questions: FP&A Analyst (ROLE)",
+            "path": "interview_questions/ga_general_administrative/fpa_analyst.md"
+          },
+          {
+            "title": "Interview Questions: HR Partner (ROLE)",
+            "path": "interview_questions/ga_general_administrative/hr_partner.md"
+          },
+          {
+            "title": "Interview Questions: Strategy & Ops (ROLE)",
+            "path": "interview_questions/ga_general_administrative/strategy_ops.md"
+          },
+          {
+            "title": "Interview Questions: VP of Finance (ROLE)",
+            "path": "interview_questions/ga_general_administrative/vp_of_finance.md"
+          },
+          {
+            "title": "Interview Questions: VP of People (ROLE)",
+            "path": "interview_questions/ga_general_administrative/vp_of_people.md"
+          },
+          {
+            "title": "Interview Questions: Workplace Mgr (ROLE)",
+            "path": "interview_questions/ga_general_administrative/workplace_mgr.md"
+          }
+        ]
+      },
+      {
+        "title": "Go To Market Sales Marketing",
+        "pages": [
+          {
+            "title": "Interview Questions: Account Executive (ROLE)",
+            "path": "interview_questions/go_to_market_sales_marketing/account_executive.md"
+          },
+          {
+            "title": "Interview Questions: Brand Marketing (ROLE)",
+            "path": "interview_questions/go_to_market_sales_marketing/brand_marketing.md"
+          },
+          {
+            "title": "Interview Questions: Comms - PR (ROLE)",
+            "path": "interview_questions/go_to_market_sales_marketing/comms_pr.md"
+          },
+          {
+            "title": "Interview Questions: Customer Success (ROLE)",
+            "path": "interview_questions/go_to_market_sales_marketing/customer_success.md"
+          },
+          {
+            "title": "Interview Questions: Director of Marketing (ROLE)",
+            "path": "interview_questions/go_to_market_sales_marketing/director_of_marketing.md"
+          },
+          {
+            "title": "Interview Questions: Director of Sales (ROLE)",
+            "path": "interview_questions/go_to_market_sales_marketing/director_of_sales.md"
+          },
+          {
+            "title": "Interview Questions: Marketing Manager (ROLE)",
+            "path": "interview_questions/go_to_market_sales_marketing/marketing_manager.md"
+          },
+          {
+            "title": "Interview Questions: Public Policy Mgr (ROLE)",
+            "path": "interview_questions/go_to_market_sales_marketing/public_policy_mgr.md"
+          },
+          {
+            "title": "Interview Questions: Sales Dev Rep (ROLE)",
+            "path": "interview_questions/go_to_market_sales_marketing/sales_dev_rep.md"
+          },
+          {
+            "title": "Interview Questions: Sales Manager (ROLE)",
+            "path": "interview_questions/go_to_market_sales_marketing/sales_manager.md"
+          },
+          {
+            "title": "Interview Questions: Solutions Eng (ROLE)",
+            "path": "interview_questions/go_to_market_sales_marketing/solutions_eng.md"
+          },
+          {
+            "title": "Interview Questions: VP of Marketing (ROLE)",
+            "path": "interview_questions/go_to_market_sales_marketing/vp_of_marketing.md"
+          },
+          {
+            "title": "Interview Questions: VP of Sales (ROLE)",
+            "path": "interview_questions/go_to_market_sales_marketing/vp_of_sales.md"
+          }
+        ]
+      },
+      {
+        "title": "Personal Staff",
+        "pages": [
+          {
+            "title": "Interview Questions: event_coordinator (ROLE)",
+            "path": "interview_questions/personal_staff/event_coordinator.md"
+          },
+          {
+            "title": "Interview Questions: Family Office Director (PERS)",
+            "path": "interview_questions/personal_staff/family_office_director.md"
+          },
+          {
+            "title": "Interview Questions: household_manager (ROLE)",
+            "path": "interview_questions/personal_staff/household_manager.md"
+          },
+          {
+            "title": "Interview Questions: Medical Director (PERS)",
+            "path": "interview_questions/personal_staff/medical_director.md"
+          },
+          {
+            "title": "Interview Questions: Personal Assistant (PERS)",
+            "path": "interview_questions/personal_staff/personal_assistant.md"
+          },
+          {
+            "title": "Interview Questions: personal_chief_of_staff (ROLE)",
+            "path": "interview_questions/personal_staff/personal_chief_of_staff.md"
+          },
+          {
+            "title": "Interview Questions: personal_shopper (ROLE)",
+            "path": "interview_questions/personal_staff/personal_shopper.md"
+          },
+          {
+            "title": "Interview Questions: personal_trainer (ROLE)",
+            "path": "interview_questions/personal_staff/personal_trainer.md"
+          },
+          {
+            "title": "Interview Questions: private_chef (ROLE)",
+            "path": "interview_questions/personal_staff/private_chef.md"
+          },
+          {
+            "title": "Interview Questions: Private Legal Counsel (PERS)",
+            "path": "interview_questions/personal_staff/private_legal_counsel.md"
+          },
+          {
+            "title": "Interview Questions: private_security (ROLE)",
+            "path": "interview_questions/personal_staff/private_security.md"
+          },
+          {
+            "title": "Interview Questions: Specialist Consultant (PERS)",
+            "path": "interview_questions/personal_staff/specialist_consultant.md"
+          },
+          {
+            "title": "Interview Questions: travel_concierge (ROLE)",
+            "path": "interview_questions/personal_staff/travel_concierge.md"
+          },
+          {
+            "title": "Interview Questions: tutor_education_liaison (ROLE)",
+            "path": "interview_questions/personal_staff/tutor_education_liaison.md"
+          }
+        ]
+      },
+      {
+        "title": "Product Design",
+        "pages": [
+          {
+            "title": "Interview Questions: Data Scientist (ROLE)",
+            "path": "interview_questions/product_design/data_scientist.md"
+          },
+          {
+            "title": "Interview Questions: Design Manager (ROLE)",
+            "path": "interview_questions/product_design/design_manager.md"
+          },
+          {
+            "title": "Interview Questions: Director of Design (ROLE)",
+            "path": "interview_questions/product_design/director_of_design.md"
+          },
+          {
+            "title": "Interview Questions: Director of Product (ROLE)",
+            "path": "interview_questions/product_design/director_of_product.md"
+          },
+          {
+            "title": "Interview Questions: Group Product Manager (ROLE)",
+            "path": "interview_questions/product_design/group_product_manager.md"
+          },
+          {
+            "title": "Interview Questions: Product Designer (ROLE)",
+            "path": "interview_questions/product_design/product_designer.md"
+          },
+          {
+            "title": "Interview Questions: Product Manager (ROLE)",
+            "path": "interview_questions/product_design/product_manager.md"
+          },
+          {
+            "title": "Interview Questions: Technical PgM (ROLE)",
+            "path": "interview_questions/product_design/technical_pgm.md"
+          },
+          {
+            "title": "Interview Questions: Technical PM (ROLE)",
+            "path": "interview_questions/product_design/technical_pm.md"
+          },
+          {
+            "title": "Interview Questions: User Researcher (ROLE)",
+            "path": "interview_questions/product_design/user_researcher.md"
+          },
+          {
+            "title": "Interview Questions: UX Writer (ROLE)",
+            "path": "interview_questions/product_design/ux_writer.md"
+          },
+          {
+            "title": "Interview Questions: VP of Design (ROLE)",
+            "path": "interview_questions/product_design/vp_of_design.md"
+          },
+          {
+            "title": "Interview Questions: VP of Product (ROLE)",
+            "path": "interview_questions/product_design/vp_of_product.md"
+          }
+        ]
+      },
+      {
+        "title": "Specialized Squads Cross Functional Teams",
+        "pages": [
+          {
+            "title": "Interview Questions: Accessibility (A11y) (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/accessibility.md"
+          },
+          {
+            "title": "Interview Questions: Acquisition (SEO) (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/acquisition_seo.md"
+          },
+          {
+            "title": "Interview Questions: AI Ethics & Safety (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/ai_ethics_safety.md"
+          },
+          {
+            "title": "Interview Questions: Cloud Migration Squad (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/cloud_migration_squad.md"
+          },
+          {
+            "title": "Interview Questions: Data Platform (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/data_platform.md"
+          },
+          {
+            "title": "Interview Questions: Developer Experience (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/developer_experience.md"
+          },
+          {
+            "title": "Interview Questions: Enterprise Launch (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/enterprise_launch.md"
+          },
+          {
+            "title": "Interview Questions: Event Strategy (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/event_strategy.md"
+          },
+          {
+            "title": "Interview Questions: Internationalization (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/internationalization.md"
+          },
+          {
+            "title": "Interview Questions: IPO Audit Ready (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/ipo_audit_ready.md"
+          },
+          {
+            "title": "Interview Questions: Mobile Platform (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/mobile_platform.md"
+          },
+          {
+            "title": "Interview Questions: Monetization (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/monetization.md"
+          },
+          {
+            "title": "Interview Questions: Privacy (GDPR) (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/privacy_gdpr.md"
+          },
+          {
+            "title": "Interview Questions: Security Red Team (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/security_red_team.md"
+          },
+          {
+            "title": "Interview Questions: Strategic Partner (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/strategic_partner.md"
+          },
+          {
+            "title": "Interview Questions: Sustainability (ESG) (ROLE)",
+            "path": "interview_questions/specialized_squads_cross_functional_teams/sustainability_esg.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Training",
+    "pages": [
+      {
+        "title": "Training",
+        "pages": [
+          {
+            "title": "Employee Training",
+            "path": "training/index.md"
+          }
+        ]
+      },
+      {
+        "title": "Engineering",
+        "pages": [
+          {
+            "title": "Engineering Training",
+            "path": "training/engineering/index.md"
+          },
+          {
+            "title": "Code Quality",
+            "path": "training/engineering/code_quality.md"
+          },
+          {
+            "title": "Distributed Systems",
+            "path": "training/engineering/distributed_systems.md"
+          },
+          {
+            "title": "Incident Response Simulation",
+            "path": "training/engineering/incident_response_simulation.md"
+          }
+        ]
+      },
+      {
+        "title": "Leadership",
+        "pages": [
+          {
+            "title": "Leadership Training",
+            "path": "training/leadership/index.md"
+          },
+          {
+            "title": "New Manager Guide",
+            "path": "training/leadership/new_manager.md"
+          }
+        ]
+      },
+      {
+        "title": "Product",
+        "pages": [
+          {
+            "title": "Product Training",
+            "path": "training/product/index.md"
+          },
+          {
+            "title": "Product Thinking",
+            "path": "training/product/product_thinking.md"
+          }
+        ]
+      },
+      {
+        "title": "Security",
+        "pages": [
+          {
+            "title": "Security Training",
+            "path": "training/security/index.md"
+          },
+          {
+            "title": "Data Handling",
+            "path": "training/security/data_handling.md"
+          },
+          {
+            "title": "Security Awareness",
+            "path": "training/security/security_awareness.md"
+          }
+        ]
+      },
+      {
+        "title": "Soft Skills",
+        "pages": [
+          {
+            "title": "Soft Skills Training",
+            "path": "training/soft_skills/index.md"
+          },
+          {
+            "title": "Effective Communication",
+            "path": "training/soft_skills/effective_communication.md"
+          },
+          {
+            "title": "Giving Feedback",
+            "path": "training/soft_skills/giving_feedback.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Playbooks",
+    "pages": [
+      {
+        "title": "Playbooks",
+        "pages": [
+          {
+            "title": "Operational Playbooks",
+            "path": "playbooks/index.md"
+          },
+          {
+            "title": "Bad Deployment",
+            "path": "playbooks/bad_deployment.md"
+          },
+          {
+            "title": "Certificate Expiry",
+            "path": "playbooks/certificate_expiry.md"
+          },
+          {
+            "title": "Database Failover",
+            "path": "playbooks/database_failover.md"
+          },
+          {
+            "title": "Dependency Failure",
+            "path": "playbooks/dependency_failure.md"
+          },
+          {
+            "title": "Disk Space Exhaustion",
+            "path": "playbooks/disk_space_exhaustion.md"
+          },
+          {
+            "title": "High Error Rate",
+            "path": "playbooks/high_error_rate.md"
+          },
+          {
+            "title": "High Latency",
+            "path": "playbooks/high_latency.md"
+          },
+          {
+            "title": "Memory Leak / OOM",
+            "path": "playbooks/memory_leak_oom.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Technical Support",
+    "pages": [
+      {
+        "title": "Technical Support",
+        "pages": [
+          {
+            "title": "Technical Support",
+            "path": "technical_support/index.md"
+          }
+        ]
+      },
+      {
+        "title": "Collaboration",
+        "pages": [
+          {
+            "title": "Slack Guide",
+            "path": "technical_support/collaboration/slack_guide.md"
+          },
+          {
+            "title": "Video Conferencing",
+            "path": "technical_support/collaboration/video_conferencing.md"
+          }
+        ]
+      },
+      {
+        "title": "Connectivity",
+        "pages": [
+          {
+            "title": "VPN Configuration",
+            "path": "technical_support/connectivity/vpn_configuration.md"
+          },
+          {
+            "title": "Wi-Fi Access",
+            "path": "technical_support/connectivity/wifi_access.md"
+          }
+        ]
+      },
+      {
+        "title": "Hardware",
+        "pages": [
+          {
+            "title": "Accessory Request",
+            "path": "technical_support/hardware/accessory_request.md"
+          },
+          {
+            "title": "Laptop Refresh Policy",
+            "path": "technical_support/hardware/laptop_refresh.md"
+          }
+        ]
+      },
+      {
+        "title": "Identity Access",
+        "pages": [
+          {
+            "title": "MFA Setup",
+            "path": "technical_support/identity_access/mfa_setup.md"
+          },
+          {
+            "title": "Password Reset",
+            "path": "technical_support/identity_access/password_reset.md"
+          },
+          {
+            "title": "SSO Troubleshooting",
+            "path": "technical_support/identity_access/sso_troubleshooting.md"
+          }
+        ]
+      },
+      {
+        "title": "Security",
+        "pages": [
+          {
+            "title": "Reporting Phishing",
+            "path": "technical_support/security/reporting_phishing.md"
+          }
+        ]
+      },
+      {
+        "title": "Software",
+        "pages": [
+          {
+            "title": "Developer Tools",
+            "path": "technical_support/software/developer_tools.md"
+          },
+          {
+            "title": "Software Request",
+            "path": "technical_support/software/software_request.md"
+          }
+        ]
+      }
+    ]
+  }
+]

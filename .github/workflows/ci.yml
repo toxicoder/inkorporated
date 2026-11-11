@@ -88,6 +88,11 @@ jobs:
           ansible-galaxy collection install -r infrastructure/ansible/requirements.yml
           curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
           kubectl version --client || true
+      - name: Install the terraform formatter
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.8"
+          terraform_wrapper: false
       - name: Report the host toolchain
         run: bazelisk run //:doctor
       - name: Run the gate

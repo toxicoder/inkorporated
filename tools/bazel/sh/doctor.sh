@@ -46,16 +46,34 @@ fi
 
 present=0
 missing=0
+broken=0
 json_rows=""
+
+# tool_answers <name> is true when the binary runs far enough to print its
+# version. Both spellings are tried because the CLIs disagree: --version for the
+# python tools and terraform, a bare version subcommand for kubectl.
+tool_answers() {
+  local name="$1"
+  "${name}" --version >/dev/null 2>&1 || "${name}" version >/dev/null 2>&1
+}
 
 report_tool() {
   local kind="$1" name="$2" why="$3" status
-  if command -v "${name}" >/dev/null 2>&1; then
-    status="present"
-    if [[ "${kind}" == "required" ]]; then present=$((present + 1)); fi
-  else
+  if ! command -v "${name}" >/dev/null 2>&1; then
     status="MISSING"
     if [[ "${kind}" == "required" ]]; then missing=$((missing + 1)); fi
+  elif [[ "${kind}" == "required" ]] && ! tool_answers "${name}"; then
+    # A required binary that cannot run is not installed as far as the gate is
+    # concerned. command -v only asks whether the name resolves, so a symlink
+    # into a python prefix whose modules resolve over a home directory reads as
+    # present here and dies with ModuleNotFoundError inside a lane, where the
+    # sandbox hands the action a home that is not the job's.
+    status="BROKEN"
+    missing=$((missing + 1))
+    broken=$((broken + 1))
+  else
+    status="present"
+    if [[ "${kind}" == "required" ]]; then present=$((present + 1)); fi
   fi
   if [[ "${MODE}" == "json" ]]; then
     if [[ -n "${json_rows}" ]]; then json_rows="${json_rows},"; fi
@@ -121,7 +139,7 @@ else
 fi
 
 if [[ "${MODE}" == "json" ]]; then
-  echo "{\"bazel_version\":\"$( [[ -f "${REPO_ROOT}/.bazelversion" ]] && tr -d '[:space:]' <"${REPO_ROOT}/.bazelversion" )\",\"required_present\":${present},\"required_missing\":${missing},\"docs_venv\":\"${docs_env}\",\"devcontainer_env_mode\":\"${env_mode}\",\"tools\":[${json_rows}]}"
+  echo "{\"bazel_version\":\"$( [[ -f "${REPO_ROOT}/.bazelversion" ]] && tr -d '[:space:]' <"${REPO_ROOT}/.bazelversion" )\",\"required_present\":${present},\"required_missing\":${missing},\"required_broken\":${broken},\"docs_venv\":\"${docs_env}\",\"devcontainer_env_mode\":\"${env_mode}\",\"tools\":[${json_rows}]}"
 else
   echo
   echo "Host state:"
@@ -132,6 +150,11 @@ else
     echo "All required tools present: the strict lane runs everything."
   else
     echo "${missing} required tool(s) missing."
+    if [[ "${broken}" -gt 0 ]]; then
+      echo "broken on PATH: ${broken} (the name resolves, --version does not run)."
+      echo "A lane finds the name and then fails to run the tool."
+      echo "Install the pinned set with the recipe in tools/bazel/lint-requirements.txt."
+    fi
     echo "Locally those lanes skip with a warning. Under REQUIRE_LINT_TOOLS=1"
     echo "or CI=1 they fail instead, so a green gate always means the tool ran."
   fi

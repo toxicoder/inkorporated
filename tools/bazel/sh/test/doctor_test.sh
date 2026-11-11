@@ -19,19 +19,26 @@ check() {
     fi
 }
 
-# link_tool <src> <dir> populates a shadow PATH directory. The guard looks for
-# the link itself as well as the file: test -e follows a symlink, so a dangling
-# link left by an earlier PATH directory reads as absent, ln then fails with
-# "Already exists", and the real tool behind that link stays shadowed on the
-# PATH -- which is how a census test starts reporting a tool that is installed.
-link_tool() {
-    local src="$1" dir="$2" name dst
-    name="$(basename "$src")"
-    dst="${dir}/${name}"
-    if [ -e "$dst" ] || [ -L "$dst" ]; then
-        return 0
-    fi
-    ln -s "$src" "$dst"
+# shadow_path_dir <dir> <dst> links every entry of one PATH directory into
+# <dst>. One ln call per directory is the point: a Bazel test action is handed a
+# PATH with a few thousand entries on a runner, and one ln per entry spent the
+# target's whole timeout building the farm before it asserted anything. The -f
+# replaces a dangling link an earlier directory left behind, which test -e alone
+# reads as absent while ln still refuses the name, so the tool that directory
+# really has stays shadowed -- the shape that made a census test report a tool
+# the host has. Callers walk PATH in reverse so a shared name keeps the copy a
+# real PATH would have found first.
+shadow_path_dir() {
+    local dir="$1" dst="$2" candidate
+    local -a entries=()
+    shopt -s nullglob
+    for candidate in "${dir}"/*; do
+        [ -e "$candidate" ] || [ -L "$candidate" ] || continue
+        entries+=("$candidate")
+    done
+    shopt -u nullglob
+    [ "${#entries[@]}" -eq 0 ] && return 0
+    ln -sft "$dst" "${entries[@]}"
 }
 
 [ -x "$DOCTOR" ] || { echo "FATAL: ${DOCTOR} is missing or not executable" >&2; exit 1; }
@@ -55,24 +62,25 @@ else
     fi
 fi
 
-# 1b. link_tool keeps a dangling link instead of tripping over it. This is the
-#     shape that failed on a runner whose PATH had the same tool name in two
-#     directories: the guard saw no file, ln refused the existing link, and the
-#     tool the second directory really has was never reachable.
+# 1b. shadow_path_dir replaces a dangling link instead of tripping over it. This
+#     is the shape that failed on a runner whose PATH had the same tool name in
+#     two directories: the guard saw no file, ln refused the existing link, and
+#     the tool the second directory really has was never reachable.
 stub_root="${WORKDIR}/stub-dirs"
 mkdir -p "${stub_root}/first" "${stub_root}/second" "${stub_root}/libexec"
 printf '#!/bin/sh\necho first\n' >"${stub_root}/libexec/gate_stub_tool"
 chmod +x "${stub_root}/libexec/gate_stub_tool"
-link_tool "${stub_root}/libexec/gate_stub_tool" "${stub_root}/first"
+shadow_path_dir "${stub_root}/libexec" "${stub_root}/first"
 rm -f "${stub_root}/libexec/gate_stub_tool"
 printf '#!/bin/sh\necho second\n' >"${stub_root}/second/gate_stub_tool"
 chmod +x "${stub_root}/second/gate_stub_tool"
 status=0
-link_tool "${stub_root}/second/gate_stub_tool" "${stub_root}/first" || status=$?
+shadow_path_dir "${stub_root}/second" "${stub_root}/first" || status=$?
 check "a dangling link does not make the shadow PATH fail to add a tool" "$status"
 status=0
-[ -L "${stub_root}/first/gate_stub_tool" ] || status=1
-check "the shadow PATH still names the tool, so nothing is shadowed" "$status"
+[ "$("${stub_root}/first/gate_stub_tool" 2>/dev/null || true)" = "second" ] ||
+    status=1
+check "the shadow PATH runs the tool the second directory has" "$status"
 
 # 2. --json emits an object the caller can parse, with the counters a CI step
 #    would gate on.
@@ -96,17 +104,19 @@ mkdir -p "${WORKDIR}/bin"
 # Shadow the whole PATH and then withhold exactly the tools the census names, so
 # the test proves the doctor reports those missing and not simply that a stripped
 # PATH breaks the script.
-for dir in /usr/local/bin /usr/bin /bin; do
-    for tool in "$dir"/*; do
-        name="$(basename "$tool")"
-        case "$name" in
-            shellcheck | yamllint | ansible-lint | ansible | ansible-doc | \
-                terraform | bazelisk | kubectl | helm | mkdocs | mike | \
-                nvidia-smi | aws | docker) continue ;;
-        esac
-        link_tool "$tool" "${WORKDIR}/bin"
-    done
+withheld=(shellcheck yamllint ansible-lint ansible ansible-doc terraform
+    bazelisk kubectl helm mkdocs mike nvidia-smi aws docker)
+for dir in /bin /usr/bin /usr/local/bin; do
+    shadow_path_dir "$dir" "${WORKDIR}/bin"
 done
+for name in "${withheld[@]}"; do
+    rm -f "${WORKDIR}/bin/${name}"
+done
+# The farm has to be a usable PATH, or the next three assertions would only
+# prove that the doctor cannot run at all.
+status=0
+{ [ -x "${WORKDIR}/bin/git" ] && [ ! -e "${WORKDIR}/bin/terraform" ]; } || status=1
+check "the shadow farm still runs git and withholds terraform" "$status"
 status=0
 PATH="${WORKDIR}/bin" "$DOCTOR" --json >"${WORKDIR}/stripped.json" 2>"${WORKDIR}/stripped.err" || status=$?
 check "doctor fails when required tools are absent" "$([ "$status" -ne 0 ] && echo 0 || echo 1)"
@@ -143,15 +153,12 @@ cp "${REPO_FROM_TESTS}/.bazelversion" "${pin_tree}/.bazelversion"
 nobazel_dir="${WORKDIR}/no-bazelisk/bin"
 mkdir -p "$nobazel_dir"
 IFS=: read -ra path_dirs <<< "$PATH"
-for dir in "${path_dirs[@]}"; do
+for ((idx=${#path_dirs[@]} - 1; idx >= 0; idx--)); do
+    dir="${path_dirs[idx]}"
     [ -d "$dir" ] || continue
-    for tool in "${dir}"/*; do
-        [ -x "$tool" ] && [ ! -d "$tool" ] || continue
-        name="$(basename "$tool")"
-        [ "$name" = bazelisk ] && continue
-        link_tool "$tool" "$nobazel_dir"
-    done
+    shadow_path_dir "$dir" "$nobazel_dir"
 done
+rm -f "${nobazel_dir}/bazelisk"
 
 status=0
 out="$(env -u BAZEL_META_OUTPUT_BASE PATH="$nobazel_dir" \
@@ -286,6 +293,41 @@ report = json.loads(sys.stdin.read())
 assert report["docs_venv"] != "ready", report["docs_venv"]
 ' >/dev/null 2>&1 || status=$?
 check "--json says the docs virtualenv is missing when the tree has none" "$status"
+
+# 11. A required binary that is on PATH and cannot run is BROKEN, not present.
+#     This is the shape a runner produced when pip put the linters in the job's
+#     home directory: command -v found the name, the action's throwaway home hid
+#     the modules behind it, the lane died with ModuleNotFoundError, and the
+#     census had just said every required tool was present.
+broken_dir="${WORKDIR}/broken-bin"
+mkdir -p "$broken_dir"
+for dir in /bin /usr/bin /usr/local/bin; do
+    shadow_path_dir "$dir" "$broken_dir"
+done
+rm -f "${broken_dir}/yamllint"
+printf '#!/bin/sh\nexit 3\n' >"${broken_dir}/yamllint"
+chmod +x "${broken_dir}/yamllint"
+status=0
+out="$(env -u BAZEL_META_OUTPUT_BASE PATH="$broken_dir" "$DOCTOR" 2>&1)" || status=$?
+check "a required tool that cannot run fails the doctor" \
+    "$([ "$status" -eq 1 ] && echo 0 || echo "1 (exit ${status})")"
+status=0
+printf '%s\n' "$out" | grep -q "yamllint.*BROKEN" || status=$?
+check "text mode names the unrunnable tool BROKEN, not present" "$status"
+status=0
+printf '%s\n' "$out" | grep -q "lint-requirements.txt" || status=$?
+check "the report names the pinned requirements for a broken tool" "$status"
+status=0
+json="$(env -u BAZEL_META_OUTPUT_BASE PATH="$broken_dir" "$DOCTOR" --json 2>/dev/null)" || true
+printf '%s\n' "$json" | python3 -c '
+import json, sys
+report = json.loads(sys.stdin.read())
+rows = [row for row in report["tools"] if row["tool"] == "yamllint"]
+assert rows, "the census dropped yamllint"
+assert rows[0]["status"] == "BROKEN", rows[0]
+assert report["required_broken"] >= 1, report
+' >/dev/null 2>&1 || status=$?
+check "--json counts the broken tool and names its status" "$status"
 
 if [ "$failures" -ne 0 ]; then
     echo "FAILURE: ${failures} doctor assertion(s) failed" >&2

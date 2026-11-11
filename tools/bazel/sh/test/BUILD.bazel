@@ -22,8 +22,12 @@ repo_sh_test(
     name = "doctor_test",
     srcs = ["doctor_test.sh"],
     data = ["//tools/bazel/sh:scripts"],
+    # The census runs every required tool's version probe to tell present from
+    # BROKEN, and the python linters cost seconds each, so the target is a
+    # minute-scale test on a shared runner rather than the few seconds a laptop
+    # sees.
     tags = ["gate"],
-    timeout = "short",
+    timeout = "moderate",
 )
 
 repo_sh_test(

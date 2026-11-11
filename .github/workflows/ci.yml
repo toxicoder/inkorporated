@@ -32,9 +32,15 @@ jobs:
               - 'apps/**'
               - 'config/**'
               - 'tests/**'
-              - 'WORKSPACE.bazel'
-              - 'BUILD.bazel'
-              - '*.sh'
+              - 'tools/**'
+              - 'build/**'
+              - 'MODULE.bazel'
+              - 'MODULE.bazel.lock'
+              - '.bazelrc'
+              - '.bazelversion'
+              - '**/BUILD.bazel'
+              - '**/*.bzl'
+              - '**/*.sh'
             always:
               - '.github/workflows/**'
 
@@ -49,12 +55,12 @@ jobs:
           python-version: "3.11"
           cache: pip
           cache-dependency-path: docs/requirements.txt
-      - name: Install docs dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r docs/requirements.txt
+      - name: Setup Bazelisk
+        uses: bazelbuild/setup-bazelisk@v3
+      - name: Prepare the docs virtualenv
+        run: bazelisk run //docs:setup-docs
       - name: Strict MkDocs build
-        run: ./docs/manage-docs.sh build --strict
+        run: bazelisk test //docs:build --test_output=errors
 
   domain-validation:
     needs: changes
@@ -62,8 +68,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Setup Bazelisk
+        uses: bazelbuild/setup-bazelisk@v3
       - name: Validate domain configuration
-        run: chmod +x validate_domain_config.sh && ./validate_domain_config.sh
+        run: bazelisk test //:validate_domain_config --test_output=errors
 
   bazel-tests:
     needs: changes
@@ -73,11 +81,81 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Bazelisk
         uses: bazelbuild/setup-bazelisk@v3
-      - name: Run Bazel tests
-        run: bazel test //:all_tests //tests/config:config_security_scan --test_output=errors
-        continue-on-error: true
+      - name: Choose the interpreter the lint pins support
+        # The pins in tools/bazel/lint-requirements.txt are the releases this tree was
+        # cleared against, and that release of ansible predates the image default.
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install the tools the strict lane demands
+        run: |
+          # A Bazel test action is handed Bazel's own PATH (/usr/local/bin:/usr/bin:/bin)
+          # and a throwaway HOME, so a lane sees neither the job PATH nor the job's home
+          # directory. The tools have to sit where that PATH reaches and resolve their
+          # modules without a home to lean on. //:doctor names the gap when one is
+          # missing, and the probe in the step after this one reproduces a test action
+          # rather than trusting the job shell.
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq python3-yaml
+          curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+          kubectl version --client || true
+          # The prefix is built from the interpreter the pins support rather than the
+          # image default: ansible-compat refuses to run ansible-core 2.16 on Python
+          # 3.14, so an image-default interpreter installs the wheels and then cannot
+          # import them. The version assertion is what turns a silently wrong
+          # interpreter into a named failure at install time.
+          sudo mkdir -p /opt/gate-tools
+          sudo chown "$(id -u):$(id -g)" /opt/gate-tools
+          python_binary="$(python3 -c 'import sys; print(sys.executable)')"
+          "$python_binary" -c 'import sys; assert sys.version_info[:2] == (3, 12), sys.version'
+          "$python_binary" -m venv /opt/gate-tools
+          /opt/gate-tools/bin/pip install --quiet --upgrade pip
+          /opt/gate-tools/bin/pip install --quiet -r tools/bazel/lint-requirements.txt
+          /opt/gate-tools/bin/ansible-galaxy collection install \
+            -r infrastructure/ansible/requirements.yml
+      - name: Install the terraform formatter
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.8"
+          terraform_wrapper: false
+      - name: Put the lane tools where a test action can see them
+        run: |
+          # /usr/local/bin is on the PATH a Bazel test action is handed, so the lane
+          # tools are linked there rather than left in a tool cache or in a prefix only
+          # the job PATH knows about.
+          for tool in ansible ansible-doc ansible-lint yamllint; do
+            src="/opt/gate-tools/bin/${tool}"
+            [ -x "${src}" ] || {
+              echo "the prefix has no ${tool}; see tools/bazel/lint-requirements.txt" >&2
+              exit 1
+            }
+            sudo ln -sfn "${src}" "/usr/local/bin/${tool}"
+          done
+          src="$(command -v terraform)" || {
+            echo "the terraform step left nothing on the job PATH" >&2
+            exit 1
+          }
+          sudo ln -sfn "${src}" /usr/local/bin/terraform
+          # Then run each one the way a lane does: Bazel's PATH, an empty environment,
+          # and a home directory that does not exist. An install that only works from
+          # the job shell is the failure this step exists to catch.
+          probe_home="$(mktemp -d)"
+          for tool in ansible ansible-doc ansible-lint yamllint terraform; do
+            if ! env -i PATH=/usr/local/bin:/usr/bin:/bin HOME="${probe_home}" \
+                "/usr/local/bin/${tool}" --version >/dev/null; then
+              echo "${tool} cannot run the way a test action sees it" >&2
+              exit 1
+            fi
+          done
+      - name: Report the host toolchain
+        run: bazelisk run //:doctor
+      - name: Prove the census from inside a test sandbox
+        run: bazelisk test //tools/bazel/sh/test:doctor_test --test_output=errors --nocache_test_results
+      - name: Run the gate
+        run: bazelisk test //:gate --test_output=errors --nocache_test_results
       - name: Cache Bazel artifacts
         uses: actions/cache@v4
         with:
           path: ~/.cache/bazel
-          key: ${{ runner.os }}-bazel-${{ hashFiles('**/WORKSPACE.bazel') }}
+          key: ${{ runner.os }}-bazel-${{ hashFiles('MODULE.bazel', 'MODULE.bazel.lock', '**/BUILD.bazel', '**/*.bzl') }}

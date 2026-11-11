@@ -1,0 +1,95 @@
+# MkDocs content tree: the site payload, its generation scripts, and the shell
+# entry points a person drives to preview and publish the docs.
+
+load("//build:defs.bzl", "repo_sh_binary", "repo_sh_test")
+
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "site_srcs",
+    srcs = glob(["**/*"]),  # glob-policy: MkDocs content tree grows by design; mkdocs.yml nav is the review surface.
+)
+
+# Every docs/*.py is carried as data rather than as its own target: all of them
+# resolve paths from REPO_ROOT (= Path(__file__).parents[1]), so they only work
+# mounted next to the tree; three of the four command-line tools import PyYAML
+# from docs/requirements.txt, and this repo has no rules_python dependency; and
+# the fourth (validate_docs_links.py) has no wrapper script to name as srcs, so
+# it runs inside //docs:build.
+_DOCS_PY = [
+    "enrich_personas.py",
+    "generate_cyborg_docs.py",
+    "hooks.py",
+    "validate_docs_links.py",
+    "validate_persona_quality.py",
+]
+
+# What manage-docs.sh touches: mkdocs.yml at the repo root, the venv bootstrap
+# it execs, the requirements that venv installs, the generator and link checker
+# it runs per build, the cyborg YAML the generator reads, and the site tree.
+_DOCS_RUNTIME = [
+    ":site_srcs",
+    "//:mkdocs_config",
+    "//cyborgs:personas",
+] + _DOCS_PY
+
+repo_sh_binary(
+    name = "manage-docs",
+    srcs = ["manage-docs.sh"],
+    data = _DOCS_RUNTIME + [
+        ":setup-docs",
+        "requirements.txt",
+    ],
+    tags = ["docs"],
+)
+
+repo_sh_binary(
+    name = "setup-docs",
+    srcs = ["setup-docs.sh"],
+    data = ["requirements.txt"],
+    tags = ["docs"],
+)
+
+# The strict build is the docs gate: it regenerates the cyborg roster, validates
+# links, and builds with mkdocs --strict. It needs the docs virtualenv and
+# writes site/ and docs/cyborgs/generated/ into the checkout, so it runs
+# unsandboxed and outside //:gate, which stays free of network egress. The docs
+# CI job names it directly. Prose refers to it as `bazelisk test //docs:build`.
+repo_sh_test(
+    name = "build",
+    srcs = ["manage-docs.sh"],
+    args = ["build", "--strict"],
+    data = _DOCS_RUNTIME + [
+        ":setup-docs",
+        "requirements.txt",
+    ],
+    local = True,
+    # manual keeps `bazel test //docs/...` from racing this writer against
+    # //docs:generated_render_current, which reads the same render out of the
+    # checkout. Both are host lanes; each is named explicitly by its caller.
+    tags = ["docs", "host", "manual", "slow"],
+    timeout = "long",
+)
+
+# The branch-aware link checker on its own. It is stdlib-only, so this lane
+# runs hermetically and belongs in the default gate.
+repo_sh_test(
+    name = "validate_links",
+    srcs = ["manage-docs.sh"],
+    args = ["validate-links"],
+    data = [":site_srcs"],
+    tags = ["docs", "gate"],
+    timeout = "short",
+)
+
+# Fails when the committed render under docs/cyborgs/generated/ no longer
+# matches what cyborgs/*.yaml says. Edit cyborgs/, never the render.
+repo_sh_test(
+    name = "generated_render_current",
+    srcs = ["check_generated_render.sh"],
+    data = _DOCS_RUNTIME + ["//tools/bazel:secrets_allowlist"],
+    local = True,
+    tags = ["docs", "gate"],
+    timeout = "short",
+)
+

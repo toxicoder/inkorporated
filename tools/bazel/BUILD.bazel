@@ -1,0 +1,55 @@
+# Gate tooling payloads: the checkers, their ledgers, and their unit tests.
+# The targets that run them live in //tools/bazel/sh, beside the wrappers.
+#
+#   bazelisk test //:gate          -- the whole hermetic lane
+#   bazelisk test //tools/bazel/sh:coverage   -- this tooling at 100% coverage
+
+package(default_visibility = ["//visibility:public"])
+
+# Vendored from the ez-bazel-first skill (templates/common/ez-bazel-first.*.py
+# in evo-t1-coder-stack), copied in rather than reached for over the filesystem
+# so the gate runs the same bytes on every machine and in CI. `--bazel-args` was
+# added to the two that shell out to bazelisk so they can run under Bazel.
+filegroup(
+    name = "checkers",
+    srcs = [
+        "coverage_report.py",
+        "gate_policy.py",
+        "glob_budget.py",
+        "owned_files_check.py",
+    ],
+)
+
+filegroup(
+    name = "secrets_allowlist",
+    srcs = ["secrets-allowlist.txt"],
+)
+
+# The pinned host tools the strict lane demands. The CI jobs install from this
+# file, so a lane runs the same ansible-lint on a runner as on the laptop that
+# wrote the playbook, and //:doctor names the gap when a host has none of it.
+filegroup(
+    name = "lint_requirements",
+    srcs = ["lint-requirements.txt"],
+)
+
+filegroup(
+    name = "coverage_ledgers",
+    srcs = [
+        "coverage-exclusions.txt",
+        "coverage-scope.txt",
+        "//tools/bazel/sh:coverage_scope",
+    ],
+)
+
+# Unit tests for the checkers, named one per checker: adding a checker means
+# adding a test file to this list, which is the point of listing them.
+filegroup(
+    name = "unit_tests",
+    srcs = [
+        "test/test_coverage_report.py",
+        "test/test_gate_policy.py",
+        "test/test_glob_budget.py",
+        "test/test_owned_files_check.py",
+    ],
+)

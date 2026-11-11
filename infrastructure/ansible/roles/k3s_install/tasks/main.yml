@@ -1,7 +1,7 @@
 ---
 - name: Install k3s on master node
   block:
-    - name: Download and install k3s
+    - name: Download and install k3s  # noqa: command-instead-of-module get.k3s.io is piped into sh to run the installer, get_url only downloads it
       ansible.builtin.command:
         cmd: curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
         creates: /usr/local/bin/k3s
@@ -10,11 +10,11 @@
       ansible.builtin.systemd:
         name: k3s
         state: started
-        enabled: yes
+        enabled: true
 
 - name: Install k3s on worker node
   block:
-    - name: Download and install k3s
+    - name: Download and install k3s  # noqa: command-instead-of-module the installer is piped into sh with --server and --token, no module runs a script
       ansible.builtin.command:
         cmd: curl -sfL https://get.k3s.io | sh -s - --server {{ k3s_server }} --token {{ k3s_token }}
         creates: /usr/local/bin/k3s
@@ -23,4 +23,4 @@
       ansible.builtin.systemd:
         name: k3s
         state: started
-        enabled: yes
+        enabled: true

@@ -44,7 +44,7 @@ This is the **canonical human reference**. AI agents should also read root [AGEN
 | **Secrets out of git** | `.env` examples only; chmod 600 local secrets |
 | **Hermetic tests** | Validation runs without a live cluster when possible |
 | **Docs as code** | MkDocs strict builds; enterprise OS + infra in one site |
-| **Bazel-friendly** | Prefer Bazel targets for tests; WORKSPACE mode (not bzlmod) |
+| **Bazel-first** | Every tracked file owned by a target or a reasoned ledger entry; Bzlmod, version pinned in `.bazelversion` |
 | **Least privilege agents** | Cyborg tools allowlisted; CRITICAL requires HITL |
 
 ---
@@ -83,17 +83,29 @@ This is the **canonical human reference**. AI agents should also read root [AGEN
 
 ## 4. Bazel and validation entrypoints
 
-Workspace mode: `common --enable_workspace`, bzlmod disabled (see `.bazelrc` / `AGENTS.md`).
+Bzlmod is on and WORKSPACE is off (`common --enable_bzlmod` and
+`common --enable_workspace=false` in `.bazelrc`). The version is pinned in
+`.bazelversion` and every command runs through `bazelisk`.
 
 ```bash
-./run_all_tests.sh
-./validate_config.sh
-./validate_domain_config.sh
-bazel test //:all_tests
-./docs/manage-docs.sh build --strict
+bazelisk test //:gate                       # the one command that answers
+                                            # "is this repo green?"
+bazelisk test //:fast                       # the same lanes minus the slow ones
+bazelisk run  //:doctor                     # which host tools the gates need
+bazelisk test //:validate_config_template   # env/config changes
+bazelisk test //:validate_domain_config     # apps/ingress changes
+bazelisk test //docs:build                  # docs changes (host lane)
 ```
 
-Prefer adding new checks as Bazel `sh_test` targets with **direct labels** in `data` (no `glob()` in data).
+Prefer adding new checks as `repo_sh_test` targets loaded from
+`//build:defs.bzl`, with **direct labels** in `data` (no `glob()` in data).
+Bazel 9 removed the native `sh_test` and left `test_suite` as a no-op stub, so
+shell lanes come from `@rules_shell` through the macro and the umbrella is a
+real test rather than a suite. Every test carries a lane tag: `gate` for the
+hermetic lane that `//:gate` runs, or `host` plus `manual` when it needs a real
+Proxmox node, a live cluster, the operator's `.env`, network egress, or the docs
+virtualenv. A lane that cannot run stays tagged and named, never silently
+skipped.
 
 ---
 
@@ -104,7 +116,7 @@ Prefer adding new checks as Bazel `sh_test` targets with **direct labels** in `d
 | Shell | `shfmt` (`-i 2 -ci`), `shellcheck` (warnings are defects) |
 | YAML | `prettier` + `yamllint` (2-space indent) |
 | Terraform | `terraform fmt` / repo validate targets |
-| Ansible | `ansible-lint` via wrapper |
+| Ansible | `bazelisk test //infrastructure/ansible:ansible_lint` |
 | Bazel | `buildifier` |
 | Markdown docs | language fences; MkDocs strict |
 
@@ -125,7 +137,9 @@ Pre-commit config: `.pre-commit-config.yaml` (optional local install).
 
 - Modules under `infrastructure/terraform/`
 - Use `moved` blocks when refactoring addresses
-- Validate via `validate_terraform.sh` / Bazel targets
+- Validate via `bazelisk test //infrastructure/terraform:terraform_fmt`; the
+  `:terraform_validate` lane is tagged `manual` until the Proxmox provider
+  choice is made (see the comment on that target)
 - Never commit backend credentials
 
 ---
@@ -133,7 +147,14 @@ Pre-commit config: `.pre-commit-config.yaml` (optional local install).
 ## 8. Ansible
 
 - Roles and playbooks under `infrastructure/ansible/`
-- Use `ansible_lint_wrapper.sh` (skips if binary missing)
+- Lint through `bazelisk test //infrastructure/ansible:ansible_lint`; under
+  `REQUIRE_LINT_TOOLS=1` a missing `ansible-lint`, `yamllint` or
+  `community.general` collection fails the lane instead of skipping it
+- The linters are pinned in `tools/bazel/lint-requirements.txt` and install
+  into a prefix with its own interpreter, so a lane runs the same release on a
+  laptop and on a runner. `bazelisk run //:doctor` is the census: a required
+  tool that is on PATH but cannot answer `--version` is BROKEN, and the doctor
+  exits non-zero
 - Inventory secrets stay local / example-only in git
 
 ---
@@ -150,7 +171,7 @@ Pre-commit config: `.pre-commit-config.yaml` (optional local install).
 ## 10. Config and secrets
 
 - Sensitive values: `.devcontainer/.env` (gitignored), mode `600`
-- Validate with `validate_config.sh`
+- Validate with `bazelisk test //:validate_config`
 - Run security scan tests (`//tests/config:config_security_scan`) when touching config paths
 
 ---
@@ -182,7 +203,7 @@ Docs engine: **MkDocs Material** + **mike** versioning. See [docs/CONTRIBUTING.m
 ## 12. Testing
 
 - Prefer hermetic script tests
-- Bazel `sh_test` for wrappers
+- Shell lanes are `repo_sh_test` targets from `//build:defs.bzl`
 - Domain validation on every PR that touches apps/config
 - Docs strict build on docs changes
 

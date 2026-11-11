@@ -1,0 +1,92 @@
+# Self-tests for the devcontainer: the environment loader wiring, the MCP
+# settings shape, the file operations the bootstrap performs, the GPU detector,
+# and the tool census the image promises.
+#
+# Every lane is strict = True: the macros export CI=1 and REQUIRE_LINT_TOOLS=1,
+# so a script that cannot find a tool it needs fails with the install command
+# instead of printing a warning and exiting 0. None of the five needs docker, a
+# GPU, or network egress, so all five stay in the gate lane; the nvidia-smi and
+# uname branches of gpu-detect.sh are exercised with stubs on PATH instead.
+#
+# Run one by name: bazelisk test //.devcontainer/scripts/tests:test_mcp
+
+load("//build:defs.bzl", "repo_sh_test")
+
+package(default_visibility = ["//visibility:public"])
+
+# The scripts themselves. test_framework syntax-checks and policy-checks all
+# five, so it needs the whole set, not only its own file.
+filegroup(
+    name = "scripts",
+    srcs = [
+        "test-env.sh",
+        "test-file-utils.sh",
+        "test-framework.sh",
+        "test-mcp.sh",
+        "test-tools.sh",
+    ],
+)
+
+repo_sh_test(
+    name = "test_env",
+    srcs = ["test-env.sh"],
+    data = [
+        "//.devcontainer:container_config",
+        "//.devcontainer:docs",
+        "//.devcontainer:env_templates",
+        "//.devcontainer/scripts:bootstrap",
+        "//.devcontainer/scripts/utilities:utilities",
+    ],
+    strict = True,
+    tags = ["gate", "devcontainer"],
+    timeout = "short",
+)
+
+repo_sh_test(
+    name = "test_file_utils",
+    srcs = ["test-file-utils.sh"],
+    data = [
+        "//.devcontainer:mcp_config",
+        "//.devcontainer/scripts:bootstrap",
+    ],
+    strict = True,
+    tags = ["gate", "devcontainer"],
+    timeout = "short",
+)
+
+repo_sh_test(
+    name = "test_framework",
+    srcs = ["test-framework.sh"],
+    data = [
+        ":scripts",
+        "//.devcontainer/scripts/utilities:utilities",
+    ],
+    strict = True,
+    tags = ["gate", "devcontainer"],
+    timeout = "short",
+)
+
+repo_sh_test(
+    name = "test_mcp",
+    srcs = ["test-mcp.sh"],
+    data = [
+        "//.devcontainer:container_config",
+        "//.devcontainer:env_templates",
+        "//.devcontainer:mcp_config",
+        "//.devcontainer/scripts:bootstrap",
+    ],
+    strict = True,
+    tags = ["gate", "devcontainer"],
+    timeout = "short",
+)
+
+repo_sh_test(
+    name = "test_tools",
+    srcs = ["test-tools.sh"],
+    data = [
+        "//.devcontainer:container_config",
+    ],
+    strict = True,
+    tags = ["gate", "devcontainer"],
+    timeout = "short",
+)

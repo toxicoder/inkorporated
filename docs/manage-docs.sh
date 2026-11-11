@@ -3,21 +3,43 @@
 # Local interface for serve, strict build, preview, and status.
 #
 # Usage:
-#   ./docs/manage-docs.sh serve
-#   ./docs/manage-docs.sh build
-#   ./docs/manage-docs.sh build --strict
-#   ./docs/manage-docs.sh preview
-#   ./docs/manage-docs.sh status
-#   ./docs/manage-docs.sh clean
+#   bazelisk run //docs:manage-docs -- serve
+#   bazelisk run //docs:manage-docs -- build
+#   bazelisk run //docs:manage-docs -- build --strict
+#   bazelisk run //docs:manage-docs -- validate-links
+#   bazelisk run //docs:manage-docs -- preview
+#   bazelisk run //docs:manage-docs -- status
+#   bazelisk run //docs:manage-docs -- clean
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-if [[ -n ${BUILD_WORKSPACE_DIRECTORY:-} ]]; then
+SCRIPT_SRC="${BASH_SOURCE[0]}"
+SCRIPT_DIR="$(cd "$(dirname "${SCRIPT_SRC}")" && pwd)"
+# A Bazel test is handed a runfiles copy, but the virtualenv, the committed
+# render under docs/cyborgs/generated, and site/ all live in the real checkout.
+# The runfiles directory is a tree of symlinks, so resolving the *directory*
+# stays inside bazel-out; walk up from the script's own resolved path until the
+# git directory appears -- the same route the gate checkers use.
+resolve_repo_root() {
+  local self dir
+  self="$(readlink -f "${SCRIPT_SRC}" 2>/dev/null || printf '%s' "${SCRIPT_SRC}")"
+  dir="$(dirname "${self}")"
+  while [[ "${dir}" != "/" && ! -d "${dir}/.git" ]]; do
+    dir="$(dirname "${dir}")"
+  done
+  if [[ -d "${dir}/.git" ]]; then
+    printf '%s' "${dir}"
+  fi
+}
+
+if [[ -n ${BUILD_WORKSPACE_DIRECTORY:-} && -d ${BUILD_WORKSPACE_DIRECTORY} ]]; then
   REPO_ROOT="${BUILD_WORKSPACE_DIRECTORY}"
-  SCRIPT_DIR="${REPO_ROOT}/docs"
 else
-  REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+  REPO_ROOT="$(resolve_repo_root)"
+  if [[ -z "${REPO_ROOT}" ]]; then
+    REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+  fi
 fi
+SCRIPT_DIR="${REPO_ROOT}/docs"
 
 VENV_DIR="${REPO_ROOT}/.venv-docs"
 MKDOCS_YML="${REPO_ROOT}/mkdocs.yml"
@@ -32,11 +54,12 @@ error() { echo -e "\033[1;31m[ERROR]\033[0m $*" >&2; }
 
 usage() {
   cat <<EOF
-Usage: $0 <command> [options]
+Usage: bazelisk run //docs:manage-docs -- <command> [options]
 
 Commands:
   serve [--port N] [--no-browser]   Live preview (default port ${DEFAULT_PORT})
   build [--strict]                  Production build into site/
+  validate-links                    Branch-aware / relative link check only
   preview [--port N]                Strict build then serve site/
   status                            Show env and config status
   clean                             Remove site/ and optionally venv
@@ -61,7 +84,7 @@ ensure_env() {
       bash "${SCRIPT_DIR}/setup-docs.sh" --quiet
     fi
   elif [[ ! -x "${VENV_DIR}/bin/mkdocs" ]]; then
-    error "Docs venv missing. Run: ./docs/setup-docs.sh"
+    error "Docs venv missing. Run: bazelisk run //docs:setup-docs"
     exit 1
   fi
   # shellcheck disable=SC1091
@@ -131,6 +154,12 @@ cmd_build() {
   success "Site written to ${REPO_ROOT}/site"
 }
 
+cmd_validate_links() {
+  # The link checker is stdlib-only, so this lane needs no virtualenv.
+  validate_docs_links
+  success "Docs link conventions validated"
+}
+
 cmd_preview() {
   local port="$PORT"
   while [[ $# -gt 0 ]]; do
@@ -173,6 +202,7 @@ main() {
   case "$cmd" in
     serve) cmd_serve "$@" ;;
     build) cmd_build "$@" ;;
+    validate-links) cmd_validate_links "$@" ;;
     preview) cmd_preview "$@" ;;
     status) cmd_status "$@" ;;
     clean) cmd_clean "$@" ;;

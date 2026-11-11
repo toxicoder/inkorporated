@@ -3,21 +3,39 @@
 # Creates .venv-docs and installs docs/requirements.txt.
 #
 # Usage:
-#   ./docs/setup-docs.sh
-#   ./docs/setup-docs.sh --quiet
+#   bazelisk run //docs:setup-docs
+#   bazelisk run //docs:setup-docs -- --quiet
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+SCRIPT_SRC="${BASH_SOURCE[0]}"
+SCRIPT_DIR="$(cd "$(dirname "${SCRIPT_SRC}")" && pwd)"
+# `bazelisk run` puts the executable in bazel-bin and the declared data in the
+# runfiles tree beside it, so the requirements file has to be looked for in both
+# places. The real path of the script reaches the runfiles copy through the
+# symlink; the unresolved directory covers an invocation of this file directly.
+real_script_dir="$(readlink -f "${SCRIPT_SRC}" 2>/dev/null || printf '%s' "${SCRIPT_SRC}")"
+real_script_dir="$(cd "$(dirname "${real_script_dir}")" && pwd)"
+REQ_FILE=""
+for candidate in "${real_script_dir}/requirements.txt" "${SCRIPT_DIR}/requirements.txt"; do
+  if [[ -f "${candidate}" ]]; then
+    REQ_FILE="${candidate}"
+    break
+  fi
+done
+# The virtualenv belongs to the checkout, not to the sandbox: `bazelisk run`
+# exports BUILD_WORKSPACE_DIRECTORY precisely so a run target can find it.
+REPO_ROOT="${BUILD_WORKSPACE_DIRECTORY:-}"
+if [[ -z "${REPO_ROOT}" || ! -d "${REPO_ROOT}" ]]; then
+  REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+fi
 VENV_DIR="${REPO_ROOT}/.venv-docs"
-REQ_FILE="${SCRIPT_DIR}/requirements.txt"
 QUIET=false
 
 for arg in "$@"; do
   case "$arg" in
     --quiet|-q) QUIET=true ;;
     --help|-h)
-      echo "Usage: $0 [--quiet]"
+      echo "Usage: bazelisk run //docs:setup-docs -- [--quiet]"
       exit 0
       ;;
   esac

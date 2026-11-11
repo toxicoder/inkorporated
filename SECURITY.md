@@ -33,7 +33,7 @@ Ingress and public URLs must use templated domain configuration (for example `{{
 ## Dependency and supply chain
 
 - Prefer pinned versions in lockfiles and `docs/requirements.txt`
-- Run repository validation (`./run_all_tests.sh`, docs strict build) before merging risky changes
+- Run repository validation (`bazelisk test //:gate`, and `bazelisk test //docs:build` for the docs strict build) before merging risky changes
 - Review third-party charts and images before cluster bootstrap
 
 ## History hygiene

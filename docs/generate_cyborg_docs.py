@@ -323,7 +323,7 @@ tags: [cyborgs, generated]
 - Single pipeline from YAML source of truth to human docs
 
 !!! tip "Source of truth"
-    Edit `cyborgs/<JOB_ID>.yaml`, then run `./docs/manage-docs.sh build` (generator runs automatically). Do **not** hand-edit files under `docs/cyborgs/generated/`.
+    Edit `cyborgs/<JOB_ID>.yaml`, then run `bazelisk test //docs:build` (the generator runs automatically). Do **not** hand-edit files under `docs/cyborgs/generated/`.
 
 {render_stats(cyborgs)}
 

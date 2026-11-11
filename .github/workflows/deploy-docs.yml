@@ -60,13 +60,15 @@ jobs:
         run: |
           git fetch origin gh-pages:gh-pages || true
 
+      - name: Setup Bazelisk
+        uses: bazelbuild/setup-bazelisk@v3
+
       - name: Build documentation (strict)
         env:
           INK_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
           MIKE_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
         run: |
-          chmod +x docs/manage-docs.sh docs/setup-docs.sh
-          ./docs/manage-docs.sh build --strict
+          bazelisk test //docs:build --test_output=errors
           # mike rebuilds site/; keep stamps consistent and ensure no Jekyll processing.
           touch site/.nojekyll
 

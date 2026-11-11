@@ -18,10 +18,10 @@ output "all_vm_ips" {
 
 output "network_configuration" {
   description = "Network configuration details"
-  value       = {
-    cidr        = module.network_config.network_cidr
-    gateway     = module.network_config.network_gateway
-    dns         = module.network_config.network_dns
+  value = {
+    cidr    = module.network_config.network_cidr
+    gateway = module.network_config.network_gateway
+    dns     = module.network_config.network_dns
   }
 }
 

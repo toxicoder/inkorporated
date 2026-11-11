@@ -1,19 +1,108 @@
-# Configuration tests BUILD file for Inkorporated project
+# Configuration validation: schema checks, environment inheritance, and the
+# secret scanner for committed configuration.
 
-load("@rules_sh//shell:sh_test.bzl", "sh_test")
+load("//build:defs.bzl", "repo_sh_test")
 
-# Test for infrastructure validation
-sh_test(
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "scripts",
+    srcs = [
+        "scan_secrets.sh",
+        "test_config_validation.sh",
+        "test_env_vars.sh",
+        "test_environment_inheritance.sh",
+        "test_validate_infrastructure.sh",
+        "test_validation_script.sh",
+        "validate_infrastructure.sh",
+    ],
+)
+
+# Needs the operator's real secrets file, so it is a host lane and //:gate does
+# not run it. The hermetic counterpart that reads the committed template is
+# //:validate_config_template.
+repo_sh_test(
+    name = "test_config_validation",
+    srcs = ["test_config_validation.sh"],
+    data = [
+        "//config:all_configs",
+        "//:validate_config_sh",
+    ],
+    tags = ["host", "manual", "config"],
+)
+
+repo_sh_test(
+    name = "test_env_vars",
+    srcs = ["test_env_vars.sh"],
+    data = [
+        "//config:all_configs",
+        "//.devcontainer:env_example",
+        "//tools/bazel:secrets_allowlist",
+        "//:validate_config_sh",
+    ],
+    tags = ["gate", "config"],
+    timeout = "short",
+)
+
+repo_sh_test(
+    name = "test_environment_inheritance",
+    srcs = ["test_environment_inheritance.sh"],
+    data = [
+        "//config:all_configs",
+        "//.devcontainer:env_example",
+    ],
+    tags = ["gate", "config"],
+    timeout = "short",
+)
+
+# Needs a real Proxmox node (pvecm, systemctl) plus the Synology NFS export, so
+# it is tagged host + manual and //:gate never runs it.
+repo_sh_test(
     name = "validate_infrastructure",
     srcs = ["validate_infrastructure.sh"],
-    data = glob(["**/*.sh"]),
+    data = [
+        "//config:all_configs",
+    ],
+    tags = ["host", "manual", "infra"],
 )
 
-# Security scan for configuration files
-# Replaced 'secret_scan' from rules_lint with a local shell test
-sh_test(
+# The decision logic of the validator above, exercised against fixtures and fake
+# host binaries, so it belongs in the gate.
+repo_sh_test(
+    name = "test_validate_infrastructure",
+    srcs = ["test_validate_infrastructure.sh"],
+    data = [
+        "validate_infrastructure.sh",
+        "//config:all_configs",
+    ],
+    strict = True,
+    tags = ["gate"],
+    timeout = "short",
+)
+
+repo_sh_test(
+    name = "test_validation_script",
+    srcs = ["test_validation_script.sh"],
+    data = [
+        "//:validate_config_sh",
+        "//config:all_configs",
+        "//.devcontainer:env_example",
+        "//tools/bazel:secrets_allowlist",
+    ],
+    tags = ["gate", "config"],
+    timeout = "short",
+)
+
+repo_sh_test(
     name = "config_security_scan",
     srcs = ["scan_secrets.sh"],
-    data = ["//config:all_configs"],
-    tags = ["manual"],
+    data = [
+        "//config:all_configs",
+        "//apps:manifests",
+        "//infrastructure/ansible:playbooks",
+        "//tools/bazel:secrets_allowlist",
+    ],
+    tags = ["gate", "security"],
+    timeout = "short",
 )
+

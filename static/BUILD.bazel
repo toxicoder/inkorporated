@@ -1,0 +1,9 @@
+# Static image assets, embedded by path from README.md and any docs page that
+# needs them.
+
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "images",
+    srcs = glob(["images/**"]),  # glob-policy: the asset tree grows whenever a page needs a banner or diagram, and pages reference the files by path.
+)

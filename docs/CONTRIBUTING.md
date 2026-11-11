@@ -22,10 +22,10 @@ For code, GitOps, Terraform, and Ansible conventions see [project-conventions.md
 ## Quick start
 
 ```bash
-./docs/manage-docs.sh serve                    # live preview
-./docs/manage-docs.sh build --strict           # production build
-./docs/manage-docs.sh preview                  # strict build + static serve
-./docs/manage-docs.sh status
+bazelisk run //docs:manage-docs -- serve          # live preview
+bazelisk test //docs:build            # production build
+bazelisk run //docs:manage-docs -- preview        # strict build + static serve
+bazelisk run //docs:manage-docs -- status
 ```
 
 Requires Python 3.11+ (venv auto-created under `.venv-docs/`).
@@ -86,10 +86,9 @@ Local builds do not require mike. Env stamps: `INK_DOCS_VERSION`, `MIKE_DOCS_VER
 The visual cyborg catalog is **generated** from `cyborgs/*.yaml`:
 
 ```bash
-python docs/generate_cyborg_docs.py
-# or automatically via:
-./docs/manage-docs.sh serve
-./docs/manage-docs.sh build --strict
+# The generator runs automatically inside serve and build:
+bazelisk run //docs:manage-docs -- serve
+bazelisk test //docs:build
 ```
 
 Outputs land in `docs/cyborgs/generated/` (cards, chips, persona pages). **Do not hand-edit** that tree. Prefer Mermaid diagrams in hand-written pages; the generator also emits org/stats graphs.
@@ -113,13 +112,13 @@ At build time, `docs/hooks.py` rewrites GitHub `main`/`development` to the activ
 Validate:
 
 ```bash
-python docs/validate_docs_links.py --strict
-./docs/manage-docs.sh build --strict
+# Runs docs/validate_docs_links.py --strict, then the MkDocs strict build:
+bazelisk test //docs:build
 ```
 
 ## Before submitting a docs PR
 
-- [ ] `./docs/manage-docs.sh build --strict` passes
+- [ ] `bazelisk test //docs:build` passes
 - [ ] New pages added to `mkdocs.yml` nav when user-facing
 - [ ] Cyborg YAML changes regenerate cleanly
 - [ ] No secrets; template vars used in legal/policy where appropriate

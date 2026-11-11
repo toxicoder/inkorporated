@@ -1,38 +1,17 @@
 #!/bin/bash
-# Run all tests in the project
-
-echo "=================================="
-echo "Running Comprehensive Test Suite"
-echo "=================================="
-
-# Set exit on error
+# Compatibility shim. Bazel is the entry point now: one target runs the whole
+# gate. This script exists so that muscle memory, editor tasks, and any external
+# automation that still calls it land on the same answer.
+#
+# Usage: call this script directly, or use the target it forwards to:
+#   bazelisk test //:gate            # the one command that answers the question
 set -e
 
-# Make test scripts executable
-chmod +x tests/**/*.sh
+echo "run_all_tests.sh is a shim for the Bazel gate."
+echo "Running: bazelisk test //:gate"
 
-# Run configuration tests
-echo ""
-echo "1. Running Configuration Tests..."
-./tests/config/test_config_validation.sh
-./tests/config/test_env_vars.sh
+if [ -n "${BUILD_WORKSPACE_DIRECTORY:-}" ]; then
+    cd "${BUILD_WORKSPACE_DIRECTORY}"
+fi
 
-# Run security tests
-echo ""
-echo "2. Running Security Tests..."
-./tests/security/test_permissions.sh
-
-# Run Kubernetes tests
-echo ""
-echo "3. Running Kubernetes Tests..."
-./tests/kubernetes/test_manifests.sh
-
-# Run integration tests
-echo ""
-echo "4. Running Integration Tests..."
-./tests/integration/test_authentik.sh
-
-echo ""
-echo "=================================="
-echo "All Tests Completed Successfully!"
-echo "=================================="
+exec bazelisk test //:gate --test_output=errors

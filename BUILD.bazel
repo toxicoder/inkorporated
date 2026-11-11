@@ -1,16 +1,163 @@
-# Root BUILD file for Inkorporated Bazel workspace
+# Root package: the root-level validators and the payload that lives beside the
+# workspace files.
+#
+#   bazelisk test //:gate     -- everything that must pass; the only command
+#                               anyone needs to answer "is this repo green?"
+#   bazelisk test //:fast     -- the same lanes minus the slow host-tool checks
+#   bazelisk run  //:doctor   -- which host tools the gates need and which are
+#                               missing (a missing tool makes its lane fail
+#                               under REQUIRE_LINT_TOOLS=1, never skip)
+#
+# Anything that needs a Proxmox host, a live cluster, network egress, the
+# operator's .env, or the docs virtualenv is tagged `host`, declared here and in
+# its own package, and left out of //:gate on purpose. Those lanes are runnable
+# by name; nothing is silently skipped.
 
-load("@rules_sh//shell:sh_test.bzl", "sh_test")
+load("//build:defs.bzl", "repo_sh_binary", "repo_sh_test", "repo_umbrella")
 
-# Target that runs all tests (depends on validate_config and tests)
-sh_test(
-    name = "all_tests",
-    srcs = ["run_all_tests.sh"],
-    deps = [":validate_config", "//tests:all"],
+package(default_visibility = ["//visibility:public"])
+
+# ---------------------------------------------------------------------------
+# Payload other packages read
+# ---------------------------------------------------------------------------
+
+filegroup(
+    name = "mkdocs_config",
+    srcs = ["mkdocs.yml"],
 )
 
-# Target for config validation
-sh_test(
+filegroup(
+    name = "validate_config_sh",
+    srcs = ["validate_config.sh"],
+)
+
+# The exclusion ledger: tracked files that no target owns, each with a written
+# reason. //tools/bazel/sh:owned_files_check fails if a file lands here without
+# a reason, or if an entry stops matching anything.
+filegroup(
+    name = "unowned_ledger",
+    srcs = ["bazel-unowned.txt"],
+)
+
+# Developer tooling configuration. Pre-commit, prettier, yamllint and the
+# editor all read these from the checkout; declaring them keeps every tracked
+# file claimed by a target rather than parked in the ledger.
+filegroup(
+    name = "dev_configs",
+    srcs = [
+        ".editorconfig",
+        ".pre-commit-config.yaml",
+        ".yamllint.yml",
+        "package.json",
+        "package-lock.json",
+        "prettier.config.mjs",
+    ],
+)
+
+# ---------------------------------------------------------------------------
+# Root validators
+# ---------------------------------------------------------------------------
+
+# Operator-side secrets SoT check. `.devcontainer/.env` is gitignored and lives
+# on the developer's machine, so this lane cannot run from a clean checkout.
+# It is declared so it stays discoverable and so its own file is owned.
+repo_sh_test(
     name = "validate_config",
     srcs = ["validate_config.sh"],
+    tags = ["host", "manual"],
+)
+
+# The same validator against the committed template: every required key present,
+# and nothing that looks like a real credential committed. This is the form that
+# belongs in the gate.
+repo_sh_test(
+    name = "validate_config_template",
+    srcs = ["validate_config.sh"],
+    args = [
+        "--config-file",
+        ".devcontainer/.env.example",
+        "--template",
+    ],
+    data = [
+        "//.devcontainer:env_example",
+        "//tools/bazel:secrets_allowlist",
+    ],
+    tags = ["gate"],
+    timeout = "short",
+)
+
+repo_sh_test(
+    name = "validate_domain_config",
+    srcs = ["validate_domain_config.sh"],
+    data = [
+        "//apps:manifests",
+        "//config:all_configs",
+    ],
+    tags = ["gate"],
+    timeout = "short",
+)
+
+repo_sh_test(
+    name = "verify_fix",
+    srcs = ["verify_fix.sh"],
+    data = ["//.devcontainer/scripts/utilities:utilities"],
+    strict = True,
+    tags = ["gate"],
+    timeout = "short",
+)
+
+repo_sh_test(
+    name = "test_env_loader",
+    srcs = ["test_env_loader.sh"],
+    data = ["//.devcontainer/scripts/utilities:utilities"],
+    timeout = "short",
+    tags = ["gate"],
+)
+
+# ---------------------------------------------------------------------------
+# Umbrellas and entry points
+# ---------------------------------------------------------------------------
+
+# The two commands anyone needs. These are declared here rather than aliased to
+# //tools/bazel/sh because `bazel test` on an alias answers "No test targets
+# were found": the target a person documents has to be the test itself.
+#
+# Everything that passes from a clean checkout with the tools //:doctor calls
+# required. `host` lanes need a Proxmox host, a live cluster, the operator's
+# .env, network egress, or the docs virtualenv, and are run by name instead.
+repo_umbrella(
+    name = "gate",
+    suites = ["//..."],
+    tag_filters = ["-umbrella", "-host", "-manual"],
+    data = ["//tools/bazel/sh:scripts"],
+    lib = "//tools/bazel/sh:gate_lib.sh",
+    local = True,
+    runner = "//tools/bazel/sh:run_suite.sh",
+)
+
+# The fast loop: the same lanes without the checks that dominate the wall
+# clock. Use this while iterating and //:gate before you push.
+repo_umbrella(
+    name = "fast",
+    suites = ["//..."],
+    tag_filters = ["-umbrella", "-host", "-manual", "-slow"],
+    data = ["//tools/bazel/sh:scripts"],
+    lib = "//tools/bazel/sh:gate_lib.sh",
+    local = True,
+    runner = "//tools/bazel/sh:run_suite.sh",
+)
+
+alias(
+    name = "doctor",
+    actual = "//tools/bazel/sh:doctor",
+)
+
+# run_all_tests.sh predates Bazel and forwards to //:gate so that one command
+# keeps working for people and scripts that still call it. It is an entry point
+# rather than a lane: manual keeps a wildcard from ever selecting a target that
+# starts the gate itself.
+repo_sh_binary(
+    name = "run_all_tests",
+    srcs = ["run_all_tests.sh"],
+    tags = ["manual"],
 )

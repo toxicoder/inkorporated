@@ -1,19 +1,96 @@
-# Terraform BUILD file for Inkorporated project
+# Terraform gate: validates and formats every module declared in this package.
 
-# Since rules_tf is removed (repository is 404), we define simple shell tests
-# for Terraform validation and formatting.
-# Requirement: 'terraform' binary must be in the PATH.
+load("//build:defs.bzl", "repo_sh_test")
 
-sh_test(
-    name = "terraform_validate",
-    srcs = ["validate_terraform.sh"],
-    data = glob(["**/*.tf"]),
-    tags = ["manual"], # Skip if terraform is not installed
+package(default_visibility = ["//visibility:public"])
+
+# Which modules exist is a conscious act: a new .tf file has to be named here
+# before either gate sees it, so the gate review is also a module review.
+filegroup(
+    name = "tf_sources",
+    srcs = [
+        "main.tf",
+        "modules/network/main.tf",
+        "modules/network/outputs.tf",
+        "modules/network/variables.tf",
+        "modules/vm/main.tf",
+        "modules/vm/outputs.tf",
+        "modules/vm/variables.tf",
+        "outputs.tf",
+        "profiles/medium/variables.tf",
+        "profiles/min/variables.tf",
+        "profiles/recommended/variables.tf",
+        "providers.tf",
+        "providers/aws/main.tf",
+        "providers/aws/variables.tf",
+        "providers/gcp/main.tf",
+        "providers/gcp/variables.tf",
+        "providers/proxmox/main.tf",
+        "providers/proxmox/outputs.tf",
+        "providers/proxmox/variables.tf",
+        "variables.tf",
+    ],
 )
 
-sh_test(
+# Rendered payloads the modules read: modules/vm resolves
+# templatefile("${path.module}/cloud-init/user-data.tpl") during validate, and
+# providers/proxmox pulls that module in through a local source path.
+filegroup(
+    name = "templates",
+    # glob-policy: cloud-init payload trees grow by design with every new
+    # deployment profile and node type.
+    srcs = glob([
+        "cloud-init/**",
+        "modules/*/cloud-init/**",
+    ]),
+)
+
+# Known red, run by name: bazelisk test //infrastructure/terraform:terraform_validate
+#
+# This tree has never validated. terraform init cannot resolve it while
+# providers/proxmox/main.tf pins TelsaLabs/proxmox 0.6.0 (no such provider on
+# registry.terraform.io), providers.tf pins telmate/proxmox 2.9.14 and uses a
+# different argument name, modules/network/main.tf declares resource types
+# none of the candidate proxmox providers publishes, providers.tf reads two
+# variables variables.tf never declares, and main.tf uses count on the aws and
+# gcp modules, which declare their own provider blocks and are therefore legacy
+# modules. validate_terraform.sh prints this list when init fails. Choosing the
+# provider is an infrastructure decision this repository has not made, so the
+# lane is tagged manual and host rather than folded into //:gate as a check that
+# can only ever report failure. terraform_fmt above is the terraform lane that
+# does run in the gate.
+repo_sh_test(
+    name = "terraform_validate",
+    srcs = ["validate_terraform.sh"],
+    data = [
+        ":templates",
+        ":tf_sources",
+    ],
+    local = True,
+    tags = ["manual", "host", "terraform", "slow"],
+    strict = True,
+)
+
+repo_sh_test(
     name = "terraform_fmt",
     srcs = ["check_fmt.sh"],
-    data = glob(["**/*.tf"]),
-    tags = ["manual"], # Skip if terraform is not installed
+    data = [
+        ":templates",
+        ":tf_sources",
+    ],
+    tags = ["gate", "terraform", "slow"],
+    timeout = "short",
+    strict = True,
+)
+
+
+# Package documentation and the operator-facing variable template. Nothing at
+# build time reads them, but they belong to this package and are reviewed with
+# it, so they are claimed here rather than parked in the ledger.
+filegroup(
+    name = "docs",
+    srcs = [
+        "README.md",
+        "terraform.tfvars.example",
+    ],
 )

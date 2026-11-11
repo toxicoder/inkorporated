@@ -1,11 +1,58 @@
-# Ansible BUILD file for Inkorporated project
+# Ansible gate: lints the playbooks, roles, and inventory owned by this package.
 
-load("@rules_sh//shell:sh_test.bzl", "sh_test")
+load("//build:defs.bzl", "repo_sh_test")
 
-# Ansible linting test
-sh_test(
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "playbooks",
+    # glob-policy: one playbook per file; the tree grows by design as cluster
+    # steps are automated.
+    srcs = glob(["playbooks/**/*.yml"]),
+)
+
+filegroup(
+    name = "roles",
+    # glob-policy: a role is a payload tree (tasks/vars/templates) that grows by
+    # design with every automated step.
+    srcs = glob(["roles/**"]),
+)
+
+filegroup(
+    name = "inventory",
+    # glob-policy: hosts and group_vars grow by design with every node group.
+    srcs = glob(["inventory/**"]),
+)
+
+repo_sh_test(
     name = "ansible_lint",
     srcs = ["ansible_lint_wrapper.sh"],
-    data = glob(["**/*.yml", "**/*.yaml"], allow_empty = True),
+    data = [
+        ".ansible-lint",
+        "ansible.cfg",
+        ":inventory",
+        ":playbooks",
+        ":roles",
+    ],
     args = ["--strict", "--force-color"],
+    # The wrapper cds into this package's runfiles directory and points
+    # ANSIBLE_ROLES_PATH at roles/ there, which is what lets ansible resolve a
+    # bare role name, ansible.cfg, and .ansible-lint from one place.
+    tags = ["gate", "ansible", "lint", "slow"],
+    strict = True,
+    timeout = "short",
+)
+
+
+# Package documentation: the runbook a person reads before touching a playbook.
+filegroup(
+    name = "docs",
+    srcs = ["README.md"],
+)
+
+# Galaxy collection requirements travel with the roles that need them; the lint
+# lane names this file when it refuses to run without them.
+filegroup(
+    name = "requirements",
+    srcs = ["requirements.yml"],
 )

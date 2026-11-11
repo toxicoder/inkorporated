@@ -1,0 +1,24 @@
+# Container bootstrap entry points: the post-create orchestrator and the core
+# setup scripts it drives. They are data, not runnable targets, because they
+# only make sense inside a running devcontainer as user `vscode`: they write
+# under /home/vscode, run `sudo`, and read absolute /workspaces paths. Driving
+# them is `devcontainer up`; the lanes that check them are in
+# //.devcontainer/scripts/tests.
+#
+# utilities/ and tests/ are their own packages, so this package owns only the
+# orchestrator and core/.
+
+package(default_visibility = ["//visibility:public"])
+
+# Explicit list: post_create_command.sh runs each of these by name, so adding a
+# core script without adding it here is a wiring bug the tests catch.
+filegroup(
+    name = "bootstrap",
+    srcs = [
+        "core/setup-files.sh",
+        "core/setup-mcp.sh",
+        "core/setup-shell.sh",
+        "core/setup-tools.sh",
+        "post_create_command.sh",
+    ],
+)

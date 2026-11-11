@@ -24,9 +24,9 @@ output "network_bridge_name" {
 output "network_configuration" {
   description = "Complete network configuration"
   value = {
-    cidr        = var.network_cidr
-    gateway     = var.network_gateway
-    dns         = var.network_dns
-    bridge      = var.network_bridge_name
+    cidr    = var.network_cidr
+    gateway = var.network_gateway
+    dns     = var.network_dns
+    bridge  = var.network_bridge_name
   }
 }

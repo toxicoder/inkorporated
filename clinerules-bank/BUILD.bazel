@@ -1,0 +1,9 @@
+# Curated bank of rule text the memory-bank workflow copies from when a project
+# is seeded. Agent payload, not build input.
+
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "rule_bank",
+    srcs = glob(["**/*.md"]),  # glob-policy: one markdown file per quality or operations topic, and topics are added as the bank matures.
+)

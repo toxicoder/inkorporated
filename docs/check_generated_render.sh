@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+# Fail when the committed cyborg roster no longer matches cyborgs/*.yaml.
+#
+# docs/cyborgs/generated/ is a render, not a source. Someone editing it by hand
+# loses the change the next time anyone regenerates it, so this lane regenerates
+# into a scratch tree and compares, without touching the checkout.
+#
+# Usage: bazelisk test //docs:generated_render_current
+set -euo pipefail
+
+SCRIPT_SRC="${BASH_SOURCE[0]}"
+# The runfiles directory is a tree of symlinks into the checkout, so resolving
+# the *directory* stays inside bazel-out and never reaches the repository. The
+# venv, cyborgs/ and the committed render all live in the checkout, so walk up
+# from the script's own resolved path until the git directory appears -- the
+# same route the gate checkers use.
+resolve_repo_root() {
+  local self dir
+  self="$(readlink -f "${SCRIPT_SRC}" 2>/dev/null || printf '%s' "${SCRIPT_SRC}")"
+  dir="$(dirname "${self}")"
+  while [[ "${dir}" != "/" && ! -d "${dir}/.git" ]]; do
+    dir="$(dirname "${dir}")"
+  done
+  if [[ -d "${dir}/.git" ]]; then
+    printf '%s' "${dir}"
+  fi
+}
+
+REPO_ROOT="${BUILD_WORKSPACE_DIRECTORY:-}"
+if [[ -z "${REPO_ROOT}" || ! -d "${REPO_ROOT}" ]]; then
+  REPO_ROOT="$(resolve_repo_root)"
+fi
+if [[ -z "${REPO_ROOT}" ]]; then
+  REPO_ROOT="$(cd "$(dirname "${SCRIPT_SRC}")/.." && pwd)"
+fi
+
+PYTHON="${REPO_ROOT}/.venv-docs/bin/python"
+if [[ ! -x "${PYTHON}" ]]; then
+  # The generator imports PyYAML and nothing else, so any interpreter that can
+  # import it renders the same bytes. The virtualenv stays the documented way
+  # to get one, and this fallback is what lets //:gate run the lane on a host
+  # that only has a system python.
+  if command -v python3 >/dev/null 2>&1 &&
+     python3 -c "import yaml" >/dev/null 2>&1; then
+    PYTHON="python3"
+  else
+    echo "error: neither ${PYTHON} nor a python3 with PyYAML is available; run bazelisk run //docs:setup-docs" >&2
+    exit 1
+  fi
+fi
+
+WORK="${TEST_TMPDIR:-$(mktemp -d)}/render"
+mkdir -p "${WORK}/docs"
+cp -r "${REPO_ROOT}/cyborgs" "${WORK}/cyborgs"
+cp -r "${REPO_ROOT}/docs/job_roles" "${WORK}/docs/job_roles"
+cp -r "${REPO_ROOT}/docs/cyborgs" "${WORK}/docs/cyborgs"
+cp "${REPO_ROOT}/docs/generate_cyborg_docs.py" "${WORK}/docs/generate_cyborg_docs.py"
+
+"${PYTHON}" "${WORK}/docs/generate_cyborg_docs.py" >/dev/null
+
+status=0
+# -r follows symlinks; the runfiles copy is a symlink farm into the checkout.
+while IFS= read -r committed; do
+  rel="${committed#"${REPO_ROOT}/"}"
+  fresh="${WORK}/${rel}"
+  if [[ ! -f "${fresh}" ]]; then
+    echo "STALE   ${rel} is committed but the generator no longer writes it"
+    status=1
+    continue
+  fi
+  if ! cmp -s "${REPO_ROOT}/${rel}" "${fresh}"; then
+    echo "STALE   ${rel} differs from a fresh render of cyborgs/*.yaml"
+    echo "        regenerate with: bazelisk test //docs:build"
+    status=1
+  fi
+done < <(find "${REPO_ROOT}/docs/cyborgs/generated" -type f -name '*.md' -o -type f -name '*.json' | sort)
+
+if [[ "${status}" -eq 0 ]]; then
+  echo "docs/cyborgs/generated matches cyborgs/*.yaml"
+else
+  echo "error: the committed render is stale; edit cyborgs/, never docs/cyborgs/generated/" >&2
+fi
+exit "${status}"

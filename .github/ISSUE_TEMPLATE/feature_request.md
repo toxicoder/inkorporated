@@ -32,8 +32,8 @@ body:
         (`bazelisk test //:gate`, `//:fast`, a lane of its own) and say whether it must be
         hermetic or needs a host tool, a cluster, network egress, or the docs tree.
       placeholder: >-
-        A repo_sh_test from //build:defs.bzl under //cyborgs that lists every persona whose
-        allowed_invokers is empty, tagged gate so //:gate runs it.
+        A repo_sh_test from //build:defs.bzl over //cyborgs:personas that lists every persona
+        whose allowed_invokers is empty, tagged gate so //:gate runs it.
     validations:
       required: true
   - type: textarea

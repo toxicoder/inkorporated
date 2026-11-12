@@ -20,8 +20,8 @@ body:
         command per line. If a flag changes the outcome, give both the plain form and
         the exported form (`FEATURE_EXAMPLE=1 bazelisk test //:gate`).
       placeholder: |
-        bazelisk test //:validate_domain_config
-        ./validate_domain_config.sh
+        bazelisk test //:validate_domain_config --test_output=errors
+        bazelisk test //:gate --nocache_test_results
     validations:
       required: true
   - type: textarea

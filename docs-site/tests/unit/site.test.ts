@@ -102,7 +102,7 @@ describe("gitRef", () => {
 
   it("names the trunk for a trunk build", () => {
     process.env.INK_DOCS_VERSION = "development";
-    expect(gitRef()).toBe("development");
+    expect(gitRef()).toBe("main");
   });
 
   it("names the trunk rather than a retired production branch when nothing is stamped", () => {
@@ -110,6 +110,6 @@ describe("gitRef", () => {
     // retired ref here would silently send ~580 source links into a deleted branch.
     delete process.env.INK_DOCS_GIT_REF;
     process.env.DOCS_ALIAS = "latest";
-    expect(gitRef()).toBe("development");
+    expect(gitRef()).toBe("main");
   });
 });

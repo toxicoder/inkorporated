@@ -7,7 +7,7 @@ tags: [infrastructure, environments, deployment, git]
 # Environment Implementation Guide
 
 An environment is a set of **values**, a **secret store**, and a **place to run**. It is not a
-git branch. Every environment here is a checkout of `development`, the trunk, plus its own
+git branch. Every environment here is a checkout of `main`, the trunk, plus its own
 values, and promotion names one ref or digest.
 
 **What's on this page**
@@ -93,21 +93,21 @@ bazelisk test //:fast                    # the quick lane while you iterate
 
 ```bash
 git fetch origin
-git switch -c feature/argo-tag-bump origin/development   # cut from the tip, before the edit
+git switch -c feature/argo-tag-bump origin/main          # cut from the tip, before the edit
 # edit values, run the gate in both flag states, commit
-git fetch origin && git rebase origin/development        # trunk moved under you
+git fetch origin && git rebase origin/main               # trunk moved under you
 bazelisk test //:gate
 git push -u origin feature/argo-tag-bump                 # open the PR, merge, delete branch
 ```
 
-Merging to `development` publishes the docs `development` alias under the `staging` GitHub
+Merging to `main` publishes the docs `development` alias under the `staging` GitHub
 Environment. Nothing else deploys automatically.
 
 ### stable - name one ref
 
 ```bash
 git fetch origin
-git tag -a v1.4.0 -m "Release v1.4.0" origin/development
+git tag -a v1.4.0 -m "Release v1.4.0" origin/main
 git push origin v1.4.0        # publishes the docs latest alias under the production Environment
 ```
 
@@ -135,7 +135,7 @@ Every one of those names a tag, a digest, or an inventory - never a branch.
 
 ## Flags
 
-One file declares every switch: [`config/flags.yaml`](https://github.com/toxicoder/inkorporated/blob/development/config/flags.yaml),
+One file declares every switch: [`config/flags.yaml`](https://github.com/toxicoder/inkorporated/blob/main/config/flags.yaml),
 with `default: false`, an owner, an expiry, and one reader, and the key is listed in
 `.devcontainer/.env.example`. Run any gate twice when you touch one:
 

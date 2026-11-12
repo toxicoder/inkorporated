@@ -43,7 +43,7 @@ export function docsVersion(): string {
 export function gitRef(): string {
   const override = (process.env.INK_DOCS_GIT_REF ?? "").trim();
   if (override) return override;
-  return "development";
+  return "main";
 }
 
 /** True when the current build is the development alias (drives the banner). */

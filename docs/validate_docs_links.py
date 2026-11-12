@@ -6,10 +6,11 @@ Policy:
   ``bazelisk run //docs:manage-docs -- build --strict``, is primary). A relative .md
   link stays valid when the file on disk is its .mdx twin, because that is how
   docs-site/lib/href.ts resolves links at render time.
-- Repo-root / non-docs files: GitHub URLs must use the trunk ref ``development`` as the
+- Repo-root / non-docs files: GitHub URLs must use the trunk ref ``main`` as the
   canonical source form; the published alias stamps its own ref at build time
   (``docs-site/lib/remark-git-ref.ts``), and a link written on a tag keeps the tag.
-- Do not hardcode a GitHub source link on a retired branch (``main`` / ``master``).
+- Do not hardcode a GitHub source link on a retired branch (``development`` /
+  ``master``).
 - Generated HTML must not use ``href="...*.md"`` or ``href="...*.mdx"`` (directory
   URLs on publish).
 """
@@ -27,10 +28,12 @@ DOCS = ROOT / "docs"
 # A page is markdown or MDX; the site renders both from the same content tree.
 PAGE_SUFFIXES = {".md", ".mdx"}
 
-# A GitHub source link pinned to a retired branch.  `development` is the trunk and the only
+# A GitHub source link pinned to a retired branch.  `main` is the trunk and the only
 # long-lived ref, so that is what authors commit; the build stamps the alias's own ref.
+# `development` was the trunk until the November 2026 promotion and is retired, so a link
+# left on it points into a deleted branch.
 _RETIRED_BRANCH_GH = re.compile(
-    r"https://github\.com/toxicoder/inkorporated/(?:blob|tree)/(?:main|master)/"
+    r"https://github\.com/toxicoder/inkorporated/(?:blob|tree)/(?:development|master)/"
 )
 # Absolute site URLs without a published version alias.
 _SITE_NO_VERSION = re.compile(
@@ -87,7 +90,7 @@ def main() -> int:
             line = text[: m.start()].count("\n") + 1
             failures.append(
                 f"{rel}:{line}: GitHub source link pinned to a retired branch; "
-                "use the trunk ref development or a tag"
+                "use the trunk ref main or a tag"
             )
 
         if path.suffix in PAGE_SUFFIXES:

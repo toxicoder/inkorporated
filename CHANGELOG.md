@@ -19,12 +19,16 @@ and this project aims to adhere to [Semantic Versioning](https://semver.org/).
 - Enterprise operating system documentation ported from devset (strategy, roles, policies, interviews, standards, style guides, playbooks, onboarding, training, support)
 - Organization system: master org chart, matrix, leveling, headcount, RACI, cyborg deployment map, coverage matrix
 - Cyborg machine catalog (`cyborgs/*.yaml`) converted from cyborg-conductor-core (69) plus initial enterprise expansion roles
-- CONTRIBUTING.md, SECURITY.md, project conventions, PR template, pre-commit, dependabot, CI on development
+- CONTRIBUTING.md, SECURITY.md, project conventions, PR template, pre-commit, dependabot, CI on the trunk
 - Family Office integrated under CEO in org documentation
 
 ### Changed
 
-- `development` is the only long-lived branch; `CONTRIBUTING.md`, `AGENTS.md`, and
+- The trunk moved from `development` to `main`. `development`'s 50 commits merged into `main`,
+  whose only unique commits were two old promotion merges; the workflows, Dependabot, the
+  docs link validator, and the docs `gitRef()` fallback all follow the new name, and the
+  old trunk is deleted with its tip held at the tag `archive/development-final`
+- `main` is the only long-lived branch; `CONTRIBUTING.md`, `AGENTS.md`, and
   `docs/project-conventions.md` state one model, and CI gates the trunk alone
 - Docs deploy is triggered by a release tag or the trunk and publishes under the
   `production` / `staging` GitHub Environments; no deploy path reads a branch name

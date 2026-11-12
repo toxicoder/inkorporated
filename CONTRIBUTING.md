@@ -11,7 +11,7 @@ Thank you for helping improve Inkorporated — the hybrid-cloud infrastructure a
 
 ## Branching, commits, PRs, and promotion
 
-Inkorporated is trunk-based. `development` is the only long-lived branch. An environment is
+Inkorporated is trunk-based. `main` is the only long-lived branch. An environment is
 a set of values plus a place to run, so **environments are not branches** — dev, staging,
 autopush, canary, and prod are namespaces, overlays, inventory groups, and GitHub
 Environments. Unfinished work ships on trunk behind a flag that defaults off.
@@ -24,17 +24,17 @@ Full rules with the tables and the promotion commands:
 
 | Rule | Detail |
 | --- | --- |
-| One trunk | `development`. It is never deleted, rebased, or force-pushed. |
-| Cut from the tip | `git switch -c feature/<short-description> origin/development`, before the first edit. |
-| Merge by pull request | `bazelisk test //:gate` runs on the pull request and on push to `development`. |
+| One trunk | `main`. It is never deleted, rebased, or force-pushed. |
+| Cut from the tip | `git switch -c feature/<short-description> origin/main`, before the first edit. |
+| Merge by pull request | `bazelisk test //:gate` runs on the pull request and on push to `main`. |
 | Delete on merge | Removing the remote branch is part of landing the work. |
 | Lifetime target | Opened and merged within days; older than 14 days means rebase onto trunk or close. |
 
 ```bash
 git fetch origin
-git switch -c feature/argo-appset-hardening origin/development
+git switch -c feature/argo-appset-hardening origin/main
 # ... work, commit ...
-git fetch origin && git rebase origin/development   # trunk moved under you
+git fetch origin && git rebase origin/main   # trunk moved under you
 git push -u origin feature/argo-appset-hardening
 ```
 
@@ -58,7 +58,7 @@ else has pushed to.
 Examples: `feature/argo-appset-hardening`, `docs/enterprise-os-and-practices`,
 `fix/domain-validation-false-positive`.
 
-An urgent production fix is a normal `fix/` branch into `development`. Roll forward by
+An urgent production fix is a normal `fix/` branch into `main`. Roll forward by
 tagging the fixed tip, roll back by tagging an earlier one. There is no `hotfix/` line and
 no parallel production branch to back-merge.
 
@@ -116,7 +116,7 @@ One or two sentences: *what* and *why*.
 
 Promotion names one ref or digest for every environment; nothing selects a branch.
 
-1. Tip of `development` is green (`bazelisk test //:gate`, plus `bazelisk test //docs:build`
+1. Tip of `main` is green (`bazelisk test //:gate`, plus `bazelisk test //docs:build`
    when docs changed).
 2. Cut a release by tagging that tip:
 
@@ -150,7 +150,7 @@ the off-path together.
 
 - Site engine: **Fumadocs** on Next.js (App Router). Content lives in `docs/`; the site app lives in `docs-site/`.
 - Preview from the repo root: `bazelisk run //docs:serve` (hot reload, port `3005`, `PORT=` to override). The static export lands in `docs-site/out/` via `bazelisk run //docs:docs`; the strict gate is `bazelisk test //docs:build`.
-- Multi-version publishing keeps two aliases, `latest` and `development`, both built from `development`: the first from the release tag, the second from the trunk checkout. `.github/workflows/deploy-docs.yml` takes the alias as an input and deploys under a GitHub Environment.
+- Multi-version publishing keeps two aliases, `latest` and `development`, both built from `main`: the first from the release tag, the second from the trunk checkout. `.github/workflows/deploy-docs.yml` takes the alias as an input and deploys under a GitHub Environment.
 - Page standards: [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) and [docs/project-conventions.md](docs/project-conventions.md).
 - Enterprise content (roles, policies, cyborgs) lives under `docs/`; machine cyborg specs under `cyborgs/`.
 
@@ -167,7 +167,7 @@ Contributors are expected to follow [docs/policies/code_of_conduct.md](docs/poli
 
 ```mermaid
 flowchart LR
-  feat[feature/*] --> trunk[development]
+  feat[feature/*] --> trunk[main]
   fix[fix/*] --> trunk
   docs[docs/*] --> trunk
   chore[chore/*] --> trunk

@@ -258,7 +258,7 @@ Partners:
 
 ## Cyborg specification
 
-Machine persona YAML: [`cyborgs/SREL1013.yaml`](https://github.com/toxicoder/inkorporated/blob/development/cyborgs/SREL1013.yaml)
+Machine persona YAML: [`cyborgs/SREL1013.yaml`](https://github.com/toxicoder/inkorporated/blob/main/cyborgs/SREL1013.yaml)
 
 Generated roster card: [Cyborg roster](../../cyborgs/generated/index.md) → persona `SREL1013`
 

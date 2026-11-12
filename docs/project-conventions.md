@@ -20,22 +20,22 @@ tags: [conventions, contributing]
 
 ```mermaid
 flowchart TD
-  branch[Branch from the tip of development] --> edit[Edit code or docs]
+  branch[Branch from the tip of main] --> edit[Edit code or docs]
   edit --> validate[validate / tests / docs strict]
   validate --> commit[Conventional commit]
-  commit --> pr[PR into development]
+  commit --> pr[PR into main]
   pr --> merge[Merge and delete the branch]
   merge --> tag[Tag the tip vX.Y.Z]
   tag --> deploy[Deploy builds the tag]
 ```
 
-`development` is the trunk and the only long-lived branch. Promotion is a tag plus the
+`main` is the trunk and the only long-lived branch. Promotion is a tag plus the
 environment's own value home, never a branch name.
 
 - Consistent contributions without hunting scattered READMEs
 - Safer changes to GitOps, domains, secrets, and cyborgs
 
-This is the **canonical human reference**. AI agents should also read root [AGENTS.md](https://github.com/toxicoder/inkorporated/blob/development/AGENTS.md). Contribution hub: root [CONTRIBUTING.md](https://github.com/toxicoder/inkorporated/blob/development/CONTRIBUTING.md).
+This is the **canonical human reference**. AI agents should also read root [AGENTS.md](https://github.com/toxicoder/inkorporated/blob/main/AGENTS.md). Contribution hub: root [CONTRIBUTING.md](https://github.com/toxicoder/inkorporated/blob/main/CONTRIBUTING.md).
 
 ---
 
@@ -199,7 +199,7 @@ aliases. See [docs/CONTRIBUTING.md](CONTRIBUTING.md).
 ### Docs linking (branch-aware)
 
 - **Between docs pages:** relative `.md` links only (never hardcode `https://toxicoder.github.io/inkorporated/...` for in-site navigation); the site resolves a relative link to the published route.
-- **Repo paths outside `docs/`:** GitHub URLs written on the trunk ref **`development`**: `.../blob/development/<path>`. An environment is a set of values, not a ref, so a doc link names trunk.
+- **Repo paths outside `docs/`:** GitHub URLs written on the trunk ref **`main`**: `.../blob/main/<path>`. An environment is a set of values, not a ref, so a doc link names trunk.
 - `docs-site/lib/remark-git-ref.ts` stamps every `blob|tree/<ref>` URL it finds at build time with the ref that build was made from, so the `latest` build points its source links at the release tag. Write the trunk ref and let the build bind it; a link written on a tag (`.../blob/v1.4.0/<path>`) is left as written.
 - **Do not** hardcode an absolute `github.io/inkorporated/...` URL without its `/latest/` or `/development/` alias.
 - The cyborg roster pages are generated from `cyborgs/*.yaml`; regenerate them, never hand-edit them.
@@ -218,11 +218,11 @@ aliases. See [docs/CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 13. Change discipline
 
-1. Branch from the tip of `development`, the trunk and only long-lived branch
+1. Branch from the tip of `main`, the trunk and only long-lived branch
 2. Small focused commits (conventional style)
 3. Update docs when behavior or public contracts change
 4. Run relevant validate/tests; a flag lands declared in `config/flags.yaml`, off by default, and the gate runs both states
-5. PR into `development`, delete the branch on merge; ship unfinished work behind that off-by-default flag
+5. PR into `main`, delete the branch on merge; ship unfinished work behind that off-by-default flag
 6. **Agents must not push or open PRs unless the user explicitly requests**
 
 ---

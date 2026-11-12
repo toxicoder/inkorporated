@@ -63,11 +63,11 @@ Inkorporated is a **one-stop shop to spin up a full-blown global enterprise**: c
 - [Project conventions](project-conventions.md)
 - [Contributing to docs](CONTRIBUTING.md)
 - [Git workflow](guides/git_workflow.md)
-- Root [CONTRIBUTING.md](https://github.com/toxicoder/inkorporated/blob/development/CONTRIBUTING.md) · [SECURITY.md](https://github.com/toxicoder/inkorporated/blob/development/SECURITY.md)
+- Root [CONTRIBUTING.md](https://github.com/toxicoder/inkorporated/blob/main/CONTRIBUTING.md) · [SECURITY.md](https://github.com/toxicoder/inkorporated/blob/main/SECURITY.md)
 
 ## Multi-version docs
 
 Published to GitHub Pages under two aliases:
 
-- **latest** — from `main`
-- **development** — from `development`
+- **latest** — from the release tag `vX.Y.Z` cut from the trunk
+- **development** — from the trunk checkout on `main`

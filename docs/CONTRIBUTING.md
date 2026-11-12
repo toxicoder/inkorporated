@@ -22,7 +22,7 @@ tags: [documentation, contributing, fumadocs]
 - **Passing** the docs gates on the first CI run
 
 For code, GitOps, Terraform, and Ansible conventions see [project-conventions.md](project-conventions.md);
-root [CONTRIBUTING.md](https://github.com/toxicoder/inkorporated/blob/development/CONTRIBUTING.md) covers
+root [CONTRIBUTING.md](https://github.com/toxicoder/inkorporated/blob/main/CONTRIBUTING.md) covers
 branching and PRs.
 
 ## Quick start
@@ -114,7 +114,7 @@ must land in the nav.
 | Target | How to link |
 | --- | --- |
 | Another docs page | **Relative** path to the `.md` file, e.g. `[Org chart](organization/org_chart_master.md)`; from a nested page, walk up with `../`. The site resolves it to the published route, so links are not rewritten during the migration. |
-| Repo file outside `docs/` (for example `cyborgs/*.yaml`) | Full GitHub URL with the trunk ref **`development`**: `https://github.com/toxicoder/inkorporated/blob/development/...`. Name a tag (`blob/vX.Y.Z/...`) when the target is a released artifact. |
+| Repo file outside `docs/` (for example `cyborgs/*.yaml`) | Full GitHub URL with the trunk ref **`main`**: `https://github.com/toxicoder/inkorporated/blob/main/...`. Name a tag (`blob/vX.Y.Z/...`) when the target is a released artifact. |
 | Do not | Link a ref that is neither trunk nor a tag, or hardcode an absolute `github.io/inkorporated/...` URL without `/latest/` or `/development/` |
 
 Edit-this-page links follow the alias ref, driven by `INK_DOCS_VERSION` / `INK_DOCS_GIT_REF`. Check
@@ -122,7 +122,7 @@ relative links with `bazelisk test //docs:validate_links`.
 
 ## Multi-version publishing
 
-`.github/workflows/deploy-docs.yml` keeps the two aliases, and both build from `development`:
+`.github/workflows/deploy-docs.yml` keeps the two aliases, and both build from `main`:
 **`latest`** is published from the release tag at
 https://toxicoder.github.io/inkorporated/latest/, and **`development`** from the trunk checkout
 at https://toxicoder.github.io/inkorporated/development/. The workflow takes the alias as an

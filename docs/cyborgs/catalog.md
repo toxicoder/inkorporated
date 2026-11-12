@@ -22,7 +22,7 @@ The scannable catalog lives at **[Cyborg roster](generated/index.md)** (cards, c
 
 ## Machine index
 
-See [`cyborgs/_index.yaml`](https://github.com/toxicoder/inkorporated/blob/development/cyborgs/_index.yaml) for the checked-in ID list.
+See [`cyborgs/_index.yaml`](https://github.com/toxicoder/inkorporated/blob/main/cyborgs/_index.yaml) for the checked-in ID list.
 
 ## How to add a cyborg
 

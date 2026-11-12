@@ -13,7 +13,7 @@ function report(overrides: Partial<DocsBugReport> = {}): DocsBugReport {
     heading: "Kill switches",
     headingId: "kill-switches",
     sourcePath: "docs/cyborgs/operating_model.md",
-    sourceUrl: "https://github.com/toxicoder/inkorporated/blob/development/docs/cyborgs/operating_model.md",
+    sourceUrl: "https://github.com/toxicoder/inkorporated/blob/main/docs/cyborgs/operating_model.md",
     gitRef: "development",
     docsAlias: "development",
     userAgent: "TestAgent/1.0",
@@ -38,7 +38,7 @@ describe("docsBugHref", () => {
     expect(body).toContain("Docs alias: development");
     expect(body).toContain("Git ref: development");
     expect(body).toContain("docs/cyborgs/operating_model.md");
-    expect(body).toContain("https://github.com/toxicoder/inkorporated/blob/development/docs/cyborgs/operating_model.md");
+    expect(body).toContain("https://github.com/toxicoder/inkorporated/blob/main/docs/cyborgs/operating_model.md");
     expect(body).toContain("## What is wrong");
     expect(body).toContain("## What it should say");
     expect(body).toContain("<!-- Replace this line. -->");

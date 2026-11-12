@@ -803,7 +803,7 @@ tags: [cyborgs, generated, persona]
 
 ## Links
 
-- Machine source: [`cyborgs/{esc(c['path'])}`](https://github.com/toxicoder/inkorporated/blob/development/cyborgs/{esc(c['path'])})
+- Machine source: [`cyborgs/{esc(c['path'])}`](https://github.com/toxicoder/inkorporated/blob/main/cyborgs/{esc(c['path'])})
 {role_link}
 """
     write_page(PERSONAS_DIR / f"{c['job_id']}{MDX_EXT}", body)

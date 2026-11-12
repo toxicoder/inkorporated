@@ -35,7 +35,7 @@ flowchart LR
 
 | Artifact | Location |
 | --- | --- |
-| Machine source of truth | [`cyborgs/*.yaml`](https://github.com/toxicoder/inkorporated/tree/main/cyborgs) |
+| Machine source of truth | [`cyborgs/*.yaml`](https://github.com/toxicoder/inkorporated/tree/development/cyborgs) |
 | Visual roster | [generated/index.md](generated/index.md) |
 | Human role context | [`docs/job_roles/`](../job_roles/job_role_organization.md) |
 

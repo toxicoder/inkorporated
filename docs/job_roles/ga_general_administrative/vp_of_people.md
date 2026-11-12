@@ -289,7 +289,7 @@ Partners:
 
 ## Cyborg specification
 
-Machine persona YAML: [`cyborgs/PEOP0001.yaml`](https://github.com/toxicoder/inkorporated/blob/main/cyborgs/PEOP0001.yaml)
+Machine persona YAML: [`cyborgs/PEOP0001.yaml`](https://github.com/toxicoder/inkorporated/blob/development/cyborgs/PEOP0001.yaml)
 
 Generated roster card: [Cyborg roster](../../cyborgs/generated/index.md) → persona `PEOP0001`
 

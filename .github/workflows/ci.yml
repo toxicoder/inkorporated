@@ -18,8 +18,8 @@ jobs:
       infra: ${{ steps.filter.outputs.infra }}
       always: ${{ steps.filter.outputs.always }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: dorny/paths-filter@v3
+      - uses: actions/checkout@v7
+      - uses: dorny/paths-filter@v4
         id: filter
         with:
           filters: |
@@ -52,8 +52,8 @@ jobs:
       NEXT_TELEMETRY_DISABLED: "1"
       NODE_OPTIONS: "--max-old-space-size=5120"
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - uses: actions/setup-node@v4
@@ -85,7 +85,7 @@ jobs:
     if: needs.changes.outputs.infra == 'true' || needs.changes.outputs.always == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Setup Bazelisk
         uses: bazelbuild/setup-bazelisk@v3
       - name: Validate domain configuration
@@ -96,13 +96,13 @@ jobs:
     if: needs.changes.outputs.infra == 'true' || needs.changes.outputs.always == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Setup Bazelisk
         uses: bazelbuild/setup-bazelisk@v3
       - name: Choose the interpreter the lint pins support
         # The pins in tools/bazel/lint-requirements.txt are the releases this tree was
         # cleared against, and that release of ansible predates the image default.
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
@@ -173,7 +173,7 @@ jobs:
       - name: Run the gate
         run: bazelisk test //:gate --test_output=errors --nocache_test_results
       - name: Cache Bazel artifacts
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.cache/bazel
           key: ${{ runner.os }}-bazel-${{ hashFiles('MODULE.bazel', 'MODULE.bazel.lock', '**/BUILD.bazel', '**/*.bzl') }}

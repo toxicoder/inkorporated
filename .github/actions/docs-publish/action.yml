@@ -1,0 +1,80 @@
+name: Publish one docs alias
+description: >-
+  Replace the gh-pages branch contents with an assembled Pages tree and check the published
+  layout. Runs from a throwaway clone so no source file rides along onto the branch.
+
+# Extracted from .github/workflows/deploy-docs.yml; the caller attaches the GitHub
+# Environment that gates the alias, because that review is what a branch name used to fake.
+
+inputs:
+  alias:
+    description: Pages alias being published, latest or development
+    required: true
+  tree:
+    description: Path of the Pages tree produced by the docs-export action
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Publish to the gh-pages branch
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+        PAGES_TREE: ${{ inputs.tree }}
+        PAGES_ALIAS: ${{ inputs.alias }}
+      run: |
+        set -euo pipefail
+        tree="${PAGES_TREE:?run the docs-export action first}"
+        alias="${PAGES_ALIAS:?run the docs-export action first}"
+        deploy="${RUNNER_TEMP}/gh-pages-deploy"
+        remote="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+        # Publish from a throwaway clone: gh-pages is derived content, and a working
+        # checkout that still holds the source tree would drag every tracked source file
+        # onto the branch.
+        rm -rf "${deploy}"
+        git init -q "${deploy}"
+        git -C "${deploy}" remote add origin "${remote}"
+        if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
+          git -C "${deploy}" fetch -q --depth 1 origin gh-pages
+          git -C "${deploy}" checkout -q -B gh-pages FETCH_HEAD
+          git -C "${deploy}" rm -r -q --ignore-unmatch .
+        else
+          git -C "${deploy}" checkout -q --orphan gh-pages
+        fi
+
+        # Replace the branch contents wholesale: a file the export no longer emits has
+        # to disappear, or Pages keeps serving it.
+        cp -r "${tree}/." "${deploy}/"
+        git -C "${deploy}" add -A
+        git -C "${deploy}" commit -q -m "docs: publish ${alias} from ${GITHUB_SHA}"
+        git -C "${deploy}" push -f -q origin HEAD:gh-pages
+
+    - name: Verify gh-pages layout
+      shell: bash
+      run: |
+        set -euo pipefail
+        git fetch -f origin gh-pages
+        for path in index.html .nojekyll latest/index.html development/index.html; do
+          if ! git cat-file -e "origin/gh-pages:${path}" 2>/dev/null; then
+            echo "ERROR: gh-pages is missing ${path}" >&2
+            git ls-tree --name-only origin/gh-pages | head -30 >&2
+            exit 1
+          fi
+        done
+        git ls-tree --name-only origin/gh-pages | head -30
+
+    - name: Report the published URLs
+      shell: bash
+      run: |
+        {
+          echo "## Documentation published"
+          echo ""
+          echo "| Alias | URL |"
+          echo "| --- | --- |"
+          echo "| ${{ inputs.alias }} | https://toxicoder.github.io/inkorporated/${{ inputs.alias }}/ |"
+        } >> "$GITHUB_STEP_SUMMARY"

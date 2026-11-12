@@ -1,13 +1,24 @@
 name: Deploy Documentation
 
-# Publish Fumadocs static exports to gh-pages (versioned aliases).
-# - main / master  -> alias "latest" (default site)
-# - development    -> alias "development"
+# Publish Fumadocs static exports to gh-pages (two versioned aliases).
 #
-# Each run builds ONE alias - the branch that triggered it - and carries the other
-# alias over from the live gh-pages tree. Two full Next exports of ~870 pages in one
-# job OOM the 7 GB GitHub-hosted runner, so one webpack export per run with
-# --max-old-space-size=5120 is the cap that fits.
+# Both aliases are built from `development`, the trunk, and neither build asks a branch name
+# which environment it is:
+#
+#   - a tag push (vX.Y.Z)      -> alias "latest", published under the `production`
+#                                 GitHub Environment, with Edit-this-page links stamped with
+#                                 that tag
+#   - a push to the trunk      -> alias "development", published under the `staging`
+#                                 GitHub Environment
+#   - workflow_dispatch        -> either alias, from the ref or digest you name
+#
+# The Environment is the review that a branch name used to fake: attach required reviewers,
+# and deployment branches, to `production` in the repository settings.
+#
+# Each run builds ONE alias. Two full Next exports of ~870 pages in one job OOM the 7 GB
+# GitHub-hosted runner, so one webpack export per run with --max-old-space-size=5120 is the
+# cap that fits. The alias this run does not build is carried over from the live gh-pages
+# tree by the docs-export action.
 #
 # URL compatibility: the MkDocs site published these two aliases through mike, at
 # /latest/ and /development/. A static root index.html forwards bare
@@ -15,18 +26,29 @@ name: Deploy Documentation
 #
 # GitHub Pages must publish from branch gh-pages at path "/" (the repo root).
 #
-# PR docs validation lives in ci.yml; this workflow runs only on push to a long-lived
-# branch, or on workflow_dispatch.
+# PR docs validation lives in ci.yml; this workflow publishes only on a trunk push, a
+# release tag, or a dispatch.
 on:
   push:
-    branches: [main, master, development]
-    paths:
-      - "docs/**"
-      - "docs-site/**"
-      - "cyborgs/**"
-      - "docs/requirements.txt"
-      - ".github/workflows/deploy-docs.yml"
+    branches: [development]
+    tags: ["v*"]
   workflow_dispatch:
+    inputs:
+      alias:
+        description: Which Pages alias to publish
+        type: choice
+        options:
+          - development
+          - latest
+        default: development
+        required: true
+      ref:
+        description: >-
+          Ref or digest to publish from. A release names its own tag here; leave it empty to
+          use the ref this run was dispatched from.
+        type: string
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -36,157 +58,85 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-and-publish:
+  paths:
+    # An infra-only trunk commit should not pay for an ~870-page export. A release tag
+    # always publishes, and so does a dispatch, which says what it means.
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      docs: ${{ steps.filter.outputs.docs }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dorny/paths-filter@v4
+        id: filter
+        if: ${{ github.event_name == 'push' && github.ref_type == 'branch' }}
+        with:
+          filters: |
+            docs:
+              - 'docs/**'
+              - 'docs-site/**'
+              - 'cyborgs/**'
+              - 'docs/requirements.txt'
+              - '.github/workflows/deploy-docs.yml'
+              - '.github/actions/**'
+
+  development:
+    name: Publish the development alias (staging)
+    needs: paths
+    if: >-
+      needs.paths.outputs.docs != 'false' &&
+      ( (github.event_name == 'push' && github.ref_type == 'branch') ||
+        (github.event_name == 'workflow_dispatch' && inputs.alias == 'development') )
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    environment:
+      name: staging
+      url: https://toxicoder.github.io/inkorporated/development/
     env:
       NEXT_TELEMETRY_DISABLED: "1"
       NODE_OPTIONS: "--max-old-space-size=5120"
     steps:
-      - name: Checkout
-        uses: actions/checkout@v7
+      - name: Export the alias
+        id: export
+        uses: ./.github/actions/docs-export
         with:
-          fetch-depth: 0
-          # Required so the later git push to gh-pages authenticates as GITHUB_TOKEN.
-          persist-credentials: true
+          alias: development
+          ref: ${{ inputs.ref }}
 
-      - name: Setup Python
-        uses: actions/setup-python@v7
+      - name: Publish it
+        uses: ./.github/actions/docs-publish
         with:
-          python-version: "3.12"
+          alias: development
+          tree: ${{ steps.export.outputs.tree }}
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+  latest:
+    name: Publish the latest alias (production)
+    needs: paths
+    if: >-
+      needs.paths.outputs.docs != 'false' &&
+      ( (github.event_name == 'push' && github.ref_type == 'tag') ||
+        (github.event_name == 'workflow_dispatch' && inputs.alias == 'latest') )
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    environment:
+      name: production
+      url: https://toxicoder.github.io/inkorporated/latest/
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      NODE_OPTIONS: "--max-old-space-size=5120"
+    steps:
+      - name: Export the alias
+        id: export
+        uses: ./.github/actions/docs-export
         with:
-          node-version: "22"
-          cache: npm
-          cache-dependency-path: docs-site/package-lock.json
+          alias: latest
+          ref: ${{ inputs.ref }}
+          # A release build stamps its source links with the tag it was cut from.
+          git-ref: ${{ github.ref_type == 'tag' && github.ref_name || inputs.ref }}
 
-      - name: Setup Bazelisk
-        uses: bazelbuild/setup-bazelisk@v3
-
-      - name: Install the docs toolchain
-        # `run`, not `test`: //docs:setup-docs is an sh_binary that installs the pinned
-        # npm tree from docs-site/package-lock.json and the PyYAML the roster generator
-        # imports. The runner cd's into the real checkout, so node_modules lands beside it.
-        run: bazelisk run //docs:setup-docs
-
-      - name: Cache Next compile
-        uses: actions/cache@v6
+      - name: Publish it
+        uses: ./.github/actions/docs-publish
         with:
-          path: docs-site/.next/cache
-          key: next-${{ runner.os }}-${{ hashFiles('docs-site/package-lock.json', 'docs-site/next.config.ts', 'docs-site/source.config.ts') }}
-          restore-keys: |
-            next-${{ runner.os }}-
-
-      - name: Stamp the publish time
-        # The site renders "published" from this stamp so every page of one alias carries
-        # the same timestamp instead of the time each page happened to compile.
-        run: echo "INK_DOCS_PUBLISHED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
-
-      - name: Build and assemble the Pages tree
-        env:
-          INK_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
-          DOCS_ALIAS: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
-          INK_DOCS_GIT_REF: ${{ github.ref_name }}
-        run: |
-          set -euo pipefail
-          alias="${DOCS_ALIAS}"
-          case "${alias}" in
-            latest | development) ;;
-            *)
-              echo "deploy-docs: DOCS_ALIAS must be latest or development, got ${alias}" >&2
-              exit 1
-              ;;
-          esac
-
-          tree="${RUNNER_TEMP}/pages-tree"
-          rm -rf "${tree}"
-          mkdir -p "${tree}"
-
-          # Keep the alias this run does not build, so /latest/ and /development/ stay
-          # published side by side across two separate runs.
-          git fetch origin gh-pages || true
-          other=development
-          [[ "${alias}" == development ]] && other=latest
-          if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
-            git archive origin/gh-pages "${other}" 2>/dev/null | tar -x -C "${tree}" || true
-          fi
-
-          rm -rf "_site"
-          rm -rf "${tree:?}/${alias}"
-          mkdir -p "${tree}/${alias}"
-          # Deliberate concession: this export runs raw npm rather than a Bazel target.
-          # bazelisk keeps a JVM resident next to the webpack export, and that pairing is
-          # what OOMs the 7 GB runner (header above).
-          (cd docs-site && npm run "build:${alias}")
-          if [[ ! -f docs-site/out/index.html ]]; then
-            echo "deploy-docs: docs-site/out/index.html missing - the export did not run" >&2
-            exit 1
-          fi
-          cp -r docs-site/out/. "${tree}/${alias}/"
-
-          # .nojekyll keeps Pages from running Jekyll over the export, which is what
-          # would otherwise strip the leading-underscore asset directories Next emits.
-          touch "${tree}/.nojekyll"
-          cp docs-site/pages-root-index.html "${tree}/index.html"
-          echo "PAGES_TREE=${tree}" >> "$GITHUB_ENV"
-          echo "PAGES_ALIAS=${alias}" >> "$GITHUB_ENV"
-
-      - name: Publish to the gh-pages branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          tree="${PAGES_TREE:?run the assemble step first}"
-          alias="${PAGES_ALIAS:?run the assemble step first}"
-          deploy="${RUNNER_TEMP}/gh-pages-deploy"
-          remote="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # Publish from a throwaway clone: gh-pages is derived content, and a working
-          # checkout that still holds the source tree would drag every tracked source file
-          # onto the branch.
-          rm -rf "${deploy}"
-          git init -q "${deploy}"
-          git -C "${deploy}" remote add origin "${remote}"
-          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
-            git -C "${deploy}" fetch -q --depth 1 origin gh-pages
-            git -C "${deploy}" checkout -q -B gh-pages FETCH_HEAD
-            git -C "${deploy}" rm -r -q --ignore-unmatch .
-          else
-            git -C "${deploy}" checkout -q --orphan gh-pages
-          fi
-
-          # Replace the branch contents wholesale: a file the export no longer emits has
-          # to disappear, or Pages keeps serving it.
-          cp -r "${tree}/." "${deploy}/"
-          git -C "${deploy}" add -A
-          git -C "${deploy}" commit -q -m "docs: publish ${alias} from ${GITHUB_SHA}"
-          git -C "${deploy}" push -f -q origin HEAD:gh-pages
-
-      - name: Verify gh-pages layout
-        run: |
-          set -euo pipefail
-          git fetch -f origin gh-pages
-          for path in index.html .nojekyll latest/index.html development/index.html; do
-            if ! git cat-file -e "origin/gh-pages:${path}" 2>/dev/null; then
-              echo "ERROR: gh-pages is missing ${path}" >&2
-              git ls-tree --name-only origin/gh-pages | head -30 >&2
-              exit 1
-            fi
-          done
-          git ls-tree --name-only origin/gh-pages | head -30
-
-      - name: Report the published URLs
-        run: |
-          {
-            echo "## Documentation published"
-            echo ""
-            echo "| Alias | URL |"
-            echo "| --- | --- |"
-            echo "| latest | https://toxicoder.github.io/inkorporated/latest/ |"
-            echo "| development | https://toxicoder.github.io/inkorporated/development/ |"
-          } >> "$GITHUB_STEP_SUMMARY"
+          alias: latest
+          tree: ${{ steps.export.outputs.tree }}

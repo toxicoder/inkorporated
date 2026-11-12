@@ -9,4 +9,4 @@
 # with the MkDocs site. Nothing here is needed for the gates: //docs-site's
 # python suites are stdlib unittest, and the optional --cov lane in
 # docs-site/run_python_test.sh asks for pytest and pytest-cov on the fly.
-PyYAML==6.0.2
+PyYAML==6.0.3

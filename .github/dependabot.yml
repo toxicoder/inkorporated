@@ -1,19 +1,53 @@
 version: 2
+# Dependabot reads this file from the repository's default branch only, so an
+# edit here takes effect once it reaches main. Version-update PRs are aimed at
+# development, the integration branch, because that is where the Bazel gate is
+# green: main still carries the pre-Bzlmod tree, with no MODULE.bazel and the
+# sh_test calls Bazel 9 removed, so a PR based there can never clear its
+# required bazel-tests check. Dependabot resolves each ecosystem's manifest
+# from the target branch too, which is what keeps the retired MkDocs stack from
+# coming back. Security updates ignore target-branch and always base on the
+# default branch.
 updates:
   - package-ecosystem: github-actions
     directory: /
+    target-branch: development
     schedule:
       interval: weekly
-    open-pull-requests-limit: 5
+    # Four abandoned pins used to hold every slot here, so the newer majors
+    # Dependabot would have offered were never opened.
+    open-pull-requests-limit: 10
 
+  # The page generators only. The site itself is the npm lane below.
   - package-ecosystem: pip
     directory: /docs
+    target-branch: development
     schedule:
       interval: monthly
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 5
+    # The MkDocs engine is retired; the site is Fumadocs on Next.js. main still
+    # lists these in docs/requirements.txt until development is promoted, and
+    # Dependabot reads manifests from the default branch until then.
+    ignore:
+      - dependency-name: mkdocs
+      - dependency-name: mkdocs-material
+      - dependency-name: mkdocs-glightbox
+      - dependency-name: mike
 
+  # The root tooling tree: husky, shellcheck, and the eslint and prettier the
+  # pre-commit hooks reach for.
   - package-ecosystem: npm
     directory: /
+    target-branch: development
     schedule:
       interval: monthly
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 5
+
+  # The Fumadocs site. docs-site/package-lock.json is the tree the docs lane
+  # and CI install, and no ecosystem entry watched it.
+  - package-ecosystem: npm
+    directory: /docs-site
+    target-branch: development
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5

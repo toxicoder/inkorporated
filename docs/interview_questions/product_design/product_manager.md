@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Product Manager (ROLE)
-description: Interview Questions: Product Manager (ROLE) for Inkorporated.
+title: "Interview Questions: Product Manager (ROLE)"
+description: "Interview Questions: Product Manager (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 
@@ -122,7 +122,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Mobile`, `UX`
 
@@ -232,7 +232,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Agility`, `Flexibility`
 
@@ -350,7 +350,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Animation`, `Experience`
 
@@ -461,7 +461,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Interaction Design`, `Experience`
 
@@ -579,7 +579,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Animation`, `Experience`
 
@@ -689,7 +689,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Wireframing`, `Vision`
 
@@ -800,7 +800,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Animation`, `Ethics`
 
@@ -917,7 +917,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Figma`, `Context`
 
@@ -1027,7 +1027,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Information Arch`, `Scale`
 
@@ -1145,7 +1145,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Wireframing`, `Analytics`
 
@@ -1255,7 +1255,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Usability`, `Vision`
 
@@ -1365,7 +1365,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Design Systems`, `Mentorship`
 
@@ -1483,7 +1483,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Layout`, `Experience`
 
@@ -1594,7 +1594,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Mobile Design`, `Standards`
 

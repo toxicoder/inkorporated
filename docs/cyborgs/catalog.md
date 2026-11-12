@@ -38,5 +38,5 @@ flowchart TD
   B --> C[Author cyborgs/ID.yaml]
   C --> D[generate_cyborg_docs.py]
   D --> E[Roster card + detail page]
-  E --> F[Strict MkDocs build]
+  E --> F[Strict site export]
 ```

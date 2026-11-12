@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: CEO (ROLE)
-description: Interview Questions: CEO (ROLE) for Inkorporated.
+title: "Interview Questions: CEO (ROLE)"
+description: "Interview Questions: CEO (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 
@@ -121,7 +121,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `M&A`, `Strategy`
 
@@ -231,7 +231,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Agility`, `Flexibility`
 
@@ -350,7 +350,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Public Speaking`, `Scale`
 
@@ -461,7 +461,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Org Design`, `Problem Solving`
 
@@ -579,7 +579,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Risk Management`, `Vision`
 
@@ -689,7 +689,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Org Design`, `Context`
 
@@ -799,7 +799,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `M&A`, `Scale`
 
@@ -917,7 +917,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Capital Allocation`, `Standards`
 
@@ -1027,7 +1027,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Capital Allocation`, `Vision`
 
@@ -1145,7 +1145,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Change Management`, `Mentorship`
 
@@ -1255,7 +1255,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `M&A`, `Vision`
 
@@ -1365,7 +1365,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Public Speaking`, `Experience`
 
@@ -1484,7 +1484,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Org Design`, `Ethics`
 
@@ -1594,7 +1594,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Investor Relations`, `Context`
 

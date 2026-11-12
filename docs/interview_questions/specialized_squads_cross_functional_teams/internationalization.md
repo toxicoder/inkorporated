@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: Internationalization (ROLE)
-description: Interview Questions: Internationalization (ROLE) for Inkorporated.
+title: "Interview Questions: Internationalization (ROLE)"
+description: "Interview Questions: Internationalization (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 
@@ -121,7 +121,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Innovation`, `Efficiency`
 
@@ -232,7 +232,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Motivation`, `Context`
 
@@ -349,7 +349,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Conflict`, `Analytics`
 
@@ -460,7 +460,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Resilience`, `Collaboration`
 
@@ -579,7 +579,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Communication`, `Scale`
 
@@ -690,7 +690,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Teamwork`, `Analytics`
 
@@ -800,7 +800,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Time Management`, `Mentorship`
 
@@ -918,7 +918,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Motivation`, `Mentorship`
 
@@ -1029,7 +1029,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Learning`, `Context`
 
@@ -1147,7 +1147,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Empathy`, `Vision`
 
@@ -1257,7 +1257,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Conflict`, `Experience`
 
@@ -1367,7 +1367,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Integrity`, `Analytics`
 
@@ -1486,7 +1486,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Motivation`, `Productivity`
 
@@ -1597,7 +1597,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Empathy`, `Problem Solving`
 

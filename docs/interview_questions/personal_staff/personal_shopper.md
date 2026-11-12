@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: personal_shopper (ROLE)
-description: Interview Questions: personal_shopper (ROLE) for Inkorporated.
+title: "Interview Questions: personal_shopper (ROLE)"
+description: "Interview Questions: personal_shopper (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 
@@ -121,7 +121,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Growth Mindset`, `Resilience`
 
@@ -231,7 +231,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Leadership`, `Influence`
 
@@ -349,7 +349,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Protocol`, `Context`
 
@@ -460,7 +460,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Vendor Negotiation`, `Ethics`
 
@@ -579,7 +579,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Relationship Mgmt`, `Analytics`
 
@@ -689,7 +689,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Event Planning`, `Scale`
 
@@ -799,7 +799,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Logistics`, `Experience`
 
@@ -918,7 +918,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Protocol`, `Collaboration`
 
@@ -1028,7 +1028,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Confidentiality`, `Scale`
 
@@ -1147,7 +1147,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Luxury Standards`, `Experience`
 
@@ -1257,7 +1257,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Security`, `Context`
 
@@ -1367,7 +1367,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Security`, `Problem Solving`
 
@@ -1486,7 +1486,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Travel Planning`, `Productivity`
 
@@ -1596,7 +1596,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Hospitality`, `Experience`
 

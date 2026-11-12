@@ -73,7 +73,10 @@ while IFS= read -r committed; do
     echo "        regenerate with: bazelisk test //docs:build"
     status=1
   fi
-done < <(find "${REPO_ROOT}/docs/cyborgs/generated" -type f -name '*.md' -o -type f -name '*.json' | sort)
+# The render is .mdx, not .md: the roster grid is raw HTML and the Fumadocs compiler only
+# keeps raw HTML when the page compiles as MDX. *.md stays in the list so a page that ever
+# regressed to the markdown extension is still compared instead of silently skipped.
+done < <(find "${REPO_ROOT}/docs/cyborgs/generated" -type f -name '*.md' -o -type f -name '*.mdx' -o -type f -name '*.json' | sort)
 
 if [[ "${status}" -eq 0 ]]; then
   echo "docs/cyborgs/generated matches cyborgs/*.yaml"

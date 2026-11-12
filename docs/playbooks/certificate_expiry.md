@@ -9,12 +9,12 @@ tags: [enterprise]
 ## 1. Symptoms
 * Browser warning: "Your connection is not private".
 * Internal service errors: `x509: certificate has expired`.
-* Alert: "Certificate expires in < 7 days".
+* Alert: "Certificate expires in \< 7 days".
 
 ## 2. Severity Assessment
 * **SEV 1:** Public facing site certificate expired. Users blocked.
 * **SEV 2:** Internal service-to-service communication broken.
-* **SEV 3:** Expiry approaching (< 1 week).
+* **SEV 3:** Expiry approaching (\< 1 week).
 
 ## 3. Initial Verification
 * **Browser:** Check the certificate details in the browser bar.

@@ -1,6 +1,6 @@
 ---
-title: Interview Questions: VP of People (ROLE)
-description: Interview Questions: VP of People (ROLE) for Inkorporated.
+title: "Interview Questions: VP of People (ROLE)"
+description: "Interview Questions: VP of People (ROLE) for Inkorporated."
 tags: [enterprise, interview]
 ---
 
@@ -121,7 +121,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Comp`, `Strategy`
 
@@ -231,7 +231,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Agility`, `Flexibility`
 
@@ -349,7 +349,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Onboarding`, `Analytics`
 
@@ -460,7 +460,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Compliance`, `Experience`
 
@@ -578,7 +578,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Compensation`, `Experience`
 
@@ -689,7 +689,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Offboarding`, `Experience`
 
@@ -800,7 +800,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Culture`, `Productivity`
 
@@ -919,7 +919,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `DEI`, `Problem Solving`
 
@@ -1029,7 +1029,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Engagement`, `Analytics`
 
@@ -1148,7 +1148,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Engagement`, `Experience`
 
@@ -1258,7 +1258,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Employer Branding`, `Context`
 
@@ -1368,7 +1368,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `Recruiting`, `Ethics`
 
@@ -1486,7 +1486,7 @@ graph LR
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `DEI`, `Scale`
 
@@ -1597,7 +1597,7 @@ sequenceDiagram
 | Metric | Target | Status |
 |---|---|---|
 | KPI 1 | 100% | Green |
-| KPI 2 | < 5% | Yellow |
+| KPI 2 | \< 5% | Yellow |
 
 **Key Concepts:** `HRIS`, `Mentorship`
 

@@ -29,14 +29,21 @@ REQUIRED_TOOLS=(
   "terraform://infrastructure/terraform:terraform_fmt"
 )
 
+# node and npm sit here rather than above because the Fumadocs lanes are host
+# lanes: //docs-site:* and //docs:build are tagged host/manual, named by CI, and
+# the hermetic gate runs without them. node also lives outside the default PATH
+# on images that install it under /opt, so a required row would redden the doctor
+# for a lane the operator never runs. The version floor below still reports a
+# stale node as MISMATCH.
 OPTIONAL_TOOLS=(
   "kubectl://tests/integration:test_authentik (live cluster branch only)"
   "helm://tests/deployment:test_helm (renders the charts under apps/)"
-  "mkdocs://docs:build (lives in .venv-docs, created by //docs:setup-docs)"
   "python://the docs generators prefer the venv python over python3"
   "nvidia-smi://.devcontainer/scripts/tests:framework (gpu-detect.sh)"
   "aws://the cloud burst scripts under cloud/"
   "docker://a container build lane, if one is added"
+  "node://docs-site:build (the Fumadocs site export; needs node 22 or newer)"
+  "npm://docs-site:install (npm ci from the pinned docs-site/package-lock.json)"
 )
 
 MODE="text"
@@ -57,8 +64,39 @@ tool_answers() {
   "${name}" --version >/dev/null 2>&1 || "${name}" version >/dev/null 2>&1
 }
 
+# tool_min_major <name> prints the oldest major version a required tool may be
+# on, and nothing when the lane only asks that the binary exist. The floor
+# follows the toolchain the repository pins, not what happens to be installed.
+tool_min_major() {
+  case "$1" in
+    node) printf '22' ;;
+    *) printf '' ;;
+  esac
+}
+
+# tool_major <name> prints the leading major version the tool reports about
+# itself. node prefixes a v and npm appends a platform line, so everything from
+# the first character a version cannot hold is dropped.
+tool_major() {
+  local raw
+  raw="$("${1}" --version 2>/dev/null | head -n 1 || true)"
+  raw="${raw#v}"
+  raw="${raw%%[!0-9.]*}"
+  printf '%s' "${raw%%.*}"
+}
+
+# version_at_least <name> <min-major> is true when the tool's own --version
+# reports a major at or above the floor.
+version_at_least() {
+  local major min="$2"
+  major="$(tool_major "$1")"
+  [[ "${major}" =~ ^[0-9]+$ ]] && (( major >= min ))
+}
+
 report_tool() {
-  local kind="$1" name="$2" why="$3" status
+  local kind="$1" name="$2" why="$3" status major=""
+  local min
+  min="$(tool_min_major "${name}")"
   if ! command -v "${name}" >/dev/null 2>&1; then
     status="MISSING"
     if [[ "${kind}" == "required" ]]; then missing=$((missing + 1)); fi
@@ -71,6 +109,17 @@ report_tool() {
     status="BROKEN"
     missing=$((missing + 1))
     broken=$((broken + 1))
+  elif [[ -n "${min}" ]] && tool_answers "${name}" &&
+    ! version_at_least "${name}" "${min}"; then
+    # On a runtime older than the lane pins, the name resolves and answers
+    # --version, so the gate dies later on something that reads like a syntax
+    # error. The Next export in docs-site/ needs node 22; say it here instead.
+    # The floor is reported for an optional tool too, so a host that runs the
+    # docs lane from CI sees why it failed, but only a required one reddens.
+    major="$(tool_major "${name}")"
+    status="MISMATCH"
+    why="${why} (found ${major:-unknown}, needs ${min} or newer)"
+    if [[ "${kind}" == "required" ]]; then missing=$((missing + 1)); fi
   else
     status="present"
     if [[ "${kind}" == "required" ]]; then present=$((present + 1)); fi
@@ -126,10 +175,18 @@ for entry in "${OPTIONAL_TOOLS[@]}"; do
   report_tool optional "${entry%%:*}" "${entry#*:}"
 done
 
-if [[ -d "${REPO_ROOT}/.venv-docs/bin" && -x "${REPO_ROOT}/.venv-docs/bin/mkdocs" ]]; then
+if [[ -x "${REPO_ROOT}/.venv-docs/bin/python" ]]; then
   docs_env="ready"
 else
   docs_env="not installed; run bazelisk run //docs:setup-docs"
+fi
+
+# The site itself is the npm tree the Fumadocs build runs from; the same probe
+# the docs-site npm runner uses to decide whether to run npm ci first.
+if [[ -x "${REPO_ROOT}/docs-site/node_modules/.bin/next" ]]; then
+  site_install="ready"
+else
+  site_install="not installed; run bazelisk run //docs:setup-docs"
 fi
 
 if [[ -e "${REPO_ROOT}/.devcontainer/.env" ]]; then
@@ -139,11 +196,12 @@ else
 fi
 
 if [[ "${MODE}" == "json" ]]; then
-  echo "{\"bazel_version\":\"$( [[ -f "${REPO_ROOT}/.bazelversion" ]] && tr -d '[:space:]' <"${REPO_ROOT}/.bazelversion" )\",\"required_present\":${present},\"required_missing\":${missing},\"required_broken\":${broken},\"docs_venv\":\"${docs_env}\",\"devcontainer_env_mode\":\"${env_mode}\",\"tools\":[${json_rows}]}"
+  echo "{\"bazel_version\":\"$( [[ -f "${REPO_ROOT}/.bazelversion" ]] && tr -d '[:space:]' <"${REPO_ROOT}/.bazelversion" )\",\"required_present\":${present},\"required_missing\":${missing},\"required_broken\":${broken},\"docs_venv\":\"${docs_env}\",\"docs_site_install\":\"${site_install}\",\"devcontainer_env_mode\":\"${env_mode}\",\"tools\":[${json_rows}]}"
 else
   echo
   echo "Host state:"
   printf '  %-24s %s\n' "docs virtualenv" "${docs_env}"
+  printf '  %-24s %s\n' "docs-site install" "${site_install}"
   printf '  %-24s %s\n' ".devcontainer/.env" "${env_mode}"
   echo
   if [[ "${missing}" -eq 0 ]]; then

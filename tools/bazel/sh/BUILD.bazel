@@ -53,7 +53,6 @@ repo_sh_test(
     srcs = ["run_owned_files_check.sh"],
     data = _GATE_DATA + [
         "//:dev_configs",
-        "//:mkdocs_config",
         "//:unowned_ledger",
         "//:validate_config_sh",
     ],
@@ -81,7 +80,6 @@ repo_sh_test(
     data = _GATE_DATA + [
         "//tools/bazel:secrets_allowlist",
         "//:dev_configs",
-        "//:mkdocs_config",
         "//:unowned_ledger",
         "//:validate_config_sh",
     ],

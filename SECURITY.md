@@ -32,8 +32,8 @@ Ingress and public URLs must use templated domain configuration (for example `{{
 
 ## Dependency and supply chain
 
-- Prefer pinned versions in lockfiles and `docs/requirements.txt`
-- Run repository validation (`bazelisk test //:gate`, and `bazelisk test //docs:build` for the docs strict build) before merging risky changes
+- Prefer pinned versions in lockfiles: `docs-site/package-lock.json` for the Fumadocs site, `docs/requirements.txt` for the page generators
+- Run repository validation (`bazelisk test //:gate`, and `bazelisk test //docs:build` for the strict docs export) before merging risky changes
 - Review third-party charts and images before cluster bootstrap
 
 ## History hygiene

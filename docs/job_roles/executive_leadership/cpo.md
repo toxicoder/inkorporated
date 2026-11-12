@@ -1,6 +1,6 @@
 ---
-title: CPO: Chief Product Officer
-description: CPO: Chief Product Officer at Inkorporated.
+title: "CPO: Chief Product Officer"
+description: "CPO: Chief Product Officer at Inkorporated."
 tags: [job-role, enterprise]
 ---
 

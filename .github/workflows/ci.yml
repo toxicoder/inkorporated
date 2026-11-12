@@ -25,7 +25,7 @@ jobs:
           filters: |
             docs:
               - 'docs/**'
-              - 'mkdocs.yml'
+              - 'docs-site/**'
               - 'cyborgs/**'
             infra:
               - 'infrastructure/**'
@@ -48,18 +48,36 @@ jobs:
     needs: changes
     if: needs.changes.outputs.docs == 'true' || needs.changes.outputs.always == 'true'
     runs-on: ubuntu-latest
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      NODE_OPTIONS: "--max-old-space-size=5120"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-          cache: pip
-          cache-dependency-path: docs/requirements.txt
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: docs-site/package-lock.json
       - name: Setup Bazelisk
         uses: bazelbuild/setup-bazelisk@v3
-      - name: Prepare the docs virtualenv
+      - name: Install the docs toolchain
+        # Installs the pinned npm tree from docs-site/package-lock.json plus the PyYAML
+        # the roster generator imports, so every lane below runs the same releases.
         run: bazelisk run //docs:setup-docs
-      - name: Strict MkDocs build
+      - name: Docs source contract
+        # nav.json covers every page, no page carries MkDocs-only syntax, frontmatter
+        # parses against the schema the site declares, and the link checker is happy.
+        run: bazelisk test //docs:suite --test_output=errors
+      - name: Site gates
+        # typecheck, the Vitest suite, and the python suites for the nav transcriber,
+        # the MkDocs-to-MDX codemod, and the MDX hazard audit.
+        run: bazelisk test //docs-site:suite --test_output=errors
+      - name: Strict static export
+        # Regenerates the cyborg roster, then exports the whole site with the strict
+        # flags and fails on a broken link or an unrendered marker.
         run: bazelisk test //docs:build --test_output=errors
 
   domain-validation:

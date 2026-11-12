@@ -64,5 +64,5 @@ We retain personal data only for as long as necessary to fulfill the purposes fo
 
 ## 10. Contact Us
 If you have questions about this Policy or our privacy practices, please contact:
-*   **Data Protection Officer**: {{PRIVACY_EMAIL}}
-*   **Legal Department**: {{LEGAL_EMAIL}}
+*   **Data Protection Officer**: \{\{PRIVACY_EMAIL\}\}
+*   **Legal Department**: \{\{LEGAL_EMAIL\}\}

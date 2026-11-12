@@ -46,6 +46,19 @@ shadow_path_dir() {
     ln -sft "$dst" "${entries[@]}"
 }
 
+# write_stub <path> reads a fake tool on stdin and installs it as an executable.
+# The unlink is load-bearing: inside a shadow farm the name is a symlink into the
+# host PATH, and a shell redirect follows symlinks, so a bare `cat >` writes
+# through it and truncates the real binary. A runner that has that binary mapped
+# for execution answers ETXTBSY ("Text file busy") and aborts the lane; one that
+# has it idle silently destroys the host's copy.
+write_stub() {
+    local path="$1"
+    rm -f "$path"
+    cat >"$path"
+    chmod +x "$path"
+}
+
 [ -x "$DOCTOR" ] || { echo "FATAL: ${DOCTOR} is missing or not executable" >&2; exit 1; }
 
 WORKDIR="$(mktemp -d)"
@@ -195,11 +208,10 @@ check "--json reports the bazelisk row MISSING and names the pin" "$status"
 #    stale binary builds with a Bazel the repository never chose.
 wrong_dir="${WORKDIR}/wrong-bazelisk/bin"
 mkdir -p "$wrong_dir"
-cat >"${wrong_dir}/bazelisk" <<'FAKE'
+write_stub "${wrong_dir}/bazelisk" <<'FAKE'
 #!/usr/bin/env bash
 printf 'bazel %s\n' "0.0.0-not-the-pin"
 FAKE
-chmod +x "${wrong_dir}/bazelisk"
 status=0
 out="$(env PATH="${wrong_dir}:${PATH}" BUILD_WORKSPACE_DIRECTORY="$pin_tree" \
     "$DOCTOR" 2>&1)" || status=$?
@@ -220,11 +232,10 @@ check "the stale version is not passed off as the report" "$status"
 #    MISMATCH.
 right_dir="${WORKDIR}/right-bazelisk/bin"
 mkdir -p "$right_dir"
-cat >"${right_dir}/bazelisk" <<FAKE
+write_stub "${right_dir}/bazelisk" <<FAKE
 #!/usr/bin/env bash
 printf 'bazel %s\n' "${PINNED}"
 FAKE
-chmod +x "${right_dir}/bazelisk"
 status=0
 out="$(env PATH="${right_dir}:${PATH}" BUILD_WORKSPACE_DIRECTORY="$pin_tree" \
     "$DOCTOR" 2>&1)" || status=$?
@@ -322,9 +333,10 @@ mkdir -p "$broken_dir"
 for dir in /bin /usr/bin /usr/local/bin; do
     shadow_path_dir "$dir" "$broken_dir"
 done
-rm -f "${broken_dir}/yamllint"
-printf '#!/bin/sh\nexit 3\n' >"${broken_dir}/yamllint"
-chmod +x "${broken_dir}/yamllint"
+write_stub "${broken_dir}/yamllint" <<'FAKE'
+#!/bin/sh
+exit 3
+FAKE
 status=0
 out="$(env -u BAZEL_META_OUTPUT_BASE PATH="$broken_dir" "$DOCTOR" 2>&1)" || status=$?
 check "a required tool that cannot run fails the doctor" \
@@ -359,11 +371,13 @@ mkdir -p "$old_dir"
 for dir in /bin /usr/bin /usr/local/bin; do
     shadow_path_dir "$dir" "$old_dir"
 done
-cat >"${old_dir}/node" <<'FAKE'
+write_stub "${old_dir}/node" <<'FAKE'
 #!/bin/sh
 echo 'v20.19.0'
 FAKE
-chmod +x "${old_dir}/node"
+status=0
+{ [ -f "${old_dir}/node" ] && [ ! -L "${old_dir}/node" ]; } || status=1
+check "the stub replaced the farm's symlink instead of writing through it" "$status"
 status=0
 out="$(env -u BAZEL_META_OUTPUT_BASE PATH="$old_dir" "$DOCTOR" 2>&1)" || status=$?
 check "a stale optional node leaves the doctor green" \
@@ -391,11 +405,10 @@ check "--json calls the stale node MISMATCH without counting a required tool mis
 #      MISMATCH cannot be reached by a report that only ever says MISMATCH.
 floor_dir="${WORKDIR}/floor-node/bin"
 mkdir -p "$floor_dir"
-cat >"${floor_dir}/node" <<'FAKE'
+write_stub "${floor_dir}/node" <<'FAKE'
 #!/bin/sh
 echo 'v22.0.0'
 FAKE
-chmod +x "${floor_dir}/node"
 json="$(env -u BAZEL_META_OUTPUT_BASE PATH="${floor_dir}:${PATH}" \
     "$DOCTOR" --json 2>/dev/null)" || true
 status=0

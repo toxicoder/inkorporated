@@ -6,9 +6,10 @@ Policy:
   ``bazelisk run //docs:manage-docs -- build --strict``, is primary). A relative .md
   link stays valid when the file on disk is its .mdx twin, because that is how
   docs-site/lib/href.ts resolves links at render time.
-- Repo-root / non-docs files: GitHub URLs must use branch ``main`` (or master) as the
-  canonical source form; the published alias picks its own ref at build time.
-- Do not hardcode ``blob/development`` or ``tree/development`` in docs sources.
+- Repo-root / non-docs files: GitHub URLs must use the trunk ref ``development`` as the
+  canonical source form; the published alias stamps its own ref at build time
+  (``docs-site/lib/remark-git-ref.ts``), and a link written on a tag keeps the tag.
+- Do not hardcode a GitHub source link on a retired branch (``main`` / ``master``).
 - Generated HTML must not use ``href="...*.md"`` or ``href="...*.mdx"`` (directory
   URLs on publish).
 """
@@ -26,9 +27,10 @@ DOCS = ROOT / "docs"
 # A page is markdown or MDX; the site renders both from the same content tree.
 PAGE_SUFFIXES = {".md", ".mdx"}
 
-# Hardcoded development branch in GitHub source links (authors should use main).
-_DEV_BRANCH_GH = re.compile(
-    r"https://github\.com/toxicoder/inkorporated/(?:blob|tree)/development/"
+# A GitHub source link pinned to a retired branch.  `development` is the trunk and the only
+# long-lived ref, so that is what authors commit; the build stamps the alias's own ref.
+_RETIRED_BRANCH_GH = re.compile(
+    r"https://github\.com/toxicoder/inkorporated/(?:blob|tree)/(?:main|master)/"
 )
 # Absolute site URLs without a published version alias.
 _SITE_NO_VERSION = re.compile(
@@ -81,9 +83,12 @@ def main() -> int:
         }:
             continue
 
-        for m in _DEV_BRANCH_GH.finditer(text):
+        for m in _RETIRED_BRANCH_GH.finditer(text):
             line = text[: m.start()].count("\n") + 1
-            failures.append(f"{rel}:{line}: hardcoded GitHub development branch URL")
+            failures.append(
+                f"{rel}:{line}: GitHub source link pinned to a retired branch; "
+                "use the trunk ref development or a tag"
+            )
 
         if path.suffix in PAGE_SUFFIXES:
             for m in _SITE_NO_VERSION.finditer(text):

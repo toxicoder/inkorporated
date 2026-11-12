@@ -11,28 +11,56 @@ Thank you for helping improve Inkorporated — the hybrid-cloud infrastructure a
 
 ## Branching, commits, PRs, and promotion
 
-### Long-lived branches
+Inkorporated is trunk-based. `development` is the only long-lived branch. An environment is
+a set of values plus a place to run, so **environments are not branches** — dev, staging,
+autopush, canary, and prod are namespaces, overlays, inventory groups, and GitHub
+Environments. Unfinished work ships on trunk behind a flag that defaults off.
 
-| Branch | Purpose | Who merges | Protection |
-| --- | --- | --- | --- |
-| `development` | Primary integration. All feature work lands here first. | Pull requests only | Protected, linear history preferred |
-| `main` | Production-ready code after explicit promotion | PRs only (normally from `development`) | Protected |
-| `dev` | Optional intermediate soak gate | PRs only | Protected |
+Full rules with the tables and the promotion commands:
+[docs/guides/git_workflow.md](docs/guides/git_workflow.md) and
+[docs/guides/environments.md](docs/guides/environments.md).
 
-Never force-push `development` or `main`.  
-Never commit directly to protected branches.
+### The trunk
+
+| Rule | Detail |
+| --- | --- |
+| One trunk | `development`. It is never deleted, rebased, or force-pushed. |
+| Cut from the tip | `git switch -c feature/<short-description> origin/development`, before the first edit. |
+| Merge by pull request | `bazelisk test //:gate` runs on the pull request and on push to `development`. |
+| Delete on merge | Removing the remote branch is part of landing the work. |
+| Lifetime target | Opened and merged within days; older than 14 days means rebase onto trunk or close. |
+
+```bash
+git fetch origin
+git switch -c feature/argo-appset-hardening origin/development
+# ... work, commit ...
+git fetch origin && git rebase origin/development   # trunk moved under you
+git push -u origin feature/argo-appset-hardening
+```
+
+Rebase **your own** branch when trunk moves. Never rebase or force-push a branch someone
+else has pushed to.
 
 ### Branch naming
 
-Create short-lived branches from the latest `development`:
+| Prefix | Use |
+| --- | --- |
+| `feature/` | New functionality |
+| `fix/` | Non-urgent fixes |
+| `refactor/` | No behavior change |
+| `docs/` | Documentation-only |
+| `chore/` | Tooling, CI, dependency bumps, no user-visible behavior change |
+| `ci/` | CI and gate changes |
+| `test/` | Tests only |
+| `perf/` | Performance work |
+| `build/` | Bazel and build-system changes |
 
-- `feature/<short-description>` — new functionality
-- `fix/<short-description>` — non-urgent fixes
-- `hotfix/<short-description>` — urgent production fixes (from `main`)
-- `chore/<short-description>` — tooling, CI, no user-visible behavior change
-- `docs/<short-description>` — documentation-only
+Examples: `feature/argo-appset-hardening`, `docs/enterprise-os-and-practices`,
+`fix/domain-validation-false-positive`.
 
-Examples: `feature/argo-appset-hardening`, `docs/enterprise-os-and-practices`, `fix/domain-validation-false-positive`.
+An urgent production fix is a normal `fix/` branch into `development`. Roll forward by
+tagging the fixed tip, roll back by tagging an earlier one. There is no `hotfix/` line and
+no parallel production branch to back-merge.
 
 ### Commit messages
 
@@ -46,7 +74,7 @@ Preferred style (Conventional Commits inspired):
 [optional footer]
 ```
 
-**Types:** `feat`, `fix`, `hotfix`, `chore`, `docs`, `refactor`, `test`, `ci`, `build`
+**Types:** `feat`, `fix`, `chore`, `docs`, `refactor`, `test`, `ci`, `build`, `perf`
 
 Rules:
 
@@ -81,31 +109,48 @@ One or two sentences: *what* and *why*.
 - [ ] Docs updated if user-facing or public API
 - [ ] No secrets committed
 - [ ] Domain templates still not hardcoding customer domains
+- [ ] Any flag added is declared in `config/flags.yaml` with `default: false`, owner, expiry
 ```
 
-### Promotion (`development` → `main`)
+### Promotion (trunk → release)
 
-1. Tip of `development` is green (tests + docs strict build as applicable).
-2. Open promotion PR into `main` with validation notes.
-3. After merge, create an **annotated tag** when cutting a release:
+Promotion names one ref or digest for every environment; nothing selects a branch.
+
+1. Tip of `development` is green (`bazelisk test //:gate`, plus `bazelisk test //docs:build`
+   when docs changed).
+2. Cut a release by tagging that tip:
 
    ```bash
    git tag -a vX.Y.Z -m "Release vX.Y.Z"
    ```
 
-4. Do not push tags or open promotion PRs from agent automation unless a maintainer explicitly asks.
+3. The docs `latest` alias and every deploy build from that tag; the `development` alias
+   builds from the trunk checkout. Each environment reads its values from its own home
+   (`apps/environments/<env>/`, `infrastructure/terraform/envs/<env>/`,
+   `infrastructure/ansible/inventories/<env>/`, or a GitHub Environment).
+4. Do not push tags or trigger a deploy from agent automation unless a maintainer explicitly asks.
 
-### Hotfix flow
+## Flags
 
-1. Branch from `main`: `hotfix/...`
-2. PR → `main`
-3. Immediately back-merge or cherry-pick into `development`
+A flag is declared once in [`config/flags.yaml`](config/flags.yaml) with `default: false`,
+an owner, an expiry, and exactly one reader, and its key is documented in
+`.devcontainer/.env.example`. Precedence, highest first: process environment, then
+`stacks.<deploy-target-name>.<FLAG>`, then `flags.<FLAG>.environments.<env>`, then
+`flags.<FLAG>.default`. Run the gate in both states before opening the pull request:
+
+```bash
+bazelisk test //:gate                        # off
+FEATURE_EXAMPLE=1 bazelisk test //:gate      # on
+```
+
+Retiring a flag is one `chore:` pull request that deletes the declaration, the branch, and
+the off-path together.
 
 ## Documentation
 
 - Site engine: **Fumadocs** on Next.js (App Router). Content lives in `docs/`; the site app lives in `docs-site/`.
 - Preview from the repo root: `bazelisk run //docs:serve` (hot reload, port `3005`, `PORT=` to override). The static export lands in `docs-site/out/` via `bazelisk run //docs:docs`; the strict gate is `bazelisk test //docs:build`.
-- Multi-version publishing keeps two aliases: `latest` from `main` and `development` from `development`, published by `.github/workflows/deploy-docs.yml`.
+- Multi-version publishing keeps two aliases, `latest` and `development`, both built from `development`: the first from the release tag, the second from the trunk checkout. `.github/workflows/deploy-docs.yml` takes the alias as an input and deploys under a GitHub Environment.
 - Page standards: [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) and [docs/project-conventions.md](docs/project-conventions.md).
 - Enterprise content (roles, policies, cyborgs) lives under `docs/`; machine cyborg specs under `cyborgs/`.
 
@@ -122,10 +167,11 @@ Contributors are expected to follow [docs/policies/code_of_conduct.md](docs/poli
 
 ```mermaid
 flowchart LR
-  feat[feature/*] --> dev[development]
-  fix[fix/*] --> dev
-  docs[docs/*] --> dev
-  dev --> main[main]
-  hotfix[hotfix/*] --> main
-  main --> dev
+  feat[feature/*] --> trunk[development]
+  fix[fix/*] --> trunk
+  docs[docs/*] --> trunk
+  chore[chore/*] --> trunk
+  trunk -->|tag vX.Y.Z| rel[release]
+  trunk -->|trunk checkout| dev[docs development alias]
+  rel -->|docs latest alias + deploy| envs[environments]
 ```

@@ -1232,7 +1232,7 @@ tags: [job-role, enterprise, {pref.lower()}]
 
 ## Cyborg specification
 
-Machine persona YAML: [`cyborgs/{job_id}.yaml`](https://github.com/toxicoder/inkorporated/blob/main/cyborgs/{job_id}.yaml)
+Machine persona YAML: [`cyborgs/{job_id}.yaml`](https://github.com/toxicoder/inkorporated/blob/development/cyborgs/{job_id}.yaml)
 
 Generated roster card: [Cyborg roster](../../cyborgs/generated/index.md) → persona `{job_id}`
 

@@ -218,7 +218,7 @@ Partners:
 
 ## Cyborg specification
 
-Machine persona YAML: [`cyborgs/DESN3003.yaml`](https://github.com/toxicoder/inkorporated/blob/main/cyborgs/DESN3003.yaml)
+Machine persona YAML: [`cyborgs/DESN3003.yaml`](https://github.com/toxicoder/inkorporated/blob/development/cyborgs/DESN3003.yaml)
 
 Generated roster card: [Cyborg roster](../../cyborgs/generated/index.md) → persona `DESN3003`
 

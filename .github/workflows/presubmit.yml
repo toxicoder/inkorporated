@@ -2,7 +2,7 @@ name: Bazel Presubmit Checks
 
 on:
   pull_request:
-    branches: [development]
+    branches: [main]
 
 # The quick lane, so a PR gets an early answer. CI.yml runs the whole gate on
 # the same event; this job runs //:fast, which is that lane without the slow

@@ -1,17 +1,15 @@
 version: 2
-# Dependabot reads this file from the repository's default branch only, so an
-# edit here takes effect once it reaches main. Version-update PRs are aimed at
-# development, the integration branch, because that is where the Bazel gate is
-# green: main still carries the pre-Bzlmod tree, with no MODULE.bazel and the
-# sh_test calls Bazel 9 removed, so a PR based there can never clear its
-# required bazel-tests check. Dependabot resolves each ecosystem's manifest
-# from the target branch too, which is what keeps the retired MkDocs stack from
-# coming back. Security updates ignore target-branch and always base on the
-# default branch.
+# Dependabot reads this file from the repository's default branch only, and every
+# version-update PR here targets `main`, the trunk (docs/guides/git_workflow.md). This
+# repository is trunk-based: `main` is the single long-lived branch, the Bazel gate is
+# green on it, and there is no separate integration branch to aim at. Dependabot resolves
+# each ecosystem's manifest from the target branch too, which is what keeps the retired
+# MkDocs stack from coming back. Security updates ignore target-branch and always base on
+# the default branch.
 updates:
   - package-ecosystem: github-actions
     directory: /
-    target-branch: development
+    target-branch: main
     schedule:
       interval: weekly
     # Four abandoned pins used to hold every slot here, so the newer majors
@@ -21,13 +19,12 @@ updates:
   # The page generators only. The site itself is the npm lane below.
   - package-ecosystem: pip
     directory: /docs
-    target-branch: development
+    target-branch: main
     schedule:
       interval: monthly
     open-pull-requests-limit: 5
-    # The MkDocs engine is retired; the site is Fumadocs on Next.js. main still
-    # lists these in docs/requirements.txt until development is promoted, and
-    # Dependabot reads manifests from the default branch until then.
+    # The MkDocs engine is retired; the site is Fumadocs on Next.js. docs/requirements.txt
+    # no longer lists these, so watching them would only reopen closed work.
     ignore:
       - dependency-name: mkdocs
       - dependency-name: mkdocs-material
@@ -38,7 +35,7 @@ updates:
   # pre-commit hooks reach for.
   - package-ecosystem: npm
     directory: /
-    target-branch: development
+    target-branch: main
     schedule:
       interval: monthly
     open-pull-requests-limit: 5
@@ -47,7 +44,7 @@ updates:
   # and CI install, and no ecosystem entry watched it.
   - package-ecosystem: npm
     directory: /docs-site
-    target-branch: development
+    target-branch: main
     schedule:
       interval: monthly
     open-pull-requests-limit: 5

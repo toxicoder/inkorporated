@@ -2,7 +2,7 @@ name: Deploy Documentation
 
 # Publish Fumadocs static exports to gh-pages (two versioned aliases).
 #
-# Both aliases are built from `development`, the trunk, and neither build asks a branch name
+# Both aliases are built from `main`, the trunk, and neither build asks a branch name
 # which environment it is:
 #
 #   - a tag push (vX.Y.Z)      -> alias "latest", published under the `production`
@@ -30,12 +30,15 @@ name: Deploy Documentation
 # release tag, or a dispatch.
 on:
   push:
-    branches: [development]
+    branches: [main]
     tags: ["v*"]
   workflow_dispatch:
     inputs:
       alias:
         description: Which Pages alias to publish
+        # `development` here is the staging alias, i.e. the URL path segment
+        # /inkorporated/development/ kept for mike compatibility. It names no branch: the
+        # trunk was renamed to `main`, and both aliases still build from that trunk.
         type: choice
         options:
           - development

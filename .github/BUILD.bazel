@@ -8,6 +8,16 @@ filegroup(
     srcs = glob(["workflows/*.yml"]),  # glob-policy: GitHub reads these directly and Bazel only claims them so a new workflow never lands unowned; the set grows as pipelines are added.
 )
 
+# Composite actions the workflows call. Explicit list: a new action is a review-worthy
+# change, and the path a caller uses is written out in full in the workflow.
+filegroup(
+    name = "actions",
+    srcs = [
+        "actions/docs-export/action.yml",
+        "actions/docs-publish/action.yml",
+    ],
+)
+
 # Explicit list: a new template or bot config is a review-worthy change, not a
 # tree that grows by design.
 filegroup(

@@ -1,10 +1,13 @@
 name: CI
 
+# The trunk gate. `bazelisk test //:gate` runs here on every pull request and on every push
+# to `development`, the only long-lived branch (docs/guides/git_workflow.md).
+
 on:
   push:
-    branches: [main, master, development]
+    branches: [development]
   pull_request:
-    branches: [main, master, development]
+    branches: [development]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

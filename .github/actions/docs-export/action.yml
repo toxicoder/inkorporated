@@ -1,0 +1,129 @@
+name: Build one docs alias
+description: >-
+  Export one Fumadocs alias and assemble the Pages tree, carrying the alias this run does not
+  publish over from the live gh-pages tree.
+
+# Extracted from .github/workflows/deploy-docs.yml so the two aliases can be two jobs with
+# their own GitHub Environment, while the ~870-page export stays in one process per run: two
+# full Next exports in one job OOM the 7 GB GitHub-hosted runner.
+
+inputs:
+  alias:
+    description: Pages alias to build, latest or development
+    required: true
+  ref:
+    description: Ref or digest to check out; empty means the ref that triggered the run
+    required: false
+    default: ""
+  git-ref:
+    description: >-
+      Ref that Edit-this-page and source links are stamped with - a tag for a release build,
+      empty for a trunk build, where lib/site.ts already names the trunk
+    required: false
+    default: ""
+
+outputs:
+  tree:
+    description: Path of the assembled Pages tree
+    value: ${{ steps.assemble.outputs.tree }}
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+      with:
+        ref: ${{ inputs.ref }}
+        fetch-depth: 0
+        # Required so the later git push to gh-pages authenticates as GITHUB_TOKEN.
+        persist-credentials: true
+
+    - name: Setup Python
+      uses: actions/setup-python@v7
+      with:
+        python-version: "3.12"
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: "22"
+        cache: npm
+        cache-dependency-path: docs-site/package-lock.json
+
+    - name: Setup Bazelisk
+      uses: bazelbuild/setup-bazelisk@v3
+
+    - name: Install the docs toolchain
+      # `run`, not `test`: //docs:setup-docs is an sh_binary that installs the pinned
+      # npm tree from docs-site/package-lock.json and the PyYAML the roster generator
+      # imports. The runner cd's into the real checkout, so node_modules lands beside it.
+      shell: bash
+      run: bazelisk run //docs:setup-docs
+
+    - name: Cache Next compile
+      uses: actions/cache@v6
+      with:
+        path: docs-site/.next/cache
+        # yamllint: this line is long because the cache key names every input the export
+        # reads; folding it would inject a space into the expression.
+        key: next-${{ runner.os }}-${{ hashFiles('docs-site/package-lock.json', 'docs-site/next.config.ts', 'docs-site/source.config.ts') }}
+        restore-keys: |
+          next-${{ runner.os }}-
+
+    - name: Stamp the publish time
+      # The site renders "published" from this stamp so every page of one alias carries
+      # the same timestamp instead of the time each page happened to compile.
+      shell: bash
+      run: echo "INK_DOCS_PUBLISHED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
+
+    - name: Build and assemble the Pages tree
+      id: assemble
+      shell: bash
+      env:
+        DOCS_ALIAS: ${{ inputs.alias }}
+        INK_DOCS_VERSION: ${{ inputs.alias }}
+        INK_DOCS_GIT_REF: ${{ inputs.git-ref }}
+      run: |
+        set -euo pipefail
+        alias="${DOCS_ALIAS}"
+        case "${alias}" in
+          latest | development) ;;
+          *)
+            echo "docs-export: DOCS_ALIAS must be latest or development, got ${alias}" >&2
+            exit 1
+            ;;
+        esac
+
+        tree="${RUNNER_TEMP}/pages-tree"
+        rm -rf "${tree}"
+        mkdir -p "${tree}"
+
+        # Keep the alias this run does not build, so /latest/ and /development/ stay
+        # published side by side across two separate runs.
+        git fetch origin gh-pages || true
+        other=development
+        [[ "${alias}" == development ]] && other=latest
+        if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
+          git archive origin/gh-pages "${other}" 2>/dev/null | tar -x -C "${tree}" || true
+        fi
+
+        rm -rf "_site"
+        rm -rf "${tree:?}/${alias}"
+        mkdir -p "${tree}/${alias}"
+        # Deliberate concession: this export runs raw npm rather than a Bazel target.
+        # bazelisk keeps a JVM resident next to the webpack export, and that pairing is
+        # what OOMs the 7 GB runner.
+        (cd docs-site && npm run "build:${alias}")
+        if [[ ! -f docs-site/out/index.html ]]; then
+          echo "docs-export: docs-site/out/index.html missing - the export did not run" >&2
+          exit 1
+        fi
+        cp -r docs-site/out/. "${tree}/${alias}/"
+
+        # .nojekyll keeps Pages from running Jekyll over the export, which is what
+        # would otherwise strip the leading-underscore asset directories Next emits.
+        touch "${tree}/.nojekyll"
+        cp docs-site/pages-root-index.html "${tree}/index.html"
+        echo "tree=${tree}" >> "$GITHUB_OUTPUT"
+        echo "PAGES_TREE=${tree}" >> "$GITHUB_ENV"
+        echo "PAGES_ALIAS=${alias}" >> "$GITHUB_ENV"

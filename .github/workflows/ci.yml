@@ -136,7 +136,7 @@ jobs:
           /opt/gate-tools/bin/ansible-galaxy collection install \
             -r infrastructure/ansible/requirements.yml
       - name: Install the terraform formatter
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@v4
         with:
           terraform_version: "1.9.8"
           terraform_wrapper: false

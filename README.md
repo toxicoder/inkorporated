@@ -1,6 +1,6 @@
 # Inkorporated - Eazy Homelab <> Corp IaC
 
-[![Docs](https://img.shields.io/badge/docs-MkDocs%20Material-indigo?style=for-the-badge&logo=materialformkdocs&logoColor=white)](https://toxicoder.github.io/inkorporated/latest/)
+[![Docs](https://img.shields.io/badge/docs-Fumadocs%20on%20Next.js-indigo?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://toxicoder.github.io/inkorporated/latest/)
 [![License](https://img.shields.io/github/license/toxicoder/inkorporated?style=for-the-badge)](LICENSE)
 [![Bazel](https://img.shields.io/badge/build-Bazel-green?style=for-the-badge&logo=bazel&logoColor=white)](WORKSPACE.bazel)
 
@@ -10,7 +10,7 @@
 
 Inkorporated is a **one-stop shop to spin up a full enterprise**: hybrid-cloud infrastructure-as-code *and* an enterprise operating system (org design, job roles, policies, interview loops, and AI **cyborg** personas).
 
-**Start here:** [docs](docs/index.md) (MkDocs) · [CONTRIBUTING.md](CONTRIBUTING.md) · [project conventions](docs/project-conventions.md) · [cyborg roster](docs/cyborgs/generated/index.md)
+**Start here:** [docs](docs/index.md) (Fumadocs; preview with `bazelisk run //docs:serve`) - [CONTRIBUTING.md](CONTRIBUTING.md) - [project conventions](docs/project-conventions.md) - [cyborg roster](docs/cyborgs/generated/index.md)
 
 The following diagram shows the two halves of the monorepo and how they connect for operators and AI agents.
 
@@ -87,7 +87,7 @@ flowchart TB
   root --> apps[apps/ GitOps]
   root --> infra[infrastructure/ TF + Ansible]
   root --> config[config/ environments]
-  root --> docs[docs/ MkDocs site]
+  root --> docs[docs/ content + docs-site/ Fumadocs app]
   root --> cyborgs[cyborgs/ agent YAML]
   root --> tests[tests/ validation]
   root --> devc[.devcontainer/]
@@ -99,7 +99,8 @@ flowchart TB
 | `infrastructure/ansible` | k3s and host configuration |
 | `apps/` | ArgoCD Applications / ApplicationSets |
 | `config/` | Environment configuration |
-| `docs/` | MkDocs documentation site |
+| `docs/` | Documentation content (Markdown / MDX pages) |
+| `docs-site/` | Fumadocs (Next.js App Router) site that renders `docs/` |
 | `cyborgs/` | Machine-readable AI persona specs |
 | `tests/` | Bazel / script validation |
 
@@ -200,7 +201,9 @@ flowchart LR
   role --> ops
 ```
 
-Browse the visual roster (cards, chips, security coloring) in the docs site after build: [Cyborg roster](docs/cyborgs/generated/index.md).
+Browse the visual roster (cards, chips, security coloring) in the docs site: regenerate it with
+`bazelisk run //docs:generate_cyborgs` and preview it with `bazelisk run //docs:serve` -
+[Cyborg roster](docs/cyborgs/generated/index.md).
 
 ## Security Approach
 

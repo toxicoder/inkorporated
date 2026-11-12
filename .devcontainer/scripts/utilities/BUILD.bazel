@@ -1,0 +1,15 @@
+# Shell helpers the devcontainer sources from shell init files, and the root
+# package's env-loader tests source from their runfiles.
+
+package(default_visibility = ["//visibility:public"])
+
+# Explicit list: these two are a contract with verify_fix.sh,
+# test_env_loader.sh and the devcontainer shell bootstrap, not a tree that
+# grows on its own.
+filegroup(
+    name = "utilities",
+    srcs = [
+        "env-loader.sh",
+        "gpu-detect.sh",
+    ],
+)

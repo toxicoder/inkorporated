@@ -1,0 +1,22 @@
+# Ansible lint profile for this repository, used by
+# //infrastructure/ansible:ansible_lint.
+#
+# ansible-lint with no profile runs every rule, including the production tier,
+# so the lane would report 129 findings and a red gate tells a person nothing.
+# The profile ladder is cumulative: basic keeps the min, default, and basic
+# tiers (syntax errors, malformed YAML, and idioms that mislead a reader) and
+# leaves the shared, safety, and community tiers named below.
+#
+# Deliberately deferred, with the count the tree carries today:
+#   fqcn[action-core] / fqcn[action]   83  production  short module names
+#   no-changed-when                    10  shared      tasks without changed_when
+#   risky-shell-pipe                    3  safety      curl | sh with no pipefail
+# Raising this file to profile: safety and clearing no-changed-when and
+# risky-shell-pipe is the next step; production tier means converting every
+# short module name to its fully qualified one.
+profile: basic
+
+exclude_paths:
+  - .git/
+  - node_modules/
+  - venv/

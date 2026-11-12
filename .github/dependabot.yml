@@ -1,19 +1,50 @@
 version: 2
+# Dependabot reads this file from the repository's default branch only, and every
+# version-update PR here targets `main`, the trunk (docs/guides/git_workflow.md). This
+# repository is trunk-based: `main` is the single long-lived branch, the Bazel gate is
+# green on it, and there is no separate integration branch to aim at. Dependabot resolves
+# each ecosystem's manifest from the target branch too, which is what keeps the retired
+# MkDocs stack from coming back. Security updates ignore target-branch and always base on
+# the default branch.
 updates:
   - package-ecosystem: github-actions
     directory: /
+    target-branch: main
     schedule:
       interval: weekly
-    open-pull-requests-limit: 5
+    # Four abandoned pins used to hold every slot here, so the newer majors
+    # Dependabot would have offered were never opened.
+    open-pull-requests-limit: 10
 
+  # The page generators only. The site itself is the npm lane below.
   - package-ecosystem: pip
     directory: /docs
+    target-branch: main
     schedule:
       interval: monthly
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 5
+    # The MkDocs engine is retired; the site is Fumadocs on Next.js. docs/requirements.txt
+    # no longer lists these, so watching them would only reopen closed work.
+    ignore:
+      - dependency-name: mkdocs
+      - dependency-name: mkdocs-material
+      - dependency-name: mkdocs-glightbox
+      - dependency-name: mike
 
+  # The root tooling tree: husky, shellcheck, and the eslint and prettier the
+  # pre-commit hooks reach for.
   - package-ecosystem: npm
     directory: /
+    target-branch: main
     schedule:
       interval: monthly
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 5
+
+  # The Fumadocs site. docs-site/package-lock.json is the tree the docs lane
+  # and CI install, and no ecosystem entry watched it.
+  - package-ecosystem: npm
+    directory: /docs-site
+    target-branch: main
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5

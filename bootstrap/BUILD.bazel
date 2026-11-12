@@ -1,0 +1,15 @@
+# One-shot bootstrap for the hybrid control plane: probes the operator's PATH
+# for aws, terraform and ansible, then reports what a first terraform plan
+# would need to migrate.
+
+load("//build:defs.bzl", "repo_sh_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+# The script needs aws, terraform and ansible on PATH (it fails without them),
+# and its only file read is infrastructure/terraform/terraform.tfstate, which is
+# operator state and never committed, so it declares no data.
+repo_sh_binary(
+    name = "init_hybrid",
+    srcs = ["init_hybrid.sh"],
+)

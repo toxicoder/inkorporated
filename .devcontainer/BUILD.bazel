@@ -1,0 +1,59 @@
+# Devcontainer configuration package: the image build, the run config the
+# devcontainer CLI reads, the MCP settings the bootstrap copies into the editor
+# profile, and the operator-side env templates.
+#
+# `.devcontainer/.env` is gitignored developer secrets and is deliberately not
+# declared here; //:validate_config is the host lane that reads it, and
+# //.devcontainer/scripts/tests:test_env asserts it stays out of git.
+
+package(default_visibility = ["//visibility:public"])
+
+# Named by the root BUILD file: //:validate_config_template asserts the shape of
+# this template, so the label is a contract, not a local detail.
+filegroup(
+    name = "env_example",
+    srcs = [".env.example"],
+)
+
+# Both env templates, so a test can ask "is every documented key still declared"
+# without reaching into the package for individual files.
+filegroup(
+    name = "env_templates",
+    srcs = [
+        ".env.example",
+        "devcontainer-config.env.example",
+    ],
+)
+
+# Non-secret MCP server configuration: the file the bootstrap copies into the
+# Cline profile, the wider catalogue it was drawn from, and the committed
+# placeholder env file setup-mcp.sh seeds the container config from. Values in
+# here are ${PLACEHOLDER} references; real values live in .env.
+filegroup(
+    name = "mcp_config",
+    srcs = [
+        "cline_mcp_config.env",
+        "cline_mcp_setting.json.example",
+        "cline_mcp_settings.json",
+    ],
+)
+
+# What the devcontainer CLI itself reads. The tool census test parses both: the
+# Dockerfile for the baked tool list and devcontainer.json for the features.
+filegroup(
+    name = "container_config",
+    srcs = [
+        "Dockerfile",
+        "devcontainer.json",
+    ],
+)
+
+# The prose that documents the MCP env pull. It is data to //:gate because
+# test_env asserts the keys it promises still exist.
+filegroup(
+    name = "docs",
+    srcs = [
+        "ENV_PULL_SOLUTION.md",
+        "README.md",
+    ],
+)

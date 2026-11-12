@@ -1,6 +1,6 @@
 ---
-title: CEO: Chief Executive Officer
-description: CEO: Chief Executive Officer at Inkorporated.
+title: "CEO: Chief Executive Officer"
+description: "CEO: Chief Executive Officer at Inkorporated."
 tags: [job-role, enterprise]
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Docs directory
-description: How the Inkorporated documentation site is organized.
+description: How the Inkorporated documentation site is organized and how to run it locally.
 tags: [documentation]
 ---
 
@@ -8,24 +8,27 @@ tags: [documentation]
 
 **What's on this page**
 
-- MkDocs Material site layout
-- Local build commands
+- Site layout: content in `docs/`, Fumadocs app in `docs-site/`
+- Preview, export, and gate commands from the repository root
 - Pointers to enterprise OS and infrastructure content
 
 **What this enables**
 
-- Contributors can find and build docs quickly
+- Contributors can find, preview, and build the docs without leaving the repo root
 
 ## Build
 
 From the repository root:
 
 ```bash
-./docs/manage-docs.sh serve
-./docs/manage-docs.sh build --strict
+bazelisk run //docs:serve    # live dev server with hot reload (port 3005, PORT= to override)
+bazelisk run //docs:docs     # regenerate derived pages, then the static export in docs-site/out/
+bazelisk test  //docs:build  # the strict docs gate (host lane)
 ```
 
-Site config: [`mkdocs.yml`](https://github.com/toxicoder/inkorporated/blob/main/mkdocs.yml) at the repo root.
+Content lives in `docs/`; the Fumadocs (Next.js App Router) app that renders it is `docs-site/`,
+and its sidebar is `docs-site/lib/nav.json`. The toolchains are `python3` for the page generators
+and Node.js 22+ with npm for the site (`bazelisk run //docs-site:install`).
 
 ## Structure
 
@@ -39,4 +42,5 @@ Site config: [`mkdocs.yml`](https://github.com/toxicoder/inkorporated/blob/main/
 | `guides/`, `architecture/`, `reference/` | Infrastructure |
 | `interview_questions/`, `onboarding/`, `training/` | People systems |
 
-See [project-conventions.md](project-conventions.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
+Authoring rules, the nav workflow, and the PR checklist: [CONTRIBUTING.md](CONTRIBUTING.md).
+Conventions for every stack: [project-conventions.md](project-conventions.md).

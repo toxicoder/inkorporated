@@ -1,0 +1,40 @@
+# Kubernetes-lane tests: the manifests under apps/ checked statically. Both
+# targets parse the tree themselves, so they need neither a cluster nor a
+# YAML binary; they assert the invariants that decide whether a manifest works.
+
+load("//build:defs.bzl", "repo_sh_test")
+
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "scripts",
+    srcs = [
+        "test_manifests.sh",
+        "test_resource_quotas.sh",
+    ],
+)
+
+# apps/ is Helm templates, so each script tokenises {{ ... }} and parses the
+# result; a duplicate resource, a Service that selects nothing, or an untagged
+# image fails the gate instead of printing a warning.
+repo_sh_test(
+    name = "test_manifests",
+    srcs = ["test_manifests.sh"],
+    data = [
+        "//apps:manifests",
+    ],
+    tags = ["gate"],
+    timeout = "short",
+)
+
+# The old version warned about a Deployment with no requests and still passed;
+# an unbounded pod is what starves a k3s node, so it fails here.
+repo_sh_test(
+    name = "test_resource_quotas",
+    srcs = ["test_resource_quotas.sh"],
+    data = [
+        "//apps:manifests",
+    ],
+    tags = ["gate"],
+    timeout = "short",
+)

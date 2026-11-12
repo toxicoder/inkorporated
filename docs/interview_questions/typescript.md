@@ -752,7 +752,7 @@ const palette = {
 // palette.red is still number[], not string | number[]
 ```
 
-### 80. Awaited<T>?
+### 80. Awaited\<T>?
 
 Unwraps Promises recursively.
 `Awaited<Promise<string>>` -> `string`.

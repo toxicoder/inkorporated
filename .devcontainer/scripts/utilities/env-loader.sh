@@ -4,8 +4,9 @@
 
 # Function to load MCP environment variables
 load_mcp_env() {
-    # Path to the MCP config file
-    MCP_CONFIG_FILE="/workspaces/inkorporated/.devcontainer/.env"
+    # Path to the MCP config file. Callers may point it elsewhere by exporting
+    # MCP_CONFIG_FILE first; the default is the devcontainer secrets file.
+    MCP_CONFIG_FILE="${MCP_CONFIG_FILE:-/workspaces/inkorporated/.devcontainer/.env}"
 
     # Check if the config file exists
     if [ -f "$MCP_CONFIG_FILE" ]; then

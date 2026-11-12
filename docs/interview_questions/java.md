@@ -577,7 +577,7 @@ It uses **Reachability Analysis**.
 2.  **Parallel GC:** Multi-threaded for Minor GC. (Throughput-oriented).
 3.  **CMS (Concurrent Mark Sweep):** Minimizes pause times (Deprecated).
 4.  **G1 GC (Garbage First):** Splits heap into regions. Default in Java 9+. Balanced throughput/latency.
-5.  **ZGC:** Ultra-low latency (<10ms).
+5.  **ZGC:** Ultra-low latency (\<10ms).
 
 ### 66. What is a "Memory Leak" in Java?
 

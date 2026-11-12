@@ -9,7 +9,7 @@ resource "proxmox_vm_qemu" "this" {
     size = var.disk_size
   }
   network {
-    model = var.network_model
+    model  = var.network_model
     bridge = var.network_bridge
   }
   cloud_init {

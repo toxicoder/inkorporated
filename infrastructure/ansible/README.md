@@ -25,7 +25,10 @@ infrastructure/ansible/
 │       └── worker_nodes.yml
 ├── roles/                 # Reusable roles
 │   ├── k3s/               # k3s installation role
+│   ├── k3s_install/       # k3s install-from-script role
 │   ├── cluster/           # Cluster management role
+│   ├── cloud_join/        # Cloud node join role
+│   ├── gitea_runner/      # Gitea runner role
 │   └── common/            # Common tasks role
 ├── vars/                  # Variable files
 ├── README.md              # This file

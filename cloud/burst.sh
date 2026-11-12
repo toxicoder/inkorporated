@@ -2,7 +2,7 @@
 set -e
 
 # Cloud Bursting Script
-# Usage: ./burst.sh <number_of_nodes> [provider]
+# Usage: bazelisk run //cloud:burst -- <number_of_nodes> [provider]
 
 NODE_COUNT=$1
 PROVIDER=${2:-aws}

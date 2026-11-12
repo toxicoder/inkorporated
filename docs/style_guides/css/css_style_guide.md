@@ -138,7 +138,7 @@ We encourage a component-based architecture (like ITCSS or 7-1 pattern) to organ
 
 ### Directory Structure Example
 
-```
+```text
 styles/
 |
 |– abstracts/      # Variables, mixins, functions

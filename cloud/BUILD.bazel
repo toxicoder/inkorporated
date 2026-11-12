@@ -1,0 +1,18 @@
+# Human-driven cloud burst entry point: scales the AWS/GCP tier out through the
+# Terraform hybrid profile.
+
+load("//build:defs.bzl", "repo_sh_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+# burst.sh cds into infrastructure/terraform and runs `terraform apply` with
+# hybrid_enable, cloud_provider and cloud_node_count, so its inputs are the
+# Terraform root plus the cloud-init payloads those modules render.
+repo_sh_binary(
+    name = "burst",
+    srcs = ["burst.sh"],
+    data = [
+        "//infrastructure/terraform:templates",
+        "//infrastructure/terraform:tf_sources",
+    ],
+)

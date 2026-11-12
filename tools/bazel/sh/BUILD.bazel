@@ -1,0 +1,105 @@
+# Wrapper scripts that let the Python gate checkers run as Bazel tests, plus
+# the umbrella targets the whole repository documents.
+#
+# Each wrapper resolves the real checkout with `readlink -f $0` (runfiles hold
+# symlinks into the source tree) and runs its checker against that, because the
+# checks answer questions about the repository, not about a sandbox subset.
+
+load("//build:defs.bzl", "repo_sh_binary", "repo_sh_test")
+
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "scripts",
+    srcs = [
+        "doctor.sh",
+        "gate_lib.sh",
+        "run_coverage.sh",
+        "run_gate_policy.sh",
+        "run_glob_budget.sh",
+        "run_owned_files_check.sh",
+        "run_suite.sh",
+    ],
+)
+
+# The unit tests for these scripts are their own package, //tools/bazel/sh/test,
+# because a filegroup cannot reach into a subpackage.
+
+# The shell half of the coverage denominator: which scripts this package
+# requires to be fully covered, and why.
+filegroup(
+    name = "coverage_scope",
+    srcs = ["coverage-scope.txt"],
+)
+
+repo_sh_binary(
+    name = "doctor",
+    srcs = ["doctor.sh"],
+    tags = ["gate"],
+)
+
+# ---------------------------------------------------------------------------
+# Gate checkers
+# ---------------------------------------------------------------------------
+
+_GATE_DATA = [
+    "//tools/bazel:checkers",
+    "//build:macros",
+    ":scripts",
+]
+
+repo_sh_test(
+    name = "owned_files_check",
+    srcs = ["run_owned_files_check.sh"],
+    data = _GATE_DATA + [
+        "//:dev_configs",
+        "//:unowned_ledger",
+        "//:validate_config_sh",
+    ],
+    tags = ["gate"],
+    timeout = "short",
+)
+
+# The budget is the count measured when the gate was adopted. Lower it when a
+# glob becomes an explicit list; raising it takes a design review, same as the
+# exclusion ledger.
+GLOB_BUDGET = "14"
+
+repo_sh_test(
+    name = "glob_budget",
+    srcs = ["run_glob_budget.sh"],
+    data = _GATE_DATA,
+    env = {"GLOB_BUDGET": GLOB_BUDGET},
+    tags = ["gate"],
+    timeout = "short",
+)
+
+repo_sh_test(
+    name = "gate_policy_check",
+    srcs = ["run_gate_policy.sh"],
+    data = _GATE_DATA + [
+        "//tools/bazel:secrets_allowlist",
+        "//:dev_configs",
+        "//:unowned_ledger",
+        "//:validate_config_sh",
+    ],
+    tags = ["gate"],
+    timeout = "moderate",
+)
+
+repo_sh_test(
+    name = "coverage",
+    srcs = ["run_coverage.sh"],
+    data = _GATE_DATA + [
+        "//tools/bazel:coverage_ledgers",
+        "//tools/bazel:unit_tests",
+        "//tools/bazel/sh/test:tests",
+    ],
+    tags = ["gate", "coverage"],
+    timeout = "moderate",
+)
+
+# The umbrellas //:gate and //:fast live in the repository root package, not
+# here: `bazel test` on an alias reports "No test targets were found", so the
+# target everyone documents has to be the test itself. This package supplies
+# their implementation, //tools/bazel/sh:run_suite.sh and gate_lib.sh.

@@ -29,7 +29,7 @@ See [`cyborgs/_index.yaml`](https://github.com/toxicoder/inkorporated/blob/main/
 1. Allocate a stable `job_id` (see [project conventions](../project-conventions.md)).
 2. Add `docs/job_roles/...` with an AI Agent Profile when applicable.
 3. Add `cyborgs/<job_id>.yaml` with full schema fields ([schema](schema.md)).
-4. Run `./docs/manage-docs.sh build` (or `python docs/generate_cyborg_docs.py`).
+4. Run `bazelisk run //docs:manage-docs -- build` (the generator runs automatically).
 5. Review the new card on the [roster](generated/index.md) and the detail page under `generated/personas/`.
 
 ```mermaid
@@ -38,5 +38,5 @@ flowchart TD
   B --> C[Author cyborgs/ID.yaml]
   C --> D[generate_cyborg_docs.py]
   D --> E[Roster card + detail page]
-  E --> F[Strict MkDocs build]
+  E --> F[Strict site export]
 ```

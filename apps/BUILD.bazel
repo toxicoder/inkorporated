@@ -1,0 +1,19 @@
+# GitOps manifests for every environment: ArgoCD syncs whatever lands in this
+# tree, so the directory is the contract and a new app folder is not a BUILD
+# file edit.
+
+package(default_visibility = ["//visibility:public"])
+
+# Consumed by //tests/config:config_security_scan and the root domain gate.
+filegroup(
+    name = "manifests",
+    srcs = glob(["**/*"]),  # glob-policy: ArgoCD reconciles the whole tree, so every manifest added under apps/ is meant to ship and to be scanned.
+)
+
+# The exact file set //:validate_domain_config greps for hardcoded customer
+# domains; keeping it as a target means the gate reads its own inputs instead
+# of walking the checkout.
+filegroup(
+    name = "ingress_manifests",
+    srcs = glob(["shared/**/*Ingress.yaml"]),  # glob-policy: each app brings its own Ingress and the domain scanner must cover a new one without a BUILD file change.
+)

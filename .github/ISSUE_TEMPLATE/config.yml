@@ -1,0 +1,14 @@
+# Issue intake for Inkorporated. Blank issues are off: a report has to name the
+# command it ran and the output it saw, and say which safety invariant it touches,
+# or it cannot be triaged. Secrets never belong in an issue - report them through
+# SECURITY.md instead.
+blank_issues_enabled: false
+contact_links:
+  # `latest` here is a docs-site URL path segment (the published alias), not a git
+  # ref; the trunk is `main`. See docs/guides/git_workflow.md.
+  - name: Inkorporated documentation
+    url: https://toxicoder.github.io/inkorporated/latest/
+    about: >-
+      Guides, conventions, cyborg schema, and the trunk-based git workflow. Read
+      docs/project-conventions.md and docs/guides/git_workflow.md before opening an
+      issue; many reports are a gate that is behaving as designed.

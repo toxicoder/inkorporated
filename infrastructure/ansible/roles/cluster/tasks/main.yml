@@ -41,7 +41,7 @@
   debug:
     msg: "Cluster info: {{ cluster_info.stdout }}"
 
-- name: Join worker nodes to cluster
+- name: Join worker nodes to cluster  # noqa: command-instead-of-module the k3s installer script is piped into sh with agent flags, get_url only downloads it
   command: |
     curl -sfL https://get.k3s.io | sh -s - agent \
       --server https://{{ groups['control_plane'][0] }}:6443 \

@@ -1,21 +1,57 @@
 name: Deploy Documentation
 
-# Publish MkDocs Material via mike to gh-pages (versioned aliases).
-# - main/master  → alias "latest" (default site)
-# - development  → alias "development"
+# Publish Fumadocs static exports to gh-pages (two versioned aliases).
 #
-# GitHub Pages must publish from branch gh-pages with path "/" (repo root),
-# not "/docs", or /latest/ and /development/ will 404.
+# Both aliases are built from `main`, the trunk, and neither build asks a branch name
+# which environment it is:
+#
+#   - a tag push (vX.Y.Z)      -> alias "latest", published under the `production`
+#                                 GitHub Environment, with Edit-this-page links stamped with
+#                                 that tag
+#   - a push to the trunk      -> alias "development", published under the `staging`
+#                                 GitHub Environment
+#   - workflow_dispatch        -> either alias, from the ref or digest you name
+#
+# The Environment is the review that a branch name used to fake: attach required reviewers,
+# and deployment branches, to `production` in the repository settings.
+#
+# Each run builds ONE alias. Two full Next exports of ~870 pages in one job OOM the 7 GB
+# GitHub-hosted runner, so one webpack export per run with --max-old-space-size=5120 is the
+# cap that fits. The alias this run does not build is carried over from the live gh-pages
+# tree by the docs-export action.
+#
+# URL compatibility: the MkDocs site published these two aliases through mike, at
+# /latest/ and /development/. A static root index.html forwards bare
+# /inkorporated/ traffic to /latest/, which is what mike's default alias did.
+#
+# GitHub Pages must publish from branch gh-pages at path "/" (the repo root).
+#
+# PR docs validation lives in ci.yml; this workflow publishes only on a trunk push, a
+# release tag, or a dispatch.
 on:
   push:
-    branches: [main, master, development]
-    paths:
-      - "docs/**"
-      - "mkdocs.yml"
-      - "docs/requirements.txt"
-      - "cyborgs/**"
-      - ".github/workflows/deploy-docs.yml"
+    branches: [main]
+    tags: ["v*"]
   workflow_dispatch:
+    inputs:
+      alias:
+        description: Which Pages alias to publish
+        # `development` here is the staging alias, i.e. the URL path segment
+        # /inkorporated/development/ kept for mike compatibility. It names no branch: the
+        # trunk was renamed to `main`, and both aliases still build from that trunk.
+        type: choice
+        options:
+          - development
+          - latest
+        default: development
+        required: true
+      ref:
+        description: >-
+          Ref or digest to publish from. A release names its own tag here; leave it empty to
+          use the ref this run was dispatched from.
+        type: string
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -25,76 +61,93 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-and-publish:
+  paths:
+    # An infra-only trunk commit should not pay for an ~870-page export. A release tag
+    # always publishes, and so does a dispatch, which says what it means.
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      docs: ${{ steps.filter.outputs.docs }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      - uses: dorny/paths-filter@v4
+        id: filter
+        if: ${{ github.event_name == 'push' && github.ref_type == 'branch' }}
         with:
-          fetch-depth: 0
-          # Required so subsequent git push (mike) authenticates as GITHUB_TOKEN.
-          persist-credentials: true
+          filters: |
+            docs:
+              - 'docs/**'
+              - 'docs-site/**'
+              - 'cyborgs/**'
+              - 'docs/requirements.txt'
+              - '.github/workflows/deploy-docs.yml'
+              - '.github/actions/**'
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+  development:
+    name: Publish the development alias (staging)
+    needs: paths
+    if: >-
+      needs.paths.outputs.docs != 'false' &&
+      ( (github.event_name == 'push' && github.ref_type == 'branch') ||
+        (github.event_name == 'workflow_dispatch' && inputs.alias == 'development') )
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    environment:
+      name: staging
+      url: https://toxicoder.github.io/inkorporated/development/
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      NODE_OPTIONS: "--max-old-space-size=5120"
+    steps:
+      # A job resolves `uses: ./...` from its own workspace before any step runs, so the repo
+      # has to be on disk for the composite action to be found at all. The action still does
+      # its own checkout afterwards, at the ref it is handed, which is what a release needs.
+      - uses: actions/checkout@v7
+
+      - name: Export the alias
+        id: export
+        uses: ./.github/actions/docs-export
         with:
-          python-version: "3.11"
-          cache: pip
-          cache-dependency-path: docs/requirements.txt
+          alias: development
+          ref: ${{ inputs.ref }}
 
-      - name: Install docs dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r docs/requirements.txt
+      - name: Publish it
+        uses: ./.github/actions/docs-publish
+        with:
+          alias: development
+          tree: ${{ steps.export.outputs.tree }}
 
-      - name: Configure git identity for mike
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Ensure origin uses the Actions token for push to gh-pages.
-          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  latest:
+    name: Publish the latest alias (production)
+    needs: paths
+    if: >-
+      needs.paths.outputs.docs != 'false' &&
+      ( (github.event_name == 'push' && github.ref_type == 'tag') ||
+        (github.event_name == 'workflow_dispatch' && inputs.alias == 'latest') )
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    environment:
+      name: production
+      url: https://toxicoder.github.io/inkorporated/latest/
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      NODE_OPTIONS: "--max-old-space-size=5120"
+    steps:
+      # Resolved before the action's own checkout, for the reason given in the staging job.
+      - uses: actions/checkout@v7
 
-      - name: Fetch existing gh-pages (if any)
-        run: |
-          git fetch origin gh-pages:gh-pages || true
+      - name: Export the alias
+        id: export
+        uses: ./.github/actions/docs-export
+        with:
+          alias: latest
+          ref: ${{ inputs.ref }}
+          # A release build stamps its source links with the tag it was cut from.
+          git-ref: ${{ github.ref_type == 'tag' && github.ref_name || inputs.ref }}
 
-      - name: Build documentation (strict)
-        env:
-          INK_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
-          MIKE_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
-        run: |
-          chmod +x docs/manage-docs.sh docs/setup-docs.sh
-          ./docs/manage-docs.sh build --strict
-          # mike rebuilds site/; keep stamps consistent and ensure no Jekyll processing.
-          touch site/.nojekyll
-
-      - name: Deploy with mike (versioned)
-        env:
-          INK_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
-          MIKE_DOCS_VERSION: ${{ github.ref_name == 'development' && 'development' || 'latest' }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          if [[ "${{ github.ref_name }}" == "development" ]]; then
-            mike deploy --push --update-aliases development -F mkdocs.yml
-          else
-            mike deploy --push --update-aliases latest -F mkdocs.yml
-            mike set-default --push latest -F mkdocs.yml
-          fi
-
-      - name: Verify gh-pages layout
-        run: |
-          set -euo pipefail
-          git fetch origin gh-pages
-          # versions.json must exist at branch root for multi-version mike sites.
-          git show origin/gh-pages:versions.json >/tmp/versions.json
-          echo "versions.json:"
-          cat /tmp/versions.json
-          git ls-tree --name-only origin/gh-pages | head -30
-          # Expect version dirs and/or aliases at root (not only legacy docs/).
-          if ! git ls-tree --name-only origin/gh-pages | grep -E '^(latest|development|versions\.json)$' >/dev/null; then
-            echo "ERROR: gh-pages root missing mike version artifacts" >&2
-            exit 1
-          fi
+      - name: Publish it
+        uses: ./.github/actions/docs-publish
+        with:
+          alias: latest
+          tree: ${{ steps.export.outputs.tree }}

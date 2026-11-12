@@ -1,0 +1,21 @@
+# Cyborg agent personas: the machine-readable persona specs under cyborgs/.
+#
+# These YAML files are the source of truth for the generated roster pages under
+# docs/cyborgs/generated/, which docs/generate_cyborg_docs.py renders from this
+# tree, and for the schema documented in docs/cyborgs/schema.md.
+
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "personas",
+    # glob-policy: one persona per job id, added by design as roles are
+    # defined; docs/cyborgs/schema.md plus the persona quality check are the
+    # review surface, not this list.
+    srcs = glob(["*.yaml"]),
+)
+
+# The schema notes travel with the personas they describe.
+filegroup(
+    name = "docs",
+    srcs = ["README.md"],
+)

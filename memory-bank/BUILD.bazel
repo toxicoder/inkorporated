@@ -1,0 +1,9 @@
+# Cline memory bank: the context documents (.clinerules/workflows/memory-init.md
+# and post-fork.md seed and refresh them). Agent payload, not build input.
+
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "context",
+    srcs = glob(["**/*.md"]),  # glob-policy: the agent rewrites these context documents in place and adds new ones as the project grows, so the tree is the contract.
+)

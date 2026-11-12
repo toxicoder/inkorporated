@@ -422,7 +422,7 @@ A deterministic serialization approach (e.g., sorting map keys, sorting field ta
 
 ### 53. How much space does a boolean take?
 
-*   **1 Byte** for the tag (if field number < 16).
+*   **1 Byte** for the tag (if field number \< 16).
 *   **1 Byte** for the value (0 or 1).
 *   Total: 2 Bytes.
 

@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Generate human-facing cyborg roster docs from cyborgs/*.yaml.
 
-Outputs under docs/cyborgs/generated/ (do not hand-edit).
+Outputs under docs/cyborgs/generated/ (do not hand-edit). Pages are written as
+``.mdx``: the roster is raw HTML and the Fumadocs compiler drops raw HTML blocks
+when a page compiles as markdown (``format: md``), so the render is emitted in the
+well-formed JSX form and keeps the extension that selects ``format: mdx``.
 """
 
 from __future__ import annotations
@@ -12,6 +15,7 @@ import json
 import re
 import sys
 from collections import Counter, defaultdict
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 
@@ -62,8 +66,224 @@ def prefix_of(job_id: str) -> str:
     return m.group(1) if m else "OTHER"
 
 
+# --- MDX output rules -------------------------------------------------------
+#
+# Fumadocs registers both extensions (docs-site/source.config.ts) and the compiler picks
+# `format` from the file name: `.md` compiles as markdown, which silently drops the raw
+# HTML blocks the roster grid is made of; `.mdx` compiles as MDX, which parses those tags
+# as JSX. So the render is `.mdx` and every tag it emits has to satisfy the JSX parser:
+# balanced, void elements self-closed, attribute values double-quoted, and no literal `{`
+# or `}` outside code, because those open a JavaScript expression.
+
+
+MDX_EXT = ".mdx"
+
+# Page names the generator owns directly under docs/cyborgs/generated/; personas/ holds
+# one more file per job id. Only the extension is a render decision.
+_TOP_LEVEL_PAGES = ("index", "by_namespace", "by_security", "org_graph")
+
+VOID_ELEMENTS = frozenset(
+    {
+        "area",
+        "base",
+        "br",
+        "col",
+        "embed",
+        "hr",
+        "img",
+        "input",
+        "link",
+        "meta",
+        "param",
+        "source",
+        "track",
+        "wbr",
+    }
+)
+
+_CODE_FENCE_RE = re.compile(r"^[ \t]*(?P<fence>`{3,}|~{3,})")
+_INLINE_CODE_RE = re.compile(r"(?P<tick>`+)(?P<code>.+?)(?P=tick)")
+_BARE_BRACE_RE = re.compile(r"(?<!\\)[{}]")
+
+
 def esc(value: Any) -> str:
     return html.escape("" if value is None else str(value), quote=True)
+
+
+def mdx_text(value: Any) -> str:
+    """Escape a value for an HTML/JSX text position and shield literal braces."""
+    return esc(value).replace("{", r"\{").replace("}", r"\}")
+
+
+def mdx_attr(value: Any) -> str:
+    """Escape a double-quoted attribute value.
+
+    Attributes carry job ids, prefixes, namespaces and security levels. A brace cannot be
+    backslash-escaped inside an attribute, so one that turns up in such a token is dropped
+    and reported rather than rendered as JSX syntax noise.
+    """
+    out = esc(value)
+    if "{" in out or "}" in out:
+        print(f"warning: brace dropped from attribute value {out!r}", file=sys.stderr)
+        out = out.replace("{", "").replace("}", "")
+    return out
+
+
+def mdx_front(value: Any) -> str:
+    """Render a frontmatter scalar as a double-quoted YAML string.
+
+    JSON string syntax is a valid YAML flow scalar, so a display name holding a colon, a
+    quote or a hash still parses, and the value never needs hand-maintained quoting.
+    """
+    return json.dumps("" if value is None else str(value), ensure_ascii=False)
+
+
+class _TagBalance(HTMLParser):
+    """Collect the tags of one HTML region so the render can be checked before it lands."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.stack: list[tuple[str, int]] = []
+        self.errors: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        line = self.getpos()[0]
+        if tag in VOID_ELEMENTS:
+            self.errors.append(f"line {line}: <{tag}> must be self-closed as <{tag} />")
+            return
+        self.stack.append((tag, line))
+
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        pass
+
+    def handle_endtag(self, tag: str) -> None:
+        line = self.getpos()[0]
+        if tag in VOID_ELEMENTS:
+            self.errors.append(f"line {line}: </{tag}> is invalid, <{tag} /> is void")
+            return
+        if not self.stack:
+            self.errors.append(f"line {line}: </{tag}> has no opening <{tag}>")
+            return
+        opened, opened_at = self.stack.pop()
+        if opened != tag:
+            self.errors.append(
+                f"line {line}: </{tag}> closes <{opened}> opened at line {opened_at}"
+            )
+
+
+def _blank_inline_code(text: str) -> str:
+    """Blank inline code spans, keeping byte offsets and line numbers intact.
+
+    Backticked text is literal to the MDX compiler, so ```cyborgs/<JOB_ID>.yaml`` is prose,
+    not a tag.
+    """
+    return _INLINE_CODE_RE.sub(lambda m: " " * len(m.group()), text)
+
+
+def _html_depth(lines: list[str]) -> int:
+    """Net count of elements still open after ``lines``.
+
+    Only used to decide whether a plain-text line lazily continues an open element (as MDX
+    parses it) or starts markdown that ends the HTML region. The authoritative balance check
+    is :class:`_TagBalance`.
+    """
+    depth = 0
+    for closing, tag, attrs in re.findall(
+        r"<(/?)([A-Za-z][A-Za-z0-9._-]*)((?:\"[^\"]*\"|'[^']*'|[^>\"'])*)>",
+        _blank_inline_code("\n".join(lines)),
+    ):
+        if closing:
+            depth -= 1
+        elif attrs.rstrip().endswith("/") or tag in VOID_ELEMENTS:
+            continue
+        else:
+            depth += 1
+    return depth
+
+
+def check_mdx_safety(name: str, text: str) -> None:
+    """Fail the render when a page would not compile under MDX ``format: mdx``.
+
+    Fenced blocks and inline code are exempt, matching what the compiler exempts. HTML is
+    checked per region: a region is a run of tag lines that blank lines and fenced blocks
+    may sit inside, which is how MDX groups JSX children.
+    """
+    lines = text.split("\n")
+
+    fenced: list[tuple[int, int]] = []
+    open_at: int | None = None
+    marker = ""
+    for index, line in enumerate(lines):
+        match = _CODE_FENCE_RE.match(line)
+        if match is None:
+            continue
+        fence = match.group("fence")
+        if open_at is None:
+            open_at, marker = index, fence
+        elif fence[0] == marker[0] and len(fence) >= len(marker):
+            fenced.append((open_at, index + 1))
+            open_at = None
+    if open_at is not None:
+        fenced.append((open_at, len(lines)))
+
+    def in_fence(index: int) -> bool:
+        return any(start <= index < end for start, end in fenced)
+
+    front_end = 0
+    if lines and lines[0].strip() == "---":
+        front_end = next((i for i in range(1, len(lines)) if lines[i].strip() == "---"), 0)
+
+    problems: list[str] = []
+    regions: list[tuple[int, list[str]]] = []
+    current: list[str] = []
+    start = 0
+    depth = 0
+    for index, line in enumerate(lines):
+        if index <= front_end or in_fence(index):
+            continue
+        if line.lstrip().startswith("<") or (current and depth > 0):
+            # A text line lazily continues an element MDX still has open, so it belongs to
+            # the same JSX block and must be checked with it.
+            if not current:
+                start = index
+            current.append(line)
+            depth += _html_depth([line])
+        elif line.strip():
+            if current:
+                regions.append((start, current))
+                current = []
+                depth = 0
+
+    if current:
+        regions.append((start, current))
+
+    for region_start, chunk in regions:
+        parser = _TagBalance()
+        # Newline padding keeps getpos() on the page's own line numbers.
+        parser.feed("\n" * region_start + _blank_inline_code("\n".join(chunk)))
+        parser.close()
+        for tag, line in parser.stack:
+            problems.append(f"line {line}: <{tag}> is never closed")
+        problems.extend(parser.errors)
+
+    for index, line in enumerate(lines):
+        if index <= front_end or in_fence(index):
+            continue
+        if _BARE_BRACE_RE.search(_blank_inline_code(line)):
+            problems.append(f"line {index + 1}: unescaped brace: {line.strip()[:72]}")
+
+    if problems:
+        raise SystemExit(
+            f"{name} is not MDX-safe:\n  "
+            + "\n  ".join(sorted(set(problems)))
+            + "\nFix docs/generate_cyborg_docs.py; docs/cyborgs/generated/ is a render."
+        )
+
+
+def write_page(path: Path, text: str) -> None:
+    """Write one generated page once it is known to compile as MDX."""
+    check_mdx_safety(path.relative_to(OUT_DIR.parent).as_posix(), text)
+    path.write_text(text, encoding="utf-8")
 
 
 def as_list(value: Any) -> list[str]:
@@ -126,7 +346,7 @@ def ns_class(namespace: str) -> str:
 
 
 def chip(label: str, css: str) -> str:
-    return f'<span class="chip {css}">{esc(label)}</span>'
+    return f'<span class="chip {css}">{mdx_text(label)}</span>'
 
 
 def load_cyborgs() -> list[dict[str, Any]]:
@@ -244,14 +464,14 @@ def render_card(c: dict[str, Any]) -> str:
         chip_bits.append(chip(t, "chip-tag"))
     cap_bits = [chip(x, "chip-cap") for x in caps]
     tool_bits = [chip(x, "chip-tool") for x in tools]
-    blurb = esc(truncate(c["short_description"]))
+    blurb = mdx_text(truncate(c["short_description"]))
     return f"""
-<article class="cyborg-card" data-security="{esc(c['security_level'])}" data-ns="{esc(c['namespace'])}" data-prefix="{esc(c['prefix'])}">
+<article class="cyborg-card" data-security="{mdx_attr(c['security_level'])}" data-ns="{mdx_attr(c['namespace'])}" data-prefix="{mdx_attr(c['prefix'])}">
   <header class="cyborg-card__header">
-    <span class="cyborg-avatar" data-prefix="{esc(c['prefix'])}" aria-hidden="true">{esc(initials)}</span>
+    <span class="cyborg-avatar" data-prefix="{mdx_attr(c['prefix'])}" aria-hidden="true">{mdx_text(initials)}</span>
     <div class="cyborg-card__header-text">
-      <h3 class="cyborg-card__title">{esc(c['display_name'])}</h3>
-      <p class="cyborg-card__subtitle">{esc(c['human_title'])} · {esc(c['domain'])}</p>
+      <h3 class="cyborg-card__title">{mdx_text(c['display_name'])}</h3>
+      <p class="cyborg-card__subtitle">{mdx_text(c['human_title'])} · {mdx_text(c['domain'])}</p>
     </div>
     {chip(c['job_id'], 'chip-jobid')}
   </header>
@@ -260,8 +480,8 @@ def render_card(c: dict[str, Any]) -> str:
   <div class="cyborg-chip-row">{''.join(cap_bits) if cap_bits else '<span class="cyborg-empty">No capabilities listed</span>'}</div>
   <div class="cyborg-chip-row">{''.join(tool_bits)}</div>
   <footer class="cyborg-card__footer">
-    <a href="personas/{esc(c['job_id'])}/">Full profile →</a>
-    <span class="chip chip-tag">{esc(c['prefix'])}</span>
+    <a href="personas/{mdx_attr(c['job_id'])}/">Full profile →</a>
+    <span class="chip chip-tag">{mdx_text(c['prefix'])}</span>
   </footer>
 </article>
 """.strip()
@@ -279,12 +499,12 @@ def render_filter_bar(cyborgs: list[dict[str, Any]]) -> str:
     buttons = ['<button type="button" data-filter="all:" class="is-active">All</button>']
     for p in prefixes:
         buttons.append(
-            f'<button type="button" data-filter="prefix:{esc(p)}">{esc(p)}</button>'
+            f'<button type="button" data-filter="prefix:{mdx_attr(p)}">{mdx_text(p)}</button>'
         )
     for s in secs:
         if any(c["security_level"] == s for c in cyborgs):
             buttons.append(
-                f'<button type="button" data-filter="security:{esc(s)}">{esc(s)}</button>'
+                f'<button type="button" data-filter="security:{mdx_attr(s)}">{mdx_text(s)}</button>'
             )
     return f'<div class="cyborg-filters" role="toolbar" aria-label="Filter cyborgs">{"".join(buttons)}</div>'
 
@@ -322,12 +542,15 @@ tags: [cyborgs, generated]
 - Developers understand agent risk, tools, and domain at a glance
 - Single pipeline from YAML source of truth to human docs
 
-!!! tip "Source of truth"
-    Edit `cyborgs/<JOB_ID>.yaml`, then run `./docs/manage-docs.sh build` (generator runs automatically). Do **not** hand-edit files under `docs/cyborgs/generated/`.
+<Callout type="info" title="Source of truth">
+
+Edit `cyborgs/<JOB_ID>.yaml`, then run `bazelisk test //docs:build` (the generator runs automatically). Do **not** hand-edit files under `docs/cyborgs/generated/`.
+
+</Callout>
 
 {render_stats(cyborgs)}
 
-<div data-cyborg-roster markdown="0">
+<div data-cyborg-roster>
 {render_filter_bar(cyborgs)}
 <div class="cyborg-grid">
 {cards}
@@ -336,12 +559,12 @@ tags: [cyborgs, generated]
 
 ## Related
 
-- [By namespace](by_namespace.md)
-- [By security](by_security.md)
-- [Org graph](org_graph.md)
+- [By namespace](by_namespace{MDX_EXT})
+- [By security](by_security{MDX_EXT})
+- [Org graph](org_graph{MDX_EXT})
 - [Schema](../schema.md)
 """
-    (OUT_DIR / "index.md").write_text(body, encoding="utf-8")
+    write_page(OUT_DIR / f"index{MDX_EXT}", body)
 
 
 def write_grouped(
@@ -364,7 +587,7 @@ def write_grouped(
             continue
         cards = "\n".join(render_card(c) for c in groups[k])
         sections.append(
-            f'## {esc(k)}\n\n<div class="cyborg-grid" markdown="0">\n{cards}\n</div>\n'
+            f'## {mdx_text(k)}\n\n<div class="cyborg-grid">\n{cards}\n</div>\n'
         )
     body = f"""---
 title: {title}
@@ -382,11 +605,11 @@ tags: [cyborgs, generated]
 
 - Ops and security reviews by deployment or risk tier
 
-[← Back to roster](index.md)
+[← Back to roster](index{MDX_EXT})
 
 {chr(10).join(sections)}
 """
-    (OUT_DIR / filename).write_text(body, encoding="utf-8")
+    write_page(OUT_DIR / filename, body)
 
 
 def write_persona(c: dict[str, Any], role_pages: dict[str, str]) -> None:
@@ -417,11 +640,11 @@ def write_persona(c: dict[str, Any], role_pages: dict[str, str]) -> None:
     if c["job_id"] in role_pages:
         # from generated/personas/ -> docs/
         rel = Path("../../..") / role_pages[c["job_id"]]
-        role_link = f"- Job role doc: [{esc(c['job_id'])}]({rel.as_posix()})\n"
+        role_link = f"- Job role doc: [{mdx_text(c['job_id'])}]({rel.as_posix()})\n"
 
     phrases = ""
     if c["example_phrases"]:
-        phrases = "\n".join(f"- {esc(p)}" for p in c["example_phrases"][:8])
+        phrases = "\n".join(f"- {mdx_text(p)}" for p in c["example_phrases"][:8])
     else:
         phrases = '<p class="cyborg-empty">None listed</p>'
 
@@ -433,7 +656,8 @@ def write_persona(c: dict[str, Any], role_pages: dict[str, str]) -> None:
 
     res = c["resources"]
     retry = c["retry"]
-    prompt = esc(c["system_prompt"])
+    # The prompt goes into a fenced block verbatim; only a nested fence has to be neutered.
+    prompt_fence = c["system_prompt"].replace("```", "'''")
 
     mermaid = ""
     if c["reports_to"] or c["direct_reports"]:
@@ -451,27 +675,27 @@ def write_persona(c: dict[str, Any], role_pages: dict[str, str]) -> None:
     critical_panel = ""
     if c["security_level"] == "CRITICAL" or c["prefix"] == "PERS":
         critical_panel = f"""
-<div class="cyborg-panel cyborg-panel--critical" markdown="0">
+<div class="cyborg-panel cyborg-panel--critical">
   <h3>Elevated risk persona</h3>
-  <p>Security level <strong>{esc(c['security_level'])}</strong>.
+  <p>Security level <strong>{mdx_text(c['security_level'])}</strong>.
   Human approval required: <strong>{'yes' if c['human_approval_required'] else 'no'}</strong>.</p>
   <div class="cyborg-chip-row">Allowed invokers: {invokers}</div>
 </div>
 """
 
     body = f"""---
-title: "{c['display_name']} ({c['job_id']})"
-description: "Cyborg persona {c['job_id']} — {c['human_title']}"
+title: {mdx_front(f"{c['display_name']} ({c['job_id']})")}
+description: {mdx_front(f"Cyborg persona {c['job_id']} — {c['human_title']}")}
 tags: [cyborgs, generated, persona]
 ---
 
-# {esc(c['display_name'])}
+# {mdx_text(c['display_name'])}
 
-<div class="cyborg-detail-hero" markdown="0">
-  <span class="cyborg-avatar" data-prefix="{esc(c['prefix'])}" aria-hidden="true">{esc(initials)}</span>
+<div class="cyborg-detail-hero">
+  <span class="cyborg-avatar" data-prefix="{mdx_attr(c['prefix'])}" aria-hidden="true">{mdx_text(initials)}</span>
   <div>
-    <p class="cyborg-card__subtitle">{esc(c['human_title'])}</p>
-    <div class="cyborg-card__chips" style="margin-top:0.5rem">{chips}</div>
+    <p class="cyborg-card__subtitle">{mdx_text(c['human_title'])}</p>
+    <div class="cyborg-card__chips">{chips}</div>
   </div>
 </div>
 
@@ -485,7 +709,7 @@ tags: [cyborgs, generated, persona]
 - Safe operator review before enabling an agent
 - Traceability back to YAML source `cyborgs/{esc(c['path'])}`
 
-[← Roster](../index.md)
+[← Roster](../index{MDX_EXT})
 
 {critical_panel}
 
@@ -494,35 +718,35 @@ tags: [cyborgs, generated, persona]
 | Field | Value |
 | --- | --- |
 | Job ID | `{esc(c['job_id'])}` |
-| Domain | {esc(c['domain'])} |
+| Domain | {mdx_text(c['domain'])} |
 | Namespace | `{esc(c['namespace'])}` |
-| Job type | {esc(c['job_type'])} |
-| Reliability | {esc(c['reliability'])} |
-| SLA latency | {esc(c['sla'])} |
-| Priority | {esc(c['priority'])} |
-| Timeout | {esc(c['timeout_ms'])} ms |
-| Reports to | {esc(c['reports_to'] or '—')} |
+| Job type | {mdx_text(c['job_type'])} |
+| Reliability | {mdx_text(c['reliability'])} |
+| SLA latency | {mdx_text(c['sla'])} |
+| Priority | {mdx_text(c['priority'])} |
+| Timeout | {mdx_text(c['timeout_ms'])} ms |
+| Reports to | {mdx_text(c['reports_to'] or '—')} |
 
 ## Description
 
-{esc(c['short_description'])}
+{mdx_text(c['short_description'])}
 
 ## Capabilities
 
-<div class="cyborg-chip-row" markdown="0">{caps or '<span class="cyborg-empty">None</span>'}</div>
+<div class="cyborg-chip-row">{caps or '<span class="cyborg-empty">None</span>'}</div>
 
 ### LLM
 
-<div class="cyborg-chip-row" markdown="0">{''.join(chip(x, 'chip-cap') for x in c['llm_capabilities']) or '<span class="cyborg-empty">None</span>'}</div>
+<div class="cyborg-chip-row">{''.join(chip(x, 'chip-cap') for x in c['llm_capabilities']) or '<span class="cyborg-empty">None</span>'}</div>
 
 ## Tools and dependencies
 
-<div class="cyborg-chip-row" markdown="0">{tools or '<span class="cyborg-empty">None</span>'}</div>
+<div class="cyborg-chip-row">{tools or '<span class="cyborg-empty">None</span>'}</div>
 
 ## Tags and personalities
 
-<div class="cyborg-chip-row" markdown="0">{tags}</div>
-<div class="cyborg-chip-row" markdown="0">{personalities}</div>
+<div class="cyborg-chip-row">{tags}</div>
+<div class="cyborg-chip-row">{personalities}</div>
 
 ## Example phrases
 
@@ -534,7 +758,7 @@ tags: [cyborgs, generated, persona]
 <summary>Show system prompt</summary>
 
 ```text
-{c['system_prompt']}
+{prompt_fence}
 ```
 
 </details>
@@ -543,31 +767,31 @@ tags: [cyborgs, generated, persona]
 
 | Control | Value |
 | --- | --- |
-| Level | {esc(c['security_level'])} |
-| Encryption | {esc(c['encryption_required'])} |
-| Authentication | {esc(c['authentication_required'])} |
-| Authorization | {esc(c['authorization_required'])} |
-| Human approval | {esc(c['human_approval_required'])} |
+| Level | {mdx_text(c['security_level'])} |
+| Encryption | {mdx_text(c['encryption_required'])} |
+| Authentication | {mdx_text(c['authentication_required'])} |
+| Authorization | {mdx_text(c['authorization_required'])} |
+| Human approval | {mdx_text(c['human_approval_required'])} |
 
-<div class="cyborg-chip-row" markdown="0">Invokers: {invokers}</div>
+<div class="cyborg-chip-row">Invokers: {invokers}</div>
 
 ## Resources
 
 | Resource | Value |
 | --- | --- |
-| CPU cores | {esc(res.get('cpu_cores', ''))} |
-| Memory GB | {esc(res.get('memory_gb', ''))} |
-| Storage GB | {esc(res.get('storage_gb', ''))} |
-| Network Mbps | {esc(res.get('network_mbps', ''))} |
+| CPU cores | {mdx_text(res.get('cpu_cores', ''))} |
+| Memory GB | {mdx_text(res.get('memory_gb', ''))} |
+| Storage GB | {mdx_text(res.get('storage_gb', ''))} |
+| Network Mbps | {mdx_text(res.get('network_mbps', ''))} |
 
 ## Retry
 
 | Field | Value |
 | --- | --- |
-| Max retries | {esc(retry.get('max_retries', ''))} |
-| Initial backoff ms | {esc(retry.get('initial_backoff_ms', ''))} |
-| Max backoff ms | {esc(retry.get('max_backoff_ms', ''))} |
-| Multiplier | {esc(retry.get('backoff_multiplier', retry.get('multiplier', '')))} |
+| Max retries | {mdx_text(retry.get('max_retries', ''))} |
+| Initial backoff ms | {mdx_text(retry.get('initial_backoff_ms', ''))} |
+| Max backoff ms | {mdx_text(retry.get('max_backoff_ms', ''))} |
+| Multiplier | {mdx_text(retry.get('backoff_multiplier', retry.get('multiplier', '')))} |
 
 ## Knowledge docs
 
@@ -582,18 +806,22 @@ tags: [cyborgs, generated, persona]
 - Machine source: [`cyborgs/{esc(c['path'])}`](https://github.com/toxicoder/inkorporated/blob/main/cyborgs/{esc(c['path'])})
 {role_link}
 """
-    # Fix system prompt in details - should not double-escape in fence; use raw
-    body = body.replace(
-        f"```text\n{c['system_prompt']}\n```",
-        "```text\n" + c["system_prompt"].replace("```", "'''") + "\n```",
-    )
-    # title in frontmatter already quoted; body used esc on display - for markdown title use plain
-    body = body.replace(f"# {esc(c['display_name'])}", f"# {c['display_name']}", 1)
-    (PERSONAS_DIR / f"{c['job_id']}.md").write_text(body, encoding="utf-8")
+    write_page(PERSONAS_DIR / f"{c['job_id']}{MDX_EXT}", body)
 
 
 def _mermaid_id(job_id: str) -> str:
     return re.sub(r"[^A-Za-z0-9_]", "_", job_id)
+
+
+def _heading_anchor(title: str) -> str:
+    """Stable anchor for a slice heading.
+
+    Emitted as ``### Title [#anchor]`` rather than the MkDocs ``{#anchor}``: MDX reads the
+    braces as the start of a JavaScript expression, while fumadocs' remarkHeading plugin
+    honours the bracket form as an explicit id (``customId``), so the in-page TOC keeps
+    landing on the same addresses.
+    """
+    return re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
 
 
 def _node_label(job_id: str, labels: dict[str, str], max_len: int = 28) -> str:
@@ -769,7 +997,7 @@ def write_org_graph(cyborgs: list[dict[str, Any]]) -> None:
         if not member_ids:
             continue
         count = sum(1 for c in cyborgs if c["prefix"] in prefixes)
-        anchor = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
+        anchor = _heading_anchor(title)
         diagram = _flowchart(slice_edges, labels, "TB")
         if diagram.startswith("_No") and member_ids:
             # Flat fan-out under domain label when reports_to sparse
@@ -783,7 +1011,7 @@ def write_org_graph(cyborgs: list[dict[str, Any]]) -> None:
             diagram = "```mermaid\n" + "\n".join(lines) + "\n```"
         capped = len(slice_edges) >= 45
         slice_sections.append(
-            f'### {title} {{#{anchor}}}\n\n'
+            f'### {title} [#{anchor}]\n\n'
             f"{blurb} **{count}** personas in this slice"
             f"{' (diagram capped for readability)' if capped else ''}.\n\n"
             f"{diagram}\n"
@@ -800,7 +1028,7 @@ def write_org_graph(cyborgs: list[dict[str, Any]]) -> None:
         sec_lines.append(f'  "{level}" : {count}')
 
     toc = "\n".join(
-        f"- [{title}](#{re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')})"
+        f"- [{title}](#{_heading_anchor(title)})"
         for title, _, prefixes in ORG_SLICES
         if any(c["prefix"] in prefixes for c in cyborgs)
     )
@@ -823,7 +1051,7 @@ tags: [cyborgs, generated, mermaid]
 
 - Structural review of the agent fleet without a single unreadable mega-graph
 
-[← Roster](index.md)
+[← Roster](index{MDX_EXT})
 
 ## How to read these diagrams
 
@@ -856,7 +1084,7 @@ Top-of-house hierarchy only (board, CEO/C-suite anchors, and key vertical heads)
 {chr(10).join(sec_lines)}
 ```
 """
-    (OUT_DIR / "org_graph.md").write_text(body, encoding="utf-8")
+    write_page(OUT_DIR / f"org_graph{MDX_EXT}", body)
 
 
 def write_stats_json(cyborgs: list[dict[str, Any]]) -> None:
@@ -882,10 +1110,14 @@ def generate() -> int:
         return 1
 
     if OUT_DIR.exists():
-        # clean personas to avoid stale IDs
+        # clean personas to avoid stale IDs, and drop any page still wearing the
+        # pre-MDX extension so one page never exists in two renders at once
         if PERSONAS_DIR.exists():
-            for old in PERSONAS_DIR.glob("*.md"):
-                old.unlink()
+            for suffix in (".md", MDX_EXT):
+                for old in PERSONAS_DIR.glob(f"*{suffix}"):
+                    old.unlink()
+        for page in _TOP_LEVEL_PAGES:
+            (OUT_DIR / f"{page}.md").unlink(missing_ok=True)
     PERSONAS_DIR.mkdir(parents=True, exist_ok=True)
 
     role_pages = find_role_pages()
@@ -894,13 +1126,13 @@ def generate() -> int:
         cyborgs,
         "namespace",
         "Cyborgs by namespace",
-        "by_namespace.md",
+        f"by_namespace{MDX_EXT}",
     )
     write_grouped(
         cyborgs,
         "security_level",
         "Cyborgs by security level",
-        "by_security.md",
+        f"by_security{MDX_EXT}",
         order=["CRITICAL", "HIGH", "MEDIUM", "LOW", "NONE", "UNSPECIFIED"],
     )
     write_org_graph(cyborgs)

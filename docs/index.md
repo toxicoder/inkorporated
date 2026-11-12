@@ -67,7 +67,7 @@ Inkorporated is a **one-stop shop to spin up a full-blown global enterprise**: c
 
 ## Multi-version docs
 
-When published via mike:
+Published to GitHub Pages under two aliases:
 
-- **latest** — from `main`
-- **development** — from `development`
+- **latest** — from the release tag `vX.Y.Z` cut from the trunk
+- **development** — from the trunk checkout on `main`

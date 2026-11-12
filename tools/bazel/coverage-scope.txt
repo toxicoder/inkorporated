@@ -1,0 +1,10 @@
+# Coverage scope for the Python gate tooling: which files the 100% floor
+# measures, and why each one is the gate's own responsibility.
+#
+# One entry per line, `pattern<TAB>reason`. An entry with no reason fails the
+# check, and --strict-ledger fails an entry that matches nothing.
+
+tools/bazel/coverage_report.py	gate tooling written for this conversion; untested gate code reports confidence it has not earned
+tools/bazel/gate_policy.py	gate tooling written for this conversion; it is the machine check behind the target-naming rule, so it is tested to the line
+tools/bazel/glob_budget.py	vendored gate checker; the glob ratchet is only as good as the code enforcing it
+tools/bazel/owned_files_check.py	vendored gate checker; the file-ownership verdict the whole conversion rests on

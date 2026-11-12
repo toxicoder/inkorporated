@@ -1,0 +1,14 @@
+# Test-tree package: the guide a person reads before they run any of the lanes.
+#
+# The lanes themselves live in their own packages (//tests/config,
+# //tests/deployment, //tests/integration, //tests/kubernetes,
+# //tests/security) and each one owns its own scripts. This package exists so
+# the guide has an owner: docs/CONTRIBUTING.md and AGENTS.md point readers here,
+# so it is a build-time artefact of the test tree, not an orphan.
+
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "docs",
+    srcs = ["README.md"],
+)

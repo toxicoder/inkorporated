@@ -19,6 +19,7 @@
 ## Checklist
 
 - [ ] Validation / tests pass for touched areas
-- [ ] Docs updated (`./docs/manage-docs.sh build --strict` if docs changed)
+- [ ] Docs updated (`bazelisk run //docs:manage-docs -- build --strict` if docs changed)
 - [ ] No secrets committed
 - [ ] No hardcoded customer domains in Ingress / public URLs
+- [ ] Any new flag is declared in `config/flags.yaml` with `default: false`, an owner, an expiry, and one reader, and `bazelisk test //:gate` ran in both the on and off states

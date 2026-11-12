@@ -31,7 +31,7 @@ Our primary goal is to maximize long-term free cash flow per share. We allocate 
 
 As a growth-stage technology company, we balance growth and profitability using the **Rule of 40**:
 
-$$ \text{Growth Rate (\%)} + \text{Profit Margin (\%)} \ge 40 $$
+$$ \text\{Growth Rate (\%)\} + \text\{Profit Margin (\%)\} \ge 40 $$
 
 *   **Implication:** If we are growing at 100% YoY, we can afford to burn cash (-60% margin). If growth slows to 20%, we must generate 20% profit.
 *   **Target:** We aim to stay above the line, prioritizing growth in early stages and efficiency as we mature.
@@ -41,7 +41,7 @@ $$ \text{Growth Rate (\%)} + \text{Profit Margin (\%)} \ge 40 $$
 We do not scale negative unit economics. Before aggressive GTM expansion, a product line must demonstrate:
 
 *   **LTV / CAC > 3.0:** The Lifetime Value of a customer must be at least 3x the Cost to Acquire them.
-*   **Payback Period < 12 Months:** We should recover the CAC within the first year of the customer contract.
+*   **Payback Period \< 12 Months:** We should recover the CAC within the first year of the customer contract.
 
 ### Key Definitions
 *   **CAC (Customer Acquisition Cost):** (Sales + Marketing Spend) / New Customers Acquired.

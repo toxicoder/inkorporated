@@ -1,0 +1,27 @@
+# Deployment-lane tests: the Helm charts under apps/shared and the ArgoCD
+# Application / ApplicationSet definitions that hand them to a renderer.
+
+load("//build:defs.bzl", "repo_sh_test")
+
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "scripts",
+    srcs = [
+        "test_helm.sh",
+    ],
+)
+
+# strict: helm absent is fatal, not a skip. The target renders every chart
+# under apps/shared in a temp dir and asserts the output is valid Kubernetes,
+# so a green run always means helm really expanded the templates.
+repo_sh_test(
+    name = "test_helm",
+    srcs = ["test_helm.sh"],
+    strict = True,
+    data = [
+        "//apps:manifests",
+    ],
+    tags = ["gate"],
+    timeout = "short",
+)

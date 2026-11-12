@@ -13,7 +13,7 @@ output "worker_node_ips" {
 
 output "all_vm_ips" {
   description = "All VM IP addresses"
-  value       = concat(
+  value = concat(
     proxmox_vm_qemu.control_plane[*].ipconfig0,
     proxmox_vm_qemu.worker_node[*].ipconfig0
   )
@@ -31,7 +31,7 @@ output "worker_node_names" {
 
 output "vm_names" {
   description = "All VM names"
-  value       = concat(
+  value = concat(
     proxmox_vm_qemu.control_plane[*].name,
     proxmox_vm_qemu.worker_node[*].name
   )

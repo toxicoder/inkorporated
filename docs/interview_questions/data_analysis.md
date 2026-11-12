@@ -41,7 +41,7 @@ This guide contains 100+ Data Analysis interview questions, covering statistics,
 
 The P-value is the probability of seeing results *at least as extreme* as what we observed, assuming that nothing interesting is happening (the null hypothesis is true).
 
-*   **Low P-value (< 0.05):** "This result is very surprising if there's no actual effect. We should probably reject the idea that nothing is happening."
+*   **Low P-value (\< 0.05):** "This result is very surprising if there's no actual effect. We should probably reject the idea that nothing is happening."
 *   **High P-value (> 0.05):** "This result could easily happen by random chance. We can't say for sure there's an effect."
 
 **Candidate Response Paths:**
@@ -105,8 +105,8 @@ As the size of a sample increases, the sample mean gets closer to the expected v
 ### 9. Describe the difference between a Normal and a Skewed distribution.
 
 *   **Normal:** Symmetric, Bell-shaped. Mean = Median = Mode.
-*   **Left Skewed (Negative):** Tail is on the left. Mean < Median < Mode.
-*   **Right Skewed (Positive):** Tail is on the right. Mode < Median < Mean. (e.g., Income distribution).
+*   **Left Skewed (Negative):** Tail is on the left. Mean \< Median \< Mode.
+*   **Right Skewed (Positive):** Tail is on the right. Mode \< Median \< Mean. (e.g., Income distribution).
 
 ### 10. How do you handle missing data?
 
@@ -167,7 +167,7 @@ $Z = (X - \mu) / \sigma$
 ### 19. When should you use a T-test vs a Z-test?
 
 *   **Z-test:** When population variance ($\sigma^2$) is **known** and sample size is large ($n > 30$).
-*   **T-test:** When population variance is **unknown** or sample size is small ($n < 30$).
+*   **T-test:** When population variance is **unknown** or sample size is small ($n \< 30$).
 
 ### 20. What is a Box Plot (Box and Whisker)?
 
@@ -179,7 +179,7 @@ A standardized way of displaying the distribution of data based on a five-number
 5.  Maximum
 
 **Chart: Box Plot Components**
-```
+```text
       |----[  Q1  |  Q3  ]----|
     Min        Median        Max
 ```
@@ -189,7 +189,7 @@ A standardized way of displaying the distribution of data based on a five-number
 ### 21. How do you detect outliers?
 
 *   **Visual:** Box plots, Scatter plots.
-*   **Z-Score:** Points with $Z > 3$ or $Z < -3$.
+*   **Z-Score:** Points with $Z > 3$ or $Z \< -3$.
 *   **IQR Method:** Points outside $1.5 \times IQR$ range (below $Q1 - 1.5 \times IQR$ or above $Q3 + 1.5 \times IQR$).
 
 **Candidate Response Paths:**
@@ -207,7 +207,7 @@ Converting categorical variables into a form that could be provided to ML algori
 
 Converting each value in a column to a number.
 *   Low, Medium, High -> 0, 1, 2.
-*   *Risk:* Algorithms might misinterpret the numeric order (e.g., treating Dog(1) < Cat(2) < Bird(3) as a mathematical relationship).
+*   *Risk:* Algorithms might misinterpret the numeric order (e.g., treating Dog(1) \< Cat(2) \< Bird(3) as a mathematical relationship).
 
 ### 24. How do you handle duplicate data?
 
@@ -218,7 +218,7 @@ Converting each value in a column to a number.
 ### 25. What is Scaling/Normalization?
 
 Adjusting the range of features.
-*   **Min-Max Scaling:** Rescales to [0, 1]. $X_{new} = (X - X_{min}) / (X_{max} - X_{min})$.
+*   **Min-Max Scaling:** Rescales to [0, 1]. $X_\{new\} = (X - X_\{min\}) / (X_\{max\} - X_\{min\})$.
 *   **Standardization (Z-score):** Center around 0 with std dev of 1.
 
 ### 26. Why do we need to scale data?
@@ -296,7 +296,7 @@ Used for imbalanced datasets. It creates synthetic samples for the minority clas
 
 ### 40. How do you validate that your data cleaning was successful?
 
-*   **Sanity Checks:** Check ranges (Age < 0?), uniqueness (IDs), constraints.
+*   **Sanity Checks:** Check ranges (Age \< 0?), uniqueness (IDs), constraints.
 *   **Summary Statistics:** Compare mean/distribution before and after (unless correction was the goal).
 *   **Null Checks:** Ensure no unexpected nulls remain.
 
@@ -487,7 +487,7 @@ Removing sections of the tree that provide little power to classify instances (t
 ### 73. What is Logistic Regression?
 
 Despite the name, it's a **Classification** algorithm for binary outcomes. It uses the Sigmoid function to squash output between 0 and 1 (probability).
-$P(y=1) = 1 / (1 + e^{-(b0 + b1x)})$.
+$P(y=1) = 1 / (1 + e^\{-(b0 + b1x)\})$.
 
 ### 74. What is Gradient Descent?
 

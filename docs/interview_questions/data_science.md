@@ -100,13 +100,13 @@ graph LR
 *   **Covariance:** Measures the direction of the linear relationship between two variables. Range: $(-\infty, \infty)$.
 *   **Correlation (Pearson):** Normalized version of covariance. Measures both strength and direction. Range: $[-1, 1]$.
 
-$$ Correlation(X, Y) = \frac{Covariance(X, Y)}{\sigma_X \sigma_Y} $$
+$$ Correlation(X, Y) = \frac\{Covariance(X, Y)\}\{\sigma_X \sigma_Y\} $$
 
 ### 7. What is Bayes' Theorem?
 
 Describes the probability of an event, based on prior knowledge of conditions that might be related to the event.
 
-$$ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)} $$
+$$ P(A|B) = \frac\{P(B|A) \cdot P(A)\}\{P(B)\} $$
 
 *   $P(A|B)$: Posterior
 *   $P(B|A)$: Likelihood
@@ -126,7 +126,7 @@ A randomized control experiment to compare two versions (A and B) of a single va
 ### 9. When should you use a t-test vs a Z-test?
 
 *   **Z-test:** Population variance ($\sigma^2$) is **known** OR Sample size is large ($n > 30$).
-*   **t-test:** Population variance is **unknown** AND Sample size is small ($n < 30$).
+*   **t-test:** Population variance is **unknown** AND Sample size is small ($n \< 30$).
 
 ### 10. What is R-squared ($R^2$)?
 
@@ -165,7 +165,7 @@ A range of values so defined that there is a specified probability that the valu
 
 ### 17. Geometric vs Arithmetic Mean?
 *   **Arithmetic:** $(a+b)/2$. Used for sums/counts.
-*   **Geometric:** $\sqrt{a \cdot b}$. Used for growth rates/percentages.
+*   **Geometric:** $\sqrt\{a \cdot b\}$. Used for growth rates/percentages.
 
 ### 18. What is Prior and Posterior Probability?
 *   **Prior:** Probability distribution before seeing data.
@@ -195,7 +195,7 @@ Models the relationship between two variables by fitting a linear equation ($Y =
 ### 23. What is Logistic Regression?
 Used for binary classification. Estimates the probability that an instance belongs to a particular class using the **Sigmoid** function.
 
-$$ \sigma(z) = \frac{1}{1 + e^{-z}} $$
+$$ \sigma(z) = \frac\{1\}\{1 + e^\{-z\}\} $$
 
 ### 24. Explain Decision Trees.
 A flowchart-like structure where an internal node represents a "test" on an attribute (e.g., is Age > 18?), each branch represents the outcome of the test, and each leaf node represents a class label.
@@ -524,7 +524,7 @@ Temporary result set defined within the execution scope of a single statement. `
 
 ### 82. What is the F1-Score?
 Harmonic mean of Precision and Recall.
-$$ F1 = 2 \cdot \frac{Precision \cdot Recall}{Precision + Recall} $$
+$$ F1 = 2 \cdot \frac\{Precision \cdot Recall\}\{Precision + Recall\} $$
 Used when you need a balance between Precision and Recall.
 
 ### 83. Explain Confusion Matrix.

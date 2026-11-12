@@ -1,0 +1,47 @@
+# Unit tests for the gate wrappers themselves: the doctor report, the runfiles
+# walk in gate_lib.sh, and the failure modes of the run_*.sh wrappers.
+#
+# These live in their own package, so //tools/bazel/sh names them by label
+# instead of reaching into a subdirectory.
+
+load("//build:defs.bzl", "repo_sh_test")
+
+package(default_visibility = ["//visibility:public"])
+
+# The denominator //tools/bazel/sh:coverage runs against.
+filegroup(
+    name = "tests",
+    srcs = [
+        "doctor_test.sh",
+        "gate_lib_test.sh",
+        "wrappers_test.sh",
+    ],
+)
+
+repo_sh_test(
+    name = "doctor_test",
+    srcs = ["doctor_test.sh"],
+    data = ["//tools/bazel/sh:scripts"],
+    # The census runs every required tool's version probe to tell present from
+    # BROKEN, and the python linters cost seconds each, so the target is a
+    # minute-scale test on a shared runner rather than the few seconds a laptop
+    # sees.
+    tags = ["gate"],
+    timeout = "moderate",
+)
+
+repo_sh_test(
+    name = "gate_lib_test",
+    srcs = ["gate_lib_test.sh"],
+    data = ["//tools/bazel/sh:scripts"],
+    tags = ["gate"],
+    timeout = "short",
+)
+
+repo_sh_test(
+    name = "wrappers_test",
+    srcs = ["wrappers_test.sh"],
+    data = ["//tools/bazel/sh:scripts"],
+    tags = ["gate"],
+    timeout = "short",
+)

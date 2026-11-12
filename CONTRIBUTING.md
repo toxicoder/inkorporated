@@ -112,6 +112,23 @@ One or two sentences: *what* and *why*.
 - [ ] Any flag added is declared in `config/flags.yaml` with `default: false`, owner, expiry
 ```
 
+### Review
+
+The trunk is protected, so a pull request is the only way work lands. These are repository
+settings, and they are what turn the rules above from convention into a gate:
+
+| Requirement | Detail |
+| --- | --- |
+| Pull request required | Nothing is pushed to `main` directly; force-push and branch deletion are off. |
+| Branch up to date | Rebase or merge trunk into your branch before the merge is offered. |
+| Required checks | `bazel-tests`, `fast`, `validate-domain`, and `docs` must report green. `bazelisk test //:gate` is the lane behind `bazel-tests`. |
+| Code owner approval | `.github/CODEOWNERS` names an owner for `cyborgs/`, `config/`, `infrastructure/`, `apps/`, and `.github/`, and that owner must approve. |
+| Conversations resolved | Every review thread has to be closed. |
+
+Code owner review is also how the two rules that used to live only in prose get enforced: an
+AI-assisted draft needs a human reviewer before merge (`docs/CONTRIBUTING.md`), and a CRITICAL or
+Family Office persona change needs the owner who reads `docs/cyborgs/schema.md`.
+
 ### Promotion (trunk → release)
 
 Promotion names one ref or digest for every environment; nothing selects a branch.

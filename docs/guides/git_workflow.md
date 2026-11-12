@@ -67,6 +67,15 @@ hotfix branch and no parallel production line to back-merge.
 Unfinished work ships on trunk behind a flag that defaults off. See
 [Feature flags](#feature-flags) below and [configuration.md](configuration.md).
 
+## Review
+
+A pull request is the only way onto the trunk. Force-push and deletion are off, the branch has
+to be current with trunk, `bazel-tests`, `fast`, `validate-domain`, and `docs` have to report
+green, and the owner named in `.github/CODEOWNERS` has to approve the trees they own. That
+approval is the check behind "AI-assisted drafts are human-reviewed before merge" and behind the
+human approval a CRITICAL or Family Office persona change needs. The full table is in
+[CONTRIBUTING.md](https://github.com/toxicoder/inkorporated/blob/main/CONTRIBUTING.md).
+
 ## Commits
 
 ```text

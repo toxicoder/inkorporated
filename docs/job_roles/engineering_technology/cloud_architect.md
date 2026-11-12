@@ -256,7 +256,7 @@ Partners:
 
 ## Cyborg specification
 
-Machine persona YAML: [`cyborgs/SWEN1015.yaml`](https://github.com/toxicoder/inkorporated/blob/main/cyborgs/SWEN1015.yaml)
+Machine persona YAML: [`cyborgs/SWEN1015.yaml`](https://github.com/toxicoder/inkorporated/blob/development/cyborgs/SWEN1015.yaml)
 
 Generated roster card: [Cyborg roster](../../cyborgs/generated/index.md) → persona `SWEN1015`
 

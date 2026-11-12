@@ -252,7 +252,7 @@ Partners:
 
 ## Cyborg specification
 
-Machine persona YAML: [`cyborgs/SALE9007.yaml`](https://github.com/toxicoder/inkorporated/blob/main/cyborgs/SALE9007.yaml)
+Machine persona YAML: [`cyborgs/SALE9007.yaml`](https://github.com/toxicoder/inkorporated/blob/development/cyborgs/SALE9007.yaml)
 
 Generated roster card: [Cyborg roster](../../cyborgs/generated/index.md) → persona `SALE9007`
 

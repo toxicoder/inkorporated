@@ -9,9 +9,9 @@
 
 import { afterEach, describe, expect, it } from "vitest";
 
-import { basePath, docsAlias, REPO, searchIndexPath } from "../../lib/site";
+import { basePath, docsAlias, gitRef, REPO, searchIndexPath } from "../../lib/site";
 
-const ENV_KEYS = ["NEXT_BASE_PATH", "DOCS_ALIAS", "INK_DOCS_VERSION"] as const;
+const ENV_KEYS = ["NEXT_BASE_PATH", "DOCS_ALIAS", "INK_DOCS_VERSION", "INK_DOCS_GIT_REF"] as const;
 
 const originalEnv: Record<string, string | undefined> = {};
 
@@ -90,5 +90,26 @@ describe("searchIndexPath", () => {
       `/${REPO.repo}/development/api/search`
     );
     expect(searchIndexPath(`/${REPO.repo}/latest/`)).toBe(`/${REPO.repo}/latest/api/search`);
+  });
+});
+
+describe("gitRef", () => {
+  it("honours the ref the deploy was handed, which is how a release build names its tag", () => {
+    process.env.INK_DOCS_GIT_REF = "v1.4.0";
+    process.env.DOCS_ALIAS = "latest";
+    expect(gitRef()).toBe("v1.4.0");
+  });
+
+  it("names the trunk for a trunk build", () => {
+    process.env.INK_DOCS_VERSION = "development";
+    expect(gitRef()).toBe("development");
+  });
+
+  it("names the trunk rather than a retired production branch when nothing is stamped", () => {
+    // `remark-git-ref.ts` stamps every committed `blob/<ref>/` link with this value, so a
+    // retired ref here would silently send ~580 source links into a deleted branch.
+    delete process.env.INK_DOCS_GIT_REF;
+    process.env.DOCS_ALIAS = "latest";
+    expect(gitRef()).toBe("development");
   });
 });

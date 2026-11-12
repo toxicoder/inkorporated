@@ -25,7 +25,7 @@ export const SITE_DESCRIPTION =
  * Active docs version alias (`development`, `latest`, or empty).
  *
  * `INK_DOCS_VERSION` is what the repository has always used for the alias; the deploy
- * workflow sets it per branch.
+ * workflow sets it from the alias it was handed, never from the ref that triggered it.
  */
 export function docsVersion(): string {
   return (process.env.INK_DOCS_VERSION ?? "").trim().toLowerCase();
@@ -35,14 +35,15 @@ export function docsVersion(): string {
  * Git ref that "Edit this page" and source links point at.
  *
  * Reproduces the retired `docs/hooks.py` branch-aware `edit_uri`: the published docs are
- * built per alias (`latest` from `main`, `development` from `development`), and the ref has
- * to match the alias so an edit opens the file the reader is actually reading.
+ * built per alias, and the ref has to match what that build was made from, so an edit opens
+ * the file the reader is actually reading.  A release build is handed its tag in
+ * `INK_DOCS_GIT_REF`; a trunk build falls back to the trunk itself, which is the only
+ * long-lived ref (see docs/guides/git_workflow.md).
  */
 export function gitRef(): string {
   const override = (process.env.INK_DOCS_GIT_REF ?? "").trim();
   if (override) return override;
-  if (docsVersion() === "development") return "development";
-  return "main";
+  return "development";
 }
 
 /** True when the current build is the development alias (drives the banner). */

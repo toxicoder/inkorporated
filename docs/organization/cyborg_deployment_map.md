@@ -53,4 +53,4 @@ Default from ported catalog: **FOUR_NINES** reliability tier and latency budget 
 - Separate audit trail from corporate GTM agents
 - Never train public models on FO conversation content
 
-Machine specs live in repo-root [`cyborgs/`](https://github.com/toxicoder/inkorporated/tree/main/cyborgs). Human overview: [Cyborgs](../cyborgs/index.md).
+Machine specs live in repo-root [`cyborgs/`](https://github.com/toxicoder/inkorporated/tree/development/cyborgs). Human overview: [Cyborgs](../cyborgs/index.md).

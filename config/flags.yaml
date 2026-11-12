@@ -1,0 +1,35 @@
+# Feature and strictness flags this repository reads at process start.
+#
+# Checked in, so no secret belongs here: a secret goes in the GitHub Environment or in
+# `.devcontainer/.env` (mode 600, never committed) that the deploy reads.
+#
+# Rules for anything added here:
+#   - off by default on the trunk, so an unfinished feature is never load-bearing;
+#   - one owner, one expiry, and one reader - the key is named exactly as the process reads
+#     it, so `git grep -w <FLAG>` finds every use;
+#   - the gate runs both states before a pull request opens;
+#   - retiring it deletes the declaration, the branch, and the off-path in one `chore:` PR.
+#
+# Precedence, highest first: process environment, then `stacks.<deploy-target-name>.<FLAG>`,
+# then `flags.<FLAG>.environments.<env>`, then `flags.<FLAG>.default`. No live flag needs an
+# `environments:` block today.
+#
+# Environment values (domains, namespaces, sizes) are not flags. They live in
+# `config/environments/<env>/`, `apps/environments/<env>/`,
+# `infrastructure/ansible/inventory/`, and the GitHub Environments; see
+# docs/guides/environments.md.
+version: 1
+flags:
+  REQUIRE_LINT_TOOLS:
+    default: false
+    owner: toxicoder
+    description: >-
+      Make a missing lint or IaC tool a failure rather than a WARN skip. Read at one seam -
+      the presence guards in infrastructure/ansible/ansible_lint_wrapper.sh,
+      infrastructure/terraform/check_fmt.sh, infrastructure/terraform/validate_terraform.sh,
+      and tests/deployment/test_helm.sh - and exported as 1 for every strict lane by the
+      `strict = True` macro in build/defs.bzl, so it is on inside //:gate and off in an
+      ordinary host shell. `bazelisk run //:doctor` names a tool that is on PATH but cannot
+      run. Retire it, with its off-path, once the devcontainer image ships ansible-lint,
+      yamllint, helm and terraform at the pins in tools/bazel/lint-requirements.txt.
+    expires: 2027-06-30

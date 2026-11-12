@@ -251,7 +251,7 @@ Partners:
 
 ## Cyborg specification
 
-Machine persona YAML: [`cyborgs/MKTG9012.yaml`](https://github.com/toxicoder/inkorporated/blob/main/cyborgs/MKTG9012.yaml)
+Machine persona YAML: [`cyborgs/MKTG9012.yaml`](https://github.com/toxicoder/inkorporated/blob/development/cyborgs/MKTG9012.yaml)
 
 Generated roster card: [Cyborg roster](../../cyborgs/generated/index.md) → persona `MKTG9012`
 

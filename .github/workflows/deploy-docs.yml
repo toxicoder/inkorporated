@@ -100,6 +100,11 @@ jobs:
       NEXT_TELEMETRY_DISABLED: "1"
       NODE_OPTIONS: "--max-old-space-size=5120"
     steps:
+      # A job resolves `uses: ./...` from its own workspace before any step runs, so the repo
+      # has to be on disk for the composite action to be found at all. The action still does
+      # its own checkout afterwards, at the ref it is handed, which is what a release needs.
+      - uses: actions/checkout@v7
+
       - name: Export the alias
         id: export
         uses: ./.github/actions/docs-export
@@ -129,6 +134,9 @@ jobs:
       NEXT_TELEMETRY_DISABLED: "1"
       NODE_OPTIONS: "--max-old-space-size=5120"
     steps:
+      # Resolved before the action's own checkout, for the reason given in the staging job.
+      - uses: actions/checkout@v7
+
       - name: Export the alias
         id: export
         uses: ./.github/actions/docs-export

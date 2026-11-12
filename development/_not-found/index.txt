@@ -1,17 +1,26 @@
 1:"$Sreact.fragment"
-2:I[58414,["5662","static/chunks/5662-e59a18b2deeda7bd.js","3922","static/chunks/3922-70a9005c2e9fff1f.js","1178","static/chunks/1178-8eb551475c9b3201.js","7504","static/chunks/7504-8955f337d9ad8222.js","7177","static/chunks/app/layout-01c89fbce8dcce1b.js"],"Provider"]
-3:I[57121,[],""]
-4:I[74581,[],""]
-5:I[90484,[],"OutletBoundary"]
-6:"$Sreact.suspense"
-9:I[90484,[],"ViewportBoundary"]
-b:I[90484,[],"MetadataBoundary"]
-d:I[27123,[],"default",1]
+2:"static/chunks/5662-9c1c38824831f9e3.js"
+3:"static/chunks/3922-f60adde8eb455260.js"
+4:"static/chunks/1178-845c8b3c89228e31.js"
+5:"static/chunks/7504-c7c936d49fc4d627.js"
+6:"static/chunks/app/layout-01c89fbce8dcce1b.js"
+7:I[58414,["5662","$2","3922","$3","1178","$4","7504","$5","7177","$6"],"Provider"]
+8:I[57121,[],""]
+9:I[74581,[],""]
+d:I[90484,[],"OutletBoundary"]
+e:"$Sreact.suspense"
+10:"ViewportBoundary"
+11:I[90484,[],"$10"]
+13:"MetadataBoundary"
+14:I[90484,[],"$13"]
+16:I[27123,[],"default",1]
 :HL["/inkorporated/development/_next/static/css/38397e0301dce83c.css","style"]
-8:X
-0:{"P":null,"c":["","_not-found",""],"q":"","i":false,"f":[[["",{"children":["_not-found",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/inkorporated/development/_next/static/css/38397e0301dce83c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"flex flex-col min-h-screen","suppressHydrationWarning":true,"children":["$","$L2",null,{"searchFrom":"/inkorporated/development/api/search","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","main",null,{"className":"mx-auto max-w-3xl px-6 py-24","children":[["$","h1",null,{"className":"text-2xl font-bold text-fd-foreground","children":"Page not found"}],["$","p",null,{"className":"mt-3 text-fd-muted-foreground","children":["That page is not part of the documentation.  Use search, or start from the",["$","a",null,{"className":"text-fd-primary underline underline-offset-2","href":"/","children":[" ","overview"]}],"."]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","main",null,{"className":"mx-auto max-w-3xl px-6 py-24","children":[["$","h1",null,{"className":"text-2xl font-bold text-fd-foreground","children":"Page not found"}],["$","p",null,{"className":"mt-3 text-fd-muted-foreground","children":["That page is not part of the documentation.  Use search, or start from the",["$","a",null,{"className":"text-fd-primary underline underline-offset-2","href":"/","children":[" ","overview"]}],"."]}]]}],null,["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,null]},null,false,"$8"]},null,false,null],["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],null]}],false]],"m":"$undefined","G":["$d",[]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Rq5DzqSIGa-3-RuZmqpJ-"}
-8:C
-a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-e:I[86869,[],"IconMark"]
-7:null
-c:[["$","title","0",{"children":"Page not found | Enterprise Operating System"}],["$","meta","1",{"name":"description","content":"Enterprise operating system and hybrid-cloud infrastructure documentation"}],["$","link","2",{"rel":"icon","href":"/inkorporated/development/icon.svg?fd435a07e34ddd4e","type":"image/svg+xml","sizes":"any"}],["$","$Le","3",{}]]
+b:X
+c:[["children",{"s":"__PAGE__","h":512,"d":{"r":["$","$1","c",{"children":[["$","main",null,{"className":"mx-auto max-w-3xl px-6 py-24","children":[["$","h1",null,{"className":"text-2xl font-bold text-fd-foreground","children":"Page not found"}],["$","p",null,{"className":"mt-3 text-fd-muted-foreground","children":["That page is not part of the documentation.  Use search, or start from the",["$","a",null,{"className":"text-fd-primary underline underline-offset-2","href":"/","children":[" ","overview"]}],"."]}]]}],null,["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]]}],"p":false,"v":null}}]]
+a:[["children",{"s":"_not-found","h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$b"},"c":"$Qc"}]]
+0:{"P":null,"c":["","_not-found",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/inkorporated/development/_next/static/css/38397e0301dce83c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"flex flex-col min-h-screen","suppressHydrationWarning":true,"children":["$","$L7",null,{"searchFrom":"/inkorporated/development/api/search","children":["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","main",null,{"className":"mx-auto max-w-3xl px-6 py-24","children":[["$","h1",null,{"className":"text-2xl font-bold text-fd-foreground","children":"Page not found"}],["$","p",null,{"className":"mt-3 text-fd-muted-foreground","children":["That page is not part of the documentation.  Use search, or start from the",["$","a",null,{"className":"text-fd-primary underline underline-offset-2","href":"/","children":[" ","overview"]}],"."]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]]}],"p":false,"v":null},"c":"$Qa"},"h":{"r":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L11",null,{"children":"$L12"}],["$","$L14",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$e",null,{"name":"Next.Metadata","children":"$L15"}]}],null]}],null]}],"p":false,"v":null}},"m":"$undefined","G":["$16",[]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"1jrduOtP69-rRqrVg51P-"}
+b:C
+12:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+17:I[86869,[],"IconMark"]
+f:null
+15:[["$","title","0",{"children":"Page not found | Enterprise Operating System"}],["$","meta","1",{"name":"description","content":"Enterprise operating system and hybrid-cloud infrastructure documentation"}],["$","link","2",{"rel":"icon","href":"/inkorporated/development/icon.svg?fd435a07e34ddd4e","type":"image/svg+xml","sizes":"any"}],["$","$L17","3",{}]]

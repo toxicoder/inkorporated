@@ -1,2 +1,4 @@
 :HL["/inkorporated/development/_next/static/css/38397e0301dce83c.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"slug","param":{"type":"oc","key":"training/product","siblings":["_not-found","_global-error","api","icon.svg"]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"Rq5DzqSIGa-3-RuZmqpJ-"}
+2:[["children",{"s":"__PAGE__","h":160}]]
+1:[["children",{"s":{"n":"slug","t":"oc","k":"training/product","s":["_not-found","_global-error","api","icon.svg"]},"h":96,"c":"$Q2"}]]
+0:{"b":"1jrduOtP69-rRqrVg51P-","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

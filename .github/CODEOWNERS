@@ -1,0 +1,64 @@
+# Code owners for the Inkorporated monorepo.
+#
+# What this file enforces. With "Require review from Code Owners" enabled on the
+# trunk's branch protection, GitHub will not accept a pull request until the owner
+# named here has reviewed it, so a change to a safety-critical tree cannot land on
+# the author's own approval. Two rules the docs already state, and that nothing
+# used to check, become enforceable through this file:
+#
+#   - AI-assisted drafts are human-reviewed before merge
+#     (docs/CONTRIBUTING.md, "Page structure");
+#   - CRITICAL / Family Office cyborg personas keep human approval and restricted
+#     invokers (AGENTS.md section 9; the per-persona keys are
+#     `human_approval_required` and `allowed_invokers` in cyborgs/<JOB_ID>.yaml).
+#
+# The catch-all is what makes an owner review unavoidable repo-wide, including for
+# a docs-only pull request written by a cyborg. The rules below it name the trees
+# where that review has to be deliberate rather than incidental: provisioning,
+# configuration, GitOps, the persona specs, and the CI that gates all of it.
+#
+# Patterns are gitignore-style and matched top to bottom; the last match wins.
+# Flow and review expectations: CONTRIBUTING.md. Trunk, branch prefixes, and
+# promotion by tag: docs/guides/git_workflow.md. Safety invariants that no review
+# can waive: docs/project-conventions.md section 14.
+
+# Everything without a more specific rule still needs the repository owner.
+* @toxicoder
+
+# Machine agent personas. A persona prompt is an executable policy: it names the
+# tools the agent may use and the side effects it may take.
+# TODO(owner): wants a security/Family Office steward who reads
+# docs/cyborgs/schema.md and approves CRITICAL side effects and invoker lists.
+cyborgs/ @toxicoder
+
+# Family Office (PERS*) personas hold the FO data boundary; treat these as
+# CRITICAL regardless of the security level the YAML declares.
+cyborgs/PERS*.yaml @toxicoder
+
+# Global configuration, environment values, and the domain template the Ingress
+# manifests render from. This is where the no-hardcoded-domains rule lives.
+config/ @toxicoder
+
+# The flag registry: every flag off by default, with one owner, one expiry, and
+# one reader. A flag that defaults on is a review failure, not a preference.
+config/flags.yaml @toxicoder
+
+# Provisioning. Plan-affecting edits are reviewed line by line.
+# TODO(owner): wants a platform/Proxmox-and-cloud infra owner.
+infrastructure/terraform/ @toxicoder
+
+# Host and k3s configuration. Lint lane:
+# bazelisk test //infrastructure/ansible:ansible_lint.
+# TODO(owner): wants a platform/Ansible owner.
+infrastructure/ansible/ @toxicoder
+
+# GitOps source of truth for the clusters; Ingress here is checked by
+# bazelisk test //:validate_domain_config.
+# TODO(owner): wants a GitOps/ArgoCD owner.
+apps/ @toxicoder
+
+# The gate itself: workflows, composite actions, dependabot, the PR and issue
+# templates, and this file. A change here changes what "green" means, so it cannot
+# be merged by the person who wrote it.
+# TODO(owner): wants a CI/build owner.
+.github/ @toxicoder

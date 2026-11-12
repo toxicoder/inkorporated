@@ -1,4 +1,4 @@
 :HL["/inkorporated/development/_next/static/css/38397e0301dce83c.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":{"n":"slug","t":"oc","k":"organization/matrix_model","s":["_not-found","_global-error","api","icon.svg"]},"h":96,"c":"$Q2"}]]
-0:{"b":"t7LWEDH0PYeKBMC-LotV_","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"P1PxITv9Xz3H0v8J2Au-I","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

@@ -167,11 +167,14 @@ fi
 # lines are skipped, since the file documents the race in prose.
 # ---------------------------------------------------------------------------
 # Written without awk and without backslash escapes on purpose. awk folds the
-# escapes in a -v assignment, and gawk drops the one in `\|` where mawk keeps
-# it; the collapsed form reads the pipe as an alternation and its first branch
-# then matches every `echo` and `printf` line in the file, which is how this
-# guard once failed CI over lines 27, 32, 53, 64, 75 and 513. A bracket
-# expression and POSIX classes carry the same meaning in every shell.
+# escapes it finds in a -v assignment, and the implementations disagree about
+# one they do not recognize: the awk on the CI runner turned `\|` into a bare
+# `|`, so the pattern read the pipe as an alternation and its first branch then
+# matched every `echo` and `printf` line in the file. That is how this guard
+# once failed CI over lines 27, 32, 53, 64, 75 and 513 while passing locally,
+# where awk is mawk 1.3.4 and keeps the backslash. Deleting the backslash by
+# hand reproduced those exact six lines. A bracket expression and POSIX classes
+# mean the same thing in every shell, with no implementation left to agree on.
 VULNERABLE_SHAPE='(printf|echo)[^|]*[|][[:space:]]*(grep[[:space:]]+-[[:alpha:]]*q|head([^[:alpha:]]|$))'
 # Continuations are folded first: the assertion that went red in issue #45
 # breaks the line between the writer and the pipe, so a line-at-a-time scan

@@ -12,6 +12,7 @@ filegroup(
         "test_config_validation.sh",
         "test_env_vars.sh",
         "test_environment_inheritance.sh",
+        "test_scan_secrets_assertions.sh",
         "test_validate_infrastructure.sh",
         "test_validation_script.sh",
         "validate_infrastructure.sh",
@@ -101,6 +102,20 @@ repo_sh_test(
         "//apps:manifests",
         "//infrastructure/ansible:playbooks",
         "//tools/bazel:secrets_allowlist",
+    ],
+    tags = ["gate", "security"],
+    timeout = "short",
+)
+
+# Guards the assertion shape of the lane above. Issue #45 was a shell race in
+# scan_secrets.sh, not a detector miss: a `printf | grep -q` pipeline under
+# pipefail reports failure for a finding grep had already matched. Needs the
+# scanner as data because it reads the assertion shape straight out of it.
+repo_sh_test(
+    name = "test_scan_secrets_assertions",
+    srcs = ["test_scan_secrets_assertions.sh"],
+    data = [
+        "scan_secrets.sh",
     ],
     tags = ["gate", "security"],
     timeout = "short",

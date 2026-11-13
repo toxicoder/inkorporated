@@ -185,6 +185,8 @@ bazelisk test //docs:build                     # strict docs export (host lane)
 
 *   MCP settings: `cline_mcp_settings.json` (non-secret) + `.devcontainer/.env` (secrets)
 *   Security scan: `//tests/config:config_security_scan`
+*   Scanner assertion guard: `//tests/config:test_scan_secrets_assertions` — keeps
+    that scan's assertions in the shape that cannot red-light on a SIGPIPE race
 *   Never commit API keys or agent auth state
 
 ---

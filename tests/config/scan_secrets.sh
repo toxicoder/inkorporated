@@ -308,8 +308,14 @@ fixture_findings="$(scan_files "${WORKDIR}/" "${FIXTURE}"/*)"
 for idx in "${!PATTERN_NAMES[@]}"; do
     want="${FIXTURE_FILES[$idx]}"
     name="${PATTERN_NAMES[$idx]}"
-    if printf '%s\n' "$fixture_findings" \
-        | grep -qE "^fixture/${want}"$'\t''[0-9]+'$'\t'"${name}\$"; then
+    # The findings reach grep through a here-string, never a pipe. Under
+    # `set -o pipefail` a `printf | grep -q` pipeline reports failure even when
+    # grep matched: grep exits on the first hit, the writer is still flushing
+    # the remaining lines, takes SIGPIPE, and pipefail promotes that 141 to the
+    # status of the whole pipeline. The assertion then contradicts its own
+    # output, which is what made this lane red at random.
+    if grep -qE "^fixture/${want}"$'\t''[0-9]+'$'\t'"${name}\$" \
+        <<<"$fixture_findings"; then
         ok "the detector flags a planted ${name} in fixture/${want}"
     else
         fail "the detector does not flag a planted ${name}" \
@@ -318,7 +324,7 @@ for idx in "${!PATTERN_NAMES[@]}"; do
     fi
 done
 
-if printf '%s\n' "$fixture_findings" | grep -qE '^fixture/clean'; then
+if grep -qE '^fixture/clean' <<<"$fixture_findings"; then
     fail "the detector flags the clean fixture" \
         "a benign config file must produce no finding, got:" \
         "$(printf '%s\n' "$fixture_findings" | grep -E '^fixture/clean')"
@@ -374,7 +380,7 @@ printf '%s\t%s\n' 'fixture/aws.ini' 'planted fixture, not a real key' \
     >"${LEDGER_DIR}/one.tsv"
 read_ledger "${LEDGER_DIR}/one.tsv"
 collect_unallowed "$fixture_findings"
-if [ "$ALLOWED_COUNT" -eq 1 ] && ! printf '%s\n' "$UNALLOWED" | grep -q 'aws.ini'; then
+if [ "$ALLOWED_COUNT" -eq 1 ] && ! grep -q 'aws.ini' <<<"$UNALLOWED"; then
     ok "the ledger entry silences exactly the finding it covers"
 else
     fail "the ledger did not silence exactly the finding it covers" \
@@ -438,7 +444,7 @@ printf 'replicas: 3\n' >"${GITREPO}/clean.yaml"
 read_ledger "${LEDGER_DIR}/empty.tsv"
 scan_tree "$GITREPO"
 if [ "$TRACKED_COUNT" -eq 2 ] && [ "$(line_count "$UNALLOWED")" -eq 1 ] &&
-    printf '%s\n' "$UNALLOWED" | grep -q '^secrets/leaked.txt:1: AWS access key id$'; then
+    grep -q '^secrets/leaked.txt:1: AWS access key id$' <<<"$UNALLOWED"; then
     ok "a committed secret in a tracked tree is reported by the tree scan"
 else
     fail "the tree scan did not report a secret committed to a tracked tree" \

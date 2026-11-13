@@ -2,4 +2,4 @@
 :HL["/inkorporated/development/_next/static/css/b9ef9622d7ef767a.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":{"n":"slug","t":"oc","k":"job_roles/security_risk/security_architect","s":["_not-found","_global-error","api","icon.svg"]},"h":96,"c":"$Q2"}]]
-0:{"b":"zJbOxsw8HArLt7q-asUWh","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"86JKmMlSlmM5rcZrYUouN","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

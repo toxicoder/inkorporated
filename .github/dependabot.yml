@@ -47,4 +47,10 @@ updates:
     target-branch: main
     schedule:
       interval: monthly
-    open-pull-requests-limit: 5
+    # The site has 15 direct dependencies and the lane sat at this ceiling on
+    # 2026-11-12, so the updates past the fifth never opened: react 19.3.1 (the
+    # peer react-dom 19.3.1 requires), zod 4.6.6 and vitest 4.1.12, which are the
+    # releases that clear their advisories. A cap that silently swallows security
+    # bumps is worse than a noisy lane, and the monthly schedule keeps the noise
+    # bounded.
+    open-pull-requests-limit: 20

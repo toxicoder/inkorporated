@@ -1,4 +1,4 @@
 :HL["/inkorporated/development/_next/static/css/38397e0301dce83c.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":{"n":"slug","t":"oc","k":"job_roles/go_to_market_sales_marketing/customer_marketing","s":["_not-found","_global-error","api","icon.svg"]},"h":96,"c":"$Q2"}]]
-0:{"b":"-Av_snZXnWSqUFER7Gtcr","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"6uQXy-Nkbd5cycBankf5m","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

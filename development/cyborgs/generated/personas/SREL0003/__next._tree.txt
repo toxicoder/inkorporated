@@ -1,4 +1,5 @@
-:HL["/inkorporated/development/_next/static/css/38397e0301dce83c.css","style"]
+:HL["/inkorporated/development/_next/static/css/5e4313b2d929dda8.css","style"]
+:HL["/inkorporated/development/_next/static/css/b9ef9622d7ef767a.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":{"n":"slug","t":"oc","k":"cyborgs/generated/personas/SREL0003","s":["_not-found","_global-error","api","icon.svg"]},"h":96,"c":"$Q2"}]]
-0:{"b":"-ajgbQigoh8CNedmdC0dE","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"RucbdCgFYCp6g5XlTahIR","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

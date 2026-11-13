@@ -1,10 +1,10 @@
 1:"$Sreact.fragment"
-2:"static/chunks/5662-6dbe3f134c39af98.js"
-3:"static/chunks/3922-f60adde8eb455260.js"
-4:"static/chunks/1178-845c8b3c89228e31.js"
-5:"static/chunks/7504-c7c936d49fc4d627.js"
-6:"static/chunks/app/layout-01c89fbce8dcce1b.js"
-7:I[58414,["5662","$2","3922","$3","1178","$4","7504","$5","7177","$6"],"Provider"]
+2:"static/chunks/5590-435f12c38d5f0675.js"
+3:"static/chunks/5786-239f488e2ac38439.js"
+4:"static/chunks/6323-0eac2153fa496395.js"
+5:"static/chunks/7504-d1126c37afe57a34.js"
+6:"static/chunks/app/layout-1cc6423c631fda6f.js"
+7:I[58414,["5590","$2","5786","$3","6323","$4","7504","$5","7177","$6"],"Provider"]
 8:I[57121,[],""]
 9:I[74581,[],""]
 d:I[90484,[],"OutletBoundary"]
@@ -14,11 +14,12 @@ e:"$Sreact.suspense"
 13:"MetadataBoundary"
 14:I[90484,[],"$13"]
 16:I[27123,[],"default",1]
-:HL["/inkorporated/development/_next/static/css/38397e0301dce83c.css","style"]
+:HL["/inkorporated/development/_next/static/css/5e4313b2d929dda8.css","style"]
+:HL["/inkorporated/development/_next/static/css/b9ef9622d7ef767a.css","style"]
 b:X
 c:[["children",{"s":"__PAGE__","h":512,"d":{"r":["$","$1","c",{"children":[["$","main",null,{"className":"mx-auto max-w-3xl px-6 py-24","children":[["$","h1",null,{"className":"text-2xl font-bold text-fd-foreground","children":"Page not found"}],["$","p",null,{"className":"mt-3 text-fd-muted-foreground","children":["That page is not part of the documentation.  Use search, or start from the",["$","a",null,{"className":"text-fd-primary underline underline-offset-2","href":"/","children":[" ","overview"]}],"."]}]]}],null,["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]]}],"p":false,"v":null}}]]
 a:[["children",{"s":"_not-found","h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$b"},"c":"$Qc"}]]
-0:{"P":null,"c":["","_not-found",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/inkorporated/development/_next/static/css/38397e0301dce83c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"flex flex-col min-h-screen","suppressHydrationWarning":true,"children":["$","$L7",null,{"searchFrom":"/inkorporated/development/api/search","children":["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","main",null,{"className":"mx-auto max-w-3xl px-6 py-24","children":[["$","h1",null,{"className":"text-2xl font-bold text-fd-foreground","children":"Page not found"}],["$","p",null,{"className":"mt-3 text-fd-muted-foreground","children":["That page is not part of the documentation.  Use search, or start from the",["$","a",null,{"className":"text-fd-primary underline underline-offset-2","href":"/","children":[" ","overview"]}],"."]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]]}],"p":false,"v":null},"c":"$Qa"},"h":{"r":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L11",null,{"children":"$L12"}],["$","$L14",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$e",null,{"name":"Next.Metadata","children":"$L15"}]}],null]}],null]}],"p":false,"v":null}},"m":"$undefined","G":["$16",[]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"-ajgbQigoh8CNedmdC0dE"}
+0:{"P":null,"c":["","_not-found",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/inkorporated/development/_next/static/css/5e4313b2d929dda8.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/inkorporated/development/_next/static/css/b9ef9622d7ef767a.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"flex flex-col min-h-screen","suppressHydrationWarning":true,"children":["$","$L7",null,{"searchFrom":"/inkorporated/development/api/search","children":["$","$L8",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L9",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","main",null,{"className":"mx-auto max-w-3xl px-6 py-24","children":[["$","h1",null,{"className":"text-2xl font-bold text-fd-foreground","children":"Page not found"}],["$","p",null,{"className":"mt-3 text-fd-muted-foreground","children":["That page is not part of the documentation.  Use search, or start from the",["$","a",null,{"className":"text-fd-primary underline underline-offset-2","href":"/","children":[" ","overview"]}],"."]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]]}],"p":false,"v":null},"c":"$Qa"},"h":{"r":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L11",null,{"children":"$L12"}],["$","$L14",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$e",null,{"name":"Next.Metadata","children":"$L15"}]}],null]}],null]}],"p":false,"v":null}},"m":"$undefined","G":["$16",[]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"RucbdCgFYCp6g5XlTahIR"}
 b:C
 12:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 17:I[86869,[],"IconMark"]

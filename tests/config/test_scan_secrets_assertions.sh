@@ -166,24 +166,39 @@ fi
 # goes back to `printf ... | grep -q ...` or `echo ... | head ...`. Comment
 # lines are skipped, since the file documents the race in prose.
 # ---------------------------------------------------------------------------
-VULNERABLE_SHAPE='(printf|echo)[^|]*\|[ \t]*(grep[ \t]+-[A-Za-z]*q|head([^A-Za-z]|$))'
+# Written without awk and without backslash escapes on purpose. awk folds the
+# escapes in a -v assignment, and gawk drops the one in `\|` where mawk keeps
+# it; the collapsed form reads the pipe as an alternation and its first branch
+# then matches every `echo` and `printf` line in the file, which is how this
+# guard once failed CI over lines 27, 32, 53, 64, 75 and 513. A bracket
+# expression and POSIX classes carry the same meaning in every shell.
+VULNERABLE_SHAPE='(printf|echo)[^|]*[|][[:space:]]*(grep[[:space:]]+-[[:alpha:]]*q|head([^[:alpha:]]|$))'
 # Continuations are folded first: the assertion that went red in issue #45
 # breaks the line between the writer and the pipe, so a line-at-a-time scan
 # would walk straight past it.
-offenders="$(
-    awk -v re="$VULNERABLE_SHAPE" '
-        {
-            start = NR
-            line = $0
-            while (line ~ /\\$/ && (getline nxt) > 0) {
-                sub(/\\$/, "", line)
-                line = line " " nxt
-            }
-            if (line ~ /^[ \t]*#/) next
-            if (line ~ re) printf "%d:%s\n", start, line
-        }
-    ' "$SCANNER"
-)"
+offenders=""
+line_no=0
+folded=""
+fold_start=0
+probe=""
+while IFS= read -r raw || [ -n "$raw" ]; do
+    line_no=$((line_no + 1))
+    if [ -z "$folded" ]; then
+        fold_start=$line_no
+        folded=$raw
+    else
+        folded="${folded} ${raw}"
+    fi
+    case $folded in
+        *\\) continue ;;
+    esac
+    probe="${folded#"${folded%%[![:space:]]*}"}"
+    if [ "${probe:0:1}" != '#' ] && [[ $folded =~ $VULNERABLE_SHAPE ]]; then
+        offenders="${offenders}${fold_start}:${folded}"$'\n'
+    fi
+    folded=""
+done < "$SCANNER"
+offenders="${offenders%$'\n'}"
 if [ -z "$offenders" ]; then
     ok "no assertion in the scanner pipes a builtin into grep -q or head"
 else
